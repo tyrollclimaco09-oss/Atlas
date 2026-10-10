@@ -46,13 +46,16 @@ HTTP_CODE=$(curl -s -o /tmp/status-unauth.json -w '%{http_code}' http://127.0.0.
 if [[ "${HTTP_CODE}" == "401" || "${HTTP_CODE}" == "403" ]]; then
   printf 'PASS: Anonymous access rejected (HTTP %s)\n' "${HTTP_CODE}"
 elif [[ "${HTTP_CODE}" == "200" ]]; then
-  printf 'UNEXPECTED: Anonymous access accepted (HTTP 200)\n'
-  cat /tmp/status-unauth.json
+  printf 'FAIL: Anonymous access accepted without auth (HTTP 200)\n' >&2
+  printf 'Management endpoints must require authentication.\n' >&2
+  cat /tmp/status-unauth.json >&2
   printf '\n'
+  exit 1
 else
-  printf 'FAIL: Unexpected HTTP %s\n' "${HTTP_CODE}"
-  cat /tmp/status-unauth.json
+  printf 'FAIL: Unexpected HTTP %s\n' "${HTTP_CODE}" >&2
+  cat /tmp/status-unauth.json >&2
   printf '\n'
+  exit 1
 fi
 
 if [[ -z "${OMNIROUTE_MGMT_KEY}" ]]; then

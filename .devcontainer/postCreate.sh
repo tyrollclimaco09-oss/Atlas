@@ -1,7 +1,20 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/." && pwd)"
+REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
+
+if [[ ! -f "${REPO_ROOT}/.devcontainer/devcontainer.json" ]]; then
+  printf '%s\n' "ERROR: .devcontainer/devcontainer.json not found at ${REPO_ROOT}/.devcontainer/devcontainer.json" >&2
+  printf '%s\n' "This script must be run from a valid ATLAS repository root." >&2
+  exit 1
+fi
+
+if [[ ! -f "${REPO_ROOT}/scripts/omniroute/install.sh" ]]; then
+  printf '%s\n' "ERROR: scripts/omniroute/install.sh not found at ${REPO_ROOT}/scripts/omniroute/install.sh" >&2
+  printf '%s\n' "Setup structure is incomplete." >&2
+  exit 1
+fi
+
 OMNIROUTE_HOME="${REPO_ROOT}/.omniroute"
 RUNTIME_DIR="${REPO_ROOT}/.omniroute-runtime"
 LOG_DIR="${OMNIROUTE_HOME}/logs"
@@ -25,6 +38,7 @@ if [[ ! -f "${OMNIROUTE_HOME}/.env" ]]; then
 fi
 
 printf 'Codespaces OmniRoute environment initialized.\n'
+printf 'Repository root: %s\n' "${REPO_ROOT}"
 printf 'Runtime environment: %s\n' "${OMNIROUTE_HOME}/.env"
 printf 'Runtime directory: %s\n' "${RUNTIME_DIR}"
 printf 'Logs: %s\n' "${LOG_DIR}"
