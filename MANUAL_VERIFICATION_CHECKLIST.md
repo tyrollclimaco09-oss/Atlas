@@ -26,7 +26,8 @@ Source tests, published-runtime checks, and fresh-task restoration are separate.
 | Branch restriction | PASS | Non-feature/review branch rejected; ordinary inference invocation rejected |
 | Cost gates | PASS | Provider connections, usage-history rows, and call-log rows zero; provider IDs/aliases blocked; combos and emergency fallback disabled |
 | Supabase skills review | PASS | Upstream generic examples only; no production rows or credentials; no migrations or production writes executed |
-| Supabase MCP authentication | BLOCKED | Server registered/enabled with auth Unknown; proxy CONNECT 403 prevents OAuth discovery |
+| Supabase MCP transport | PASS | mcp.supabase.com public OAuth resource metadata 200; unauthenticated MCP endpoint 401 |
+| Supabase MCP authentication | BLOCKED | Server enabled with auth Unknown; login retry fails at api.supabase.com OAuth metadata, proxy CONNECT 403 |
 | Clean local installation/process replay | PASS | Empty dependencies installed from locks; private 20129 process passes health/auth; only replay process stopped |
 | Fresh Codex task restoration | BLOCKED | Draft-save tools cannot publish/start a new task; fresh snapshot restoration, local-only commit retention, and runtime auth unverified |
 

@@ -157,13 +157,18 @@ The global Codex MCP configuration includes `supabase` at:
 
 `https://mcp.supabase.com/mcp?project_ref=lhliqbbooproqtslmgqi&features=docs%2Caccount%2Cdatabase%2Cdebugging%2Cdevelopment%2Cfunctions%2Cbranching`
 
-`codex mcp login supabase` failed during OAuth discovery because the environment
-proxy denied CONNECT to `mcp.supabase.com` with 403. This is a network blocker,
-not authenticated MCP access. The domain addition is saved in the environment
-draft; review/save and publish through environment settings, then retry login
-and complete the browser flow. `/mcp` is an interactive Codex command, not a
-shell executable; use it in a supported Codex UI after successful login.
-`codex mcp list` currently reports enabled with authentication Unknown.
+The initial login failed because the proxy denied `mcp.supabase.com`. On the
+final stabilization check, public protected-resource metadata returned 200 and
+the unauthenticated MCP endpoint returned 401. That metadata identifies
+`https://api.supabase.com` as the authorization server. A login retry then failed
+at `https://api.supabase.com/.well-known/oauth-authorization-server`, whose proxy
+CONNECT is still denied with 403. Endpoint connectivity is verified; MCP
+authentication remains unverified. Both domains are declared in the saved
+network draft. After the network change becomes effective, retry login and
+complete the browser flow. `/mcp` is an interactive Codex command, not a shell
+executable; use it in a supported Codex UI after successful login.
+`codex mcp list` currently reports enabled with authentication Unknown. Other
+browser authorization destinations have not yet been discovered or verified.
 
 Optional Supabase skills are installed under `.agents/skills/supabase` and
 `.agents/skills/supabase-postgres-best-practices`, with `skills-lock.json`.
@@ -171,6 +176,9 @@ Installation does not authenticate MCP or authorize Supabase changes.
 The reviewed skill examples are generic placeholders; no production data or
 credentials are committed. Do not run migrations, functions, writes, or read
 sensitive production rows as part of stabilization.
+The skills' generic SQL/schema-iteration instructions do not override these
+restrictions. Their suggestion to create `.mcp.json` also does not require
+duplicate registration when Codex already has the global MCP server configured.
 
 ## Restoration limits
 
