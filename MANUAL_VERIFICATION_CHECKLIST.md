@@ -1,79 +1,35 @@
-# Manual Verification Checklist
+# ATLAS × OmniRoute verification evidence
 
-Project: ATLAS × OmniRoute
-Branch: `feature/omniroute-codespaces-gateway`
+Branch: `feature/omniroute-codespaces-gateway`.
+Preserved ATLAS canonical baseline: `8338d69cf07ab947109fb122ed290edc3aeac870`.
+OmniRoute source fix: `d4f39e2189f1ef189ab1fd7838e555c1a8e23c1d`,
+branch `review/atlas-routing-preview-fix`.
 
-Status legend:
-- NOT RUN = not executed in this environment
-- PASS = evidence confirms the check
-- FAIL = evidence contradicts the expectation
-- BLOCKED = environment or access constraints prevented completion
+PASS means the named check completed. FAIL means its observed behavior is
+incorrect. BLOCKED means a prerequisite or supported platform action is absent.
+Source tests, published-runtime checks, and fresh-task restoration are separate.
 
-## Evidence fields
-- Date/time:
-- Operator:
-- Codespace URL:
-- Port 20128 visibility:
-- Screenshot or log reference:
+| Check | Outcome | Evidence |
+|---|---|---|
+| Review pending ATLAS files | PASS | All initial 47 and final 56 modified/untracked files reviewed; credentials only variable references/placeholders; runtime/data paths ignored |
+| Canonical architecture | PASS | File unchanged from checkpoint; SHA-256 dd323f190b6670280833815cf7139aaec9a623337ee6d6d27286ed8682862000 |
+| Node and published runtime | PASS | Node 24.19.0; npm OmniRoute 3.8.51; Pi 0.73.1; exact artifact integrity checked |
+| Retained package verification | PASS | 25,143 OmniRoute and 384 Pi packaged JS/TS/JSON files match SHA-512-verified archives |
+| Installer/root correction | PASS | postCreate resolves ATLAS; standard installer delegates to verified 3.8.51; retained version conflicts fail before refresh |
+| Live listener and health | PASS | Only 127.0.0.1:20128; /healthz 200/ok |
+| Management authentication | PASS | Anonymous status 401; cookie login/status 200; inference key rejected by management |
+| Live packaged routing preview | FAIL | HTTP 500: rankCandidates receives object rather than candidates array |
+| Corrected fork source | PASS | Regression before: 4 failed/4 passed; after: 8/8 passed; existing ranking/quota tests: 6/6 passed; real commit hooks passed |
+| No inference in source regression | PASS | Every test asserts zero fetches; passing tests also run with non-loopback Node connections blocked |
+| Agent transport | PASS | Pi request reaches 127.0.0.1:20128/v1/chat/completions with cwd /workspace/Atlas; deliberately unavailable model rejected with 400 |
+| Model inference / coding result | BLOCKED | User explicitly keeps inference blocked; no model response, coding task, or edit completed |
+| Branch restriction | PASS | Non-feature/review branch rejected; ordinary inference invocation rejected |
+| Cost gates | PASS | Provider connections, usage-history rows, and call-log rows zero; provider IDs/aliases blocked; combos and emergency fallback disabled |
+| Supabase skills review | PASS | Upstream generic examples only; no production rows or credentials; no migrations or production writes executed |
+| Supabase MCP authentication | BLOCKED | Server registered/enabled with auth Unknown; proxy CONNECT 403 prevents OAuth discovery |
+| Clean local installation/process replay | PASS | Empty dependencies installed from locks; private 20129 process passes health/auth; only replay process stopped |
+| Fresh Codex task restoration | BLOCKED | Draft-save tools cannot publish/start a new task; fresh snapshot restoration, local-only commit retention, and runtime auth unverified |
 
----
-
-## 1. Repository preservation
-- [ ] NOT RUN / PASS / FAIL / BLOCKED
-- Evidence:
-
-## 2. Node.js 24 environment
-- [ ] NOT RUN / PASS / FAIL / BLOCKED
-- Evidence:
-
-## 3. `npm view omniroute@3.8.52` verification
-- [ ] NOT RUN / PASS / FAIL / BLOCKED
-- Evidence:
-
-## 4. Runtime secret generation in `.omniroute/.env`
-- [ ] NOT RUN / PASS / FAIL / BLOCKED
-- Evidence:
-
-## 5. Port 20128 private-only configuration
-- [ ] NOT RUN / PASS / FAIL / BLOCKED
-- Evidence:
-
-## 6. OmniRoute startup status
-- [ ] NOT RUN / PASS / FAIL / BLOCKED
-- Evidence:
-
-## 7. `GET /healthz`
-- [ ] NOT RUN / PASS / FAIL / BLOCKED
-- Evidence:
-
-## 8. Anonymous access to `/api/omniroute/status`
-- [ ] NOT RUN / PASS / FAIL / BLOCKED
-- Evidence:
-
-## 9. Authenticated access to `/api/omniroute/status`
-- [ ] NOT RUN / PASS / FAIL / BLOCKED
-- Evidence:
-
-## 10. `POST /api/omniroute/route/preview`
-- [ ] NOT RUN / PASS / FAIL / BLOCKED
-- Evidence:
-
-## 11. Synthetic preview only
-- [ ] NOT RUN / PASS / FAIL / BLOCKED
-- Evidence:
-
-## 12. Upstream model calls count
-- [ ] NOT RUN / PASS / FAIL / BLOCKED
-- Evidence:
-
-## 13. Paid provider / unknown-cost provider eligibility
-- [ ] NOT RUN / PASS / FAIL / BLOCKED
-- Evidence:
-
-## 14. Automatic provider fallback disabled
-- [ ] NOT RUN / PASS / FAIL / BLOCKED
-- Evidence:
-
-## 15. Final outcome
-- [ ] NOT RUN / PASS / FAIL / BLOCKED
-- Notes:
+See `docs/OMNIROUTE_DEVELOPMENT.md` for commands and limitations. No live
+package replacement, paid inference, bets, merges, production changes, or
+deployments were performed. The current working gateway is preserved.

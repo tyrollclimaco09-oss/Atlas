@@ -14,3 +14,7 @@ logs/
 .DS_Store
 .vscode/
 *.swp
+
+# Python helper bytecode is generated, not reviewable source.
+__pycache__/
+*.py[cod]
