@@ -1,0 +1,16 @@
+# Ignore local OmniRoute runtime files, generated envs, logs, and dependencies.
+.omniroute/
+.omniroute-runtime/
+.env
+.env.*
+!.env.omniroute.example
+node_modules/
+.npm/
+.pnpm-store/
+logs/
+*.log
+
+# Editor and system files
+.DS_Store
+.vscode/
+*.swp
