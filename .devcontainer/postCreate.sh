@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/." && pwd)"
 OMNIROUTE_HOME="${REPO_ROOT}/.omniroute"
 RUNTIME_DIR="${REPO_ROOT}/.omniroute-runtime"
 LOG_DIR="${OMNIROUTE_HOME}/logs"
@@ -24,12 +24,12 @@ if [[ ! -f "${OMNIROUTE_HOME}/.env" ]]; then
   chmod 600 "${OMNIROUTE_HOME}/.env"
 fi
 
-printf 'Runtime environment ready at %s\n' "${OMNIROUTE_HOME}/.env"
+printf 'Codespaces OmniRoute environment initialized.\n'
+printf 'Runtime environment: %s\n' "${OMNIROUTE_HOME}/.env"
 printf 'Runtime directory: %s\n' "${RUNTIME_DIR}"
 printf 'Logs: %s\n' "${LOG_DIR}"
-
-if [[ ! -d "${RUNTIME_DIR}/node_modules" ]]; then
-  bash "${REPO_ROOT}/scripts/omniroute/install.sh"
-fi
-
-printf '\nCodespaces OmniRoute environment ready.\n'
+printf '\nRun the following steps:\n'
+printf '  1. bash scripts/omniroute/install.sh\n'
+printf '  2. bash scripts/omniroute/start.sh\n'
+printf '  3. bash scripts/omniroute/status.sh\n'
+printf '  4. bash scripts/omniroute/routing-preview.sh\n'
