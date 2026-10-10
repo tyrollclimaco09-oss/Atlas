@@ -49,7 +49,7 @@ bash scripts/omniroute/start.sh
 
 The server binds to `127.0.0.1:20128` and does not open a public endpoint.
 
-## 6) Check health and auth behavior
+## 6) Check health
 
 Run:
 
@@ -57,18 +57,27 @@ Run:
 bash scripts/omniroute/status.sh
 ```
 
-Then inspect the actual endpoints:
+This checks:
+- `/healthz` (public, no auth required)
+- `/api/omniroute/status` (authenticated, requires management credential)
+
+## 7) Authentication
+
+The management endpoints (`/api/omniroute/status` and `/api/omniroute/route/preview`) require a Bearer token.
+
+If OmniRoute is running with `INITIAL_PASSWORD` set, you can derive a temporary token or use the dashboard login.
+
+For programmatic access:
 
 ```bash
-curl -fsS http://127.0.0.1:20128/healthz
-curl -fsS http://127.0.0.1:20128/api/omniroute/status
-curl -fsS -u "admin:$(grep '^INITIAL_PASSWORD=' .omniroute/.env | cut -d= -f2-)" \
-  http://127.0.0.1:20128/api/omniroute/status
+export OMNIROUTE_MGMT_KEY=<your-bearer-token-here>
 ```
 
-## 7) Run a synthetic-only routing preview
+Replace `<your-bearer-token-here>` with the actual token. Do not share or commit this token.
 
-Run:
+## 8) Run a synthetic-only routing preview
+
+Once authenticated:
 
 ```bash
 bash scripts/omniroute/routing-preview.sh
@@ -76,7 +85,9 @@ bash scripts/omniroute/routing-preview.sh
 
 This uses only synthetic candidates and must not trigger any live upstream model request.
 
-## 8) Stop after verification
+If `OMNIROUTE_MGMT_KEY` is not set, the script will report `BLOCKED` and show you how to set it.
+
+## 9) Stop after verification
 
 Once checks are complete:
 
@@ -84,12 +95,17 @@ Once checks are complete:
 kill "$(cat .omniroute/omniroute.pid)"
 ```
 
-This keeps the Codespace usage minimal and avoids paid overages.
+Then stop the Codespace itself from GitHub to conserve your usage allowance:
 
-## 9) Important safeguards
+1. Go to https://github.com/codespaces
+2. Find your ATLAS Codespace
+3. Select **Stop Codespace**
+
+## 10) Important safeguards
 
 - Do not add provider API keys
 - Do not enable paid inference or fallback
 - Do not deploy outside the Codespace
 - Do not expose port 20128 publicly
 - Do not commit `.omniroute/.env`
+- Do not share management bearer tokens
