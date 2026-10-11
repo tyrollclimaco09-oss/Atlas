@@ -4,6 +4,12 @@ This directory preserves the six frontend files previously served by the existin
 
 Gate02 status: **MOCK/CONTRACT VERIFIED — NOT CONNECTED**. No live transport, operator login, credential or configuration is shipped. The existing site's deployment, Supabase deployment, main and Human Final Gate are unchanged.
 
+Gate04 independent development and ownership instructions are in
+[DEVELOPMENT.md](DEVELOPMENT.md): exact runtime files, private local startup,
+workflow checks, original Sites recovery, hosting comparison and the secure
+connection plan. Recovered-source custody is established; original Sites
+authoring/deployment control and current-live revision parity remain unverified.
+
 ## Source-to-contract mapping
 
 | Existing source / new seam | Contract / behavior |
