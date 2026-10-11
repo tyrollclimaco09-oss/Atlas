@@ -1,0 +1,37 @@
+{
+  "originalSite": "https://atlas-command-center-operator-t.tyrollclimaco09.chatgpt.site",
+  "custody": "Previously retrieved HTTPS200 served frontend snapshot; original editable project/deployment mapping not recovered; Gate01 refresh401/403",
+  "scope": "Recovery of existing frontend, not replacement dashboard. Gate02review-only extension; no deployment. Untouched app.js,slate.js,slate-engine.js,pricing.js,styles.css preserve original bytes.",
+  "files": [
+    {
+      "servedPath": "/",
+      "recoveredFile": "index.html",
+      "originalSha256": "558cb6e93dcce2e9b404aff7b5a2c0c17a48f3c7183068a6a0caea2ccaa2d3ad"
+    },
+    {
+      "servedPath": "/app.js",
+      "recoveredFile": "app.js",
+      "originalSha256": "707c5e8c2ad98bddf35e9c6af85f39294ec38cead330842895afbd5bc2b549f1"
+    },
+    {
+      "servedPath": "/slate.js",
+      "recoveredFile": "slate.js",
+      "originalSha256": "48de637c0b2198457160bb2effef4da785cf588ac3b6adfcb3a929a4d7a26538"
+    },
+    {
+      "servedPath": "/slate-engine.js",
+      "recoveredFile": "slate-engine.js",
+      "originalSha256": "7561654b603b0473fe064f287256885435635644c787ac9b0137cc81d74a8097"
+    },
+    {
+      "servedPath": "/pricing.js",
+      "recoveredFile": "pricing.js",
+      "originalSha256": "504377e34fe1f3a22d2677f77d0df3f13b65da39eab3c6a044c2a4aec6f22f63"
+    },
+    {
+      "servedPath": "/styles.css",
+      "recoveredFile": "styles.css",
+      "originalSha256": "789bc143dae6331cbc8e31f4f763b7763daa78ccefcd47e62328a39b9388d3af"
+    }
+  ]
+}
