@@ -1,0 +1,180 @@
+{
+  "recorded_at_utc": "2026-10-11T18:16:08.862143+00:00",
+  "scope": "Current cloud instance; local review-source tests and read-only access probes. No deployment or live approval changes.",
+  "base_commit": "0fb64c215de5b8096a97eab0fdcbe8aad4551c1c",
+  "local_review_branch": "review/atlas-capability-hardening-2026-10-11",
+  "versions": {
+    "node": "v24.19.0",
+    "npm": "11.9.0",
+    "python": "Python 3.12.14"
+  },
+  "original_tests": {
+    "command": "node --test scripts/health/health-policy.test.cjs scripts/omniroute/tests/local-only.test.cjs scripts/omniroute/tests/fetch-redirect.test.cjs",
+    "source_commit": "0fb64c215de5b8096a97eab0fdcbe8aad4551c1c",
+    "exit_code": 0,
+    "pass": 27,
+    "fail": 0,
+    "skipped": 0,
+    "log_retained": false
+  },
+  "runs": [
+    {
+      "name": "health-before-fix",
+      "command": [
+        "node",
+        "--test",
+        "--test-reporter=tap",
+        "health-policy.test.cjs"
+      ],
+      "cwd": "/tmp/atlas-baseline-1osn2hmj",
+      "exit_code": 1,
+      "counts": {
+        "tests": 31,
+        "pass": 22,
+        "fail": 9,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "elapsed_seconds": 0.139,
+      "log": "/workspace/audits/atlas-health-input-validation-2026-10-11/health-before-fix.log"
+    },
+    {
+      "name": "redirect-before-existing-fix",
+      "command": [
+        "node",
+        "--test",
+        "--test-reporter=tap",
+        "tests/fetch-redirect.http.test.cjs"
+      ],
+      "cwd": "/tmp/atlas-baseline-1osn2hmj",
+      "exit_code": 1,
+      "counts": {
+        "tests": 1,
+        "pass": 0,
+        "fail": 1,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "elapsed_seconds": 0.167,
+      "log": "/workspace/audits/atlas-health-input-validation-2026-10-11/redirect-before-existing-fix.log"
+    },
+    {
+      "name": "combined-current",
+      "command": [
+        "node",
+        "--test",
+        "--test-reporter=tap",
+        "scripts/health/health-policy.test.cjs",
+        "scripts/omniroute/tests/local-only.test.cjs",
+        "scripts/omniroute/tests/fetch-redirect.test.cjs",
+        "scripts/omniroute/tests/fetch-redirect.http.test.cjs"
+      ],
+      "cwd": "/workspace/Atlas",
+      "exit_code": 0,
+      "counts": {
+        "tests": 42,
+        "pass": 42,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "elapsed_seconds": 0.182,
+      "log": "/workspace/audits/atlas-health-input-validation-2026-10-11/combined-current.log"
+    },
+    {
+      "name": "syntax-health-policy",
+      "command": [
+        "node",
+        "--check",
+        "scripts/health/health-policy.cjs"
+      ],
+      "cwd": "/workspace/Atlas",
+      "exit_code": 0,
+      "counts": {},
+      "elapsed_seconds": 0.02,
+      "log": "/workspace/audits/atlas-health-input-validation-2026-10-11/syntax-health-policy.log"
+    },
+    {
+      "name": "syntax-health-policy.test",
+      "command": [
+        "node",
+        "--check",
+        "scripts/health/health-policy.test.cjs"
+      ],
+      "cwd": "/workspace/Atlas",
+      "exit_code": 0,
+      "counts": {},
+      "elapsed_seconds": 0.021,
+      "log": "/workspace/audits/atlas-health-input-validation-2026-10-11/syntax-health-policy.test.log"
+    },
+    {
+      "name": "syntax-fetch-redirect.http.test",
+      "command": [
+        "node",
+        "--check",
+        "scripts/omniroute/tests/fetch-redirect.http.test.cjs"
+      ],
+      "cwd": "/workspace/Atlas",
+      "exit_code": 0,
+      "counts": {},
+      "elapsed_seconds": 0.02,
+      "log": "/workspace/audits/atlas-health-input-validation-2026-10-11/syntax-fetch-redirect.http.test.log"
+    },
+    {
+      "name": "diff-check",
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "cwd": "/workspace/Atlas",
+      "exit_code": 0,
+      "counts": {},
+      "elapsed_seconds": 0.002,
+      "log": "/workspace/audits/atlas-health-input-validation-2026-10-11/diff-check.log"
+    }
+  ],
+  "canonical_baseline_sha256": "dd323f190b6670280833815cf7139aaec9a623337ee6d6d27286ed8682862000",
+  "changed_code_sha256": {
+    "scripts/health/health-policy.cjs": "a63c5f4c3461317a32597fd6c535cd6925b35801f9777d0da52df93a4249d4be",
+    "scripts/health/health-policy.test.cjs": "d32f68b4d5e67c7d91d3b28d20f871a07659e748bd7b734e5cf178544d6afbd4",
+    "scripts/omniroute/tests/fetch-redirect.http.test.cjs": "a2cc296cc726441a84077e2f6a04ab7e81582019f2b55c1f6d879bcc6957f1a3"
+  },
+  "current_gateway": {
+    "health_probe": "BLOCKED",
+    "error_type": "ConnectionRefusedError"
+  },
+  "initial_current_instance_inventory": {
+    "selected_checkouts": 17,
+    "all_checkout_statuses_clean": true,
+    "atlas_runtime_directory_present": false,
+    "atlas_local_gateway_directory_present": false,
+    "prior_audits_directory_present": false,
+    "prior_preservation_directory_present": false,
+    "omniroute_node_modules_present": false,
+    "pi_cli_present": false,
+    "supabase_cli_present": false,
+    "supabase_registered": false,
+    "supabase_agent_skills_present": true
+  },
+  "access_probes": {
+    "native_git_read": "PASS",
+    "github_pr6_api": "BLOCKED: gh API returned Forbidden; no PR state verified",
+    "github_public_api": "BLOCKED: proxy CONNECT 403",
+    "supabase_resource_metadata": "BLOCKED: HTTP 403",
+    "supabase_authorization_metadata": "BLOCKED: proxy CONNECT 403",
+    "supabase_mcp_endpoint": "BLOCKED: HTTP 403",
+    "original_site": "BLOCKED: proxy CONNECT 403",
+    "supabase_registration": "BLOCKED: codex mcp add failed with read-only filesystem at /run/codex-environment/codex-home/config.toml",
+    "supabase_login": "NOT TESTED: registration prerequisite failed",
+    "database_sql": "NOT TESTED: authenticated read access unavailable"
+  },
+  "historical_receipts_preserved": true,
+  "new_external_issues_or_prs_created": false,
+  "production_changed": false,
+  "inference_performed": false,
+  "deployed": false
+}

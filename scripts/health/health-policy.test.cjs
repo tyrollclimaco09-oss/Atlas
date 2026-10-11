@@ -42,3 +42,60 @@ test('unknown snapshot never hides missing source', () => {
 test('uses deterministic injected clock rather than wall clock', () => {
   assert.deepEqual(check(atAge(20)), check(atAge(20)));
 });
+
+// Invalid dates must stay invalid even when Date.parse normalizes them.
+for (const [timestamp, now] of [
+  ['2026-02-30T12:00:00Z', '2026-03-02T12:00:00Z'],
+  ['2026-02-29T12:00:00Z', '2026-03-01T12:00:00Z'],
+  ['2100-02-29T12:00:00Z', '2100-03-01T12:00:00Z'],
+  ['2026-04-31T12:00:00Z', '2026-05-01T12:00:00Z'],
+  ['2026-10-10T24:00:00Z', '2026-10-11T00:00:00Z'],
+  ['2026-02-30T17:30:00+05:30', '2026-03-02T12:00:00Z'],
+]) {
+  test(`invalid RFC3339 calendar/time is not green: ${timestamp}`, () => {
+    const result = evaluateHealth({
+      latestMarketSnapshotAt: timestamp, nowMs: Date.parse(now),
+      totalConnections: 2, maxConnections: 20,
+    });
+    assert.equal(result.health_state, 'DEGRADED');
+    assert.equal(result.freshness, 'UNKNOWN');
+    assert.equal(result.age_minutes, null);
+    assert.ok(result.reason_codes.includes('SNAPSHOT_TIMESTAMP_MISSING_OR_INVALID'));
+  });
+}
+
+for (const [timestamp, now] of [
+  ['2024-02-29T12:00:00Z', '2024-02-29T12:00:00Z'],
+  ['2000-02-29T12:00:00Z', '2000-02-29T12:00:00Z'],
+  ['2026-10-11T17:40:00+05:30', '2026-10-11T12:30:00Z'],
+  ['2026-10-11T08:40:00-03:30', '2026-10-11T12:30:00Z'],
+]) {
+  test(`valid leap date/offset retains healthy behavior: ${timestamp}`, () => {
+    const result = evaluateHealth({
+      latestMarketSnapshotAt: timestamp, nowMs: Date.parse(now),
+      totalConnections: 2, maxConnections: 20,
+    });
+    assert.equal(result.health_state, 'HEALTHY');
+    assert.equal(result.freshness, 'HEALTHY');
+    assert.deepEqual(result.reason_codes, []);
+  });
+}
+
+for (const [total, max] of [
+  [2, 1e100],
+  [2, Number.MAX_SAFE_INTEGER + 1],
+  [Number.MAX_SAFE_INTEGER + 1, 1e100],
+]) {
+  test(`unsafe integer DB metrics fail closed: ${total}/${max}`, () => {
+    const result = check(atAge(10), total, max);
+    assert.equal(result.health_state, 'DEGRADED');
+    assert.equal(result.pressure_ratio, null);
+    assert.ok(result.reason_codes.includes('DB_CONNECTION_METRICS_INVALID'));
+  });
+}
+
+test('exactly representable DB metrics retain their ratio', () => {
+  const result = check(atAge(10), 2, Number.MAX_SAFE_INTEGER);
+  assert.equal(result.health_state, 'HEALTHY');
+  assert.equal(result.pressure_ratio, 2 / Number.MAX_SAFE_INTEGER);
+});
