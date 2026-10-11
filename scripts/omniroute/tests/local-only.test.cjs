@@ -1,5 +1,6 @@
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
+const net = require('node:net');
 const path = require('node:path');
 const test = require('node:test');
 const vm = require('node:vm');
@@ -47,16 +48,19 @@ test('string Unix socket paths are rejected before connecting', () => {
 test('object Unix socket paths are rejected before connecting', () => {
   const h = harness();
   assert.throws(() => h.socket.connect({ path: '/tmp/gateway.sock' }), /blocks outgoing Unix sockets/);
+  assert.throws(() => h.socket.connect(net._normalizeArgs(['/tmp/gateway.sock', () => {}])), /blocks outgoing Unix sockets/);
   assert.equal(h.connections.length, 0);
 });
 
-test('external TCP destinations are rejected for each supported signature', () => {
+test('external TCP destinations are rejected across positional and normalized inputs', () => {
   const h = harness();
   for (const args of [
     [{ port: 443, host: 'provider.example' }],
     [443, '198.51.100.1'],
     ['443', 'provider.example'],
+    [net._normalizeArgs([443, 'provider.example', () => {}])],
     [[{ port: 443, host: 'provider.example' }]],
+    // Extra wrapper input hardening; this unmarked array is not a native Node signature.
     [[443, 'provider.example']],
   ]) {
     assert.throws(() => h.socket.connect(...args), /blocks non-loopback Node sockets/);
@@ -66,18 +70,23 @@ test('external TCP destinations are rejected for each supported signature', () =
 
 test('loopback TCP and numeric string ports retain original connect arguments', () => {
   const h = harness();
+  const callback = () => {};
+  // Node's normalizer marks this array with the internal symbol Socket.connect uses.
+  const normalized = net._normalizeArgs([20128, '127.0.0.1', callback]);
   for (const args of [
     [{ port: 20128, host: '127.0.0.1' }],
     [{ port: 20128, host: '::1' }],
     [20128, 'localhost'],
     ['20128', '127.0.0.1'],
     [20128],
+    [normalized],
     [[20128, '127.0.0.1']],
   ]) {
     assert.equal(h.socket.connect(...args), h.socket);
     assert.deepEqual(h.connections.at(-1), args);
   }
-  assert.equal(h.connections.length, 6);
+  assert.equal(h.connections.length, 7);
+  assert.equal(normalized[1], callback);
 });
 
 test('external fetch is rejected without calling the original fetch', async () => {
@@ -85,6 +94,17 @@ test('external fetch is rejected without calling the original fetch', async () =
   await assert.rejects(h.fetch('https://provider.example/v1/chat/completions'), /blocks non-loopback fetch/);
   assert.equal(h.requests.length, 0);
   assert.equal(h.audit.length, 0);
+});
+
+test('custom localhost DNS lookup is rejected before it can redirect a socket', () => {
+  const h = harness();
+  let lookups = 0;
+  const lookup = () => { lookups += 1; };
+  for (const options of [{ port: 20128, host: 'localhost', lookup }, { port: 20128, lookup }]) {
+    assert.throws(() => h.socket.connect(options), /blocks custom loopback DNS lookup/);
+  }
+  assert.equal(lookups, 0);
+  assert.equal(h.connections.length, 0);
 });
 
 test('loopback request audit contains metadata only', async () => {

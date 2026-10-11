@@ -17,6 +17,10 @@ net.Socket.prototype.connect = function (...args) {
   if (host && !allowed.has(host)) {
     throw new Error('ATLAS validation blocks non-loopback Node sockets');
   }
+  if (typeof options === 'object' && typeof options.lookup === 'function' &&
+      host !== '127.0.0.1' && host !== '::1') {
+    throw new Error('ATLAS validation blocks custom loopback DNS lookup');
+  }
   return originalConnect.apply(this, args);
 };
 const originalFetch = globalThis.fetch;
