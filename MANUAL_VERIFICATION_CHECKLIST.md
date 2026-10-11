@@ -9,6 +9,35 @@ PASS means the named check completed. FAIL means its observed behavior is
 incorrect. BLOCKED means a prerequisite or supported platform action is absent.
 Source tests, published-runtime checks, and fresh-task restoration are separate.
 
+## Reconciliation evidence (2026-10-11)
+
+The complete [A–G audit](docs/RECONCILIATION_2026-10-11.md) separates the
+user-reported ChatGPT site prototype from the development-only checkout. Its
+absence here does not establish that it never existed. Actual site/backend
+contracts, deployment, RC9 205/205, and sports-stage behavior remain unverified.
+
+| Check | Outcome | Current evidence |
+|---|---|---|
+| Original review history on GitHub | PASS | Remote ATLAS 3d6a929 and OmniRoute d4f39e2 match; main/release base unchanged |
+| Narrow connection guard regression | PASS | Initial: 4 pass / 2 fail; lookup case also failed before correction; final: 7/7; all I/O stubbed |
+| Declared port forwarding | PASS | forwardPorts empty; 20128 onAutoForward ignore retained; no claim about uninspected platform settings |
+| Published package distinction | PASS | npm 3.8.51 integrity matches; npm 3.8.52 still E404; fork metadata is 3.8.52 |
+| Current listener, health, management | PASS | 127.0.0.1:20128 only; health 200; authenticated management/policy check exit 0 |
+| Current published preview | FAIL | Synthetic authenticated HTTP preview still 500, script exit 1 |
+| Fork source regression | PASS | 8/8 route tests; 6/6 ranking/quota tests; no upstream fetch |
+| Pi after guard change | PASS transport | Fresh process cwd /workspace/Atlas; local request; expected unavailable-model HTTP 400 |
+| Real model/coding result | BLOCKED | No approved free provider; ordinary agent invocation refused; no coding response |
+| Supabase authentication | BLOCKED | MCP enabled, auth Unknown; initialization Auth required; discovery is not login |
+| Optional skill provenance | PASS | 40 files match public upstream c9be0e9; two entry points; generic examples only |
+| Independent fresh-task restore | BLOCKED | Draft save and same-machine replay do not publish or run a fresh task |
+
+The running gateway was preserved without restart or package modification. Its
+previous preload remains loaded; the new guard was tested in isolation and in
+a fresh Pi process. Zero provider connections/usage/call-log rows remain a local
+gateway observation, not a statement about Supabase data.
+
+## Historical stabilization evidence (2026-10-10)
+
 | Check | Outcome | Evidence |
 |---|---|---|
 | Review pending ATLAS files | PASS | All initial 47 and final 56 modified/untracked files reviewed; credentials only variable references/placeholders; runtime/data paths ignored |

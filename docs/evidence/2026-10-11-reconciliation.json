@@ -1,0 +1,175 @@
+{
+  "date": "2026-10-11",
+  "scope": "source and current-instance checks; no deployment or fresh task",
+  "baselineSha256": "dd323f190b6670280833815cf7139aaec9a623337ee6d6d27286ed8682862000",
+  "initialAtlasHead": "3d6a929315cb098ea8344d929a03153997ec3f15",
+  "reviewBranch": "review/atlas-reconciliation-2026-10-11",
+  "privacyCommits": [
+    "bd8f1f8aa590a771420f69a46cbcbccf9cca58b2",
+    "e638344ee261ae7de569186a050f35eaa824df66"
+  ],
+  "privacyRegression": {
+    "initialBefore": {
+      "pass": 4,
+      "fail": 2,
+      "exitCode": 1
+    },
+    "additionalLookupBefore": {
+      "pass": 6,
+      "fail": 1,
+      "exitCode": 1
+    },
+    "final": {
+      "pass": 7,
+      "fail": 0,
+      "skip": 0,
+      "exitCode": 0
+    },
+    "io": "stubbed socket/fetch/file functions; no network calls"
+  },
+  "portPolicy": {
+    "forwardPorts": [],
+    "onAutoForward": "ignore",
+    "visibility": "private",
+    "platformForwardingInspected": false
+  },
+  "forkSourceTests": {
+    "branch": "review/atlas-routing-preview-fix",
+    "commit": "d4f39e2189f1ef189ab1fd7838e555c1a8e23c1d",
+    "git_status": "",
+    "node_version": "v24.19.0",
+    "suites": [
+      {
+        "suite": "gateway-route-regression",
+        "cwd": "/workspace/omniroute",
+        "command": [
+          "node",
+          "node_modules/vitest/vitest.mjs",
+          "run",
+          "--config",
+          "vitest.mcp.config.ts",
+          "--maxWorkers",
+          "1",
+          "--no-file-parallelism",
+          "tests/unit/api/routing-preview.spec.ts"
+        ],
+        "node_options": "--require=/workspace/Atlas/scripts/omniroute/local-only.cjs",
+        "exit_code": 0,
+        "elapsed_seconds": 1.152,
+        "log": "/workspace/audits/atlas-reconciliation-2026-10-11/gateway-route-regression.log",
+        "passed": 8,
+        "total": 8
+      },
+      {
+        "suite": "gateway-ranking-quota",
+        "cwd": "/workspace/omniroute",
+        "command": [
+          "node",
+          "--import",
+          "tsx/esm",
+          "--test",
+          "--test-concurrency=1",
+          "tests/unit/quota-telemetry-adaptive-routing.test.ts"
+        ],
+        "node_options": "--require=/workspace/Atlas/scripts/omniroute/local-only.cjs",
+        "exit_code": 0,
+        "elapsed_seconds": 0.199,
+        "log": "/workspace/audits/atlas-reconciliation-2026-10-11/gateway-ranking-quota.log",
+        "tests": 6,
+        "pass": 6,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0
+      }
+    ]
+  },
+  "npmRelease": [
+    {
+      "check": "published351integrity",
+      "exitCode": 0,
+      "value": "sha512-VwwSt+bP9lJiPJXFJMz0nNGGuoewPZU3nFe1SLuO11ADgdSwTegGCxhg8Ov75+31m/cocPxHiO63zygn1XQ0MQ==",
+      "npmErrorCode": null
+    },
+    {
+      "check": "published352version",
+      "exitCode": 1,
+      "value": "",
+      "npmErrorCode": "E404"
+    }
+  ],
+  "runtime": {
+    "checks": [
+      {
+        "check": "management-policy",
+        "exitCode": 0,
+        "sanitizedOutput": "Management auth verified; 529 provider IDs/aliases blocked; no provider connections.\nPASS: private gateway health, management authentication, and inference restrictions.\n"
+      },
+      {
+        "check": "published-preview",
+        "exitCode": 1,
+        "sanitizedOutput": "Management auth verified; 529 provider IDs/aliases blocked; no provider connections.\nSynthetic HTTP preview: 500; inference remains blocked.\n"
+      },
+      {
+        "check": "normal-agent-block",
+        "exitCode": 1,
+        "sanitizedOutput": "Blocked: no genuine free inference provider has been verified and approved.\nOnly --probe is available; it uses an unavailable model and read-only tools.\n"
+      },
+      {
+        "check": "pi-after-guard",
+        "exitCode": 0,
+        "stopReason": "error",
+        "httpStatus": 400,
+        "expectedUnavailableModelRejection": true,
+        "cwd": "/workspace/Atlas",
+        "endpoint": "http://127.0.0.1:20128/v1/chat/completions",
+        "model": "atlas-unconfigured-probe"
+      }
+    ],
+    "localGatewayDatabaseCounts": {
+      "provider_connections": 0,
+      "usage_history": 0,
+      "call_logs": 0
+    },
+    "upstreamInferenceApproved": false,
+    "liveModelResponse": false,
+    "gatewayListener": "State  Recv-Q Send-Q Local Address:Port  Peer Address:Port\nLISTEN 0      0          127.0.0.1:20128      0.0.0.0:*   \n"
+  },
+  "supabase": {
+    "projectRef": "lhliqbbooproqtslmgqi",
+    "registration": "enabled",
+    "cliAuth": "Unknown",
+    "initialize": "Auth required",
+    "projectInventoryPerformed": false,
+    "sensitiveRowsRead": false,
+    "productionWrites": false
+  },
+  "site": {
+    "classification": "EXISTING REPORTED PROTOTYPE \u2014 SOURCE ACCESS BLOCKED",
+    "environment": "ChatGPT Sites",
+    "sourceInspected": false,
+    "openPageId": null,
+    "callableRetrievalTool": false
+  },
+  "skills": {
+    "markdownFiles": 40,
+    "entryPoints": 2,
+    "upstream": "supabase/agent-skills",
+    "upstreamCommit": "c9be0e931b7930f7d02126d04774d904c381e7d7",
+    "byteIdenticalFiles": 40,
+    "credentialsFound": 0
+  },
+  "restoration": {
+    "historicalSameMachineReplay": true,
+    "draftSavedPreviously": true,
+    "published": false,
+    "freshTaskVerified": false
+  },
+  "limitations": [
+    "Existing gateway retains previously loaded preload",
+    "No full OmniRoute source build or broad suite",
+    "No authenticated Supabase project inventory",
+    "No Sites source access",
+    "No upstream inference",
+    "No publication/billing verification"
+  ]
+}

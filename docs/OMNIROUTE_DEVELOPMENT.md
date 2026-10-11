@@ -5,6 +5,44 @@ EDGE THIEF, FORENSICS, SENTINEL, TACTICIAN, FINAL GATE, LEDGER, or the canonical
 architecture. This workflow does not authorize bets, merges, Supabase mutations,
 production deployments, paid providers, or automatic paid fallback.
 
+## Reconciliation status (2026-10-11)
+
+See [the dated A–G audit](RECONCILIATION_2026-10-11.md) for current evidence,
+source gaps, research classifications, and rollback steps. The user reports an
+existing ATLAS prototype built with a site skill in ChatGPT; its artifact/source
+is not accessible in this checkout or session. Do not rebuild it from the
+historical narrative or treat absent repository files as proof it never existed.
+
+Both stabilization review heads are now preserved on GitHub: ATLAS `3d6a929`
+on `feature/omniroute-codespaces-gateway` and OmniRoute `d4f39e2` on
+`review/atlas-routing-preview-fix`. Fresh checks still show a healthy private
+gateway, authenticated management, **preview HTTP 500**, and **Pi HTTP 400**
+for the intentionally unavailable model. Source regression tests pass; no real
+inference or coding result is verified.
+
+The local preload now blocks string-form Unix socket paths and checks hosts in
+normalized argument arrays, and rejects custom hostname lookups. Run its deterministic, network-free regression:
+
+```bash
+node --test scripts/omniroute/tests/local-only.test.cjs
+```
+
+Devcontainer configuration declares no forwarded ports and ignores automatic
+forwarding for 20128. Verify the actual listener on every restoration. The
+preserved gateway process was not restarted, so it has its earlier loaded
+preload; the updated guard was verified in a fresh Pi process. It remains an
+additional Node defense, not an OS/native/subprocess sandbox.
+
+Supabase OAuth discovery is reachable as of 2026-10-11; the earlier proxy denial
+below is historical. Authentication metadata still reports `Unknown`; current MCP initialization returns `Auth required`. CLI commands belong
+in the environment terminal, not the Supabase Dashboard SQL editor. Pending
+authentication must use the user's browser/private terminal flow with
+`codex mcp login supabase --scopes organizations:read,projects:read --no-browser`.
+Do not expand permissions automatically. `/mcp` belongs in an interactive Codex
+UI. Forty imported Markdown files are two skills plus references; they match
+public upstream commit `c9be0e931b7930f7d02126d04774d904c381e7d7` byte-for-byte.
+Their examples remain subordinate to ATLAS's no-write/no-sensitive-row rules.
+
 ## Repository and release
 
 - ATLAS working directory: `/workspace/Atlas`.
@@ -117,7 +155,7 @@ are enabled. Configuring Pi does not redirect this hosted Codex session's model.
    before claiming coding integration, and review the diff before any commit or
    merge. No merges or deployment are authorized by these instructions.
 
-## Current evidence (2026-10-10)
+## Historical stabilization evidence (2026-10-10)
 
 | Check | Observed result |
 |---|---|
@@ -197,7 +235,7 @@ The available environment tools save drafts; they cannot publish a snapshot or
 start an independent fresh task. This replay is a current-machine check. Runtime authentication and running
 processes must not be assumed to survive restoration. The user must publish
 the reviewed environment through settings and start a fresh task for an actual
-restoration check. Local review commits have not been pushed, and restoration
-of local-only commits is not guaranteed by the platform; report this as blocked
-until independently tested. Preserve all current files and do not reset/push
-or replace the runtime as a workaround.
+restoration check. The original review commits are now preserved on their remote
+branches as recorded above. That preservation does not verify environment
+publication or restoration. Preserve current files and the original runtime;
+do not reset history or replace the package to make a readiness claim.
