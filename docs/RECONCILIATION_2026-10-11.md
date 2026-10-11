@@ -351,3 +351,17 @@ The 40 files are **two skills plus 38 supporting Markdown files**, not 40 indepe
 Useful future references include RLS/privileges, keys/constraints, locks/concurrency and connections. Their generic SQL/example tables are not ATLAS implementation evidence. Direct schema iteration, ALTER SYSTEM, statistics resets/query-text monitoring, and EXPLAIN ANALYZE need explicit target/permission review; none ran. Codex already has global MCP registration, so do not create duplicate `.mcp.json`. Pi deliberately uses `--no-skills`; imported files do not establish an agent coding integration. Preserve evidence and canonical owners rather than creating another source of truth.
 
 Canonical baseline SHA-256 remains `dd323f190b6670280833815cf7139aaec9a623337ee6d6d27286ed8682862000`. Credential review covers tracked/new review files and runtime exclusions; it does not certify ignored private state or a future snapshot. Literal scans are bounded evidence, not a guarantee against every possible secret encoding.
+
+## Addendum: new cloud instance and focused health validation
+
+The [capability audit's current cloud supplement](CAPABILITY_AUDIT_2026-10-11.md#current-cloud-reconciliation-and-health-input-batch) records the next bounded batch. Preserve the original report above as historical evidence.
+
+Fresh native Git reads match the checkpoint refs. The original 27 isolated tests pass. The existing reference health evaluator had two additional input gaps: calendar rollover accepted impossible dates, and non-safe integer connection metrics could appear valid. New tests demonstrate nine failures against the unchanged hardening baseline; the local reference fix and all combined checks now pass **42/42**, with no skips. An additional real loopback HTTP test independently verifies the previously implemented redirect denial; it fails against the pre-redirect reconciliation source. No original fix was recreated.
+
+The new cloud machine initially contains the selected clean checkouts, not the prior ignored gateway/Pi installation, audit logs or preservation bundles. Its port 20128 health probe is connection-refused. Historical gateway health/authentication, preview 500 and Pi 400 results therefore remain historical, not current-runtime proof. No gateway was started or existing process stopped in this batch. Only the HTTP test's own ephemeral listener was started and closed.
+
+Current Supabase, GitHub API and original-site reads encounter HTTP/proxy 403. The managed Codex configuration also rejects MCP registration with a read-only-filesystem error. No OAuth, SQL, table, grant, RLS, function-source or sensitive-row inspection occurred. The checkpoint's eight deployed functions and ACTIVE_HEALTHY status remain reported evidence, not freshly verified inventory; these access failures do not prove a database outage.
+
+The uploaded master reconciliation specifies the controlling pipeline and existing slate layers. Canonical source is unchanged. Original site recovery, exact state ownership, actual RC9/GH-01 proofs, backend/consumer parity and research wiring remain blocked or unknown, as classified in the supplement. No frontend, alternate state store, decision node, production change, migration, paid provider or automation was introduced.
+
+Current commands/results and code hashes are captured in [the new immutable receipt](evidence/2026-10-11-health-input-validation.json). The older receipt is unchanged. Network-domain additions were saved for review; this does not establish runtime propagation, authentication or publication.

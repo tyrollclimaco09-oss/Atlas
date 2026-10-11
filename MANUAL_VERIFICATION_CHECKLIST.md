@@ -63,3 +63,22 @@ gateway observation, not a statement about Supabase data.
 See `docs/OMNIROUTE_DEVELOPMENT.md` for commands and limitations. No live
 package replacement, paid inference, bets, merges, production changes, or
 deployments were performed. The current working gateway is preserved.
+
+## New cloud-instance review batch (2026-10-11)
+
+The historical tables above retain their original scope. This new instance initially has no retained gateway/Pi runtime; its `/healthz` probe is connection-refused. See [the current capability supplement](docs/CAPABILITY_AUDIT_2026-10-11.md#current-cloud-reconciliation-and-health-input-batch) and [sanitized receipt](docs/evidence/2026-10-11-health-input-validation.json).
+
+| Check | Result | Current evidence |
+| --- | --- | --- |
+| Existing checkpoint refs / canonical preservation | PASS | Native remote refs match; canonical SHA-256 unchanged |
+| Original isolated hardening tests | PASS | 27/27, exit 0, no skips |
+| Health-input regressions against original policy | FAIL, expected control | 22 pass / 9 fail, exit 1 |
+| Real HTTP redirect regression against pre-redirect guard | FAIL, expected control | 0 pass / 1 fail, exit 1 |
+| Final source + actual loopback HTTP suite | PASS | 42/42, exit 0; zero skips/cancellations |
+| Changed CommonJS syntax / whitespace | PASS | `node --check` on all three changed/new JS files; `git diff --check` |
+| Current gateway / published preview / Pi | BLOCKED / NOT TESTED | Runtime absent initially; localhost health connection-refused; no inference |
+| Supabase / site / GitHub API | BLOCKED | Current HTTP/proxy 403; MCP config write rejected as read-only |
+| SQL, RLS, grants, actual Human Final Gate/RC9 and original site contracts | NOT TESTED / UNKNOWN | Authenticated metadata and original source prerequisites missing |
+| Deployment / publication / independent retained-runtime restoration | NOT TESTED | No live changes or publication performed |
+
+Reproduce from `/workspace/Atlas`: `node --test --test-reporter=tap scripts/health/health-policy.test.cjs scripts/omniroute/tests/local-only.test.cjs scripts/omniroute/tests/fetch-redirect.test.cjs scripts/omniroute/tests/fetch-redirect.http.test.cjs`. Healthy valid-date/offset behavior and public health enum/thresholds remain intact. This command verifies review source and an isolated ephemeral HTTP boundary; it does not certify deployed compatibility.

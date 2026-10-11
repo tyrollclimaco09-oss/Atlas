@@ -1,0 +1,162 @@
+{
+  "recordedDate": "2026-10-11",
+  "baselineCommit": "0269432b0d4770214c2957c896acd46bcbe85601",
+  "reviewBranch": "review/atlas-capability-hardening-2026-10-11",
+  "existingPR": "https://github.com/tyrollclimaco09-oss/Atlas/pull/6",
+  "verdict": "MOCK/CONTRACT VERIFIED \u2014 NOT CONNECTED",
+  "contractProvenance": "Operator-supplied sanitized deployed atlas-site-runtime v9 candidate handler contract; not authenticated live HTTP testing",
+  "contract": {
+    "method": "GET",
+    "function": "atlas-site-runtime",
+    "mode": "candidate",
+    "queryIdentity": "candidate_key",
+    "view": "atlas_unified_decision_packet_v1",
+    "selectedVersion": "state_version",
+    "sqlVersionTypeAndNullability": "unverified",
+    "responseAuthority": false,
+    "humanFinalGateRequired": true
+  },
+  "nodeTests": {
+    "command": "node --test command-center/tests/*.test.cjs",
+    "tests": 88,
+    "pass": 88,
+    "fail": 0,
+    "skipped": 0,
+    "exitCode": 0
+  },
+  "browserChecks": {
+    "tool": "existing Python Playwright1.62.0/system Chromium",
+    "renderMode": "offline recovered original application plus review-only bridge; no server/deployment",
+    "checks": [
+      {
+        "case": "default profile",
+        "result": "live disabled; no private state created; control disabled"
+      },
+      {
+        "case": "200 matching data",
+        "result": "Remote confirmed",
+        "draftBytesPreserved": true
+      },
+      {
+        "case": "200 null data",
+        "result": "Missing canonical candidate",
+        "draftBytesPreserved": true
+      },
+      {
+        "case": "400 rejected request",
+        "result": "Backend unavailable",
+        "draftBytesPreserved": true
+      },
+      {
+        "case": "401 unauthenticated",
+        "result": "Unauthorized",
+        "draftBytesPreserved": true
+      },
+      {
+        "case": "403 unauthorized",
+        "result": "Unauthorized",
+        "draftBytesPreserved": true
+      },
+      {
+        "case": "500 database failure",
+        "result": "Backend unavailable",
+        "draftBytesPreserved": true
+      },
+      {
+        "case": "missing response identity",
+        "result": "Backend unavailable",
+        "draftBytesPreserved": true
+      },
+      {
+        "case": "wrong identity",
+        "result": "Stale or conflicting",
+        "draftBytesPreserved": true
+      },
+      {
+        "case": "changed version",
+        "result": "Stale or conflicting",
+        "draftBytesPreserved": true
+      },
+      {
+        "case": "reconfirmed baseline",
+        "result": "Remote confirmed",
+        "draftBytesPreserved": true
+      },
+      {
+        "case": "original draft edit",
+        "result": "remote proof invalidated; existing edit persists normally"
+      },
+      {
+        "case": "unchanged Final Gate",
+        "result": "existing confirmation control remains disabled and incomplete private draft remains unapproved"
+      },
+      {
+        "case": "reload/resume",
+        "result": "existing draft resumes; remote proof is not persisted or reused"
+      }
+    ],
+    "viewports": [
+      {
+        "width": 1440,
+        "height": 1000
+      },
+      {
+        "width": 390,
+        "height": 844
+      }
+    ],
+    "pageErrors": 0,
+    "consoleWarnings": 0,
+    "mobileOverflow": false,
+    "actualBackendRequests": 0,
+    "externalRequests": 0,
+    "source": "Temporary offline fixture harness; original URL served entirely from local reviewed files"
+  },
+  "privacyReview": {
+    "recognizableCredentialPatternCounts": {
+      "private_key": 0,
+      "supabase_secret": 0,
+      "supabase_pat": 0,
+      "github_token": 0,
+      "jwt_literal": 0
+    },
+    "allNewFilesManuallyReviewed": true,
+    "scanLimit": "Pattern scan complements manual review; not a universal secret absence guarantee",
+    "localDraftsRead": "isolated synthetic test fixture only",
+    "credentialsPersisted": false,
+    "serviceRoleOrLegacyAuthAdded": false,
+    "wholeRemoteRowPersisted": false
+  },
+  "preservation": {
+    "fiveOriginalJsCssAssetsByteIdentical": true,
+    "htmlOnlyAdds": "two deferred script tags and one adjacent status container",
+    "localResumeAndFinalGateSourceUnchanged": true,
+    "privateDraftBytesPreservedDuringReads": true
+  },
+  "noChanges": {
+    "production": true,
+    "siteDeployment": true,
+    "supabaseDeployment": true,
+    "databaseWrites": true,
+    "main": true,
+    "paidProviders": true,
+    "inference": true,
+    "bets": true,
+    "gatewayAndHealthPatches": true
+  },
+  "singleRemainingLiveRequirement": "Existing authorized nonproduction operator read context: verified session at permitted original origin, known synthetic candidate_key and expected state_version with verified comparison domain; no credentials in chat/source",
+  "fileHashes": {
+    "command-center/README.md": "34adf3b6f4dcf33308eacee662cb6bcb91a808c55126f9fbdf64ce5a03d3f5c6",
+    "command-center/SOURCE_PROVENANCE.json": "f5f36fd41563fe28554441c68dab444fb3bfbe188d079f2308d363d10e664268",
+    "command-center/app.js": "707c5e8c2ad98bddf35e9c6af85f39294ec38cead330842895afbd5bc2b549f1",
+    "command-center/canonical-read.js": "8b0d64b4fd9196df1300c7a32627cabc578bc4101a859cbd5a7633b7a745e5e5",
+    "command-center/canonical-resume.js": "614fb62b27c658e05d3ea6c92f4affe019fabc33f1c9dac23f51472ac561b090",
+    "command-center/index.html": "29fbe8a69770da2103ea7814589d1674790def25ae6bafe9ad646fa393aa8aa3",
+    "command-center/pricing.js": "504377e34fe1f3a22d2677f77d0df3f13b65da39eab3c6a044c2a4aec6f22f63",
+    "command-center/slate-engine.js": "7561654b603b0473fe064f287256885435635644c787ac9b0137cc81d74a8097",
+    "command-center/slate.js": "48de637c0b2198457160bb2effef4da785cf588ac3b6adfcb3a929a4d7a26538",
+    "command-center/styles.css": "789bc143dae6331cbc8e31f4f763b7763daa78ccefcd47e62328a39b9388d3af",
+    "command-center/tests/canonical-read.test.cjs": "a153ac023b0ca64551d4ce1f54016014be69508f0a769a8b3ee251da9c3dddb1",
+    "command-center/tests/source-preservation.test.cjs": "8ae655d8dfd0f6e17c4d9561835484ee46786fe7bc6a1969c6ddba35efb97766"
+  }
+}

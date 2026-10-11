@@ -35,5 +35,7 @@ globalThis.fetch = async (input, init) => {
       cwd: process.cwd(), path: url.pathname, host: url.host, model: body.model,
     }) + '\n', { mode: 0o600 });
   }
-  return originalFetch(input, init);
+  // Fail closed on automatic redirects; a loopback endpoint may redirect to egress.
+  // Validation-only defense: not a universal network sandbox or firewall.
+  return originalFetch(input, { ...init, redirect: 'error' });
 };
