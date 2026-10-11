@@ -4,10 +4,14 @@ const fs = require('node:fs');
 const allowed = new Set(['127.0.0.1', 'localhost', '::1']);
 const originalConnect = net.Socket.prototype.connect;
 net.Socket.prototype.connect = function (...args) {
-  const options = Array.isArray(args[0]) ? args[0][0] : args[0];
+  const connectionArgs = Array.isArray(args[0]) ? args[0] : args;
+  const options = connectionArgs[0];
   const host = typeof options === 'object' ? options.host :
-    (typeof args[1] === 'string' ? args[1] : 'localhost');
-  if (typeof options === 'object' && options.path) {
+    (typeof connectionArgs[1] === 'string' ? connectionArgs[1] : 'localhost');
+  // Node accepts both connect(path) and connect({ path }), as well as string ports.
+  const pipePath = typeof options === 'string' &&
+    (!Number.isFinite(Number(options)) || Number(options) < 0);
+  if (pipePath || (typeof options === 'object' && options.path)) {
     throw new Error('ATLAS validation blocks outgoing Unix sockets');
   }
   if (host && !allowed.has(host)) {

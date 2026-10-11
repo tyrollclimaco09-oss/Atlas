@@ -9,7 +9,7 @@
       ]
     }
   },
-  "forwardPorts": [20128],
+  "forwardPorts": [],
   "portsAttributes": {
     "20128": {
       "label": "OmniRoute private gateway",
