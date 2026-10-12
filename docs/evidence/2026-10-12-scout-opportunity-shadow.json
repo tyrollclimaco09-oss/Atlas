@@ -1,0 +1,141 @@
+{
+  "schema_version": "atlas.scout.shadow-review-evidence.v1",
+  "client_date": "2026-10-12",
+  "classification": "SYNTHETIC SHADOW \u2014 OFFLINE SOFTWARE SAFEGUARDS ONLY",
+  "checkpoint_sha": "a3385107598b54fa62722c50e9cf0db8ba0c0b6e",
+  "branch": "review/scout-opportunity-shadow-2026-10-12",
+  "commit_status": "LOCAL_UNCOMMITTED_NO_PUSH_NO_PR_CHANGE",
+  "existing_tracked_files_unchanged": true,
+  "node_version": "v24.19.0",
+  "changed_files": [
+    "scripts/scout/opportunity-shadow.cjs",
+    "scripts/scout/opportunity-shadow.fixtures.cjs",
+    "scripts/scout/opportunity-shadow.test.cjs",
+    "docs/SCOUT_OPPORTUNITY_SHADOW.md",
+    "docs/evidence/2026-10-12-scout-opportunity-shadow.json"
+  ],
+  "verification": [
+    {
+      "command": "node --test --test-reporter=tap scripts/scout/opportunity-shadow.test.cjs",
+      "exit_code": 0,
+      "tests": 55,
+      "passed": 55,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    {
+      "command": "node --test --test-reporter=tap command-center/tests/*.test.cjs",
+      "exit_code": 0,
+      "tests": 100,
+      "passed": 100,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    {
+      "command": "node scripts/scout/opportunity-shadow.cjs fixtures",
+      "exit_codes": [
+        0,
+        0
+      ],
+      "research_fixtures": 16,
+      "accepted_research_examples": 14,
+      "expected_denials": 2,
+      "evaluation_fixtures": 5,
+      "byte_identical_replay": true,
+      "stdout_sha256": "ff26eda52f8c2dfd712b26bd541b3b5c21c97c7a3f0f864ab1670e76164a28d1"
+    },
+    {
+      "command": "node --check scripts/scout/opportunity-shadow.cjs; node --check scripts/scout/opportunity-shadow.fixtures.cjs; node --check scripts/scout/opportunity-shadow.test.cjs",
+      "classification": "Three separate syntax checks; all exit 0"
+    },
+    {
+      "command": "git diff --exit-code a3385107598b54fa62722c50e9cf0db8ba0c0b6e --",
+      "exit_code": 0,
+      "meaning": "All existing tracked checkpoint files unchanged"
+    },
+    {
+      "command": "git diff --no-index --check /dev/null <each added file>",
+      "classification": "Exit 1 is expected new-file difference; no whitespace diagnostics. Direct trailing-space checks also passed."
+    }
+  ],
+  "regression_evidence": {
+    "first_api_check": "Expected red: missing research module; 0/1",
+    "first_integrated_shadow_run": "43/45; two test assumptions aligned to source-conflict quarantine and raw scalar preservation",
+    "adversarial_before_fixes": {
+      "command": "node --test --test-name-pattern=adversarial --test-reporter=tap scripts/scout/opportunity-shadow.test.cjs",
+      "exit_code": 1,
+      "passed": 0,
+      "failed": 7
+    },
+    "adversarial_after_fixes": {
+      "command": "node --test --test-name-pattern=adversarial --test-reporter=tap scripts/scout/opportunity-shadow.test.cjs",
+      "exit_code": 0,
+      "passed": 7,
+      "failed": 0
+    },
+    "extra_persistence_check": "One extreme game role-persistence regression demonstrated red before correction; included in final 55/55 suite",
+    "pure_boundary_check": "Network module/fetch, Date.now and Math.random traps observed zero attempts during pure research/evaluation tests"
+  },
+  "gates": {
+    "source_viability": "BLOCKED \u2014 prospective point-in-time player-level evidence and research receipts not supplied",
+    "fixture_safety": "PASS \u2014 synthetic contracts and all 12 hazards covered",
+    "reproducibility": "PASS \u2014 immutable content, collection permutations and independent CLI replay",
+    "predictive_value": "NOT_ESTABLISHED \u2014 no training or actual forecast improvement measured",
+    "robustness": "PASS for synthetic software checks; real model robustness NOT_ESTABLISHED",
+    "human_approval": "Current offline batch authorized; promotion NOT_REQUESTED"
+  },
+  "source_provenance": {
+    "free_scout": "Schedule-reference discovery only; no new player-level provider verification",
+    "five_timeskip_research": "Assignment supplied eight dimensions, not underlying research datasets or experiment receipts",
+    "recovered_frontend": "Checkpoint snapshot preserved; no parity claim with newer user-reported Sites v9 revision 1c2c032",
+    "authenticated_live_integration": "Not attempted or inferred from source inspection"
+  },
+  "boundaries": {
+    "research_only": true,
+    "execution_authority": false,
+    "human_final_gate_required": true,
+    "no_browser_draft_or_schema_changes": true,
+    "no_canonical_store_added": true,
+    "no_sites_edits": true,
+    "no_supabase_operations": true,
+    "no_live_provider_calls": true,
+    "no_paid_dependencies": true,
+    "no_inference": true,
+    "no_betting_execution": true,
+    "no_merge_or_deploy": true,
+    "no_environment_configuration_changes": true,
+    "no_credentials_or_private_records_added": true,
+    "hash_limitation": "Supplied-content consistency only; not source, historical freeze or semantic price-independence authentication",
+    "source_independence": "Report/family groups do not prove independent sources",
+    "roster_completeness": "Declared eligible population does not prove complete team roster",
+    "future_experiment": "A baseline; B transfer; C role stability; D Game Sense/uncertainty; E regime warnings. Planned only; requires prospective grouped chronological data, negative controls, frozen choices and explicit promotion approval."
+  },
+  "source_file_fingerprints": [
+    {
+      "path": "scripts/scout/opportunity-shadow.cjs",
+      "lines": 465,
+      "bytes": 30581,
+      "sha256": "960ff727e035b286a85a8481f8b9c59b4fd48fff916c772a4ffab698e03776a6"
+    },
+    {
+      "path": "scripts/scout/opportunity-shadow.fixtures.cjs",
+      "lines": 107,
+      "bytes": 10626,
+      "sha256": "20635caf86d905ff578ff9d6ec86571fc3442726c17c52a210656521cf2d9c63"
+    },
+    {
+      "path": "scripts/scout/opportunity-shadow.test.cjs",
+      "lines": 631,
+      "bytes": 32119,
+      "sha256": "440859d18b24f9db11bd23f5beae14427f0dc6dc0128d77af4190e97c9532950"
+    },
+    {
+      "path": "docs/SCOUT_OPPORTUNITY_SHADOW.md",
+      "lines": 251,
+      "bytes": 16671,
+      "sha256": "952e6256194f9e01125c6bfc974a124ad1ae792492090aebb6b5c38b7fde99c3"
+    }
+  ]
+}
