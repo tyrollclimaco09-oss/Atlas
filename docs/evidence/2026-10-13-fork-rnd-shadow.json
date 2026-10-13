@@ -1,0 +1,899 @@
+{
+  "schema_version": "atlas.scout.fork-rnd-shadow-evidence.v1",
+  "recorded_at_utc": "2026-10-13T20:46:59.950518+00:00",
+  "classification": "SYNTHETIC_OFFLINE_REVIEW_ONLY",
+  "git": {
+    "branch": "review/fork-rnd-shadow-2026-10-13",
+    "parent_commit": "d5067e072a574508dfe624bb3743632045a209c2",
+    "containing_commit": "Use Git commit identity; no recursive self-reference.",
+    "pushed": false,
+    "main_or_existing_branches_changed": false,
+    "existing_local_branch_heads": {
+      "refs/heads/feature/omniroute-codespaces-gateway": "3d6a929315cb098ea8344d929a03153997ec3f15",
+      "refs/heads/review/atlas-capability-hardening-2026-10-11": "a3385107598b54fa62722c50e9cf0db8ba0c0b6e",
+      "refs/heads/review/atlas-reconciliation-2026-10-11": "42450a22710f80c00f9e0e95151c12f9e6eb7217",
+      "refs/heads/review/fork-rnd-shadow-2026-10-13": "7e8f7bf7c593f9bf59480b238b0d8ae05bde973e",
+      "refs/heads/review/scout-opportunity-shadow-2026-10-12": "d5067e072a574508dfe624bb3743632045a209c2",
+      "refs/heads/work": "be38a56c10b4c8f8168689e8cf59413fb35e10e2"
+    },
+    "parent_tracked_files": 88,
+    "parent_tracked_diff_exit_code": 0,
+    "scope": {
+      "added_files": [
+        "scripts/scout/source-contract-shadow.cjs",
+        "scripts/scout/source-contract-shadow.fixtures.cjs",
+        "scripts/scout/source-contract-shadow.test.cjs",
+        "docs/FORK_RND_SHADOW_REVIEW_2026-10-13.md",
+        "docs/evidence/2026-10-13-fork-rnd-shadow.json"
+      ],
+      "modified_existing_files": []
+    },
+    "remote_note": "No push or remote mutation in this batch; remote heads not freshly rechecked."
+  },
+  "packet": {
+    "file": "ATLAS_FORK_RND_TIMESKIP_2026-10-13.zip",
+    "bytes": 6210,
+    "sha256": "2784a32552f8097e02058c2ca229b371d39827f9dd90877ec51657536bdde2e9",
+    "use": "User-authorized proposal input, not authority or data permission.",
+    "members": [
+      {
+        "path": "README.md",
+        "sha256": "0aebc6bdd6155a4a00bc6a781a5ef49ceb14d900422fa06ec8848848517b6531"
+      },
+      {
+        "path": "fork_registry.json",
+        "sha256": "57ce64f2dddb5c97b1fd6fc16a4133d2c67447ad87806e54bd36f9ee4658b8af"
+      }
+    ]
+  },
+  "reference_sources": {
+    "status": "Reused accepted pinned-source review; no new provider/source calls.",
+    "selected_code_hashes": [
+      {
+        "repository": "public-espn-api",
+        "commit": "3796c6a7c0b0c496c1f62408b0792e23254cd930",
+        "path": "PROJECT_SCOPE.md",
+        "bytes": 2072,
+        "sha256": "ee26f95a1a0640b4ed0c1aa3f9c47d0094766c2dce014360fbd07ad43e6dd247",
+        "lines": 19
+      },
+      {
+        "repository": "public-espn-api",
+        "commit": "3796c6a7c0b0c496c1f62408b0792e23254cd930",
+        "path": "espn_service/tests/test_ingestion_safety.py",
+        "bytes": 5031,
+        "sha256": "f1f0b7930fae5cd01c2a8e9b5f3bb6231b5d95a694816c98389cd36061030c0a",
+        "lines": 125
+      },
+      {
+        "repository": "sports-skills",
+        "commit": "09eb7e8566f48c01d1ea7bf7b4ac62a477d37b19",
+        "path": "src/sports_skills/_replay.py",
+        "bytes": 15446,
+        "sha256": "2c4bdbba99b11da15ec2e2441cbb79b45f5ccf77cafcd8b94a6d3e4e3507c244",
+        "lines": 424
+      },
+      {
+        "repository": "sports-skills",
+        "commit": "09eb7e8566f48c01d1ea7bf7b4ac62a477d37b19",
+        "path": "tests/test_replay.py",
+        "bytes": 11929,
+        "sha256": "ebc9563cb58c816db19caacd33dff9427c307901afbb1ee4732df32117cf980a",
+        "lines": 305
+      },
+      {
+        "path": "config.toml",
+        "bytes": 5745,
+        "sha256": "dfae19d340c1a140acf474041f26d4badf9b0a04ad499d78d102a382b105342d",
+        "repository": "nba-machine-learning-sports-betting",
+        "commit": "8e36b0b72ecc5082aa8976dff742cdf910b3aa36"
+      },
+      {
+        "path": "src/Process-Data/Get_Data.py",
+        "bytes": 5663,
+        "sha256": "90464b3e2b0c3b0996b4485a52945d279f5f36d1f8a7504f1f1fe2467fd0c690",
+        "repository": "nba-machine-learning-sports-betting",
+        "commit": "8e36b0b72ecc5082aa8976dff742cdf910b3aa36"
+      },
+      {
+        "path": "src/Process-Data/Create_Games.py",
+        "bytes": 5561,
+        "sha256": "6d395b9557c42692623b144546359628703160987e69b7e4c1c90c9d3d86d11e",
+        "repository": "nba-machine-learning-sports-betting",
+        "commit": "8e36b0b72ecc5082aa8976dff742cdf910b3aa36"
+      },
+      {
+        "path": "src/Train-Models/XGBoost_Model_UO.py",
+        "bytes": 8205,
+        "sha256": "84fc68175fcdcef0442bfb489d2eaa18600b1fd25de0e429a5f8f7715ec2d6ff",
+        "repository": "nba-machine-learning-sports-betting",
+        "commit": "8e36b0b72ecc5082aa8976dff742cdf910b3aa36"
+      }
+    ],
+    "previous_manifest_hashes": [
+      {
+        "path": "espn-source-review/source-verification.json",
+        "sha256": "c5358ff1d583f256f4fcf09699af510ca80a98b44f542e4a5668fbf961c7b458"
+      },
+      {
+        "path": "nba-source-review/source-manifest.json",
+        "sha256": "00b0779e9c1744f82a2457970052d9da2cd2085ee9d87d21e3ba45336abdfdda"
+      }
+    ],
+    "third_party_runtime_imports": [],
+    "foreign_code_or_data_copied": false,
+    "data_rights": "NOT_ESTABLISHED",
+    "nba_code_transfer_rights": "NOT_ESTABLISHED"
+  },
+  "file_hashes": [
+    {
+      "path": "scripts/scout/source-contract-shadow.cjs",
+      "bytes": 21122,
+      "sha256": "f6f3bc4500f9c1e49a448c2f8907b5cf64701998e48fa753e2d6094f31e6677a"
+    },
+    {
+      "path": "scripts/scout/source-contract-shadow.fixtures.cjs",
+      "bytes": 8958,
+      "sha256": "c71fa9dfda4c2897582fa33c8449ef0a718354424334905e4d923c796eba563f"
+    },
+    {
+      "path": "scripts/scout/source-contract-shadow.test.cjs",
+      "bytes": 33621,
+      "sha256": "3a02068724ac185b0d5dd3ab65841d8a0a0c15633e867f8e3a5be1447caa988e"
+    },
+    {
+      "path": "docs/FORK_RND_SHADOW_REVIEW_2026-10-13.md",
+      "bytes": 12086,
+      "sha256": "e9a0e267d3fe9e1997909b1da48c3ae669b94f5bd8f9645980a131bc924a1e90"
+    }
+  ],
+  "existing_scout_hashes": [
+    {
+      "path": "scripts/scout/opportunity-shadow.cjs",
+      "sha256": "960ff727e035b286a85a8481f8b9c59b4fd48fff916c772a4ffab698e03776a6"
+    },
+    {
+      "path": "scripts/scout/opportunity-shadow.fixtures.cjs",
+      "sha256": "20635caf86d905ff578ff9d6ec86571fc3442726c17c52a210656521cf2d9c63"
+    },
+    {
+      "path": "scripts/scout/opportunity-shadow.test.cjs",
+      "sha256": "440859d18b24f9db11bd23f5beae14427f0dc6dc0128d77af4190e97c9532950"
+    }
+  ],
+  "tests": {
+    "source-contract": {
+      "argv": [
+        "node",
+        "--test",
+        "--test-reporter=tap",
+        "scripts/scout/source-contract-shadow.test.cjs"
+      ],
+      "cwd": "/workspace/Atlas",
+      "started_at_utc": "2026-10-13T20:46:55.062863+00:00",
+      "ended_at_utc": "2026-10-13T20:46:56.014573+00:00",
+      "exit_code": 0,
+      "counts": {
+        "tests": 104,
+        "suites": 0,
+        "pass": 104,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "tap_sha256": "e58b144ca29d373f717c1d59b6b1bdc4dcd20a76458bf00f53a165663219291a",
+      "stderr_bytes": 0,
+      "node_version": "v24.19.0"
+    },
+    "opportunity": {
+      "argv": [
+        "node",
+        "--test",
+        "--test-reporter=tap",
+        "scripts/scout/opportunity-shadow.test.cjs"
+      ],
+      "cwd": "/workspace/Atlas",
+      "started_at_utc": "2026-10-13T20:46:55.094373+00:00",
+      "ended_at_utc": "2026-10-13T20:46:55.912478+00:00",
+      "exit_code": 0,
+      "counts": {
+        "tests": 55,
+        "suites": 0,
+        "pass": 55,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "tap_sha256": "498808cc9a94a04c18636cb9900b1d05e356706ae2127cb2ab730850ca9d2740",
+      "stderr_bytes": 0,
+      "node_version": "v24.19.0"
+    },
+    "frontend": {
+      "argv": [
+        "node",
+        "--test",
+        "--test-reporter=tap",
+        "command-center/tests/canonical-read.test.cjs",
+        "command-center/tests/local-workflow.test.cjs",
+        "command-center/tests/source-preservation.test.cjs"
+      ],
+      "cwd": "/workspace/Atlas",
+      "started_at_utc": "2026-10-13T20:46:55.102764+00:00",
+      "ended_at_utc": "2026-10-13T20:46:55.637880+00:00",
+      "exit_code": 0,
+      "counts": {
+        "tests": 100,
+        "suites": 0,
+        "pass": 100,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "tap_sha256": "496e99d38fb6972c3ba28c26b8376afc764b9efc33d15fa2a4527296ccb10eb5",
+      "stderr_bytes": 0,
+      "node_version": "v24.19.0"
+    },
+    "regressions": {
+      "argv": [
+        "node",
+        "--test",
+        "--test-reporter=tap",
+        "--test-name-pattern=regression:",
+        "scripts/scout/source-contract-shadow.test.cjs"
+      ],
+      "cwd": "/workspace/Atlas",
+      "started_at_utc": "2026-10-13T20:46:55.067358+00:00",
+      "ended_at_utc": "2026-10-13T20:46:55.485268+00:00",
+      "exit_code": 0,
+      "counts": {
+        "tests": 9,
+        "suites": 0,
+        "pass": 9,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "tap_sha256": "085fb6ab71a0b40fd9812c6e9efcc569b7e758461de4b2e73c11afa3cb46e91e",
+      "stderr_bytes": 0,
+      "node_version": "v24.19.0"
+    }
+  },
+  "pre_fix_regressions": [
+    {
+      "name": "adversarial",
+      "exit_code": 1,
+      "counts": {
+        "tests": 5,
+        "pass": 2,
+        "fail": 3,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "tap_sha256": "26f9f76fc03d49e660b5fa6426e9415b3dc045df9535b3019306fcd9e8572de1",
+      "meaning": "positive controls pass; new semantic exclusions fail before correction"
+    },
+    {
+      "name": "lookup",
+      "exit_code": 1,
+      "counts": {
+        "tests": 6,
+        "pass": 2,
+        "fail": 4,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "tap_sha256": "5c4c5ff230437458b0af62edef45e4472b02cef53df9e15538bdad563dc872e6",
+      "meaning": "positive controls pass; new semantic exclusions fail before correction"
+    },
+    {
+      "name": "null-bounds",
+      "exit_code": 1,
+      "counts": {
+        "tests": 3,
+        "pass": 2,
+        "fail": 1,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "tap_sha256": "d7f00684291a912b4adf28059cf1217c7415e94d36d4a25d58c4ee35db3fa513",
+      "meaning": "positive controls pass; new semantic exclusions fail before correction"
+    },
+    {
+      "name": "injury-null-bound",
+      "exit_code": 1,
+      "counts": {
+        "tests": 2,
+        "pass": 1,
+        "fail": 1,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "tap_sha256": "ead1b03cfb3b02dfb8cb9493ab21c305fa3b8cc570bf953cfd69d71d5cc2a191",
+      "meaning": "positive controls pass; new semantic exclusions fail before correction"
+    },
+    {
+      "name": "executable-input",
+      "exit_code": 1,
+      "counts": {
+        "tests": 2,
+        "pass": 0,
+        "fail": 2,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "tap_sha256": "6cb6bfe3dfdfdc0e216e9bfba321de2ff0adc8b4ae3618b34be712295f90120e",
+      "meaning": "unsafe iterator/proxy inputs were accepted or executed before refusal; fresh child catches the attempted transport path"
+    }
+  ],
+  "regression_note": "Nine final named regressions include eight unique pre-fix regression checks and one replay-getter verification. The unknown-bound test was extended for the analogous injury-snapshot comparison. Two existing nonJSON/network tests additionally reproduced unsafe iterator/proxy inputs before correction. Initial test/setup mistakes are excluded from semantic red evidence.",
+  "zero_network_replay": {
+    "cases": 38,
+    "attempts": 0,
+    "selfControls": 4,
+    "getterCalls": 0,
+    "iteratorCalls": 0,
+    "proxyCalls": 0,
+    "importRequests": [
+      "./source-contract-shadow.cjs",
+      "node:crypto",
+      "node:util",
+      "./opportunity-shadow.cjs",
+      "node:crypto",
+      "./source-contract-shadow.fixtures.cjs",
+      "node:crypto",
+      "./opportunity-shadow.cjs"
+    ],
+    "classification": "PASS",
+    "fresh_imports": true,
+    "catches_swallowed_attempts": true,
+    "denies_subprocess_escapes": true,
+    "scope": "Reviewed helper, reused canonical collaborator, 38 synthetic cases, replay hits/misses/corruption and getter refusal."
+  },
+  "synthetic_receipts": [
+    {
+      "case": "ESPN valid synthetic schedule",
+      "study_id": "ESPN-SH-01",
+      "receipt_sha256": "565a683911b893761bd7b78aefa3dc3ae839674b442505a753d6770cfcda15d9",
+      "report_sha256": "95472408f5e1d7ca94f5bc9365e51b7a925509a736cf1e5c855937af7c42342c",
+      "expected_eligible": true,
+      "actual_eligible": true,
+      "body_sha256": "5e31b89fbe68599bc87f77d667e53a20f662aa217820556610af25fb7634b286",
+      "reasons": [],
+      "warnings": []
+    },
+    {
+      "case": "ESPN valid synthetic injury report",
+      "study_id": "ESPN-SH-01",
+      "receipt_sha256": "41565d570e11f8a3f1c3780b5a3130bcf11ec68fb6708a3205969065c7f63279",
+      "report_sha256": "23253440b1f3e62d43cc07f3045f3a4c8c12f444c6a1bfea804b6ae74f0c13e6",
+      "expected_eligible": true,
+      "actual_eligible": true,
+      "body_sha256": "19158543991eb3ca54747a1f0c582f484ae31e4372cfc9006d3ad67cf1065c6d",
+      "reasons": [],
+      "warnings": [
+        "INJURY_COVERAGE_UNKNOWN"
+      ]
+    },
+    {
+      "case": "NBA valid archived synthetic prior-game window",
+      "study_id": "NBA-LK-01",
+      "receipt_sha256": "4a9eccdc597b610067359321072b96fe41e65f5cb149aec959715b17a78d7341",
+      "report_sha256": "a3de99cad945a2fa2e7aacba0fb7c45d57b6f62e9d1cc08c19ab3f9cc14bb609",
+      "expected_eligible": true,
+      "actual_eligible": true,
+      "body_sha256": "bc9b086a576b6e0e082121145920775641f165cfacbed4aea2ff75b525a7cd62",
+      "reasons": [],
+      "warnings": []
+    },
+    {
+      "case": "HTTP 200 empty is unknown",
+      "study_id": "ESPN-SH-01",
+      "receipt_sha256": "4097cd35991fe794db8fae1a73825d5f2bfa99c303bb317afe724ab37133d4ff",
+      "report_sha256": "5e5d417b94d94dc69fb0f3f2146fb9f4147d4b5dcae4324ad58373d504939745",
+      "expected_eligible": false,
+      "actual_eligible": false,
+      "body_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "reasons": [
+        "SHAPE_MISMATCH"
+      ],
+      "warnings": []
+    },
+    {
+      "case": "injury HTTP 200 empty is unknown",
+      "study_id": "ESPN-SH-01",
+      "receipt_sha256": "64143a777b6830b576e6b5a67c0b36825c02cfeef1872dc3a7576baa696aa2ca",
+      "report_sha256": "f530f76bab6644e2999c4e5aea26d56b4925e797f11253cab7752895c71b9b8f",
+      "expected_eligible": false,
+      "actual_eligible": false,
+      "body_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "reasons": [
+        "SHAPE_MISMATCH"
+      ],
+      "warnings": []
+    },
+    {
+      "case": "missing publication time",
+      "study_id": "ESPN-SH-01",
+      "receipt_sha256": "38d94f1f3d8e91dbff1aca62cf7c0a16163cad089aaf31dcf6b631c7d6766980",
+      "report_sha256": "af59de5029a1ac1bee094f5fa829aa3bdecf0eac2641980ce15af89cda947c9c",
+      "expected_eligible": false,
+      "actual_eligible": false,
+      "body_sha256": "5e31b89fbe68599bc87f77d667e53a20f662aa217820556610af25fb7634b286",
+      "reasons": [
+        "TIMESTAMP_UNKNOWN"
+      ],
+      "warnings": []
+    },
+    {
+      "case": "missing availability time",
+      "study_id": "ESPN-SH-01",
+      "receipt_sha256": "7a59a21302c2aede6c8dadc781487bf1b847dd80920ea87765e034cdffe77e4c",
+      "report_sha256": "630956f1fea54628a6be1b5da13ca831928349e623ddc389105d1c32c2b40d0c",
+      "expected_eligible": false,
+      "actual_eligible": false,
+      "body_sha256": "5e31b89fbe68599bc87f77d667e53a20f662aa217820556610af25fb7634b286",
+      "reasons": [
+        "TIMESTAMP_UNKNOWN"
+      ],
+      "warnings": []
+    },
+    {
+      "case": "missing capture time",
+      "study_id": "ESPN-SH-01",
+      "receipt_sha256": "5d2a9e5d097475bb3e9a72a19aeb73a8b9f8d1048f9ea55f9a5e0d1b43f56d95",
+      "report_sha256": "0fa968541f4e40e7e29dec6fef35327ef7adcf0642e02fcdba2743280120bddd",
+      "expected_eligible": false,
+      "actual_eligible": false,
+      "body_sha256": "5e31b89fbe68599bc87f77d667e53a20f662aa217820556610af25fb7634b286",
+      "reasons": [
+        "TIMESTAMP_UNKNOWN"
+      ],
+      "warnings": []
+    },
+    {
+      "case": "restricted rights",
+      "study_id": "ESPN-SH-01",
+      "receipt_sha256": "fec6ff9c8bb412fee2fab30923b2ca6324fed8efc73a4bc366b30fceebe4507a",
+      "report_sha256": "516b6a26aa8a90dc838178c7dc696132fd4ad83a9bded783968da375a835ec7d",
+      "expected_eligible": false,
+      "actual_eligible": false,
+      "body_sha256": "5e31b89fbe68599bc87f77d667e53a20f662aa217820556610af25fb7634b286",
+      "reasons": [
+        "SYNTHETIC_RIGHTS_REQUIRED"
+      ],
+      "warnings": []
+    },
+    {
+      "case": "unknown rights evidence",
+      "study_id": "ESPN-SH-01",
+      "receipt_sha256": "fa3e5be39b97c302653711fdf27418024cebe1e28a7d214d5fd7322ba9243fad",
+      "report_sha256": "9f36239e5c2d57642bb8bf6b691ccb259db510d72d3b3bb4a359d936b6c36d18",
+      "expected_eligible": false,
+      "actual_eligible": false,
+      "body_sha256": "5e31b89fbe68599bc87f77d667e53a20f662aa217820556610af25fb7634b286",
+      "reasons": [
+        "SYNTHETIC_RIGHTS_REQUIRED"
+      ],
+      "warnings": []
+    },
+    {
+      "case": "wrong fork revision",
+      "study_id": "ESPN-SH-01",
+      "receipt_sha256": "28695b241310b7398ef6ea72bcc70dfeccaf5433b53e097ecbb601073306acae",
+      "report_sha256": "73441a10b569adbabbc6679a440eb5e2a1e19401b0840ef16305dcad7d521d9f",
+      "expected_eligible": false,
+      "actual_eligible": false,
+      "body_sha256": "5e31b89fbe68599bc87f77d667e53a20f662aa217820556610af25fb7634b286",
+      "reasons": [
+        "SOURCE_PIN"
+      ],
+      "warnings": []
+    },
+    {
+      "case": "unknown crosswalk",
+      "study_id": "ESPN-SH-01",
+      "receipt_sha256": "6597eb8d72da4c42f8c9df1a43e9e96f791d16facb9cd3fb2ee91830369df612",
+      "report_sha256": "c7154ec9021c16fa95db8a4a17ea9e3807a9cab1f3702ecbee072979512fdb57",
+      "expected_eligible": false,
+      "actual_eligible": false,
+      "body_sha256": "5e31b89fbe68599bc87f77d667e53a20f662aa217820556610af25fb7634b286",
+      "reasons": [
+        "IDENTITY_UNRESOLVED"
+      ],
+      "warnings": []
+    },
+    {
+      "case": "incomplete schedule",
+      "study_id": "ESPN-SH-01",
+      "receipt_sha256": "f9a04279fb7597851efcc034c0854981e1a925fb8bda348205787eef28a46094",
+      "report_sha256": "7fa3099251784ca7e9571124262148a85b750e77ba3937f57f0b7b8f34acd1d1",
+      "expected_eligible": false,
+      "actual_eligible": false,
+      "body_sha256": "5e31b89fbe68599bc87f77d667e53a20f662aa217820556610af25fb7634b286",
+      "reasons": [
+        "SCHEDULE_INCOMPLETE"
+      ],
+      "warnings": []
+    },
+    {
+      "case": "expected event omitted",
+      "study_id": "ESPN-SH-01",
+      "receipt_sha256": "85f2af6987041a1542a73f4cdcc2996b032ef975fe1b2e5dacfc0457df107c05",
+      "report_sha256": "0289a153889bb65f171aee437a4bd25263cfe6409ed4e06e9b923184e3cd4c76",
+      "expected_eligible": false,
+      "actual_eligible": false,
+      "body_sha256": "5e31b89fbe68599bc87f77d667e53a20f662aa217820556610af25fb7634b286",
+      "reasons": [
+        "SCHEDULE_INCOMPLETE"
+      ],
+      "warnings": []
+    },
+    {
+      "case": "malformed daily schedule cannot partly succeed",
+      "study_id": "ESPN-SH-01",
+      "receipt_sha256": "20648d9dad601f5dea9bfba4d91f04622fe0a71859df0e10391572be34f37597",
+      "report_sha256": "692f4c8ec165111cc01343f739cc7f84368b1dcd13e5924e37ded836e0af94c6",
+      "expected_eligible": false,
+      "actual_eligible": false,
+      "body_sha256": "ad378a5cfd82021a7f7d8fff8b5807c81eb6aa4160013b52d721a0352defd8a4",
+      "reasons": [
+        "SHAPE_MISMATCH"
+      ],
+      "warnings": []
+    },
+    {
+      "case": "API family drift",
+      "study_id": "ESPN-SH-01",
+      "receipt_sha256": "e1e960f46d3a34c2f8c9328dae0275999c9f72e81bed883ade2a8a427011d811",
+      "report_sha256": "6557addf7c70570cd9651433293fa923bcb40c227b3b8944bc508e3bf2688272",
+      "expected_eligible": false,
+      "actual_eligible": false,
+      "body_sha256": "5e31b89fbe68599bc87f77d667e53a20f662aa217820556610af25fb7634b286",
+      "reasons": [
+        "SHAPE_MISMATCH"
+      ],
+      "warnings": []
+    },
+    {
+      "case": "schema drift",
+      "study_id": "ESPN-SH-01",
+      "receipt_sha256": "703fcb89d44ea6256464c34d180f24454a797404c1abfb20920fddd814ce3015",
+      "report_sha256": "bfdf816cccc0aaada1d75b25c9b06cbaeb49c5c4edee414c95df34b0a18a15f0",
+      "expected_eligible": false,
+      "actual_eligible": false,
+      "body_sha256": "713ac1c8e37617f23c7c9dac01a610f857da0668055ea5a59f619f1140db373f",
+      "reasons": [
+        "SHAPE_MISMATCH"
+      ],
+      "warnings": []
+    },
+    {
+      "case": "range HTTP 400",
+      "study_id": "ESPN-SH-01",
+      "receipt_sha256": "9dd305ecc6f807699226a34b452c8ac848ae735cd78f13126101b9a757b14aaa",
+      "report_sha256": "8c5ed598709496a9052cc1909b2b5c456ed6c7e3ace82cd0bdec5abfa8fbf21a",
+      "expected_eligible": false,
+      "actual_eligible": false,
+      "body_sha256": "5e31b89fbe68599bc87f77d667e53a20f662aa217820556610af25fb7634b286",
+      "reasons": [
+        "HTTP_400"
+      ],
+      "warnings": []
+    },
+    {
+      "case": "terminal HTTP 404",
+      "study_id": "ESPN-SH-01",
+      "receipt_sha256": "2fe3cac8cf1e746fc67f3ece7d2619d84df298a1d20a21570a8d159b11ba0cf8",
+      "report_sha256": "ebe45ffcd399809066fc8e50010332840befa9fda0376dbed1191d1f7ed1bd36",
+      "expected_eligible": false,
+      "actual_eligible": false,
+      "body_sha256": "5e31b89fbe68599bc87f77d667e53a20f662aa217820556610af25fb7634b286",
+      "reasons": [
+        "HTTP_404"
+      ],
+      "warnings": []
+    },
+    {
+      "case": "stale evidence",
+      "study_id": "ESPN-SH-01",
+      "receipt_sha256": "ccab2a20bfd08e95dfc0f8a3cc3d1eabaf9c02da38c9cc85b6a267d78764dc94",
+      "report_sha256": "2d680bdb1acbe41d42cbfcef5c328df5b058d8d5c7f1e58f3f4ea229f3cba115",
+      "expected_eligible": false,
+      "actual_eligible": false,
+      "body_sha256": "5e31b89fbe68599bc87f77d667e53a20f662aa217820556610af25fb7634b286",
+      "reasons": [
+        "STALE"
+      ],
+      "warnings": []
+    },
+    {
+      "case": "invalid injury status",
+      "study_id": "ESPN-SH-01",
+      "receipt_sha256": "18fe7a17641c448ccbcab06a0a7f9be6ab4e2a548a35d37c776a96fd9d61f49c",
+      "report_sha256": "6037fdd7bdb24a753925bf2db85542335c482579aaad798460c69df4f13c576d",
+      "expected_eligible": false,
+      "actual_eligible": false,
+      "body_sha256": "fd040c009c6935868339ad3e1019b3be1fb455174d822814efba7f2235ad1b08",
+      "reasons": [
+        "SHAPE_MISMATCH"
+      ],
+      "warnings": [
+        "INJURY_COVERAGE_UNKNOWN"
+      ]
+    },
+    {
+      "case": "ambiguous injury player",
+      "study_id": "ESPN-SH-01",
+      "receipt_sha256": "8536e5ef20f8b23cd0500e1be1b3aa665ceeb3def0a43f0803b283c091766a68",
+      "report_sha256": "8ae79c9bd233dab7530b16cca6d3972676e5b45051eb021160b6b4d4e53a7175",
+      "expected_eligible": false,
+      "actual_eligible": false,
+      "body_sha256": "9e32357e4264fe6f2648543b0a941b890abc7e1f11fdb9b466436037426cbc74",
+      "reasons": [
+        "SHAPE_MISMATCH"
+      ],
+      "warnings": [
+        "INJURY_COVERAGE_UNKNOWN"
+      ]
+    },
+    {
+      "case": "NBA target game contamination",
+      "study_id": "NBA-LK-01",
+      "receipt_sha256": "bfe6be7ff071da432f47cf450be9f6753ac69e12e9945fc6fd8e71ffde1d8468",
+      "report_sha256": "1be584139f30d9b856d40e4d9d9e2fa3888d159efa2588bfeeea6a60028ff2bb",
+      "expected_eligible": false,
+      "actual_eligible": false,
+      "body_sha256": "bc9b086a576b6e0e082121145920775641f165cfacbed4aea2ff75b525a7cd62",
+      "reasons": [
+        "TARGET_GAME_CONTAMINATION"
+      ],
+      "warnings": []
+    },
+    {
+      "case": "NBA later same-day contributor",
+      "study_id": "NBA-LK-01",
+      "receipt_sha256": "6f75b128937f62e0fd3b946785b9a5affc4ed8f1cc97efdef2fc0989c2b95aad",
+      "report_sha256": "0626081c83a1856f2ed843cf4ca381a25dd7983ba1730d620b0a04b107dc7d4c",
+      "expected_eligible": false,
+      "actual_eligible": false,
+      "body_sha256": "bc9b086a576b6e0e082121145920775641f165cfacbed4aea2ff75b525a7cd62",
+      "reasons": [
+        "LATE_CONTRIBUTOR"
+      ],
+      "warnings": []
+    },
+    {
+      "case": "NBA unknown table vintage",
+      "study_id": "NBA-LK-01",
+      "receipt_sha256": "6a65d45dcc7b383053b0bdc79a897e379aefc96eb9e2746d8261f23a6c996050",
+      "report_sha256": "f33cd2841039de49cea1481245f4acc360601f94baeb5d380e57e88d21715447",
+      "expected_eligible": false,
+      "actual_eligible": false,
+      "body_sha256": "bc9b086a576b6e0e082121145920775641f165cfacbed4aea2ff75b525a7cd62",
+      "reasons": [
+        "TABLE_VINTAGE_UNKNOWN"
+      ],
+      "warnings": []
+    },
+    {
+      "case": "NBA unarchived historical correction",
+      "study_id": "NBA-LK-01",
+      "receipt_sha256": "c22203153f2c5a8f4a44d10e5eadeb43133cec430e6adca5713a593e64b43f1f",
+      "report_sha256": "e6fdb36777305acd8ef4942f4d0d247f3ffbc4ef065ad9c237b8da3a82730cd7",
+      "expected_eligible": false,
+      "actual_eligible": false,
+      "body_sha256": "bc9b086a576b6e0e082121145920775641f165cfacbed4aea2ff75b525a7cd62",
+      "reasons": [
+        "ARCHIVE_UNVERIFIED"
+      ],
+      "warnings": []
+    },
+    {
+      "case": "NBA prior day without publication proof",
+      "study_id": "NBA-LK-01",
+      "receipt_sha256": "213db50ef1a76cd76176dd529d3d7eadbd94a79c851967716ab9ddefd34d598d",
+      "report_sha256": "2b386dfd0b185dcea66381c7b0b28f2003a4ccb9fc9514028d3c260bed519efe",
+      "expected_eligible": false,
+      "actual_eligible": false,
+      "body_sha256": "bc9b086a576b6e0e082121145920775641f165cfacbed4aea2ff75b525a7cd62",
+      "reasons": [
+        "TIMESTAMP_UNKNOWN"
+      ],
+      "warnings": []
+    },
+    {
+      "case": "NBA positional team reorder",
+      "study_id": "NBA-LK-01",
+      "receipt_sha256": "99e9220d8a7d3a195191a868283693fdeccfc092df9d4d24e6769fd4697d0ae5",
+      "report_sha256": "29ec5a87c802df6276de814d0dbb04d1a47338a63b94582b925650c15cf2a036",
+      "expected_eligible": false,
+      "actual_eligible": false,
+      "body_sha256": "452cc118fb4f86ccac1567b29b29c74389da606fd1afe27e278ae2373ad14490",
+      "reasons": [
+        "POSITIONAL_TEAM_MISMATCH"
+      ],
+      "warnings": []
+    },
+    {
+      "case": "NBA table IDs disagree with crosswalk",
+      "study_id": "NBA-LK-01",
+      "receipt_sha256": "ece0da2736fe3dffc9efdf48e9dc8be1c9b0caac62f7fc7c3d9b1032e681b8e1",
+      "report_sha256": "93496dd2791ecd701a8d3732aad3373d229b929bf0aa4cc47ecb715af05938d8",
+      "expected_eligible": false,
+      "actual_eligible": false,
+      "body_sha256": "56db4c29034b270d1382304f18a00ab74a2166556c78b6a69ce552e1cc4de783",
+      "reasons": [
+        "POSITIONAL_TEAM_MISMATCH"
+      ],
+      "warnings": []
+    },
+    {
+      "case": "NBA target identity mismatch",
+      "study_id": "NBA-LK-01",
+      "receipt_sha256": "61d5bd41aeb034d9f55cb34f310eb90643206e0f55994d8b9254382269a482e1",
+      "report_sha256": "ec75e109b39be78f01d2639c5a6e2ce447b17a7d06ef2923de70087f04978b83",
+      "expected_eligible": false,
+      "actual_eligible": false,
+      "body_sha256": "bc9b086a576b6e0e082121145920775641f165cfacbed4aea2ff75b525a7cd62",
+      "reasons": [
+        "IDENTITY_UNRESOLVED"
+      ],
+      "warnings": []
+    },
+    {
+      "case": "NBA season context mismatch",
+      "study_id": "NBA-LK-01",
+      "receipt_sha256": "0bd3abb26b72e7a561d9127366e78a635d01ddfa912dd9947f0ba2ca0c1efc34",
+      "report_sha256": "dc87285a14082bf815fe2e9b5a749cf75dd866c5d82dbdcb012dfdb42a8c4438",
+      "expected_eligible": false,
+      "actual_eligible": false,
+      "body_sha256": "bc9b086a576b6e0e082121145920775641f165cfacbed4aea2ff75b525a7cd62",
+      "reasons": [
+        "CONTEXT_MISMATCH"
+      ],
+      "warnings": []
+    },
+    {
+      "case": "NBA league context mismatch",
+      "study_id": "NBA-LK-01",
+      "receipt_sha256": "c893dfdef34045bcae223d4dc13b0afe7387d8a4ce59312304441aa1a545195e",
+      "report_sha256": "45b0c3d952a8a533f8a07c4aacac2bd7e711cee34ba974d1fe9dff61c1d6c9e3",
+      "expected_eligible": false,
+      "actual_eligible": false,
+      "body_sha256": "bc9b086a576b6e0e082121145920775641f165cfacbed4aea2ff75b525a7cd62",
+      "reasons": [
+        "CONTEXT_MISMATCH"
+      ],
+      "warnings": []
+    },
+    {
+      "case": "NBA ambiguous day-level chronology",
+      "study_id": "NBA-LK-01",
+      "receipt_sha256": "c3806c9bb5db6fe919f48caab18c6fa583656ba16fc64fe22aca82a5f245bdb0",
+      "report_sha256": "32a2ab2e744bff04c86f5045730f51906c628bb00113662be10f887eec102437",
+      "expected_eligible": false,
+      "actual_eligible": false,
+      "body_sha256": "bc9b086a576b6e0e082121145920775641f165cfacbed4aea2ff75b525a7cd62",
+      "reasons": [
+        "TIMESTAMP_PRECISION"
+      ],
+      "warnings": []
+    },
+    {
+      "case": "NBA missing contributor end",
+      "study_id": "NBA-LK-01",
+      "receipt_sha256": "16c3bb5f31842d3f110ffd5d1563ccfcbf907bf846550348a07ac19bab7295b2",
+      "report_sha256": "55b98862ca2db62a8a5ab2868ff2ed7c2c3adca4fae2933eb9b16f5e9f7516c8",
+      "expected_eligible": false,
+      "actual_eligible": false,
+      "body_sha256": "bc9b086a576b6e0e082121145920775641f165cfacbed4aea2ff75b525a7cd62",
+      "reasons": [
+        "TIMESTAMP_INVALID"
+      ],
+      "warnings": []
+    },
+    {
+      "case": "NBA unshifted rolling aggregate",
+      "study_id": "NBA-LK-01",
+      "receipt_sha256": "1d4a0a52a9229802b8e204a2c041b52add5eafaef97c2eb2667128b28a5ae6f9",
+      "report_sha256": "05e2442095d2c93f20c11ccb2fbef7553a52d98e65e7d1faa09ceb88dcc2565b",
+      "expected_eligible": false,
+      "actual_eligible": false,
+      "body_sha256": "bc9b086a576b6e0e082121145920775641f165cfacbed4aea2ff75b525a7cd62",
+      "reasons": [
+        "LATE_CONTRIBUTOR",
+        "TARGET_GAME_CONTAMINATION"
+      ],
+      "warnings": []
+    },
+    {
+      "case": "Phase 1 OU contamination",
+      "study_id": "NBA-LK-01",
+      "receipt_sha256": "70f7dbde603b721ee18757c128ba70f0595ad6f87a3970dce309435ec04781f0",
+      "report_sha256": "5dc6e8ec1065b7ce69a089407bce745f717b9d0a0980c550c8504b5a01de697a",
+      "expected_eligible": false,
+      "actual_eligible": false,
+      "body_sha256": "bc9b086a576b6e0e082121145920775641f165cfacbed4aea2ff75b525a7cd62",
+      "reasons": [
+        "FEATURE_UNKNOWN",
+        "PHASE1_MARKET_FEATURE",
+        "QUOTE_CAPTURE_UNKNOWN"
+      ],
+      "warnings": []
+    },
+    {
+      "case": "Phase 1 predictor contamination",
+      "study_id": "ESPN-SH-01",
+      "receipt_sha256": "95cdb3a067171408a20894d71c7a1c3d988f428111430f8381e8a3ead3ee702b",
+      "report_sha256": "0394e1a8aef18ef9fe29fc399f1fe5f75dbd2f6c3bdc9aef6ba8dd1aac576189",
+      "expected_eligible": false,
+      "actual_eligible": false,
+      "body_sha256": "5e31b89fbe68599bc87f77d667e53a20f662aa217820556610af25fb7634b286",
+      "reasons": [
+        "FEATURE_UNKNOWN",
+        "PHASE1_MARKET_FEATURE",
+        "QUOTE_CAPTURE_UNKNOWN"
+      ],
+      "warnings": []
+    },
+    {
+      "case": "unknown workload is not zero",
+      "study_id": "ESPN-SH-01",
+      "receipt_sha256": "bac4a4c805d37e5f540b96f8f522788be6c14435f3ed081b2da5cf0751ac25a9",
+      "report_sha256": "7541ad4be373b80fbdd8cb71de91c90dbdecf0c01f31363de2081954752c3982",
+      "expected_eligible": false,
+      "actual_eligible": false,
+      "body_sha256": "5e31b89fbe68599bc87f77d667e53a20f662aa217820556610af25fb7634b286",
+      "reasons": [
+        "FEATURE_UNKNOWN"
+      ],
+      "warnings": []
+    }
+  ],
+  "acceptance": {
+    "synthetic_software": "PASS",
+    "temporal_and_identity_guards": "PASS",
+    "existing_regressions": "PASS",
+    "human_final_gate_required": true,
+    "execution_authority": false,
+    "new_canonical_nodes": 0,
+    "browser_or_canonical_state_writes": 0,
+    "supabase_sites_or_production_changes": 0,
+    "provider_calls": 0,
+    "model_inference_calls": 0,
+    "deployments_or_merges": 0,
+    "betting_execution": false
+  },
+  "unresolved_evidence": [
+    "Provider-data permissions and NBA code-transfer rights.",
+    "Authoritative real team/player/event crosswalks and source-schema verification.",
+    "Archived historical snapshots and independently verified publication/availability/capture/vintage.",
+    "Actual NBA leakage and clean unseen-game predictive performance; neither established."
+  ],
+  "limitations": [
+    "Research fields and synthetic envelopes are not provider schemas or Supabase fields.",
+    "Synthetic rights/archive flags are test declarations, not real grants or timestamp authenticity.",
+    "Exact positional order is intentionally conservative; no automatic team reorder repair.",
+    "Two-team fixtures and matching season labels do not reconstruct real seasons or complete histories.",
+    "Market/OU evidence remains excluded from independent Phase1 even with a quote timestamp.",
+    "Hash binding detects modifications; it does not prove real provenance or independent sources.",
+    "Network traps prove reviewed/exercised paths; they are not a sandbox for arbitrary future code."
+  ],
+  "sentinel": {
+    "offline_testing": "GO",
+    "integration": "HOLD",
+    "predictive_claims": "HOLD",
+    "real_source_acceptance": "BLOCKED",
+    "human_integration_approval": "REQUIRED"
+  },
+  "evidence_integrity_note": "This file omits its own hash; Git binds it. Full TAP and receipt indexes remain in the separate research workspace."
+}
