@@ -28,10 +28,30 @@ function readProvenance() {
   return JSON.parse(readFileSync(join(sourceDirectory, 'SOURCE_PROVENANCE.json'), 'utf8'));
 }
 
-test('recovered original JavaScript and CSS retain their exact snapshot bytes', async (t) => {
+test('recovered assets retain exact snapshot bytes after reversing only the pinned review derivative', async (t) => {
   for (const [filename, expectedHash] of Object.entries(originalAssetHashes)) {
     await t.test(filename, () => {
-      assert.equal(sha256(readFileSync(join(sourceDirectory, filename))), expectedHash);
+      let bytes = readFileSync(join(sourceDirectory, filename));
+      if (filename === 'slate-engine.js') {
+        const derivatives = readProvenance().reviewDerivatives;
+        // Pin the complete exception, including exact before/after bytes. Keep
+        // the original snapshot hash independent of the reviewed derivative.
+        assert.equal(sha256(JSON.stringify(derivatives)), '8c7e2235e10d81e0f4e76dcae39bedc01032eedf8a2daab49b42a1ab28bc5094');
+        assert.equal(derivatives.length, 1);
+        const derivative = derivatives[0];
+        assert.equal(derivative.recoveredFile, filename);
+        assert.equal(derivative.status, 'REVIEW_ONLY_NOT_DEPLOYED');
+        assert.equal(derivative.baseSha256, expectedHash);
+        assert.equal(sha256(bytes), derivative.reviewSha256);
+        let source = bytes.toString('utf8');
+        for (const change of [...derivative.changes].reverse()) {
+          assert.ok(change.after.length > 0);
+          assert.equal(source.split(change.after).length - 1, 1, 'each reviewed change must occur exactly once');
+          source = source.replace(change.after, change.before);
+        }
+        bytes = Buffer.from(source);
+      }
+      assert.equal(sha256(bytes), expectedHash);
     });
   }
 });

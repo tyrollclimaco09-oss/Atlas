@@ -1,0 +1,310 @@
+--- a/pass5/outcome-intelligence.cjs
++++ b/pass5/outcome-intelligence.cjs
+@@ -146,9 +146,9 @@
+   if(states.includes('UNKNOWN'))return {state:'UNRESOLVED',grossCents:null,netCents:null};
+   const anyPush=states.includes('PUSH');
+   if(anyPush && policy==='VOID_TICKET')return {state:'REFUND',grossCents:stake,netCents:0};
++  if(anyPush && kind!=='SINGLE' && !policy)return {state:'UNRESOLVED_VOID_RULE',grossCents:null,netCents:null};
+   if(states.includes('LOSS'))return {state:'LOSE',grossCents:0,netCents:-stake};
+   if(anyPush && (kind==='SGP'||kind==='SGPX'))return {state:'UNRESOLVED_PACKAGE_REPRICE',grossCents:null,netCents:null};
+-  if(anyPush && kind!=='SINGLE' && !policy)return {state:'UNRESOLVED_VOID_RULE',grossCents:null,netCents:null};
+   const active=ids.filter(id=>status[id]==='WIN');
+   if(!active.length)return {state:'REFUND',grossCents:stake,netCents:0};
+   if(kind==='SGP'||kind==='SGPX'){
+--- /dev/null
++++ b/pass5/arc2-settlement-regression.test.cjs
+@@ -0,0 +1,75 @@
++'use strict';
++// Independently authored audit regressions. Synthetic settlement only; no provider calls.
++const test = require('node:test');
++const assert = require('node:assert/strict');
++const { base } = require('./fixture.cjs');
++const { analyzeShadow } = require('./outcome-intelligence.cjs');
++
++function fixture(ticket, mutate) {
++  const input = base();
++  input.worlds = [input.worlds[2]];
++  input.pairQueries = [];
++  input.tickets = [{ ticketId: 'audit-ticket', ...ticket }];
++  if (mutate) mutate(input.worlds[0].statsByEvent);
++  return input;
++}
++function review(input) {
++  const before = JSON.stringify(input);
++  const report = analyzeShadow(input);
++  assert.equal(JSON.stringify(input), before, 'audit must not modify supplied research');
++  assert.equal(report.gate.decision, 'HARD_BLOCK');
++  assert.equal(report.gate.approvalAuthority, false);
++  assert.equal(report.gate.placementAuthority, false);
++  assert.equal(report.gate.signoffReusable, false);
++  return report.preview[0];
++}
++const loseNFL = stats => { stats['NFL-202']['Fiction-C'].RECEPTIONS = 5; };
++const tickets = [
++  { kind: 'DOUBLE', legs: ['NBA_OVER20', 'NFL_REC6'], stakeCents: 100 },
++  { kind: 'TRIPLE', legs: ['NBA_OVER20', 'NFL_REC6', 'WNBA_3PM2'], stakeCents: 100 },
++  { kind: 'SGP', legs: ['NBA_OVER20', 'NBA_AST7'], stakeCents: 100, packageOddsMilli: 3800 },
++  { kind: 'SGPX', legs: ['NBA_OVER20', 'NBA_AST7', 'NFL_REC6'], stakeCents: 100, packageOddsMilli: 6300 },
++  { kind: 'ROUND_ROBIN', legs: ['NBA_OVER20', 'NFL_REC6', 'WNBA_3PM2'], rrSize: 2,
++    perComboStakeCents: 50, stakeCents: 150 },
++];
++
++for (const ticket of tickets) test(`${ticket.kind}: push plus loss cannot settle without a void policy`, () => {
++  const row = review(fixture(ticket, loseNFL));
++  assert.equal(row.legStates.NBA_OVER20, 'PUSH');
++  const result = row.ticketStates['audit-ticket'];
++  if (ticket.kind === 'ROUND_ROBIN') {
++    assert.equal(result.state, 'UNRESOLVED');
++    assert.equal(result.comboStates.UNRESOLVED_VOID_RULE, 2);
++    assert.equal(result.comboStates.LOSE, 1);
++  } else assert.equal(result.state, 'UNRESOLVED_VOID_RULE');
++  assert.equal(result.grossCents, null);
++  assert.equal(result.netCents, null);
++});
++
++test('explicit VOID_TICKET refunds push plus loss under its synthetic rule', () => {
++  assert.deepEqual(review(fixture({ ...tickets[0], voidPolicy: 'VOID_TICKET' }, loseNFL))
++    .ticketStates['audit-ticket'], { state: 'REFUND', grossCents: 100, netCents: 0 });
++});
++test('explicit DROP_LEG preserves the remaining loss under its synthetic rule', () => {
++  assert.deepEqual(review(fixture({ ...tickets[0], voidPolicy: 'DROP_LEG' }, loseNFL))
++    .ticketStates['audit-ticket'], { state: 'LOSE', grossCents: 0, netCents: -100 });
++});
++test('push plus win without policy remains unresolved', () => {
++  assert.deepEqual(review(fixture(tickets[0])).ticketStates['audit-ticket'],
++    { state: 'UNRESOLVED_VOID_RULE', grossCents: null, netCents: null });
++});
++test('no-push loss remains a loss without a void policy', () => {
++  assert.deepEqual(review(fixture({ ...tickets[0], legs: ['NBA_PTS20', 'NFL_REC6'] }, loseNFL))
++    .ticketStates['audit-ticket'], { state: 'LOSE', grossCents: 0, netCents: -100 });
++});
++test('single equality preserves PUSH leg classification and synthetic refund', () => {
++  const row = review(fixture({ kind: 'SINGLE', legs: ['NBA_OVER20'], stakeCents: 100 }));
++  assert.equal(row.legStates.NBA_OVER20, 'PUSH');
++  assert.deepEqual(row.ticketStates['audit-ticket'], { state: 'REFUND', grossCents: 100, netCents: 0 });
++});
++test('unknown stat remains unresolved even with explicit VOID_TICKET', () => {
++  const row = review(fixture({ ...tickets[0], voidPolicy: 'VOID_TICKET' }, stats => {
++    delete stats['NFL-202']['Fiction-C'].RECEPTIONS;
++  }));
++  assert.deepEqual(row.ticketStates['audit-ticket'], { state: 'UNRESOLVED', grossCents: null, netCents: null });
++});
+--- a/pass10/pilot-admission.cjs
++++ b/pass10/pilot-admission.cjs
+@@ -6,11 +6,15 @@
+   if(!Array.isArray(rows)||!meta||typeof meta!=='object')fail('rows/meta required');
+   if(rows.length>10000)fail('oversized cohort');
+   if(meta.sport!=='NBA')fail('one-sport NBA pilot only');
+-  const problems=new Set(),seen=new Set();let eligible=0,observed=0,scored=0,abstained=0;const groups=new Set();
+-  if(!meta.externalWitnessIndependentlyValidated) problems.add('NO_INDEPENDENT_WITNESS');
+-  if(!meta.originalProviderBytesAuthenticated) problems.add('NO_ORIGINAL_PROVIDER_AUTHENTICATION');
+-  if(!meta.preregisteredCensusComplete) problems.add('NO_COMPLETE_CENSUS');
+-  if(!meta.frozenBaselineBeforeOutcomes) problems.add('NO_FROZEN_BASELINE');
++  const problems=new Set(),seen=new Set();let eligible=0,observed=0,scored=0,abstained=0;
++  let predictionCandidates=0,completePredictionPairs=0,missingModelPredictions=0,missingBaselinePredictions=0;
++  const groups=new Set(),pairedGroups=new Set();
++  // Caller assertions are not attestations. Only actual boolean true can satisfy
++  // this local check; strings/numbers/objects never imply affirmative evidence.
++  if(meta.externalWitnessIndependentlyValidated!==true) problems.add('NO_INDEPENDENT_WITNESS');
++  if(meta.originalProviderBytesAuthenticated!==true) problems.add('NO_ORIGINAL_PROVIDER_AUTHENTICATION');
++  if(meta.preregisteredCensusComplete!==true) problems.add('NO_COMPLETE_CENSUS');
++  if(meta.frozenBaselineBeforeOutcomes!==true) problems.add('NO_FROZEN_BASELINE');
+   for(const x of rows){
+     if(!x||typeof x!=='object')fail('row object');
+     if(typeof x.candidateId!=='string'||!x.candidateId||seen.has(x.candidateId))fail('duplicate or invalid candidate ID');
+@@ -18,23 +22,38 @@
+     if(x.sport!==meta.sport)fail('mixed-sport cohort');
+     if(!['WATCH','PASS','ABSTAIN','SHORTLISTED','RESEARCH'].includes(x.decision))fail('unknown decision class');
+     if(typeof x.eventId!=='string'||!x.eventId)fail('event ID');groups.add(x.eventId);
+-    if(x.decision==='ABSTAIN'||x.decision==='WATCH'||x.decision==='PASS')abstained++;
++    const isAbstention=x.decision==='ABSTAIN'||x.decision==='WATCH'||x.decision==='PASS';
++    if(isAbstention)abstained++;
+     if(!stamp(x.eventStartsAt)||!stamp(x.frozenAt)||Date.parse(x.frozenAt)>=Date.parse(x.eventStartsAt))problems.add('MISSING_OR_LATE_FREEZE');
+     if(!stamp(x.labelPublishedAt)&&x.label!==null)problems.add('MISSING_OUTCOME_PUBLICATION_TIME');
+     if(x.label!==null&&x.label!==0&&x.label!==1)fail('binary label required or null');
+     if(x.label!==null){observed++;if(stamp(x.labelPublishedAt)&&stamp(x.eventStartsAt)&&Date.parse(x.labelPublishedAt)<Date.parse(x.eventStartsAt))problems.add('LABEL_PRECEDES_EVENT');}
+     if(x.probability!==null){if(typeof x.probability!=='number'||!Number.isFinite(x.probability)||x.probability<=0||x.probability>=1)fail('invalid probability');}
+     if(x.baselineProbability!==null){if(typeof x.baselineProbability!=='number'||!Number.isFinite(x.baselineProbability)||x.baselineProbability<=0||x.baselineProbability>=1)fail('invalid baseline probability');}
+-    if(x.label!==null&&x.probability!==null&&x.baselineProbability!==null)scored++;
++    if(isAbstention){
++      // Preserve the full candidate/label denominators, but never count a
++      // declared nonscoring decision as a forecast, even if probabilities arrive.
++      if(x.probability!==null||x.baselineProbability!==null)problems.add('ABSTENTION_HAS_PREDICTION');
++    }else{
++      predictionCandidates++;
++      if(x.probability===null)missingModelPredictions++;
++      if(x.baselineProbability===null)missingBaselinePredictions++;
++      if(x.probability!==null&&x.baselineProbability!==null){
++        completePredictionPairs++;
++        if(x.label!==null){scored++;pairedGroups.add(x.eventId);}
++      }else problems.add('INCOMPLETE_PREDICTION_COVERAGE');
++    }
+   }
+   if(eligible===0)problems.add('EMPTY_COHORT');
+   if(scored===0)problems.add('NO_PAIRED_PREDICTIONS_AND_LABELS');
+   if(observed!==eligible)problems.add('INCOMPLETE_LABEL_COVERAGE');
+-  if(!meta.heldoutEventLevelDependenceAssessed)problems.add('EVENT_CLUSTER_DEPENDENCE_UNVERIFIED');
+-  if(!Number.isSafeInteger(meta.minimumIndependentEvents)||meta.minimumIndependentEvents<1||groups.size<meta.minimumIndependentEvents)problems.add('INSUFFICIENT_INDEPENDENT_EVENTS');
++  if(meta.heldoutEventLevelDependenceAssessed!==true)problems.add('EVENT_CLUSTER_DEPENDENCE_UNVERIFIED');
++  if(!Number.isSafeInteger(meta.minimumIndependentEvents)||meta.minimumIndependentEvents<1||pairedGroups.size<meta.minimumIndependentEvents)problems.add('INSUFFICIENT_INDEPENDENT_EVENTS');
+   const issueCodes=[...problems].sort();
+   return {schema:'atlas.arc2.pass10.pilot-admission.v1',candidateCount:eligible,distinctEventCount:groups.size,
+     abstentions:abstained,labelsObserved:observed,pairedForecastsScored:scored,
++    predictionCandidates,completePredictionPairs,missingModelPredictions,missingBaselinePredictions,
++    pairedForecastEventCount:pairedGroups.size,
+     mechanicalCoverageCheckPassed:issueCodes.length===0,
+     scorePublicationPermitted:false,externalIndependenceProvenByLocalModule:false,
+     issueCodes,release:'RESEARCH_ONLY',finalGate:'HARD_BLOCK'};
+--- a/pass10/pilot-admission.test.cjs
++++ b/pass10/pilot-admission.test.cjs
+@@ -1,7 +1,9 @@
+ 'use strict';
+ const test=require('node:test');const assert=require('node:assert/strict');const {auditPilot}=require('./pilot-admission.cjs');
+ const meta={sport:'NBA',externalWitnessIndependentlyValidated:false,originalProviderBytesAuthenticated:false,preregisteredCensusComplete:false,frozenBaselineBeforeOutcomes:false,heldoutEventLevelDependenceAssessed:false,minimumIndependentEvents:2};
+-const row={candidateId:'A',eventId:'E1',sport:'NBA',decision:'WATCH',eventStartsAt:'2026-11-01T19:00:00.000Z',frozenAt:'2026-11-01T17:00:00.000Z',labelPublishedAt:'2026-11-02T01:00:00.000Z',label:1,probability:0.55,baselineProbability:0.5};
++// Overlay correction: this is a forecast fixture, so use RESEARCH. The original
++// WATCH + probability fixture contradicted inherited nonscoring decisions.
++const row={candidateId:'A',eventId:'E1',sport:'NBA',decision:'RESEARCH',eventStartsAt:'2026-11-01T19:00:00.000Z',frozenAt:'2026-11-01T17:00:00.000Z',labelPublishedAt:'2026-11-02T01:00:00.000Z',label:1,probability:0.55,baselineProbability:0.5};
+ test('unknown provider/authentic witness blocks pilot metrics',()=>{let r=auditPilot([row],meta);assert(r.issueCodes.includes('NO_INDEPENDENT_WITNESS'));assert(r.issueCodes.includes('NO_ORIGINAL_PROVIDER_AUTHENTICATION'));assert.equal(r.finalGate,'HARD_BLOCK');});
+ test('one game is not two independent observations',()=>{let r=auditPilot([row,{...row,candidateId:'B'}],meta);assert.equal(r.distinctEventCount,1);assert(r.issueCodes.includes('INSUFFICIENT_INDEPENDENT_EVENTS'));});
+ test('null label preserved, not silently scored',()=>{let r=auditPilot([{...row,label:null,labelPublishedAt:null}],meta);assert.equal(r.pairedForecastsScored,0);assert(r.issueCodes.includes('NO_PAIRED_PREDICTIONS_AND_LABELS'));});
+--- /dev/null
++++ b/pass10/arc2-pilot-regression.test.cjs
+@@ -0,0 +1,137 @@
++'use strict';
++// Independently authored ATLAS integration-audit regressions, synthetic only.
++// These validate local admission accounting, not source/time authenticity.
++const test=require('node:test');
++const assert=require('node:assert/strict');
++const {auditPilot}=require('./pilot-admission.cjs');
++const meta=()=>({sport:'NBA',externalWitnessIndependentlyValidated:true,
++  originalProviderBytesAuthenticated:true,preregisteredCensusComplete:true,
++  frozenBaselineBeforeOutcomes:true,heldoutEventLevelDependenceAssessed:true,
++  minimumIndependentEvents:1});
++const row=changes=>({candidateId:'synthetic-candidate-1',eventId:'synthetic-event-1',
++  sport:'NBA',decision:'RESEARCH',eventStartsAt:'2026-11-01T19:00:00.000Z',
++  frozenAt:'2026-11-01T17:00:00.000Z',labelPublishedAt:'2026-11-02T01:00:00.000Z',
++  label:1,probability:0.55,baselineProbability:0.5,...changes});
++const flags=['externalWitnessIndependentlyValidated','originalProviderBytesAuthenticated',
++  'preregisteredCensusComplete','frozenBaselineBeforeOutcomes','heldoutEventLevelDependenceAssessed'];
++
++test('positive complete research cohort is mechanically consistent but cannot authorize publication',()=>{
++  const result=auditPilot([row()],meta());
++  assert.equal(result.mechanicalCoverageCheckPassed,true);
++  assert.equal(result.predictionCandidates,1);
++  assert.equal(result.completePredictionPairs,1);
++  assert.equal(result.missingModelPredictions,0);
++  assert.equal(result.missingBaselinePredictions,0);
++  assert.equal(result.scorePublicationPermitted,false);
++  assert.equal(result.externalIndependenceProvenByLocalModule,false);
++  assert.equal(result.finalGate,'HARD_BLOCK');
++});
++
++for(const flag of flags) test('assertion requires actual true: '+flag,()=>{
++  for(const claimed of ['false','true',1,0,{},[],null,undefined,false]){
++    const result=auditPilot([row()],{...meta(),[flag]:claimed});
++    assert.equal(result.mechanicalCoverageCheckPassed,false,'non-true assertion admitted');
++    assert.equal(result.scorePublicationPermitted,false);
++    assert.equal(result.finalGate,'HARD_BLOCK');
++  }
++});
++
++for(const decision of ['WATCH','PASS','ABSTAIN']){
++  test(decision+' never becomes a paired forecast by carrying probabilities',()=>{
++    for(const probabilities of [
++      {probability:0.55,baselineProbability:0.5},
++      {probability:0.55,baselineProbability:null},
++      {probability:null,baselineProbability:0.5}]){
++      const result=auditPilot([row({decision,...probabilities})],meta());
++      assert.equal(result.abstentions,1);
++      assert.equal(result.pairedForecastsScored,0);
++      assert.equal(result.predictionCandidates,0);
++      assert.equal(result.completePredictionPairs,0);
++      assert.equal(result.mechanicalCoverageCheckPassed,false);
++      assert(result.issueCodes.includes('ABSTENTION_HAS_PREDICTION'));
++    }
++  });
++  test(decision+' with explicit null predictions stays in candidate and label denominators',()=>{
++    const result=auditPilot([row(),row({candidateId:'synthetic-candidate-2',decision,
++      probability:null,baselineProbability:null})],meta());
++    assert.equal(result.candidateCount,2);
++    assert.equal(result.distinctEventCount,1);
++    assert.equal(result.labelsObserved,2);
++    assert.equal(result.abstentions,1);
++    assert.equal(result.predictionCandidates,1);
++    assert.equal(result.completePredictionPairs,1);
++    assert.equal(result.pairedForecastsScored,1);
++    assert.equal(result.mechanicalCoverageCheckPassed,true);
++    assert.equal(result.scorePublicationPermitted,false);
++  });
++}
++
++for(const decision of ['RESEARCH','SHORTLISTED']){
++  for(const missing of ['model','baseline','both']) test(decision+' cannot hide missing '+missing+' predictions behind another complete pair',()=>{
++    const incomplete=row({candidateId:'synthetic-candidate-2',eventId:'synthetic-event-2',decision,
++      probability:missing==='model'||missing==='both'?null:0.55,
++      baselineProbability:missing==='baseline'||missing==='both'?null:0.5});
++    const result=auditPilot([row(),incomplete],meta());
++    assert.equal(result.candidateCount,2);
++    assert.equal(result.distinctEventCount,2);
++    assert.equal(result.labelsObserved,2);
++    assert.equal(result.predictionCandidates,2);
++    assert.equal(result.completePredictionPairs,1);
++    assert.equal(result.pairedForecastsScored,1);
++    assert.equal(result.missingModelPredictions,missing==='baseline'?0:1);
++    assert.equal(result.missingBaselinePredictions,missing==='model'?0:1);
++    assert.equal(result.mechanicalCoverageCheckPassed,false);
++    assert(result.issueCodes.includes('INCOMPLETE_PREDICTION_COVERAGE'));
++  });
++}
++
++test('missing label retains complete prediction coverage but refuses admission',()=>{
++  const result=auditPilot([row(),row({candidateId:'synthetic-candidate-2',label:null,labelPublishedAt:null})],meta());
++  assert.equal(result.candidateCount,2);
++  assert.equal(result.predictionCandidates,2);
++  assert.equal(result.completePredictionPairs,2);
++  assert.equal(result.labelsObserved,1);
++  assert.equal(result.pairedForecastsScored,1);
++  assert.equal(result.mechanicalCoverageCheckPassed,false);
++  assert(result.issueCodes.includes('INCOMPLETE_LABEL_COVERAGE'));
++});
++
++test('abstention with unknown label remains visible and cannot rescue coverage',()=>{
++  const result=auditPilot([row(),row({candidateId:'synthetic-candidate-2',decision:'ABSTAIN',
++    probability:null,baselineProbability:null,label:null,labelPublishedAt:null})],meta());
++  assert.equal(result.candidateCount,2);
++  assert.equal(result.abstentions,1);
++  assert.equal(result.labelsObserved,1);
++  assert.equal(result.completePredictionPairs,1);
++  assert.equal(result.pairedForecastsScored,1);
++  assert.equal(result.mechanicalCoverageCheckPassed,false);
++});
++
++test('cohort and metadata are not mutated and result is deterministic',()=>{
++  const cohort=[row(),row({candidateId:'synthetic-candidate-2',decision:'PASS',probability:null,baselineProbability:null})];
++  const policy=meta(),before=JSON.stringify({cohort,policy});
++  assert.deepEqual(auditPilot(cohort,policy),auditPilot(cohort,policy));
++  assert.equal(JSON.stringify({cohort,policy}),before);
++});
++
++test('fully labeled abstained event cannot inflate paired forecast independence',()=>{
++  const result=auditPilot([row(),row({candidateId:'synthetic-candidate-2',eventId:'synthetic-event-2',
++    decision:'ABSTAIN',probability:null,baselineProbability:null})],{...meta(),minimumIndependentEvents:2});
++  assert.equal(result.mechanicalCoverageCheckPassed,false);
++  assert(result.issueCodes.includes('INSUFFICIENT_INDEPENDENT_EVENTS'));
++  assert.equal(result.distinctEventCount,2);
++  assert.equal(result.pairedForecastEventCount,1);
++  assert.equal(result.pairedForecastsScored,1);
++  assert.equal(result.abstentions,1);
++  assert.equal(result.labelsObserved,2);
++});
++
++test('two paired forecasts from distinct events satisfy the local count but never authorize release',()=>{
++  const result=auditPilot([row(),row({candidateId:'synthetic-candidate-2',eventId:'synthetic-event-2'})],
++    {...meta(),minimumIndependentEvents:2});
++  assert.equal(result.mechanicalCoverageCheckPassed,true);
++  assert.equal(result.distinctEventCount,2);
++  assert.equal(result.pairedForecastEventCount,2);
++  assert.equal(result.scorePublicationPermitted,false);
++  assert.equal(result.finalGate,'HARD_BLOCK');
++});

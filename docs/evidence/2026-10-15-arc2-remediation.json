@@ -1,0 +1,757 @@
+{
+  "schema": "atlas.arc2.review-remediation-evidence.v1",
+  "verified_at_utc": "2026-10-15T07:31:38.764938+00:00",
+  "branch": "review/arc2-integration-remediation-2026-10-15",
+  "base_commit": "56c66265ec96f208a9d3f7fecdd67f48f77cfe36",
+  "external_research_directory": "/workspace/research/arc2-2026-10-15/1ddb045eeca4",
+  "package": {
+    "bytes": 339114,
+    "sha256": "1ddb045eeca4b090abcd668d264e1608c83ca3a50bd51d6f4dfe6935437721b0",
+    "archives": 7,
+    "expanded_files": 136,
+    "manifest_entries_checked": 128,
+    "originals_unchanged": true,
+    "passes_1_to_4": "RETROSPECTIVE_ONLY_ORIGINAL_SOURCE_TESTS_ABSENT",
+    "quality_manifest_coverage_gap": "RUN_AUDIT.sh omitted historically; unchanged"
+  },
+  "integrity_receipts": {
+    "ARCHIVE_INVENTORY.json": "7a5a6abf3b6eb6e761857bec7ed5de4a7353faaebb4ca4851351407fcf7c7668",
+    "ARCHIVE_INTEGRITY_RECHECK.json": "c16e9f61ffc1ce9e3d5f570e4847865c0195e075d6b012f63337124c1fe15281",
+    "OVERLAY_PATCH_VERIFICATION.json": "f2eee10872507c4e2ce1be1e74363143beb96f7e70db53448a436873d324594e",
+    "GIT_PRESERVATION_CHECK.json": "942a65959b1a7b70e0c5048d57d93142662aab6979516df50c6b649fbe7ab505"
+  },
+  "review_file_sha256": {
+    "command-center/slate-engine.js": "352b863b62e523e4b77f54f7a75078b8b240a78417a9e331346fc9a06ac8d442",
+    "command-center/SOURCE_PROVENANCE.json": "3c89f074a6f82d289f82ac0ea7380f09367fd0e670245b6925372f9a18bd300c",
+    "command-center/README.md": "a9c5ffadeae5695b757c5b9bae9796c944f2561b0a9740682cb099b76d97d8ba",
+    "command-center/tests/source-preservation.test.cjs": "da0f3e37ed38d7c5e5959ed0b21f70735f5c727bdac2dfde9a1e121e99efd3a4",
+    "command-center/tests/arc2-gate.test.cjs": "4c9de12e4d69ad89465d0b6e928148d375beacf6ca56afcf0646975a2d34a78d",
+    "docs/ARCII_RECONCILIATION_2026-10-15.md": "c678c51b3634566baaf26a56a8d0bd3f99a729e6dcedd953de51f51cc750888f",
+    "docs/ARCII_NBA_PROSPECTIVE_PILOT.md": "c343f7d3d219e5c68dd94e9a2ad8cfdd2362ad547093e31df0896753d011939b",
+    "docs/patches/arc2-shadow-remediation.patch": "d117234ef92247cc18001184a1a9bd425a50993425d751a3c9c0c519b6793126"
+  },
+  "overlay_patch": {
+    "at_utc": "2026-10-15T07:28:48.940890+00:00",
+    "patch": "docs/patches/arc2-shadow-remediation.patch",
+    "patch_sha256": "d117234ef92247cc18001184a1a9bd425a50993425d751a3c9c0c519b6793126",
+    "apply_check": "PASS",
+    "applied_tree_matches_reviewed_overlay": true,
+    "files": [
+      {
+        "path": "pass5/outcome-intelligence.cjs",
+        "original_sha256": "a66d8456103f2a6a5bda5343891c892e97c85270a5c0b19062d8a811e15eed6b",
+        "review_sha256": "c3cc20af27c446a8d9a79358244ba46a0265cc5f22c129e913dbe9ff2f00ba0f"
+      },
+      {
+        "path": "pass5/arc2-settlement-regression.test.cjs",
+        "original_sha256": null,
+        "review_sha256": "40acfe6ff4c364a39b8362cbe4855eb923fff3edf75d16f97ca1f14850dec70a"
+      },
+      {
+        "path": "pass10/pilot-admission.cjs",
+        "original_sha256": "53cdc78d8e28cc145a57718522893314dfeaa957197e72708047341d52ff6f48",
+        "review_sha256": "58a12fe311e2c070b7820aab7c1414104427682b7707130ab62c37efaf71fb0d"
+      },
+      {
+        "path": "pass10/pilot-admission.test.cjs",
+        "original_sha256": "23b483a14393c50bc4c08200c174622aa6c256db8b9acacf8337612f2ddc8198",
+        "review_sha256": "82fea05c6a0ad1e438db0064619715903cba7295f50adb4c4fc4a664831e0660"
+      },
+      {
+        "path": "pass10/arc2-pilot-regression.test.cjs",
+        "original_sha256": null,
+        "review_sha256": "f6e7b01d6f6cb726aa05755e766ef56fff2062f4c6dcf1b0ca7123c4fae29437"
+      }
+    ]
+  },
+  "test_runs": {
+    "p5": {
+      "argv": [
+        "node",
+        "--permission",
+        "--allow-fs-read=/workspace/research/arc2-2026-10-15/1ddb045eeca4",
+        "--require=/workspace/research/arc2-2026-10-15/1ddb045eeca4/offline-preload.cjs",
+        "--test",
+        "--test-isolation=none",
+        "--test-reporter=tap",
+        "pass5/outcome-intelligence.test.cjs"
+      ],
+      "cwd": "/workspace/research/arc2-2026-10-15/1ddb045eeca4/replay/original",
+      "started_at_utc": "2026-10-15T07:23:27.369060+00:00",
+      "ended_at_utc": "2026-10-15T07:23:27.785379+00:00",
+      "exit_code": 0,
+      "counts": {
+        "tests": 189,
+        "pass": 189,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "tap_sha256": "b1e5909fa5658fc260b57cea7d495aeb94f0a092a112eca8a6c7805cbc2cd389",
+      "offline_proofs": [
+        {
+          "attempts": 0,
+          "denialControls": 4
+        }
+      ],
+      "stdout_artifact": "verification/p5.log",
+      "stderr_artifact": "verification/p5.stderr",
+      "stderr_sha256": "ffab1ba685fca2ebc4d755ceaf6a296675f889db999b21a8c9ba27aab7fce801"
+    },
+    "p6": {
+      "argv": [
+        "node",
+        "--permission",
+        "--allow-fs-read=/workspace/research/arc2-2026-10-15/1ddb045eeca4",
+        "--require=/workspace/research/arc2-2026-10-15/1ddb045eeca4/offline-preload.cjs",
+        "--test",
+        "--test-isolation=none",
+        "--test-reporter=tap",
+        "pass6/reality-bridge.test.cjs"
+      ],
+      "cwd": "/workspace/research/arc2-2026-10-15/1ddb045eeca4/replay/original",
+      "started_at_utc": "2026-10-15T07:23:27.380083+00:00",
+      "ended_at_utc": "2026-10-15T07:23:27.735548+00:00",
+      "exit_code": 0,
+      "counts": {
+        "tests": 263,
+        "pass": 263,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "tap_sha256": "2077ca0ada06640f7bff390a718cf34b01f46a4838af4f383960ade6e51ff96c",
+      "offline_proofs": [
+        {
+          "attempts": 0,
+          "denialControls": 4
+        }
+      ],
+      "stdout_artifact": "verification/p6.log",
+      "stderr_artifact": "verification/p6.stderr",
+      "stderr_sha256": "ffab1ba685fca2ebc4d755ceaf6a296675f889db999b21a8c9ba27aab7fce801"
+    },
+    "quality": {
+      "argv": [
+        "node",
+        "--permission",
+        "--allow-fs-read=/workspace/research/arc2-2026-10-15/1ddb045eeca4",
+        "--require=/workspace/research/arc2-2026-10-15/1ddb045eeca4/offline-preload.cjs",
+        "--test",
+        "--test-isolation=none",
+        "--test-reporter=tap",
+        "quality/pass6-quality.test.cjs"
+      ],
+      "cwd": "/workspace/research/arc2-2026-10-15/1ddb045eeca4/replay/original",
+      "started_at_utc": "2026-10-15T07:23:27.353371+00:00",
+      "ended_at_utc": "2026-10-15T07:23:27.626738+00:00",
+      "exit_code": 0,
+      "counts": {
+        "tests": 15,
+        "pass": 15,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "tap_sha256": "323656b53971e84f214beb13f12cd84a27cd20c721f05b60ec069545e50aeb74",
+      "offline_proofs": [
+        {
+          "attempts": 0,
+          "denialControls": 4
+        }
+      ],
+      "stdout_artifact": "verification/quality.log",
+      "stderr_artifact": "verification/quality.stderr",
+      "stderr_sha256": "ffab1ba685fca2ebc4d755ceaf6a296675f889db999b21a8c9ba27aab7fce801"
+    },
+    "p7": {
+      "argv": [
+        "node",
+        "--permission",
+        "--allow-fs-read=/workspace/research/arc2-2026-10-15/1ddb045eeca4",
+        "--require=/workspace/research/arc2-2026-10-15/1ddb045eeca4/offline-preload.cjs",
+        "--test",
+        "--test-isolation=none",
+        "--test-reporter=tap",
+        "pass7/calibration-decay.test.cjs"
+      ],
+      "cwd": "/workspace/research/arc2-2026-10-15/1ddb045eeca4/replay/original",
+      "started_at_utc": "2026-10-15T07:23:27.398927+00:00",
+      "ended_at_utc": "2026-10-15T07:23:27.734462+00:00",
+      "exit_code": 0,
+      "counts": {
+        "tests": 37,
+        "pass": 37,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "tap_sha256": "67d4fc628fc96a1118447579c8b5f7549a811e53c1f6d1c2e6e52c19335bfdd7",
+      "offline_proofs": [
+        {
+          "attempts": 0,
+          "denialControls": 4
+        }
+      ],
+      "stdout_artifact": "verification/p7.log",
+      "stderr_artifact": "verification/p7.stderr",
+      "stderr_sha256": "ffab1ba685fca2ebc4d755ceaf6a296675f889db999b21a8c9ba27aab7fce801"
+    },
+    "p8": {
+      "argv": [
+        "node",
+        "--permission",
+        "--allow-fs-read=/workspace/research/arc2-2026-10-15/1ddb045eeca4",
+        "--require=/workspace/research/arc2-2026-10-15/1ddb045eeca4/offline-preload.cjs",
+        "--test",
+        "--test-isolation=none",
+        "--test-reporter=tap",
+        "pass8/robustness.test.cjs"
+      ],
+      "cwd": "/workspace/research/arc2-2026-10-15/1ddb045eeca4/replay/original",
+      "started_at_utc": "2026-10-15T07:24:04.850293+00:00",
+      "ended_at_utc": "2026-10-15T07:24:05.134964+00:00",
+      "exit_code": 0,
+      "counts": {
+        "tests": 24,
+        "pass": 24,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "tap_sha256": "e4b664c8fb60a4aa8109b44c6545856567a485da15f0d51d9e1cf61cf7568b4b",
+      "offline_proofs": [
+        {
+          "attempts": 0,
+          "denialControls": 4
+        }
+      ],
+      "stdout_artifact": "verification/p8.log",
+      "stderr_artifact": "verification/p8.stderr",
+      "stderr_sha256": "ffab1ba685fca2ebc4d755ceaf6a296675f889db999b21a8c9ba27aab7fce801"
+    },
+    "p9": {
+      "argv": [
+        "node",
+        "--permission",
+        "--allow-fs-read=/workspace/research/arc2-2026-10-15/1ddb045eeca4",
+        "--require=/workspace/research/arc2-2026-10-15/1ddb045eeca4/offline-preload.cjs",
+        "--test",
+        "--test-isolation=none",
+        "--test-reporter=tap",
+        "pass9/assurance.test.cjs"
+      ],
+      "cwd": "/workspace/research/arc2-2026-10-15/1ddb045eeca4/replay/original",
+      "started_at_utc": "2026-10-15T07:24:04.752201+00:00",
+      "ended_at_utc": "2026-10-15T07:24:05.265856+00:00",
+      "exit_code": 0,
+      "counts": {
+        "tests": 30,
+        "pass": 30,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "tap_sha256": "6a201df50a42ed2acea88d13a7d5dceded97cbfc0863d3ffc0c69f6e5aa143e5",
+      "offline_proofs": [
+        {
+          "attempts": 0,
+          "denialControls": 4
+        }
+      ],
+      "stdout_artifact": "verification/p9.log",
+      "stderr_artifact": "verification/p9.stderr",
+      "stderr_sha256": "ffab1ba685fca2ebc4d755ceaf6a296675f889db999b21a8c9ba27aab7fce801"
+    },
+    "p10-release": {
+      "argv": [
+        "node",
+        "--permission",
+        "--allow-fs-read=/workspace/research/arc2-2026-10-15/1ddb045eeca4",
+        "--require=/workspace/research/arc2-2026-10-15/1ddb045eeca4/offline-preload.cjs",
+        "--test",
+        "--test-isolation=none",
+        "--test-reporter=tap",
+        "pass10/release-audit.test.cjs"
+      ],
+      "cwd": "/workspace/research/arc2-2026-10-15/1ddb045eeca4/replay/original",
+      "started_at_utc": "2026-10-15T07:24:05.005432+00:00",
+      "ended_at_utc": "2026-10-15T07:24:05.160350+00:00",
+      "exit_code": 0,
+      "counts": {
+        "tests": 15,
+        "pass": 15,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "tap_sha256": "63aca200d042ded2630e9b442fe27ee5069d5f375b1c7b5d8954ef8f8b8c73a6",
+      "offline_proofs": [
+        {
+          "attempts": 0,
+          "denialControls": 4
+        }
+      ],
+      "stdout_artifact": "verification/p10-release.log",
+      "stderr_artifact": "verification/p10-release.stderr",
+      "stderr_sha256": "ffab1ba685fca2ebc4d755ceaf6a296675f889db999b21a8c9ba27aab7fce801"
+    },
+    "p10-pilot": {
+      "argv": [
+        "node",
+        "--permission",
+        "--allow-fs-read=/workspace/research/arc2-2026-10-15/1ddb045eeca4",
+        "--require=/workspace/research/arc2-2026-10-15/1ddb045eeca4/offline-preload.cjs",
+        "--test",
+        "--test-isolation=none",
+        "--test-reporter=tap",
+        "pass10/pilot-admission.test.cjs"
+      ],
+      "cwd": "/workspace/research/arc2-2026-10-15/1ddb045eeca4/replay/original",
+      "started_at_utc": "2026-10-15T07:24:04.711470+00:00",
+      "ended_at_utc": "2026-10-15T07:24:04.954670+00:00",
+      "exit_code": 0,
+      "counts": {
+        "tests": 12,
+        "pass": 12,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "tap_sha256": "680cad15bcba8c8a7f70fbe5b342b41957e338e43290142b99ddae6f1a5d53ff",
+      "offline_proofs": [
+        {
+          "attempts": 0,
+          "denialControls": 4
+        }
+      ],
+      "stdout_artifact": "verification/p10-pilot.log",
+      "stderr_artifact": "verification/p10-pilot.stderr",
+      "stderr_sha256": "ffab1ba685fca2ebc4d755ceaf6a296675f889db999b21a8c9ba27aab7fce801"
+    },
+    "chain": {
+      "argv": [
+        "python",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "audit",
+        "-p",
+        "test_*.py",
+        "-v"
+      ],
+      "cwd": "/workspace/research/arc2-2026-10-15/1ddb045eeca4/replay/original",
+      "started_at_utc": "2026-10-15T07:24:04.722883+00:00",
+      "ended_at_utc": "2026-10-15T07:24:05.066685+00:00",
+      "exit_code": 0,
+      "counts": {
+        "tests": 3,
+        "pass": 3,
+        "fail": 0
+      },
+      "tap_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "offline_proofs": [],
+      "stdout_artifact": "verification/chain.log",
+      "stderr_artifact": "verification/chain.stderr",
+      "stderr_sha256": "2bc58db77692429aa24ef23b2dcc4742154f2179aa77a82f62d61f1d1c4bcee8"
+    },
+    "frontend-red": {
+      "argv": [
+        "node",
+        "--test",
+        "--test-reporter=tap",
+        "command-center/tests/arc2-gate.test.cjs"
+      ],
+      "cwd": "/workspace/Atlas",
+      "started_at_utc": "2026-10-15T07:23:26.652912+00:00",
+      "ended_at_utc": "2026-10-15T07:23:26.902910+00:00",
+      "exit_code": 1,
+      "counts": {
+        "tests": 29,
+        "pass": 11,
+        "fail": 18,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "tap_sha256": "2b6e1332a3f2c24fc032ea6e09780ab9bcd63258ce78520650d8db77121e33f3",
+      "offline_proofs": [],
+      "stdout_artifact": "verification/frontend-red.log",
+      "stderr_artifact": "verification/frontend-red.stderr",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "p5-red": {
+      "argv": [
+        "node",
+        "--permission",
+        "--allow-fs-read=/workspace/research/arc2-2026-10-15/1ddb045eeca4",
+        "--require=/workspace/research/arc2-2026-10-15/1ddb045eeca4/offline-preload.cjs",
+        "--test",
+        "--test-isolation=none",
+        "--test-reporter=tap",
+        "pass5/arc2-settlement-regression.test.cjs"
+      ],
+      "cwd": "/workspace/research/arc2-2026-10-15/1ddb045eeca4/replay/pre-fix-regressions",
+      "started_at_utc": "2026-10-15T07:28:53.755046+00:00",
+      "ended_at_utc": "2026-10-15T07:28:54.030161+00:00",
+      "exit_code": 1,
+      "counts": {
+        "tests": 11,
+        "pass": 6,
+        "fail": 5,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "tap_sha256": "d740479006098491841ae089a360cb41b1c7b30e77491d3b8f55ecbae9a2f01c",
+      "offline_proofs": [
+        {
+          "attempts": 0,
+          "denialControls": 4
+        }
+      ],
+      "stdout_artifact": "verification/p5-red.log",
+      "stderr_artifact": "verification/p5-red.stderr",
+      "stderr_sha256": "ffab1ba685fca2ebc4d755ceaf6a296675f889db999b21a8c9ba27aab7fce801"
+    },
+    "p10-red": {
+      "argv": [
+        "node",
+        "--permission",
+        "--allow-fs-read=/workspace/research/arc2-2026-10-15/1ddb045eeca4",
+        "--require=/workspace/research/arc2-2026-10-15/1ddb045eeca4/offline-preload.cjs",
+        "--test",
+        "--test-isolation=none",
+        "--test-reporter=tap",
+        "pass10/arc2-pilot-regression.test.cjs"
+      ],
+      "cwd": "/workspace/research/arc2-2026-10-15/1ddb045eeca4/replay/pre-fix-regressions",
+      "started_at_utc": "2026-10-15T07:28:53.753051+00:00",
+      "ended_at_utc": "2026-10-15T07:28:53.903000+00:00",
+      "exit_code": 1,
+      "counts": {
+        "tests": 23,
+        "pass": 1,
+        "fail": 22,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "tap_sha256": "95e987350a8bc665b163ae7fcea0ff0dc653c2935170c54bed237f81b65c3392",
+      "offline_proofs": [
+        {
+          "attempts": 0,
+          "denialControls": 4
+        }
+      ],
+      "stdout_artifact": "verification/p10-red.log",
+      "stderr_artifact": "verification/p10-red.stderr",
+      "stderr_sha256": "ffab1ba685fca2ebc4d755ceaf6a296675f889db999b21a8c9ba27aab7fce801"
+    },
+    "p5-repaired": {
+      "argv": [
+        "node",
+        "--permission",
+        "--allow-fs-read=/workspace/research/arc2-2026-10-15/1ddb045eeca4",
+        "--require=/workspace/research/arc2-2026-10-15/1ddb045eeca4/offline-preload.cjs",
+        "--test",
+        "--test-isolation=none",
+        "--test-reporter=tap",
+        "pass5/outcome-intelligence.test.cjs",
+        "pass5/arc2-settlement-regression.test.cjs"
+      ],
+      "cwd": "/workspace/research/arc2-2026-10-15/1ddb045eeca4/replay/repaired",
+      "started_at_utc": "2026-10-15T07:24:04.815248+00:00",
+      "ended_at_utc": "2026-10-15T07:24:05.395550+00:00",
+      "exit_code": 0,
+      "counts": {
+        "tests": 200,
+        "pass": 200,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "tap_sha256": "b833870d13de6d1d0e5edc127d1cb209014a9e9bb6aa04c8188e9b44d1254f98",
+      "offline_proofs": [
+        {
+          "attempts": 0,
+          "denialControls": 4
+        }
+      ],
+      "stdout_artifact": "verification/p5-repaired.log",
+      "stderr_artifact": "verification/p5-repaired.stderr",
+      "stderr_sha256": "ffab1ba685fca2ebc4d755ceaf6a296675f889db999b21a8c9ba27aab7fce801"
+    },
+    "p10-repaired": {
+      "argv": [
+        "node",
+        "--permission",
+        "--allow-fs-read=/workspace/research/arc2-2026-10-15/1ddb045eeca4",
+        "--require=/workspace/research/arc2-2026-10-15/1ddb045eeca4/offline-preload.cjs",
+        "--test",
+        "--test-isolation=none",
+        "--test-reporter=tap",
+        "pass10/release-audit.test.cjs",
+        "pass10/pilot-admission.test.cjs",
+        "pass10/arc2-pilot-regression.test.cjs"
+      ],
+      "cwd": "/workspace/research/arc2-2026-10-15/1ddb045eeca4/replay/repaired",
+      "started_at_utc": "2026-10-15T07:24:04.869891+00:00",
+      "ended_at_utc": "2026-10-15T07:24:05.226970+00:00",
+      "exit_code": 0,
+      "counts": {
+        "tests": 50,
+        "pass": 50,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "tap_sha256": "f9ecf80aa46528b868888e66524e0b24603615134aa1a3c853fe177bfe3c0cef",
+      "offline_proofs": [
+        {
+          "attempts": 0,
+          "denialControls": 4
+        }
+      ],
+      "stdout_artifact": "verification/p10-repaired.log",
+      "stderr_artifact": "verification/p10-repaired.stderr",
+      "stderr_sha256": "ffab1ba685fca2ebc4d755ceaf6a296675f889db999b21a8c9ba27aab7fce801"
+    },
+    "archive-repaired": {
+      "argv": [
+        "node",
+        "--permission",
+        "--allow-fs-read=/workspace/research/arc2-2026-10-15/1ddb045eeca4",
+        "--require=/workspace/research/arc2-2026-10-15/1ddb045eeca4/offline-preload.cjs",
+        "--test",
+        "--test-isolation=none",
+        "--test-reporter=tap",
+        "pass5/outcome-intelligence.test.cjs",
+        "pass5/arc2-settlement-regression.test.cjs",
+        "pass6/reality-bridge.test.cjs",
+        "quality/pass6-quality.test.cjs",
+        "pass7/calibration-decay.test.cjs",
+        "pass8/robustness.test.cjs",
+        "pass9/assurance.test.cjs",
+        "pass10/release-audit.test.cjs",
+        "pass10/pilot-admission.test.cjs",
+        "pass10/arc2-pilot-regression.test.cjs"
+      ],
+      "cwd": "/workspace/research/arc2-2026-10-15/1ddb045eeca4/replay/repaired",
+      "started_at_utc": "2026-10-15T07:28:53.756284+00:00",
+      "ended_at_utc": "2026-10-15T07:28:54.448148+00:00",
+      "exit_code": 0,
+      "counts": {
+        "tests": 619,
+        "pass": 619,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "tap_sha256": "c55c8a72b3f3295e71dfddfeb05ae154568a49f4887f444bf3a1b7de2483e8c4",
+      "offline_proofs": [
+        {
+          "attempts": 0,
+          "denialControls": 4
+        }
+      ],
+      "stdout_artifact": "verification/archive-repaired.log",
+      "stderr_artifact": "verification/archive-repaired.stderr",
+      "stderr_sha256": "ffab1ba685fca2ebc4d755ceaf6a296675f889db999b21a8c9ba27aab7fce801"
+    },
+    "frontend": {
+      "argv": [
+        "node",
+        "--test",
+        "--test-reporter=tap",
+        "command-center/tests/arc2-gate.test.cjs",
+        "command-center/tests/canonical-read.test.cjs",
+        "command-center/tests/local-workflow.test.cjs",
+        "command-center/tests/source-preservation.test.cjs"
+      ],
+      "cwd": "/workspace/Atlas",
+      "started_at_utc": "2026-10-15T07:27:57.581017+00:00",
+      "ended_at_utc": "2026-10-15T07:27:57.972985+00:00",
+      "exit_code": 0,
+      "counts": {
+        "tests": 129,
+        "pass": 129,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "tap_sha256": "021dfe2898895fd76a0ecaea11431ffaf3a22b24e5aa9807c6341b9403ed989c",
+      "offline_proofs": [],
+      "stdout_artifact": "verification/frontend.log",
+      "stderr_artifact": "verification/frontend.stderr",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "scout": {
+      "argv": [
+        "node",
+        "--test",
+        "--test-reporter=tap",
+        "scripts/scout/opportunity-shadow.test.cjs"
+      ],
+      "cwd": "/workspace/Atlas",
+      "started_at_utc": "2026-10-15T07:28:14.736775+00:00",
+      "ended_at_utc": "2026-10-15T07:28:15.469506+00:00",
+      "exit_code": 0,
+      "counts": {
+        "tests": 55,
+        "pass": 55,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "tap_sha256": "2ed4a57381fb2078c3ea6acddec28696ecfad04763af1fe0fb4237c639e7b83d",
+      "offline_proofs": [],
+      "stdout_artifact": "verification/scout.log",
+      "stderr_artifact": "verification/scout.stderr",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "sources": {
+      "argv": [
+        "node",
+        "--test",
+        "--test-reporter=tap",
+        "scripts/scout/source-contract-shadow.test.cjs"
+      ],
+      "cwd": "/workspace/Atlas",
+      "started_at_utc": "2026-10-15T07:28:14.745317+00:00",
+      "ended_at_utc": "2026-10-15T07:28:15.775469+00:00",
+      "exit_code": 0,
+      "counts": {
+        "tests": 104,
+        "pass": 104,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "tap_sha256": "42eb37c832af641878bbe81c4a5faa9c1768ec2e60f00beb983c6ba42f4ef762",
+      "offline_proofs": [],
+      "stdout_artifact": "verification/sources.log",
+      "stderr_artifact": "verification/sources.stderr",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "gs01": {
+      "argv": [
+        "node",
+        "--test",
+        "--test-reporter=tap",
+        "scripts/scout/game-sense-workload-shadow.test.cjs"
+      ],
+      "cwd": "/workspace/Atlas",
+      "started_at_utc": "2026-10-15T07:28:14.726669+00:00",
+      "ended_at_utc": "2026-10-15T07:28:15.760733+00:00",
+      "exit_code": 0,
+      "counts": {
+        "tests": 69,
+        "pass": 69,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "tap_sha256": "0fd04857d692ac8098a8059d9222d2972d7dcd83bd222d96a642188608444c0e",
+      "offline_proofs": [],
+      "stdout_artifact": "verification/gs01.log",
+      "stderr_artifact": "verification/gs01.stderr",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "counts": {
+    "original_archive_node": 585,
+    "original_archive_python": 3,
+    "repaired_archive_node": 619,
+    "new_overlay_tests": 34,
+    "repository_frontend": 129,
+    "repository_scout": 55,
+    "repository_sources": 104,
+    "repository_gs01": 69,
+    "repository_total": 357,
+    "new_frontend_tests": 29,
+    "warning": "Replays overlap; do not add overlapping runs as unique independent checks."
+  },
+  "git": {
+    "checked_at_utc": "2026-10-15T07:31:38.752094+00:00",
+    "command": [
+      "git",
+      "ls-remote",
+      "--heads",
+      "origin"
+    ],
+    "exit_code": 0,
+    "heads": {
+      "refs/heads/atlas/gpt-pr-summary": "be38a56c10b4c8f8168689e8cf59413fb35e10e2",
+      "refs/heads/feature/omniroute-codespaces-gateway": "3d6a929315cb098ea8344d929a03153997ec3f15",
+      "refs/heads/main": "be38a56c10b4c8f8168689e8cf59413fb35e10e2",
+      "refs/heads/review/atlas-capability-hardening-2026-10-11": "a3385107598b54fa62722c50e9cf0db8ba0c0b6e",
+      "refs/heads/review/atlas-reconciliation-2026-10-11": "42450a22710f80c00f9e0e95151c12f9e6eb7217",
+      "refs/heads/review/scout-opportunity-shadow-2026-10-12": "d5067e072a574508dfe624bb3743632045a209c2"
+    },
+    "local_heads_before_arc2_commit": {
+      "refs/heads/feature/omniroute-codespaces-gateway": "3d6a929315cb098ea8344d929a03153997ec3f15",
+      "refs/heads/review/arc2-integration-remediation-2026-10-15": "56c66265ec96f208a9d3f7fecdd67f48f77cfe36",
+      "refs/heads/review/atlas-capability-hardening-2026-10-11": "a3385107598b54fa62722c50e9cf0db8ba0c0b6e",
+      "refs/heads/review/atlas-reconciliation-2026-10-11": "42450a22710f80c00f9e0e95151c12f9e6eb7217",
+      "refs/heads/review/fork-rnd-shadow-2026-10-13": "ed27d9fb39a924fc75cac3cf17e92e355cd69524",
+      "refs/heads/review/gs01-workload-consistency-2026-10-13": "56c66265ec96f208a9d3f7fecdd67f48f77cfe36",
+      "refs/heads/review/scout-opportunity-shadow-2026-10-12": "d5067e072a574508dfe624bb3743632045a209c2",
+      "refs/heads/work": "be38a56c10b4c8f8168689e8cf59413fb35e10e2"
+    },
+    "network_scope": "read-only GitHub refs; no provider, model or backend requests",
+    "pushed": false
+  },
+  "security_scope": {
+    "credentials_added": false,
+    "dependencies_added": false,
+    "supabase_queries": 0,
+    "supabase_mutations": 0,
+    "deployments": 0,
+    "merges": 0,
+    "provider_requests": 0,
+    "model_inference": 0,
+    "bet_execution": 0,
+    "browser_draft_mutations": 0,
+    "live_adapter_enabled": false,
+    "source_assets_original_hashes_preserved": true,
+    "review_engine_exact_reversible_changes": 3
+  },
+  "blockers": [
+    "Original Passes 1\u20134 source/test archives absent",
+    "Authoritative named 18-gate registry absent; all18 remain BLOCKED",
+    "Source rights and independently authenticated original bytes unavailable",
+    "Independent prospective census/freeze attestation unavailable",
+    "Real frozen model/baseline forecasts and official matched outcome evidence unavailable",
+    "Execution-grade venue quotes/rule evidence unverified",
+    "Fresh authenticated backend source/schema/RLS/deployment parity unavailable",
+    "Operator auth, nonproduction candidate and state_version SQL/JSON domain unverified",
+    "Original editable Sites artifact and current live parity unverified",
+    "Atomic canonical risk/concurrency and signer isolation unverified"
+  ],
+  "promotion": {
+    "offline_validation": "GO",
+    "prototype_runtime_import": "HOLD",
+    "predictive_claims": "HOLD",
+    "live_pilot": "NOT_STARTED_NOT_ADMITTED",
+    "external_gates": "18_BLOCKED_UNNAMED",
+    "production": "NO_GO"
+  }
+}

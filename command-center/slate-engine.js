@@ -5,7 +5,16 @@
   const text = value => typeof value === 'string' ? value.trim() : '';
   const present = value => text(value).length > 0;
   const number = value => value === '' || value === null || value === undefined ? NaN : Number(value);
-  const date = value => present(value) && /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(?::\d{2}(?:\.\d{1,3})?)?(?:Z|[+-]\d{2}:\d{2})$/.test(value) ? Date.parse(value) : NaN;
+  const date = value => {
+    const parts = typeof value === 'string' && value.match(/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})(?::(\d{2})(?:\.(\d{1,3}))?)?(Z|[+-](\d{2}):(\d{2}))$/);
+    if (!parts) return NaN;
+    const year=Number(parts[1]), month=Number(parts[2]), day=Number(parts[3]);
+    const days=[31,(year%4===0 && (year%100!==0 || year%400===0))?29:28,31,30,31,30,31,31,30,31,30,31];
+    if (month<1 || month>12 || day<1 || day>days[month-1] || Number(parts[4])>23 ||
+      Number(parts[5])>59 || Number(parts[6] || 0)>59 ||
+      (parts[8]!=='Z' && (Number(parts[9])>23 || Number(parts[10])>59))) return NaN;
+    return Date.parse(value);
+  };
   const copy = value => JSON.parse(JSON.stringify(value));
   const id = () => root.crypto?.randomUUID?.() || 'draft-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2);
   const money = value => Number.isFinite(value) ? '$' + value.toFixed(2) : '—';
@@ -49,6 +58,7 @@
     require(3,!!calc,'Enter valid American market odds.');
     require(3,number(String(p.odds).replace('−','-'))>=-150,'Favorites below −150 fall outside the current ATLAS price limit.');
     require(3,present(p.book)&&present(p.line)&&url(p.source)&&present(p.comparison),'Include book, exact selection/line, public source, and cross-book comparison.');
+    require(3,present(p.line)&&text(p.line)===text(c.sealed?.scout?.selection),'The priced selection/line must exactly match the frozen SCOUT selection. Start a revision for a changed selection.');
     require(3,fresh(p.capturedAt,run.quoteMinutes,now),'Refresh the market quote; it is missing, stale, or in the future.');
     require(3,p.noPush===true,'Confirm a two-outcome, no-push market. Other settlement models remain INVESTIGATE in this version.');
     require(3,!!calc && calc.expected>1e-10,'This price must show positive expected value under the recorded estimate. PASS or WATCH remains valid.');
@@ -148,6 +158,7 @@
         if(seen.has(c.id))throw Error('Duplicate pricing candidate.');seen.add(c.id);
         if(c.disposition)throw Error('Reopen a closed candidate before importing prices.');
         if(item.selection!==c.scout.selection)throw Error('Pricing selection does not match the candidate.');
+        if(item.pricing && Object.hasOwn(item.pricing,'line') && text(String(item.pricing.line))!==text(c.sealed.scout.selection))throw Error('Pricing selection/line does not match the frozen candidate.');
         invalidate(next,c,'New market research imported',now);
         for(const key of ['pricing','kairos','tactician'])if(item[key])Object.assign(c[key],cleanGroup(item[key],key));
         c.pricing.noPush=false;c.sentinel.reviewed=false;c.final=newCandidate().final;
