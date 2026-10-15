@@ -1,0 +1,321 @@
+{
+  "schema_version": "atlas.game-sense.gs01-evidence.v1",
+  "recorded_at_utc": "2026-10-15T06:48:53.403729+00:00",
+  "scope": "GS-01_ONLY_SYNTHETIC_OFFLINE",
+  "git": {
+    "branch": "review/gs01-workload-consistency-2026-10-13",
+    "parent_commit": "ed27d9fb39a924fc75cac3cf17e92e355cd69524",
+    "parent_branch_preserved": "review/fork-rnd-shadow-2026-10-13",
+    "parent_files_unchanged": 93,
+    "parent_diff_exit_code": 0,
+    "modified_existing_files": [],
+    "added_files": [
+      "scripts/scout/game-sense-workload-shadow.cjs",
+      "scripts/scout/game-sense-workload-shadow.fixtures.cjs",
+      "scripts/scout/game-sense-workload-shadow.test.cjs",
+      "docs/GS01_SHADOW_REVIEW_2026-10-13.md",
+      "docs/evidence/2026-10-13-gs01-workload-shadow.json"
+    ],
+    "local_branch_heads_before_commit": {
+      "refs/heads/feature/omniroute-codespaces-gateway": "3d6a929315cb098ea8344d929a03153997ec3f15",
+      "refs/heads/review/atlas-capability-hardening-2026-10-11": "a3385107598b54fa62722c50e9cf0db8ba0c0b6e",
+      "refs/heads/review/atlas-reconciliation-2026-10-11": "42450a22710f80c00f9e0e95151c12f9e6eb7217",
+      "refs/heads/review/fork-rnd-shadow-2026-10-13": "ed27d9fb39a924fc75cac3cf17e92e355cd69524",
+      "refs/heads/review/gs01-workload-consistency-2026-10-13": "ed27d9fb39a924fc75cac3cf17e92e355cd69524",
+      "refs/heads/review/scout-opportunity-shadow-2026-10-12": "d5067e072a574508dfe624bb3743632045a209c2",
+      "refs/heads/work": "be38a56c10b4c8f8168689e8cf59413fb35e10e2"
+    },
+    "pushed": false,
+    "main_pr6_or_existing_branches_modified": false,
+    "containing_commit": "Use Git commit identity; no recursive SHA."
+  },
+  "checkpoint_review": {
+    "status": "PASS",
+    "reviewed_commit": "ed27d9fb39a924fc75cac3cf17e92e355cd69524",
+    "added_lines": 2216,
+    "helper_lines": 358,
+    "fixture_test_doc_evidence_lines": 1858,
+    "production_callers": 0,
+    "new_package_dependencies": 0,
+    "credentials_or_sensitive_records_found": false,
+    "foreign_code_or_data_imported": false,
+    "remote_note": "Read-only GitHub ref check found the parent review branch absent. No push in this batch.",
+    "maintenance_note": "Preserve parent. GS01 receipts use compact reproducible rows instead of verbose handwritten snapshots."
+  },
+  "files": [
+    {
+      "path": "scripts/scout/game-sense-workload-shadow.cjs",
+      "bytes": 15532,
+      "sha256": "5f83444ce8cffdc52eff8b1c5c3a0345af3059b7d9074ff4aabe1ca36cc0c776"
+    },
+    {
+      "path": "scripts/scout/game-sense-workload-shadow.fixtures.cjs",
+      "bytes": 14098,
+      "sha256": "34a97c9af460e6c05b4e7f5a6f69471afbf32470374856030565d4212cc405b7"
+    },
+    {
+      "path": "scripts/scout/game-sense-workload-shadow.test.cjs",
+      "bytes": 24640,
+      "sha256": "86c422ef226f2baff94a3dd1a700c8d50c6970f6bab2f8378785875ffd8c722f"
+    },
+    {
+      "path": "docs/GS01_SHADOW_REVIEW_2026-10-13.md",
+      "bytes": 7940,
+      "sha256": "f28221d1e0f545b88f175a95a4aec9c651fa606e98251363dabe7ddf253f388b"
+    }
+  ],
+  "tests": {
+    "gs01": {
+      "argv": [
+        "node",
+        "--test",
+        "--test-reporter=tap",
+        "scripts/scout/game-sense-workload-shadow.test.cjs"
+      ],
+      "started_at_utc": "2026-10-15T06:47:33.300144+00:00",
+      "ended_at_utc": "2026-10-15T06:47:34.094192+00:00",
+      "exit_code": 0,
+      "counts": {
+        "tests": 69,
+        "pass": 69,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "tap_sha256": "7314658ad7049eda47b482abdc9a3b40e20bfd61fffeb55b0de56ceaaba0df31",
+      "stderr_bytes": 0
+    },
+    "source-contract": {
+      "argv": [
+        "node",
+        "--test",
+        "--test-reporter=tap",
+        "scripts/scout/source-contract-shadow.test.cjs"
+      ],
+      "started_at_utc": "2026-10-15T06:47:33.246852+00:00",
+      "ended_at_utc": "2026-10-15T06:47:34.120785+00:00",
+      "exit_code": 0,
+      "counts": {
+        "tests": 104,
+        "pass": 104,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "tap_sha256": "b6922bffead188afb3a24bbeab8c493e8ee2078a30c0c1311cc2711ae6280d41",
+      "stderr_bytes": 0
+    },
+    "opportunity": {
+      "argv": [
+        "node",
+        "--test",
+        "--test-reporter=tap",
+        "scripts/scout/opportunity-shadow.test.cjs"
+      ],
+      "started_at_utc": "2026-10-15T06:47:33.322654+00:00",
+      "ended_at_utc": "2026-10-15T06:47:33.918228+00:00",
+      "exit_code": 0,
+      "counts": {
+        "tests": 55,
+        "pass": 55,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "tap_sha256": "90e5dc1692a15c2ccd20cedd2946fa179d1b842432a2b11c10c5ade25595ce0b",
+      "stderr_bytes": 0
+    },
+    "frontend": {
+      "argv": [
+        "node",
+        "--test",
+        "--test-reporter=tap",
+        "command-center/tests/canonical-read.test.cjs",
+        "command-center/tests/local-workflow.test.cjs",
+        "command-center/tests/source-preservation.test.cjs"
+      ],
+      "started_at_utc": "2026-10-15T06:47:33.258588+00:00",
+      "ended_at_utc": "2026-10-15T06:47:33.818661+00:00",
+      "exit_code": 0,
+      "counts": {
+        "tests": 100,
+        "pass": 100,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "tap_sha256": "353222eab6f3c28c176aa603757f352aefec77026ca434e0f0f66b72248bbbe9",
+      "stderr_bytes": 0
+    }
+  },
+  "pre_fix_checks": [
+    {
+      "argv": [
+        "node",
+        "--test",
+        "--test-reporter=tap",
+        "--test-name-pattern=half.game",
+        "scripts/scout/game-sense-workload-shadow.test.cjs"
+      ],
+      "started_at_utc": "2026-10-13T22:36:33.934032+00:00",
+      "ended_at_utc": "2026-10-13T22:36:34.178750+00:00",
+      "exit_code": 1,
+      "counts": {
+        "tests": 2,
+        "pass": 1,
+        "fail": 1,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "tap_sha256": "15e00f3584aeac4802613b92702f5b4490f55aa67227a281df004d4787beecb5",
+      "stderr_bytes": 0
+    },
+    {
+      "command": [
+        "node",
+        "--test",
+        "--test-reporter=tap",
+        "--test-name-pattern=research roster scope",
+        "scripts/scout/game-sense-workload-shadow.test.cjs"
+      ],
+      "exit_code": 1,
+      "checker_sha256": "8f709252d6218b2c902f4b48c8bbaab09aea7bde36a6f48579494ae9e1226067",
+      "counts": {
+        "tests": 1,
+        "pass": 0,
+        "fail": 1,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "tap_sha256": "48f5d9b2d7fd3c69eef711a5422ed9f3f5e792864c261fd86d984b229a62d925"
+    }
+  ],
+  "zero_network_proof": {
+    "cases": 43,
+    "intervalControls": 2,
+    "overtimeControl": 1,
+    "attempts": 0,
+    "selfControls": 4,
+    "getterCalls": 0,
+    "iteratorCalls": 0,
+    "proxyCalls": 0,
+    "importRequests": [
+      "./game-sense-workload-shadow.cjs",
+      "./opportunity-shadow.cjs",
+      "node:crypto",
+      "./source-contract-shadow.cjs",
+      "node:crypto",
+      "node:util",
+      "./opportunity-shadow.cjs",
+      "./game-sense-workload-shadow.fixtures.cjs"
+    ]
+  },
+  "scenario_counts": {
+    "named": 43,
+    "named_accepted": 17,
+    "named_expected_rejected": 26,
+    "additional_controls": 3,
+    "total_input_receipts": 46,
+    "accepted": 19,
+    "expected_rejected": 27,
+    "unexpected_test_failures": 0
+  },
+  "receipt_reproduction": {
+    "cwd": "/workspace/Atlas",
+    "argv": [
+      "node",
+      "-e",
+      "const f=require('./scripts/scout/game-sense-workload-shadow.fixtures.cjs'),g=require('./scripts/scout/game-sense-workload-shadow.cjs'),h=require('./scripts/scout/source-contract-shadow.cjs').hashJSON;\nconst inputs=[...f.cases.map(c=>({name:c.name,input:c.build(),expected:c.eligible})),\n {name:'interval capacity positive',input:f.intervalCapacity(true),expected:true},\n {name:'interval capacity impossible',input:f.intervalCapacity(false),expected:false},\n {name:'OT-only substitute capacity',input:f.overtimeSubstitute(),expected:true}];\nprocess.stdout.write(JSON.stringify(inputs.map(c=>{const r=g.freezeScenario(c.input),v=g.inspectScenario(r);return {name:c.name,expected:c.expected,eligible:v.eligible,receipt_sha256:r.sha256,report_sha256:h(v),players:v.denominators.total_players,reasons:v.reasons}})));"
+    ],
+    "note": "Only independent synthetic inputs and opaque report metadata; deterministic, no time/network/dataset dependency."
+  },
+  "research_definitions": {
+    "usage": "Synthetic whole-game possession-ending opportunity share, not official USG%.",
+    "opportunities": "Continuous fictional allocation mass; not indivisible real provider possession events.",
+    "pace": "Uniform within regulation and across aggregate overtime; explicit separate OT volume.",
+    "minutes": "Whole-minute complete five-player rotation; NBA48/WNBA40, each OT5.",
+    "scope_bounds": "At most30 synthetic roster IDs and12 OT periods; not official league limits.",
+    "efficiency": "Supplied fictional conversion-rate assumption; no score/probability forecast."
+  },
+  "sentinel": {
+    "offline_software_testing": "GO",
+    "integration": "HOLD",
+    "predictive_claims": "HOLD",
+    "real_data": "BLOCKED",
+    "human_final_gate_required": true,
+    "execution_authority": false,
+    "scenario_probability": null
+  },
+  "unchanged_boundaries": [
+    "Canonical nodes and existing Game Sense/SCOUT helpers",
+    "Browser drafts and canonical read bridge",
+    "Supabase and Sites",
+    "Main, PR6 and existing review-branch heads",
+    "No GS02 or PM04 implementation",
+    "No provider calls, model inference, paid APIs, deployments, merges or betting execution"
+  ],
+  "limitations": [
+    "Complete roster and disruptions are fixture assumptions, not verified external facts.",
+    "Timing/efficiency/pace feasibility does not imply scenario likelihood, empirical causal effects or forecast skill.",
+    "Real rights, point-in-time availability, identities, discrete-event fidelity and calibration remain unverified.",
+    "Network proof covers reviewed imports/executed paths, not arbitrary future code or an OS sandbox."
+  ],
+  "integrity_note": "Git binds this evidence file; its own recursive hash is omitted. Full TAP stays in separate research storage.",
+  "first_recorded_at_utc": "2026-10-13T22:44:24.589841+00:00",
+  "verification_note": "Initial implementation October13; final resumed verification October15. Fixture dates are fictional, not historical real forecasts.",
+  "node_version": "v24.19.0",
+  "scenario_receipts": [
+    {"name":"NBA complete regulation baseline","expected":true,"eligible":true,"receipt_sha256":"5a55957f267daf71fc96558cf9373c9d3575bed779c3226fec446362353f1d6d","report_sha256":"28df376ca36b7205052e14c4d9cbb4993f3440a3dcb13324e475615b5974d794","players":7,"reasons":[]},
+    {"name":"WNBA complete regulation baseline","expected":true,"eligible":true,"receipt_sha256":"2318be45864ef19f9a9ed7befc343ff409bd59f3622c34783211b361771f8e73","report_sha256":"48ae83739edf5e4f1ce4951688289c4297d61a4f8d7d7d901a0ee9b7e52028b1","players":7,"reasons":[]},
+    {"name":"NBA starter absence redistributes once","expected":true,"eligible":true,"receipt_sha256":"de6aa209bd114fc4d9282fea25250187c6f4f3afa6451d4074bad9a8d244d843","report_sha256":"f26638aa90d37c0d12024cea456f3b5fff22a4c776a9b2d31bb5cc1eb4187ae0","players":7,"reasons":[]},
+    {"name":"WNBA starter absence redistributes once","expected":true,"eligible":true,"receipt_sha256":"32fcfe059c359e13120bd38da27ff885d984a7e028e4b46f7208337bc72a41eb","report_sha256":"46a59f2cea60fe764f63739712b234af9feac75c57b0e7ef25ccabdf6daa0c70","players":7,"reasons":[]},
+    {"name":"NBA absence split across two backups","expected":true,"eligible":true,"receipt_sha256":"222a0ae9c4c620ad0b9f475e9bdcc2c6771f6f8e5fc2947ccc3b9f1adea74ab4","report_sha256":"63d67d7c1e09a66c23cf13a25697f0ba4a5392efe0b1a3e52a216c8e032f1c57","players":7,"reasons":[]},
+    {"name":"WNBA absence split across two backups","expected":true,"eligible":true,"receipt_sha256":"7753eaf165def788ba49ea271195531cdd2ad334b6d0e180acfe6b5493ac8a63","report_sha256":"ce389c03fb8c65c91130dbf95b3966694b4985cb1ce9e89c77d5d683b60883bb","players":7,"reasons":[]},
+    {"name":"foul trouble cap and explicit replacement","expected":true,"eligible":true,"receipt_sha256":"5908a85574e8824b03fed7f7ce4935818b560b95cde04a92826c1ebd9efc7358","report_sha256":"7b97a8c74f8d38091b5390f569fad275b8431d39f402ad8c0f312aebf28f33cc","players":7,"reasons":[]},
+    {"name":"WNBA foul trouble cap and explicit replacement","expected":true,"eligible":true,"receipt_sha256":"f74e385198ec2231447657291a15e490be6857d14e7a0924978f83b4fad2d92c","report_sha256":"b6262e574cf8b0925a81679550fdb76006367bce8e87dec53db433381bfb62b1","players":7,"reasons":[]},
+    {"name":"blowout transfers two disjoint minute budgets","expected":true,"eligible":true,"receipt_sha256":"f344240d7161b3c4a9be15245c17b75e386b7f168d62d6ef160a658cabc6d5e5","report_sha256":"3c1da3b193680d40b115e999d858853a0f00acaaa8a95659caa2e463d1e1169f","players":7,"reasons":[]},
+    {"name":"WNBA blowout transfers two disjoint minute budgets","expected":true,"eligible":true,"receipt_sha256":"c7386413f47008d14167c37a4095e828582ecbcb9ab7a511fb1725dcd8021a5c","report_sha256":"100b1ff34e354cb759a021b570c64289d6a7589741cce44248b5f4a94d143718","players":7,"reasons":[]},
+    {"name":"pace increases opportunity volume only","expected":true,"eligible":true,"receipt_sha256":"a5d9f653c16de61d50ba5011eff03e5943882c115d71e487b5b3b1826fc96aed","report_sha256":"b4ae159638ba6643cef2c06d920a786294fb38ee486af44908de779dbaa3ba27","players":7,"reasons":[]},
+    {"name":"WNBA pace increases opportunity volume only","expected":true,"eligible":true,"receipt_sha256":"383e35a2e2c9e84e02949b9fff89967c02fc343628df2915a8c370e8bd13ba13","report_sha256":"d858bdf9edee1ce6599a4c75e83e407d224bb3d9e272535e13e74e96e18bea0d","players":7,"reasons":[]},
+    {"name":"efficiency assumption changes separately","expected":true,"eligible":true,"receipt_sha256":"3f2af669a2645bb2b52349fe429f93847f79eebc06b537b711676b219f1096c4","report_sha256":"42db0353b68083bd9f29acf2a3cbae6d04bf9b656d3bca29b69eb94b6a4cb289","players":7,"reasons":[]},
+    {"name":"overlapping disruptions reuse one minute transfer","expected":true,"eligible":true,"receipt_sha256":"d0c3001a0a5d60b37a2dd12c0e8b460234f5083514a49118c588e2e279915cfc","report_sha256":"5ad050dcb472760615e023178b77b8cf9ed05c521d11857317c2ed6c5926f4cb","players":7,"reasons":[]},
+    {"name":"WNBA overlapping disruptions reuse one minute transfer","expected":true,"eligible":true,"receipt_sha256":"c02c7b0c779f8000e5c8154adc1b100852c71fce47071b05431a955dc7945a27","report_sha256":"932eca70302555b0f2a4f0d0ec8cbc652c12705fca74683ad36e75f4fe1039ea","players":7,"reasons":[]},
+    {"name":"NBA overtime has explicit possession assumption","expected":true,"eligible":true,"receipt_sha256":"7467e4133f44256202cb074a370daec14725d8825b299db12a1dc606e2c06657","report_sha256":"f40cde2c40d4942a5b5ec4aad055553ab599eaee26a091b529756969b0eb9b83","players":7,"reasons":[]},
+    {"name":"WNBA overtime has explicit possession assumption","expected":true,"eligible":true,"receipt_sha256":"a9f748568f70eee484bb0d53a168852ee80273c9654a57334e000db16dcb8737","report_sha256":"6838a52507ca4498b8f97c0de207ea5fef8490f6e56490b49fde0a1178c85bdb","players":7,"reasons":[]},
+    {"name":"wrong NBA regulation duration","expected":false,"eligible":false,"receipt_sha256":"83245aa7203b3dd3fefee11a3050c89f7aae9359450c8a6c3f3e910f7e7a5243","report_sha256":"5a2202f72ae9ae8906d9b313a5a1b8ca97f6f0641a6ea5bbc10d82b2df6d510e","players":7,"reasons":["MINUTES_INVALID","ROTATION_INCOMPLETE","ROTATION_INVALID","ROTATION_MINUTES_MISMATCH","RULES_UNKNOWN"]},
+    {"name":"six players in a lineup","expected":false,"eligible":false,"receipt_sha256":"861c7f30aa227927ccb2ad275ab792b434228dfae053ae3a8db7dd3146912003","report_sha256":"08bcfcbcf427ac4619cb4e4ad1767beb0307ca20c51de427553a2c896609069a","players":7,"reasons":["ROTATION_INCOMPLETE","ROTATION_INVALID","ROTATION_MINUTES_MISMATCH"]},
+    {"name":"duplicate lineup identity","expected":false,"eligible":false,"receipt_sha256":"1de37ca6637af4fef96feeca491ec19d7734baf989820c2ec5616efdfeaa47bd","report_sha256":"1beb30f4dd09ee23ad5c1a51110a5c221c03cbdc65b72456e0f569ee0d67c906","players":7,"reasons":["ROTATION_INCOMPLETE","ROTATION_INVALID","ROTATION_MINUTES_MISMATCH"]},
+    {"name":"rotation gap","expected":false,"eligible":false,"receipt_sha256":"6784ff7cebf11250715fb5d9715ba2ac9b9d64adecc537d3a3a35ab6780a54b0","report_sha256":"661b598257d9f8185fb5657f09f536a7917ad303d5b99dd4f33bca5eb2465aba","players":7,"reasons":["ROTATION_INCOMPLETE","ROTATION_INVALID","ROTATION_MINUTES_MISMATCH"]},
+    {"name":"rotation overlap","expected":false,"eligible":false,"receipt_sha256":"2dc682e28c9cc068d6c555c6b7b4c964fd274ff50c0413a162cf2de1790b7dfa","report_sha256":"dfa7c7584e67c72f3dff737858d9a84018a002f6545fc809b4d9f8f8d5c887ac","players":7,"reasons":["ROTATION_INCOMPLETE","ROTATION_INVALID","ROTATION_MINUTES_MISMATCH"]},
+    {"name":"unresolved lineup player","expected":false,"eligible":false,"receipt_sha256":"61c5d8f4a345ccf422a36273df6cfd61205c7d6dee01dc56538d11e3cb846cdc","report_sha256":"88c734f270cd661babacebf380fe013822389eb3a6db524854f122ef6bdfb5d4","players":7,"reasons":["ROTATION_INCOMPLETE","ROTATION_INVALID","ROTATION_MINUTES_MISMATCH"]},
+    {"name":"negative player minutes","expected":false,"eligible":false,"receipt_sha256":"6876ba58aef6ec41c03ce24c72d2d023823e9b50953fbfb0dc7324f25d717f58","report_sha256":"7eb91e8309c0a83dc767d0cb6e95ea73607c57b7e93632fbb40cb6a74bad29bb","players":7,"reasons":["MINUTES_INVALID","ROTATION_MINUTES_MISMATCH"]},
+    {"name":"minutes beyond elapsed game","expected":false,"eligible":false,"receipt_sha256":"d670d7ba306221bfd30f5fabfd5f3af4b90c1c259992daa1acd154984f6fdb19","report_sha256":"469a6027f3b32ab26223da3492558e70b3b4f07b45957a1e9e707058f94c25a7","players":7,"reasons":["MINUTES_INVALID","REDISTRIBUTION_MISMATCH","ROTATION_MINUTES_MISMATCH","TEAM_MINUTES_MISMATCH"]},
+    {"name":"team minutes are not conserved","expected":false,"eligible":false,"receipt_sha256":"52945522f71cc156b76fa1a6d5c38778da9dd444bcb21c5d2275dc8b770c6cf1","report_sha256":"e776fee396811a447aabc8207f11b0e6d89c793ce2ac6894aecfbbc58006b789","players":7,"reasons":["REDISTRIBUTION_MISMATCH","ROTATION_MINUTES_MISMATCH","TEAM_MINUTES_MISMATCH"]},
+    {"name":"unavailable player retains volume","expected":false,"eligible":false,"receipt_sha256":"b41ca2d065a352f88e3edec87ccf24eced7663728a2dc5f4a90c5faa7c592f14","report_sha256":"d9628f20787e59c027b1824b39cb172ed4219e5cc26c84d5f902416d02652f84","players":7,"reasons":["ROTATION_UNAVAILABLE_PLAYER","UNAVAILABLE_PLAYER_ALLOCATION"]},
+    {"name":"missing usage assumption remains unknown","expected":false,"eligible":false,"receipt_sha256":"fe98c5ac70f5b32a14da8be163a5b2e250b68961b77e1ecb471b9936c41a3b8e","report_sha256":"a96221d63fb21f16a1b5a1fee54d69ef00a832b8b13e074150b2606a91630955","players":7,"reasons":["OPPORTUNITY_UNKNOWN"]},
+    {"name":"missing efficiency remains unknown","expected":false,"eligible":false,"receipt_sha256":"58b744ce498ae0068422be960299a6c1a03b29b2758a77c12d7cdbedf1786b80","report_sha256":"034e216ffdd90a4a2a0f07cf031ad32a75a38ffed6b14c910b5bc8f4ebbf1724","players":7,"reasons":["OPPORTUNITY_UNKNOWN"]},
+    {"name":"share outside unit interval","expected":false,"eligible":false,"receipt_sha256":"2a665f8bc0fcdc511ccde2dcfe0d2d2c351c82b9de1ae1c0807838475e4f257e","report_sha256":"c697f48f3080d20b2d2172a881f8c48e65f5e8826e9d3d1ccdba2d337f098264","players":7,"reasons":["OPPORTUNITY_UNKNOWN"]},
+    {"name":"opportunity exceeds uniform exposure budget","expected":false,"eligible":false,"receipt_sha256":"85a4c44db0caf9cfbf380678edd0b8803baa2d32b204181cd42be62147eebd3d","report_sha256":"34b57de3f278688991a30ce59b0dd74eb54529e598bc5c7220895328686efcc6","players":7,"reasons":["EXPOSURE_EXCEEDED","OPPORTUNITY_TIMELINE_INFEASIBLE"]},
+    {"name":"opportunities disagree with possession budget","expected":false,"eligible":false,"receipt_sha256":"c27305f91211712137ebd881216865d673d4b3794b46d85f9f6061cb48d38cac","report_sha256":"2addc466d84439ee701a9c53b7c24dde7c48273135ca5c63eb147c9646cbabe2","players":7,"reasons":["OPPORTUNITY_MISMATCH","OPPORTUNITY_TIMELINE_INFEASIBLE"]},
+    {"name":"missing redistribution transfer","expected":false,"eligible":false,"receipt_sha256":"5bb8d4883af86bea10736d48c70e3c193cb2c60098689ec088d60c192489d6b2","report_sha256":"18684ff2afba5c4720a9dd8dc4dab21c112f6cc2a1d7ce96ee014a2eacc9d7d4","players":7,"reasons":["REDISTRIBUTION_MISMATCH"]},
+    {"name":"overlapping disruptions double-count transfer","expected":false,"eligible":false,"receipt_sha256":"32a421d0e74fc8f30a61b673ca963133ae0200e70f61c0568801ef82231435db","report_sha256":"aa1dbd7d0864a327813ddd758707cea54d9464a87d1272add0aba955cbe33b28","players":7,"reasons":["REDISTRIBUTION_MISMATCH"]},
+    {"name":"circular minute flow","expected":false,"eligible":false,"receipt_sha256":"d625acbffd2a2e235337fe5e728e28be1d7449b6e2ae43626a2db669f4539991","report_sha256":"9353c02a7f92c8c8655f38d2b3eaa1943a9bab07ab6c1f3379d024def96f673f","players":7,"reasons":["REDISTRIBUTION_MISMATCH"]},
+    {"name":"unresolved disruption reference","expected":false,"eligible":false,"receipt_sha256":"d757bce7a154130b0719e2f20a04834c71e2402e9d851a5ed63580da1d76994e","report_sha256":"6aa21e5d898a63e24a0133af287eb73b67f868024f6a4b554079ae77ab887a3e","players":7,"reasons":["REDISTRIBUTION_MISMATCH","TRANSFER_INVALID"]},
+    {"name":"foul cap contradicts declared rotation","expected":false,"eligible":false,"receipt_sha256":"c64d70f472d64fc8528f77d76a9718071403cb8e0692937ca6493a0e2e1ec07f","report_sha256":"22592ab67c2d8583154390a96c88df7834f8d2d607c66c098b73672d96ad10ce","players":7,"reasons":["DISRUPTION_CONTRADICTION"]},
+    {"name":"absence contradicts available player","expected":false,"eligible":false,"receipt_sha256":"1a72dd3dd091ea1a34f24c9e3055580d8ce8038814b03b952c9c86abe01e7961","report_sha256":"033389e04cb449e8579162bc304fd17818997183545c760397c3a0a5dffdfa9e","players":7,"reasons":["DISRUPTION_CONTRADICTION"]},
+    {"name":"missing pace timing assumption","expected":false,"eligible":false,"receipt_sha256":"edc9d9c1200496446099eb27db18b635e3f87bbf5f395cba64535b0d04d85ea7","report_sha256":"993b255429e903896c579dd255b802a3f8e125806bf07fba548c6ad311691304","players":7,"reasons":["ASSUMPTIONS_UNKNOWN"]},
+    {"name":"unsupported causal conclusion","expected":false,"eligible":false,"receipt_sha256":"1ad5f445bd5b23f29e9591e726ad92147b9e3320217d89e5dc43d61d35c0e587","report_sha256":"f9c225fb31fa30b272a31d7dbc5142d8c0701b97dfa8d2a6c5af9a1f75bd9aa7","players":7,"reasons":["UNSUPPORTED_CAUSAL_CLAIM"]},
+    {"name":"missing synthetic evidence timestamp","expected":false,"eligible":false,"receipt_sha256":"64dd2873c0bebb2bbe02b796115719d7f0f3eddf2e360737416e6a95db6aed45","report_sha256":"79a64a7f89268b32f7805dd727b6e53be992b844434dc51a99d046b1e725d8f7","players":7,"reasons":["TIME_UNKNOWN"]},
+    {"name":"disruption evidence arrives after freeze","expected":false,"eligible":false,"receipt_sha256":"5e66da8ec679569dc92c9c917f44f3a0a8be97f618802ca3fa5f9ad29d7e308f","report_sha256":"de13ad3eb6c50d3e9f069eb24aa2c69caa49105099f39ad2f0038e9d25e2e57d","players":7,"reasons":["POST_CUTOFF"]},
+    {"name":"research roster scope exceeds thirty synthetic players","expected":false,"eligible":false,"receipt_sha256":"1f1f589997930e239e3a3eeef2b8b9bc414bc0728dbf1974a8329aa4fd2c81c8","report_sha256":"5486d965ab89da3471d05bb95b738757c747d4a930586d6eca4caca109fbc6c2","players":31,"reasons":["ROSTER_SCOPE_UNSUPPORTED"]},
+    {"name":"interval capacity positive","expected":true,"eligible":true,"receipt_sha256":"57c5daf12a91964c16aac112fff557f9e47ef85f7e9e44f45e8eb919cf218f3c","report_sha256":"55e7980d36baf9710b8d276cb63f32983cabbd169e6061b14bfda9271f6f926f","players":10,"reasons":[]},
+    {"name":"interval capacity impossible","expected":false,"eligible":false,"receipt_sha256":"1d3ec533023f82d74e44c8024f44c8dbfc089bd9f54fc457fa0ac6c5c2afb5bd","report_sha256":"48f87dbe1a32d4437bb97461221c8c58e19eb5fa2e3916085ecc78c306fe7656","players":10,"reasons":["OPPORTUNITY_TIMELINE_INFEASIBLE"]},
+    {"name":"OT-only substitute capacity","expected":true,"eligible":true,"receipt_sha256":"62b9d6600b4ed3eb74af9dcf0488153fbaa1ed06dcf822e4bed223ddc084df7f","report_sha256":"c83ac9c0a7d19deb7c65143fc0dbf1e8ed85c5e1659feba8b2f660f34999e2ca","players":7,"reasons":[]}
+  ]
+}
