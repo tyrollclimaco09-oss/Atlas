@@ -1,0 +1,205 @@
+{
+  "schema": "atlas.arc2.recovery-evidence-readiness.v1",
+  "recorded_at_utc": "2026-10-15T07:47:28.926435+00:00",
+  "accepted_checkpoint": "3eea15a870189b443a0b38f37baf8fe0f58e2ec5",
+  "review_branch": "review/arc2-integration-remediation-2026-10-15",
+  "github_preservation": {
+    "status": "PASS",
+    "native_push_exit": 0,
+    "remote_head_verified": "3eea15a870189b443a0b38f37baf8fe0f58e2ec5",
+    "verified_at_utc": "2026-10-15T07:42:33.782265+00:00",
+    "previous_six_remote_heads_unchanged": true,
+    "ancestor_commits_preserved": [
+      "ed27d9fb39a924fc75cac3cf17e92e355cd69524",
+      "56c66265ec96f208a9d3f7fecdd67f48f77cfe36"
+    ],
+    "new_source_shadow_or_gs01_remote_heads_pushed": false,
+    "main_or_pr6_modified": false,
+    "new_pr_created": false
+  },
+  "remote_source_verification": {
+    "status": "PASS",
+    "command": [
+      "git",
+      "fetch",
+      "--no-tags",
+      "--quiet",
+      "https://github.com/tyrollclimaco09-oss/Atlas.git",
+      "refs/heads/review/arc2-integration-remediation-2026-10-15"
+    ],
+    "source_commit": "3eea15a870189b443a0b38f37baf8fe0f58e2ec5",
+    "source_tree": "d329d7860a8e73213b2ddec242864b19cf836d14",
+    "matches_accepted_local_tree": true,
+    "review_file_hashes_checked": 8,
+    "tests": {
+      "frontend": {
+        "argv": [
+          "node",
+          "--test",
+          "--test-reporter=tap",
+          "command-center/tests/arc2-gate.test.cjs",
+          "command-center/tests/canonical-read.test.cjs",
+          "command-center/tests/local-workflow.test.cjs",
+          "command-center/tests/source-preservation.test.cjs"
+        ],
+        "exit_code": 0,
+        "counts": {
+          "tests": 129,
+          "pass": 129,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        },
+        "stdout_sha256": "16e5a78072331b92ddd9bac85b3bd1fb3361f4431626097647adf1b411537456",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "scout": {
+        "argv": [
+          "node",
+          "--test",
+          "--test-reporter=tap",
+          "scripts/scout/opportunity-shadow.test.cjs"
+        ],
+        "exit_code": 0,
+        "counts": {
+          "tests": 55,
+          "pass": 55,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        },
+        "stdout_sha256": "cb291004c63a46d1c8a2d99823f5a3aa0787975e410f616f18a02fb80a650015",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "sources": {
+        "argv": [
+          "node",
+          "--test",
+          "--test-reporter=tap",
+          "scripts/scout/source-contract-shadow.test.cjs"
+        ],
+        "exit_code": 0,
+        "counts": {
+          "tests": 104,
+          "pass": 104,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        },
+        "stdout_sha256": "f08878b706e41c27f73cfb2169514e7bae7e853b6715213189050c5aa9a600a1",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "gs01": {
+        "argv": [
+          "node",
+          "--test",
+          "--test-reporter=tap",
+          "scripts/scout/game-sense-workload-shadow.test.cjs"
+        ],
+        "exit_code": 0,
+        "counts": {
+          "tests": 69,
+          "pass": 69,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        },
+        "stdout_sha256": "56476bc35f2fff811221b7f7c53cd881d7f887904e9b186497085fdc5c072066",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "total_checks": 357,
+    "scope": "Independent fetch into an isolated bare repository/source copy, not a worktree or fresh cloud environment."
+  },
+  "artifact_recovery": {
+    "status": "BLOCKED",
+    "bounded_local_file_count": 657,
+    "zip_inventories": 17,
+    "reachable_commits": 23,
+    "unreachable_blobs_marker_scanned": 13,
+    "original_early_passes_found": false,
+    "authoritative_named_gate_registry_found": false,
+    "exact_missing_pass04_filename": "ATLAS_ARCII_PROVING_GROUNDS_PASS04_STABILITY_FINAL_GATE_2026-10-13.zip",
+    "source": "Original Pass5 LINEAGE.json materialSource.historicalReference",
+    "owning_chatgpt_conversation_id": null,
+    "scope_limit": "Bounded accessible workspace and local Git objects; no direct ChatGPT Projects/Library access or claim of deletion."
+  },
+  "parity": {
+    "status": "BLOCKED",
+    "supabase_project": "lhliqbbooproqtslmgqi",
+    "mcp_registered_enabled": true,
+    "mcp_authentication_status": "unknown",
+    "application_operator_context": "NOT_ESTABLISHED",
+    "supabase_http_or_sql_requests": 0,
+    "site_probe": {
+      "observed_at_utc": "2026-10-15T07:41:53.903225+00:00",
+      "method": "GET",
+      "url": "https://atlas-command-center-operator-t.tyrollclimaco09.chatgpt.site",
+      "authorization_sent": false,
+      "origin_header_sent": false,
+      "cookies_sent": false,
+      "tls_verification_enabled": true,
+      "redirects_followed": false,
+      "html_executed": false,
+      "public_request_only": true,
+      "status": 403,
+      "error_class": "HTTPError",
+      "body_saved": false,
+      "body_hash_available": false,
+      "interpretation": "Public source access not obtained. This response does not establish whether denial is at the original service or an intermediary and does not prove site absence, current revision or edit ownership."
+    },
+    "deployed_source_schema_rls_current_revision": "UNVERIFIED",
+    "synthetic_candidate": "UNVERIFIED",
+    "state_version_sql_json_domain": "UNKNOWN"
+  },
+  "pilot": {
+    "status": "NOT_STARTED_NOT_ADMITTED",
+    "existing_protocol": "docs/ARCII_NBA_PROSPECTIVE_PILOT.md",
+    "blockers": [
+      "Permitted source rights and authenticated original bytes",
+      "Independent complete-census and prospective-freeze witness",
+      "Preregistered exact future cohort, target/unit, model and baseline",
+      "Official final outcomes/corrections with exact identity/rule joins"
+    ],
+    "quote_and_venue_rule_verification": "HOLD_SEPARATE_FROM_FORECASTS",
+    "all18_external_gates": "BLOCKED_UNNAMED",
+    "predictive_skill": "UNPROVEN"
+  },
+  "evidence_receipt_sha256": {
+    "preservation-preflight.json": "5b371ad3de6f07f196b67329ec05cf3d220d1eb3d611b2f93ecc58809aa6e1d9",
+    "github-preservation-proof.json": "a4abea7311d44698bf803290b0dee12106c307146828d4793c1b6642b495a083",
+    "fresh-github-source-verification.json": "21eb72096cdb8505fb98f356d8367328a2cbabe7671e931ae2fe7c0081824858",
+    "parity-prerequisites.json": "dd0e17c543ec5c86233cedf4eb983fea3b03e41ff906201c5fda62487e987ee7",
+    "artifact-recovery.json": "1abd20a930fdfab4274c4edd1417e673e2ffd7ef7420c317b66259bad9630831",
+    "dangling-blob-recovery-check.json": "06d761a24439eec1d7c9902fb2b75688ff490d5fa32f05f9c10422c32b50a79a"
+  },
+  "prior_evidence_not_rerun": {
+    "archive_node_checks": 619,
+    "archive_python_checks": 3,
+    "manifest_entries": 128
+  },
+  "changes_this_pass": {
+    "runtime_code": false,
+    "new_dependencies": false,
+    "canonical_nodes": false,
+    "supabase_or_sites_changes": false,
+    "deployment_or_merge_commands": false,
+    "provider_requests_or_inference": false,
+    "betting_execution": false,
+    "files_added": [
+      "docs/ARCII_RECOVERY_EVIDENCE_READINESS_2026-10-15.md",
+      "docs/evidence/2026-10-15-arc2-readiness.json"
+    ]
+  },
+  "verdict": {
+    "offline_engineering": "GO",
+    "live_parity": "BLOCKED",
+    "pilot": "NOT_ADMITTED",
+    "unverified_integration": "HOLD",
+    "production": "NO_GO"
+  }
+}
