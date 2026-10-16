@@ -10,7 +10,7 @@ function packet(run,candidates){return JSON.stringify({schema:'atlas.research.v1
 test('same exact market/selection/time rejected atomically',()=>{
  const run=Slate.newRun({date:'2026-10-16',timezone:'UTC'},NOW);
  const a=item('Player prop','Fictional player 10+ attempts');
- assert.throws(()=>Slate.importResearch(run,packet(run,[a,a]),NOW),/Duplicate exact/);
+ assert.throws(()=>Slate.importResearch(run,packet(run,[a,a]),NOW),/Duplicate candidate/);
  assert.equal(run.candidates.length,0);assert.equal(run.history.length,0);
 });
 test('same selection text across distinct markets or starts is retained',()=>{
