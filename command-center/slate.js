@@ -1,7 +1,7 @@
 /* A guided, device-local draft workspace. No network calls or automatic inference. */
 (function () {
   'use strict';
-  const E=AtlasSlate, STORAGE='atlas.slate.draft.v1';
+  const E=AtlasSlate, D=AtlasDiscovery, STORAGE='atlas.slate.draft.v1', DISCOVERY_STORAGE='atlas.discovery.census.v1';
   const esc=value=>String(value??'').replace(/[&<>"']/g,x=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[x]));
   const $=id=>document.getElementById(id);
   let run=null,selected=null,stage=0,pendingImport=null,storageOK=true;
@@ -29,6 +29,23 @@
   ];
   function current(){return run?.candidates.find(x=>x.id===selected);}
   function toast(message,error=false){$('slate-status').textContent=message;$('slate-status').className=error?'error':'small muted';}
+  function readDiscovery(){
+    const raw=localStorage.getItem(DISCOVERY_STORAGE);
+    return raw?D.importJSON(raw):D.empty();
+  }
+  function refreshDiscoveryCensus(){
+    try{
+      const count=D.census(readDiscovery());
+      $('discovery-census').textContent=`Research archive · ${count.unique} unique candidates / ${count.observations} observations · this browser only`;
+    }catch(e){$('discovery-census').textContent='Research archive unavailable · export existing browser data before continuing';}
+  }
+  function archiveResearchPacket(data){
+    if(data.phase!=='research')return;
+    // Fail closed: never claim an imported packet was archived if the local write failed.
+    const next=D.ingest(readDiscovery(),data);
+    localStorage.setItem(DISCOVERY_STORAGE,D.exportJSON(next));
+    refreshDiscoveryCensus();
+  }
   function persist(){
     if(!run)return;
     run.updatedAt=new Date().toISOString();
@@ -311,6 +328,8 @@
       if(!$('import-text').value.trim())throw Error('Paste the ChatGPT research response in the box above first.');
       // Validate the current text on every click; the optional delayed preview is never a prerequisite.
       const next=E.importResearch(run,$('import-text').value,Date.now(),$('reuse-research').checked===true);
+      const parsedPacket=E.parse($('import-text').value);
+      archiveResearchPacket(parsedPacket);
       if(next.handoffDrafts)delete next.handoffDrafts[E.parse($('import-text').value).phase];
       const candidate=next.candidates.find(c=>c.id===selected)||next.candidates[0];
       const nextStage=candidate?Math.max(0,E.evaluate(next,candidate).next):0;
@@ -324,6 +343,10 @@
       $('import-feedback').className='error';$('import-feedback').scrollIntoView({block:'nearest'});
       try{E.parse($('import-text').value);$('repair-format').hidden=true;}catch{$('repair-format').hidden=!$('import-text').value.trim();}
     }
+  });
+  $('export-discovery').addEventListener('click',()=>{
+    try{download(D.exportJSON(readDiscovery()),'ATLAS-discovery-census.json');toast('Research census exported. This is a browser-local research archive, not the immutable Ledger.');}
+    catch(e){toast('Cannot export discovery census: '+e.message,true);}
   });
   $('export-slate').addEventListener('click',exportDraft);
   $('restore-draft').addEventListener('change',async event=>{const file=event.target.files[0];if(!file)return;try{const next=restore(await file.text());if(run)exportDraft();run=next;selected=run.candidates[0]?.id||null;stage=0;render();toast('Draft restored. Research and approvals require fresh review.');}catch(e){toast(e.message,true);}event.target.value='';});
@@ -390,5 +413,6 @@
   setInterval(()=>{if(run&&!$('slate').hidden)updateReadout();},30000);
   // Resume only a device-local working draft. It is never a canonical or tamper-proof record.
   try{const raw=localStorage.getItem(STORAGE);if(raw){const d=JSON.parse(raw);if(d?.schema==='atlas.slate.v1'&&Array.isArray(d.candidates)&&d.candidates.length<=64&&[3,5,8,16,32,64].includes(Number(d.limit))&&d.candidates.length<=Number(d.limit)&&Array.isArray(d.history)&&d.candidates.every(c=>c&&E.KEYS.every(k=>c[k]&&typeof c[k]==='object'))){run=d;selected=run.candidates[0]?.id||null;run.candidates.forEach(c=>{c.final.confirmed=false;c.final.infoReviewed=false;c.final.imageReviewed=false;});}}}catch{storageOK=false;toast('The prior local draft could not be loaded. Restore an export or start a new slate.',true);}
+  refreshDiscoveryCensus();
   render();
 })();
