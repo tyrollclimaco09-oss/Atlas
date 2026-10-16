@@ -6,8 +6,8 @@
   "status": "REVIEW_ONLY_NOT_DEPLOYED",
   "note": "Original SOURCE_PROVENANCE.json remains unchanged; these blobs represent intentional Pass 0 review modifications, not recovered deployed-site bytes. Pass 1 market-aware identity fix and new synthetic tests included.",
   "files": {
-    "index.html": "ac554ce8e0d642d3ceb4ee4e9f5b318ce00b088c",
-    "slate.js": "e020fc76df783acd44f0258c114de21f9393721e",
+    "index.html": "dfaf5bbf36716be29dc5f8db96507c7931fe37fe",
+    "slate.js": "ad039c2f1cd742ab9f80b7a247d83d73f9ffcf4d",
     "slate-engine.js": "a193d539825bf7064ee8190f1a3f43cd82d96b91",
     "tests/pass0-capacity.test.cjs": "925bc87b16f394fb47cbded67ca3269afcee877f",
     "tests/pass1-discovery-continuity.test.cjs": "3a169aaffaf085612a8bcbb03d87283a874a70fe",
