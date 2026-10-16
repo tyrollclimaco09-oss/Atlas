@@ -1,0 +1,19 @@
+{
+  "schema": "atlas.review-provenance.v1",
+  "baselineCommit": "510e22c7a4c9259ec4e1f7b651cd21ac6cb9df9b",
+  "branch": "review/pass0-slate-regression-2026-10-16",
+  "source": "GitHub fetch_file blob identifiers",
+  "status": "REVIEW_ONLY_NOT_DEPLOYED",
+  "note": "Original SOURCE_PROVENANCE.json remains unchanged; these blobs represent intentional Pass 0 review modifications, not recovered deployed-site bytes.",
+  "files": {
+    "index.html": "ac554ce8e0d642d3ceb4ee4e9f5b318ce00b088c",
+    "slate.js": "98e746618234a09f6f9efab72272c64abb8a0748",
+    "slate-engine.js": "749fda9a07b5b59e4e720661a29d12db7d03e5db",
+    "tests/pass0-capacity.test.cjs": "925bc87b16f394fb47cbded67ca3269afcee877f"
+  },
+  "knownBlockers": [
+    "Original source-preservation tests expect original snapshot bytes and may fail against modified review assets",
+    "New and inherited Node suites have not been run",
+    "Site deployment parity and 18 external release gates remain unverified"
+  ]
+}
