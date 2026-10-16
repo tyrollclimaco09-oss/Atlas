@@ -42,3 +42,32 @@ P1: durable unlimited discovery registry, scenario/pairing research bridge, full
 P2: prospective model calibration and measured opportunity lift.
 
 Doctrine: preserve existing owners, truth over ego, knowledge over greed, no silent production promotion.
+
+
+## Second remediation batch — committed, still review-only
+
+- Review workspace default increased to 16; user can select 3/5/8/16/32/64.
+- Research import packets remain at 1–8 candidates for existing parser/contract safety. Generated prompt now caps each packet at eight even when the workspace has 16–64 slots, preventing a new >8 prompt/import contradiction.
+- Draft restore now permits up to 64 candidates and preserves all imported history instead of silently truncating it to the last 300 entries. Existing 16 MB file limit, browser quota and review invalidation remain. This is **not** an unlimited registry or immutable Ledger.
+- Added `command-center/tests/pass0-capacity.test.cjs` regression assertions for default, packet/workspace separation, deep Game Sense handoff, singles-only Final Gate, restore/history.
+- **No fresh Node test run occurred in this environment.** Source-level preservation test `source-preservation.test.cjs` pins original snapshot/derivative hashes; intentional review edits may require a separately reviewed provenance update rather than weakening or silently repinning historical hashes. Treat complete suite status as UNKNOWN until replay.
+- No user-facing published site changes or backend modifications.
+
+### Full remediation inventory beyond this branch
+
+| Lane | Status | Next evidence |
+| --- | --- | --- |
+| Deep discovery prompt | review patch committed | test packet and observe real handoff |
+| Expand review workspace | review patch committed | browser + draft compatibility + quota tests |
+| Durable discovery universe | NOT IMPLEMENTED | separate registry, dedup, continuation, candidate census |
+| Tier and expression tournament | NOT INTEGRATED | research-only schema for five forms, split outcomes, correlation |
+| Game Sense / Team DNA / Intuition | prompt references, offline research | typed scenario evidence and ablation tests |
+| ORACLE / EDGE THIEF | baseline preserved | independent model comparison and adversarial usefulness |
+| Pricing / House Mirror | baseline preserved | quote/source/clock and market-rule acceptance |
+| KAIROS / SENTINEL | baseline preserved | expiry, veto calibration, concurrency and exposure |
+| Human Final Gate | singles-only baseline preserved | independent signer/authority/nonproduction proof |
+| LEDGER / FORENSICS / CALIBRATOR | baseline preserved | full census, official outcomes, preregistered prospective pilot |
+| Sites ↔ GitHub ↔ Supabase | UNVERIFIED | authorized parity inspection |
+| External release gates | 0/18 cleared in prior checkpoint | original named gate registry and independent proofs |
+
+No retrospective test totals should be reported as new evidence. Promotion requires explicit review and approval.
