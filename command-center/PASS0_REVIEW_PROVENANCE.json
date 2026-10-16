@@ -7,10 +7,12 @@
   "note": "Original SOURCE_PROVENANCE.json remains unchanged; these blobs represent intentional Pass 0 review modifications, not recovered deployed-site bytes. Pass 1 market-aware identity fix and new synthetic tests included.",
   "files": {
     "index.html": "ac554ce8e0d642d3ceb4ee4e9f5b318ce00b088c",
-    "slate.js": "98e746618234a09f6f9efab72272c64abb8a0748",
+    "slate.js": "e020fc76df783acd44f0258c114de21f9393721e",
     "slate-engine.js": "a193d539825bf7064ee8190f1a3f43cd82d96b91",
     "tests/pass0-capacity.test.cjs": "925bc87b16f394fb47cbded67ca3269afcee877f",
-    "tests/pass1-discovery-continuity.test.cjs": "3a169aaffaf085612a8bcbb03d87283a874a70fe"
+    "tests/pass1-discovery-continuity.test.cjs": "3a169aaffaf085612a8bcbb03d87283a874a70fe",
+    "discovery-registry.js": "09f76de98571e9bbd456f12a6f323a254fdd38ea",
+    "tests/pass2-discovery-registry.test.cjs": "4bfa466d816a94cdc12375bf3490130d5a66f097"
   },
   "knownBlockers": [
     "Original source-preservation tests expect original snapshot bytes and may fail against modified review assets",
