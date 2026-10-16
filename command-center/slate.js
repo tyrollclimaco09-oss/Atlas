@@ -79,7 +79,7 @@
     $('settings-fields').innerHTML=[
       field('run',['date','Slate date','date'],run.date),field('run',['sport','Sport','select','',['NFL','CFB','MLB','WNBA','NBA','NHL','Tennis','Soccer','Mixed']],run.sport),
       field('run',['timezone','Slate timezone','text'],run.timezone),field('run',['books','Books to compare','text'],run.books),
-      field('run',['limit','Shortlist size','select','',[3,5,8]],Number(run.limit)),field('run',['quoteMinutes','Maximum quote age (minutes)','select','A review policy, not a guarantee of price availability.',[5,15,30,60]],Number(run.quoteMinutes)),
+      field('run',['limit','Review workspace capacity','select','Discovery may continue across 1–8 candidate research batches; this is not a discovery ceiling.',[3,5,8,16,32,64]],Number(run.limit)),field('run',['quoteMinutes','Maximum quote age (minutes)','select','A review policy, not a guarantee of price availability.',[5,15,30,60]],Number(run.quoteMinutes)),
       field('run',['scope','Research focus / exclusions','textarea'],run.scope)
     ].join('');
     $('candidate-list').innerHTML=run.candidates.map(c=>{const ev=E.evaluate(run,c);return `<button type="button" class="candidate-option ${c.id===selected?'selected':''}" data-candidate="${esc(c.id)}" aria-pressed="${c.id===selected}"><span class="small muted">${esc(c.scout.event||'Event not entered')}</span><strong>${esc(c.scout.selection||'New candidate')}</strong><span class="tag ${c.approval?'amber':'neutral'}">${esc(ev.status)}</span></button>`;}).join('');
@@ -214,12 +214,12 @@
   function restore(raw){
     if(raw.length>16000000)throw Error('Draft exceeds 16 MB.');
     let d;try{d=JSON.parse(raw);}catch{throw Error('This file is not valid JSON.');}
-    if(d?.schema!=='atlas.slate.v1'||typeof d.id!=='string'||!Array.isArray(d.candidates)||d.candidates.length>8||!Array.isArray(d.history))throw Error('Choose an ATLAS slate draft export.');
+    if(d?.schema!=='atlas.slate.v1'||typeof d.id!=='string'||!Array.isArray(d.candidates)||d.candidates.length>64||!Array.isArray(d.history))throw Error('Choose an ATLAS slate draft export.');
     const clean=E.newRun();
     for(const key of ['id','createdAt','updatedAt','date','timezone','sport','books','scope','bankroll','exposure','budget','accountAt','chatUrl'])if(typeof d[key]==='string'&&d[key].length<=6000)clean[key]=d[key];
     clean.handoffDrafts={};for(const phase of ['research','pricing'])if(typeof d.handoffDrafts?.[phase]==='string'&&d.handoffDrafts[phase].length<=1000000)clean.handoffDrafts[phase]=d.handoffDrafts[phase];
     if(['research','pricing'].includes(d.pendingPhase))clean.pendingPhase=d.pendingPhase;
-    clean.limit=[3,5,8].includes(Number(d.limit))?Math.max(Number(d.limit),d.candidates.length):8;
+    clean.limit=[3,5,8,16,32,64].includes(Number(d.limit))?Math.max(Number(d.limit),d.candidates.length):Math.max(16,d.candidates.length);
     clean.quoteMinutes=[5,15,30,60].includes(Number(d.quoteMinutes))?Number(d.quoteMinutes):15;
     const ids=new Set();
     clean.candidates=d.candidates.map(rawCandidate=>{
@@ -233,7 +233,7 @@
       if(rawCandidate.sealed){clean.history.push({at:new Date().toISOString(),action:'Prior frozen research restored as evidence; re-review required',candidateId:c.id,detail:rawCandidate.sealed});c.pricing=E.newCandidate().pricing;c.final=E.newCandidate().final;}
       return c;
     });
-    clean.history=[...d.history.slice(-300).filter(h=>h&&typeof h.at==='string'&&typeof h.action==='string').map(h=>({at:h.at,action:h.action.slice(0,200),candidateId:typeof h.candidateId==='string'?h.candidateId:null,detail:h.detail})),...clean.history];
+    clean.history=[...d.history.filter(h=>h&&typeof h.at==='string'&&typeof h.action==='string').map(h=>({at:h.at,action:h.action.slice(0,200),candidateId:typeof h.candidateId==='string'?h.candidateId:null,detail:h.detail})),...clean.history];
     E.log(clean,'Draft restored; prior approvals and prices require fresh review',null,{sourceRun:d.id});return clean;
   }
   $('new-slate').addEventListener('click',()=>{$('new-date').value=E.newRun().date;$('new-warning').hidden=!run;$('new-dialog').showModal();});
