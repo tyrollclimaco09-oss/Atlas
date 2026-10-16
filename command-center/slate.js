@@ -389,6 +389,6 @@
   window.addEventListener('focus',()=>{if(run)updateReadout();});
   setInterval(()=>{if(run&&!$('slate').hidden)updateReadout();},30000);
   // Resume only a device-local working draft. It is never a canonical or tamper-proof record.
-  try{const raw=localStorage.getItem(STORAGE);if(raw){const d=JSON.parse(raw);if(d?.schema==='atlas.slate.v1'&&Array.isArray(d.candidates)&&d.candidates.length<=8&&Array.isArray(d.history)&&d.candidates.every(c=>c&&E.KEYS.every(k=>c[k]&&typeof c[k]==='object'))){run=d;selected=run.candidates[0]?.id||null;run.candidates.forEach(c=>{c.final.confirmed=false;c.final.infoReviewed=false;c.final.imageReviewed=false;});}}}catch{storageOK=false;toast('The prior local draft could not be loaded. Restore an export or start a new slate.',true);}
+  try{const raw=localStorage.getItem(STORAGE);if(raw){const d=JSON.parse(raw);if(d?.schema==='atlas.slate.v1'&&Array.isArray(d.candidates)&&d.candidates.length<=64&&[3,5,8,16,32,64].includes(Number(d.limit))&&d.candidates.length<=Number(d.limit)&&Array.isArray(d.history)&&d.candidates.every(c=>c&&E.KEYS.every(k=>c[k]&&typeof c[k]==='object'))){run=d;selected=run.candidates[0]?.id||null;run.candidates.forEach(c=>{c.final.confirmed=false;c.final.infoReviewed=false;c.final.imageReviewed=false;});}}}catch{storageOK=false;toast('The prior local draft could not be loaded. Restore an export or start a new slate.',true);}
   render();
 })();
