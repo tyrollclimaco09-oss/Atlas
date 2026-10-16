@@ -4,12 +4,13 @@
   "branch": "review/pass0-slate-regression-2026-10-16",
   "source": "GitHub fetch_file blob identifiers",
   "status": "REVIEW_ONLY_NOT_DEPLOYED",
-  "note": "Original SOURCE_PROVENANCE.json remains unchanged; these blobs represent intentional Pass 0 review modifications, not recovered deployed-site bytes.",
+  "note": "Original SOURCE_PROVENANCE.json remains unchanged; these blobs represent intentional Pass 0 review modifications, not recovered deployed-site bytes. Pass 1 market-aware identity fix and new synthetic tests included.",
   "files": {
     "index.html": "ac554ce8e0d642d3ceb4ee4e9f5b318ce00b088c",
     "slate.js": "98e746618234a09f6f9efab72272c64abb8a0748",
-    "slate-engine.js": "749fda9a07b5b59e4e720661a29d12db7d03e5db",
-    "tests/pass0-capacity.test.cjs": "925bc87b16f394fb47cbded67ca3269afcee877f"
+    "slate-engine.js": "dcc9f9302f368518b038810adccae7a4986c4e36",
+    "tests/pass0-capacity.test.cjs": "925bc87b16f394fb47cbded67ca3269afcee877f",
+    "tests/pass1-discovery-continuity.test.cjs": "53b7be490f1489990e6abc04413f248b0b2d8afe"
   },
   "knownBlockers": [
     "Original source-preservation tests expect original snapshot bytes and may fail against modified review assets",
