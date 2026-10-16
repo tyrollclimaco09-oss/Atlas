@@ -148,8 +148,8 @@
       if(data.phase==='research') {
         const c=newCandidate();for(const key of ['scout','verify','oracle'])if(item[key])Object.assign(c[key],cleanGroup(item[key],key));
         if(!present(c.scout.selection)||!present(c.scout.event))throw Error('Each candidate needs an event and selection.');
-        const signature=(c.scout.event+'|'+c.scout.selection).toLowerCase();
-        if(seen.has(signature)||next.candidates.some(x=>(x.scout.event+'|'+x.scout.selection).toLowerCase()===signature))throw Error('Duplicate candidate. Import was not applied.');
+        const signature=[c.scout.event,c.scout.startsAt,c.scout.market,c.scout.selection].map(v=>text(v).toLowerCase()).join('|');
+        if(seen.has(signature)||next.candidates.some(x=>[x.scout.event,x.scout.startsAt,x.scout.market,x.scout.selection].map(v=>text(v).toLowerCase()).join('|')===signature))throw Error('Duplicate exact event/market/selection candidate. Import was not applied.');
         seen.add(signature);next.candidates.push(c);
         log(next,'Research imported; operator review required',c,{scout:copy(c.scout),verify:copy(c.verify),oracle:copy(c.oracle)},now);
       } else {
