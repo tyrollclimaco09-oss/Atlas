@@ -8,9 +8,9 @@
   "files": {
     "index.html": "ac554ce8e0d642d3ceb4ee4e9f5b318ce00b088c",
     "slate.js": "98e746618234a09f6f9efab72272c64abb8a0748",
-    "slate-engine.js": "dcc9f9302f368518b038810adccae7a4986c4e36",
+    "slate-engine.js": "a193d539825bf7064ee8190f1a3f43cd82d96b91",
     "tests/pass0-capacity.test.cjs": "925bc87b16f394fb47cbded67ca3269afcee877f",
-    "tests/pass1-discovery-continuity.test.cjs": "53b7be490f1489990e6abc04413f248b0b2d8afe"
+    "tests/pass1-discovery-continuity.test.cjs": "3a169aaffaf085612a8bcbb03d87283a874a70fe"
   },
   "knownBlockers": [
     "Original source-preservation tests expect original snapshot bytes and may fail against modified review assets",
