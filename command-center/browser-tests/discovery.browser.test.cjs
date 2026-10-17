@@ -49,3 +49,50 @@ test('real Chromium: failed storage write preserves previously archived census',
   await context.close();
  }finally{await browser.close();}
 });
+
+test('real Chromium: applying research through UI archives it and survives reload',async()=>{
+ const browser=await chromium.launch({headless:true,args:['--no-sandbox']});
+ try{
+  const context=await browser.newContext();
+  const page=await context.newPage();
+  await page.goto(url);
+  await page.locator('#continue-slate').click();
+  await page.locator('#active-slate').waitFor({state:'visible'});
+  await page.locator('#import-research').click();
+  const packet={schema:'atlas.research.v1',phase:'research',runId:'browser-import',candidates:[{scout:{event:'Synthetic Browser Import',startsAt:'2026-10-19T20:00:00Z',market:'Player prop',selection:'Synthetic 9+'},verify:{availability:'Unverified'},oracle:{thesis:'Synthetic only'}}]};
+  await page.locator('#import-text').fill(JSON.stringify(packet));
+  await page.locator('#apply-import').click();
+  await page.waitForFunction(()=>localStorage.getItem('atlas.discovery.census.v1')?.includes('Synthetic 9+'));
+  const before=await page.evaluate(()=>({draft:JSON.parse(localStorage.getItem('atlas.slate.draft.v1')),census:JSON.parse(localStorage.getItem('atlas.discovery.census.v1'))}));
+  assert.equal(before.census.records.length,1);
+  assert.equal(before.census.records[0].scout.selection,'Synthetic 9+');
+  assert.equal(before.draft.candidates.length,1);
+  await page.reload();
+  assert.match(await page.locator('#discovery-census').innerText(),/1 unique candidates/);
+  assert.match(await page.locator('#run-meta').innerText(),/1\\/16 candidates/);
+  await context.close();
+ }finally{await browser.close();}
+});
+test('real Chromium: quota rejection prevents research import from applying to slate',async()=>{
+ const browser=await chromium.launch({headless:true,args:['--no-sandbox']});
+ try{
+  const context=await browser.newContext();
+  const page=await context.newPage();
+  await page.goto(url);
+  await page.locator('#continue-slate').click();
+  await page.locator('#active-slate').waitFor({state:'visible'});
+  await page.locator('#import-research').click();
+  const packet={schema:'atlas.research.v1',phase:'research',runId:'browser-quota',candidates:[{scout:{event:'Synthetic Quota Game',startsAt:'2026-10-19T20:00:00Z',market:'Player prop',selection:'Synthetic quota 5+'},verify:{},oracle:{}}]};
+  await page.locator('#import-text').fill(JSON.stringify(packet));
+  await page.evaluate(()=>{
+    const set=Storage.prototype.setItem;
+    Storage.prototype.setItem=function(key,value){if(key==='atlas.discovery.census.v1')throw new DOMException('quota','QuotaExceededError');return set.call(this,key,value);};
+  });
+  await page.locator('#apply-import').click();
+  await page.waitForFunction(()=>document.querySelector('#import-feedback')?.textContent.includes('Could not apply research'));
+  const result=await page.evaluate(()=>({count:JSON.parse(localStorage.getItem('atlas.slate.draft.v1')).candidates.length,census:localStorage.getItem('atlas.discovery.census.v1')}));
+  assert.equal(result.count,0);
+  assert.equal(result.census,null);
+  await context.close();
+ }finally{await browser.close();}
+});
