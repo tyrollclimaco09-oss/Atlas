@@ -18,7 +18,7 @@ test('validated import is archived before slate is applied, with no swallowed wr
  assert.ok(section.indexOf('const next=E.importResearch(')>=0);
  assert.ok(section.indexOf('archiveResearchPacket(parsedPacket);')>section.indexOf('const next=E.importResearch('));
  assert.ok(section.indexOf('run=next;')>section.indexOf('archiveResearchPacket(parsedPacket);'));
- assert.match(ui,/localStorage\.setItem\(DISCOVERY_STORAGE,D\.exportJSON\(next\)\)/);
+ assert.match(ui,/localStorage\\.setItem\\(DISCOVERY_STORAGE,serialized\\)/);
  assert.match(ui,/D\.ingest\(readDiscovery\(\),data\)/);
 });
 test('startup accepts larger valid local drafts and exports research separately',()=>{
