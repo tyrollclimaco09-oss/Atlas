@@ -6,14 +6,15 @@
   "status": "REVIEW_ONLY_NOT_DEPLOYED",
   "note": "Original SOURCE_PROVENANCE.json remains unchanged; these blobs represent intentional Pass 0 review modifications, not recovered deployed-site bytes. Pass 1 market-aware identity fix and new synthetic tests included.",
   "files": {
-    "index.html": "dfaf5bbf36716be29dc5f8db96507c7931fe37fe",
-    "slate.js": "ad039c2f1cd742ab9f80b7a247d83d73f9ffcf4d",
+    "index.html": "628a0d851ba1fff641099956ef2ee14c509f4c75",
+    "slate.js": "fa76c670e6a2d8e19e394555c8778bbe1fafd484",
     "slate-engine.js": "a193d539825bf7064ee8190f1a3f43cd82d96b91",
     "tests/pass0-capacity.test.cjs": "925bc87b16f394fb47cbded67ca3269afcee877f",
     "tests/pass1-discovery-continuity.test.cjs": "3a169aaffaf085612a8bcbb03d87283a874a70fe",
-    "discovery-registry.js": "09f76de98571e9bbd456f12a6f323a254fdd38ea",
+    "discovery-registry.js": "dac820edeea33f7faf48afe60c98fff1e3502bf6",
     "tests/pass2-discovery-registry.test.cjs": "4bfa466d816a94cdc12375bf3490130d5a66f097",
-    "tests/pass3-discovery-ui.test.cjs": "479b71c5cefcaaab77a19329be2f2caa5f9df371"
+    "tests/pass3-discovery-ui.test.cjs": "479b71c5cefcaaab77a19329be2f2caa5f9df371",
+    "tests/pass4-discovery-board.test.cjs": "9b4112c9da50d001b6870f519ff476f0e2f1777c"
   },
   "knownBlockers": [
     "Original source-preservation tests expect original snapshot bytes and may fail against modified review assets",
