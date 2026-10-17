@@ -69,7 +69,7 @@ test('real Chromium: applying research through UI archives it and survives reloa
   assert.equal(before.draft.candidates.length,1);
   await page.reload();
   assert.match(await page.locator('#discovery-census').innerText(),/1 unique candidates/);
-  assert.match(await page.locator('#run-meta').innerText(),/1\\/16 candidates/);
+  assert.ok((await page.locator('#run-meta').innerText()).includes('1/16 candidates'));
   await context.close();
  }finally{await browser.close();}
 });
