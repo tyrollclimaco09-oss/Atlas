@@ -16,6 +16,9 @@ test('real Chromium: discovery census persists after browser reload and remains 
    localStorage.setItem('atlas.discovery.census.v1',AtlasDiscovery.exportJSON(next));
   });
   await page.reload();
+  // The census is inside the active slate workspace; start a slate through its real UI.
+  await page.locator('#continue-slate').click();
+  await page.locator('#active-slate').waitFor({state:'visible'});
   await page.locator('#discovery-board').evaluate(el=>el.open=true);
   await page.locator('#discovery-search').fill('Synthetic 7+');
   await page.waitForFunction(()=>document.querySelector('#discovery-results')?.textContent.includes('Synthetic 7+'));
