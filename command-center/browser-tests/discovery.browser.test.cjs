@@ -58,7 +58,7 @@ test('real Chromium: applying research through UI archives it and survives reloa
   await page.goto(url);
   await page.locator('#continue-slate').click();
   await page.locator('#active-slate').waitFor({state:'visible'});
-  await page.locator('#import-research').click();
+  await page.locator('#return-with-research').click();
   const packet={schema:'atlas.research.v1',phase:'research',runId:'browser-import',candidates:[{scout:{event:'Synthetic Browser Import',startsAt:'2026-10-19T20:00:00Z',market:'Player prop',selection:'Synthetic 9+'},verify:{availability:'Unverified'},oracle:{thesis:'Synthetic only'}}]};
   await page.locator('#import-text').fill(JSON.stringify(packet));
   await page.locator('#apply-import').click();
@@ -81,7 +81,7 @@ test('real Chromium: quota rejection prevents research import from applying to s
   await page.goto(url);
   await page.locator('#continue-slate').click();
   await page.locator('#active-slate').waitFor({state:'visible'});
-  await page.locator('#import-research').click();
+  await page.locator('#return-with-research').click();
   const packet={schema:'atlas.research.v1',phase:'research',runId:'browser-quota',candidates:[{scout:{event:'Synthetic Quota Game',startsAt:'2026-10-19T20:00:00Z',market:'Player prop',selection:'Synthetic quota 5+'},verify:{},oracle:{}}]};
   await page.locator('#import-text').fill(JSON.stringify(packet));
   await page.evaluate(()=>{
