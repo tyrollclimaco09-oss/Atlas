@@ -56,8 +56,11 @@
     if(data.phase!=='research')return;
     // Fail closed: never claim an imported packet was archived if the local write failed.
     const next=D.ingest(readDiscovery(),data);
-    localStorage.setItem(DISCOVERY_STORAGE,D.exportJSON(next));
+    const serialized=D.exportJSON(next);
+    localStorage.setItem(DISCOVERY_STORAGE,serialized);
+    if(localStorage.getItem(DISCOVERY_STORAGE)!==serialized)throw Error('Discovery archive write could not be verified');
     refreshDiscoveryCensus();
+    renderDiscovery();
   }
   function persist(){
     if(!run)return;
@@ -367,7 +370,9 @@
       if(file.size>8000000)throw Error('Archive exceeds 8 MB');
       const incoming=D.importJSON(await file.text());
       const merged=D.merge(readDiscovery(),incoming);
-      localStorage.setItem(DISCOVERY_STORAGE,D.exportJSON(merged));
+      const serialized=D.exportJSON(merged);
+      localStorage.setItem(DISCOVERY_STORAGE,serialized);
+      if(localStorage.getItem(DISCOVERY_STORAGE)!==serialized)throw Error('Restored archive write could not be verified');
       discoveryOffset=0;refreshDiscoveryCensus();renderDiscovery();
       toast('Research census restored and merged. Existing observations retained.');
     }catch(e){toast('Discovery restore failed: '+e.message,true);}
