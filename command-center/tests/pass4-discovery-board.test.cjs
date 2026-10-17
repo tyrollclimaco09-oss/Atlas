@@ -36,5 +36,5 @@ test('browser has archive restore, search and pagination controls',()=>{
  for(const id of ['restore-discovery','discovery-search','discovery-results','discovery-prev','discovery-next'])assert.ok(html.includes('id="'+id+'"'));
  assert.match(ui,/D\.merge\(readDiscovery\(\),incoming\)/);
  assert.match(ui,/D\.page\(readDiscovery\(\)/);
- assert.match(ui,/localStorage\\.setItem\\(DISCOVERY_STORAGE,serialized\\)/);
+ assert.ok(ui.includes('localStorage.setItem(DISCOVERY_STORAGE,serialized)'));
 });
