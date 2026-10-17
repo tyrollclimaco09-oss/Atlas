@@ -39,6 +39,19 @@
       $('discovery-census').textContent=`Research archive · ${count.unique} unique candidates / ${count.observations} observations · this browser only`;
     }catch(e){$('discovery-census').textContent='Research archive unavailable · export existing browser data before continuing';}
   }
+  let discoveryOffset=0;
+  function renderDiscovery(){
+    try{
+      const result=D.page(readDiscovery(),{offset:discoveryOffset,limit:25,query:$('discovery-search').value});
+      $('discovery-page-count').textContent=`${result.total} saved candidates · showing ${result.records.length?result.offset+1:0}–${result.offset+result.records.length} · research only`;
+      $('discovery-results').innerHTML=result.records.map(r=>{
+        const last=r.observations[r.observations.length-1];
+        return `<div class="panel"><strong>${esc(r.scout.selection)}</strong><p class="small muted">${esc(r.scout.event)} · ${esc(r.scout.market)} · ${esc(r.scout.startsAt)}</p><p class="small muted">${r.observations.length} observation(s) · latest ${esc(last?.at||'unknown')}</p></div>`;
+      }).join('')||'<p class="muted">No saved research matches this search.</p>';
+      $('discovery-prev').disabled=discoveryOffset===0;
+      $('discovery-next').disabled=discoveryOffset+result.records.length>=result.total;
+    }catch(e){$('discovery-page-count').textContent='Discovery board unavailable: '+e.message;$('discovery-results').textContent='';}
+  }
   function archiveResearchPacket(data){
     if(data.phase!=='research')return;
     // Fail closed: never claim an imported packet was archived if the local write failed.
@@ -344,6 +357,22 @@
       try{E.parse($('import-text').value);$('repair-format').hidden=true;}catch{$('repair-format').hidden=!$('import-text').value.trim();}
     }
   });
+  $('discovery-search').addEventListener('input',()=>{discoveryOffset=0;renderDiscovery();});
+  $('discovery-prev').addEventListener('click',()=>{discoveryOffset=Math.max(0,discoveryOffset-25);renderDiscovery();});
+  $('discovery-next').addEventListener('click',()=>{discoveryOffset+=25;renderDiscovery();});
+  $('restore-discovery').addEventListener('change',async event=>{
+    const file=event.target.files?.[0];
+    try{
+      if(!file)return;
+      if(file.size>8000000)throw Error('Archive exceeds 8 MB');
+      const incoming=D.importJSON(await file.text());
+      const merged=D.merge(readDiscovery(),incoming);
+      localStorage.setItem(DISCOVERY_STORAGE,D.exportJSON(merged));
+      discoveryOffset=0;refreshDiscoveryCensus();renderDiscovery();
+      toast('Research census restored and merged. Existing observations retained.');
+    }catch(e){toast('Discovery restore failed: '+e.message,true);}
+    finally{event.target.value='';}
+  });
   $('export-discovery').addEventListener('click',()=>{
     try{download(D.exportJSON(readDiscovery()),'ATLAS-discovery-census.json');toast('Research census exported. This is a browser-local research archive, not the immutable Ledger.');}
     catch(e){toast('Cannot export discovery census: '+e.message,true);}
@@ -414,5 +443,6 @@
   // Resume only a device-local working draft. It is never a canonical or tamper-proof record.
   try{const raw=localStorage.getItem(STORAGE);if(raw){const d=JSON.parse(raw);if(d?.schema==='atlas.slate.v1'&&Array.isArray(d.candidates)&&d.candidates.length<=64&&[3,5,8,16,32,64].includes(Number(d.limit))&&d.candidates.length<=Number(d.limit)&&Array.isArray(d.history)&&d.candidates.every(c=>c&&E.KEYS.every(k=>c[k]&&typeof c[k]==='object'))){run=d;selected=run.candidates[0]?.id||null;run.candidates.forEach(c=>{c.final.confirmed=false;c.final.infoReviewed=false;c.final.imageReviewed=false;});}}}catch{storageOK=false;toast('The prior local draft could not be loaded. Restore an export or start a new slate.',true);}
   refreshDiscoveryCensus();
+  renderDiscovery();
   render();
 })();
