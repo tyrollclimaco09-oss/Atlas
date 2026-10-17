@@ -13,8 +13,8 @@
     "tests/pass1-discovery-continuity.test.cjs": "3a169aaffaf085612a8bcbb03d87283a874a70fe",
     "discovery-registry.js": "dac820edeea33f7faf48afe60c98fff1e3502bf6",
     "tests/pass2-discovery-registry.test.cjs": "4bfa466d816a94cdc12375bf3490130d5a66f097",
-    "tests/pass3-discovery-ui.test.cjs": "479b71c5cefcaaab77a19329be2f2caa5f9df371",
-    "tests/pass4-discovery-board.test.cjs": "9b4112c9da50d001b6870f519ff476f0e2f1777c",
+    "tests/pass3-discovery-ui.test.cjs": "62efa0901fceb65b2d82fbf989ad599aca4561f6",
+    "tests/pass4-discovery-board.test.cjs": "6e8a0410ddb6b2688d54aaf3e3751b4c4763b986",
     "tests/pass5-storage-recovery.test.cjs": "ce33b93c90fe92d7e238f29d3dcd50863aa40aa2"
   },
   "knownBlockers": [
