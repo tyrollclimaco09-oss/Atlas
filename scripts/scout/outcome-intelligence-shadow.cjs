@@ -201,4 +201,39 @@ function settleTickets(receipt,tickets){
     demonstrative_best_case_cents:allResolved?Math.max(...values):null,
     outcomes,execution_authority:false,human_final_gate_required:true});
 }
-module.exports=Object.freeze({VERSION,freezeWorlds,readReceipt,matrix,settleTickets});
+// Compare quoted expressions without deriving any missing SGP or round-robin price.
+// Deliberately NO automated ranking/recommendation from hypothetical world weights.
+function compareExpressions(receipt,tickets){
+  const frozen=readReceipt(receipt);
+  const portfolio=settleTickets(receipt,tickets); // checks all tickets before evaluation
+  const weighted=frozen.weight_origin==='SYNTHETIC_ASSUMPTION';
+  const alternatives=tickets.map(ticket=>{
+    const single=settleTickets(receipt,[ticket]);
+    const summaries={WIN:0,LOSS:0,PUSH:0,UNRESOLVED_VOID:0};
+    for(const outcome of single.outcomes){
+      const settlement=outcome.settlements[0];
+      if(weighted)summaries[settlement.status]+=outcome.assumed_weight;
+    }
+    return {ticket_id:ticket.ticket_id,expression:ticket.expression,leg_ids:[...ticket.leg_ids],
+      explicit_quoted_odds:ticket.american_odds,stake_cents:ticket.stake_cents,
+      hypothetical_outcome_masses:weighted?summaries:null,
+      unresolved_void:single.unresolved_void,
+      hypothetical_expected_profit_cents:single.hypothetical_expected_profit_cents,
+      hypothetical_roi:single.hypothetical_roi,
+      demonstrative_worst_case_cents:single.demonstrative_worst_case_cents,
+      demonstrative_best_case_cents:single.demonstrative_best_case_cents,
+      status:'INVESTIGATE',execution_authority:false};
+  });
+  return immutable({
+    schema_version:VERSION,synthetic:true,research_only:true,
+    receipt_sha256:receipt.sha256,pricing_stage:'PHASE2_SYNTHETIC_DEMO_ONLY',
+    scenario_weight_source:frozen.weight_origin,model_skill:'NOT_ESTABLISHED',
+    booking_availability:'NOT_CHECKED',market_source:'SYNTHETIC_DEMO_ONLY',
+    alternatives,portfolio,
+    recommended_ticket_id:null,approval:null,
+    promotion_blockers:['NO_VERIFIED_PREGAME_JOINT_MODEL','NO_EXECUTION_GRADE_BOOK_QUOTES',
+      'NO_VERIFIED_SETTLEMENT_RULES','NO_HUMAN_FINAL_GATE'],
+    execution_authority:false
+  });
+}
+module.exports=Object.freeze({VERSION,freezeWorlds,readReceipt,matrix,settleTickets,compareExpressions});
