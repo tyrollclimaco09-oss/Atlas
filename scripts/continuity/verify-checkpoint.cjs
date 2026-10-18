@@ -123,16 +123,48 @@ function projectionCheck(manifest, provider, observedText) {
   return {provider,status:'POINTER_MATCH_ONLY'};
 }
 
+
+// Rebuild/compare the actual recovery copy against *every* frozen source file,
+// not just a checkpoint title, link, or a user-authored verification flag.
+// The observed text must come from an authenticated provider readback supplied
+// by the caller. This function itself does not attest the provider identity.
+function verifyRecoveryCopy(manifest,root,observedText) {
+  verifyShape(manifest);
+  if (observedText === undefined || observedText === null)
+    return {status:'UNKNOWN',reason:'DRIVE_NOT_READ'};
+  if (typeof observedText !== 'string' || observedText.length > 1_000_000)
+    fail('RECOVERY_PAYLOAD');
+  const local=verifyArtifacts(manifest,root);
+  if(local.status !== 'MATCH')
+    return {status:'CONFLICT',reason:'LOCAL_SOURCE_DRIFT',matched_artifacts:0};
+  const missing=[];
+  for (const item of manifest.artifacts) {
+    const source=fs.readFileSync(path.resolve(root,item.path),'utf8');
+    if(!observedText.includes(source))missing.push(item.role+':CONTENT');
+    if(!observedText.includes(item.git_blob_sha))missing.push(item.role+':BLOB_ID');
+  }
+  for(const [name,value] of [['CHECKPOINT_ID',manifest.checkpoint_id],
+    ['ANCHOR_COMMIT',manifest.anchor_commit_sha],
+    ['CLOSING_MARKER','END OF RECOVERY SNAPSHOT']])
+    if(!observedText.includes(value))missing.push(name);
+  return {status:missing.length?'CONFLICT':'RECOVERY_CONTENT_MATCH',
+    matched_artifacts:manifest.artifacts.length-missing.filter(x=>x.endsWith(':CONTENT')).length,
+    artifact_count:manifest.artifacts.length,
+    missing,
+    limitation:'CALLER_SUPPLIED_PROVIDER_READBACK_NOT_CRYPTOGRAPHIC_PROVIDER_PROOF'};
+}
+
 function audit(manifest, root, readbacks = {}) {
   const local = verifyArtifacts(manifest, root);
   const keys = ['notion','create_state','drive'];
   const projections = keys.map(key=>projectionCheck(manifest,key,readbacks[key]));
   // A text pointer can match yet be unauthenticated, corrupted, expired or stale.
   // This does not upgrade to cross-provider integrity success by itself.
-  const conflict = local.status !== 'MATCH' || projections.some(x=>x.status==='CONFLICT');
+  const recovery = verifyRecoveryCopy(manifest,root,readbacks.drive);
+  const conflict = local.status !== 'MATCH' || projections.some(x=>x.status==='CONFLICT') || recovery.status==='CONFLICT';
   return {schema:'atlas.mastersave.audit.v1',checkpoint_id:manifest.checkpoint_id,
     status:conflict?'CONFLICT':'LOCAL_VERIFIED_EXTERNAL_NOT_PROVEN',
-    local,projections,ci_live_verified:false,
+    local,projections,recovery,ci_live_verified:false,
     production_approved:false,automatic_betting:false,
     arc_iii_passes_formally_closed:0};
 }
@@ -150,4 +182,4 @@ if (require.main === module) {
     } catch(err) { process.stderr.write('CHECKPOINT_INVALID: '+err.message+'\n'); process.exitCode=1; }
   }
 }
-module.exports=Object.freeze({VERSION,verifyShape,gitBlob,verifyArtifacts,projectionCheck,audit});
+module.exports=Object.freeze({VERSION,verifyShape,gitBlob,verifyArtifacts,projectionCheck,verifyRecoveryCopy,audit});
