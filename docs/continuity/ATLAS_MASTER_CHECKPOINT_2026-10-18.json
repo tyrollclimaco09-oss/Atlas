@@ -1,0 +1,50 @@
+{
+  "schema": "atlas.mastersave.snapshot.v1",
+  "checkpoint_id": "ATLAS-ARCIII-20261018-MASTERSAVE-01",
+  "authority": "GITHUB_REVIEW_SNAPSHOT",
+  "branch": "review/pass0-slate-regression-2026-10-16",
+  "anchor_commit_sha": "1ae37684b060750a54036f113f144351ecab3c15",
+  "arc_iii": {
+    "planned": 15,
+    "formally_closed": 0,
+    "status": "PAUSED_NO_PRODUCTION_PROMOTION",
+    "floot": "PARKED"
+  },
+  "artifacts": [
+    {
+      "path": "docs/ARCIII_REALITY_FORGE_RESUME_HANDOFF_2026-10-18.md",
+      "role": "PRIMARY_HANDOFF",
+      "git_blob_sha": "a4d0b9bce0ca24c7aeb4b93c3aacbf133a5f2789"
+    },
+    {
+      "path": "docs/ARCIII_REALITY_FORGE_HANDOFF_2026-10-18.md",
+      "role": "HISTORICAL_HANDOFF",
+      "git_blob_sha": "05e002914ea06cf583c237e27c11f83e93007f0a"
+    },
+    {
+      "path": "docs/ATLAS_CONTINUITY_PLUGIN_ARCHITECTURE_2026-10-18.md",
+      "role": "ARCHITECTURE_INDEX",
+      "git_blob_sha": "f1751350214bf77aab11b3c3810b5f865048341a"
+    }
+  ],
+  "evidence_run": {
+    "run_id": 39175185709,
+    "head_sha": "1ae37684b060750a54036f113f144351ecab3c15",
+    "conclusion": "success",
+    "scope": "REVIEW_SYNTHETIC_AND_UI_ONLY"
+  },
+  "projections": {
+    "notion": {
+      "page_id": "d52957fa-69c7-4dfe-bf73-9c8f8a5574cf",
+      "required_state": "POINTER_NOT_AUTHORITY"
+    },
+    "create_state": {
+      "model_id": "9f1eea1a-2063-4723-99dd-b9b582bf523a",
+      "required_state": "INDEX_NOT_AUTHORITY"
+    },
+    "drive": {
+      "required_state": "INDEPENDENT_RECOVERY_COPY"
+    }
+  },
+  "next_action": "ARC_III_PASS_1_ONLY_ON_OPERATOR_REQUEST"
+}
