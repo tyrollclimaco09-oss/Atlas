@@ -59,7 +59,8 @@ test('real Chromium: applying research through UI archives it and survives reloa
   await page.locator('#continue-slate').click();
   await page.locator('#active-slate').waitFor({state:'visible'});
   await page.locator('#return-with-research').click();
-  const packet={schema:'atlas.research.v1',phase:'research',runId:'browser-import',candidates:[{scout:{event:'Synthetic Browser Import',startsAt:'2026-10-19T20:00:00Z',market:'Player prop',selection:'Synthetic 9+'},verify:{availability:'Unverified'},oracle:{thesis:'Synthetic only'}}]};
+  const activeRunId=await page.evaluate(()=>JSON.parse(localStorage.getItem('atlas.slate.draft.v1')).id);
+  const packet={schema:'atlas.research.v1',phase:'research',runId:activeRunId,candidates:[{scout:{event:'Synthetic Browser Import',startsAt:'2026-10-19T20:00:00Z',market:'Player prop',selection:'Synthetic 9+'},verify:{availability:'Unverified'},oracle:{thesis:'Synthetic only'}}]};
   await page.locator('#import-text').fill(JSON.stringify(packet));
   await page.locator('#apply-import').click();
   await page.waitForFunction(()=>localStorage.getItem('atlas.discovery.census.v1')?.includes('Synthetic 9+'));
@@ -82,14 +83,15 @@ test('real Chromium: quota rejection prevents research import from applying to s
   await page.locator('#continue-slate').click();
   await page.locator('#active-slate').waitFor({state:'visible'});
   await page.locator('#return-with-research').click();
-  const packet={schema:'atlas.research.v1',phase:'research',runId:'browser-quota',candidates:[{scout:{event:'Synthetic Quota Game',startsAt:'2026-10-19T20:00:00Z',market:'Player prop',selection:'Synthetic quota 5+'},verify:{},oracle:{}}]};
+  const activeRunId=await page.evaluate(()=>JSON.parse(localStorage.getItem('atlas.slate.draft.v1')).id);
+  const packet={schema:'atlas.research.v1',phase:'research',runId:activeRunId,candidates:[{scout:{event:'Synthetic Quota Game',startsAt:'2026-10-19T20:00:00Z',market:'Player prop',selection:'Synthetic quota 5+'},verify:{},oracle:{}}]};
   await page.locator('#import-text').fill(JSON.stringify(packet));
   await page.evaluate(()=>{
     const set=Storage.prototype.setItem;
     Storage.prototype.setItem=function(key,value){if(key==='atlas.discovery.census.v1')throw new DOMException('quota','QuotaExceededError');return set.call(this,key,value);};
   });
   await page.locator('#apply-import').click();
-  await page.waitForFunction(()=>document.querySelector('#import-feedback')?.textContent.includes('Could not apply research'));
+  await page.waitForFunction(()=>document.querySelector('#import-feedback')?.textContent.includes('Could not apply research: quota'));
   const result=await page.evaluate(()=>({count:JSON.parse(localStorage.getItem('atlas.slate.draft.v1')).candidates.length,census:localStorage.getItem('atlas.discovery.census.v1')}));
   assert.equal(result.count,0);
   assert.equal(result.census,null);
