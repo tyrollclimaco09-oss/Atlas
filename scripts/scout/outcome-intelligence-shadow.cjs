@@ -163,7 +163,8 @@ function settleTickets(receipt,tickets){
       stamp(t.quoted_at)>=frozen&&stamp(t.quoted_at)<=cutoff,'TICKET_CONTRACT');
     oddsToDecimal(t.american_odds);ids.add(t.ticket_id);totalStake+=t.stake_cents;
     if(t.expression==='SINGLE')requireValid(t.leg_ids.length===1,'TICKET_CARDINALITY');
-    if(['DOUBLE','SGP','CROSS_GAME'].includes(t.expression))requireValid(t.leg_ids.length===2,'TICKET_CARDINALITY');
+    if(t.expression==='DOUBLE')requireValid(t.leg_ids.length===2,'TICKET_CARDINALITY');
+    if(['SGP','CROSS_GAME'].includes(t.expression))requireValid(t.leg_ids.length>=2,'TICKET_CARDINALITY');
     if(t.expression==='TRIPLE')requireValid(t.leg_ids.length===3,'TICKET_CARDINALITY');
     if(t.expression==='ROUND_ROBIN_COMPONENT')requireValid(t.leg_ids.length>=2,'TICKET_CARDINALITY');
     const games=new Set(t.leg_ids.map(id=>legs.get(id).event_id));
