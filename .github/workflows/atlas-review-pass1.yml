@@ -83,3 +83,21 @@ jobs:
           node-version: '22'
       - name: Run offline research integrity and scenario settlement checks
         run: node --test scripts/scout/*.test.cjs
+
+  mastersave-proof:
+    name: MasterSave source integrity and drift denials
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify immutable checkpoint and adversarial drift cases
+        run: |
+          node --test scripts/continuity/*.test.cjs
+          node scripts/continuity/verify-checkpoint.cjs docs/continuity/ATLAS_MASTER_CHECKPOINT_2026-10-18.json
