@@ -99,3 +99,25 @@ test('no source quote or target data can travel backward into the price-blind OI
   legs:[],worlds:[],price_benchmark:r.descriptive_median_no_vig_a};
  assert.throws(()=>O.freezeWorlds(fake),/WORLD_CONTRACT/);
 });
+
+test('descriptive House Mirror benchmark is provider-family balanced rather than book-count weighted',()=>{
+ const f=fixture();
+ f.quotes.push(quote('synthetic-book-three','synthetic-aggregator-y',-150,130,'2026-10-18T11:25:00Z'));
+ const report=H.mirror(f);
+ assert.equal(report.accepted_quote_count,3);
+ assert.equal(report.quoted_provider_families,2);
+ const a=report.provider_family_summaries.find(x=>x.provider_family==='synthetic-aggregator-x');
+ const b=report.provider_family_summaries.find(x=>x.provider_family==='synthetic-aggregator-y');
+ assert.equal(a.book_count,2);
+ assert.equal(b.book_count,1);
+ const book1=110/210/(220/210);
+ const book2=(120/220)/((120/220)+(100/210));
+ const book3=(150/250)/((150/250)+(100/230));
+ approx(a.descriptive_median_no_vig_a,(book1+book2)/2);
+ approx(b.descriptive_median_no_vig_a,book3);
+ approx(report.descriptive_median_no_vig_a,(a.descriptive_median_no_vig_a+b.descriptive_median_no_vig_a)/2);
+ const raw=report.accepted.map(q=>q.proportional_no_vig_a).sort((x,y)=>x-y)[1];
+ assert.ok(Math.abs(report.descriptive_median_no_vig_a-raw)>0.01,
+   'weighting book labels rather than families would bias this intentionally asymmetric fixture');
+ assert.equal(report.independent_fair_probability,null);
+});
