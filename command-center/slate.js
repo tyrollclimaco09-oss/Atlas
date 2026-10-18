@@ -53,14 +53,39 @@
     }catch(e){$('discovery-page-count').textContent='Discovery board unavailable: '+e.message;$('discovery-results').textContent='';}
   }
   function archiveResearchPacket(data){
-    if(data.phase!=='research')return;
-    // Fail closed: never claim an imported packet was archived if the local write failed.
-    const next=D.ingest(readDiscovery(),data);
-    const serialized=D.exportJSON(next);
-    localStorage.setItem(DISCOVERY_STORAGE,serialized);
-    if(localStorage.getItem(DISCOVERY_STORAGE)!==serialized)throw Error('Discovery archive write could not be verified');
-    refreshDiscoveryCensus();
-    renderDiscovery();
+    if(data.phase!=='research')return null;
+    return D.exportJSON(D.ingest(readDiscovery(),data));
+  }
+  function commitImportedResearch(next,packet){
+    // Two browser keys are not an atomic transaction. Guard each write, verify readback,
+    // and restore the previous bytes if either write fails; browser crashes still require reconciliation.
+    const beforeDraft=localStorage.getItem(STORAGE);
+    const beforeArchive=localStorage.getItem(DISCOVERY_STORAGE);
+    const draftBytes=JSON.stringify(next);
+    const archiveBytes=archiveResearchPacket(packet);
+    try{
+      localStorage.setItem(STORAGE,draftBytes);
+      if(localStorage.getItem(STORAGE)!==draftBytes)throw Error('Slate draft readback mismatch');
+      if(archiveBytes!==null){
+        localStorage.setItem(DISCOVERY_STORAGE,archiveBytes);
+        if(localStorage.getItem(DISCOVERY_STORAGE)!==archiveBytes)throw Error('Discovery archive readback mismatch');
+      }
+    }catch(e){
+      const failures=[];
+      for(const [key,original] of [[STORAGE,beforeDraft],[DISCOVERY_STORAGE,beforeArchive]]){
+        try{
+          if(localStorage.getItem(key)===original)continue;
+          if(original===null)localStorage.removeItem(key);
+          else localStorage.setItem(key,original);
+          if(localStorage.getItem(key)!==original)throw Error('Rollback readback mismatch');
+        }catch(restoreError){failures.push(key+': '+restoreError.message);}
+      }
+      throw Error('Research not applied: '+e.message+(failures.length?'; rollback incomplete ('+failures.join('; ')+'). Export both browser records before further changes.':''));
+    }
+    storageOK=true;
+    $('draft-state').textContent='Temporary draft · this browser only';
+    $('draft-state').className='small muted';
+    if(archiveBytes!==null){refreshDiscoveryCensus();renderDiscovery();}
   }
   function persist(){
     if(!run)return;
@@ -345,12 +370,14 @@
       // Validate the current text on every click; the optional delayed preview is never a prerequisite.
       const next=E.importResearch(run,$('import-text').value,Date.now(),$('reuse-research').checked===true);
       const parsedPacket=E.parse($('import-text').value);
-      archiveResearchPacket(parsedPacket);
-      if(next.handoffDrafts)delete next.handoffDrafts[E.parse($('import-text').value).phase];
+      if(next.handoffDrafts)delete next.handoffDrafts[parsedPacket.phase];
+      next.pendingPhase=null;
+      next.updatedAt=new Date().toISOString();
       const candidate=next.candidates.find(c=>c.id===selected)||next.candidates[0];
       const nextStage=candidate?Math.max(0,E.evaluate(next,candidate).next):0;
-      run=next;run.pendingPhase=null;selected=candidate?.id||null;stage=nextStage;pendingImport=null;
-      persist();$('import-dialog').close();render();
+      commitImportedResearch(next,parsedPacket);
+      run=next;selected=candidate?.id||null;stage=nextStage;pendingImport=null;
+      $('import-dialog').close();render();
       toast('Research applied. Your candidates are below—review their sources before continuing.');
       $('candidate-list').scrollIntoView({block:'start',behavior:'instant'});
     }catch(e){
