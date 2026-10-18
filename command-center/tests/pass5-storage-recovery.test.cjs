@@ -20,8 +20,11 @@ test('corrupted stored census rejects import without replacing data',()=>{
  assert.throws(()=>D.ingest(D.importJSON(bad),sample),/Invalid/);
 });
 test('archive and restore writes must be read back before reporting success',()=>{
- assert.match(ui,/if\(localStorage\.getItem\(DISCOVERY_STORAGE\)!==serialized\)throw Error\('Discovery archive write could not be verified'\)/);
+ assert.match(ui,/if\(localStorage\.getItem\(DISCOVERY_STORAGE\)!==archiveBytes\)throw Error\('Discovery archive readback mismatch'\)/);
+ assert.match(ui,/if\(localStorage\.getItem\(STORAGE\)!==draftBytes\)throw Error\('Slate draft readback mismatch'\)/);
  assert.match(ui,/if\(localStorage\.getItem\(DISCOVERY_STORAGE\)!==serialized\)throw Error\('Restored archive write could not be verified'\)/);
  const apply=ui.slice(ui.indexOf("$('apply-import').addEventListener"),ui.indexOf("$('export-slate').addEventListener"));
- assert.ok(apply.indexOf('archiveResearchPacket(parsedPacket)')<apply.indexOf('run=next;'));
+ assert.ok(apply.indexOf('commitImportedResearch(next,parsedPacket)')<apply.indexOf('run=next;'));
+ assert.ok(ui.includes('if(original===null)localStorage.removeItem(key)'));
+ assert.ok(ui.includes('else localStorage.setItem(key,original)'));
 });
