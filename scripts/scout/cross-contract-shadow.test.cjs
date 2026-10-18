@@ -140,3 +140,27 @@ test('Game Sense receipt must be intact and independently feasible, not just a m
  const invalid=fixtures.baseNBA();invalid.players[0].minutes_after=47;
  assert.throws(()=>C.inspectWorkloadAlignment(worldReceipt,G.freezeScenario(invalid)),/BIND_GS_INELIGIBLE/);
 });
+
+test('the paired 30.5 OVER/UNDER markets are exhaustive for integer stat totals',()=>{
+ const input=worldResearch();
+ input.legs[0].comparator='OVER';input.legs[0].threshold=30.5;
+ input.legs[1].comparator='UNDER';input.legs[1].threshold=30.5;
+ input.legs[0].selection='Synthetic QB attempts OVER 30.5';
+ input.legs[1].selection='Synthetic QB attempts UNDER 30.5';
+ const receipt=O.freezeWorlds(input),quote=marketInput(receipt);
+ quote.market.side_a=input.legs[0].selection;
+ quote.market.side_b=input.legs[1].selection;
+ quote.quotes[0].side_a=input.legs[0].selection;
+ quote.quotes[0].side_b=input.legs[1].selection;
+ const joined=C.bindMirror(receipt,quote,'synthetic-over','synthetic-under');
+ assert.equal(joined.no_push_complement_proven_for_integer_counts,true);
+ assert.equal(joined.quote_report.accepted_quote_count,1);
+ assert.equal(joined.execution_authority,false);
+});
+test('different half-point thresholds do not form an exhaustive market, even with only two sampled worlds',()=>{
+ const input=worldResearch();
+ input.legs[0].comparator='OVER';input.legs[0].threshold=30.5;
+ input.legs[1].comparator='UNDER';input.legs[1].threshold=29.5;
+ const receipt=O.freezeWorlds(input),quote=marketInput(receipt);
+ assert.throws(()=>C.bindMirror(receipt,quote,'synthetic-over','synthetic-under'),/BIND_NOT_EXHAUSTIVE_NO_PUSH/);
+});
