@@ -141,3 +141,40 @@ test('a correct SGP stays a synthetic settlement preview; unrelated event requir
  assert.equal(preview.outcomes.length,4);
  approx(preview.hypothetical_expected_profit_cents,60);
 });
+
+test('expression tournament compares only explicitly quoted tickets and never recommends an unverified edge',()=>{
+ const receipt=O.freezeWorlds(fixture());
+ const tickets=[
+  ticket('synthetic-foundation',['synthetic-a'],120),
+  ticket('synthetic-expedition',['synthetic-a','synthetic-b'],250),
+  ticket('synthetic-alt',['synthetic-a-over-33'],110)
+ ];
+ const review=O.compareExpressions(receipt,tickets);
+ assert.equal(review.alternatives.length,3);
+ assert.deepEqual(review.alternatives.map(x=>x.ticket_id),tickets.map(x=>x.ticket_id));
+ approx(review.alternatives[0].hypothetical_expected_profit_cents,10);
+ approx(review.alternatives[1].hypothetical_expected_profit_cents,40);
+ assert.equal(review.alternatives[2].hypothetical_outcome_masses.PUSH,0.1);
+ assert.equal(review.recommended_ticket_id,null);
+ assert.equal(review.approval,null);
+ assert.equal(review.alternatives.every(x=>x.status==='INVESTIGATE'),true);
+ assert.equal(review.promotion_blockers.includes('NO_VERIFIED_PREGAME_JOINT_MODEL'),true);
+ assert.equal(review.portfolio.outcomes.length,4);
+});
+test('round-robin is only a portfolio of separately quoted explicit component tickets',()=>{
+ const f=fixture();f.legs[2].comparator='AT_LEAST';f.legs[2].threshold=34;
+ const receipt=O.freezeWorlds(f);
+ const tickets=[
+  ticket('synthetic-pair-ab',['synthetic-a','synthetic-b'],220,100,'ROUND_ROBIN_COMPONENT'),
+  ticket('synthetic-pair-ac',['synthetic-a','synthetic-a-over-33'],150,100,'ROUND_ROBIN_COMPONENT'),
+  ticket('synthetic-pair-bc',['synthetic-b','synthetic-a-over-33'],175,100,'ROUND_ROBIN_COMPONENT')
+ ];
+ const review=O.compareExpressions(receipt,tickets);
+ assert.equal(review.portfolio.ticket_count,3);
+ assert.equal(review.portfolio.total_stake_cents,300);
+ const w=review.portfolio.outcomes.find(x=>x.world_id==='synthetic-shootout');
+ approx(w.net_profit_cents,220+150+175);
+ const losing=review.portfolio.outcomes.find(x=>x.world_id==='synthetic-defensive');
+ approx(losing.net_profit_cents,-300);
+ assert.equal(review.recommended_ticket_id,null);
+});
