@@ -125,3 +125,35 @@ test('historical and primary docs must each explicitly describe the paused 15-pa
   assert.equal(M.verifyArtifacts(f.m,f.dir).status,'CONFLICT');
  } finally { f.dispose(); }
 });
+
+test('independent Drive restore checks all three exact versioned documents, not just a link',()=>{
+ const header=[source.checkpoint_id,source.anchor_commit_sha].join('\n');
+ const body=source.artifacts.map(item=>[item.path,item.git_blob_sha,
+   fs.readFileSync(path.join(root,item.path),'utf8')].join('\n')).join('\n\n');
+ const copy=header+'\n'+body+'\nEND OF RECOVERY SNAPSHOT\n';
+ const checked=M.verifyRecoveryCopy(source,root,copy);
+ assert.equal(checked.status,'RECOVERY_CONTENT_MATCH',JSON.stringify(checked));
+ assert.equal(checked.matched_artifacts,3);
+ assert.equal(checked.artifact_count,3);
+ assert.equal(checked.limitation,'CALLER_SUPPLIED_PROVIDER_READBACK_NOT_CRYPTOGRAPHIC_PROVIDER_PROOF');
+ const audit=M.audit(source,root,{drive:copy});
+ assert.equal(audit.status,'LOCAL_VERIFIED_EXTERNAL_NOT_PROVEN');
+ assert.equal(audit.recovery.status,'RECOVERY_CONTENT_MATCH');
+ assert.equal(audit.projections[2].status,'POINTER_MATCH_ONLY');
+});
+test('Drive backup missing historical handoff body fails even when summary, SHA and filenames match',()=>{
+ const body=[source.checkpoint_id,source.anchor_commit_sha,
+   ...source.artifacts.map(item=>[item.path,item.git_blob_sha].join(' ')),
+   fs.readFileSync(path.join(root,source.artifacts[0].path),'utf8'),
+   fs.readFileSync(path.join(root,source.artifacts[2].path),'utf8'),
+   'END OF RECOVERY SNAPSHOT'].join('\n');
+ const r=M.verifyRecoveryCopy(source,root,body);
+ assert.equal(r.status,'CONFLICT');
+ assert.ok(r.missing.includes('HISTORICAL_HANDOFF:CONTENT'));
+ assert.equal(M.audit(source,root,{drive:body}).status,'CONFLICT');
+});
+test('recovery comparison refuses self-reported success and missing/invalid readbacks',()=>{
+ assert.equal(M.verifyRecoveryCopy(source,root,null).status,'UNKNOWN');
+ assert.equal(M.verifyRecoveryCopy(source,root,'{\"verified\":true}').status,'CONFLICT');
+ assert.throws(()=>M.verifyRecoveryCopy(source,root,7),/RECOVERY_PAYLOAD/);
+});
