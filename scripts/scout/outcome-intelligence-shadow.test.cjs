@@ -178,3 +178,18 @@ test('round-robin is only a portfolio of separately quoted explicit component ti
  approx(losing.net_profit_cents,-300);
  assert.equal(review.recommended_ticket_id,null);
 });
+
+test('half-point counting-stat thresholds settle without pushes; quarter-point and fractional AT_LEAST are rejected',()=>{
+ const input=fixture();input.legs[2].threshold=33.5;
+ const receipt=O.freezeWorlds(input);
+ const result=O.matrix(receipt,'synthetic-a-over-33','synthetic-b');
+ assert.equal(result.counts.push_unresolved,0);
+ const single=O.settleTickets(receipt,[ticket('synthetic-half',['synthetic-a-over-33'],110)]);
+ assert.equal(single.unresolved_void,false);
+ assert.equal(single.outcomes.find(w=>w.world_id==='synthetic-ground').settlements[0].status,'LOSS');
+ assert.equal(single.outcomes.find(w=>w.world_id==='synthetic-shootout').settlements[0].status,'WIN');
+ const quarter=fixture();quarter.legs[2].threshold=33.25;
+ assert.throws(()=>O.freezeWorlds(quarter),/WORLD_LEG_IDENTITY/);
+ const wrong=fixture();wrong.legs[0].threshold=30.5;
+ assert.throws(()=>O.freezeWorlds(wrong),/WORLD_LEG_IDENTITY/);
+});
