@@ -86,15 +86,43 @@ test('real Chromium: quota rejection prevents research import from applying to s
   const activeRunId=await page.evaluate(()=>JSON.parse(localStorage.getItem('atlas.slate.draft.v1')).id);
   const packet={schema:'atlas.research.v1',phase:'research',runId:activeRunId,candidates:[{scout:{event:'Synthetic Quota Game',startsAt:'2026-10-19T20:00:00Z',market:'Player prop',selection:'Synthetic quota 5+'},verify:{},oracle:{}}]};
   await page.locator('#import-text').fill(JSON.stringify(packet));
+  const before=await page.evaluate(()=>localStorage.getItem('atlas.slate.draft.v1'));
   await page.evaluate(()=>{
     const set=Storage.prototype.setItem;
     Storage.prototype.setItem=function(key,value){if(key==='atlas.discovery.census.v1')throw new DOMException('quota','QuotaExceededError');return set.call(this,key,value);};
   });
   await page.locator('#apply-import').click();
-  await page.waitForFunction(()=>document.querySelector('#import-feedback')?.textContent.includes('Could not apply research: quota'));
-  const result=await page.evaluate(()=>({count:JSON.parse(localStorage.getItem('atlas.slate.draft.v1')).candidates.length,census:localStorage.getItem('atlas.discovery.census.v1')}));
+  await page.waitForFunction(()=>document.querySelector('#import-feedback')?.textContent.includes('Could not apply research: Research not applied: quota'));
+  const result=await page.evaluate(()=>({draft:localStorage.getItem('atlas.slate.draft.v1'),count:JSON.parse(localStorage.getItem('atlas.slate.draft.v1')).candidates.length,census:localStorage.getItem('atlas.discovery.census.v1')}));
   assert.equal(result.count,0);
+  assert.equal(result.draft,before,'A failed second write must roll back the exact previous draft bytes');
   assert.equal(result.census,null);
+  await context.close();
+ }finally{await browser.close();}
+});
+
+test('real Chromium: a rejected draft write never mutates discovery archive',async()=>{
+ const browser=await chromium.launch({headless:true,args:['--no-sandbox']});
+ try{
+  const context=await browser.newContext();
+  const page=await context.newPage();
+  await page.goto(url);
+  await page.locator('#continue-slate').click();
+  await page.locator('#active-slate').waitFor({state:'visible'});
+  await page.locator('#return-with-research').click();
+  const activeRunId=await page.evaluate(()=>JSON.parse(localStorage.getItem('atlas.slate.draft.v1')).id);
+  const packet={schema:'atlas.research.v1',phase:'research',runId:activeRunId,candidates:[{scout:{event:'Synthetic Draft Quota Game',startsAt:'2026-10-19T20:00:00Z',market:'Player prop',selection:'Synthetic draft 4+'}}]};
+  await page.locator('#import-text').fill(JSON.stringify(packet));
+  const before=await page.evaluate(()=>localStorage.getItem('atlas.slate.draft.v1'));
+  await page.evaluate(()=>{
+    const set=Storage.prototype.setItem;
+    Storage.prototype.setItem=function(key,value){if(key==='atlas.slate.draft.v1')throw new DOMException('draft quota','QuotaExceededError');return set.call(this,key,value);};
+  });
+  await page.locator('#apply-import').click();
+  await page.waitForFunction(()=>document.querySelector('#import-feedback')?.textContent.includes('Could not apply research: Research not applied: draft quota'));
+  const after=await page.evaluate(()=>({draft:localStorage.getItem('atlas.slate.draft.v1'),census:localStorage.getItem('atlas.discovery.census.v1')}));
+  assert.equal(after.draft,before);
+  assert.equal(after.census,null);
   await context.close();
  }finally{await browser.close();}
 });
