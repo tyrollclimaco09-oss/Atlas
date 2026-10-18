@@ -67,3 +67,19 @@ jobs:
       - name: Run actual browser tests
         working-directory: command-center/browser-tests
         run: node --test discovery.browser.test.cjs
+
+  outcome-shadow:
+    name: Offline SCOUT and Outcome Intelligence shadow
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Run offline research integrity and scenario settlement checks
+        run: node --test scripts/scout/*.test.cjs
