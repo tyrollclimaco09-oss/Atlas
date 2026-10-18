@@ -11,14 +11,16 @@ test('discovery archive script loads before slate UI and export control exists',
  assert.match(html,/id="discovery-census"/);
  assert.match(html,/id="export-discovery"/);
 });
-test('validated import is archived before slate is applied, with no swallowed write error',()=>{
+test('validated import commits draft and archive with readback before slate is applied',()=>{
  const start=ui.indexOf("$('apply-import').addEventListener");
  const end=ui.indexOf("$('export-slate').addEventListener",start);
  const section=ui.slice(start,end);
  assert.ok(section.indexOf('const next=E.importResearch(')>=0);
- assert.ok(section.indexOf('archiveResearchPacket(parsedPacket);')>section.indexOf('const next=E.importResearch('));
- assert.ok(section.indexOf('run=next;')>section.indexOf('archiveResearchPacket(parsedPacket);'));
- assert.ok(ui.includes('localStorage.setItem(DISCOVERY_STORAGE,serialized)'));
+ assert.ok(section.indexOf('commitImportedResearch(next,parsedPacket);')>section.indexOf('const next=E.importResearch('));
+ assert.ok(section.indexOf('run=next;')>section.indexOf('commitImportedResearch(next,parsedPacket);'));
+ assert.ok(ui.includes('localStorage.setItem(STORAGE,draftBytes)'));
+ assert.ok(ui.includes('localStorage.setItem(DISCOVERY_STORAGE,archiveBytes)'));
+ assert.match(ui,/rollback incomplete/);
  assert.match(ui,/D\.ingest\(readDiscovery\(\),data\)/);
 });
 test('startup accepts larger valid local drafts and exports research separately',()=>{
