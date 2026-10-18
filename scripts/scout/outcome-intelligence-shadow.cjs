@@ -68,7 +68,7 @@ function validate(input){
     seenWorlds.add(w.world_id);
     if(input.weight_origin==='UNESTIMATED')requireValid(w.weight===null,'WORLD_UNESTIMATED');
     else {requireValid(numeric(w.weight)&&w.weight>=0&&w.weight<=1,'WORLD_WEIGHT');mass+=w.weight;}
-    requireValid(Array.isArray(w.stats)&&w.stats.length>=wanted.size&&w.stats.length<=256,'WORLD_STATS');
+    requireValid(Array.isArray(w.stats)&&w.stats.length<=256,'WORLD_STATS');
     const observed=new Set();
     for(const stat of w.stats){
       requireValid(exact(stat,STAT)&&events.has(stat.event_id)&&ident(stat.player_id)&&
