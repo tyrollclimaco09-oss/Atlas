@@ -26,6 +26,9 @@ const exact=(v,keys)=>v!==null&&typeof v==='object'&&!Array.isArray(v)&&
 const ident=v=>typeof v==='string'&&/^synthetic-[A-Za-z0-9_-]{1,80}$/.test(v);
 const numeric=v=>typeof v==='number'&&Number.isFinite(v)&&(!Number.isInteger(v)||Number.isSafeInteger(v));
 const count=v=>Number.isSafeInteger(v)&&v>=0;
+// Counted stats settle as integers; exact half-point totals are push-free.
+const lineThreshold=(comparator,value)=>numeric(value)&&value>=0&&
+  Number.isSafeInteger(value*2)&&(['OVER','UNDER'].includes(comparator)||Number.isSafeInteger(value));
 const stamp=v=>{
   if(typeof v!=='string'||!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{3})?Z$/.test(v))return null;
   const ms=Date.parse(v);
@@ -55,7 +58,7 @@ function validate(input){
     requireValid(exact(l,LEG)&&ident(l.leg_id)&&!legs.has(l.leg_id)&&
       events.has(l.event_id)&&ident(l.player_id)&&typeof l.selection==='string'&&l.selection.trim()!==''&&
       l.selection.length<=250&&Object.hasOwn(METRICS,l.metric)&&l.unit===METRICS[l.metric]&&
-      ['AT_LEAST','AT_MOST','OVER','UNDER'].includes(l.comparator)&&count(l.threshold),'WORLD_LEG_IDENTITY');
+      ['AT_LEAST','AT_MOST','OVER','UNDER'].includes(l.comparator)&&lineThreshold(l.comparator,l.threshold),'WORLD_LEG_IDENTITY');
     const stat=statKey(l);
     // Alternate lines are allowed; identical selections at different thresholds need distinct IDs.
     legs.set(l.leg_id,l);wanted.add(stat);
