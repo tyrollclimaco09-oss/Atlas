@@ -193,3 +193,19 @@ test('half-point counting-stat thresholds settle without pushes; quarter-point a
  const wrong=fixture();wrong.legs[0].threshold=30.5;
  assert.throws(()=>O.freezeWorlds(wrong),/WORLD_LEG_IDENTITY/);
 });
+
+test('three-leg same-game parlays use an explicitly quoted whole-ticket price, never multiplied singles',()=>{
+ const input=fixture();
+ input.legs[2].threshold=33.5;
+ const receipt=O.freezeWorlds(input);
+ const quote=ticket('synthetic-three-leg-sgp',
+   ['synthetic-a','synthetic-b','synthetic-a-over-33'],900,100,'SGP');
+ const result=O.settleTickets(receipt,[quote]);
+ assert.equal(result.ticket_count,1);
+ assert.equal(result.unresolved_void,false);
+ assert.equal(result.outcomes.find(w=>w.world_id==='synthetic-shootout').settlements[0].status,'WIN');
+ assert.equal(result.outcomes.find(w=>w.world_id==='synthetic-ground').settlements[0].status,'LOSS');
+ approx(result.hypothetical_expected_profit_cents,300);
+ assert.equal(result.execution_authority,false);
+ assert.equal(O.compareExpressions(receipt,[quote]).recommended_ticket_id,null);
+});
