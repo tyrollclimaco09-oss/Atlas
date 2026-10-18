@@ -46,3 +46,36 @@ node --test scripts/scout/*.test.cjs
 under read-only GitHub permissions and without installing sports/provider SDKs. Existing frontend provenance/regression and real Chromium smoke jobs remain separate. Individual job status and exact test counts must be read from GitHub Actions; this document is **not** a substitute for CI evidence. DO NOT add independent counts from overlapping historical suites or equate green synthetic contracts with prediction accuracy.
 
 Review branch: `review/pass0-slate-regression-2026-10-16`.
+
+## R-01 retrospective reconciliation: cross-module gates
+
+Review continuation, October 18, 2026. **No original historical artifacts were rewritten. Floot remains parked.** Existing SCOUT/GS-01/HM-01/OI-01 owners were reused rather than adding a competing forecasting node. The additive `scripts/scout/cross-contract-shadow.cjs` is an offline testable boundary; it is neither a production API nor a Final Gate permission.
+
+### Confirmed cross-module gaps and targeted remedies
+
+| Gap / initial risk | Verified R-01 behavior | Still unproven |
+| --- | --- | --- |
+| HM-01 accepts any syntactically valid `research_receipt_sha256`; a standalone report cannot prove linkage | `bindMirror` requires the actual OI-01 frozen checksum, study, freeze timestamp, event/start, and exact market selection on both sides | Independent clock, author identity, public source rights and provider certification |
+| A labelled "no-push" two-way market may actually push or leave an unpriced gap | Check the two sides are exhaustive on the *whole nonnegative-integer domain*, not merely on sampled synthetic worlds: ≥K vs ≤K−1, or true half-point complements (including mixed comparator types). Integer OVER/UNDER equality or split thresholds are rejected. | External book-specific settlement wording and the natural-language selection semantics |
+| OI-01 previously rejected legitimate half-point counting prop thresholds | OI accepts exact nonnegative integer/half-integer thresholds for OVER/UNDER; AT_LEAST/AT_MOST remain integer-only. World stat observations remain integer, so 30.5 is no-push and 30 can push. Quarter-point or unsupported fractions reject. | Other sportsbook market definitions, floating/stat decimal markets |
+| OI-01 ticket cardinality allowed up to eight leg IDs but limited SGP/CROSS_GAME to exactly two | Whole-ticket SGP and CROSS_GAME settlement now accept 2–8 exact legs, while DOUBLE remains 2 and TRIPLE remains 3. Same-game / multi-game identities are still enforced and each whole combo **must** supply its own quoted synthetic price. | Real package odds, venue correlation policies, push reductions, empirically valid multi-leg distributions |
+| GS-01 minute feasibility did not bind to hypothetical OI scenarios | `inspectWorkloadAlignment` verifies a GS-01 receipt is intact/eligible, earlier than the OI freeze, references the same event and scenario, and that **every declared player** has the exact after-allocation minutes in each matching OI world. Missing players, contradicting minutes or unmatched scenarios fail/mark partial coverage. | Team/player canonical IDs, possessions-to-points and assists causality, shot/rebound distributions and independent weights |
+| Independent tests passing did not prove interoperation | Added explicit cross-contract negative fixtures and CI execution through the existing offline SCOUT job, without touching canonical UI, Supabase, live transport or wagering | Runtime-bound real feed, independent frozen prediction/label outcomes, live genuine app ingestion |
+
+### Additional reconciliation risks retained rather than papered over
+
+- **Quote-unit mismatch:** Legacy `command-center/pricing.js` accepts numeric-looking decimal American odds; OI-01 permits finite fractional numeric odds; HM-01 intentionally accepts *safe integers only*. Do not silently coerce or connect these interfaces until a versioned sportsbook quote schema and explicit normalization/test policy exists.
+- **World-price boundaries:** A market-derived proportional no-vig benchmark is not an independently estimated player probability. HM-01 remains runnable standalone for market description but must **not** be treated as bound to research unless the R-01 `bindMirror` gate passes. Even a passing digest match is local, not an independent witness.
+- **Minute-only Game Sense check:** R-01 does not validate non-minute player statistics, possessions/game-score conservation, player/team external mappings, joint scenario weights, or causal effects. `PARTIAL_SCENARIO_COVERAGE` explicitly says there are worlds it has not checked.
+- **Settlement ambiguity:** Whole-point OVER/UNDER can push. Multi-leg pushes remain unresolved absent actual venue rules. Portfolio theoretical cents are not proof of the sportsbook's rounding, settlement or cash value.
+- **Operator authority:** Both bridge functions explicitly return research-only synthetic output with `execution_authority:false`. No original `slate-engine.js`, human Final Gate, production workflow, site, database or external credential was changed.
+
+### CI evidence and stop line
+
+Review branch `review/pass0-slate-regression-2026-10-16`, run
+[39162653841](https://github.com/tyrollclimaco09-oss/Atlas/actions/runs/39162653841):
+offline SCOUT/Game Sense/Outcome/House Mirror/cross-contract **261/261 PASS**,
+Command Center regressions **157/157 PASS**, real Chromium **5/5 PASS**,
+original snapshot-custody job PASS. These are overlapping and synthetic/mechanical suites; they are not independent performance datasets or license to remove any of the inherited production blockers.
+
+**Next highest-information experiment:** before any calibrated joint probability or actual ticket ranking, procure one legitimately usable, prospectively archived NFL passing-attempt opportunity feed (or run the already documented NBA opportunity pilot), freeze a baseline and exact population before labels/quotes, audit observed role/volume vs Game Sense, and preserve every missing/abstained case. Only after this should real outcome and exact-book quote integrations be reconsidered.
