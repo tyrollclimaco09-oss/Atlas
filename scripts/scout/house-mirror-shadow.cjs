@@ -72,7 +72,14 @@ function mirror(input){
   }
   accepted.sort((a,b)=>a.book_id.localeCompare(b.book_id,'en'));
   excluded.sort((a,b)=>a.book_id.localeCompare(b.book_id,'en'));
-  const benchmark=accepted.length?median(accepted.map(x=>x.proportional_no_vig_a)):null;
+  // Group all displayed books by upstream provider first. A prolific wrapper must
+  // never earn extra benchmark weight simply by exposing more book labels.
+  const familySummaries=[...diversity.keys()].sort().map(family=>{
+    const members=accepted.filter(q=>q.provider_family===family);
+    return {provider_family:family,book_count:members.length,
+      descriptive_median_no_vig_a:median(members.map(q=>q.proportional_no_vig_a))};
+  });
+  const benchmark=median(familySummaries.map(x=>x.descriptive_median_no_vig_a));
   const bestA=accepted.length?[...accepted].sort((a,b)=>b.american_a-a.american_a||a.book_id.localeCompare(b.book_id,'en'))[0]:null;
   const bestB=accepted.length?[...accepted].sort((a,b)=>b.american_b-a.american_b||a.book_id.localeCompare(b.book_id,'en'))[0]:null;
   const correlated=[...diversity.entries()].filter(([,count])=>count>1).map(([family,count])=>({provider_family:family,book_count:count}));
@@ -81,7 +88,7 @@ function mirror(input){
     price_independent_forecast:'NOT_PROVEN_BY_HASH',research_receipt_sha256:input.research_receipt_sha256,
     market_identity:JSON.parse(canonicalJSON(market)),as_of:input.as_of,raw_quote_count:input.quotes.length,
     accepted_quote_count:accepted.length,rejected_quote_count:excluded.length,
-    quoted_provider_families:diversity.size,provider_overlap:correlated,
+    quoted_provider_families:diversity.size,provider_overlap:correlated,provider_family_summaries:familySummaries,
     accepted,excluded,descriptive_median_no_vig_a:benchmark,
     best_displayed_a:bestA?{book_id:bestA.book_id,american_odds:bestA.american_a}:null,
     best_displayed_b:bestB?{book_id:bestB.book_id,american_odds:bestB.american_b}:null,
