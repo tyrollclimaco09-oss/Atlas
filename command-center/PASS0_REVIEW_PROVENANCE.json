@@ -16,7 +16,8 @@
     "tests/pass3-discovery-ui.test.cjs": "74770b599e2fb1d46295f1a17642aa0b7d8567d6",
     "tests/pass4-discovery-board.test.cjs": "ef7dc93d9ac4ac460cfbfd318ec2aadbfa569e58",
     "tests/pass5-storage-recovery.test.cjs": "0882314076d529268579125231e3ed6d9faa6d1d",
-    "browser-tests/discovery.browser.test.cjs": "cc01aa565a8118d0a3a497f0a95fe9d11745c3ac"
+    "browser-tests/discovery.browser.test.cjs": "cc01aa565a8118d0a3a497f0a95fe9d11745c3ac",
+    "tests/pass10-floot-bridge.test.cjs": "ada9e5a9f2af6eb89f3b8abf88584da6ccdf1aa2"
   },
   "knownBlockers": [
     "Original source-preservation tests expect original snapshot bytes and may fail against modified review assets",
