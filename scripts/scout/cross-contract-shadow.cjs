@@ -16,10 +16,19 @@ function complements(a,b){
  const same=a.event_id===b.event_id&&a.player_id===b.player_id&&
    a.metric===b.metric&&a.unit===b.unit;
  if(!same)return false;
- const high=a.comparator==='AT_LEAST'?a:b.comparator==='AT_LEAST'?b:null;
- const low=a.comparator==='AT_MOST'?a:b.comparator==='AT_MOST'?b:null;
- return high!==null&&low!==null&&high!==low&&high.threshold>=1&&
-   low.threshold===high.threshold-1;
+ // With integer-settled stats, OVER 30.5 is equivalent to AT_LEAST 31;
+ // UNDER 30.5 is equivalent to AT_MOST 30. Whole-number OVER/UNDER
+ // can PUSH at equality and are never certified no-push here.
+ const lowerWinBound=leg=>leg.comparator==='AT_LEAST'&&Number.isSafeInteger(leg.threshold)
+   ?leg.threshold:leg.comparator==='OVER'&&leg.threshold%1===0.5
+   ?Math.ceil(leg.threshold):null;
+ const upperWinBound=leg=>leg.comparator==='AT_MOST'&&Number.isSafeInteger(leg.threshold)
+   ?leg.threshold:leg.comparator==='UNDER'&&leg.threshold%1===0.5
+   ?Math.floor(leg.threshold):null;
+ const pairs=[[lowerWinBound(a),upperWinBound(b)],
+   [lowerWinBound(b),upperWinBound(a)]];
+ return pairs.some(([minHigh,maxLow])=>minHigh!==null&&maxLow!==null&&
+   minHigh>=1&&maxLow===minHigh-1);
 }
 function bindMirror(worldReceipt,marketInput,sideAId,sideBId){
  const world=O.readReceipt(worldReceipt);
