@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#0a0f19">
 <meta name="description" content="ATLAS Operator Remote: review-only, local prompt launcher for connected ChatGPT plugins.">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; connect-src 'none'; form-action 'none'; base-uri 'none'; object-src 'none'">
-<title>ATLAS · Operator Remote</title>
+<title>ATLAS · Operator Remote v2</title>
 <style>
 :root{color-scheme:dark;--bg:#080d16;--panel:#101a2a;--panel2:#152237;--edge:#2b3b52;--text:#eaf0fb;--muted:#9cadc4;--accent:#7bafff;--mint:#95e2c0;--amber:#edc780;--red:#f4a3a5;--round:16px;font:15px/1.5 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
 *{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 85% 0%,#172744 0,transparent 38%),var(--bg);color:var(--text)}
@@ -19,16 +19,16 @@ header{display:flex;align-items:center;justify-content:space-between;gap:12px;ma
 .deck{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(250px,.75fr);gap:15px;margin-top:24px}.panel{background:var(--panel);border:1px solid var(--edge);border-radius:17px;padding:21px}.panel h2{font-size:1.06rem;margin:0 0 7px}.panel p{margin:0 0 15px;color:var(--muted);font-size:.86rem}textarea{width:100%;min-height:158px;border:1px solid #435775;background:#09111e;color:#d4e5ff;border-radius:12px;padding:14px;font:13px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;resize:vertical}.row{display:flex;flex-wrap:wrap;align-items:center;gap:9px;margin-top:13px}.btn{padding:11px 16px;border:1px solid #688cbd;background:#244871;color:#fff;border-radius:10px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:6px;justify-content:center}.btn.secondary{background:#17283f;border-color:var(--edge);color:var(--text)}.btn:hover{filter:brightness(1.14)}#copy-status{font-size:.8rem;color:var(--mint);min-height:20px}.links{display:grid;gap:9px}.links a{display:flex;justify-content:space-between;gap:8px;text-decoration:none;padding:11px 13px;background:#172438;border:1px solid var(--edge);border-radius:10px;font-size:.91rem}.links a:hover{border-color:#5a81ac}.links a span{color:var(--muted)}.warning{border-left:3px solid var(--amber);padding:10px 13px;color:#dac8a9;background:#342a201f;border-radius:5px;font-size:.84rem;margin-top:15px}footer{color:var(--muted);font-size:.77rem;margin-top:30px;line-height:1.7}footer strong{color:var(--text)}
 @media(max-width:900px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.deck{grid-template-columns:1fr}}@media(max-width:530px){.wrap{width:min(100% - 22px,1100px);padding-top:15px}.hero{padding:20px}.stats{grid-template-columns:repeat(3,1fr)}.stat{padding:10px}.stat b{font-size:1.2rem}.stat span{font-size:.69rem}.grid{gap:9px}.action{padding:14px;min-height:143px}.panel{padding:16px}header{margin-bottom:16px}.sectionheading{align-items:start;flex-direction:column}}
 @media(prefers-reduced-motion:reduce){.action{transition:none}.action:hover{transform:none}}
-</style>
+[hidden]{display:none!important}.kits{margin-top:25px}.kit-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px}.kit{border:1px solid var(--edge);border-radius:12px;padding:16px;background:var(--panel);color:var(--text);text-align:left}.kit b,.kit small{display:block}.kit small{font-size:.77rem;color:var(--muted);margin-top:7px}.kit[aria-pressed="true"]{border-color:var(--mint);background:#183139}.plughub{margin-top:20px;padding:17px;background:var(--panel);border:1px solid var(--edge);border-radius:16px}.plughub h2{font-size:1rem;margin:0 0 6px}.plughub p{font-size:.81rem;color:var(--muted)}.provider-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}.provider{border:1px solid var(--edge);border-radius:10px;padding:11px;background:#0c1625}.provider[data-routed="true"]{border-color:var(--mint);background:#172e35}.provider b,.provider small,.provider em{display:block}.provider b{font-size:.87rem}.provider small{font-size:.72rem;color:var(--muted)}.provider em{font-size:.69rem;color:var(--amber);font-style:normal;margin-top:6px}.gate{margin-top:14px;border:1px solid #766649;border-radius:10px;padding:13px;background:#2d291b}.gate label{display:flex;gap:10px;align-items:start}.gate input{accent-color:var(--mint);width:20px;height:20px;flex:none}.gate small{display:block;color:var(--amber);margin-top:8px}.mode-state{font-size:.77rem;color:var(--mint);font-weight:700;margin-top:9px}@media(max-width:900px){.provider-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(max-width:530px){.kit-grid{grid-template-columns:1fr}.provider-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}</style>
 </head>
 <body>
 <div class="wrap">
-<header><div class="logo"><span class="mark" aria-hidden="true">A</span><span>ATLAS <span style="color:#7bafff">/</span> REMOTE</span></div><span class="version">OPERATOR v1.0 · REVIEW</span></header>
+<header><div class="logo"><span class="mark" aria-hidden="true">A</span><span>ATLAS <span style="color:#7bafff">/</span> REMOTE</span></div><span class="version">OPERATOR v2.0 · REVIEW</span></header>
 <main>
 <section class="hero" aria-labelledby="hero-title">
   <div class="eyebrow">Control the workflow · Keep the evidence</div>
   <h1 id="hero-title">One remote. Every ATLAS tool.</h1>
-  <p>Choose an action, copy its command, and send it to ChatGPT. ChatGPT uses your connected plugins; this static file cannot call your accounts, sync data, or change approvals itself.</p>
+  <p>Choose an action or read-only workflow, inspect the plugin route, then copy its command into ChatGPT. ChatGPT uses your connected plugins; this static file cannot call your accounts, sync data, or change approvals itself.</p>
   <span class="ribbon">REVIEW ONLY · HUMAN FINAL GATE</span>
 </section>
 <div class="stats" aria-label="Saved checkpoint, not live telemetry">
@@ -37,7 +37,7 @@ header{display:flex;align-items:center;justify-content:space-between;gap:12px;ma
   <div class="stat"><span>Plugin sync</span><b>Manual</b><small>Fresh checks in chat</small></div>
 </div>
 <section aria-labelledby="actions-title">
- <div class="sectionheading"><h2 id="actions-title">Choose a command</h2><p>8 deliberate actions · no silent execution</p></div>
+ <div class="sectionheading"><h2 id="actions-title">Choose a command</h2><p>8 scoped actions · 3 read-only workflow kits</p></div>
  <div class="grid" id="actions">
   <button class="action" type="button" data-action="STATUS" aria-pressed="true"><span class="symbol" aria-hidden="true">⌁</span><strong>Live status</strong><small>Read current CI, saves and availability.</small><span class="type">READ ONLY</span></button>
   <button class="action" type="button" data-action="MASTERSAVE" aria-pressed="false"><span class="symbol" aria-hidden="true">▣</span><strong>MasterSave</strong><small>Preserve changes and verify readbacks.</small><span class="type">REVIEW WRITES</span></button>
@@ -49,12 +49,33 @@ header{display:flex;align-items:center;justify-content:space-between;gap:12px;ma
   <button class="action" type="button" data-action="RESUME" aria-pressed="false"><span class="symbol" aria-hidden="true">▶</span><strong>Resume Pass 1</strong><small>Start research only, on your command.</small><span class="type">REVIEW WORK</span></button>
  </div>
 </section>
+
+<section class="kits" aria-labelledby="kits-title">
+ <div class="sectionheading"><h2 id="kits-title">Read-only workflow kits</h2><p>One command, multiple checks. Never automatic writes.</p></div>
+ <div class="kit-grid">  <button class="kit" type="button" data-routine="PREFLIGHT" aria-pressed="false"><b>Open shift</b><small>Check which systems actually answer before doing anything else</small></button>
+  <button class="kit" type="button" data-routine="RECOVERY" aria-pressed="false"><b>Recovery scan</b><small>Reconstruct the pinned context and flag drift without changing anything</small></button>
+  <button class="kit" type="button" data-routine="RESEARCH_PREP" aria-pressed="false"><b>Reality Forge prep</b><small>Review the frozen roadmap, dependencies and readiness, without resuming research</small></button></div>
+</section>
+<section class="plughub" aria-labelledby="hub-title">
+ <h2 id="hub-title">Plugin route · <span id="route-name">STATUS</span></h2>
+ <p id="route-summary" aria-live="polite">Expected tools for this command. Availability is not checked by this static page.</p>
+ <div class="provider-grid">  <div class="provider" data-provider="github" data-routed="false"><b>GitHub</b><small>Versioned evidence and code</small><em>Not live-checked</em></div>
+  <div class="provider" data-provider="notion" data-routed="false"><b>Notion</b><small>Human-readable ATLAS Codex</small><em>Not live-checked</em></div>
+  <div class="provider" data-provider="create_state" data-routed="false"><b>Create State</b><small>Semantic project context and short-lived handoffs</small><em>Not live-checked</em></div>
+  <div class="provider" data-provider="drive" data-routed="false"><b>Google Drive</b><small>Independent recovery copy</small><em>Not live-checked</em></div>
+  <div class="provider" data-provider="linear" data-routed="false"><b>Linear</b><small>Optional research action tracking</small><em>Not live-checked</em></div>
+  <div class="provider" data-provider="tldraw" data-routed="false"><b>tldraw</b><small>Editable visual planning when tools are exposed</small><em>Not live-checked</em></div>
+  <div class="provider" data-provider="figma" data-routed="false"><b>Figma</b><small>Editable design and FigJam diagrams</small><em>Not live-checked</em></div></div>
+ <p>Highlighted tools are <strong>expected</strong>, not verified online. Actual connections and permissions must be rechecked inside ChatGPT.</p>
+</section>
 <section class="deck" aria-labelledby="launch-title">
  <div class="panel">
   <h2 id="launch-title">ChatGPT launch prompt</h2>
   <p id="action-summary">Selected: Live status. This reads connected sources without changing them.</p>
   <label class="eyebrow" for="command">Copy this into your ATLAS chat</label>
   <textarea id="command" readonly spellcheck="false" aria-describedby="copy-status"></textarea>
+  <div id="execute-gate" class="gate" hidden><label><input id="execute-confirm" type="checkbox"><span>I explicitly approve this specific review-only action. No production changes, bets or plugin installation.</span></label><small>Unchecked generates a plan only. It must NOT start research or save anything.</small></div>
+  <div class="mode-state" id="mode-state" role="status">READ ONLY — fresh tool checks required.</div>
   <div class="row">
     <button class="btn" id="copy" type="button">Copy command</button>
     <a class="btn secondary" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer">Open ChatGPT ↗</a>
@@ -67,7 +88,7 @@ header{display:flex;align-items:center;justify-content:space-between;gap:12px;ma
   <p>Verified references from the October 18 checkpoint. They may be older than the current branch.</p>
   <div class="links">
     <a href="https://github.com/tyrollclimaco09-oss/Atlas/blob/review/pass0-slate-regression-2026-10-16/docs/continuity/ATLAS_MASTER_CHECKPOINT_2026-10-18.json" target="_blank" rel="noopener noreferrer">GitHub checkpoint <span>↗</span></a>
-    <a href="https://github.com/tyrollclimaco09-oss/Atlas/blob/review/pass0-slate-regression-2026-10-16/docs/continuity/ATLAS_OPERATOR_REMOTE_V1.json" target="_blank" rel="noopener noreferrer">Command registry <span>↗</span></a>
+    <a href="https://github.com/tyrollclimaco09-oss/Atlas/blob/review/pass0-slate-regression-2026-10-16/docs/continuity/ATLAS_OPERATOR_REMOTE_V2.json" target="_blank" rel="noopener noreferrer">Command registry <span>↗</span></a>
     <a href="https://app.notion.com/p/d52957fa69c74dfebf739c8f8a5574cf" target="_blank" rel="noopener noreferrer">Notion ATLAS Codex <span>↗</span></a>
     <a href="https://docs.google.com/document/d/1BT5g0vw6ReyzXTNkWUnpxYplgzndj3Xkkuyno6Iuvwg/edit" target="_blank" rel="noopener noreferrer">Drive recovery copy <span>↗</span></a>
     <a href="https://github.com/tyrollclimaco09-oss/Atlas/actions/runs/39177370914" target="_blank" rel="noopener noreferrer">Last pinned CI proof <span>↗</span></a>
@@ -82,51 +103,71 @@ header{display:flex;align-items:center;justify-content:space-between;gap:12px;ma
 <script>
 (function(){
 'use strict';
-var repo='tyrollclimaco09-oss/Atlas';
-var branch='review/pass0-slate-regression-2026-10-16';
-var registry='docs/continuity/ATLAS_OPERATOR_REMOTE_V1.json';
-var registryPin='05d0adef0e175fe0ac60174a9360aae432df8ea5';
-var labels={STATUS:'Live status',MASTERSAVE:'MasterSave',RESTORE:'Restore context',AUDIT:'Integrity audit',GRAPH:'Architecture map',PLUGINS:'Plugin check',ARCIII:'Arc III roadmap',RESUME:'Resume Pass 1'};
-var summaries={
- STATUS:'Read connected evidence and return real current status. No writes.',
- MASTERSAVE:'Operator-triggered review-only saves, followed by verified readbacks.',
- RESTORE:'Load the checkpoint; do not resume research automatically.',
- AUDIT:'Compare pinned GitHub, Notion, Create State and Drive.',
- GRAPH:'Visualize the real ATLAS dependency and continuity graph.',
- PLUGINS:'Confirm actual available plugins and permission boundaries.',
- ARCIII:'Inspect the 15-pass roadmap, 0 formal closes. Do not start a pass.',
- RESUME:'Deliberate launch of Arc III Pass 1 research only; no execution.'
-};
-var prompt=function(id){
- return 'ATLAS OPERATOR REMOTE v1 — '+id+'\n'
- +'Use connected plugins to perform the '+labels[id]+' command I selected.\n'
- +'First read the actual versioned command registry from GitHub:\n'
- +'Repository: '+repo+'\n'
- +'Branch: '+branch+'\n'
- +'Path: '+registry+'\n'
- +'Pinned registry commit: '+registryPin+' (read this immutable GitHub revision, not an unreviewed mutable copy)\n'
- +'Execute only the action with id '+id+' and obey its review-only safety boundaries.\n'
- +'Reverify sources/permissions on this turn; report real readbacks, missing proof, and exact GitHub evidence.\n'
- +'Never silently deploy, place bets, install plugins, or promote passes. Do not claim success without verified tool results.';
-};
-var box=document.getElementById('command'),buttons=[].slice.call(document.querySelectorAll('[data-action]'));
-function choose(id){
- if(!Object.prototype.hasOwnProperty.call(labels,id))return;
- buttons.forEach(function(b){b.setAttribute('aria-pressed',String(b.getAttribute('data-action')===id));});
- document.getElementById('action-summary').textContent='Selected: '+labels[id]+'. '+summaries[id];
- box.value=prompt(id);
+/* Generated from versioned registry; CI compares this payload with registry JSON. */
+var remoteRegistry={"schema":"atlas.operator-remote.v2","status":"REVIEW_ONLY_NOT_DEPLOYED","prior_v1_registry_commit":"05d0adef0e175fe0ac60174a9360aae432df8ea5","checkpoint_id":"ATLAS-ARCIII-20261018-MASTERSAVE-01","authority":{"repository":"tyrollclimaco09-oss/Atlas","review_branch":"review/pass0-slate-regression-2026-10-16","master_manifest":"docs/continuity/ATLAS_MASTER_CHECKPOINT_2026-10-18.json","handoff":"docs/ARCIII_REALITY_FORGE_RESUME_HANDOFF_2026-10-18.md","master_receipt":"docs/continuity/ATLAS_MASTERSAVE_VERIFICATION_2026-10-18.md"},"safeguards":{"auto_bets":false,"main_or_production_writes":false,"automatic_plugin_install":false,"background_operations":false,"store_credentials":false,"human_final_gate":true,"close_arc_iii_pass_without_evidence":false,"floot":"PARKED","data_roles":["PINNED_EVIDENCE","LIVE_CHECK_REQUIRED","SECONDARY_INDEX","RECOVERY_COPY"],"report_states":["MATCH","PARTIAL","UNKNOWN","CONFLICT"],"workflow_phases":["PREVIEW","OPERATOR_REQUESTED_REVIEW_ONLY"]},"providers":[{"id":"github","name":"GitHub","role":"Versioned evidence and code","authority":"PINNED_EVIDENCE","live_status":"NOT_CHECKED","fallback":"Use the existing frozen handoff and declare current HEAD UNKNOWN"},{"id":"notion","name":"Notion","role":"Human-readable ATLAS Codex","authority":"SECONDARY_INDEX","live_status":"NOT_CHECKED","fallback":"Reference the pinned GitHub handoff directly"},{"id":"create_state","name":"Create State","role":"Semantic project context and short-lived handoffs","authority":"SECONDARY_INDEX","live_status":"NOT_CHECKED","fallback":"Read the versioned handoff, never infer missing memories"},{"id":"drive","name":"Google Drive","role":"Independent recovery copy","authority":"RECOVERY_COPY","live_status":"NOT_CHECKED","fallback":"Mark backup UNKNOWN; keep authoritative GitHub source"},{"id":"linear","name":"Linear","role":"Optional research action tracking","authority":"SECONDARY_INDEX","live_status":"NOT_CHECKED","fallback":"Use existing GitHub handoff's open loops"},{"id":"tldraw","name":"tldraw","role":"Editable visual planning when tools are exposed","authority":"SECONDARY_INDEX","live_status":"NOT_CHECKED","fallback":"Mermaid graph text in GitHub"},{"id":"figma","name":"Figma","role":"Editable design and FigJam diagrams","authority":"SECONDARY_INDEX","live_status":"NOT_CHECKED","fallback":"Mermaid graph text in GitHub"}],"actions":[{"id":"STATUS","name":"Live status","scope":"READ_ONLY","route":["github","notion","create_state","drive"],"evidence":"Fresh CI/head and each available provider readback","instruction":"Read the current review-branch HEAD, the latest completed CI and individual job conclusions, the frozen checkpoint, and fresh Notion, Create State and Drive observations. Display MATCH/PARTIAL/UNKNOWN/CONFLICT per surface with retrieval time and source. Keep operational health UNKNOWN where unavailable."},{"id":"MASTERSAVE","name":"MasterSave","scope":"REVIEW_WRITE","route":["github","notion","create_state","drive"],"evidence":"Exact blob SHA and CI result, plus post-write readbacks of every changed mirror","instruction":"After explicit execution consent, compare reviewed GitHub evidence and checkpoint with each source. Save only meaningful deltas on the existing review branch and secondary indexes/backups if appropriate; verify each write with a fresh provider readback. Preserve old anchors and never silently call a partial save complete. Stop before main, production, Supabase writes, or betting execution."},{"id":"RESTORE","name":"Restore context","scope":"READ_ONLY","route":["github","create_state","notion","drive"],"evidence":"Pinned GitHub handoff, current HEAD and conflict report","instruction":"Restore from the exact pinned GitHub Arc III handoff and compare historical checkpoint with current review work. Treat Create State, Notion and Drive as secondary. Report the current pause point with blockers and never start an Arc III pass automatically."},{"id":"AUDIT","name":"Integrity audit","scope":"READ_ONLY","route":["github","drive","notion","create_state"],"evidence":"Verified Git blob digests, actual CI jobs and full recovery copy readback","instruction":"Recheck pinned source blob identities, reviewed branch, latest CI jobs, all three exact Drive snapshot documents and both knowledge pointers. Distinguish content match from provider/cryptographic authenticity. Return UNKNOWN on missing evidence and CONFLICT on disagreement. No writes."},{"id":"GRAPH","name":"Architecture map","scope":"READ_ONLY","route":["github","tldraw","figma"],"evidence":"Versioned architecture source and explicit node status","instruction":"Load architecture and current Arc III handoff from GitHub, then present a diagram showing inputs, outputs, dependencies, Human Final Gate and blockers. Use tldraw or Figma only when actual tools are available; otherwise render Mermaid and keep GitHub source authoritative. Do not write a diagram without separate authorization."},{"id":"PLUGINS","name":"Plugin check","scope":"READ_ONLY","route":["github","notion","create_state","drive","linear","tldraw","figma"],"evidence":"Provider-specific connection/permission/tool availability observed in this chat","instruction":"Enumerate usable linked tools and verify capabilities with read-only calls where reasonable; show AVAILABLE, LIMITED, UNAVAILABLE or NOT_CHECKED and which ATLAS action each can support. Do not install apps or infer connectivity from this HTML file."},{"id":"ARCIII","name":"Arc III roadmap","scope":"READ_ONLY","route":["github","notion"],"evidence":"15-pass roadmap with signed/unsigned distinction and source links","instruction":"Show the verified pause point for The Reality Forge: 15 planned passes, 0 formally signed off; preserve distinction from earlier engineering pass names. Do not initiate a pass."},{"id":"RESUME","name":"Resume Pass 1","scope":"REVIEW_WORK","route":["github","notion","create_state"],"evidence":"Original Arc III handoff, independent artifacts, evidence-backed Pass 1 findings","instruction":"Only after explicit execution consent, start Pass 1/15 Master Reconciliation using the verified handoff and original preserved files. Classify DONE/PARTIAL/UNVERIFIED/BLOCKED, separate other pass lineages, and preserve review notes. No production changes, automatic betting, Floot work, or signoff without accepted proof."}],"routines":[{"id":"PREFLIGHT","name":"Open shift","scope":"READ_ONLY","steps":["STATUS","PLUGINS"],"description":"Check which systems actually answer before doing anything else"},{"id":"RECOVERY","name":"Recovery scan","scope":"READ_ONLY","steps":["RESTORE","AUDIT"],"description":"Reconstruct the pinned context and flag drift without changing anything"},{"id":"RESEARCH_PREP","name":"Reality Forge prep","scope":"READ_ONLY","steps":["ARCIII","GRAPH","STATUS"],"description":"Review the frozen roadmap, dependencies and readiness, without resuming research"}],"result_contract":{"required":["action_id","observed_at","sources","result","remaining_blockers"],"source_evidence":["provider","source_ref","observed_at","status"],"classification":["MATCH","PARTIAL","UNKNOWN","CONFLICT"],"narrative_rule":"A pasted or generated report is not independent provider attestation. Do not infer write or betting success from a message."}};
+var registryPin='6e9910d8e4b6858853b41782d984a391674aeef9';
+var remoteRegistryPath='docs/continuity/ATLAS_OPERATOR_REMOTE_V2.json';
+var actions=Object.create(null),routines=Object.create(null);
+remoteRegistry.actions.forEach(function(x){actions[x.id]=x;});
+remoteRegistry.routines.forEach(function(x){routines[x.id]=x;});
+var chosen='STATUS',routine=null;
+var box=document.getElementById('command');
+var consent=document.getElementById('execute-confirm');
+var buttons=[].slice.call(document.querySelectorAll('[data-action]'));
+var kits=[].slice.call(document.querySelectorAll('[data-routine]'));
+var providers=[].slice.call(document.querySelectorAll('[data-provider]'));
+function steps(){return routine?routines[routine].steps.map(function(id){return actions[id];}):[actions[chosen]];}
+function buildPrompt(){
+ var jobs=steps(),impact=jobs.some(function(x){return x.scope!=='READ_ONLY';});
+ var authorized=impact&&consent.checked&&!routine;
+ var label=routine?'ROUTINE '+routine:'ACTION '+chosen;
+ var lines=[
+ 'ATLAS OPERATOR REMOTE v2 — '+label,
+ 'Repository: '+remoteRegistry.authority.repository,
+ 'Branch: '+remoteRegistry.authority.review_branch,
+ 'Path: '+remoteRegistryPath,
+ 'Pinned registry commit: '+registryPin+' — read this exact immutable commit; do not trust unreviewed HEAD.',
+ 'Checkpoint ID: '+remoteRegistry.checkpoint_id,
+ 'This is operator intent, not a claim of plugin connection or verified evidence.',
+ 'Perform only these scoped steps in order:'
+ ];
+ jobs.forEach(function(x,i){lines.push((i+1)+'. '+x.id+' ['+x.scope+']: '+x.instruction);lines.push('   Expected evidence: '+x.evidence);});
+ lines.push(impact?(authorized?'MODE: OPERATOR_APPROVED_REVIEW_ONLY; I explicitly approved this review action in the remote. Verify provider results after work.':'MODE: PREVIEW_ONLY. Explain the plan but do not write or start research. An additional explicit user approval is required.'):'MODE: READ_ONLY. No data changes of any kind.');
+ lines.push('Report provider, source, observation time and MATCH/PARTIAL/UNKNOWN/CONFLICT. Anything not observed is UNKNOWN.');
+ lines.push('Never silently deploy, place bets, install plugins, close passes, use Floot or claim success from static UI.');
+ return lines.join('\n');
+}
+function paint(){
+ var jobs=steps(),route=[],impact=jobs.some(function(x){return x.scope!=='READ_ONLY';});
+ jobs.forEach(function(j){j.route.forEach(function(id){if(route.indexOf(id)<0)route.push(id);});});
+ buttons.forEach(function(b){b.setAttribute('aria-pressed',String(!routine&&b.getAttribute('data-action')===chosen));});
+ kits.forEach(function(b){b.setAttribute('aria-pressed',String(b.getAttribute('data-routine')===routine));});
+ providers.forEach(function(p){p.setAttribute('data-routed',String(route.indexOf(p.getAttribute('data-provider'))>=0));});
+ document.getElementById('execute-gate').hidden=!impact;
+ document.getElementById('route-name').textContent=routine||chosen;
+ document.getElementById('route-summary').textContent='Expected route: '+route.map(function(id){return remoteRegistry.providers.find(function(p){return p.id===id;}).name;}).join(' → ')+'. Check actual connection inside ChatGPT.';
+ document.getElementById('action-summary').textContent=routine?'Selected: '+routines[routine].name+'. '+routines[routine].description:'Selected: '+jobs[0].name+'. '+jobs[0].evidence+'.';
+ document.getElementById('mode-state').textContent=impact?(consent.checked?'REVIEW ACTION REQUESTED — no production authority':'PREVIEW ONLY — no writes or research'):'READ ONLY — fresh tool checks required.';
+ box.value=buildPrompt();
  document.getElementById('copy-status').textContent='';
 }
-buttons.forEach(function(button){button.addEventListener('click',function(){choose(button.getAttribute('data-action'));});});
+buttons.forEach(function(b){b.addEventListener('click',function(){
+ var id=b.getAttribute('data-action');if(!Object.prototype.hasOwnProperty.call(actions,id))return;
+ chosen=id;routine=null;consent.checked=false;paint();
+});});
+kits.forEach(function(b){b.addEventListener('click',function(){
+ var id=b.getAttribute('data-routine');if(!Object.prototype.hasOwnProperty.call(routines,id))return;
+ if(!routines[id].steps.every(function(x){return actions[x]&&actions[x].scope==='READ_ONLY';}))return;
+ routine=id;consent.checked=false;paint();
+});});
+consent.addEventListener('change',paint);
 document.getElementById('copy').addEventListener('click',async function(){
  var status=document.getElementById('copy-status');
- try{
-  if(!navigator.clipboard||!navigator.clipboard.writeText)throw Error('clipboard unavailable');
-  await navigator.clipboard.writeText(box.value);
-  status.textContent='Copied. Paste into ChatGPT to run it.';
+ try{if(!navigator.clipboard||!navigator.clipboard.writeText)throw Error('clipboard unavailable');
+ await navigator.clipboard.writeText(box.value);status.textContent='Copied. Paste into ChatGPT to run this scoped request.';
  }catch(e){box.focus();box.select();status.textContent='Clipboard not available here. Text selected—copy it manually.';}
 });
-choose('STATUS');
+paint();
 }());
 </script>
 </body>
