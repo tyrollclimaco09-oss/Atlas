@@ -74,32 +74,34 @@
   section.className='atlas-continuity';
   section.setAttribute('aria-label','Resume and slate handoff');
   section.innerHTML=
-    '<div class="atlas-quick-head"><strong>Pick up where you left off</strong><span>LOCAL HANDOFF</span></div>'+
+    '<div class="atlas-quick-head"><div><span class="atlas-eyebrow">RAPHAEL // OPERATOR INTERFACE</span><strong>Welcome back, Operator.</strong></div><span class="atlas-glyph" aria-hidden="true">✦</span></div>'+
     '<p id="atlas-last">No recent selection saved on this browser.</p>'+
-    '<div class="atlas-quick-controls">'+
-      '<button type="button" id="atlas-continue">Continue command</button>'+
-      '<button type="button" id="atlas-context">Restore project context</button>'+
-      '<button type="button" id="atlas-copy">Copy current command</button>'+
-      '<button type="button" id="atlas-send">Copy &amp; open ChatGPT ↗</button>'+
-      '<a href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer">Open ChatGPT ↗</a>'+ 
-      '<a href="./operator-status.html" id="atlas-status-link">Live STATUS ↗</a>'+
-      '<button type="button" id="atlas-return-link">Copy return link</button>'+
+    '<div class="atlas-primary-controls" role="group" aria-label="Primary controls">'+
+      '<button type="button" id="atlas-continue" class="atlas-primary atlas-primary-resume"><span aria-hidden="true" class="atlas-control-glyph">↻</span><span><strong>Continue</strong><small>Pick up your last command</small></span><span aria-hidden="true" class="atlas-control-arrow">↗</span></button>'+
+      '<button type="button" id="atlas-context" class="atlas-primary"><span aria-hidden="true" class="atlas-control-glyph">✦</span><span><strong>Restore context</strong><small>Recover from GitHub evidence</small></span><span aria-hidden="true" class="atlas-control-arrow">↗</span></button>'+
+      '<button type="button" id="atlas-send" class="atlas-primary"><span aria-hidden="true" class="atlas-control-glyph">⇢</span><span><strong>Go to ChatGPT</strong><small>Copy this command first</small></span><span aria-hidden="true" class="atlas-control-arrow">↗</span></button>'+
     '</div>'+
-    '<div class="atlas-slate-card"><div><strong>Run the Slate</strong><p>Prepare a fresh research request; never place a bet from this site.</p></div>'+
-      '<button type="button" id="atlas-slate">Prepare slate handoff</button>'+
+    '<div class="atlas-slate-card"><div class="atlas-slate-heading"><span class="atlas-slate-icon" aria-hidden="true">◇</span><div><strong>Run the Slate</strong><p>Begin a fresh research handoff. No wagers placed.</p></div></div>'+
+      '<button type="button" id="atlas-slate">Prepare slate research <span aria-hidden="true">→</span></button>'+
       '<div class="atlas-quick-controls">'+
         '<a id="atlas-notes" href="'+docs+'" target="_blank" rel="noopener noreferrer">Slate notes (GitHub) ↗</a>'+
         '<a id="atlas-workspace" href="'+workspace+'" target="_blank" rel="noopener noreferrer">Legacy slate workspace ↗</a>'+
       '</div>'+
       '<small>Existing legacy draft stays on its own website/browser. No automatic sync or state import.</small>'+
     '</div>'+
+    '<details class="atlas-more"><summary>More shortcuts <span aria-hidden="true">⌄</span></summary><div class="atlas-quick-controls">'+
+      '<button type="button" id="atlas-copy">Copy current command</button>'+
+      '<a href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer">Open ChatGPT ↗</a>'+
+      '<a href="./operator-status.html" id="atlas-status-link">Live STATUS ↗</a>'+
+      '<button type="button" id="atlas-return-link">Copy return link</button>'+
+    '</div></details>'+
     '<p id="atlas-quick-message" role="status" aria-live="polite"></p>'+
     '<small>ChatGPT opens its homepage, not necessarily this same conversation. Paste the copied handoff in your existing ATLAS chat.</small>'+
     '<button type="button" id="atlas-clear">Forget this browser shortcut</button>'+
     '<small>Only a command ID is remembered locally (up to 30 days). Never credentials, stakes, approvals or research notes. Each Vercel preview hostname has separate browser storage; use a return link for that specific preview or Restore project context across chats.</small>';
   // Keep the resume action visible before the larger grid on iPhone.
-  const hero=document.querySelector('.hero');
-  if(hero)hero.after(section);
+  const main=document.querySelector('main');
+  if(main)main.prepend(section);
   else actionHost.closest('section').before(section);
   // Static HTML cannot attest host authentication or plugin permissions.
   const phone=$('phone-readiness');

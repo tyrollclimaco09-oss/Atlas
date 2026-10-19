@@ -217,3 +217,66 @@ test('mobile: hosted page never claims authentication success from hostname alon
   await context.close();
  }finally{await browser.close();}
 });
+
+
+test('Raphael visual pass: priority-first navigation stays large, readable, and uncluttered on phone widths',async()=>{
+ const browser=await chromium.launch({headless:true,args:['--no-sandbox']});
+ try{
+  const context=await browser.newContext({viewport:{width:390,height:844},isMobile:true,hasTouch:true});
+  const page=await context.newPage(),errors=[],outgoing=[];
+  page.on('pageerror',e=>errors.push(e.message));
+  page.on('request',request=>{if(!request.url().startsWith('file://'))outgoing.push(request.url());});
+  await page.goto(url);
+  await page.locator('#atlas-continuity').waitFor();
+  assert.equal(await page.locator('link[href="./operator-raphael.css"]').count(),1);
+  assert.equal(await page.locator('[data-action]').count(),8);
+  assert.equal(await page.locator('[data-routine]').count(),3);
+  assert.equal(await page.locator('#atlas-context').isVisible(),true);
+  assert.equal(await page.locator('#atlas-slate').isVisible(),true);
+  assert.equal(await page.locator('.atlas-more').getAttribute('open'),null);
+  assert.equal(await page.locator('#atlas-copy').isVisible(),false,'secondary tools must be behind disclosure');
+  await page.locator('.atlas-more summary').click();
+  assert.equal(await page.locator('#atlas-copy').isVisible(),true);
+  for(const width of [320,375,390,430,768]){
+   await page.setViewportSize({width,height:844});
+   const dims=await page.evaluate(()=>{
+    const rect=s=>document.querySelector(s).getBoundingClientRect();
+    const main=rect('#atlas-continuity'),hero=rect('.hero'),slate=rect('#atlas-slate');
+    const controls=[...document.querySelectorAll('.atlas-primary')].map(b=>b.getBoundingClientRect().height);
+    const font=parseFloat(getComputedStyle(document.querySelector('.atlas-quick-head strong')).fontSize);
+    return {mainY:main.y,heroY:hero.y,slateH:slate.height,controls,
+      font,scroll:document.documentElement.scrollWidth,view:innerWidth};
+   });
+   assert.ok(dims.mainY<dims.heroY,'primary controls must appear before supporting hero: '+width);
+   assert.ok(dims.slateH>=54,'slate must have large touch target: '+width);
+   assert.ok(dims.controls.every(h=>h>=60),'resume controls must stay thumb-sized: '+width);
+   assert.ok(dims.font>=24,'heading must stay readable: '+width);
+   assert.ok(dims.scroll<=dims.view+1,'no horizontal page overflow: '+width);
+  }
+  assert.deepEqual(errors,[]);
+  assert.deepEqual(outgoing,[],'theme must load entirely from local assets');
+  await context.close();
+ }finally{await browser.close();}
+});
+
+test('Raphael visual pass: primary deck retains read-only safety and reduced-motion behavior',async()=>{
+ const browser=await chromium.launch({headless:true,args:['--no-sandbox']});
+ try{
+  const context=await browser.newContext({viewport:{width:390,height:844},isMobile:true,hasTouch:true,reducedMotion:'reduce'});
+  const page=await context.newPage();await page.goto(url);
+  await page.locator('#atlas-continuity').waitFor();
+  await page.locator('#atlas-slate').click();
+  assert.match(await page.locator('#command').inputValue(),/RESEARCH HANDOFF|RUN THE SLATE/);
+  assert.equal(await page.locator('#execute-gate').isVisible(),false);
+  await page.locator('#atlas-context').click();
+  assert.match(await page.locator('#command').inputValue(),/RECONSTRUCT WORK CONTINUITY/);
+  await page.locator('[data-action="MASTERSAVE"]').click();
+  await page.locator('#execute-confirm').check();
+  assert.match(await page.locator('#command').inputValue(),/OPERATOR_APPROVED_REVIEW_ONLY/);
+  await page.locator('#atlas-context').click();
+  assert.equal(await page.locator('#execute-confirm').isChecked(),false);
+  const scroll=await page.evaluate(()=>getComputedStyle(document.documentElement).scrollBehavior);
+  assert.equal(scroll,'auto','reduce-motion must disable smooth scrolling');
+  await context.close();
+ }finally{await browser.close();}
+});

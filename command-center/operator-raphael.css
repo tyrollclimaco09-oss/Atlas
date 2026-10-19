@@ -1,0 +1,304 @@
+/* ATLAS | RAPHAEL visual language — presentation only, never authority.
+   No external assets, fonts, trackers or network calls. */
+:root{
+ color-scheme:dark;
+ --bg:#050b18;--panel:#101b30;--panel2:#162641;--edge:#2c4968;
+ --text:#f1f8ff;--muted:#acc4d9;--accent:#79ddff;--mint:#83efdb;
+ --amber:#efd499;--red:#ffadaf;--round:20px;
+ --raphael-cyan:#82eaff;--raphael-azure:#7b9bff;--raphael-violet:#b9a1ff;
+ --raphael-surface:rgba(13,30,54,.88);
+ --raphael-line:rgba(133,222,255,.27);
+ font:16px/1.54 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+ min-height:100vh;
+ background:
+ radial-gradient(ellipse 60% 31% at 80% -4%,rgba(41,110,215,.30),transparent 79%),
+ radial-gradient(ellipse 52% 36% at -10% 24%,rgba(71,91,190,.18),transparent 77%),
+ linear-gradient(155deg,#050b18 0%,#0a162b 56%,#050c19 100%);
+ background-attachment:fixed;
+ color:var(--text);
+}
+body::before{
+ content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+ background:repeating-linear-gradient(90deg,transparent 0,transparent 79px,rgba(142,211,255,.022) 80px);
+ opacity:.6;
+}
+.wrap{position:relative;z-index:1;width:min(1280px,calc(100% - 42px));padding:22px 0 88px}
+header{margin:0 0 22px;padding:4px 2px 17px;border-bottom:1px solid rgba(135,196,255,.12)}
+.logo{gap:12px;font-weight:850;font-size:1.05rem;letter-spacing:.17em}
+.logo .mark{
+ width:48px;height:48px;border-radius:16px;color:#eafaff;
+ background:radial-gradient(circle at 26% 22%,#b5f8ff 0%,#6ea1ff 23%,#213968 63%,#132640 100%);
+ box-shadow:0 0 0 1px rgba(163,226,255,.33),0 0 26px rgba(48,162,245,.23);
+ border:1px solid rgba(178,227,255,.60);font-size:1.42rem;
+}
+.logo::after{
+ content:"RAPHAEL INTERFACE";display:block;color:#89c9e9;
+ font-size:.64rem;letter-spacing:.15em;font-weight:700;white-space:nowrap;
+ padding-left:10px;border-left:1px solid rgba(134,207,248,.28)
+}
+.version{color:#a0c5de;font-size:.74rem;font-weight:750;letter-spacing:.1em}
+main{display:block}
+button,a{ -webkit-tap-highlight-color:transparent }
+button:focus-visible,a:focus-visible,summary:focus-visible,textarea:focus-visible{
+ outline:3px solid #b0f8ff;outline-offset:3px
+}
+/* Main dashboard: real actions before archived reference material. */
+.atlas-continuity{
+ position:relative;overflow:hidden;isolation:isolate;
+ margin:0 0 24px;padding:30px;
+ border:1px solid rgba(132,211,255,.46);border-radius:28px;
+ background:
+ radial-gradient(circle at 96% 0,rgba(104,126,255,.23),transparent 32%),
+ radial-gradient(circle at 0% 100%,rgba(18,174,214,.13),transparent 54%),
+ linear-gradient(134deg,rgba(25,50,91,.94),rgba(9,25,49,.97));
+ box-shadow:0 18px 65px rgba(0,3,14,.34),inset 0 1px 0 rgba(205,249,255,.12);
+}
+.atlas-continuity::before{
+ content:"";position:absolute;width:250px;height:250px;top:-152px;right:-88px;
+ border:1px solid rgba(166,217,255,.22);border-radius:50%;pointer-events:none;
+ box-shadow:0 0 0 27px rgba(118,167,246,.035),0 0 0 57px rgba(118,167,246,.03);
+ z-index:-1
+}
+.atlas-quick-head{align-items:center;gap:12px;margin-bottom:9px;position:relative}
+.atlas-quick-head>div{display:flex;flex-direction:column;gap:5px;min-width:0}
+.atlas-quick-head .atlas-eyebrow{font-size:.7rem;letter-spacing:.19em;color:#87e9fc;font-weight:800}
+.atlas-quick-head strong{
+ display:block;font-size:clamp(1.65rem,3.5vw,2.65rem);
+ font-weight:800;letter-spacing:-.036em;line-height:1.12;
+ color:#f6fbff;text-wrap:balance
+}
+.atlas-quick-head .atlas-glyph{
+ flex:none;display:grid;place-items:center;width:60px;height:60px;
+ border-radius:50%;color:#d8fcff;font-size:1.7rem;
+ border:1px solid rgba(136,226,255,.65);
+ background:radial-gradient(circle at 40% 28%,rgba(182,252,255,.43),rgba(53,113,220,.25) 44%,rgba(18,35,75,.45) 80%);
+ box-shadow:0 0 32px rgba(94,184,255,.21),inset 0 0 26px rgba(89,210,255,.16);
+}
+#atlas-last{
+ display:inline-flex;align-items:center;gap:9px;
+ margin:0 0 21px;color:#c4d8e8;font-size:.92rem;
+ max-width:100%;overflow-wrap:anywhere
+}
+#atlas-last::before{
+ content:"";display:inline-block;width:8px;height:8px;flex:none;border-radius:50%;
+ background:#88ecdb;box-shadow:0 0 12px rgba(101,238,224,.61)
+}
+.atlas-primary-controls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.atlas-primary{
+ display:grid;grid-template-columns:48px minmax(0,1fr) 15px;align-items:center;
+ gap:14px;text-align:left;min-width:0;min-height:98px;
+ border:1px solid rgba(126,189,235,.39);border-radius:18px;padding:17px 16px;
+ background:linear-gradient(137deg,rgba(28,59,102,.94),rgba(17,36,68,.98));
+ color:#f4fbff;font:inherit;cursor:pointer;
+ box-shadow:inset 0 1px 0 rgba(210,250,255,.06);
+ transition:border-color .18s,background .18s,transform .18s;
+}
+.atlas-primary:hover{border-color:rgba(145,234,255,.85);background:#1c4167;transform:translateY(-1px)}
+.atlas-primary:active{transform:translateY(0)}
+.atlas-primary>span:nth-child(2){min-width:0}
+.atlas-primary strong{display:block;font-size:1.06rem;line-height:1.25;font-weight:800;letter-spacing:-.01em}
+.atlas-primary small{display:block;color:#b9d2e5;font-size:.78rem;line-height:1.4;margin-top:4px}
+.atlas-control-glyph{
+ display:grid;place-items:center;width:46px;height:46px;border-radius:14px;
+ color:#a2f3ff;font-size:1.5rem;
+ background:rgba(74,137,195,.19);border:1px solid rgba(120,202,239,.27)
+}
+.atlas-control-arrow{color:#8dd9f5;font-size:1.1rem}
+.atlas-primary-resume{
+ background:linear-gradient(133deg,rgba(34,92,126,.94),rgba(14,56,79,.98));
+ border-color:rgba(103,233,234,.58)
+}
+.atlas-primary:disabled{
+ opacity:.68;cursor:not-allowed;filter:saturate(.58);transform:none
+}
+#atlas-send{border-color:rgba(122,148,248,.66)}
+#atlas-send .atlas-control-glyph{color:#c8c6ff;background:rgba(104,112,219,.23)}
+/* Slate is a featured research pathway, not a betting authority. */
+.atlas-slate-card{
+ position:relative;isolation:isolate;overflow:hidden;
+ margin:17px 0 0;padding:22px;
+ border-radius:20px;border:1px solid rgba(130,235,233,.43);
+ background:linear-gradient(108deg,rgba(16,61,76,.97),rgba(18,43,70,.97) 75%);
+}
+.atlas-slate-card::after{
+ content:"";position:absolute;right:-26px;top:-53px;width:145px;height:145px;
+ border-radius:50%;border:1px solid rgba(164,240,234,.15);pointer-events:none;z-index:-1;
+ box-shadow:0 0 0 24px rgba(136,227,233,.03)
+}
+.atlas-slate-heading{display:flex;align-items:center;gap:13px;margin-bottom:12px}
+.atlas-slate-icon{
+ display:grid;place-items:center;width:55px;height:55px;flex:none;
+ border:1px solid rgba(134,230,236,.48);border-radius:16px;
+ background:rgba(32,112,128,.28);font-size:1.8rem;color:#b1fff5;
+}
+.atlas-slate-card strong{display:block;font-size:1.3rem;letter-spacing:-.02em}
+.atlas-slate-card p{font-size:.88rem;color:#c7dfdf;margin:3px 0 0}
+#atlas-slate{
+ display:flex;align-items:center;justify-content:space-between;gap:12px;
+ min-height:60px;width:100%;padding:13px 18px;
+ border:1px solid #99f6f4;border-radius:14px;
+ background:linear-gradient(112deg,#80f2e6,#a8d9ff);
+ color:#07293e;font-size:1rem;font-weight:850;letter-spacing:-.005em;
+ box-shadow:0 7px 24px rgba(80,222,220,.13);
+}
+#atlas-slate:hover{filter:brightness(1.07)}
+#atlas-slate>span{font-size:1.28rem}
+.atlas-slate-card .atlas-quick-controls{margin-top:13px}
+.atlas-slate-card .atlas-quick-controls>a{background:rgba(7,30,49,.48);border-color:rgba(149,233,236,.35)}
+.atlas-slate-card small,.atlas-continuity>small{color:#bdd6e7;font-size:.76rem;line-height:1.55}
+.atlas-more{margin-top:15px;border-top:1px solid rgba(163,207,247,.15);padding-top:14px}
+.atlas-more>summary{
+ list-style:none;cursor:pointer;width:100%;padding:11px 0;
+ display:flex;align-items:center;justify-content:space-between;
+ color:#bbdcf8;font-size:.88rem;font-weight:760
+}
+.atlas-more>summary::-webkit-details-marker{display:none}
+.atlas-more>summary span{font-size:1.25rem;transition:transform .2s}
+.atlas-more[open]>summary span{transform:rotate(180deg)}
+.atlas-more .atlas-quick-controls{margin:6px 0 4px}
+.atlas-quick-controls>a,.atlas-quick-controls>button{
+ border-radius:11px;background:rgba(26,54,83,.79);border-color:rgba(118,189,231,.34);
+ min-height:49px;padding:11px 14px;font-size:.84rem;color:#e3f4ff;
+}
+.atlas-quick-controls>a:hover,.atlas-quick-controls>button:hover{border-color:#8adbf7}
+#atlas-quick-message{font-size:.84rem;color:#98f4e0;margin:13px 0}
+#atlas-clear{color:#b2c6dd;margin-top:2px}
+#atlas-link-fallback{min-height:44px}
+/* Supporting information is quieter. Existing actions remain fully operable. */
+.hero{
+ margin:0 0 19px;padding:23px 26px;
+ border:1px solid rgba(97,146,215,.25);border-radius:22px;
+ background:linear-gradient(110deg,rgba(16,33,59,.76),rgba(9,25,48,.8));
+ box-shadow:none
+}
+.hero .eyebrow{font-size:.7rem;color:#88d7f2}
+.hero h1{font-size:clamp(1.45rem,3.2vw,2.12rem);margin:7px 0;letter-spacing:-.027em}
+.hero p{font-size:.88rem;max-width:910px;color:#b6cede}
+.hero .ribbon{margin-top:12px;color:#f6d9a5}
+.phone-readiness{
+ margin:0 0 19px;padding:17px 21px;
+ border:1px solid rgba(107,171,231,.26);border-radius:17px;
+ background:rgba(14,31,55,.82)
+}
+.stats{gap:13px;margin:18px 0 37px}
+.stat{
+ min-width:0;min-height:110px;padding:20px;border-radius:18px;
+ border:1px solid rgba(107,175,229,.25);background:rgba(13,28,51,.79)
+}
+.stat b{font-size:1.58rem;margin:5px 0}
+.sectionheading{margin:0 0 16px;gap:15px}
+.sectionheading h2{font-size:1.23rem;letter-spacing:-.018em}
+.sectionheading p{font-size:.84rem;color:#b4cadd}
+.grid{gap:14px}
+.action{
+ min-width:0;min-height:180px;border-radius:20px;gap:11px;
+ border:1px solid rgba(109,176,237,.27);padding:20px;
+ background:linear-gradient(145deg,rgba(23,43,73,.92),rgba(12,27,49,.96));
+ box-shadow:inset 0 1px 0 rgba(217,248,255,.035)
+}
+.action .symbol{
+ width:47px;height:47px;border:1px solid rgba(123,200,244,.22);
+ border-radius:15px;color:#bbecff;background:rgba(49,97,147,.32);font-size:1.45rem
+}
+.action strong{font-size:1.06rem;line-height:1.25}
+.action small{font-size:.84rem;color:#b5cbdc}
+.action[aria-pressed="true"]{
+ background:linear-gradient(142deg,rgba(24,74,99,.91),rgba(15,45,72,.96));
+ border-color:#8ae5ed;box-shadow:inset 0 0 0 1px rgba(117,223,237,.22)
+}
+.action .type{font-size:.72rem;letter-spacing:.1em;color:#a4d9f2}
+.kits{margin-top:37px}
+.kit-grid{gap:14px}
+.kit{min-height:116px;border-radius:17px;padding:20px;background:rgba(16,34,60,.9);border-color:rgba(100,161,221,.28)}
+.kit b{font-size:1rem}.kit small{font-size:.81rem;line-height:1.45}
+.kit[aria-pressed="true"]{border-color:#8ae5ed;background:rgba(22,69,83,.82)}
+.plughub{margin-top:30px;padding:21px;border-radius:19px;background:rgba(14,30,54,.87);border-color:rgba(110,160,224,.25)}
+.plughub h2{font-size:1.13rem}
+.provider-grid{gap:11px}
+.provider{padding:13px;border-radius:13px;border-color:rgba(108,165,217,.22);background:#0c1b31}
+.provider b{font-size:.91rem}
+.deck{gap:18px;margin-top:30px}
+.panel{padding:26px;border-radius:21px;border-color:rgba(108,167,218,.29);background:rgba(12,27,49,.87)}
+.panel h2{font-size:1.16rem}
+.panel p{font-size:.88rem}
+textarea{min-height:205px;border-color:rgba(109,183,234,.42);background:#071325;border-radius:14px;font-size:13px}
+.btn{min-height:50px;border-radius:12px}
+.links a{padding:14px;border-radius:12px}
+footer{font-size:.81rem;margin-top:42px}
+@media(max-width:1100px){
+ .atlas-primary-controls{grid-template-columns:1fr}
+ .atlas-primary{min-height:74px}
+}
+@media(max-width:900px){
+ .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .deck{grid-template-columns:1fr}
+ .provider-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .atlas-continuity{padding:25px}
+}
+@media(max-width:530px){
+ :root{font-size:16px}
+ .wrap{width:calc(100% - 24px);padding:13px 0 65px}
+ header{margin-bottom:13px;padding-bottom:12px}
+ .logo{gap:9px;font-size:.98rem;letter-spacing:.11em}
+ .logo .mark{width:43px;height:43px;border-radius:14px}
+ .logo::after{display:none}
+ .version{font-size:.67rem;text-align:right;max-width:90px}
+ .atlas-continuity{padding:21px 17px;margin-bottom:19px;border-radius:24px}
+ .atlas-quick-head .atlas-eyebrow{font-size:.65rem}
+ .atlas-quick-head strong{font-size:clamp(1.72rem,7.3vw,2.1rem)}
+ .atlas-quick-head .atlas-glyph{width:44px;height:44px;font-size:1.25rem}
+ #atlas-last{font-size:.81rem;margin:0 0 14px;line-height:1.4}
+ .atlas-primary-controls{gap:10px}
+ .atlas-primary{min-height:73px;padding:12px 13px;gap:12px;grid-template-columns:45px minmax(0,1fr) 13px;border-radius:16px}
+ .atlas-primary strong{font-size:1.02rem}
+ .atlas-primary small{font-size:.78rem;margin-top:2px}
+ .atlas-control-glyph{width:44px;height:44px}
+ .atlas-slate-card{padding:16px;margin-top:12px;border-radius:17px}
+ .atlas-slate-icon{width:46px;height:46px;font-size:1.4rem}
+ .atlas-slate-card strong{font-size:1.15rem}
+ .atlas-slate-card p{font-size:.82rem}
+ #atlas-slate{min-height:59px}
+ .atlas-slate-card .atlas-quick-controls{flex-direction:column;align-items:stretch}
+ .atlas-slate-card .atlas-quick-controls>a{flex:none;text-align:center}
+ .atlas-more{margin-top:12px}
+ .hero{padding:17px 19px;margin-bottom:14px;border-radius:18px}
+ .hero h1{font-size:1.43rem}
+ .hero p{font-size:.84rem}
+ .phone-readiness{padding:14px 17px;margin-bottom:14px}
+ .stats{gap:8px;margin:13px 0 30px}
+ .stat{min-height:100px;padding:12px 10px;border-radius:13px}
+ .stat b{font-size:1.32rem}
+ .stat span{font-size:.72rem}
+ .stat small{font-size:.66rem}
+ .grid{gap:11px}
+ .action{padding:16px;min-height:167px;border-radius:17px}
+ .action .symbol{width:41px;height:41px}
+ .action strong{font-size:1rem}
+ .action small{font-size:.8rem}
+ .action .type{font-size:.68rem}
+ .sectionheading h2{font-size:1.17rem}
+ .panel{padding:18px}
+ .plughub{padding:17px}
+ .provider-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ .provider{padding:11px}
+ .kit{padding:16px;min-height:100px}
+}
+@media(max-width:350px){
+ .atlas-quick-head .atlas-glyph{display:none}
+ .atlas-continuity{padding:18px 13px}
+ .atlas-primary{grid-template-columns:41px minmax(0,1fr) 11px;padding:10px}
+ .atlas-control-glyph{width:40px;height:40px}
+ .action{padding:12px;min-height:180px}
+ .action strong{font-size:.95rem}
+ .action small{font-size:.76rem}
+ .stat b{font-size:1.14rem}
+}
+@media(prefers-reduced-motion:reduce){
+ html{scroll-behavior:auto}
+ .atlas-primary,.atlas-more>summary span,.action{transition:none!important}
+ .atlas-primary:hover,.action:hover{transform:none}
+}
