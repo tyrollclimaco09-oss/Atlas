@@ -39,3 +39,20 @@ To classify **MATCH**, current branch HEAD, matching workflow run HEAD, and all 
 2. The optional live GitHub observation must be inspected separately; **UNKNOWN, in-progress or stale HEAD is not a proof of current healthy integration**.
 3. Never describe `status-gate` as authenticated until an independent real owner identity service has been implemented and authorization/replay tested end-to-end.
 4. Only next deliberate deployment step after real identity choice: private HTTPS host + read-only STATUS route, fresh provider proof, deny-by-default behavior; all write capabilities remain disabled.
+
+## Actual proof readback — 2026-10-19 UTC (review branch)
+
+**Commit under test:** `8a647b022c178b7ec2eafd341a190b7d54a757b1`.  
+**GitHub Actions run:** [39266988430](https://github.com/tyrollclimaco09-oss/Atlas/actions/runs/39266988430). `status=completed`, `conclusion=success`, all **five required review jobs succeeded**. Exact job names were fetched from GitHub after the workflow completed.
+
+- Review/remote Node tests: **193/193 PASS**, including STATUS adapter schema, bounded public GET allowlist, stale-head denial, in-progress CI, missing/failing job detection, 403/404/network/invalid JSON/oversize refusal, synthetic trusted-context gating and grant non-consumption.
+- Actual Chromium tests: **9/9 PASS**; prior mobile and clipboard requirements preserved.
+- MasterSave source integrity tests: **12/12 PASS**.
+- Offline SCOUT / Outcome Intelligence: **261/261 PASS**.
+- Original baseline provenance: **PASS**.
+
+**Independent live observation from the code running in CI (not a fixture):** In the `Review code and regression suite` job log at **2026-10-19T14:13:25.142Z**, `github-public-smoke.cjs` reported `live_provider_response_observed=true`, `observed_head=8a647b022c178b7ec2eafd341a190b7d54a757b1`, `same_as_checked_out_commit=true`, `adapter_classification=PARTIAL`, `reason=CI_NOT_COMPLETED`, and `final_verdict=LIVE_OBSERVED_NOT_GREEN`. That was **correct**: the job's own workflow was still in progress. This is evidence of an actual response from GitHub's public API and SHA parity, **not** evidence the adapter observed a green workflow *at that moment*. The independently fetched Actions run and five job readbacks subsequently established final green CI.
+
+The public adapter therefore has **verified live public-source contact and fail-closed in-progress classification**, plus **independent later CI completion proof**. It has *not* yet demonstrated the adapter's `MATCH` classification against an already-completed live current-head workflow in a separately executed runtime. The synthetic/fixture tests covering that state passed; do not silently upgrade them to live evidence.
+
+No user login, external HTTP server, OAuth token, hosted app, background service, private provider connector or sports feed is included. This patch is a reviewed status bridge, not production readiness.
