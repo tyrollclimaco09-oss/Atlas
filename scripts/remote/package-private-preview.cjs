@@ -14,6 +14,7 @@ const files=Object.freeze({
  'operator-status.js':'command-center/operator-status.js',
  'operator-continuity.js':'command-center/operator-continuity.js',
  'operator-continuity.css':'command-center/operator-continuity.css',
+ 'operator-raphael.css':'command-center/operator-raphael.css',
  'operator-remote.webmanifest':'command-center/operator-remote.webmanifest',
  'operator-icons/icon-192.png':'command-center/operator-icons/icon-192.png',
  'operator-icons/icon-512.png':'command-center/operator-icons/icon-512.png',
