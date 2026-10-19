@@ -70,7 +70,7 @@ jobs:
         run: npx playwright install --with-deps chromium
       - name: Run actual browser tests
         working-directory: command-center/browser-tests
-        run: node --test discovery.browser.test.cjs operator-remote.browser.test.cjs
+        run: node --test discovery.browser.test.cjs operator-remote.browser.test.cjs operator-status.browser.test.cjs
 
   outcome-shadow:
     name: Offline SCOUT and Outcome Intelligence shadow

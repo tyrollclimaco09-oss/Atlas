@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<meta name="theme-color" content="#0a101b">
+<title>ATLAS · Private GitHub Status</title>
+<link rel="stylesheet" href="./operator-status.css">
+<link rel="icon" type="image/png" href="./operator-icons/icon-192.png">
+<script defer src="./operator-status.js"></script>
+</head>
+<body>
+<div class="wrap">
+ <header><div class="brand"><span class="glyph" aria-hidden="true">A</span><div><strong>ATLAS</strong><span>OPERATOR REMOTE / LIVE STATUS</span></div></div>
+ <a class="back" href="./operator-remote.html">← Remote controls</a></header>
+ <main>
+  <section class="intro" aria-labelledby="title">
+   <p class="eyebrow">READ-ONLY / PUBLIC GITHUB EVIDENCE</p>
+   <h1 id="title">Repository status</h1>
+   <p>This screen reads only the ATLAS GitHub review branch. Vercel Authentication protects the hosted site. This is not a private ChatGPT plugin connection, an approval to deploy, or a betting signal.</p>
+  </section>
+  <section class="summary" aria-label="Live GitHub verification">
+   <div class="heading"><h2>Current evidence</h2><span id="state" class="state" data-status="UNKNOWN" role="status" aria-live="polite">NOT CHECKED</span></div>
+   <p id="reason" class="reason" aria-live="polite">No live request has been made.</p>
+   <dl class="facts"><div><dt>Branch HEAD</dt><dd id="sha">—</dd></div><div><dt>Observed at</dt><dd id="observed">—</dd></div><div><dt>CI run</dt><dd><a id="ci" hidden target="_blank" rel="noopener noreferrer">Open verified run ↗</a><span id="ci-empty">—</span></dd></div></dl>
+   <div class="commands"><button type="button" id="refresh">Refresh from GitHub</button><span id="busy" role="status" aria-live="polite"></span></div>
+  </section>
+  <section class="jobs" aria-labelledby="jobs-title"><div class="heading"><h2 id="jobs-title">Five required jobs</h2><span id="job-count">0/5 checked</span></div><ul id="job-list"><li class="pending">No verified job results yet.</li></ul></section>
+  <section class="security"><h2>Security boundary</h2><p><strong>Vercel sign-in</strong> controls entry to a correctly protected deployment. This page never reads or stores GitHub, Notion, sportsbook, or other plugin credentials. Public GitHub data does not imply production authorization.</p><p>MASTER SAVE, RESUME, deployments and betting execution remain disabled here.</p></section>
+ </main>
+ <footer>ATLAS doctrine · Evidence before confidence · <span>Review-only status</span></footer>
+</div>
+</body></html>

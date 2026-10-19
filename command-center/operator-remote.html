@@ -38,6 +38,7 @@ header{display:flex;align-items:center;justify-content:space-between;gap:12px;ma
 <section class="phone-readiness" id="phone-readiness" aria-label="Phone installation and authentication readiness" data-auth-state="NOT_CONFIGURED" data-install-state="REQUIRES_HTTPS">
  <div class="ready-title"><strong>📱 Phone access foundation</strong><span class="not-auth">Authentication not configured</span></div>
  <p>The Home Screen manifest and app icons are prepared. This review file is not hosted as a secure application, and no plugin bridge, login or background sync is active.</p>
+ <p><a href="./operator-status.html" id="protected-status-link">Open the protected live GitHub STATUS screen ↗</a> (only functional on an approved, Vercel-authenticated HTTPS deployment). The standalone file has no connected backend.</p>
  <details id="ios-install-instructions"><summary>How installation would work after HTTPS hosting</summary>
   <ol><li>Open the future approved HTTPS remote URL in Safari on iPhone.</li><li>Open Share and select Add to Home Screen.</li><li>Choose Open as Web App and tap Add.</li></ol>
   <p>Installing an icon never grants permission to GitHub, Notion, Create State or other accounts. A separately authenticated backend must verify each authorized operation.</p>
