@@ -197,6 +197,30 @@ test('phone manifest is local, install metadata is truthful, and images have cor
   assert.equal(bytes.readUInt32BE(20),size);
   assert.equal(bytes[24],1,'indexed one-bit icon');
   assert.equal(bytes[25],3,'indexed palette icon');
+  // PNG signature and dimensions are not sufficient: decode the actual IDAT
+  // stream and verify chunk checksums so a broken Home Screen icon fails CI.
+  let cursor=8,sawEnd=false;
+  const compressed=[];
+  while(cursor<bytes.length){
+   assert.ok(cursor+12<=bytes.length,'truncated chunk header');
+   const length=bytes.readUInt32BE(cursor);
+   assert.ok(cursor+12+length<=bytes.length,'truncated PNG chunk');
+   const name=bytes.subarray(cursor+4,cursor+8).toString('ascii');
+   const payload=bytes.subarray(cursor+8,cursor+8+length);
+   const crcBytes=bytes.subarray(cursor+4,cursor+8+length);
+   let crc=0xffffffff;
+   for(const byte of crcBytes){
+    crc^=byte;for(let j=0;j<8;j++)crc=(crc>>>1)^((crc&1)?0xedb88320:0);
+   }
+   assert.equal((crc^0xffffffff)>>>0,bytes.readUInt32BE(cursor+8+length),'corrupt PNG chunk '+name);
+   if(name==='IDAT')compressed.push(payload);
+   if(name==='IEND')sawEnd=true;
+   cursor+=12+length;
+  }
+  assert.ok(sawEnd&&compressed.length>0,'missing PNG image data');
+  const decoded=require('node:zlib').inflateSync(Buffer.concat(compressed));
+  assert.equal(decoded.length,size*(1+Math.ceil(size/8)),'bad decoded indexed scanlines');
+
  }
  assert.match(html,/<link rel="manifest" href="\.\/operator-remote\.webmanifest">/);
  assert.match(html,/<link rel="apple-touch-icon" href="\.\/operator-icons\/icon-192\.png">/);
