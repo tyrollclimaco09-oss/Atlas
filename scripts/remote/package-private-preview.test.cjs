@@ -36,6 +36,9 @@ test('package generator produces deterministic, isolated static files and API en
   assert.ok(fs.existsSync(path.join(dest,'api/status.mjs')));
   assert.ok(fs.existsSync(path.join(dest,'operator-continuity.js')));
   assert.ok(fs.existsSync(path.join(dest,'operator-continuity.css')));
+  assert.ok(fs.existsSync(path.join(dest,'operator-raphael.css')));
+  assert.match(fs.readFileSync(path.join(dest,'operator-raphael.css'),'utf8'),/RAPHAEL visual language/);
+  assert.match(fs.readFileSync(path.join(dest,'operator-remote.html'),'utf8'),/href="\.\/operator-raphael\.css"/);
   const deploymentConfig=JSON.parse(fs.readFileSync(path.join(dest,'vercel.json'),'utf8'));
   assert.deepEqual(deploymentConfig.builds.map(b=>[b.src,b.use]),[
    ['index.html','@vercel/static'],
