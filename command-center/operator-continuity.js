@@ -33,6 +33,25 @@
     try { history.replaceState(null,'',location.pathname+location.search+'#atlas='+mode+':'+id); } catch (_) {}
     updateResume();
   }
+  function contextPrompt(){
+    const selected=last ? last.mode+':'+last.id : 'NONE';
+    return [
+      'ATLAS — RECONSTRUCT WORK CONTINUITY (READ ONLY)',
+      'I am resuming the ATLAS project across a conversation/browser boundary.',
+      'Authoritative repository: '+repo,
+      'Canonical review baseline branch: '+branch,
+      'Historical handoff file: docs/continuity/ATLAS_REMOTE_PRIVATE_STATUS_HANDOFF_2026-10-19.md',
+      'Historical checkpoint: ATLAS-REMOTE-PRIVATE-STATUS-20261019-HANDOFF-01',
+      'Continuity feature review branch: review/operator-resume-qol-2026-10-19 (verify live HEAD; do not guess its SHA).',
+      'Last local command selection (a navigation hint, NOT proof of actual progress): '+selected,
+      'FIRST: read latest GitHub HEAD/CI and exact handoff. Reconcile newer reviewed work with preserved snapshots and separate historical evidence from fresh readbacks.',
+      'THEN: summarize which ATLAS components and slates are complete, in review, unverified, or blocked. Preserve all candidates, provenance, Game Sense, PRICING, House Mirror, TACTICIAN, SENTINEL, Human Final Gate, LEDGER, FORENSICS and CALIBRATOR.',
+      'Respect Arc III 0/15 formal sign-offs unless independent accepted proof changes that. Floot remains parked.',
+      'This website has NOT loaded local browser slate drafts or chat messages. If material data is absent from GitHub, say MISSING and ask for an authorized export; do not recreate or invent records.',
+      'Propose one highest-value next action, with current blockers and an operator-ready checkpoint at the end. Do not automatically research a slate, write data, merge/deploy, or execute bets.',
+      'No production or Supabase writes, no credentials, no sportsbook activity, and no automatic approvals. Knowledge over greed; evidence over confidence.'
+    ].join('\n');
+  }
   function slatePrompt(){
     return [
       'ATLAS — RUN THE SLATE (RESEARCH HANDOFF, NOT WEBSITE EXECUTION)',
@@ -59,6 +78,7 @@
     '<p id="atlas-last">No recent selection saved on this browser.</p>'+
     '<div class="atlas-quick-controls">'+
       '<button type="button" id="atlas-continue">Continue command</button>'+
+      '<button type="button" id="atlas-context">Restore project context</button>'+
       '<button type="button" id="atlas-copy">Copy current command</button>'+
       '<button type="button" id="atlas-send">Copy &amp; open ChatGPT ↗</button>'+
       '<a href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer">Open ChatGPT ↗</a>'+
@@ -75,7 +95,7 @@
     '<p id="atlas-quick-message" role="status" aria-live="polite"></p>'+
     '<small>ChatGPT opens its homepage, not necessarily this same conversation. Paste the copied handoff in your existing ATLAS chat.</small>'+
     '<button type="button" id="atlas-clear">Forget this browser shortcut</button>'+
-    '<small>Only a command ID is remembered locally (up to 30 days). Never credentials, stakes, approvals or research notes. Use “Copy return link” to move across browser contexts.</small>';
+    '<small>Only a command ID is remembered locally (up to 30 days). Never credentials, stakes, approvals or research notes. Each Vercel preview hostname has separate browser storage; use a return link for that specific preview or Restore project context across chats.</small>';
   // Keep the resume action visible before the larger grid on iPhone.
   const hero=document.querySelector('.hero');
   if(hero)hero.after(section);
@@ -127,6 +147,20 @@
   document.querySelectorAll('[data-action]').forEach(el=>el.addEventListener('click',()=>{if(!suppressClickSave)remember('action',el.getAttribute('data-action'));}));
   document.querySelectorAll('[data-routine]').forEach(el=>el.addEventListener('click',()=>{if(!suppressClickSave)remember('routine',el.getAttribute('data-routine'));}));
   $('atlas-slate').addEventListener('click',()=>{prepareSlate();moveToPrompt();});
+  $('atlas-context').addEventListener('click',()=>{
+    consent.checked=false;
+    $('execute-gate').hidden=true;
+    document.querySelectorAll('[data-action],[data-routine]').forEach(el=>el.setAttribute('aria-pressed','false'));
+    document.querySelectorAll('[data-provider]').forEach(el=>el.setAttribute('data-routed','false'));
+    $('route-name').textContent='RECOVER CONTEXT';
+    $('route-summary').textContent='GitHub checkpoint → fresh readbacks in ChatGPT, no changes.';
+    $('action-summary').textContent='Selected: Restore ATLAS project context from versioned evidence.';
+    $('mode-state').textContent='READ ONLY — context reconciliation, not progress attestation.';
+    box.value=contextPrompt();
+    $('copy-status').textContent='';
+    $('atlas-quick-message').textContent='Context request prepared. Copy it to your ATLAS chat to reconcile your work.';
+    moveToPrompt();
+  });
   $('atlas-continue').addEventListener('click',()=>{if(last){activate(last.mode,last.id);moveToPrompt();}});
   $('atlas-copy').addEventListener('click',()=>{ $('copy').click(); $('atlas-quick-message').textContent='Check the copy confirmation by the command box, then paste into ChatGPT.'; moveToPrompt(); });
   $('atlas-send').addEventListener('click',async()=>{
