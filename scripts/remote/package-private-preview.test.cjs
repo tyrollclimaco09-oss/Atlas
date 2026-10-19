@@ -34,6 +34,26 @@ test('package generator produces deterministic, isolated static files and API en
   assert.ok(fs.existsSync(path.join(dest,'operator-icons/icon-192.png')));
   assert.ok(fs.existsSync(path.join(dest,'operator-icons/icon-512.png')));
   assert.ok(fs.existsSync(path.join(dest,'api/status.mjs')));
+  assert.ok(fs.existsSync(path.join(dest,'operator-continuity.js')));
+  assert.ok(fs.existsSync(path.join(dest,'operator-continuity.css')));
+  const deploymentConfig=JSON.parse(fs.readFileSync(path.join(dest,'vercel.json'),'utf8'));
+  assert.deepEqual(deploymentConfig.builds.map(b=>[b.src,b.use]),[
+   ['index.html','@vercel/static'],
+   ['operator-*.html','@vercel/static'],
+   ['operator-*.js','@vercel/static'],
+   ['operator-*.css','@vercel/static'],
+   ['operator-*.webmanifest','@vercel/static'],
+   ['operator-icons/*.png','@vercel/static'],
+   ['api/status.mjs','@vercel/node'],
+  ]);
+  const headers=deploymentConfig.headers.find(r=>r.source==='/operator-remote.html')?.headers;
+  assert.ok(headers,'remote static page needs deployment-time response headers');
+  const csp=headers.find(h=>h.key==='Content-Security-Policy')?.value||'';
+  assert.match(csp,/script-src 'self'/);
+  assert.match(csp,/frame-ancestors 'none'/);
+  assert.doesNotMatch(csp,/script-src 'unsafe-inline'/);
+  assert.ok(headers.some(h=>h.key==='Cache-Control'&&h.value.includes('no-store')));
+
   assert.doesNotMatch(fs.readFileSync(path.join(dest,'operator-remote.html'),'utf8'),/<script>/);
   assert.doesNotMatch(fs.readFileSync(path.join(dest,'operator-remote.html'),'utf8'),/script-src 'unsafe-inline'/);
   assert.match(fs.readFileSync(path.join(dest,'operator-remote.html'),'utf8'),/script-src 'self'/);
