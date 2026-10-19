@@ -94,6 +94,7 @@ test('UI selects actions and constructs source-pinned commands rather than invok
  assert.equal(app.buttons[0].attrs['aria-pressed'],'false');
  assert.match(app.elements.command.value,/ATLAS OPERATOR REMOTE v1 — RESUME/);
  assert.match(app.elements.command.value,/ATLAS_OPERATOR_REMOTE_V1\.json/);
+ assert.match(app.elements.command.value,/Pinned registry commit: 05d0adef0e175fe0ac60174a9360aae432df8ea5/);
  assert.match(app.elements.command.value,/Execute only the action with id RESUME/);
  assert.match(app.elements.command.value,/Never silently deploy, place bets, install plugins/);
  assert.match(app.elements['action-summary'].textContent,/Deliberate launch/);
