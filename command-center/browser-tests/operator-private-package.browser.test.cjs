@@ -19,6 +19,7 @@ test('actual private deployment bundle runs external script and preserves safe c
     'index.html','operator-remote.html','operator-remote.js','operator-remote.webmanifest',
     'operator-status.html','operator-status.css','operator-status.js',
     'operator-continuity.js','operator-continuity.css',
+    'operator-raphael.css',
     'operator-icons/icon-192.png','operator-icons/icon-512.png'
   ]);
   server=http.createServer((req,res)=>{
@@ -45,6 +46,9 @@ test('actual private deployment bundle runs external script and preserves safe c
   assert.equal(await page.locator('[data-action="STATUS"]').getAttribute('aria-pressed'),'true');
   assert.match(await page.locator('#command').inputValue(),/ATLAS OPERATOR REMOTE v2/);
   await page.locator('#atlas-continuity').waitFor();
+  assert.equal(await page.locator('link[href="./operator-raphael.css"]').count(),1);
+  const radius=await page.locator(".atlas-continuity").evaluate(el=>getComputedStyle(el).borderRadius);
+  assert.equal(radius,"24px");
   await page.locator('#atlas-slate').click();
   assert.match(await page.locator('#command').inputValue(),/RUN THE SLATE/);
   assert.equal(await page.locator('#execute-gate').isVisible(),false);
