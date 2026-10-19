@@ -85,6 +85,7 @@ header{display:flex;align-items:center;justify-content:space-between;gap:12px;ma
 var repo='tyrollclimaco09-oss/Atlas';
 var branch='review/pass0-slate-regression-2026-10-16';
 var registry='docs/continuity/ATLAS_OPERATOR_REMOTE_V1.json';
+var registryPin='05d0adef0e175fe0ac60174a9360aae432df8ea5';
 var labels={STATUS:'Live status',MASTERSAVE:'MasterSave',RESTORE:'Restore context',AUDIT:'Integrity audit',GRAPH:'Architecture map',PLUGINS:'Plugin check',ARCIII:'Arc III roadmap',RESUME:'Resume Pass 1'};
 var summaries={
  STATUS:'Read connected evidence and return real current status. No writes.',
@@ -103,6 +104,7 @@ var prompt=function(id){
  +'Repository: '+repo+'\n'
  +'Branch: '+branch+'\n'
  +'Path: '+registry+'\n'
+ +'Pinned registry commit: '+registryPin+' (read this immutable GitHub revision, not an unreviewed mutable copy)\n'
  +'Execute only the action with id '+id+' and obey its review-only safety boundaries.\n'
  +'Reverify sources/permissions on this turn; report real readbacks, missing proof, and exact GitHub evidence.\n'
  +'Never silently deploy, place bets, install plugins, or promote passes. Do not claim success without verified tool results.';
