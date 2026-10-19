@@ -1,0 +1,257 @@
+{
+  "schema": "atlas.operator-remote.v2",
+  "status": "REVIEW_ONLY_NOT_DEPLOYED",
+  "prior_v1_registry_commit": "05d0adef0e175fe0ac60174a9360aae432df8ea5",
+  "checkpoint_id": "ATLAS-ARCIII-20261018-MASTERSAVE-01",
+  "authority": {
+    "repository": "tyrollclimaco09-oss/Atlas",
+    "review_branch": "review/pass0-slate-regression-2026-10-16",
+    "master_manifest": "docs/continuity/ATLAS_MASTER_CHECKPOINT_2026-10-18.json",
+    "handoff": "docs/ARCIII_REALITY_FORGE_RESUME_HANDOFF_2026-10-18.md",
+    "master_receipt": "docs/continuity/ATLAS_MASTERSAVE_VERIFICATION_2026-10-18.md"
+  },
+  "safeguards": {
+    "auto_bets": false,
+    "main_or_production_writes": false,
+    "automatic_plugin_install": false,
+    "background_operations": false,
+    "store_credentials": false,
+    "human_final_gate": true,
+    "close_arc_iii_pass_without_evidence": false,
+    "floot": "PARKED",
+    "data_roles": [
+      "PINNED_EVIDENCE",
+      "LIVE_CHECK_REQUIRED",
+      "SECONDARY_INDEX",
+      "RECOVERY_COPY"
+    ],
+    "report_states": [
+      "MATCH",
+      "PARTIAL",
+      "UNKNOWN",
+      "CONFLICT"
+    ],
+    "workflow_phases": [
+      "PREVIEW",
+      "OPERATOR_REQUESTED_REVIEW_ONLY"
+    ]
+  },
+  "providers": [
+    {
+      "id": "github",
+      "name": "GitHub",
+      "role": "Versioned evidence and code",
+      "authority": "PINNED_EVIDENCE",
+      "live_status": "NOT_CHECKED",
+      "fallback": "Use the existing frozen handoff and declare current HEAD UNKNOWN"
+    },
+    {
+      "id": "notion",
+      "name": "Notion",
+      "role": "Human-readable ATLAS Codex",
+      "authority": "SECONDARY_INDEX",
+      "live_status": "NOT_CHECKED",
+      "fallback": "Reference the pinned GitHub handoff directly"
+    },
+    {
+      "id": "create_state",
+      "name": "Create State",
+      "role": "Semantic project context and short-lived handoffs",
+      "authority": "SECONDARY_INDEX",
+      "live_status": "NOT_CHECKED",
+      "fallback": "Read the versioned handoff, never infer missing memories"
+    },
+    {
+      "id": "drive",
+      "name": "Google Drive",
+      "role": "Independent recovery copy",
+      "authority": "RECOVERY_COPY",
+      "live_status": "NOT_CHECKED",
+      "fallback": "Mark backup UNKNOWN; keep authoritative GitHub source"
+    },
+    {
+      "id": "linear",
+      "name": "Linear",
+      "role": "Optional research action tracking",
+      "authority": "SECONDARY_INDEX",
+      "live_status": "NOT_CHECKED",
+      "fallback": "Use existing GitHub handoff's open loops"
+    },
+    {
+      "id": "tldraw",
+      "name": "tldraw",
+      "role": "Editable visual planning when tools are exposed",
+      "authority": "SECONDARY_INDEX",
+      "live_status": "NOT_CHECKED",
+      "fallback": "Mermaid graph text in GitHub"
+    },
+    {
+      "id": "figma",
+      "name": "Figma",
+      "role": "Editable design and FigJam diagrams",
+      "authority": "SECONDARY_INDEX",
+      "live_status": "NOT_CHECKED",
+      "fallback": "Mermaid graph text in GitHub"
+    }
+  ],
+  "actions": [
+    {
+      "id": "STATUS",
+      "name": "Live status",
+      "scope": "READ_ONLY",
+      "route": [
+        "github",
+        "notion",
+        "create_state",
+        "drive"
+      ],
+      "evidence": "Fresh CI/head and each available provider readback",
+      "instruction": "Read the current review-branch HEAD, the latest completed CI and individual job conclusions, the frozen checkpoint, and fresh Notion, Create State and Drive observations. Display MATCH/PARTIAL/UNKNOWN/CONFLICT per surface with retrieval time and source. Keep operational health UNKNOWN where unavailable."
+    },
+    {
+      "id": "MASTERSAVE",
+      "name": "MasterSave",
+      "scope": "REVIEW_WRITE",
+      "route": [
+        "github",
+        "notion",
+        "create_state",
+        "drive"
+      ],
+      "evidence": "Exact blob SHA and CI result, plus post-write readbacks of every changed mirror",
+      "instruction": "After explicit execution consent, compare reviewed GitHub evidence and checkpoint with each source. Save only meaningful deltas on the existing review branch and secondary indexes/backups if appropriate; verify each write with a fresh provider readback. Preserve old anchors and never silently call a partial save complete. Stop before main, production, Supabase writes, or betting execution."
+    },
+    {
+      "id": "RESTORE",
+      "name": "Restore context",
+      "scope": "READ_ONLY",
+      "route": [
+        "github",
+        "create_state",
+        "notion",
+        "drive"
+      ],
+      "evidence": "Pinned GitHub handoff, current HEAD and conflict report",
+      "instruction": "Restore from the exact pinned GitHub Arc III handoff and compare historical checkpoint with current review work. Treat Create State, Notion and Drive as secondary. Report the current pause point with blockers and never start an Arc III pass automatically."
+    },
+    {
+      "id": "AUDIT",
+      "name": "Integrity audit",
+      "scope": "READ_ONLY",
+      "route": [
+        "github",
+        "drive",
+        "notion",
+        "create_state"
+      ],
+      "evidence": "Verified Git blob digests, actual CI jobs and full recovery copy readback",
+      "instruction": "Recheck pinned source blob identities, reviewed branch, latest CI jobs, all three exact Drive snapshot documents and both knowledge pointers. Distinguish content match from provider/cryptographic authenticity. Return UNKNOWN on missing evidence and CONFLICT on disagreement. No writes."
+    },
+    {
+      "id": "GRAPH",
+      "name": "Architecture map",
+      "scope": "READ_ONLY",
+      "route": [
+        "github",
+        "tldraw",
+        "figma"
+      ],
+      "evidence": "Versioned architecture source and explicit node status",
+      "instruction": "Load architecture and current Arc III handoff from GitHub, then present a diagram showing inputs, outputs, dependencies, Human Final Gate and blockers. Use tldraw or Figma only when actual tools are available; otherwise render Mermaid and keep GitHub source authoritative. Do not write a diagram without separate authorization."
+    },
+    {
+      "id": "PLUGINS",
+      "name": "Plugin check",
+      "scope": "READ_ONLY",
+      "route": [
+        "github",
+        "notion",
+        "create_state",
+        "drive",
+        "linear",
+        "tldraw",
+        "figma"
+      ],
+      "evidence": "Provider-specific connection/permission/tool availability observed in this chat",
+      "instruction": "Enumerate usable linked tools and verify capabilities with read-only calls where reasonable; show AVAILABLE, LIMITED, UNAVAILABLE or NOT_CHECKED and which ATLAS action each can support. Do not install apps or infer connectivity from this HTML file."
+    },
+    {
+      "id": "ARCIII",
+      "name": "Arc III roadmap",
+      "scope": "READ_ONLY",
+      "route": [
+        "github",
+        "notion"
+      ],
+      "evidence": "15-pass roadmap with signed/unsigned distinction and source links",
+      "instruction": "Show the verified pause point for The Reality Forge: 15 planned passes, 0 formally signed off; preserve distinction from earlier engineering pass names. Do not initiate a pass."
+    },
+    {
+      "id": "RESUME",
+      "name": "Resume Pass 1",
+      "scope": "REVIEW_WORK",
+      "route": [
+        "github",
+        "notion",
+        "create_state"
+      ],
+      "evidence": "Original Arc III handoff, independent artifacts, evidence-backed Pass 1 findings",
+      "instruction": "Only after explicit execution consent, start Pass 1/15 Master Reconciliation using the verified handoff and original preserved files. Classify DONE/PARTIAL/UNVERIFIED/BLOCKED, separate other pass lineages, and preserve review notes. No production changes, automatic betting, Floot work, or signoff without accepted proof."
+    }
+  ],
+  "routines": [
+    {
+      "id": "PREFLIGHT",
+      "name": "Open shift",
+      "scope": "READ_ONLY",
+      "steps": [
+        "STATUS",
+        "PLUGINS"
+      ],
+      "description": "Check which systems actually answer before doing anything else"
+    },
+    {
+      "id": "RECOVERY",
+      "name": "Recovery scan",
+      "scope": "READ_ONLY",
+      "steps": [
+        "RESTORE",
+        "AUDIT"
+      ],
+      "description": "Reconstruct the pinned context and flag drift without changing anything"
+    },
+    {
+      "id": "RESEARCH_PREP",
+      "name": "Reality Forge prep",
+      "scope": "READ_ONLY",
+      "steps": [
+        "ARCIII",
+        "GRAPH",
+        "STATUS"
+      ],
+      "description": "Review the frozen roadmap, dependencies and readiness, without resuming research"
+    }
+  ],
+  "result_contract": {
+    "required": [
+      "action_id",
+      "observed_at",
+      "sources",
+      "result",
+      "remaining_blockers"
+    ],
+    "source_evidence": [
+      "provider",
+      "source_ref",
+      "observed_at",
+      "status"
+    ],
+    "classification": [
+      "MATCH",
+      "PARTIAL",
+      "UNKNOWN",
+      "CONFLICT"
+    ],
+    "narrative_rule": "A pasted or generated report is not independent provider attestation. Do not infer write or betting success from a message."
+  }
+}
