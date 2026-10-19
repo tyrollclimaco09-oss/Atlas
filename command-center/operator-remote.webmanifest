@@ -7,7 +7,7 @@
   "display": "standalone",
   "background_color": "#080d16",
   "theme_color": "#0a0f19",
-  "description": "ATLAS review-only operator command launcher; no live plugin connectivity or authentication.",
+  "description": "Read-only ATLAS workflow launcher; host authentication and linked-plugin access require independent verification.",
   "prefer_related_applications": false,
   "icons": [
     {

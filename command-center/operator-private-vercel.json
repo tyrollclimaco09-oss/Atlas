@@ -2,6 +2,31 @@
   "version": 2,
   "headers": [
     {
+      "source": "/operator-remote.html",
+      "headers": [
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; connect-src 'none'; img-src 'self'; manifest-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'; frame-ancestors 'none'"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "private, no-store, max-age=0"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "no-referrer"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        }
+      ]
+    },
+    {
       "source": "/operator-status.html",
       "headers": [
         {
@@ -38,6 +63,36 @@
           "value": "nosniff"
         }
       ]
+    }
+  ],
+  "builds": [
+    {
+      "src": "index.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "operator-*.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "operator-*.js",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "operator-*.css",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "operator-*.webmanifest",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "operator-icons/*.png",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "api/status.mjs",
+      "use": "@vercel/node"
     }
   ]
 }

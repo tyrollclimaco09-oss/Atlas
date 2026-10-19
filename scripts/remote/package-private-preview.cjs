@@ -62,6 +62,25 @@ function build(outDir){
   throw Error('UNEXPECTED_MANIFEST_SCOPE');
  const config=JSON.parse(content['vercel.json'].toString('utf8'));
  if(config.version!==2||!Array.isArray(config.headers))throw Error('UNEXPECTED_VERCEL_CONFIG');
+ // A READY API-only build can still produce a 404 for every HTML page.
+ // The exact static allowlist is a release invariant, not a manual Vercel patch.
+ const expectedBuilds=[
+  ['index.html','@vercel/static'],
+  ['operator-*.html','@vercel/static'],
+  ['operator-*.js','@vercel/static'],
+  ['operator-*.css','@vercel/static'],
+  ['operator-*.webmanifest','@vercel/static'],
+  ['operator-icons/*.png','@vercel/static'],
+  ['api/status.mjs','@vercel/node']
+ ];
+ if(!Array.isArray(config.builds)||config.builds.length!==expectedBuilds.length||
+    expectedBuilds.some(([src,use],i)=>config.builds[i]?.src!==src||config.builds[i]?.use!==use))
+  throw Error('STATIC_OUTPUT_ALLOWLIST_MISSING');
+ const remoteHeaders=config.headers.find(r=>r.source==='/operator-remote.html')?.headers;
+ const remoteCsp=remoteHeaders?.find(h=>h.key==='Content-Security-Policy')?.value||'';
+ if(!remoteCsp.includes("script-src 'self'")||remoteCsp.includes("script-src 'unsafe-inline'")||
+    !remoteCsp.includes("frame-ancestors 'none'")||!remoteCsp.includes("connect-src 'none'"))
+  throw Error('REMOTE_HEADERS_UNSAFE');
  if(!content['scripts/remote/vercel-status.mjs'].toString().includes('write_authority:false'))
   throw Error('MISSING_READ_ONLY_FLAG');
  const destinations=Object.keys(content).sort();
