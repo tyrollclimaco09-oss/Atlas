@@ -134,6 +134,7 @@ function buildPrompt(){
  jobs.forEach(function(x,i){lines.push((i+1)+'. '+x.id+' ['+x.scope+']: '+x.instruction);lines.push('   Expected evidence: '+x.evidence);});
  lines.push(impact?(authorized?'MODE: OPERATOR_APPROVED_REVIEW_ONLY; I explicitly approved this review action in the remote. Verify provider results after work.':'MODE: PREVIEW_ONLY. Explain the plan but do not write or start research. An additional explicit user approval is required.'):'MODE: READ_ONLY. No data changes of any kind.');
  lines.push('Report provider, source, observation time and MATCH/PARTIAL/UNKNOWN/CONFLICT. Anything not observed is UNKNOWN.');
+ lines.push('No production writes, wagers, credentials, silent plugin installation or Arc III signoffs are permitted.');
  lines.push('Never silently deploy, place bets, install plugins, close passes, use Floot or claim success from static UI.');
  return lines.join('\n');
 }
