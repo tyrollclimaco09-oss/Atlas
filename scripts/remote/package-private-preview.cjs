@@ -47,7 +47,7 @@ function build(outDir){
  if(!match||match.length!==1)throw Error('EXPECTED_SINGLE_INLINE_SCRIPT');
  const inside=match[0].slice('<script>'.length,-'</script>'.length);
  if(!inside.includes('ATLAS OPERATOR REMOTE v2'))throw Error('UNEXPECTED_REMOTE_SCRIPT');
- const policy="script-src 'unsafe-inline'";
+ const policy="script-src 'self' 'unsafe-inline'";
  if(input.split(policy).length!==2)throw Error('UNEXPECTED_SOURCE_CSP');
  let processed=input.replace(policy,"script-src 'self'");
  processed=processed.replace(match[0],'<script defer src="./operator-remote.js"></script>');
