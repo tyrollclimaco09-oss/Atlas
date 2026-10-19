@@ -43,7 +43,7 @@ const trusted=()=>({
   issued_at:MS-500,expires_at:MS+60_000}
 });
 
-test('bounded adapter reads exactly three allowlisted public GET routes and proves current-head jobs',async()=>{
+test('bounded adapter rechecks HEAD after a green five-job report and denies branch drift',async()=>{
  const calls=[];
  const status=await readPublicGitHubStatus({transport:transportWith(normal(),calls),now});
  assert.equal(status.status,'MATCH');
@@ -51,11 +51,11 @@ test('bounded adapter reads exactly three allowlisted public GET routes and prov
  assert.equal(status.head_sha,HEAD);
  assert.equal(status.ci.run_id,39192000001);
  assert.equal(status.jobs.length,5);
- assert.equal(status.sources.length,3);
+ assert.equal(status.sources.length,4);
  assert.equal(status.credentials_used,false);
  assert.equal(status.provider_bridge_connected,false);
  assert.equal(status.production_authority,false);
- assert.deepEqual(calls.map(x=>x.url),[PATHS.commit,PATHS.runs,jobURL]);
+ assert.deepEqual(calls.map(x=>x.url),[PATHS.commit,PATHS.runs,jobURL,PATHS.commit]);
  assert.ok(calls.every(x=>x.init.method==='GET'&&x.init.redirect==='error'&&
   x.init.credentials==='omit'&&x.init.cache==='no-store'));
  assert.ok(calls.every(x=>x.init.headers['X-GitHub-Api-Version']==='2026-03-10'));
@@ -69,6 +69,44 @@ test('source identity and status cannot be provided as caller-defined URLs or ex
  await assert.rejects(()=>getJSON('https://api.github.com/repos/'+REPO+'/issues',client),/URL_NOT_ALLOWLISTED/);
  await assert.rejects(()=>getJSON('https://api.github.com/repos/'+REPO+'/actions/runs/0/jobs?per_page=20',client),/URL_NOT_ALLOWLISTED/);
  assert.equal(await readPublicGitHubStatus({transport:client,now}).then(x=>x.status),'MATCH');
+});
+
+test('branch movement between CI jobs and final head check blocks premature MATCH',async()=>{
+ const map=normal();
+ let reads=0;
+ map[PATHS.commit]=()=>{
+  reads++;
+  return new Response(JSON.stringify([{sha:reads===1?HEAD:'d'.repeat(40)}]),{status:200});
+ };
+ const result=await readPublicGitHubStatus({transport:transportWith(map),now});
+ assert.equal(reads,2);
+ assert.equal(result.status,'PARTIAL');
+ assert.equal(result.reason,'HEAD_CHANGED_DURING_CHECK');
+ assert.equal(result.prior_head_sha,HEAD);
+ assert.equal(result.head_sha,'d'.repeat(40));
+ assert.equal(result.ci.conclusion,'success','old green CI is preserved as history, not present green');
+ assert.equal(result.sources.length,4);
+});
+
+test('final-head recheck outage or malformed reply makes a green candidate UNKNOWN',async()=>{
+ const outage=normal();let reads=0;
+ outage[PATHS.commit]=()=>{
+  reads++;
+  return reads===1?new Response(JSON.stringify([{sha:HEAD}]),{status:200}):
+    new Response('{}',{status:429});
+ };
+ const first=await readPublicGitHubStatus({transport:transportWith(outage),now});
+ assert.equal(first.status,'UNKNOWN');
+ assert.equal(first.reason,'RATE_LIMIT_OR_FORBIDDEN');
+ assert.equal(reads,2);
+ const invalid=normal();let count=0;
+ invalid[PATHS.commit]=()=>{
+  count++;
+  return new Response(JSON.stringify(count===1?[{sha:HEAD}]:[{sha:'bad'}]),{status:200});
+ };
+ const second=await readPublicGitHubStatus({transport:transportWith(invalid),now});
+ assert.equal(second.status,'UNKNOWN');
+ assert.equal(second.reason,'INVALID_RECHECK_SCHEMA');
 });
 
 test('unconfirmed new HEAD prevents an old green CI from appearing current',async()=>{
@@ -173,7 +211,7 @@ test('synthetically authenticated STATUS intent returns only a public read recei
  assert.equal(receipt.result,'MATCH');
  assert.equal(receipt.provider_calls,1);
  assert.equal(receipt.head_sha,HEAD);
- assert.equal(receipt.sources.length,3);
+ assert.equal(receipt.sources.length,4);
  assert.deepEqual(receipt.remaining_blockers,['REAL_IDENTITY_PROVIDER_NOT_WIRED','PRIVATE_HTTPS_HOSTING_NOT_DEPLOYED']);
  assert.equal(authorizeIntent(request(),trusted(),MS).execution,'NOT_IMPLEMENTED');
 });
