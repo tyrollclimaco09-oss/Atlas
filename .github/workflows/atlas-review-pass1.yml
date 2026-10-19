@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - review/pass0-slate-regression-2026-10-16
+      - review/operator-continuity-slate-2026-10-19
   workflow_dispatch:
 
 permissions:
