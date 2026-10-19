@@ -56,3 +56,13 @@ To classify **MATCH**, current branch HEAD, matching workflow run HEAD, and all 
 The public adapter therefore has **verified live public-source contact and fail-closed in-progress classification**, plus **independent later CI completion proof**. It has *not* yet demonstrated the adapter's `MATCH` classification against an already-completed live current-head workflow in a separately executed runtime. The synthetic/fixture tests covering that state passed; do not silently upgrade them to live evidence.
 
 No user login, external HTTP server, OAuth token, hosted app, background service, private provider connector or sports feed is included. This patch is a reviewed status bridge, not production readiness.
+
+## Adversarial refinement — green-status TOCTOU guard (2026-10-19)
+
+Initial audit found a timing edge: the review branch could advance *after* the first HEAD read and *before* all CI job checks completed. An old green result must never be promoted as if it belongs to the new HEAD. The reader now performs a **final independent HEAD read before returning MATCH**, verifies the same immutable SHA, and reports `PARTIAL / HEAD_CHANGED_DURING_CHECK` if the branch moved. Failure, rate limit, malformed schema or transport outage on the final confirmation is **UNKNOWN**, never green. The successful path uses four bounded public GETs (commit, runs, jobs, commit confirmation); partial/error paths avoid unnecessary additional reads.
+
+This fix is preserved by two targeted regression cases: (1) a branch flip precisely between green jobs and final head verification, which correctly blocks MATCH; (2) a rate-limited or malformed final HEAD response, which correctly returns UNKNOWN. Both passed within the full regression suite.
+
+**Latest completed refinement CI:** [GitHub Actions 39268305243](https://github.com/tyrollclimaco09-oss/Atlas/actions/runs/39268305243), code commit `0376ad21cbda3520838f502af48479045363b2c4`. Five review jobs PASS: **195/195 Node**, **9/9 Chromium**, **12/12 MasterSave**, **261/261 offline SCOUT/OI**, original baseline provenance PASS. A separate real public-GitHub API observation in the same run at `2026-10-19T14:22:11.033Z` matched `0376ad21...` while that workflow was running, correctly yielding `PARTIAL / CI_NOT_COMPLETED`. GitHub Actions later independently reported its completed five-job success. These are separate, time-indexed observations.
+
+**Proof boundary unchanged:** genuine public GitHub read integration only; no operator login, no authenticated private plugin bridge, no hosted phone API, no live sports research feed, no production promotion. A clean CI result proves the reviewed software contract and tests, not that our authentication or endpoint deployment exists.
