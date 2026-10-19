@@ -22,6 +22,7 @@
       const r=JSON.parse(localStorage.getItem(KEY)||'null');
       if(r&&r.v===1&&valid(r.mode,r.id)&&Number.isSafeInteger(r.savedAt)&&r.savedAt<=Date.now()&&Date.now()-r.savedAt<=TTL)
         return {mode:r.mode,id:r.id};
+      if(r!==null)localStorage.removeItem(KEY);
     } catch (_) { /* Storage may be unavailable in private browsing. */ }
     return null;
   }
@@ -59,6 +60,7 @@
     '<div class="atlas-quick-controls">'+
       '<button type="button" id="atlas-continue">Continue command</button>'+
       '<button type="button" id="atlas-copy">Copy current command</button>'+
+      '<button type="button" id="atlas-send">Copy &amp; open ChatGPT ↗</button>'+
       '<a href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer">Open ChatGPT ↗</a>'+
       '<button type="button" id="atlas-return-link">Copy return link</button>'+
     '</div>'+
@@ -71,9 +73,22 @@
       '<small>Existing legacy draft stays on its own website/browser. No automatic sync or state import.</small>'+
     '</div>'+
     '<p id="atlas-quick-message" role="status" aria-live="polite"></p>'+
+    '<small>ChatGPT opens its homepage, not necessarily this same conversation. Paste the copied handoff in your existing ATLAS chat.</small>'+
     '<button type="button" id="atlas-clear">Forget this browser shortcut</button>'+
     '<small>Only a command ID is remembered locally (up to 30 days). Never credentials, stakes, approvals or research notes. Use “Copy return link” to move across browser contexts.</small>';
-  actionHost.closest('section').before(section);
+  // Keep the resume action visible before the larger grid on iPhone.
+  const hero=document.querySelector('.hero');
+  if(hero)hero.after(section);
+  else actionHost.closest('section').before(section);
+  // Static HTML cannot attest host authentication or plugin permissions.
+  const phone=$('phone-readiness');
+  if(phone && location.protocol==='https:' && /\.vercel\.app$/i.test(location.hostname)){
+    phone.dataset.authState='HOST_READBACK_REQUIRED';
+    const label=phone.querySelector('.not-auth');
+    if(label)label.textContent='Verify Vercel sign-in';
+    const description=phone.querySelector('p');
+    if(description)description.textContent='Hosted preview detected. Sign-in and access protection must be checked through Vercel and a private browser session; this page cannot prove them. Plugin calls still require ChatGPT.';
+  }
   let last=fromHash()||fromStore();
   let suppressClickSave=false;
   function updateResume(){
@@ -114,6 +129,20 @@
   $('atlas-slate').addEventListener('click',()=>{prepareSlate();moveToPrompt();});
   $('atlas-continue').addEventListener('click',()=>{if(last){activate(last.mode,last.id);moveToPrompt();}});
   $('atlas-copy').addEventListener('click',()=>{ $('copy').click(); $('atlas-quick-message').textContent='Check the copy confirmation by the command box, then paste into ChatGPT.'; moveToPrompt(); });
+  $('atlas-send').addEventListener('click',async()=>{
+    const notice=$('atlas-quick-message'),button=$('atlas-send');
+    button.disabled=true;
+    try{
+      if(!navigator.clipboard?.writeText)throw Error('clipboard_unavailable');
+      await navigator.clipboard.writeText(box.value);
+      notice.textContent='Command copied. Opening ChatGPT; paste in your existing ATLAS conversation.';
+      // A deliberate user click initiated the copy. Never transmit the prompt in a URL.
+      location.assign('https://chatgpt.com/');
+    }catch(_){
+      box.focus();box.select();moveToPrompt();
+      notice.textContent='Automatic copy was blocked. Command selected; copy manually, then tap Open ChatGPT.';
+    }finally{button.disabled=false;}
+  });
   $('atlas-return-link').addEventListener('click',async()=>{
     const mode=last?.mode||'action',id=last?.id||'STATUS';
     const link=location.href.split('#')[0]+'#atlas='+mode+':'+id;
