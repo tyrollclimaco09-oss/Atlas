@@ -42,6 +42,10 @@ jobs:
           mapfile -t files < <(find command-center/tests -maxdepth 1 -name '*.test.cjs' ! -name 'source-preservation.test.cjs' -print | sort)
           if [ "${#files[@]}" -eq 0 ]; then echo "No test files found"; exit 1; fi
           node --test "${files[@]}" scripts/remote/*.test.cjs
+      - name: Observe public GitHub read-only status (informational, no green promotion)
+        run: |
+          node scripts/remote/github-public-smoke.cjs
+          echo "Observe ATLAS_PUBLIC_STATUS_READBACK in this step. UNKNOWN/PARTIAL are never proof of live readiness."
       - name: Verify no execution or deployment workflow in this job
         run: |
           test -f command-center/PASS0_REVIEW_PROVENANCE.json
