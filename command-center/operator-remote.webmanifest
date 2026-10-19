@@ -1,0 +1,26 @@
+{
+  "name": "ATLAS Operator Remote",
+  "short_name": "ATLAS Remote",
+  "id": "./operator-remote.html",
+  "start_url": "./operator-remote.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#080d16",
+  "theme_color": "#0a0f19",
+  "description": "ATLAS review-only operator command launcher; no live plugin connectivity or authentication.",
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "./operator-icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./operator-icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

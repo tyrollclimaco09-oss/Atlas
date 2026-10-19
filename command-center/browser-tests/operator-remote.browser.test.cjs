@@ -73,3 +73,22 @@ test('real Chromium: clipboard refusal selects only visible prompt, never claims
   await context.close();
  }finally{await browser.close();}
 });
+
+test('real Chromium: phone-install readiness is explicit and no fake auth control appears',async()=>{
+ const browser=await chromium.launch({headless:true,args:['--no-sandbox']});
+ try{
+  const context=await browser.newContext({viewport:{width:390,height:844},isMobile:true,hasTouch:true});
+  const page=await context.newPage(),outgoing=[];
+  page.on('request',req=>{if(!req.url().startsWith('file://'))outgoing.push(req.url());});
+  await page.goto(url);
+  assert.equal(await page.locator('link[rel="manifest"]').getAttribute('href'),'./operator-remote.webmanifest');
+  assert.equal(await page.locator('#phone-readiness').getAttribute('data-auth-state'),'NOT_CONFIGURED');
+  assert.equal(await page.locator('#phone-readiness').getAttribute('data-install-state'),'REQUIRES_HTTPS');
+  assert.match(await page.locator('#phone-readiness').innerText(),/Authentication not configured/);
+  await page.locator('#ios-install-instructions summary').click();
+  assert.match(await page.locator('#ios-install-instructions').innerText(),/Add to Home Screen/);
+  assert.deepEqual(outgoing,[]);
+  assert.equal(await page.locator('input[type="password"]').count(),0);
+  await context.close();
+ }finally{await browser.close();}
+});

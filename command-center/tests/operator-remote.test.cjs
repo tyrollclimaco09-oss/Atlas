@@ -176,3 +176,42 @@ test('original command center and Final Gate stay outside review-only remote aut
  assert.match(registry.authority.handoff,/ARCIII_REALITY_FORGE_RESUME_HANDOFF/);
  assert.match(registry.authority.master_manifest,/ATLAS_MASTER_CHECKPOINT_2026-10-18/);
 });
+
+
+test('phone manifest is local, install metadata is truthful, and images have correct PNG geometry',()=>{
+ const manifestPath=path.resolve(__dirname,'../operator-remote.webmanifest');
+ const m=JSON.parse(fs.readFileSync(manifestPath,'utf8'));
+ assert.equal(m.id,'./operator-remote.html');
+ assert.equal(m.start_url,'./operator-remote.html');
+ assert.equal(m.scope,'./');
+ assert.equal(m.display,'standalone');
+ assert.equal(m.prefer_related_applications,false);
+ assert.equal(m.icons.length,2);
+ assert.deepEqual(m.icons.map(x=>x.sizes),['192x192','512x512']);
+ for(const icon of m.icons){
+  assert.ok(icon.src.startsWith('./operator-icons/'));
+  const bytes=fs.readFileSync(path.resolve(__dirname,'..',icon.src));
+  assert.deepEqual([...bytes.subarray(0,8)],[137,80,78,71,13,10,26,10]);
+  const size=Number.parseInt(icon.sizes.split('x')[0],10);
+  assert.equal(bytes.readUInt32BE(16),size);
+  assert.equal(bytes.readUInt32BE(20),size);
+  assert.equal(bytes[24],1,'indexed one-bit icon');
+  assert.equal(bytes[25],3,'indexed palette icon');
+ }
+ assert.match(html,/<link rel="manifest" href="\.\/operator-remote\.webmanifest">/);
+ assert.match(html,/<link rel="apple-touch-icon" href="\.\/operator-icons\/icon-192\.png">/);
+ assert.match(html,/manifest-src 'self'/);
+ assert.match(html,/connect-src 'none'/);
+});
+
+test('home-screen convenience does not claim authentication or network availability',()=>{
+ assert.match(html,/data-auth-state="NOT_CONFIGURED"/);
+ assert.match(html,/data-install-state="REQUIRES_HTTPS"/);
+ assert.match(html,/Authentication not configured/);
+ assert.match(html,/no plugin bridge, login or background sync is active/);
+ assert.match(html,/Installing an icon never grants permission/);
+ assert.match(html,/Add to Home Screen/);
+ assert.match(html,/This review file is not hosted as a secure application/);
+ assert.doesNotMatch(html,/<input[^>]+type="password"/);
+ assert.doesNotMatch(html,/navigator\.serviceWorker\.register/);
+});
