@@ -81,7 +81,8 @@
       '<button type="button" id="atlas-context">Restore project context</button>'+
       '<button type="button" id="atlas-copy">Copy current command</button>'+
       '<button type="button" id="atlas-send">Copy &amp; open ChatGPT ↗</button>'+
-      '<a href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer">Open ChatGPT ↗</a>'+
+      '<a href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer">Open ChatGPT ↗</a>'+ 
+      '<a href="./operator-status.html" id="atlas-status-link">Live STATUS ↗</a>'+
       '<button type="button" id="atlas-return-link">Copy return link</button>'+
     '</div>'+
     '<div class="atlas-slate-card"><div><strong>Run the Slate</strong><p>Prepare a fresh research request; never place a bet from this site.</p></div>'+
