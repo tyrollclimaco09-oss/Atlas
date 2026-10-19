@@ -30,3 +30,27 @@ No team credential storage, manual password collection, API key setup, main bran
 
 ## Evidence
 See subsequent reviewed commit, GitHub Actions verification and Vercel project/deployment readbacks as recorded in this file or a linked post-deployment receipt. No live HTTPS or protected deployment may be claimed before tools confirm it.
+
+## Deployment package and hosting outcome — 2026-10-19
+
+**Isolated project creation through the connected Vercel app was attempted once** for team `team_A4uoE8sLtzwSgEWizjOCn7LN`, project `atlas-operator-private-status`, with `ssoProtection.deploymentType: all`, no Git auto-connect and no public source. Vercel returned **403 Forbidden — You don't have permission to create the project.** A fresh team-scoped project list returned **zero projects**. The runtime environment has no authenticated `vercel` CLI as an authorized fallback. **No deployment, URL, API token, database, billing action or Vercel project was created.**
+
+This is an **account/connector permission gate**, not a signal to disable protection or fall back to an unprotected site.
+
+The repository now contains a deterministic local bundle builder at `scripts/remote/package-private-preview.cjs`, with Node contract tests and real packaged mobile Chromium tests. Running:
+
+```bash
+node scripts/remote/package-private-preview.cjs /tmp/atlas-operator-private-preview
+```
+
+from the reviewed GitHub checkout produces an isolated Vercel-ready directory containing:
+- `index.html`, the existing `operator-remote.html`, live read-only `operator-status.html/.css/.js`, checked icon PNGs and manifest;
+- extracted `operator-remote.js` and **`script-src 'self'`** (no inline launcher JavaScript in the deployed package);
+- `api/status.mjs`, which imports the previously reviewed GET-only GitHub status adapter;
+- `vercel.json` for strict CSP/no-store headers and an `atlas-package-receipt.json` SHA-256 file inventory.
+
+The builder rejects nonempty output folders and source-file overlap, writes no secrets, and never calls a deployment API. It requires an exact checked-out reviewed source; the displayed contents are **not** an authenticated service until separately deployed and protected.
+
+**Required operator account-side step:** In the correct Vercel team, create a dedicated project with **Vercel Authentication → All Deployments** enabled *before uploading any bundle*, or authorize/reconnect the ChatGPT Vercel connector with actual project-create scope. Do not paste auth tokens into ChatGPT. The agent should re-check project readback and owner role and only then upload a reviewed preview, confirm Vercel status READY, and test unauthenticated denial at both `/` and `/api/status`.
+
+**Current milestone verdict:** `SOURCE_READY / CI_EVIDENCE_REQUIRED / HOST_PERMISSION_BLOCKED / HTTPS_AUTH_UNVERIFIED`. Do not label it LAUNCHED, READY or remotely authenticated. Original Command Center, MasterSave and Human Final Gate remain unchanged; Arc III 0/15 formal sign-offs, Floot parked.
