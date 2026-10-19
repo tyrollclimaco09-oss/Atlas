@@ -131,6 +131,20 @@ async function readPublicGitHubStatus({transport=globalThis.fetch,now=()=>new Da
   source[2].status='MATCH';
   const fail=ci.conclusion!=='success'||jobs.some(j=>j.conclusion==='failure'||j.conclusion==='cancelled');
   const full=jobs.every(j=>j.status==='completed'&&j.conclusion==='success');
+  // Never promote a green run after a branch movement between reads.
+  // Re-read the head ONLY on the route that could otherwise report MATCH.
+  if(!fail&&full) {
+   source.push({provider:'GitHub PUBLIC REST',source_ref:PATHS.commit,
+    observed_at:time,status:'UNKNOWN'});
+   const confirm=await getJSON(PATHS.commit,transport);
+   if(!Array.isArray(confirm)||confirm.length!==1||!confirm[0]||!isSha(confirm[0].sha))
+    throw closedError('INVALID_RECHECK_SCHEMA');
+   source[3].status='MATCH';
+   if(confirm[0].sha!==head)return {
+    ...failure(time,'HEAD_CHANGED_DURING_CHECK',source,confirm[0].sha),
+    status:'PARTIAL',prior_head_sha:head,ci,jobs
+   };
+  }
   return {
    schema:VERSION,scope:'PUBLIC_REVIEW_ONLY',repo:REPO,branch:BRANCH,
    observed_at:time,status:fail?'CONFLICT':full?'MATCH':'PARTIAL',
