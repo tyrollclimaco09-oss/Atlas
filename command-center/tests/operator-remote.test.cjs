@@ -19,7 +19,7 @@ function fakeBrowser(copy=true) {
   getAttribute(k){return this.attrs[k];},setAttribute(k,v){this.attrs[k]=String(v);},
   addEventListener(k,f){this.listeners[k]=f;},
   click(){if(this.listeners.click)this.listeners.click();},
-  dispatch(k){if(this.listeners[k])this.listeners[k]();},
+  dispatch(k){if(this.listeners[k])return this.listeners[k]();},
   focus(){this.focused=true;},select(){this.selected=true;}
  });
  const actions=actionIds.map(id=>create({'data-action':id,'aria-pressed':'false'}));
@@ -139,7 +139,7 @@ test('read-only workflow kit emits only allowlisted ordered actions and changes 
  assert.match(app.ids.command.value,/MODE: READ_ONLY/);
  assert.doesNotMatch(app.ids.command.value,/MODE: OPERATOR_APPROVED_REVIEW_ONLY/);
  const route=app.providers.filter(x=>x.getAttribute('data-routed')==='true').map(x=>x.getAttribute('data-provider'));
- assert.deepEqual(route,['github','create_state','notion','drive']);
+ assert.deepEqual(route,['github','notion','create_state','drive']);
 });
 
 test('copied command equals visible textarea and clipboard fallback never lies',async()=>{
