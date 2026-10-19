@@ -75,6 +75,7 @@
     '<small>Only a command ID is remembered locally (up to 30 days). Never credentials, stakes, approvals or research notes. Use “Copy return link” to move across browser contexts.</small>';
   actionHost.closest('section').before(section);
   let last=fromHash()||fromStore();
+  let suppressClickSave=false;
   function updateResume(){
     $('atlas-last').textContent=last?'Saved selection: '+(last.mode==='slate'?'Run the Slate':last.id)+'. Reopen without restoring approval.':'No recent selection saved on this browser.';
     $('atlas-continue').disabled=!last;
@@ -99,7 +100,8 @@
     const target=Array.from(document.querySelectorAll('['+attr+']')).find(el=>el.getAttribute(attr)===id);
     if(!target)return;
     consent.checked=false;
-    target.click();
+    suppressClickSave=true;
+    try { target.click(); } finally { suppressClickSave=false; }
     if(save)remember(mode,id);
   }
   function moveToPrompt(){
@@ -107,8 +109,8 @@
     box.focus({preventScroll:true});
   }
   // Register after the original launcher so its paint() completes first.
-  document.querySelectorAll('[data-action]').forEach(el=>el.addEventListener('click',()=>remember('action',el.getAttribute('data-action'))));
-  document.querySelectorAll('[data-routine]').forEach(el=>el.addEventListener('click',()=>remember('routine',el.getAttribute('data-routine'))));
+  document.querySelectorAll('[data-action]').forEach(el=>el.addEventListener('click',()=>{if(!suppressClickSave)remember('action',el.getAttribute('data-action'));}));
+  document.querySelectorAll('[data-routine]').forEach(el=>el.addEventListener('click',()=>{if(!suppressClickSave)remember('routine',el.getAttribute('data-routine'));}));
   $('atlas-slate').addEventListener('click',()=>{prepareSlate();moveToPrompt();});
   $('atlas-continue').addEventListener('click',()=>{if(last){activate(last.mode,last.id);moveToPrompt();}});
   $('atlas-copy').addEventListener('click',()=>{ $('copy').click(); $('atlas-quick-message').textContent='Check the copy confirmation by the command box, then paste into ChatGPT.'; moveToPrompt(); });
