@@ -92,3 +92,42 @@ test('real Chromium: phone-install readiness is explicit and no fake auth contro
   await context.close();
  }finally{await browser.close();}
 });
+
+test('mobile: local workflow resumes safely and slate handoff preserves no execution approval',async()=>{
+ const browser=await chromium.launch({headless:true,args:['--no-sandbox']});
+ try{
+  const context=await browser.newContext({viewport:{width:390,height:844},isMobile:true,hasTouch:true});
+  const page=await context.newPage();const errors=[];
+  page.on('pageerror',e=>errors.push(e.message));
+  await page.goto(url);
+  await page.locator('#atlas-continuity').waitFor();
+  assert.equal(await page.locator('[data-action]').count(),8,'canonical action count unchanged');
+  assert.equal(await page.locator('[data-routine]').count(),3,'canonical routine count unchanged');
+  assert.equal(await page.locator('#atlas-continue').isDisabled(),true);
+  await page.locator('[data-action="MASTERSAVE"]').click();
+  await page.locator('#execute-confirm').check();
+  assert.match(await page.locator('#command').inputValue(),/MODE: OPERATOR_APPROVED_REVIEW_ONLY/);
+  await page.reload();
+  assert.equal(await page.locator('[data-action="MASTERSAVE"]').getAttribute('aria-pressed'),'true');
+  assert.equal(await page.locator('#execute-confirm').isChecked(),false,'approval MUST NEVER persist');
+  assert.match(await page.locator('#command').inputValue(),/MODE: PREVIEW_ONLY/);
+  await page.locator('#atlas-slate').click();
+  const prompt=await page.locator('#command').inputValue();
+  assert.match(prompt,/RUN THE SLATE/);
+  assert.match(prompt,/Human Final Gate is mandatory/);
+  assert.match(prompt,/not executed|NOT AUTOMATIC WEBSITE EXECUTION|RESEARCH HANDOFF/i);
+  assert.equal(await page.locator('#execute-gate').isVisible(),false);
+  assert.match(await page.locator('#atlas-notes').getAttribute('href'),/PASS0_SLATE_REGRESSION_2026-10-16.md/);
+  assert.match(page.url(),/#atlas=slate:SLATE$/);
+  await page.reload();
+  assert.match(await page.locator('#command').inputValue(),/RUN THE SLATE/);
+  await page.locator('#atlas-clear').click();
+  assert.match(await page.locator('#command').inputValue(),/ACTION STATUS/);
+  assert.equal(await page.locator('#atlas-continue').isDisabled(),true);
+  assert.ok(!page.url().includes('#atlas='),'clearing shortcut clears URL state');
+  const layout=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,view:innerWidth}));
+  assert.ok(layout.scroll<=layout.view+1,'no mobile horizontal overflow');
+  assert.deepEqual(errors,[]);
+  await context.close();
+ }finally{await browser.close();}
+});
