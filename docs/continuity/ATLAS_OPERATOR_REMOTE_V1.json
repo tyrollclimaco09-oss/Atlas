@@ -1,0 +1,95 @@
+{
+  "schema": "atlas.operator-remote.v1",
+  "release": "review_only_not_deployed",
+  "checkpoint_id": "ATLAS-ARCIII-20261018-MASTERSAVE-01",
+  "authority": {
+    "repo": "tyrollclimaco09-oss/Atlas",
+    "branch": "review/pass0-slate-regression-2026-10-16",
+    "manifest": "docs/continuity/ATLAS_MASTER_CHECKPOINT_2026-10-18.json",
+    "primary_handoff": "docs/ARCIII_REALITY_FORGE_RESUME_HANDOFF_2026-10-18.md",
+    "audit": "docs/continuity/ATLAS_MASTERSAVE_VERIFICATION_2026-10-18.md",
+    "architecture": "docs/ATLAS_CONTINUITY_PLUGIN_ARCHITECTURE_2026-10-18.md"
+  },
+  "policy": {
+    "human_final_gate": true,
+    "bet_execution": false,
+    "production_writes": false,
+    "credentials_in_chat_or_static_ui": false,
+    "automatic_plugin_install": false,
+    "background_sync": false,
+    "default_floot": "PARKED",
+    "no_closure_without_evidence": true,
+    "external_mirror_statuses": [
+      "MATCH",
+      "PARTIAL",
+      "UNKNOWN",
+      "CONFLICT"
+    ]
+  },
+  "actions": [
+    {
+      "id": "STATUS",
+      "label": "Live status",
+      "icon": "activity",
+      "class": "read",
+      "summary": "Fresh GitHub/CI + linked knowledge checks",
+      "instruction": "Read the current ATLAS review branch HEAD, latest completed GitHub Actions result, pinned MasterSave manifest, and existing Notion, Create State, and Drive pointer/backup using connected tools as available. Return each provider's observed-at, exact evidence link or ID, MATCH/PARTIAL/UNKNOWN/CONFLICT, active Arc III count, and unresolved blockers. Do not make any write, infer runtime health, or reuse past CI as current."
+    },
+    {
+      "id": "MASTERSAVE",
+      "label": "MasterSave",
+      "icon": "save",
+      "class": "write_review",
+      "summary": "Capture evidence and verify every write",
+      "instruction": "Perform an operator-triggered ATLAS MasterSave using the existing review branch, checkpoint manifest, and canonical verifier; preserve evidence and only meaningful deltas. Verify current source HEAD and its CI before claiming green. Write a new review-only checkpoint only when the evidence changed; preserve the prior immutable anchor. Update the existing Notion Codex, the populated Create State model, and the Drive recovery copy only through their actual connected tools, and read back to verify. Where writes, sync or readback are not supported, mark UNKNOWN and explicitly report partial completion. Never edit main, production, real ledger, approvals, or betting execution; do not invent success."
+    },
+    {
+      "id": "RESTORE",
+      "label": "Restore context",
+      "icon": "history",
+      "class": "read",
+      "summary": "Load the real checkpoint, not chat guesses",
+      "instruction": "Restore ATLAS from its GitHub anchored Arc III MasterSave, cross-check the pinned handoff and audit receipt, and inspect the latest review HEAD. Optionally query the populated Create State ATLAS Codex and Notion/Drive for navigational context. Identify conflicts as UNKNOWN/CONFLICT. Return the exact current pause point and next suggested action but DO NOT open an Arc III research pass."
+    },
+    {
+      "id": "AUDIT",
+      "label": "Integrity audit",
+      "icon": "shield-check",
+      "class": "read",
+      "summary": "Catch drift, omissions and false green states",
+      "instruction": "Audit the ATLAS MasterSave end-to-end, including Git blob IDs, frozen manifest contents, most recent CI jobs, the Notion pointer, Create State captured context, and full Drive snapshot. Compare authoritative sources against actual fresh readbacks, distinguish content agreement from cryptographic verification, and state MATCH/CONFLICT/UNKNOWN for each. Check that Final Gate and production controls are unchanged. Do not write unless specifically asked."
+    },
+    {
+      "id": "GRAPH",
+      "label": "Architecture map",
+      "icon": "network",
+      "class": "read",
+      "summary": "See nodes, evidence, dependencies and blockers",
+      "instruction": "Read the versioned ATLAS pipeline and continuity architecture from GitHub and render a legible Mermaid graph or another available connected editable diagram surface. Distinguish genuine component dependencies from plugin index/backup links. Mark shadow-only nodes, human Final Gate, operational blockers, and where Arc III passes relate. Keep the graph source in GitHub; do not claim any external whiteboard was saved unless verified."
+    },
+    {
+      "id": "PLUGINS",
+      "label": "Plugin check",
+      "icon": "plug",
+      "class": "read",
+      "summary": "Which apps really work here?",
+      "instruction": "Inspect current available plugin connections for GitHub, Notion, Create State, Google Drive, Linear, tldraw, Figma, and relevant ATLAS services. Verify actual read/write capability only through appropriate minimally invasive tests, and distinguish installed, connected, permission-limited, unavailable, and unverified. Report the best current route for Save, Restore, Graph, and Audit. Do not install or disconnect plugins or create accounts without the operator."
+    },
+    {
+      "id": "ARCIII",
+      "label": "Arc III roadmap",
+      "icon": "list-checks",
+      "class": "read",
+      "summary": "15-pass roadmap without starting work",
+      "instruction": "Read the actual versioned Arc III Reality Forge handoff and historical evidence; reconcile 15 planned passes, 0 formal signoffs, work completed in separately numbered engineering passes, and the highest-value next blockers. Show the status matrix and next resume boundary. Keep Floot parked. Do not start a research pass or change formal pass accounting."
+    },
+    {
+      "id": "RESUME",
+      "label": "Resume Pass 1",
+      "icon": "play",
+      "class": "review_work",
+      "summary": "Only when you deliberately launch Reality Forge",
+      "instruction": "Operator explicitly selected RESUME. Read the verified ATLAS Arc III MasterSave and original preserved artifacts, start Pass 1/15 Master Reconciliation in research/review only, separate historical engineering passes from formal Arc III closure, identify DONE/PARTIAL/UNVERIFIED/BLOCKED with linked receipts, and preserve the next handoff. No deployment, live sports betting action, premature pass signoff, or Floot work."
+    }
+  ]
+}
