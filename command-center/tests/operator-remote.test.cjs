@@ -142,6 +142,18 @@ test('read-only workflow kit emits only allowlisted ordered actions and changes 
  assert.deepEqual(route,['github','notion','create_state','drive']);
 });
 
+test('every command emits portable evidence-receipt requirements without provider attestation claims',()=>{
+ const app=fakeBrowser();
+ for(const id of actionIds){
+  press(app.actions,id,'data-action');
+  const prompt=app.ids.command.value;
+  assert.match(prompt,/portable operator evidence receipt/);
+  assert.match(prompt,/action_id, observed_at, sources \(provider, source_ref, observed_at, status\), result, remaining_blockers/);
+  assert.match(prompt,/not independent provider attestation/);
+  if(['MASTERSAVE','RESUME'].includes(id))assert.match(prompt,/MODE: PREVIEW_ONLY/);
+ }
+});
+
 test('copied command equals visible textarea and clipboard fallback never lies',async()=>{
  const a=fakeBrowser(true);
  press(a.routines,'RESEARCH_PREP','data-routine');
