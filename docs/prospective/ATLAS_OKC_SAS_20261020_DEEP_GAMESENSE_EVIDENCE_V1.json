@@ -1,0 +1,325 @@
+{
+  "schema": "atlas.review.deep-gamesense-evidence.v1",
+  "captured_at_local": "2026-10-19T22:35:44-05:00",
+  "event": "OKC @ SAS",
+  "event_date": "2026-10-20",
+  "event_start": "2026-10-21T01:30:00Z",
+  "timezone": "America/Chicago",
+  "parents": [
+    "ATLAS_NBA_OPENING_SCOUT_WIDE_V2_2026-10-20.json",
+    "ATLAS_NBA_GAMESENSE_SCRIPT_MAP_2026-10-20.json"
+  ],
+  "mode": "READ_ONLY_RESEARCH_PACKET",
+  "production_authority": false,
+  "final_gate": "HOLD_NO_VERIFIED_PROBABILITIES_OR_EXECUTABLE_DK_PROPS",
+  "sources": [
+    "https://official.nba.com/2026-27-points-of-emphasis/",
+    "https://www.nba.com/news/nba-referees-teams-points-of-emphasis-2026-27",
+    "https://sbcamericas.com/2026/10/16/nba-betting-ban-draftkings-fanduel/",
+    "https://sports.yahoo.com/articles/spurs-vs-thunder-watch-game-171851412.html",
+    "https://www.expressnews.com/sports/spurs/article/spurs-open-season-tobias-harris-22483480.php",
+    "https://www.expressnews.com/sports/spurs/article/dylan-harper-expects-start-season-hot-hand-22482100.php",
+    "https://www.statmuse.com/nba/ask/shai-highest-assist-games-this-year",
+    "https://www.statmuse.com/nba/ask/how-many-10-assists-games-does-shai-this-season",
+    "https://www.statmuse.com/nba/ask/devin-vassell-2026-playoffs-stats-vs-thunder",
+    "https://www.statmuse.com/nba/player/dylan-harper-30558/game-log?seasonYear=2026",
+    "https://www.statmuse.com/nba/ask/victor-wembanyama-stats-in-the-2026-playoffs-vs-thunder",
+    "https://www.statmuse.com/nba/ask/3pa-leaders-2026-spurs"
+  ],
+  "league_rules": {
+    "referee_points_of_emphasis": [
+      "off-arm forceful push-offs and expanded separation",
+      "flopping exaggeration/theatrics vs legal head snap embellishment",
+      "freedom of movement straight-line pathways",
+      "moving/two-hand screen enforcement",
+      "dangerous shooting closeouts",
+      "avoid unnecessary free throw delays"
+    ],
+    "sga_hypotheses": [
+      "If forceful off-arm separation is penalized more, some contested scoring and drives could change; direction/magnitude unquantified.",
+      "If Spurs shade Castle+Wembanyama paint wall toward SGA, passing volume and assisted baskets can rise.",
+      "No evidence refs will uniformly suppress SGA free throws, and no numerical rule coefficient should be invented."
+    ],
+    "sportsbook_rules": [
+      "2026-10-16 confirmed partner restrictions on same-player correlated under parlays, first event/tipoff, missed shots, unders on expected less-than-12-minute players.",
+      "Do not assume all alternative unders are available; verify DK betslip and legality by state."
+    ]
+  },
+  "depth": {
+    "spurs_probable_starters": [
+      "De'Aaron Fox",
+      "Stephon Castle",
+      "Dylan Harper",
+      "Devin Vassell",
+      "Victor Wembanyama"
+    ],
+    "thunder_probable_starters": [
+      "Shai Gilgeous-Alexander",
+      "Cason Wallace",
+      "Jalen Williams",
+      "Chet Holmgren",
+      "Isaiah Hartenstein"
+    ],
+    "spurs_notes": [
+      "Tobias Harris OUT calf; Jayden Quaintance OUT",
+      "Spurs experimentally move Vassell to small-ball PF with Fox Castle Harper three guards; spacing potential, backline rebounding size risk.",
+      "Dylan Harper preseason 14.8 PPG and reported 57.1% 3P in small sample, not sustainable forecast."
+    ],
+    "thunder_notes": [
+      "Jalen Williams and Chet Holmgren returning from past injuries, currently probable pending final report",
+      "Cason Wallace expected larger role after Lu Dort trade; 2025-26 1.9 steals per game",
+      "OKC double big lineups Hartenstein/Holmgren contest rebounds and affect Wemby shot mix"
+    ]
+  },
+  "historical_sample": {
+    "scope": "2026 Western Conference Finals, seven games, NOT representative independent model, includes double OT",
+    "settled_by_official_player_game_log_crosscheck": true,
+    "sample": [
+      {
+        "day": "2026-05-18",
+        "harper_pts": 24,
+        "harper_min": 47,
+        "vassell_3pm": 3,
+        "sga_ast": 12,
+        "wemby_pts": 41,
+        "wemby_reb": 24,
+        "wemby_ast": 3,
+        "game_note": "double overtime"
+      },
+      {
+        "day": "2026-05-20",
+        "harper_pts": 12,
+        "harper_min": 25,
+        "vassell_3pm": 6,
+        "sga_ast": 9,
+        "wemby_pts": 21,
+        "wemby_reb": 17,
+        "wemby_ast": 6,
+        "game_note": "regulation"
+      },
+      {
+        "day": "2026-05-22",
+        "harper_pts": 6,
+        "harper_min": 17,
+        "vassell_3pm": 3,
+        "sga_ast": 12,
+        "wemby_pts": 26,
+        "wemby_reb": 4,
+        "wemby_ast": 3,
+        "game_note": "regulation"
+      },
+      {
+        "day": "2026-05-24",
+        "harper_pts": 7,
+        "harper_min": 21,
+        "vassell_3pm": 2,
+        "sga_ast": 7,
+        "wemby_pts": 33,
+        "wemby_reb": 8,
+        "wemby_ast": 5,
+        "game_note": "regulation"
+      },
+      {
+        "day": "2026-05-26",
+        "harper_pts": 5,
+        "harper_min": 25,
+        "vassell_3pm": 2,
+        "sga_ast": 9,
+        "wemby_pts": 20,
+        "wemby_reb": 6,
+        "wemby_ast": 1,
+        "game_note": "regulation"
+      },
+      {
+        "day": "2026-05-28",
+        "harper_pts": 18,
+        "harper_min": 22,
+        "vassell_3pm": 4,
+        "sga_ast": 4,
+        "wemby_pts": 28,
+        "wemby_reb": 10,
+        "wemby_ast": 2,
+        "game_note": "regulation"
+      },
+      {
+        "day": "2026-05-30",
+        "harper_pts": 12,
+        "harper_min": 27,
+        "vassell_3pm": 1,
+        "sga_ast": 9,
+        "wemby_pts": 22,
+        "wemby_reb": 7,
+        "wemby_ast": 2,
+        "game_note": "regulation"
+      }
+    ],
+    "derived": {
+      "harper_pts_10plus": 4,
+      "vassell_3pm_2plus": 6,
+      "sga_assists_8plus": 5,
+      "wemby_pra_43plus": 3,
+      "wemby_points_rebounds_double_double": 3,
+      "harper10_vassell2_joint_truth": {
+        "both": 3,
+        "a_only": 1,
+        "b_only": 3,
+        "neither": 0
+      },
+      "harper10_vassell2_sga8_all": 2,
+      "harper10_vassell2_wemby_dd_all": 3,
+      "harper10_vassell2_wemby_pra43_all": 2,
+      "sga_assists_15plus": 0
+    }
+  },
+  "season_baselines": [
+    {
+      "player": "Shai Gilgeous-Alexander",
+      "year": "2025-26",
+      "apg": 6.6,
+      "assists10plus_games": 7,
+      "games": 68,
+      "assists15plus_games": 1,
+      "season_high_ast": 15,
+      "head_to_head_WCF_ast_per_game": 8.9
+    },
+    {
+      "player": "Dylan Harper",
+      "year": "2025-26",
+      "points_per_game": 11.8,
+      "points10plus_games": 44,
+      "games": 69
+    },
+    {
+      "player": "Devin Vassell",
+      "year": "2025-26",
+      "three_point_attempts_per_game": 6.4,
+      "three_makes_per_game": 2.5,
+      "games": 67,
+      "three_makes2plus_games": 44
+    },
+    {
+      "player": "Victor Wembanyama",
+      "year": "2025-26",
+      "points_per_game": 25,
+      "rebounds_per_game": 11.5,
+      "assists_per_game": 3.1,
+      "baseline_pra_mean": 39.6
+    },
+    {
+      "player": "Cason Wallace",
+      "year": "2025-26",
+      "steals_per_game": 1.9
+    }
+  ],
+  "scripts": [
+    {
+      "id": "A",
+      "name": "Spurs balanced creation and floor spacing",
+      "causes": [
+        "Harper retains meaningful starter minutes and gets 9-12 field goal attempts",
+        "Vassell stays a catch-and-shoot spacing outlet and attempts 5-8 threes",
+        "Wemby attracts help and passes to shooters"
+      ],
+      "hypothetical_thresholds": [
+        "Harper 10+ points",
+        "Vassell 2+ threes"
+      ],
+      "falsifiers": [
+        "Harper under 22 minutes / early fouls",
+        "Vassell fewer than 4 3PA",
+        "Spurs offense stagnates against OKC pressure"
+      ],
+      "priority": "RESEARCH"
+    },
+    {
+      "id": "B",
+      "name": "San Antonio funnels SGA into playmaking",
+      "causes": [
+        "Castle and Wemby wall limit efficient isolation and rim paths",
+        "SGA kickouts convert and bigs complete cuts/rolls",
+        "close game protects starter minutes"
+      ],
+      "hypothetical_thresholds": [
+        "SGA 8+ assists",
+        "Chet 15+ points"
+      ],
+      "falsifiers": [
+        "SGA scoring in isolation without needing to pass",
+        "OKC teammates miss open shots",
+        "blowout suppresses minutes"
+      ],
+      "priority": "RESEARCH"
+    },
+    {
+      "id": "C",
+      "name": "Wemby points-rebounds dominance",
+      "causes": [
+        "close game, 34+ minutes",
+        "Wemby shot attempts and defensive rebounds high despite Hartenstein/Holmgren matchup",
+        "Spurs feed inside after switches"
+      ],
+      "hypothetical_thresholds": [
+        "Wemby points-rebounds double-double",
+        "Wemby 42.5 PRA over, ONLY if separately priced and independently modeled"
+      ],
+      "falsifiers": [
+        "limited minutes/fouls",
+        "OKC perimeter switching keeps Wemby outside",
+        "box-out/rebound split"
+      ],
+      "priority": "SENSITIVITY"
+    },
+    {
+      "id": "D",
+      "name": "Chaos/blowout/defensive turnover environment",
+      "causes": [
+        "Wallace/Caruso pressure and transition disruption",
+        "Spurs three-guard lineup turnovers",
+        "foul trouble and halftime margin alter rotations"
+      ],
+      "hypothetical_thresholds": [
+        "Wallace steals as standalone alternative",
+        "Wemby blocks at 2+/3+ conditional",
+        "avoid piling up high star overs"
+      ],
+      "falsifiers": [
+        "low turnovers; stable starts; no pace pressure"
+      ],
+      "priority": "ADVERSARIAL"
+    }
+  ],
+  "ladder_policy": {
+    "sga_assists": [
+      6,
+      8,
+      10,
+      12,
+      15
+    ],
+    "sga_15plus": "LONGSHOT_ONLY historical season 1 of 68",
+    "harper_points": [
+      8,
+      10,
+      12,
+      15
+    ],
+    "vassell_3pm": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "wemby_pra": [
+      35,
+      40,
+      43,
+      48
+    ],
+    "all_lines": "RESEARCH_THRESHOLDS_NOT_SPORTSBOOK_OFFERS",
+    "no_independent_probability_distribution": true,
+    "price_missing": true,
+    "joint_distribution_missing": true
+  },
+  "retrospective_truth_interpretation": "P11/P10/P01/P00 refer to empirical seven-game sample only; DO NOT map counts to next game's calibrated P; player rotations changed and Game 1 2OT materially distorts.",
+  "sentinel": "HOLD research expansion, no approved ticket"
+}
