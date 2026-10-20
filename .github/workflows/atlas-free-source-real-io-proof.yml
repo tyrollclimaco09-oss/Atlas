@@ -1,0 +1,87 @@
+name: ATLAS free-source live I/O proof (review only)
+
+on:
+  push:
+    branches:
+      - review/pass0-slate-regression-2026-10-16
+    paths:
+      - .github/workflows/atlas-free-source-real-io-proof.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  real-public-source-readback:
+    name: Live NFL MLB NHL public source contracts
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Retrieve public sources and validate schemas (SHADOW / no persistence)
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import csv, hashlib, io, json, re, urllib.request
+          from datetime import datetime
+          from zoneinfo import ZoneInfo
+          
+          NOW = datetime.now(ZoneInfo("America/Chicago")).isoformat()
+          SOURCES = {
+              "NFL": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv",
+              "MLB": "https://statsapi.mlb.com/api/v1/schedule?sportId=1&date=2026-10-19",
+              "NHL": "https://api-web.nhle.com/v1/score/2026-10-19",
+          }
+          def retrieve(label, url):
+              req = urllib.request.Request(url, headers={"Accept": "application/json,text/csv", "User-Agent": "ATLAS-review-source-proof/0.1"})
+              with urllib.request.urlopen(req, timeout=20) as res:
+                  final_url = res.geturl()
+                  if res.status != 200 or final_url.split("/")[2] != url.split("/")[2]:
+                      raise RuntimeError(label + "_RESPONSE_OR_HOST_FAILED")
+                  raw = res.read(4_000_001)
+                  if len(raw) > 4_000_000:
+                      raise RuntimeError(label + "_OVERSIZE")
+                  print(json.dumps({
+                      "sport": label, "response_status": res.status,
+                      "retrieved_at_chicago": NOW,
+                      "source_url": url, "sha256": hashlib.sha256(raw).hexdigest(),
+                      "payload_bytes": len(raw), "upstream_published_at": None,
+                      "production_authority": False,
+                      "proof_scope": "PUBLIC_UPSTREAM_ONLY_NOT_DEPLOYED_EDGE_INVOCATION"
+                  }, sort_keys=True))
+                  return raw
+          
+          csv_data = retrieve("NFL", SOURCES["NFL"]).decode("utf-8-sig")
+          rows = csv.DictReader(io.StringIO(csv_data))
+          required = {"game_id","season","week","game_type","gameday","gametime","away_team","home_team"}
+          if not required.issubset(set(rows.fieldnames or [])):
+              raise RuntimeError("NFL_SCHEMA_INVALID")
+          games = [r for r in rows if r["season"] == "2026" and r["week"] == "7" and r["game_type"] == "REG"]
+          if not 1 <= len(games) <= 18:
+              raise RuntimeError("NFL_WEEK7_COUNT_INVALID")
+          ids=set()
+          for r in games:
+              expected=f"2026_07_{r['away_team']}_{r['home_team']}"
+              if r["game_id"] != expected or r["game_id"] in ids or not re.fullmatch(r"\d\d:\d\d",r["gametime"]):
+                  raise RuntimeError("NFL_IDENTITY_OR_TIME_INVALID")
+              datetime.fromisoformat(r["gameday"])
+              ids.add(r["game_id"])
+          print(json.dumps({"sport":"NFL","week":7,"records_validated":len(games),"example_game_id":games[0]["game_id"],"classification":"SCOUT_REFERENCE_ONLY"}))
+          for sport in ("MLB", "NHL"):
+              payload=json.loads(retrieve(sport,SOURCES[sport]))
+              if sport=="MLB":
+                  if not isinstance(payload.get("dates"),list):
+                      raise RuntimeError("MLB_SCHEMA_INVALID")
+                  games=[g for d in payload["dates"] for g in d.get("games",[])]
+                  for g in games:
+                      if not g.get("gamePk") or not g.get("gameDate"):
+                          raise RuntimeError("MLB_EVENT_IDENTITY_INVALID")
+              else:
+                  games=payload.get("games")
+                  if not isinstance(games,list):
+                      raise RuntimeError("NHL_SCHEMA_INVALID")
+                  for g in games:
+                      if not g.get("id") or not g.get("startTimeUTC") or not g.get("homeTeam") or not g.get("awayTeam"):
+                          raise RuntimeError("NHL_EVENT_IDENTITY_INVALID")
+              print(json.dumps({"sport":sport,"records_validated":len(games),"classification":"SCOUT_REFERENCE_ONLY"}))
+          print("ATLAS_REVIEW_SOURCE_PROOF=PASS | no auth, no database writes, no betting, no production changes")
+          PY
