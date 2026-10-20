@@ -6,6 +6,8 @@ on:
       - review/pass0-slate-regression-2026-10-16
     paths:
       - .github/workflows/atlas-free-source-real-io-proof.yml
+      - scripts/scout/free-source-live-parity.mjs
+      - scripts/scout/free-source-core/**
   workflow_dispatch:
 
 permissions:
@@ -18,6 +20,14 @@ jobs:
     timeout-minutes: 5
     steps:
 
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Parse real sources with snapshots of deployed scout normalizers
+        run: node scripts/scout/free-source-live-parity.mjs
       - name: Verify deployed scouts reject anonymous requests (no credentials)
         shell: bash
         run: |
