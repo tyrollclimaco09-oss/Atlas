@@ -44,7 +44,8 @@
       "Injury absence without actual minutes beneficiary is not bet-ready",
       "Pricing from October 15 is no longer executable",
       "Unknown live betslip acceptance cannot be claimed",
-      "The two available independent projected John Collins totals straddle DK threshold with materially different minutes forecasts"
+      "The two available independent projected John Collins totals straddle DK threshold with materially different minutes forecasts",
+      "Public Courtside 2025-26 backtest is not validation of its 2026-27 opening night minute-distribution mode."
     ],
     "house_mirror_sharpness": "No live independently derived fair probability or actual forecast edge"
   },
@@ -138,7 +139,17 @@
         "Boston physical pressure and game pace",
         "Duren/Collins role may change screens and teammate FGA"
       ],
-      "label": "HIGH_PRIORITY_INVESTIGATE_NOT_EDGE"
+      "label": "HIGH_PRIORITY_INVESTIGATE_NOT_EDGE",
+      "external_projection": {
+        "source": "https://courtside.higgsfield.app/projections?date=2026-10-20&team=DET",
+        "assists_mean": 9.4,
+        "minutes": 33,
+        "estimated_80_percent_range": [
+          5,
+          14
+        ],
+        "limitations": "Site describes backtest on prior season but explicitly says early-season mode was not backtested; lineup/trade/injury effects not captured in daily projection."
+      }
     },
     {
       "id": "C",
@@ -167,7 +178,20 @@
         "Other books quote DIFFERENT 11.5 points; not a direct odds comparison",
         "Two independent, uncalibrated public projected point totals (Courtside 12.8 with 27 MIN and Vates 11.6 with 22.8 MIN) straddle DK 12.5 and disagree on minutes: no clear underadjustment"
       ],
-      "label": "MODELS_DISAGREE_NO_SUPPORTED_EDGE"
+      "label": "MODELS_DISAGREE_NO_SUPPORTED_EDGE",
+      "external_projection_conflict": [
+        {
+          "source": "https://courtside.higgsfield.app/projections?date=2026-10-20&team=DET",
+          "points_mean": 12.8,
+          "minutes": 27
+        },
+        {
+          "source": "https://vates-sports.com/players/john-collins/",
+          "points_mean": 11.6,
+          "minutes": 22.8,
+          "source_updated": "2026-10-18"
+        }
+      ]
     },
     {
       "id": "D",
@@ -382,5 +406,45 @@
     "historical_baseline_inference": "Jalen Williams 22/33 empirical 5+ assists: Wilson lower 49.61% versus -103 break even 50.74%; Cade 44/64 empirical 9+ assists: Wilson lower 56.61% versus -131 break even 56.71%. The (non-predictive) intervals alone do not establish even a historical statistically separated edge.",
     "not_a_current_forecast": true,
     "source_price_staleness": "Market tables are cross-book aggregator snapshots with no quote_at; cannot assert current executable DK values."
-  }
+  },
+  "unpriced_niche_market_discovery": [
+    {
+      "player": "Isaiah Joe",
+      "team": "DET",
+      "market": "3PM 2+ or 3+ if DK posts",
+      "external_projected_3pm": 2.5,
+      "external_projected_minutes": 21,
+      "source": "https://courtside.higgsfield.app/projections?date=2026-10-20&team=DET",
+      "dk_market_observed": false,
+      "decision": "WATCH_ROLE_THEN_OFFER",
+      "countercase": "No DK listing observed in accessed comparison; uncertain 21min role with Duncan Robinson and Huerter all requiring wing minutes."
+    },
+    {
+      "player": "Jabari Walker",
+      "team": "PHI",
+      "market": "rebounds or points if DK posts",
+      "source": "https://dknetwork.draftkings.com/2026/10/19/fantasy-basketball-picks-top-draftkings-nba-dfs-targets-values-for-tuesday-10-20-26-2/",
+      "dk_market_observed": false,
+      "decision": "WATCH_AVAILABILITY_FIRST",
+      "countercase": "Backup opportunities rely on Embiid, Bona, Wade and frontcourt rotation; DK Network DFS salary is not prop pricing."
+    },
+    {
+      "player": "Duncan Robinson",
+      "team": "DET",
+      "market": "3PM 3+",
+      "external_projected_3pm": 2.8,
+      "external_projected_minutes": 27,
+      "source": "https://courtside.higgsfield.app/projections?date=2026-10-20&team=DET",
+      "dk_market_reference": {
+        "threshold": 3,
+        "american_odds": -104,
+        "market_line": 2.5,
+        "source": "https://ats.io/props-nba/",
+        "quote_at": null
+      },
+      "decision": "INVESTIGATE_BUT_NOT_BEST_PRICE",
+      "countercase": "FanDuel -102 and BetRivers +102 at same 2.5 line in aggregator; projection distribution wide and early-season mode unvalidated."
+    }
+  ],
+  "notes": "Material extension: independent public projections confirm Cade expected mean 9.4 AST vs 8.5 DK but 80% range 5-14 and unvalidated opening-season adaptation; Collins projected point means straddle posted DK 12.5; niche Isaiah Joe and Jabari Walker player props not observed at DK."
 }
