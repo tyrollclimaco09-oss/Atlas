@@ -1,0 +1,994 @@
+{
+  "schema": "atlas.opening-night-full-gamesense-rerun.review.v3",
+  "run_id": "ATLAS-NBA-20261020-ALLGAMES-GS-RERUN-V3",
+  "observed_at_local": "2026-10-19T22:43:35-05:00",
+  "slate_date": "2026-10-20",
+  "timezone": "America/Chicago",
+  "governance": {
+    "phase": "SHADOW_RESEARCH_ONLY",
+    "arc3_formal_pass_closed": false,
+    "production_authority": false,
+    "final_gate": "HOLD",
+    "bets_placed": 0,
+    "database_mutations": 0,
+    "original_checkpoint_unmodified": true,
+    "market_price_verified": false,
+    "independent_model_probabilities": false,
+    "injury_confirmed_at_event_tipoff": false
+  },
+  "source_of_event": "Connected DraftKings SportsMCP search_games_v1 2026-10-20T03:41:46.3496054Z, game IDs 1025802 1025803 1025804; sports-data schedules not sportsbook odds.",
+  "linked_prior_review_artifacts": [
+    "docs/prospective/ATLAS_SHADOW_SLATE_FREEZE_2026-10-20.json",
+    "docs/prospective/ATLAS_NBA_OPENING_SCOUT_WIDE_V2_2026-10-20.json",
+    "docs/prospective/ATLAS_NBA_GAMESENSE_SCRIPT_MAP_2026-10-20.json",
+    "docs/prospective/ATLAS_OKC_SAS_20261020_DEEP_GAMESENSE_EVIDENCE_V1.json"
+  ],
+  "sources": [
+    {
+      "url": "https://www.nba.com/news/key-dates",
+      "scope": "official schedule",
+      "trust": "PRIMARY"
+    },
+    {
+      "url": "https://www.nba.com/news/nba-offseason-deals-2026",
+      "scope": "roster moves",
+      "trust": "PRIMARY"
+    },
+    {
+      "url": "https://www.nba.com/game/bos-vs-det-0022600001",
+      "scope": "DET BOS game preview and defense",
+      "trust": "PRIMARY"
+    },
+    {
+      "url": "https://www.celticsblog.com/boston-celtics-news/148052/celtics-pistons-opening-day-injury-report",
+      "scope": "BOS projected starters",
+      "trust": "SECONDARY"
+    },
+    {
+      "url": "https://www.celticsblog.com/celtics-analysis/147738/parquet-plays-boston-debuts-new-twin-tower-lineup",
+      "scope": "BOS double center preseason",
+      "trust": "SECONDARY"
+    },
+    {
+      "url": "https://www.detroitbadboys.com/pistons-videos/51209/film-dont-lie-new-offensive-looks-for-detroit",
+      "scope": "DET new offense",
+      "trust": "SECONDARY"
+    },
+    {
+      "url": "https://www.nba.com/playoffs/2026/east-semifinal-2",
+      "scope": "historical NYK PHI playoff series",
+      "trust": "PRIMARY"
+    },
+    {
+      "url": "https://www.phillyvoice.com/sixers-news-analysis-preseason-highlights-full-lebron-james-tyrese-maxey-jaylen-brown-joel-embiid-vj-edgecombe-nba-ny/",
+      "scope": "PHI LeBron playmaker preseason",
+      "trust": "SECONDARY"
+    },
+    {
+      "url": "https://www.libertyballers.com/76ers-injury-report/99328/philadelphia-sixers-injuries-dominick-barlow-first-apron-cap",
+      "scope": "PHI depth injuries",
+      "trust": "SECONDARY"
+    },
+    {
+      "url": "https://www.nba.com/stats/fantasynews",
+      "scope": "Hart ready, Chet and Wallace available, PHI and DET status",
+      "trust": "SECONDARY_FANTASY_NEWS"
+    },
+    {
+      "url": "https://www.expressnews.com/sports/spurs/article/san-antonio-spurs-okc-thunder-how-to-watch-22482941.php",
+      "scope": "Spurs OKC projected starters",
+      "trust": "SECONDARY"
+    },
+    {
+      "url": "https://official.nba.com/2026-27-points-of-emphasis/",
+      "scope": "officiating points of emphasis",
+      "trust": "PRIMARY"
+    }
+  ],
+  "game_count": 3,
+  "games": [
+    {
+      "matchup": "BOS@DET",
+      "sports_data_event_id": 1025802,
+      "start_at_utc": "2026-10-20T19:00:00Z",
+      "tipoff_CT": "2026-10-20 14:00",
+      "probable_starters": {
+        "BOS": [
+          "Derrick White",
+          "Jordan Walsh",
+          "Jayson Tatum",
+          "Paul George",
+          "Mitchell Robinson"
+        ],
+        "DET": [
+          "Cade Cunningham",
+          "Duncan Robinson",
+          "Ausar Thompson",
+          "John Collins",
+          "Jalen Duren"
+        ]
+      },
+      "rotation_uncertainty": [
+        "Boston's Jordan Walsh/Mitchell Robinson reported preseason lineup conflicts with projection feeds listing Pritchard/Queta; do not claim confirmed.",
+        "Pritchard featured off bench 11 preseason assists versus Charlotte, can still get playmaking minutes.",
+        "Boston may experiment with Queta plus Robinson; joint-center minutes uncertain.",
+        "Pistons Taurean Prince uncertain personal matter; reserve wings may change.",
+        "Detroit Collins at small-ball center could cut Duren court time."
+      ],
+      "confirmed_context": [
+        "DET won 60 games last regular season and forced 16.9 opponent turnovers/game, low opponent FG% 44.3.",
+        "BOS was 4-0 in preseason; Tatum returning after Achilles; PG and Mitchell Robinson arrived, Brown departed.",
+        "DET Collins/Joe arrived, Tobias Harris and Isaiah Stewart departed.",
+        "Preseason DET integrated inverted pick-and-rolls and potential Duren high-post creation."
+      ],
+      "scripts": [
+        {
+          "id": "BD-1",
+          "name": "Detroit defensive avalanche",
+          "causal_mechanism": "Aggressive Ausar/DET pressure forces live-ball turnovers; Cade/Duren run before BOS organizes screens",
+          "markets_helped": [
+            "Ausar steals",
+            "Cade transition assists",
+            "DET transition points"
+          ],
+          "markets_threatened": [
+            "BOS star assisted threes in set offense"
+          ],
+          "falsifiers_and_monitor": [
+            "Ausar minutes and fouls",
+            "BOS turnover rate",
+            "live-ball vs dead-ball turnovers",
+            "tempo"
+          ],
+          "illustrative_ticket_script": [
+            "Ausar 2+ steals",
+            "Cade 8+ assists"
+          ],
+          "scenario_probability": null,
+          "model_based_joint_probability": null
+        },
+        {
+          "id": "BD-2",
+          "name": "Boston double-big second-chance attack",
+          "causal_mechanism": "Robinson and Queta screening/OREB extend BOS possessions; White 3PA volume rises, DET boards face competition",
+          "markets_helped": [
+            "White threes-attempt ladder",
+            "Robinson offensive rebounds",
+            "Pritchard assisted shooting"
+          ],
+          "markets_threatened": [
+            "Duren 10+ rebounds if BOS controls glass",
+            "DET transition chances"
+          ],
+          "falsifiers_and_monitor": [
+            "Robinson and Queta actual simultaneous minutes",
+            "OREB opportunities by team",
+            "White 3PA attempts",
+            "foul risk"
+          ],
+          "illustrative_ticket_script": [
+            "White 3+ threes",
+            "Robinson 8+ rebounds conditional on minutes"
+          ],
+          "scenario_probability": null,
+          "model_based_joint_probability": null
+        },
+        {
+          "id": "BD-3",
+          "name": "Cade's pass-first scoring tradeoff",
+          "causal_mechanism": "Cade draws ball pressure and moves possessions to Robinson/Joe/Collins spacing; converted threes generate assists; passing alone insufficient",
+          "markets_helped": [
+            "Cade 8+/10+ assists",
+            "Duncan Robinson 2+ threes",
+            "Isaiah Joe 2+ threes if minutes"
+          ],
+          "markets_threatened": [
+            "Cade 30+ points ceiling if shot attempts decline"
+          ],
+          "falsifiers_and_monitor": [
+            "Cade potential assists vs actual assists",
+            "DET wing 3PA and minutes",
+            "spacing vs Boston switches"
+          ],
+          "illustrative_ticket_script": [
+            "Cade 8+ assists",
+            "Duncan Robinson 2+ threes"
+          ],
+          "scenario_probability": null,
+          "model_based_joint_probability": null
+        },
+        {
+          "id": "BD-4",
+          "name": "Detroit small-ball Collins at center",
+          "causal_mechanism": "Collins spacing opens drive lanes and weakside cuts but steals minutes and rebounds from Duren",
+          "markets_helped": [
+            "Cade drives/assists",
+            "Collins points and 3PA",
+            "Ausar offensive cuts"
+          ],
+          "markets_threatened": [
+            "Duren high rebound ladder",
+            "BOS traditional twin-big playing time"
+          ],
+          "falsifiers_and_monitor": [
+            "Duren actual minutes",
+            "Collins-at-5 stint count",
+            "Cade PnR frequency"
+          ],
+          "illustrative_ticket_script": [
+            "Cade points+assists",
+            "Duren rebounds UNDER only if price and role verified"
+          ],
+          "scenario_probability": null,
+          "model_based_joint_probability": null
+        },
+        {
+          "id": "BD-5",
+          "name": "Slow grind, fouls and shot variance",
+          "causal_mechanism": "DET's physical defense and BOS's slower historical pace produce uneven counting stats; White and Duren split threshold results",
+          "markets_helped": [
+            "Ausar stocks conditional",
+            "one isolated player single"
+          ],
+          "markets_threatened": [
+            "Automatic Cade+Duren over double",
+            "multi-leg double-sided overs"
+          ],
+          "falsifiers_and_monitor": [
+            "team possessions",
+            "fouls by Duren",
+            "White three volume vs efficiency",
+            "margin"
+          ],
+          "illustrative_ticket_script": [
+            "Investigate singles; no forced parlay"
+          ],
+          "scenario_probability": null,
+          "model_based_joint_probability": null
+        }
+      ]
+    },
+    {
+      "matchup": "PHI@NYK",
+      "sports_data_event_id": 1025803,
+      "start_at_utc": "2026-10-20T23:00:00Z",
+      "tipoff_CT": "2026-10-20 18:00",
+      "probable_starters": {
+        "PHI": [
+          "Tyrese Maxey",
+          "VJ Edgecombe",
+          "Jaylen Brown",
+          "LeBron James",
+          "Joel Embiid"
+        ],
+        "NYK": [
+          "Jalen Brunson",
+          "Josh Hart",
+          "Mikal Bridges",
+          "OG Anunoby",
+          "Karl-Anthony Towns"
+        ]
+      },
+      "rotation_uncertainty": [
+        "2026-10-19 NBA fantasy status: Josh Hart ready despite prior ankle soreness; confirmation before tip still required.",
+        "PHI Dominick Barlow OUT (back), Ariel Hukporti out season (Achilles), Tacko Fall OUT.",
+        "PHI Adem Bona QUESTIONABLE (foot), Anfernee Simons QUESTIONABLE (hamstring), Dean Wade QUESTIONABLE (ankle).",
+        "PHI Embiid expected to play; minutes/foul risk still material.",
+        "NYK Andre Drummond replaced Mitchell Robinson as backup center; validate minutes in first regular game."
+      ],
+      "confirmed_context": [
+        "NYK won 2026 title and retains champion core; opening ring ceremony at Madison Square Garden.",
+        "NYK swept PHI 4-0 May 2026 East Semifinals but PHI has drastically different starters now.",
+        "PHI added LeBron James and Jaylen Brown; Paul George moved to BOS.",
+        "PHI October 16 preseason finale Embiid 27/8/5 Maxey 22/3/6 Brown 20/8 and LeBron 8/8/7, with Edgecombe rested.",
+        "LeBron described as PHI offensive quarterback in preseason; do not infer stable quantified assist prop."
+      ],
+      "scripts": [
+        {
+          "id": "PN-1",
+          "name": "LeBron quarterback and catch-shoot gravity",
+          "causal_mechanism": "LeBron controls first action to feed Maxey/Brown/Embiid, shifting Maxey from drives into catch-shoot 3PA and reducing some Brown iso volume",
+          "markets_helped": [
+            "LeBron assists ladder",
+            "Maxey 3PM and 3PA",
+            "Embiid assisted FG"
+          ],
+          "markets_threatened": [
+            "unadjusted Maxey 30+ points",
+            "Brown high points line"
+          ],
+          "falsifiers_and_monitor": [
+            "LeBron on-ball time",
+            "Maxey catch-and-shoot attempts",
+            "assisted FG rate",
+            "Simons availability"
+          ],
+          "illustrative_ticket_script": [
+            "LeBron 6+/8+ assists",
+            "Maxey 3+ threes"
+          ],
+          "scenario_probability": null,
+          "model_based_joint_probability": null
+        },
+        {
+          "id": "PN-2",
+          "name": "Knicks halfcourt Brunson scoring takeover",
+          "causal_mechanism": "Brunson exploits guard switches, controls late shot clock; Towns stretches Embiid out of lane and Hart crashes misses",
+          "markets_helped": [
+            "Brunson 25+ points",
+            "Towns rebounds if opponent misses",
+            "Josh Hart rebound+assist"
+          ],
+          "markets_threatened": [
+            "Brunson assists if heavily self-creating"
+          ],
+          "falsifiers_and_monitor": [
+            "Brunson drives/FGAs",
+            "Embiid drop vs switching",
+            "Towns minutes/fouls",
+            "NYK live-ball pace"
+          ],
+          "illustrative_ticket_script": [
+            "Brunson 25+ points",
+            "Towns 10+ rebounds"
+          ],
+          "scenario_probability": null,
+          "model_based_joint_probability": null
+        },
+        {
+          "id": "PN-3",
+          "name": "Embiid foul/bench-depth trap",
+          "causal_mechanism": "Embiid draws fouls or sits and thin PHI center reserves fail to protect glass; NYK Drummond/Towns/Hart gain boards",
+          "markets_helped": [
+            "Towns rebounds",
+            "Hart rebounds",
+            "Knicks second-chance points"
+          ],
+          "markets_threatened": [
+            "Embiid rebounds and double-double",
+            "PHI rim efficiency"
+          ],
+          "falsifiers_and_monitor": [
+            "Embiid fouls and minutes",
+            "Bona cleared/limited",
+            "Drummond role",
+            "NYK ORB"
+          ],
+          "illustrative_ticket_script": [
+            "Towns 10+ rebounds",
+            "Hart 8+ rebounds"
+          ],
+          "scenario_probability": null,
+          "model_based_joint_probability": null
+        },
+        {
+          "id": "PN-4",
+          "name": "Philadelphia shooting war, higher pace",
+          "causal_mechanism": "PHI staggered stars maintain pace; NYK forced to respond with Brunson and Bridges perimeter shooting rather than slow grind",
+          "markets_helped": [
+            "Maxey 3PM",
+            "Edgecombe 3PM and weakside steals",
+            "Bridges 3PM",
+            "Brunson assists if teammate conversion high"
+          ],
+          "markets_threatened": [
+            "rebound overs when FG% high"
+          ],
+          "falsifiers_and_monitor": [
+            "pace",
+            "attempt volume",
+            "lineup stagger",
+            "shooting variance"
+          ],
+          "illustrative_ticket_script": [
+            "Maxey 3+ threes",
+            "Bridges 2+ threes"
+          ],
+          "scenario_probability": null,
+          "model_based_joint_probability": null
+        },
+        {
+          "id": "PN-5",
+          "name": "Champions' pressure creates ugly PHI possessions",
+          "causal_mechanism": "OG/Bridges/Hart harass initiators, causing live turnovers; new PHI stars have chemistry disruption",
+          "markets_helped": [
+            "OG stocks/deflections",
+            "Knicks transition assisted scoring",
+            "Hart steals conditional"
+          ],
+          "markets_threatened": [
+            "all PHI star overs stacked",
+            "30+ points for multiple ballhandlers"
+          ],
+          "falsifiers_and_monitor": [
+            "PHI team TOV",
+            "Embiid entry passes",
+            "NYK steals",
+            "blowout minutes"
+          ],
+          "illustrative_ticket_script": [
+            "One NYK defensive single only; all-other legs conditional"
+          ],
+          "scenario_probability": null,
+          "model_based_joint_probability": null
+        }
+      ]
+    },
+    {
+      "matchup": "OKC@SAS",
+      "sports_data_event_id": 1025804,
+      "start_at_utc": "2026-10-21T01:30:00Z",
+      "tipoff_CT": "2026-10-20 20:30",
+      "probable_starters": {
+        "OKC": [
+          "Shai Gilgeous-Alexander",
+          "Cason Wallace",
+          "Jalen Williams",
+          "Chet Holmgren",
+          "Isaiah Hartenstein"
+        ],
+        "SAS": [
+          "De'Aaron Fox",
+          "Stephon Castle",
+          "Dylan Harper",
+          "Devin Vassell",
+          "Victor Wembanyama"
+        ]
+      },
+      "rotation_uncertainty": [
+        "SAS Tobias Harris OUT (calf); Jayden Quaintance OUT.",
+        "NBA fantasy report: OKC Cason Wallace available, Chet Holmgren available after missing preseason with quad.",
+        "Spurs three-guard combo Fox/Castle/Harper and Vassell at PF remains novel and may have physical cost.",
+        "OKC Holmgren+Hartenstein big pairing changes rebounding and paint attacks.",
+        "Formal game-day final starters/minutes not confirmed."
+      ],
+      "confirmed_context": [
+        "SAS beat OKC 4-3 in 2026 WCF; prior seven-game WCF secondary box score sample preserved separately.",
+        "SGA 6.6 APG in 2025-26 regular season; 15+ assists occurred once in 68 games; official NBA referee points of emphasis change off-arm/separation enforcement, directional effect on SGA unquantified.",
+        "Spurs 2025-26 Wemby averaged 25 pts, 11.5 reb, 3.1 blocks; role alone does not determine 42.5 PRA settlement."
+      ],
+      "scripts": [
+        {
+          "id": "OS-1",
+          "name": "Three guards unlock Spurs spacing",
+          "causal_mechanism": "Harper gets starter reps and drives toward rotated help; Vassell receives corner/wings 3PA and Wemby draws interior tags",
+          "markets_helped": [
+            "Harper 10+ points",
+            "Vassell 2+ threes",
+            "Wemby assisted FG"
+          ],
+          "markets_threatened": [
+            "Extreme Fox/Castle/Harper simultaneous assist overs"
+          ],
+          "falsifiers_and_monitor": [
+            "Harper 22+ minutes",
+            "Vassell 4+ 3PA",
+            "lineup overlap",
+            "OKC live-ball pressure"
+          ],
+          "illustrative_ticket_script": [
+            "Harper 10+ points",
+            "Vassell 2+ threes"
+          ],
+          "scenario_probability": null,
+          "model_based_joint_probability": null
+        },
+        {
+          "id": "OS-2",
+          "name": "SGA passing beats rim wall",
+          "causal_mechanism": "Castle/Harper perimeter pressure and Wemby protect lane, pushing SGA into kickouts and Chet/Hartenstein finishing",
+          "markets_helped": [
+            "SGA 8+ assists",
+            "Chet 15+ points",
+            "Hartenstein putbacks conditional"
+          ],
+          "markets_threatened": [
+            "Automatic SGA 15+ assists",
+            "SGA 35+ points if attempts diverted"
+          ],
+          "falsifiers_and_monitor": [
+            "SGA potential assists",
+            "rim attempts",
+            "teammate FG conversion",
+            "Chet actual minutes"
+          ],
+          "illustrative_ticket_script": [
+            "SGA 8+ assists",
+            "Chet 15+ points"
+          ],
+          "scenario_probability": null,
+          "model_based_joint_probability": null
+        },
+        {
+          "id": "OS-3",
+          "name": "Wemby high-impact low-PRA paradox",
+          "causal_mechanism": "Wemby can suppress opponent rim volume and accumulate blocks/altered shots without collecting 43 PRA; good defense not same stat over",
+          "markets_helped": [
+            "Wemby blocks/defensive impact alternate",
+            "Wemby double-double if boards hold"
+          ],
+          "markets_threatened": [
+            "42.5 PRA over without modeled joint distribution"
+          ],
+          "falsifiers_and_monitor": [
+            "Wemby FGA, rebounds chances, assists chances",
+            "foul count",
+            "OKC rim vs pull-up shot distribution"
+          ],
+          "illustrative_ticket_script": [
+            "Compare Wemby double-double vs 40+/43+ PRA vs 3+ blocks; only one priced expression if value"
+          ],
+          "scenario_probability": null,
+          "model_based_joint_probability": null
+        },
+        {
+          "id": "OS-4",
+          "name": "Thunder ball pressure and rebounding control",
+          "causal_mechanism": "Wallace and Caruso force turnovers while Holmgren/Hartenstein win extra possessions",
+          "markets_helped": [
+            "Wallace steals",
+            "Chet/Hartenstein rebounds and blocks subject to minutes"
+          ],
+          "markets_threatened": [
+            "Harper shot volume",
+            "SAS all-guards assist ladder"
+          ],
+          "falsifiers_and_monitor": [
+            "live-ball turnovers",
+            "big-man reb split",
+            "shot misses",
+            "blowout margin"
+          ],
+          "illustrative_ticket_script": [
+            "Wallace 2+ steals as discrete-event research"
+          ],
+          "scenario_probability": null,
+          "model_based_joint_probability": null
+        },
+        {
+          "id": "OS-5",
+          "name": "SGA whistle-adjustment/clock management stress",
+          "causal_mechanism": "Referees focus on illegal push-offs and straight-line pathways, but SGA offensive response depends on individual plays; count fouls not narratives",
+          "markets_helped": [
+            "SGA assists if kickouts rise",
+            "SGA FTA if defense reaches",
+            "SAS stocks if turnovers"
+          ],
+          "markets_threatened": [
+            "Predicting SGA automatic under purely from 'new rule'"
+          ],
+          "falsifiers_and_monitor": [
+            "actual whistles",
+            "FTA/FGA",
+            "touch time",
+            "drive share",
+            "offensive fouls"
+          ],
+          "illustrative_ticket_script": [
+            "Do not force an under; reassess after observable rule enforcement"
+          ],
+          "scenario_probability": null,
+          "model_based_joint_probability": null
+        }
+      ]
+    }
+  ],
+  "historical_joint_outcomes": [
+    {
+      "matchup": "BOS@DET",
+      "period": "2025-26 regular season, four same-date H2H games",
+      "kind": "SECONDARY_PLAYER_LOG_REFERENCE",
+      "matchup_rosters_changed": true,
+      "rows": [
+        {
+          "date": "2025-10-26",
+          "cade_ast": 8,
+          "duren_reb": 18,
+          "white_3pm": 3,
+          "ausar_stl": 2
+        },
+        {
+          "date": "2025-11-26",
+          "cade_ast": 5,
+          "duren_reb": 16,
+          "white_3pm": 6,
+          "ausar_stl": 1
+        },
+        {
+          "date": "2025-12-15",
+          "cade_ast": 10,
+          "duren_reb": 3,
+          "white_3pm": 5,
+          "ausar_stl": 0
+        },
+        {
+          "date": "2026-01-19",
+          "cade_ast": 14,
+          "duren_reb": 9,
+          "white_3pm": 0,
+          "ausar_stl": 4
+        }
+      ],
+      "sources": [
+        "https://www.statmuse.com/nba/ask?q=cade+cunningham+stats+vs+celtics+25%2F26",
+        "https://www.statmuse.com/nba/ask?q=jalen+duren+vs+boston+celtics+25-26",
+        "https://www.statmuse.com/nba/ask/derrick-white-stats-vs-the-pistons-this-season",
+        "https://www.statmuse.com/nba/ask/ausar-thompson-vs-celtics-2026"
+      ],
+      "ticket_truths": [
+        {
+          "a": "Cade >=8 assists",
+          "b": "Duren >=10 rebounds",
+          "truth": {
+            "both": 1,
+            "a_only": 2,
+            "b_only": 1,
+            "neither": 0
+          }
+        },
+        {
+          "a": "Cade >=8 assists",
+          "b": "White >=3 made threes",
+          "truth": {
+            "both": 2,
+            "a_only": 1,
+            "b_only": 1,
+            "neither": 0
+          }
+        },
+        {
+          "a": "Duren >=10 rebounds",
+          "b": "White >=3 made threes",
+          "truth": {
+            "both": 2,
+            "a_only": 0,
+            "b_only": 1,
+            "neither": 1
+          }
+        }
+      ]
+    },
+    {
+      "matchup": "PHI@NYK",
+      "period": "2025-26 regular season, four same-date H2H games",
+      "kind": "SECONDARY_PLAYER_LOG_REFERENCE",
+      "matchup_rosters_changed": true,
+      "rows": [
+        {
+          "date": "2025-12-19",
+          "brunson_pts": 22,
+          "brunson_ast": 9,
+          "maxey_3pm": 6,
+          "towns_reb": 11
+        },
+        {
+          "date": "2026-01-03",
+          "brunson_pts": 31,
+          "brunson_ast": 4,
+          "maxey_3pm": 6,
+          "towns_reb": 14
+        },
+        {
+          "date": "2026-01-24",
+          "brunson_pts": 31,
+          "brunson_ast": 6,
+          "maxey_3pm": 3,
+          "towns_reb": 6
+        },
+        {
+          "date": "2026-02-11",
+          "brunson_pts": 8,
+          "brunson_ast": 4,
+          "maxey_3pm": 3,
+          "towns_reb": 11
+        }
+      ],
+      "sources": [
+        "https://www.statmuse.com/nba/ask/brunson-stats-vs-sixers-this-year",
+        "https://www.statmuse.com/nba/ask?q=tyrese+maxey+vs+knicks+25-26",
+        "https://www.statmuse.com/nba/ask?q=towns+vs+76ers+2025-26"
+      ],
+      "ticket_truths": [
+        {
+          "a": "Brunson >=25 points",
+          "b": "Maxey >=4 made threes",
+          "truth": {
+            "both": 1,
+            "a_only": 1,
+            "b_only": 1,
+            "neither": 1
+          }
+        },
+        {
+          "a": "Brunson >=6 assists",
+          "b": "Towns >=10 rebounds",
+          "truth": {
+            "both": 1,
+            "a_only": 1,
+            "b_only": 2,
+            "neither": 0
+          }
+        }
+      ]
+    },
+    {
+      "matchup": "OKC@SAS",
+      "period": "2026 WCF seven-game sample including double overtime",
+      "kind": "SECONDARY_PLAYER_LOG_REFERENCE_NOT_OFFICIAL_SEAL",
+      "matchup_rosters_changed": true,
+      "rows": [
+        {
+          "day": "2026-05-18",
+          "harper_pts": 24,
+          "harper_min": 47,
+          "vassell_3pm": 3,
+          "sga_ast": 12,
+          "wemby_pts": 41,
+          "wemby_reb": 24,
+          "wemby_ast": 3,
+          "game_note": "double overtime"
+        },
+        {
+          "day": "2026-05-20",
+          "harper_pts": 12,
+          "harper_min": 25,
+          "vassell_3pm": 6,
+          "sga_ast": 9,
+          "wemby_pts": 21,
+          "wemby_reb": 17,
+          "wemby_ast": 6,
+          "game_note": "regulation"
+        },
+        {
+          "day": "2026-05-22",
+          "harper_pts": 6,
+          "harper_min": 17,
+          "vassell_3pm": 3,
+          "sga_ast": 12,
+          "wemby_pts": 26,
+          "wemby_reb": 4,
+          "wemby_ast": 3,
+          "game_note": "regulation"
+        },
+        {
+          "day": "2026-05-24",
+          "harper_pts": 7,
+          "harper_min": 21,
+          "vassell_3pm": 2,
+          "sga_ast": 7,
+          "wemby_pts": 33,
+          "wemby_reb": 8,
+          "wemby_ast": 5,
+          "game_note": "regulation"
+        },
+        {
+          "day": "2026-05-26",
+          "harper_pts": 5,
+          "harper_min": 25,
+          "vassell_3pm": 2,
+          "sga_ast": 9,
+          "wemby_pts": 20,
+          "wemby_reb": 6,
+          "wemby_ast": 1,
+          "game_note": "regulation"
+        },
+        {
+          "day": "2026-05-28",
+          "harper_pts": 18,
+          "harper_min": 22,
+          "vassell_3pm": 4,
+          "sga_ast": 4,
+          "wemby_pts": 28,
+          "wemby_reb": 10,
+          "wemby_ast": 2,
+          "game_note": "regulation"
+        },
+        {
+          "day": "2026-05-30",
+          "harper_pts": 12,
+          "harper_min": 27,
+          "vassell_3pm": 1,
+          "sga_ast": 9,
+          "wemby_pts": 22,
+          "wemby_reb": 7,
+          "wemby_ast": 2,
+          "game_note": "regulation"
+        }
+      ],
+      "sources": [
+        "https://official.nba.com/2026-27-points-of-emphasis/",
+        "https://www.nba.com/news/nba-referees-teams-points-of-emphasis-2026-27",
+        "https://sbcamericas.com/2026/10/16/nba-betting-ban-draftkings-fanduel/",
+        "https://www.statmuse.com/nba/ask/shai-highest-assist-games-this-year",
+        "https://www.statmuse.com/nba/ask/how-many-10-assists-games-does-shai-this-season",
+        "https://www.statmuse.com/nba/ask/devin-vassell-2026-playoffs-stats-vs-thunder",
+        "https://www.statmuse.com/nba/player/dylan-harper-30558/game-log?seasonYear=2026",
+        "https://www.statmuse.com/nba/ask/victor-wembanyama-stats-in-the-2026-playoffs-vs-thunder",
+        "https://www.statmuse.com/nba/ask/3pa-leaders-2026-spurs"
+      ],
+      "ticket_truths": [
+        {
+          "a": "Harper >=10 points",
+          "b": "Vassell >=2 made threes",
+          "truth": {
+            "both": 3,
+            "a_only": 1,
+            "b_only": 3,
+            "neither": 0
+          }
+        },
+        {
+          "a": "Wembanyama >=43 PRA",
+          "b": "Wembanyama points-rebounds double-double",
+          "truth": {
+            "both": 2,
+            "a_only": 1,
+            "b_only": 1,
+            "neither": 3
+          }
+        },
+        {
+          "a": "Harper >=10 points",
+          "b": "SGA >=8 assists",
+          "truth": {
+            "both": 3,
+            "a_only": 1,
+            "b_only": 2,
+            "neither": 1
+          }
+        }
+      ]
+    }
+  ],
+  "scenario_count": 15,
+  "candidate_registry": {
+    "prior_existing_review_registry_count": 41,
+    "reused_without_mutation": true
+  },
+  "construction_tournament": [
+    {
+      "category": "FOUNDATION_SINGLES_RESEARCH",
+      "examples": [
+        "Cade 8+ assists",
+        "Duren 10+ rebounds",
+        "White 3+ threes",
+        "Brunson 25+ points",
+        "Maxey 3+ threes",
+        "Towns 10+ rebounds",
+        "Harper 10+ points",
+        "Vassell 2+ threes",
+        "Wemby 3+ blocks",
+        "SGA 8+ assists"
+      ],
+      "status": "INVESTIGATE",
+      "note": "All hypothetical thresholds, not verified DK offers or fair-value forecasts"
+    },
+    {
+      "category": "EXPEDITION_SAME_GAME_DOUBLES",
+      "examples": [
+        [
+          "Cade 8+ assists",
+          "Duren 10+ rebounds"
+        ],
+        [
+          "Brunson 25+ points",
+          "Maxey 4+ threes"
+        ],
+        [
+          "Harper 10+ points",
+          "Vassell 2+ threes"
+        ]
+      ],
+      "status": "HOLD",
+      "note": "Observed historical cohit tables exist but new lineup and odds make next-game joint probability unknown"
+    },
+    {
+      "category": "EXPEDITION_CROSS_GAME_DOUBLES",
+      "examples": [
+        [
+          "White 3+ threes",
+          "Maxey 3+ threes"
+        ],
+        [
+          "Duren 10+ rebounds",
+          "Towns 10+ rebounds"
+        ],
+        [
+          "Brunson 25+ points",
+          "Wemby double-double"
+        ]
+      ],
+      "status": "HOLD",
+      "note": "Historical cross-game joint outcomes not matched and joint price unknown"
+    },
+    {
+      "category": "ALT_LINE_LADDERS",
+      "examples": [
+        [
+          "SGA assists",
+          6,
+          8,
+          10,
+          12,
+          15
+        ],
+        [
+          "Wemby PRA",
+          35,
+          40,
+          43,
+          48
+        ],
+        [
+          "Cade assists",
+          6,
+          8,
+          10,
+          12
+        ],
+        [
+          "Maxey made threes",
+          2,
+          3,
+          4,
+          5
+        ],
+        [
+          "Harper points",
+          8,
+          10,
+          12,
+          15
+        ],
+        [
+          "Duren rebounds",
+          8,
+          10,
+          12,
+          15
+        ]
+      ],
+      "status": "RESEARCH",
+      "note": "15+ SGA assists extreme tail 1/68 historical, not considered foundation"
+    },
+    {
+      "category": "CONSTELLATION_ORION",
+      "examples": [
+        [
+          "Cade 8+ assists",
+          "Maxey 3+ threes",
+          "Harper 10+ points"
+        ]
+      ],
+      "status": "PASS_FOR_NOW",
+      "note": "No multi-market joint distributions, correlated bankroll exposure or DK executable offered payouts."
+    }
+  ],
+  "methodology": {
+    "script_first": true,
+    "observed_history_does_not_equal_model_probability": true,
+    "misfit_2026_rotations": true,
+    "source_published_at_must_remain_unknown_if_missing": true,
+    "live_lines_all_null": true,
+    "thresholds_are_research_hypotheses": true,
+    "independence_unproven": true,
+    "ticket_truth_contract": "P11/P10/P01/P00 descriptive only for same-date historical pairs; do not translate into present probabilities",
+    "game_day_gate": [
+      "verify official lineup and minutes projections near tip",
+      "confirm injury reports updated 2026-10-20",
+      "confirm player team and market rules",
+      "capture actual dated DraftKings executable player props and alternative ladders",
+      "compute independent role-adjusted distributions and covariance/2x2",
+      "evaluate net outcome paths and prices",
+      "SENTINEL review before manual human final gate"
+    ],
+    "proof_gaps": [
+      "Official NBA player-by-player settlement seal for retrospective tables not independently re-fetched",
+      "No actual 2026-27 regular season outcomes exist before tip",
+      "No live DraftKings executable player prop snapshots",
+      "No authenticated Supabase SCOUT runtime yet",
+      "No defensible quant independent probability or EV",
+      "CI validates repository/regressions but not forecasts."
+    ]
+  }
+}
