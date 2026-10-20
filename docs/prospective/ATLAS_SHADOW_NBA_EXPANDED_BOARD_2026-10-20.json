@@ -1,0 +1,882 @@
+{
+  "schema": "atlas.shadow-expanded-slate-addendum.v1",
+  "run_id": "ATLAS-20261020-NBA-EXPANDED-RESEARCH-01",
+  "prior_freeze": "docs/prospective/ATLAS_SHADOW_SLATE_FREEZE_2026-10-20.json",
+  "snapshot_at": "2026-10-19T22:18:44-05:00",
+  "timezone": "America/Chicago",
+  "status": "PREGAME_SHADOW_NOT_CANONICAL_MODEL_FREEZE",
+  "scope": "All six teams in the three 2026-10-20 NBA opening day games. Wide discovery; deeper analyses limited to evidence-bearing cases.",
+  "authority": {
+    "production": false,
+    "auto_bets": false,
+    "real_bets_placed": 0,
+    "signoff": false,
+    "original_freeze_modified": false,
+    "human_final_gate_required": true
+  },
+  "schedule": [
+    {
+      "id": "1025802",
+      "matchup": "Boston Celtics at Detroit Pistons",
+      "starts_at": "2026-10-20T19:00:00Z"
+    },
+    {
+      "id": "1025803",
+      "matchup": "Philadelphia 76ers at New York Knicks",
+      "starts_at": "2026-10-20T23:00:00Z"
+    },
+    {
+      "id": "1025804",
+      "matchup": "Oklahoma City Thunder at San Antonio Spurs",
+      "starts_at": "2026-10-21T01:30:00Z"
+    }
+  ],
+  "evidence_sources": [
+    {
+      "type": "LEAGUE_OPENING_PREVIEW",
+      "url": "https://www.nba.com/news/starting-5-october-13-2026"
+    },
+    {
+      "type": "NBA_AWARDS",
+      "url": "https://www.nba.com/awards/2026"
+    },
+    {
+      "type": "NBA_PLAYER_PROFILE_WEMBY",
+      "url": "https://www.nba.com/player/1641705"
+    },
+    {
+      "type": "NBA_PLAYER_PROFILE_CADE",
+      "url": "https://www.nba.com/stats/player/1630595/"
+    },
+    {
+      "type": "NBA_PLAYER_PROFILE_MAXEY",
+      "url": "https://www.nba.com/player/1630178/tyrese-maxey"
+    },
+    {
+      "type": "NBA_PLAYER_PROFILE_DUREN",
+      "url": "https://www.nba.com/player/1631105/jalen-duren/profile"
+    },
+    {
+      "type": "NBA_PLAYER_PROFILE_BRUNSON",
+      "url": "https://www.nba.com/player/1628973/jalen-brunson"
+    },
+    {
+      "type": "NBA_PLAYER_PROFILE_HARPER",
+      "url": "https://www.nba.com/stats/player/1642844/"
+    },
+    {
+      "type": "SPORTSBOOK_HISTORICAL_REFERENCE_NOT_EXECUTABLE",
+      "url": "https://www.scoresandstats.com/blog/nba-player-props-today/",
+      "point_in_time": "2026-10-15 9:02PM ET"
+    },
+    {
+      "type": "SPURS_PREGAME_ROLE_NEWS",
+      "url": "https://www.expressnews.com/sports/spurs/article/three-takeaways-spurs-126-97-preseason-rout-22479433.php"
+    },
+    {
+      "type": "CELTICS_STARTER_INJURY_SECONDARY",
+      "url": "https://www.celticsblog.com/boston-celtics-news/148052/celtics-pistons-opening-day-injury-report"
+    },
+    {
+      "type": "SIXERS_LINEUP_SECONDARY",
+      "url": "https://www.libertyballers.com/76ers-injury-report/99328/philadelphia-sixers-injuries-dominick-barlow-first-apron-cap"
+    }
+  ],
+  "data_cautions": [
+    "All reference player lines/odds are from an October 15 reported snapshot and stale for October 20 execution.",
+    "Lines without a reference are explicitly hypothetical research thresholds; alternate-line market availability unverified.",
+    "No sound independent player probability distribution, joint model, de-vigged executable market, or settled performance grading has been computed.",
+    "Player active status and confirmed lineups to be rechecked close to tipoff; media projections are not official final confirmations.",
+    "2026 finals return and ring ceremony describe motivation/narrative, not numeric edge.",
+    "All prior season averages require role/roster adjustment; season opener has uncertainty.",
+    "A pregame research nomination is not proof of positive expected value."
+  ],
+  "cases": [
+    {
+      "id": "NB20-01",
+      "event_id": "1025802",
+      "player": "Cade Cunningham",
+      "market": "Assists",
+      "threshold": 10,
+      "side": "OVER_OR_EQUAL",
+      "status": "INVESTIGATE",
+      "reason_to_test": "9.9 assists last season and lead creation role.",
+      "strongest_counter": "Boston matchup and other playmakers might limit converted assists.",
+      "book_reference": {
+        "reference_publisher": "ScoresAndStats reporting DraftKings snapshot",
+        "reference_observed_at": "2026-10-15T21:02:00-04:00",
+        "line": 9.5,
+        "reported_price": "Over +105 / Under -139",
+        "live_execution_price_verified": false
+      },
+      "actual_draftkings_betslip_price": null,
+      "independent_probability": null,
+      "model_distribution": null,
+      "automatic_grade_rule": "Compare official final player stat against exact threshold and side if official participation and settlement rules verified"
+    },
+    {
+      "id": "NB20-02",
+      "event_id": "1025802",
+      "player": "Cade Cunningham",
+      "market": "Points+Assists",
+      "threshold": 34,
+      "side": "OVER_OR_EQUAL",
+      "status": "WATCH",
+      "reason_to_test": "23.9+9.9=33.8 mean P+A; inspect nearby ladder.",
+      "strongest_counter": "Composite distribution and opponent counter unknown.",
+      "book_reference": {
+        "reference_publisher": null,
+        "reference_observed_at": null,
+        "line": null,
+        "reported_price": null,
+        "live_execution_price_verified": false
+      },
+      "actual_draftkings_betslip_price": null,
+      "independent_probability": null,
+      "model_distribution": null,
+      "automatic_grade_rule": "Compare official final player stat against exact threshold and side if official participation and settlement rules verified"
+    },
+    {
+      "id": "NB20-03",
+      "event_id": "1025802",
+      "player": "Jalen Duren",
+      "market": "Rebounds",
+      "threshold": 10,
+      "side": "OVER_OR_EQUAL",
+      "status": "INVESTIGATE",
+      "reason_to_test": "10.5 RPG baseline and likely rim role.",
+      "strongest_counter": "Boston Mitchell Robinson size, team missed shots, and foul risk.",
+      "book_reference": {
+        "reference_publisher": "ScoresAndStats reporting DraftKings snapshot",
+        "reference_observed_at": "2026-10-15T21:02:00-04:00",
+        "line": 9.5,
+        "reported_price": "Over -128 / Under -103",
+        "live_execution_price_verified": false
+      },
+      "actual_draftkings_betslip_price": null,
+      "independent_probability": null,
+      "model_distribution": null,
+      "automatic_grade_rule": "Compare official final player stat against exact threshold and side if official participation and settlement rules verified"
+    },
+    {
+      "id": "NB20-04",
+      "event_id": "1025802",
+      "player": "Jalen Duren",
+      "market": "Double-double",
+      "threshold": 1,
+      "side": "YES",
+      "status": "WATCH",
+      "reason_to_test": "19.5 PPG and 10.5 RPG are favorable counting-stat context.",
+      "strongest_counter": "Correlated minutes/fouls, not same as separate player stat chance.",
+      "book_reference": {
+        "reference_publisher": null,
+        "reference_observed_at": null,
+        "line": null,
+        "reported_price": null,
+        "live_execution_price_verified": false
+      },
+      "actual_draftkings_betslip_price": null,
+      "independent_probability": null,
+      "model_distribution": null,
+      "automatic_grade_rule": "Compare official final player stat against exact threshold and side if official participation and settlement rules verified"
+    },
+    {
+      "id": "NB20-05",
+      "event_id": "1025802",
+      "player": "Jayson Tatum",
+      "market": "PRA",
+      "threshold": 42.5,
+      "side": "UNDER",
+      "status": "INVESTIGATE",
+      "reason_to_test": "37.1 PRA prior-season average in only 16 appearances, new high-usage teammates.",
+      "strongest_counter": "Opening night return may sustain playoff-grade minutes; previous sample unrepresentative.",
+      "book_reference": {
+        "reference_publisher": "ScoresAndStats reporting DraftKings snapshot",
+        "reference_observed_at": "2026-10-15T21:02:00-04:00",
+        "line": 42.5,
+        "reported_price": "Under -115 / Over -115",
+        "live_execution_price_verified": false
+      },
+      "actual_draftkings_betslip_price": null,
+      "independent_probability": null,
+      "model_distribution": null,
+      "automatic_grade_rule": "Compare official final player stat against exact threshold and side if official participation and settlement rules verified"
+    },
+    {
+      "id": "NB20-06",
+      "event_id": "1025802",
+      "player": "Jayson Tatum",
+      "market": "Points",
+      "threshold": 26.5,
+      "side": "OVER",
+      "status": "WATCH",
+      "reason_to_test": "Primary Celtics option in competitive opener.",
+      "strongest_counter": "Paul George/Derrick White/Pritchard sharing and recovery-related minutes.",
+      "book_reference": {
+        "reference_publisher": "ScoresAndStats reporting DraftKings snapshot",
+        "reference_observed_at": "2026-10-15T21:02:00-04:00",
+        "line": 26.5,
+        "reported_price": "Over -114 / Under -112",
+        "live_execution_price_verified": false
+      },
+      "actual_draftkings_betslip_price": null,
+      "independent_probability": null,
+      "model_distribution": null,
+      "automatic_grade_rule": "Compare official final player stat against exact threshold and side if official participation and settlement rules verified"
+    },
+    {
+      "id": "NB20-07",
+      "event_id": "1025802",
+      "player": "Paul George",
+      "market": "PRA",
+      "threshold": 23.5,
+      "side": "UNDER",
+      "status": "INVESTIGATE",
+      "reason_to_test": "New Celtics system with Tatum; external published projection below 23.5.",
+      "strongest_counter": "Role could expand if he is major second option; Philadelphia average 26.2 is not Celtics forecast.",
+      "book_reference": {
+        "reference_publisher": "ScoresAndStats reporting DraftKings snapshot",
+        "reference_observed_at": "2026-10-15T21:02:00-04:00",
+        "line": 23.5,
+        "reported_price": "Under -113 / Over -116",
+        "live_execution_price_verified": false
+      },
+      "actual_draftkings_betslip_price": null,
+      "independent_probability": null,
+      "model_distribution": null,
+      "automatic_grade_rule": "Compare official final player stat against exact threshold and side if official participation and settlement rules verified"
+    },
+    {
+      "id": "NB20-08",
+      "event_id": "1025802",
+      "player": "Paul George",
+      "market": "Points",
+      "threshold": 15.5,
+      "side": "UNDER",
+      "status": "WATCH",
+      "reason_to_test": "Usage may be lower beside Tatum, White and Pritchard.",
+      "strongest_counter": "Last season 17.3 PPG in Philadelphia; 15.5 is modest and could be easily cleared.",
+      "book_reference": {
+        "reference_publisher": "ScoresAndStats reporting DraftKings snapshot",
+        "reference_observed_at": "2026-10-15T21:02:00-04:00",
+        "line": 15.5,
+        "reported_price": "Under -105 / Over -121",
+        "live_execution_price_verified": false
+      },
+      "actual_draftkings_betslip_price": null,
+      "independent_probability": null,
+      "model_distribution": null,
+      "automatic_grade_rule": "Compare official final player stat against exact threshold and side if official participation and settlement rules verified"
+    },
+    {
+      "id": "NB20-09",
+      "event_id": "1025802",
+      "player": "Derrick White",
+      "market": "Three-pointers",
+      "threshold": 2.5,
+      "side": "OVER",
+      "status": "WATCH",
+      "reason_to_test": "Last season 2.7 made per game and high perimeter role.",
+      "strongest_counter": "New roster/defensive assignments affect attempts.",
+      "book_reference": {
+        "reference_publisher": "ScoresAndStats reporting DraftKings snapshot",
+        "reference_observed_at": "2026-10-15T21:02:00-04:00",
+        "line": 2.5,
+        "reported_price": "Over -114 / Under -115",
+        "live_execution_price_verified": false
+      },
+      "actual_draftkings_betslip_price": null,
+      "independent_probability": null,
+      "model_distribution": null,
+      "automatic_grade_rule": "Compare official final player stat against exact threshold and side if official participation and settlement rules verified"
+    },
+    {
+      "id": "NB20-10",
+      "event_id": "1025802",
+      "player": "Payton Pritchard",
+      "market": "Points",
+      "threshold": 15.5,
+      "side": "UNDER",
+      "status": "WATCH",
+      "reason_to_test": "Could revert to secondary bench role with returning Tatum.",
+      "strongest_counter": "Even bench minutes may sustain scoring volume.",
+      "book_reference": {
+        "reference_publisher": "ScoresAndStats reporting DraftKings snapshot",
+        "reference_observed_at": "2026-10-15T21:02:00-04:00",
+        "line": 15.5,
+        "reported_price": "Under -112 / Over -113",
+        "live_execution_price_verified": false
+      },
+      "actual_draftkings_betslip_price": null,
+      "independent_probability": null,
+      "model_distribution": null,
+      "automatic_grade_rule": "Compare official final player stat against exact threshold and side if official participation and settlement rules verified"
+    },
+    {
+      "id": "NB20-11",
+      "event_id": "1025802",
+      "player": "Ausar Thompson",
+      "market": "Rebounds",
+      "threshold": 6.5,
+      "side": "OVER",
+      "status": "WATCH",
+      "reason_to_test": "Defensive/rebound presence, 5.7 RPG prior baseline.",
+      "strongest_counter": "Baseline under market; minutes/lineup competition.",
+      "book_reference": {
+        "reference_publisher": "ScoresAndStats reporting DraftKings snapshot",
+        "reference_observed_at": "2026-10-15T21:02:00-04:00",
+        "line": 6.5,
+        "reported_price": "Over -124 / Under -106",
+        "live_execution_price_verified": false
+      },
+      "actual_draftkings_betslip_price": null,
+      "independent_probability": null,
+      "model_distribution": null,
+      "automatic_grade_rule": "Compare official final player stat against exact threshold and side if official participation and settlement rules verified"
+    },
+    {
+      "id": "NB20-12",
+      "event_id": "1025803",
+      "player": "Jalen Brunson",
+      "market": "Points",
+      "threshold": 27.5,
+      "side": "OVER",
+      "status": "INVESTIGATE",
+      "reason_to_test": "Finals MVP and Knicks lead scorer, no core personnel upheaval; 26.0 regular PPG.",
+      "strongest_counter": "A historic Finals performance shouldn't replace baseline; 76ers retooled defense.",
+      "book_reference": {
+        "reference_publisher": "ScoresAndStats reporting DraftKings snapshot",
+        "reference_observed_at": "2026-10-15T21:02:00-04:00",
+        "line": 27.5,
+        "reported_price": "Over -104 / Under -123",
+        "live_execution_price_verified": false
+      },
+      "actual_draftkings_betslip_price": null,
+      "independent_probability": null,
+      "model_distribution": null,
+      "automatic_grade_rule": "Compare official final player stat against exact threshold and side if official participation and settlement rules verified"
+    },
+    {
+      "id": "NB20-13",
+      "event_id": "1025803",
+      "player": "Jalen Brunson",
+      "market": "Assists",
+      "threshold": 6.5,
+      "side": "OVER",
+      "status": "WATCH",
+      "reason_to_test": "6.8 regular APG and starter minutes.",
+      "strongest_counter": "Teammate usage / pace and opposing defense.",
+      "book_reference": {
+        "reference_publisher": "ScoresAndStats reporting DraftKings snapshot",
+        "reference_observed_at": "2026-10-15T21:02:00-04:00",
+        "line": 6.5,
+        "reported_price": "Over -125 / Under -106",
+        "live_execution_price_verified": false
+      },
+      "actual_draftkings_betslip_price": null,
+      "independent_probability": null,
+      "model_distribution": null,
+      "automatic_grade_rule": "Compare official final player stat against exact threshold and side if official participation and settlement rules verified"
+    },
+    {
+      "id": "NB20-14",
+      "event_id": "1025803",
+      "player": "Tyrese Maxey",
+      "market": "Points",
+      "threshold": 21.5,
+      "side": "OVER",
+      "status": "INVESTIGATE",
+      "reason_to_test": "28.3 PPG previous season, line much lower after new star acquisitions.",
+      "strongest_counter": "LeBron James and Jaylen Brown compete for creation/scoring; 2025-26 volume not transferable.",
+      "book_reference": {
+        "reference_publisher": "ScoresAndStats reporting DraftKings snapshot",
+        "reference_observed_at": "2026-10-15T21:02:00-04:00",
+        "line": 21.5,
+        "reported_price": "Over -111 / Under -115",
+        "live_execution_price_verified": false
+      },
+      "actual_draftkings_betslip_price": null,
+      "independent_probability": null,
+      "model_distribution": null,
+      "automatic_grade_rule": "Compare official final player stat against exact threshold and side if official participation and settlement rules verified"
+    },
+    {
+      "id": "NB20-15",
+      "event_id": "1025803",
+      "player": "Tyrese Maxey",
+      "market": "PRA",
+      "threshold": 29.5,
+      "side": "UNDER",
+      "status": "WATCH",
+      "reason_to_test": "New five-man star lineup could compress Maxey PRA compared with prior 39.0.",
+      "strongest_counter": "Threshold drastically reduced and Maxey may retain primary speed/spacing role.",
+      "book_reference": {
+        "reference_publisher": "ScoresAndStats reporting DraftKings snapshot",
+        "reference_observed_at": "2026-10-15T21:02:00-04:00",
+        "line": 29.5,
+        "reported_price": "Under -110 / Over -120",
+        "live_execution_price_verified": false
+      },
+      "actual_draftkings_betslip_price": null,
+      "independent_probability": null,
+      "model_distribution": null,
+      "automatic_grade_rule": "Compare official final player stat against exact threshold and side if official participation and settlement rules verified"
+    },
+    {
+      "id": "NB20-16",
+      "event_id": "1025803",
+      "player": "VJ Edgecombe",
+      "market": "Three-pointers",
+      "threshold": 2,
+      "side": "OVER_OR_EQUAL",
+      "status": "WATCH",
+      "reason_to_test": "2.0 made threes/game previous season; outside shooting may persist.",
+      "strongest_counter": "With Maxey, Brown, LeBron, Embiid starting, attempts are unclear.",
+      "book_reference": {
+        "reference_publisher": null,
+        "reference_observed_at": null,
+        "line": null,
+        "reported_price": null,
+        "live_execution_price_verified": false
+      },
+      "actual_draftkings_betslip_price": null,
+      "independent_probability": null,
+      "model_distribution": null,
+      "automatic_grade_rule": "Compare official final player stat against exact threshold and side if official participation and settlement rules verified"
+    },
+    {
+      "id": "NB20-17",
+      "event_id": "1025803",
+      "player": "Jaylen Brown",
+      "market": "PRA",
+      "threshold": 28.5,
+      "side": "UNDER",
+      "status": "WATCH",
+      "reason_to_test": "New team has multiple ball-dominant stars; explore usage shrink.",
+      "strongest_counter": "Former Celtics PRA 40.8, still major player; no calibrated role forecast.",
+      "book_reference": {
+        "reference_publisher": "ScoresAndStats reporting DraftKings snapshot",
+        "reference_observed_at": "2026-10-15T21:02:00-04:00",
+        "line": 28.5,
+        "reported_price": "Under -120 / Over -109",
+        "live_execution_price_verified": false
+      },
+      "actual_draftkings_betslip_price": null,
+      "independent_probability": null,
+      "model_distribution": null,
+      "automatic_grade_rule": "Compare official final player stat against exact threshold and side if official participation and settlement rules verified"
+    },
+    {
+      "id": "NB20-18",
+      "event_id": "1025803",
+      "player": "LeBron James",
+      "market": "Assists",
+      "threshold": 7.5,
+      "side": "OVER",
+      "status": "WATCH",
+      "reason_to_test": "7.2 last season and playmaking on debut could benefit elite finishers.",
+      "strongest_counter": "Maxey, Brown and Embiid also initiate offense; minutes/load management.",
+      "book_reference": {
+        "reference_publisher": "ScoresAndStats reporting DraftKings snapshot",
+        "reference_observed_at": "2026-10-15T21:02:00-04:00",
+        "line": 7.5,
+        "reported_price": "Over -102 / Under -129",
+        "live_execution_price_verified": false
+      },
+      "actual_draftkings_betslip_price": null,
+      "independent_probability": null,
+      "model_distribution": null,
+      "automatic_grade_rule": "Compare official final player stat against exact threshold and side if official participation and settlement rules verified"
+    },
+    {
+      "id": "NB20-19",
+      "event_id": "1025803",
+      "player": "Karl-Anthony Towns",
+      "market": "Rebounds",
+      "threshold": 11.5,
+      "side": "OVER",
+      "status": "WATCH",
+      "reason_to_test": "11.9 RPG prior season, continuity for champion Knicks.",
+      "strongest_counter": "Embiid and Sixers frontcourt may alter rebounds and fouls.",
+      "book_reference": {
+        "reference_publisher": "ScoresAndStats reporting DraftKings snapshot",
+        "reference_observed_at": "2026-10-15T21:02:00-04:00",
+        "line": 11.5,
+        "reported_price": "Over -101 / Under -131",
+        "live_execution_price_verified": false
+      },
+      "actual_draftkings_betslip_price": null,
+      "independent_probability": null,
+      "model_distribution": null,
+      "automatic_grade_rule": "Compare official final player stat against exact threshold and side if official participation and settlement rules verified"
+    },
+    {
+      "id": "NB20-20",
+      "event_id": "1025803",
+      "player": "Josh Hart",
+      "market": "Rebounds",
+      "threshold": 7.5,
+      "side": "OVER",
+      "status": "WATCH",
+      "reason_to_test": "Strong Knicks rebounding role and minutes.",
+      "strongest_counter": "Frontcourt rebound allocation and variance.",
+      "book_reference": {
+        "reference_publisher": "ScoresAndStats reporting DraftKings snapshot",
+        "reference_observed_at": "2026-10-15T21:02:00-04:00",
+        "line": 7.5,
+        "reported_price": "Over -129 / Under -102",
+        "live_execution_price_verified": false
+      },
+      "actual_draftkings_betslip_price": null,
+      "independent_probability": null,
+      "model_distribution": null,
+      "automatic_grade_rule": "Compare official final player stat against exact threshold and side if official participation and settlement rules verified"
+    },
+    {
+      "id": "NB20-21",
+      "event_id": "1025803",
+      "player": "Joel Embiid",
+      "market": "Points",
+      "threshold": 22.5,
+      "side": "UNDER",
+      "status": "WATCH",
+      "reason_to_test": "New scoring roster, 38 appearances prior season and minutes risk.",
+      "strongest_counter": "Last season 26.9 PPG, threshold is below baseline; health confirmation needed.",
+      "book_reference": {
+        "reference_publisher": "ScoresAndStats reporting DraftKings snapshot",
+        "reference_observed_at": "2026-10-15T21:02:00-04:00",
+        "line": 22.5,
+        "reported_price": "Under -106 / Over -121",
+        "live_execution_price_verified": false
+      },
+      "actual_draftkings_betslip_price": null,
+      "independent_probability": null,
+      "model_distribution": null,
+      "automatic_grade_rule": "Compare official final player stat against exact threshold and side if official participation and settlement rules verified"
+    },
+    {
+      "id": "NB20-22",
+      "event_id": "1025804",
+      "player": "Victor Wembanyama",
+      "market": "PRA",
+      "threshold": 42.5,
+      "side": "OVER",
+      "status": "INVESTIGATE",
+      "reason_to_test": "Finals rematch could increase minutes from 29.2 regular baseline, P+R+A prior avg 39.6.",
+      "strongest_counter": "Even Finals 35-44 minute nights can miss 42.5; new three-guard lineup shares creation, blocks don't count toward PRA.",
+      "book_reference": {
+        "reference_publisher": "User-proposed threshold; third-party dated DK report shows 41.5 not 42.5",
+        "reference_observed_at": "2026-10-15T21:02:00-04:00",
+        "line": 41.5,
+        "reported_price": null,
+        "live_execution_price_verified": false
+      },
+      "actual_draftkings_betslip_price": null,
+      "independent_probability": null,
+      "model_distribution": null,
+      "automatic_grade_rule": "Compare official final player stat against exact threshold and side if official participation and settlement rules verified"
+    },
+    {
+      "id": "NB20-23",
+      "event_id": "1025804",
+      "player": "Victor Wembanyama",
+      "market": "Double-double",
+      "threshold": 1,
+      "side": "YES",
+      "status": "INVESTIGATE",
+      "reason_to_test": "25.0 PPG,11.5 RPG baseline and lead center role.",
+      "strongest_counter": "Combined condition requires both 10+ in separate categories, not guaranteed by averages or same-game model.",
+      "book_reference": {
+        "reference_publisher": null,
+        "reference_observed_at": null,
+        "line": null,
+        "reported_price": null,
+        "live_execution_price_verified": false
+      },
+      "actual_draftkings_betslip_price": null,
+      "independent_probability": null,
+      "model_distribution": null,
+      "automatic_grade_rule": "Compare official final player stat against exact threshold and side if official participation and settlement rules verified"
+    },
+    {
+      "id": "NB20-24",
+      "event_id": "1025804",
+      "player": "Victor Wembanyama",
+      "market": "Blocks",
+      "threshold": 3,
+      "side": "OVER_OR_EQUAL",
+      "status": "INVESTIGATE",
+      "reason_to_test": "3.08 BPG season average and league-best rim protection.",
+      "strongest_counter": "OKC attempts/shot selection, foul trouble and minutes create heavy variance.",
+      "book_reference": {
+        "reference_publisher": null,
+        "reference_observed_at": null,
+        "line": null,
+        "reported_price": null,
+        "live_execution_price_verified": false
+      },
+      "actual_draftkings_betslip_price": null,
+      "independent_probability": null,
+      "model_distribution": null,
+      "automatic_grade_rule": "Compare official final player stat against exact threshold and side if official participation and settlement rules verified"
+    },
+    {
+      "id": "NB20-25",
+      "event_id": "1025804",
+      "player": "Shai Gilgeous-Alexander",
+      "market": "Points",
+      "threshold": 29.5,
+      "side": "OVER",
+      "status": "INVESTIGATE",
+      "reason_to_test": "31.1 PPG prior season, two-time reigning MVP and rematch narrative.",
+      "strongest_counter": "Elite Spurs rim defense and team script, no adjusted shot/FTA forecast.",
+      "book_reference": {
+        "reference_publisher": "ScoresAndStats reporting DraftKings snapshot",
+        "reference_observed_at": "2026-10-15T21:02:00-04:00",
+        "line": 29.5,
+        "reported_price": "Over -123 / Under -103",
+        "live_execution_price_verified": false
+      },
+      "actual_draftkings_betslip_price": null,
+      "independent_probability": null,
+      "model_distribution": null,
+      "automatic_grade_rule": "Compare official final player stat against exact threshold and side if official participation and settlement rules verified"
+    },
+    {
+      "id": "NB20-26",
+      "event_id": "1025804",
+      "player": "Chet Holmgren",
+      "market": "Rebounds",
+      "threshold": 7.5,
+      "side": "OVER",
+      "status": "WATCH",
+      "reason_to_test": "8.9 RPG last season and frontcourt opportunities.",
+      "strongest_counter": "Competes with Hartenstein, Wembanyama's length and Spurs miss profile.",
+      "book_reference": {
+        "reference_publisher": "ScoresAndStats reporting DraftKings snapshot",
+        "reference_observed_at": "2026-10-15T21:02:00-04:00",
+        "line": 7.5,
+        "reported_price": "Over -137 / Under +104",
+        "live_execution_price_verified": false
+      },
+      "actual_draftkings_betslip_price": null,
+      "independent_probability": null,
+      "model_distribution": null,
+      "automatic_grade_rule": "Compare official final player stat against exact threshold and side if official participation and settlement rules verified"
+    },
+    {
+      "id": "NB20-27",
+      "event_id": "1025804",
+      "player": "Stephon Castle",
+      "market": "Assists",
+      "threshold": 5.5,
+      "side": "OVER",
+      "status": "WATCH",
+      "reason_to_test": "7.4 APG last regular season in proven primary creation role.",
+      "strongest_counter": "Fox and newly starting Harper divide ball-handling.",
+      "book_reference": {
+        "reference_publisher": "ScoresAndStats reporting DraftKings snapshot",
+        "reference_observed_at": "2026-10-15T21:02:00-04:00",
+        "line": 5.5,
+        "reported_price": "Over -121 / Under -108",
+        "live_execution_price_verified": false
+      },
+      "actual_draftkings_betslip_price": null,
+      "independent_probability": null,
+      "model_distribution": null,
+      "automatic_grade_rule": "Compare official final player stat against exact threshold and side if official participation and settlement rules verified"
+    },
+    {
+      "id": "NB20-28",
+      "event_id": "1025804",
+      "player": "Dylan Harper",
+      "market": "Points",
+      "threshold": 10,
+      "side": "OVER_OR_EQUAL",
+      "status": "WATCH",
+      "reason_to_test": "11.8 rookie PPG in 22.6 mpg with confirmed expected starting promotion.",
+      "strongest_counter": "Shared usage with Fox Castle Wembanyama, Thunder perimeter defense.",
+      "book_reference": {
+        "reference_publisher": null,
+        "reference_observed_at": null,
+        "line": null,
+        "reported_price": null,
+        "live_execution_price_verified": false
+      },
+      "actual_draftkings_betslip_price": null,
+      "independent_probability": null,
+      "model_distribution": null,
+      "automatic_grade_rule": "Compare official final player stat against exact threshold and side if official participation and settlement rules verified"
+    },
+    {
+      "id": "NB20-29",
+      "event_id": "1025804",
+      "player": "Dylan Harper",
+      "market": "Assists",
+      "threshold": 5,
+      "side": "OVER_OR_EQUAL",
+      "status": "WATCH",
+      "reason_to_test": "3.9 APG as rookie, could grow with start and minutes.",
+      "strongest_counter": "Three-guard starting role may prioritize finishing not initiating.",
+      "book_reference": {
+        "reference_publisher": null,
+        "reference_observed_at": null,
+        "line": null,
+        "reported_price": null,
+        "live_execution_price_verified": false
+      },
+      "actual_draftkings_betslip_price": null,
+      "independent_probability": null,
+      "model_distribution": null,
+      "automatic_grade_rule": "Compare official final player stat against exact threshold and side if official participation and settlement rules verified"
+    },
+    {
+      "id": "NB20-30",
+      "event_id": "1025804",
+      "player": "De'Aaron Fox",
+      "market": "Assists",
+      "threshold": 5.5,
+      "side": "OVER",
+      "status": "WATCH",
+      "reason_to_test": "6.2 APG last regular season.",
+      "strongest_counter": "Three-guard system and Harper/Castle on-ball time.",
+      "book_reference": {
+        "reference_publisher": "ScoresAndStats reporting DraftKings snapshot",
+        "reference_observed_at": "2026-10-15T21:02:00-04:00",
+        "line": 5.5,
+        "reported_price": "Over -106 / Under -124",
+        "live_execution_price_verified": false
+      },
+      "actual_draftkings_betslip_price": null,
+      "independent_probability": null,
+      "model_distribution": null,
+      "automatic_grade_rule": "Compare official final player stat against exact threshold and side if official participation and settlement rules verified"
+    },
+    {
+      "id": "NB20-31",
+      "event_id": "1025804",
+      "player": "Jalen Williams",
+      "market": "PRA",
+      "threshold": 24.5,
+      "side": "OVER",
+      "status": "WATCH",
+      "reason_to_test": "27.2 average in 33 games last season.",
+      "strongest_counter": "Health and minutes load unknown; small injury-sensitive baseline.",
+      "book_reference": {
+        "reference_publisher": "ScoresAndStats reporting DraftKings snapshot",
+        "reference_observed_at": "2026-10-15T21:02:00-04:00",
+        "line": 24.5,
+        "reported_price": "Over -122 / Under -107",
+        "live_execution_price_verified": false
+      },
+      "actual_draftkings_betslip_price": null,
+      "independent_probability": null,
+      "model_distribution": null,
+      "automatic_grade_rule": "Compare official final player stat against exact threshold and side if official participation and settlement rules verified"
+    }
+  ],
+  "builds": [
+    {
+      "id": "NBA20-E1",
+      "tier": "EXPEDITION",
+      "legs": [
+        "NB20-01",
+        "NB20-03"
+      ],
+      "type": "Pistons same-game Cade 10+ assists plus Duren 10+ rebounds",
+      "joint_probability": null,
+      "book_combined_price": null,
+      "decision": "HOLD",
+      "dependency": "Pistons offensive possessions and Cade playmaking; Duren rebounding also depends on missed shots/pace; not necessarily positively correlated"
+    },
+    {
+      "id": "NBA20-E2",
+      "tier": "EXPEDITION",
+      "legs": [
+        "NB20-05",
+        "NB20-07"
+      ],
+      "type": "Boston same-game Tatum under 42.5 PRA plus George under 23.5 PRA",
+      "joint_probability": null,
+      "book_combined_price": null,
+      "decision": "PASS_UNTIL_PRICED",
+      "dependency": "Not automatically jointly likely: underperformance of one may increase other usage; strong negative substitution paths"
+    },
+    {
+      "id": "NBA20-E3",
+      "tier": "EXPEDITION",
+      "legs": [
+        "NB20-23",
+        "NB20-25"
+      ],
+      "type": "Spurs vs Thunder Wemby double-double plus SGA over 29.5 points",
+      "joint_probability": null,
+      "book_combined_price": null,
+      "decision": "HOLD",
+      "dependency": "Close game may increase minutes both, but Spurs defense could suppress SGA scoring; conditional"
+    },
+    {
+      "id": "NBA20-E4",
+      "tier": "EXPEDITION",
+      "legs": [
+        "NB20-03",
+        "NB20-14"
+      ],
+      "type": "Cross-game Duren rebounds + Maxey points",
+      "joint_probability": null,
+      "book_combined_price": null,
+      "decision": "HOLD",
+      "dependency": "Cross-game outcomes structurally distinct; independent prices/forecast calibration still missing"
+    },
+    {
+      "id": "NBA20-CONTROL-1",
+      "tier": "SHADOW_CONTROL",
+      "legs": [
+        "NB20-22",
+        "NB20-25",
+        "NB20-12"
+      ],
+      "type": "Three-star overs narrative triple",
+      "joint_probability": null,
+      "book_combined_price": null,
+      "decision": "REJECT_CONTROL",
+      "dependency": "Hype-based grouping without independently qualified legs or payout"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "H1",
+      "question": "Does high narrative intensity on banner night or Finals rematch improve forecast relative to stable-minute baseline?",
+      "control": "Predict from role-minutes and usage without narrative modifier",
+      "criterion": "Paired Brier/log loss if valid frozen probabilities exist; otherwise outcome-only no calibration score"
+    },
+    {
+      "id": "H2",
+      "question": "Does adding newly acquired high-usage teammates reduce historical points-plus-assists projections for Maxey/Brown/George?",
+      "control": "Prior season per-game rates",
+      "criterion": "Same player/event snapshots and minutes-adjusted opportunities"
+    },
+    {
+      "id": "H3",
+      "question": "Do doubles involving player scoring plus creator assists exhibit positive dependence after conditioning on game state?",
+      "control": "Separate singles outcomes",
+      "criterion": "Four-cell joint settlement and priced payout vs independent joint model"
+    }
+  ],
+  "freeze_standards": {
+    "required_for_final_gate": [
+      "actual executable DraftKings quote and timestamp",
+      "defensible independently modeled forecast + uncertainty",
+      "confirmed player participation and opportunity",
+      "exact book settlement semantics",
+      "operator signature"
+    ],
+    "closing_criteria": [
+      "Official final verified NBA box score",
+      "Match event, player, stat, threshold, decision and original time",
+      "No backfilled predictions or prices",
+      "Report positive or negative results and rejected controls",
+      "No ROI without authentic book price/settlement"
+    ]
+  }
+}
