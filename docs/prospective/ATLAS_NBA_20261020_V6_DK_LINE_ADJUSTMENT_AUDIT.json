@@ -1,0 +1,374 @@
+{
+  "schema": "atlas.review.dk-line-adjustment-audit.v6",
+  "observed_at_local": "2026-10-20T00:42:00-05:00",
+  "observation_note": "Approximate research session time. Individual secondary market quote capture timestamps unavailable; NEVER infer quote_as_of from this field.",
+  "event_date_local": "2026-10-20",
+  "timezone": "America/Chicago",
+  "mode": "REVIEW_ONLY_SHADOW",
+  "production_authority": false,
+  "wager_execution": false,
+  "supabase_write": false,
+  "previous_freezes_unchanged": true,
+  "draftkings_access": "SportsMCP sports schedule/team data only; no authenticated sportsbook prop offer feed or accepted betslip",
+  "sources": {
+    "archived": "https://www.scoresandstats.com/blog/nba-player-props-today/",
+    "comparison": "https://ats.io/props-nba/",
+    "official_injury_reference": "https://www.expressnews.com/sports/spurs/article/spurs-open-season-tobias-harris-22483480.php",
+    "role_minutes_reference": "https://www.draftkings.com/blog/nba-dfs-picks-opening-night-2026",
+    "notes": [
+      "ATS.io editorial last updated October 19, 2026; this does not timestamp each individual quote.",
+      "Cross-book prices may reflect different regions and retrieval intervals.",
+      "Oct 15 ESPN-associated archived DraftKings feed has dated snapshot, but compare cannot prove time-direction/movement without matching provider snapshots."
+    ]
+  },
+  "criteria": {
+    "candidate_definition": "Plausible gap between posted DK threshold and a change in real opportunity/role after explicitly checking already incorporated threshold moves",
+    "formal_edge_requires": [
+      "Exact DK event/selection and rules",
+      "time-stamped executable DK price",
+      "proven current player availability and lineup/minutes",
+      "independent calibrated event probability",
+      "comparable cross-book quote provenance",
+      "market-specific and paired-outcome settlement model",
+      "sentinel and human final gate"
+    ],
+    "false_positives": [
+      "Historical hit rate > implied break even is not +EV",
+      "Different book thresholds cannot be line-shopped as same market",
+      "DFS salary is not sportsbook odds",
+      "Injury absence without actual minutes beneficiary is not bet-ready",
+      "Pricing from October 15 is no longer executable",
+      "Unknown live betslip acceptance cannot be claimed"
+    ],
+    "house_mirror_sharpness": "No live independently derived fair probability or actual forecast edge"
+  },
+  "candidates": [
+    {
+      "id": "A",
+      "game": "OKC@SAS",
+      "player": "Jalen Williams",
+      "market": "assists",
+      "opening": {
+        "line": 3.5,
+        "over_american": -151,
+        "source": "https://www.scoresandstats.com/blog/nba-player-props-today/",
+        "source_reported_date": "2026-10-15"
+      },
+      "later": {
+        "line": 4.5,
+        "over_american": -103,
+        "under_american": -128,
+        "source": "https://ats.io/props-nba/",
+        "source_page_updated_date": "2026-10-19",
+        "quote_at": null,
+        "break_even": 0.5074
+      },
+      "threshold": 5,
+      "historical": {
+        "hits": 22,
+        "games": 33,
+        "season": "2025-26",
+        "source": "https://www.statmuse.com/nba/ask/jalen-williams-5-or-more-assists-2025-26",
+        "empirical_rate": 0.6667,
+        "wilson_95": {
+          "lower": 0.4961,
+          "upper": 0.8025
+        },
+        "empirical_rate_minus_later_break_even": 0.1593,
+        "warning": "NON-PREDICTIVE HISTORICAL ONLY: Wilson is sampling interval under iid assumptions, not matchup-adjusted forecast or demonstrated EV"
+      },
+      "impact": [
+        "Possible minutes restoration from ~28.4 to ~32.4",
+        "OKC second-creator role could yield 5 AST",
+        "Spurs paint help could force SGA and Jalen to facilitate"
+      ],
+      "counter": [
+        "Jalen role and minutes post-injury not verified",
+        "SGA may dominate on-ball touches",
+        "new OKC teammates/defensive constraints and 33 game sample"
+      ],
+      "label": "HIGH_PRIORITY_INVESTIGATE_NOT_EDGE"
+    },
+    {
+      "id": "B",
+      "game": "BOS@DET",
+      "player": "Cade Cunningham",
+      "market": "assists",
+      "opening": {
+        "line": 9.5,
+        "over_american": 105,
+        "source": "https://www.scoresandstats.com/blog/nba-player-props-today/",
+        "source_reported_date": "2026-10-15"
+      },
+      "later": {
+        "line": 8.5,
+        "over_american": -131,
+        "under_american": -101,
+        "source": "https://ats.io/props-nba/",
+        "source_page_updated_date": "2026-10-19",
+        "quote_at": null,
+        "break_even": 0.5671
+      },
+      "threshold": 9,
+      "historical": {
+        "hits": 44,
+        "games": 64,
+        "season": "2025-26",
+        "source": "https://www.statmuse.com/nba/ask/cade-cunningham-games-with-9-assists-s-this-season",
+        "empirical_rate": 0.6875,
+        "wilson_95": {
+          "lower": 0.5661,
+          "upper": 0.7877
+        },
+        "empirical_rate_minus_later_break_even": 0.1204,
+        "warning": "NON-PREDICTIVE HISTORICAL ONLY: Wilson is sampling interval under iid assumptions, not matchup-adjusted forecast or demonstrated EV"
+      },
+      "impact": [
+        "Duncan Robinson and Isaiah Joe spacing can create more converted pass opportunities",
+        "Cade stable primary on-ball role"
+      ],
+      "counter": [
+        "A one-assist downgrade ALREADY apparent: do not call this unadjusted",
+        "Boston physical pressure and game pace",
+        "Duren/Collins role may change screens and teammate FGA"
+      ],
+      "label": "HIGH_PRIORITY_INVESTIGATE_NOT_EDGE"
+    },
+    {
+      "id": "C",
+      "game": "BOS@DET",
+      "player": "John Collins",
+      "market": "points",
+      "opening": null,
+      "later": {
+        "line": 12.5,
+        "over_american": 100,
+        "under_american": -128,
+        "source": "https://ats.io/props-nba/",
+        "source_page_updated_date": "2026-10-19",
+        "quote_at": null,
+        "break_even": 0.5
+      },
+      "threshold": 13,
+      "historical": null,
+      "impact": [
+        "Detroit frontcourt starter and small-ball center option",
+        "Sources disagree on minutes: 22.8 Vates Oct18 vs 27 Courtside and DK Network author's ~27–30 hypothesis"
+      ],
+      "counter": [
+        "Boston double-big protection",
+        "No independent distribution or stable 2026-27 minutes",
+        "Other books quote DIFFERENT 11.5 points; not a direct odds comparison"
+      ],
+      "label": "ROLE_SENSITIVE_INVESTIGATE"
+    },
+    {
+      "id": "D",
+      "game": "PHI@NYK",
+      "player": "LeBron James",
+      "market": "assists",
+      "opening": {
+        "line": 7.5,
+        "over_american": -102,
+        "source": "https://www.scoresandstats.com/blog/nba-player-props-today/",
+        "source_reported_date": "2026-10-15"
+      },
+      "later": {
+        "line": 7.5,
+        "over_american": -110,
+        "under_american": -119,
+        "source": "https://ats.io/props-nba/",
+        "source_page_updated_date": "2026-10-19",
+        "quote_at": null,
+        "break_even": 0.5238
+      },
+      "threshold": 8,
+      "historical": null,
+      "impact": [
+        "Preseason primary offensive quarterback role",
+        "Maxey/Embiid/Brown as finishing options"
+      ],
+      "counter": [
+        "Four creators share finite touches",
+        "Philadelphia injury and lineup adjustment unknown",
+        "Archive and later base threshold unchanged and market may have already priced role"
+      ],
+      "label": "WATCH_NOT_CONFIRMED_DISCREPANCY"
+    },
+    {
+      "id": "E",
+      "game": "BOS@DET",
+      "player": "Payton Pritchard",
+      "market": "assists",
+      "opening": null,
+      "later": {
+        "line": 4.5,
+        "over_american": -106,
+        "under_american": -124,
+        "source": "https://ats.io/props-nba/",
+        "source_page_updated_date": "2026-10-19",
+        "quote_at": null,
+        "same_line_other_book": {
+          "book": "FanDuel",
+          "over_american": 104
+        },
+        "break_even": 0.5146
+      },
+      "threshold": 5,
+      "historical": {
+        "hits": 46,
+        "games": 79,
+        "season": "2025-26",
+        "source": "https://www.statmuse.com/nba/ask/payton-pritchard-5-or-more-assists-2025-26",
+        "empirical_rate": 0.5823,
+        "wilson_95": {
+          "lower": 0.4722,
+          "upper": 0.6847
+        },
+        "empirical_rate_minus_later_break_even": 0.0677,
+        "warning": "NON-PREDICTIVE HISTORICAL ONLY: Wilson is sampling interval under iid assumptions, not matchup-adjusted forecast or demonstrated EV"
+      },
+      "impact": [
+        "11 preseason assists off bench indicates ballhandling potential"
+      ],
+      "counter": [
+        "DK worse price than quoted FanDuel price at same threshold",
+        "Bench minutes vs Tatum/PG/White sharing uncertain"
+      ],
+      "label": "DEPRIORITIZE_DK_PRICE"
+    },
+    {
+      "id": "F",
+      "game": "OKC@SAS",
+      "player": "Dylan Harper",
+      "market": "points",
+      "opening": null,
+      "later": {
+        "line": 15.5,
+        "over_american": -120,
+        "source": "https://ats.io/props-nba/",
+        "source_page_updated_date": "2026-10-19",
+        "quote_at": null,
+        "break_even": 0.5455
+      },
+      "threshold": 16,
+      "historical": null,
+      "impact": [
+        "Coach confirmed new three-guard starting group",
+        "2025-26 approx 11.8 PPG in 22.6 MPG"
+      ],
+      "counter": [
+        "Minutes-only scaling to 30 is ~15.66 PPG before matchup or efficiency adjustment",
+        "So existing DK O15.5 LOOKS role-adjusted rather than obviously stale",
+        "Spurs Fox Castle Harper total ballhandling constrained"
+      ],
+      "label": "PRICE_IN_ALREADY_MORE_LIKELY"
+    },
+    {
+      "id": "G",
+      "game": "OKC@SAS",
+      "player": "Stephon Castle",
+      "market": "assists",
+      "opening": {
+        "line": 5.5,
+        "over_american": -121,
+        "source": "https://www.scoresandstats.com/blog/nba-player-props-today/",
+        "source_reported_date": "2026-10-15"
+      },
+      "later": {
+        "line": 6.5,
+        "over_american": -117,
+        "source": "https://ats.io/props-nba/",
+        "source_page_updated_date": "2026-10-19",
+        "quote_at": null,
+        "break_even": 0.5392
+      },
+      "threshold": 7,
+      "historical": null,
+      "impact": [
+        "2025-26 7.4 APG"
+      ],
+      "counter": [
+        "Another clear threshold increase (+1 AST) across snapshots",
+        "Fox and Harper might consume assists, not create enough extra"
+      ],
+      "label": "ALREADY_ADJUSTED_WATCH"
+    },
+    {
+      "id": "H",
+      "game": "OKC@SAS",
+      "player": "Victor Wembanyama",
+      "market": "PRA",
+      "opening": {
+        "line": 41.5,
+        "over_american": -113,
+        "source": "https://www.scoresandstats.com/blog/nba-player-props-today/",
+        "source_reported_date": "2026-10-15"
+      },
+      "later": {
+        "line": 41.5,
+        "over_american": -108,
+        "source": "https://ats.io/props-nba/",
+        "source_page_updated_date": "2026-10-19",
+        "quote_at": null,
+        "break_even": 0.5192
+      },
+      "threshold": null,
+      "historical": null,
+      "impact": [
+        "Wemby blocks/rebounds and offensive gravity remain enormous"
+      ],
+      "counter": [
+        "No matchup-adjusted joint PRA distribution",
+        "Defensive impact does not equal PRA",
+        "2025-26 season approximate 25 pts +11.5 reb +3.1 assists =39.6 mean"
+      ],
+      "label": "NO_EVIDENCED_UNADJUSTED_THRESHOLD"
+    }
+  ],
+  "ranking_research_priority": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "priced_in_or_deprioritized": [
+    "E",
+    "F",
+    "G",
+    "H"
+  ],
+  "gamestate_dependencies": [
+    {
+      "game": "BOS@DET",
+      "state": "Boston center minutes / Detroit Collins-at-five",
+      "check": [
+        "starting five",
+        "Robinson vs Queta minutes",
+        "Duren minutes after switches",
+        "White Pritchard usage"
+      ]
+    },
+    {
+      "game": "PHI@NYK",
+      "state": "LeBron lead handler + Embiid minute durability",
+      "check": [
+        "confirmed Embiid and Bona status",
+        "Simons availability",
+        "LeBron-Maxey overlap",
+        "Towns Hart rebound chances"
+      ]
+    },
+    {
+      "game": "OKC@SAS",
+      "state": "Jalen Williams minutes / new Spurs triple guards",
+      "check": [
+        "Jalen Williams minutes restriction",
+        "Chet full health",
+        "Fox Castle Harper overlap",
+        "SGA and Jalen passing split"
+      ]
+    }
+  ],
+  "sentinel": "HOLD_NO_INDEPENDENT_FAIR_PROBABILITIES_OR_VERIFIED_EXECUTABLE_QUOTES"
+}
