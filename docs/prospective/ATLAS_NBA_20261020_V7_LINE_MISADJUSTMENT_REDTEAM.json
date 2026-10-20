@@ -1,0 +1,524 @@
+{
+  "schema": "atlas.nba-line-misadjustment-redteam.review.v7",
+  "slate_date": "2026-10-20",
+  "timezone": "America/Chicago",
+  "research_observation_local": "2026-10-20T02:01:39-05:00",
+  "observation_definition": "Session timestamp only; individual ATS.io odds feed timestamps and current region-specific DraftKings bookability NOT proven.",
+  "base_repo": "tyrollclimaco09-oss/Atlas",
+  "branch": "review/pass0-slate-regression-2026-10-16",
+  "authority": {
+    "review_only": true,
+    "production": false,
+    "no_bets": true,
+    "no_supabase_writes": true,
+    "previous_frozen_packets_unchanged": true
+  },
+  "prior_artifacts": [
+    "docs/prospective/ATLAS_NBA_20261020_V6_DK_LINE_ADJUSTMENT_AUDIT.json",
+    "docs/prospective/ATLAS_NBA_20261020_V5_SOURCE_CONFLICT_ROTATION_AUDIT.md"
+  ],
+  "scout_results": {
+    "roster_official_NBA": "https://www.nba.com/news/nba-rosters-set-for-2026-27-regular-season",
+    "game_schedule": "https://www.nba.com/news/nba-rosters-set-for-2026-27-regular-season",
+    "lines_aggregator": "https://ats.io/props-nba/",
+    "dated_oct15_archive": "https://www.scoresandstats.com/blog/nba-player-props-today/",
+    "projections": {
+      "courtside": "https://courtside.higgsfield.app/projections?date=2026-10-20",
+      "fantasypros": "https://www.fantasypros.com/nba/projections/daily-overall.php/daily-c.php",
+      "vates": "https://vates-sports.com/",
+      "dimers": "https://www.dimers.com/nba/player-projections"
+    },
+    "injury_references": [
+      "https://www.expressnews.com/sports/spurs/article/spurs-open-season-tobias-harris-22483480.php",
+      "https://www.libertyballers.com/76ers-injury-report/99328/philadelphia-sixers-injuries-dominick-barlow-first-apron-cap",
+      "https://www.nba.com/team/1610612755/traditional"
+    ],
+    "false_model_input_findings": [
+      {
+        "player": "Tobias Harris",
+        "source": "Courtside",
+        "projected_minutes": 27,
+        "reported_status": "OUT",
+        "impact": "Spurs Vassell, Champagnie, Barnes and big rotation predictions cannot be reconciled unless 27 ghost minutes removed"
+      },
+      {
+        "player": "Dominick Barlow",
+        "source": "Courtside",
+        "projected_minutes": 24,
+        "reported_status": "OUT",
+        "impact": "Philly frontcourt minutes/rebounds/assist projections invalid without redistributing 24 ghost minutes"
+      },
+      {
+        "player": "Devin Carter",
+        "source": "Courtside",
+        "projected_minutes": 18,
+        "reported_status": "OUT",
+        "impact": "Boston reserve minutes need reallocation before using projected opportunity"
+      },
+      {
+        "player": "Dean Wade",
+        "source": "Courtside",
+        "projected_minutes": 22,
+        "reported_status": "QUESTIONABLE",
+        "impact": "Status pending; cannot assume plays"
+      },
+      {
+        "player": "Anfernee Simons",
+        "source": "Courtside",
+        "projected_minutes": 25,
+        "reported_status": "QUESTIONABLE",
+        "impact": "Role of Maxey/Edgecombe/bench depends on final availability"
+      }
+    ],
+    "model_limits": [
+      "Courtside explicitly says first-five-games-of-season method is unbacktested and injuries, starters, trades not captured after update.",
+      "FantasyPros projections are independent-looking public outputs, not verified independent data pipelines or demonstrated forecast +EV.",
+      "Vates dynamically updated pages show conflicting point projections across crawl dates; do not aggregate snapshots as a coherent same-time forecast.",
+      "No model offers validated conditional point/assist/PRA distribution for these game-specific lineup cases.",
+      "Means and season hit rates alone do not give exact threshold tail probability or positive EV.",
+      "ATS.io lists books and displayed odds but no immutable offer ID/book timestamp/accepted SGP; no current executable claim."
+    ]
+  },
+  "markets": [
+    {
+      "id": "V7-01",
+      "game": "PHI@NYK",
+      "player": "Jaylen Brown",
+      "market": "points",
+      "selection": "over 20.5 points",
+      "market_line": 20.5,
+      "dk_over": -124,
+      "history": {
+        "observed_date": "2026-10-15",
+        "line": 19.5,
+        "over": -119
+      },
+      "projection": [
+        {
+          "provider": "Courtside",
+          "mean": 27.2,
+          "minutes": 33,
+          "staleness": "Unvalidated 2026-27 early-season model; projects OUT players"
+        },
+        {
+          "provider": "FantasyPros",
+          "mean": 23.2,
+          "minutes": 33.6,
+          "staleness": "Season-opening slate consensus, method/calibration unknown"
+        }
+      ],
+      "market_mechanism": "Former 28.7 PPG BOS wing enters PHI four-star offense; potential FGA reduction already partially priced. Compare Brown points with assists/PRA and capture usage when LeBron and Maxey are on court.",
+      "falsifiers": [
+        "Low FGA and touches amid Maxey/LeBron/Embiid sharing",
+        "NYK OG and Bridges wing switching suppresses Brown isolation",
+        "Opening and later comparison threshold already +1 point",
+        "Models may use previous-team usage; no independent role-corrected probability"
+      ],
+      "status": "PRICING_INVESTIGATE_NO_PROVEN_EDGE",
+      "dk_break_even_over": 0.5536,
+      "dk_break_even_under": null,
+      "quote_observed_at": null,
+      "quote_execution_status": "UNVERIFIED_AGGREGATOR_DISPLAY"
+    },
+    {
+      "id": "V7-02",
+      "game": "PHI@NYK",
+      "player": "Jaylen Brown",
+      "market": "PRA",
+      "selection": "over 30.5 PRA",
+      "market_line": 30.5,
+      "dk_over": -112,
+      "history": {
+        "observed_date": "2026-10-15",
+        "line": 28.5,
+        "over": -109
+      },
+      "projection": [
+        {
+          "provider": "Courtside",
+          "mean": 38.4,
+          "minutes": 33,
+          "staleness": "OUT-player projections indicate non-current injury adjustments"
+        },
+        {
+          "provider": "FantasyPros",
+          "mean": 32.5,
+          "minutes": 33.6,
+          "staleness": "Not calibrated joint multi-stat projection"
+        }
+      ],
+      "market_mechanism": "PRA can survive a decline in Brown field-goal attempts if rebounds or assists compensate; those outcomes are not independent. New team offensive role unobserved.",
+      "falsifiers": [
+        "PRA base line already shifted +2 versus older dated quote",
+        "Combined component means do not establish tail probability or joint covariance",
+        "Four-creator rotation and Knicks wing defense may affect all components together"
+      ],
+      "status": "PRICING_INVESTIGATE_NO_PROVEN_EDGE",
+      "dk_break_even_over": 0.5283,
+      "dk_break_even_under": null,
+      "quote_observed_at": null,
+      "quote_execution_status": "UNVERIFIED_AGGREGATOR_DISPLAY"
+    },
+    {
+      "id": "V7-03",
+      "game": "OKC@SAS",
+      "player": "Isaiah Hartenstein",
+      "market": "assists",
+      "selection": "3+ assists (over 2.5)",
+      "market_line": 2.5,
+      "dk_over": 102,
+      "same_threshold_competitors": [
+        {
+          "book": "FanDuel",
+          "over": -106
+        },
+        {
+          "book": "BetRivers",
+          "over": -129
+        }
+      ],
+      "history": {
+        "season": "2025-26",
+        "apg": 3.5,
+        "games": 47,
+        "minutes": 24.2,
+        "source": "https://vates-sports.com/players/isaiah-hartenstein/"
+      },
+      "projection": [
+        {
+          "provider": "Courtside",
+          "mean": 3.5,
+          "minutes": 24,
+          "staleness": "Early-season roster reallocation unvalidated"
+        }
+      ],
+      "market_mechanism": "Hartenstein short-roll/center-passing vs Wemby help and OKC cutting; opportunity depends on 23-26 minutes and teammate FG makes.",
+      "falsifiers": [
+        "Only ~20 mins in two-big split",
+        "Chet spacing draws him away from short-roll elbow",
+        "Spurs switching prevents assisted finishes",
+        "Season 3.5 APG conceals volatility and playoff mean fell to 2.6"
+      ],
+      "status": "BOOK_PRICE_DISPERSION_INVESTIGATE_NOT_EDGE",
+      "dk_break_even_over": 0.495,
+      "dk_break_even_under": null,
+      "quote_observed_at": null,
+      "quote_execution_status": "UNVERIFIED_AGGREGATOR_DISPLAY"
+    },
+    {
+      "id": "V7-04",
+      "game": "PHI@NYK",
+      "player": "VJ Edgecombe",
+      "market": "points",
+      "selection": "12+ points (over 11.5)",
+      "market_line": 11.5,
+      "dk_over": -124,
+      "projection": [
+        {
+          "provider": "Courtside",
+          "mean": 15.2,
+          "minutes": 34,
+          "staleness": "Model projects out/injured PHI players so 34 mins may be unreliable"
+        }
+      ],
+      "market_mechanism": "Expected starting guard minutes + questionable Anfernee Simons could open attempts, but LeBron/Maxey/Brown/Embiid saturate possessions.",
+      "falsifiers": [
+        "Simons active and 25+ min",
+        "Fourth/fifth-option shot share",
+        "Court model early-season method unvalidated",
+        "Line 11.5 may already price much of the adjustment"
+      ],
+      "status": "DEPTH_ROLE_HYPOTHESIS_NOT_EDGE",
+      "dk_break_even_over": 0.5536,
+      "dk_break_even_under": null,
+      "quote_observed_at": null,
+      "quote_execution_status": "UNVERIFIED_AGGREGATOR_DISPLAY"
+    },
+    {
+      "id": "V7-05",
+      "game": "PHI@NYK",
+      "player": "VJ Edgecombe",
+      "market": "assists",
+      "selection": "3+ assists (over 2.5)",
+      "market_line": 2.5,
+      "dk_over": -109,
+      "projection": [
+        {
+          "provider": "Courtside",
+          "mean": 3.9,
+          "minutes": 34,
+          "staleness": "OUT PHI players still projected, lineup minutes unadjusted"
+        }
+      ],
+      "market_mechanism": "Extra start/wing ball movement can support 3+ even on low personal scoring; avoid simultaneously forcing Maxey/Brown/LeBron AST overs.",
+      "falsifiers": [
+        "Edgecombe primarily spot-up finisher",
+        "LeBron handles all opening possessions",
+        "Limited minutes after Simons return",
+        "Assists require made shots by teammates"
+      ],
+      "status": "DEPTH_ROLE_HYPOTHESIS_NOT_EDGE",
+      "dk_break_even_over": 0.5215,
+      "dk_break_even_under": null,
+      "quote_observed_at": null,
+      "quote_execution_status": "UNVERIFIED_AGGREGATOR_DISPLAY"
+    },
+    {
+      "id": "V7-06",
+      "game": "BOS@DET",
+      "player": "Cade Cunningham",
+      "market": "assists",
+      "selection": "9+ assists (over 8.5)",
+      "market_line": 8.5,
+      "dk_over": -131,
+      "history": {
+        "observed_date": "2026-10-15",
+        "line": 9.5,
+        "over": 105
+      },
+      "projection": [
+        {
+          "provider": "Courtside",
+          "mean": 9.4,
+          "minutes": 33,
+          "staleness": "Unvalidated early-season transfer/minutes mode"
+        },
+        {
+          "provider": "FantasyPros",
+          "mean": 9,
+          "minutes": 37,
+          "staleness": "Different projected minutes 4-minute disagreement"
+        }
+      ],
+      "market_mechanism": "Detroit shooters may finish Cade potential assists, but Boston pressure could lower available attempts.",
+      "falsifiers": [
+        "Book already adjusted one assist",
+        "-131 requires 56.7% for break-even, even without vig",
+        "Model differences in minutes and shot conversion",
+        "No matched source timestamp for movement"
+      ],
+      "status": "WATCH_PRICING_SENSITIVITY",
+      "dk_break_even_over": 0.5671,
+      "dk_break_even_under": null,
+      "quote_observed_at": null,
+      "quote_execution_status": "UNVERIFIED_AGGREGATOR_DISPLAY"
+    },
+    {
+      "id": "V7-07",
+      "game": "OKC@SAS",
+      "player": "Jalen Williams",
+      "market": "assists",
+      "selection": "5+ assists (over 4.5)",
+      "market_line": 4.5,
+      "dk_over": -103,
+      "history": {
+        "observed_date": "2026-10-15",
+        "line": 3.5,
+        "over": -151
+      },
+      "projection": [
+        {
+          "provider": "Courtside",
+          "mean": 4.3,
+          "minutes": 23,
+          "staleness": "Previous injury recovery may warrant reduced minutes; morning projections unadjusted"
+        },
+        {
+          "provider": "FantasyPros",
+          "mean": 4.6,
+          "minutes": 30.5,
+          "staleness": "Minutes disagreement +7.5, per-minute workload not comparable"
+        }
+      ],
+      "market_mechanism": "OKC secondary creator role can grow with minutes, but actual expected minutes vary drastically by independent sources.",
+      "falsifiers": [
+        "23-minute limit would harm total assists",
+        "3.5 to 4.5 line is an already-adjusted change",
+        "Preseason 21-minute appearance did not establish full-game workload"
+      ],
+      "status": "DEMOTED_FROM_V6_TOP_SPOT",
+      "dk_break_even_over": 0.5074,
+      "dk_break_even_under": null,
+      "quote_observed_at": null,
+      "quote_execution_status": "UNVERIFIED_AGGREGATOR_DISPLAY"
+    },
+    {
+      "id": "V7-08",
+      "game": "OKC@SAS",
+      "player": "Shai Gilgeous-Alexander",
+      "market": "assists",
+      "selection": "7+ assists (over 6.5)",
+      "market_line": 6.5,
+      "dk_over": -107,
+      "projection": [
+        {
+          "provider": "Courtside",
+          "mean": 6.2,
+          "minutes": 32,
+          "staleness": "Prior-year rate"
+        },
+        {
+          "provider": "FantasyPros",
+          "mean": 6.3,
+          "minutes": 35.9,
+          "staleness": "Role variance and changed rotation"
+        }
+      ],
+      "market_mechanism": "SAS rim wall can incentivize assists even without losing free throws; 15+ AST extreme tail not foundation.",
+      "falsifiers": [
+        "Two projections below seven",
+        "Thunder teammate shot conversion",
+        "SGA isolation efficiency and foul volume"
+      ],
+      "status": "NO_SUPPORTED_UNADJUSTED_EDGE",
+      "dk_break_even_over": 0.5169,
+      "dk_break_even_under": null,
+      "quote_observed_at": null,
+      "quote_execution_status": "UNVERIFIED_AGGREGATOR_DISPLAY"
+    },
+    {
+      "id": "V7-09",
+      "game": "OKC@SAS",
+      "player": "Victor Wembanyama",
+      "market": "PRA",
+      "selection": "under 41.5 PRA",
+      "market_line": 41.5,
+      "dk_under": -116,
+      "projection": [
+        {
+          "provider": "Courtside",
+          "mean": 39,
+          "minutes": 29,
+          "staleness": "Unvalidated early season role; Wemby could play more"
+        },
+        {
+          "provider": "FantasyPros",
+          "mean": 40.2,
+          "minutes": 33.6,
+          "staleness": "Different minutes and role"
+        }
+      ],
+      "market_mechanism": "Defensive dominance can leave PRA below line; blocks not counted in PRA, and OKC centers can affect boards.",
+      "falsifiers": [
+        "Competitive full-minute statement game",
+        "One high scoring tail",
+        "Same-game 2OT historical result inflated sample",
+        "PRA covariance unmodeled"
+      ],
+      "status": "ALTERNATE_CONTRARIAN_WATCH",
+      "dk_break_even_over": null,
+      "dk_break_even_under": 0.537,
+      "quote_observed_at": null,
+      "quote_execution_status": "UNVERIFIED_AGGREGATOR_DISPLAY"
+    },
+    {
+      "id": "V7-10",
+      "game": "BOS@DET",
+      "player": "Derrick White",
+      "market": "threes_made",
+      "selection": "3+ threes (over 2.5)",
+      "market_line": 2.5,
+      "dk_over": -106,
+      "same_threshold_competitors": [
+        {
+          "book": "FanDuel",
+          "over": -114
+        },
+        {
+          "book": "BetRivers",
+          "over": -127
+        }
+      ],
+      "projection": [
+        {
+          "provider": "Courtside",
+          "mean": 2.4,
+          "minutes": 33,
+          "staleness": "BOS lineup not confirmed"
+        },
+        {
+          "provider": "FantasyPros",
+          "mean": 3.1,
+          "minutes": 36.2,
+          "staleness": "Lineup role and efficiency uncertain"
+        }
+      ],
+      "market_mechanism": "Boston's extra possessions from offensive rebounding may increase White's 3PA, but Pritchard/Tatum/PG crowd possessions.",
+      "falsifiers": [
+        "Two models straddle 2.5 and have 3-minute gap",
+        "Starter wing decision uncertain",
+        "3PM conversion variance high"
+      ],
+      "status": "BOOK_DISPERSION_WATCH_NOT_EDGE",
+      "dk_break_even_over": 0.5146,
+      "dk_break_even_under": null,
+      "quote_observed_at": null,
+      "quote_execution_status": "UNVERIFIED_AGGREGATOR_DISPLAY"
+    },
+    {
+      "id": "V7-11",
+      "game": "PHI@NYK",
+      "player": "Tyrese Maxey",
+      "market": "points",
+      "selection": "over 21.5 points",
+      "market_line": 21.5,
+      "dk_over": -111,
+      "projection": [
+        {
+          "provider": "Courtside",
+          "mean": 25.3,
+          "minutes": 35,
+          "staleness": "Projected OUT players on PHI"
+        },
+        {
+          "provider": "FantasyPros",
+          "mean": 23.6,
+          "minutes": 36.1,
+          "staleness": "Provider model unknown"
+        },
+        {
+          "provider": "Vates static snapshot",
+          "mean": 19.8,
+          "minutes": null,
+          "staleness": "Independent alternative contradicts overs; dynamically inconsistent across crawl dates"
+        }
+      ],
+      "market_mechanism": "Maxey may get more offball threes from LeBron quarterback, or lower overall FGA from star touches.",
+      "falsifiers": [
+        "Providers disagree across 21.5 threshold",
+        "Simons doubtful vs healthy alters minutes",
+        "Off-ball role lowers isolation attempts"
+      ],
+      "status": "CONFLICTING_MODEL_MEANS_NO_EDGE",
+      "dk_break_even_over": 0.5261,
+      "dk_break_even_under": null,
+      "quote_observed_at": null,
+      "quote_execution_status": "UNVERIFIED_AGGREGATOR_DISPLAY"
+    }
+  ],
+  "priority_now": [
+    "V7-01",
+    "V7-02",
+    "V7-03",
+    "V7-04",
+    "V7-05"
+  ],
+  "secondary_watch": [
+    "V7-06",
+    "V7-09",
+    "V7-10"
+  ],
+  "demoted": [
+    "V7-07",
+    "V7-08",
+    "V7-11"
+  ],
+  "next_checks": [
+    "At 13:15-13:45 America/Chicago, check BOS DET official starters and injury changes; remove ghost-model cases and recompute minute/opportunity forecasts; no automatic bets.",
+    "At 17:15-17:45 America/Chicago, check PHI NYK Simons, Bona, Wade, Barlow status and Brown/Maxey/Edgecombe line; stable data independent model required.",
+    "At 19:45-20:15 America/Chicago, check OKC SAS Jalen Williams minute restriction, Harris out, and Hartenstein elbow assists role.",
+    "Fetch actual DraftKings selection identifiers, market rules, book quote time, regional acceptance, and SGP quoted all-in odds; no price if source only third-party aggregator.",
+    "Use outcome intelligence 2x2 and full outcome matrix with price-independent joint distribution. Current OI-01 not implemented for PRA, blocks, steals, double-double; explicit blocker."
+  ],
+  "sentinel": "HOLD_UNTIL_AUTHENTIC_DK_PRICES_AND_INDEPENDENT_CONDITIONAL_PROBABILITY"
+}
