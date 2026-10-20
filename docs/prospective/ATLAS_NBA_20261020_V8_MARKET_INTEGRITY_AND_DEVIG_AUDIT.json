@@ -1,0 +1,217 @@
+{
+  "schema": "atlas.review.nba-20261020-market-integrity.v8",
+  "slate_date": "2026-10-20",
+  "timezone": "America/Chicago",
+  "research_observed_local": "2026-10-20T02:31:31-05:00",
+  "research_time_is_not_quote_time": true,
+  "branch": "review/pass0-slate-regression-2026-10-16",
+  "parents": [
+    "docs/prospective/ATLAS_NBA_20261020_V7_LINE_MISADJUSTMENT_REDTEAM.json",
+    "docs/prospective/ATLAS_NBA_20261020_V6_DK_LINE_ADJUSTMENT_AUDIT.json"
+  ],
+  "authority": {
+    "review_only": true,
+    "production": false,
+    "bet_execution": false,
+    "supabase_writes": false,
+    "prior_frozen_evidence_unchanged": true
+  },
+  "market_comparisons": [
+    {
+      "player": "Hartenstein",
+      "event": "OKC@SAS",
+      "market": "assists over 2.5",
+      "displayed_dk_over": 102,
+      "displayed_fd_over": -106,
+      "displayed_fd_under": -125,
+      "displayed_betrivers_over": -129,
+      "dk_break_even": 0.49505,
+      "fd_proportional_novig": 0.480847,
+      "benchmark_difference": -0.014203,
+      "conclusion": "demote: FD two-sided no-vig below DK break-even; minutes variable",
+      "quote_at": null,
+      "source": "https://ats.io/props-nba/",
+      "authority": "DESCRIPTIVE_ONLY_NO_VERIFIED_CURRENT_PRICE"
+    },
+    {
+      "player": "Jaylen Brown",
+      "event": "PHI@NYK",
+      "market": "points over 20.5",
+      "displayed_dk_over": -124,
+      "displayed_fd_over": -122,
+      "displayed_fd_under": -108,
+      "displayed_betrivers_over": -120,
+      "dk_break_even": 0.553571,
+      "fd_proportional_novig": 0.514184,
+      "benchmark_difference": -0.039388,
+      "conclusion": "demote: DK worse than matched FD and BR quote; projected usage not settled",
+      "quote_at": null,
+      "source": "https://ats.io/props-nba/",
+      "authority": "DESCRIPTIVE_ONLY_NO_VERIFIED_CURRENT_PRICE"
+    },
+    {
+      "player": "VJ Edgecombe",
+      "event": "PHI@NYK",
+      "market": "assists over 2.5",
+      "displayed_dk_over": -109,
+      "displayed_fd_over": -128,
+      "displayed_fd_under": -104,
+      "displayed_betrivers_over": -117,
+      "dk_break_even": 0.521531,
+      "fd_proportional_novig": 0.524085,
+      "benchmark_difference": 0.002554,
+      "conclusion": "watch: ~0.26 percentage point comparator difference and conflicting DK tracker -133",
+      "quote_at": null,
+      "source": "https://ats.io/props-nba/",
+      "authority": "DESCRIPTIVE_ONLY_NO_VERIFIED_CURRENT_PRICE"
+    },
+    {
+      "player": "Tyrese Maxey",
+      "event": "PHI@NYK",
+      "market": "assists over 4.5",
+      "displayed_dk_over": -123,
+      "displayed_fd_over": -130,
+      "displayed_fd_under": -102,
+      "displayed_betrivers_over": -109,
+      "dk_break_even": 0.55157,
+      "fd_proportional_novig": 0.528158,
+      "benchmark_difference": -0.023412,
+      "conclusion": "demote: no price benchmark advantage; separate tracker shows DK -144",
+      "quote_at": null,
+      "source": "https://ats.io/props-nba/",
+      "authority": "DESCRIPTIVE_ONLY_NO_VERIFIED_CURRENT_PRICE"
+    },
+    {
+      "player": "Shai Gilgeous-Alexander",
+      "event": "OKC@SAS",
+      "market": "assists over 6.5",
+      "displayed_dk_over": -115,
+      "displayed_fd_over": 104,
+      "displayed_fd_under": -138,
+      "displayed_betrivers_over": 102,
+      "dk_break_even": 0.534884,
+      "fd_proportional_novig": 0.458115,
+      "benchmark_difference": -0.076769,
+      "conclusion": "demote on DK: strong discrepancy vs FD +104 but does not prove future performance",
+      "quote_at": null,
+      "source": "https://ats.io/props-nba/",
+      "authority": "DESCRIPTIVE_ONLY_NO_VERIFIED_CURRENT_PRICE"
+    },
+    {
+      "player": "Daniss Jenkins",
+      "event": "BOS@DET",
+      "market": "points over 8.5",
+      "displayed_dk_over": 101,
+      "displayed_fd_over": -102,
+      "displayed_fd_under": -130,
+      "displayed_betrivers_over": -107,
+      "dk_break_even": 0.497512,
+      "fd_proportional_novig": 0.471842,
+      "benchmark_difference": -0.02567,
+      "conclusion": "watch minutes: DK pricing not appealing vs FD de-vig",
+      "quote_at": null,
+      "source": "https://ats.io/props-nba/",
+      "authority": "DESCRIPTIVE_ONLY_NO_VERIFIED_CURRENT_PRICE"
+    },
+    {
+      "player": "Cason Wallace",
+      "event": "OKC@SAS",
+      "market": "assists over 2.5",
+      "displayed_dk_over": -132,
+      "displayed_fd_over": -144,
+      "displayed_fd_under": 108,
+      "displayed_betrivers_over": -152,
+      "dk_break_even": 0.568966,
+      "fd_proportional_novig": 0.551074,
+      "benchmark_difference": -0.017891,
+      "conclusion": "watch secondary creation; no favorable matched-book signal",
+      "quote_at": null,
+      "source": "https://ats.io/props-nba/",
+      "authority": "DESCRIPTIVE_ONLY_NO_VERIFIED_CURRENT_PRICE"
+    }
+  ],
+  "material_source_conflicts": [
+    {
+      "issue": "GAME_HOME_AWAY_MISMATCH",
+      "official_event": "BOS @ DET",
+      "official": "https://www.nba.com/news/nba-rosters-set-for-2026-27-regular-season",
+      "secondary_player_page_claim": "DET @ BOS",
+      "secondary": "https://xaslarbet.com/nba/props/jalen-duren",
+      "gate": "QUARANTINE_SECONDARY_GAME_IDENTITY_BEFORE_MODEL_JOIN"
+    },
+    {
+      "issue": "STALE_OR_UNSYNCHRONIZED_QUOTE",
+      "player": "VJ Edgecombe",
+      "market": "assists over 2.5",
+      "ats_displayed_dk": -109,
+      "ats_quote_at": null,
+      "xas_displayed_dk": -133,
+      "xas_scan_at_local": "2026-10-19 18:00 ET",
+      "source_A": "https://ats.io/props-nba/",
+      "source_B": "https://xaslarbet.com/nba/props/vj-edgecombe",
+      "gate": "DO_NOT_CLAIM_LINE_MOVEMENT_OR_CURRENT_EXECUTABLE_QUOTE"
+    },
+    {
+      "issue": "SECONDARY_REPORTED_LINE_MOVEMENT",
+      "player": "Anfernee Simons",
+      "market": "points",
+      "older_threshold": 8.5,
+      "older_at_local": "2026-10-18 23:36 ET",
+      "newer_threshold": 7.5,
+      "newer_at_local": "2026-10-19 18:00 ET",
+      "secondary": "https://xaslarbet.com/nba/props/anfernee-simons",
+      "injury_status": "Questionable hamstring",
+      "source": "https://dknetwork.draftkings.com/2026/10/19/dean-wade-headlines-nba-injury-report-tuesday-10-20-26/",
+      "gate": "PRICE_ALREADY_APPEARS_ROLE_ADJUSTED; STATUS_AND_DK_OFFER_UNVERIFIED"
+    },
+    {
+      "issue": "PROJECTION_GHOST_MINUTES",
+      "players": [
+        "Tobias Harris",
+        "Dominick Barlow",
+        "Devin Carter"
+      ],
+      "inherited_from": "V7",
+      "gate": "RECALCULATE_BEFORE_IGNORING_OR_BETTING"
+    }
+  ],
+  "retained_watchlist": [
+    {
+      "candidate": "Jabari Walker rebounds or points+rebounds",
+      "case": "Barlow out and Bona/Wade questionable could increase rotation",
+      "prerequisite": "Actual game-day minutes and DK available offer",
+      "current_book_price": null
+    },
+    {
+      "candidate": "Payton Pritchard assists 5+",
+      "case": "Bench facilitator role",
+      "prerequisite": "Playing time and live DK quote; listed DK -106 is worse than FD +104 same threshold",
+      "current_book_price": null
+    },
+    {
+      "candidate": "Isaiah Hartenstein assists 3+",
+      "case": "Short-roll creation against rim-protecting Spurs",
+      "prerequisite": "Confirmed 24+ minutes role and independent conditional conversion model",
+      "current_book_price": null
+    },
+    {
+      "candidate": "Anfernee Simons 8+ points",
+      "case": "Out/injury-sensitive bench minutes; source-reported threshold dropped",
+      "prerequisite": "Hamstring clearance, minutes, contemporaneous DK price",
+      "current_book_price": null
+    }
+  ],
+  "calculation": "Proportional no-vig = FD implied over / (FD implied over+FD implied under). DK break-even = implied from one-sided DK American price. Compare ONLY same player/event/market/threshold; these are descriptive unsynchronized market comparisons, not independent probabilities, forecast or EV.",
+  "source_restrictions": [
+    "Never use source crawl time as quote time",
+    "Different sportsbooks' quotes lack synchronized capture time",
+    "BetRivers over-only cannot independently estimate no-vig",
+    "Historical hit rate and DFS salaries do not prove sportsbook edge",
+    "Do not combine unlike book/DFS products",
+    "Existing OI-01 shadow lacks steals, blocks, PRA and double-double implementations"
+  ],
+  "actual_dk_executable_quotes": 0,
+  "modeled_independent_probabilities": 0,
+  "proven_positive_ev": 0,
+  "sentinel": "HOLD_NEEDS_LIVE_DK_OFFER_AND_PROSPECTIVE_MODEL"
+}
