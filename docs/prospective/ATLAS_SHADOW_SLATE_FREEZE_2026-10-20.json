@@ -1,0 +1,252 @@
+{
+  "schema": "atlas.shadow-pregame-research-freeze.v0",
+  "run_id": "ATLAS-20261020-CT-SHADOW-TRIAL-01",
+  "captured_at": "2026-10-19T22:11:34-05:00",
+  "slate_date": "2026-10-20",
+  "timezone": "America/Chicago",
+  "provenance": "ChatGPT research using DraftKings SportsMCP fixtures and cited public sources; NOT an authenticated execution of the deployed ATLAS slate engine",
+  "authority": {
+    "state": "REVIEW_ONLY_SHADOW",
+    "production": false,
+    "executed_bets": 0,
+    "human_final_gate_required": true,
+    "synthetic_data": false,
+    "price_independent_stage": true
+  },
+  "limitations": [
+    "No live DraftKings executable player prop quotes",
+    "No frozen independently calibrated player probability distribution",
+    "Player status, starts, minutes/lines subject to pregame confirmation",
+    "Not a canonical Supabase prospective prediction freeze",
+    "Outcome grades may assess threshold settlement, not ROI/edge/model calibration"
+  ],
+  "events": [
+    {
+      "event_id": "DKSPORTS:1025802",
+      "sport": "NBA",
+      "matchup": "Boston Celtics at Detroit Pistons",
+      "start_at_utc": "2026-10-20T19:00:00Z",
+      "start_local": "2026-10-20 14:00 CT"
+    },
+    {
+      "event_id": "DKSPORTS:1025804",
+      "sport": "NBA",
+      "matchup": "Oklahoma City Thunder at San Antonio Spurs",
+      "start_at_utc": "2026-10-21T01:30:00Z",
+      "start_local": "2026-10-20 20:30 CT"
+    },
+    {
+      "event_id": "DKSPORTS:1003389",
+      "sport": "NHL",
+      "matchup": "Colorado Avalanche at New Jersey Devils",
+      "start_at_utc": "2026-10-20T23:00:00Z",
+      "start_local": "2026-10-20 18:00 CT"
+    }
+  ],
+  "candidates": [
+    {
+      "case_id": "CT20-A",
+      "event_id": "DKSPORTS:1025802",
+      "player": "Cade Cunningham",
+      "team": "DET",
+      "market": "NBA player assists",
+      "hypothetical_selection": "8+ assists",
+      "side": "OVER_OR_EQUAL",
+      "threshold": 8,
+      "book_offer": "MISSING",
+      "book_quote_timestamp": null,
+      "model_probability": null,
+      "model_version": null,
+      "decision": "INVESTIGATE_SHADOW",
+      "source_observations": [
+        {
+          "claim": "2025-26 regular season averaged 9.9 APG in 64 games",
+          "url": "https://www.basketball-reference.com/players/c/cunnica01.html",
+          "source_published_at": null
+        },
+        {
+          "claim": "Boston visits Detroit on 2026-10-20",
+          "url": "https://www.nba.com/game/bos-vs-det-0022600001",
+          "source_published_at": null
+        }
+      ],
+      "oracle_thesis": "Elite established offensive creation role suggests an 8-assist threshold is worth evaluating.",
+      "edge_thief": "New supporting personnel and Boston's defense could reduce usage or teammate conversion; no matchup-adjusted distribution.",
+      "game_sense": [
+        "Competitive game and normal minutes may support playmaking opportunities",
+        "Blowout, injury, fouls, scheme or more on-ball teammates can break the thesis"
+      ],
+      "invalidates_if": [
+        "Player OUT or restricted minutes",
+        "Official lineup/rotation materially changes",
+        "Market threshold, rules, or event identity differs"
+      ],
+      "role_confirmation": "UNVERIFIED_FOR_GAME",
+      "grading": "Final official assists >= 8, otherwise MISS, VOID/UNKNOWN if did not play or rules unclear"
+    },
+    {
+      "case_id": "CT20-B",
+      "event_id": "DKSPORTS:1025804",
+      "player": "Victor Wembanyama",
+      "team": "SAS",
+      "market": "NBA player blocks",
+      "hypothetical_selection": "3+ blocks",
+      "side": "OVER_OR_EQUAL",
+      "threshold": 3,
+      "book_offer": "MISSING",
+      "book_quote_timestamp": null,
+      "model_probability": null,
+      "model_version": null,
+      "decision": "INVESTIGATE_SHADOW",
+      "source_observations": [
+        {
+          "claim": "2025-26 averaged 3.08 blocks in 64 games, with 50 multi-block games",
+          "url": "https://www.nba.com/spurs/news/victorwembanyama-namedto-2025-26-kia-nbaall-defensive-firstteam",
+          "source_published_at": "2026-05-26"
+        },
+        {
+          "claim": "2026-27 opening-night OKC at San Antonio game",
+          "url": "https://www.nba.com/news/2026-27-nba-regular-season-schedule",
+          "source_published_at": null
+        }
+      ],
+      "oracle_thesis": "Stable rim deterrence role and historic block opportunities justify researching a 3-block threshold.",
+      "edge_thief": "Block variance, foul trouble, minutes, perimeter shot profile, and Thunder offense can drastically change actual opportunities.",
+      "game_sense": [
+        "Close game and normal defensive assignment offers playing time",
+        "Five-out possessions, pace and foul risk could suppress block opportunities"
+      ],
+      "invalidates_if": [
+        "Player OUT or under minutes restriction",
+        "Opponent lineup indicates materially fewer paint attempts",
+        "Threshold or rules differ"
+      ],
+      "role_confirmation": "UNVERIFIED_FOR_GAME",
+      "grading": "Final official blocks >= 3, otherwise MISS, VOID/UNKNOWN if did not play or rules unclear"
+    },
+    {
+      "case_id": "CT20-C",
+      "event_id": "DKSPORTS:1003389",
+      "player": "Jack Hughes",
+      "team": "NJD",
+      "market": "NHL shots on goal",
+      "hypothetical_selection": "3+ shots on goal",
+      "side": "OVER_OR_EQUAL",
+      "threshold": 3,
+      "book_offer": "MISSING",
+      "book_quote_timestamp": null,
+      "model_probability": null,
+      "model_version": null,
+      "decision": "INVESTIGATE_SHADOW",
+      "source_observations": [
+        {
+          "claim": "First eight 2026-27 games shots: 5,3,5,2,2,8,3,4 (6/8 >=3; not a calibrated probability)",
+          "url": "https://www.cbssports.com/nhl/players/3125731/jack-hughes/game-log/",
+          "source_published_at": null
+        },
+        {
+          "claim": "Projected Devils line Hughes with Gritsyuk and Bratt as of October 19",
+          "url": "https://newjerseyhockeynow.com/new-jersey-devils-lines/",
+          "source_published_at": null
+        },
+        {
+          "claim": "Avalanche played in Philadelphia October 19 before Tuesday's Devils game",
+          "url": "https://www.nhl.com/avalanche/news/game-recap-10-19-26",
+          "source_published_at": null
+        }
+      ],
+      "oracle_thesis": "First-line deployment and recent shot opportunity support investigating 3+ SOG against a traveling opponent on no rest.",
+      "edge_thief": "Small sample, opponent shot suppression, goalie/line changes, and competitive game script; historical 6/8 is NOT a 75% true forecast.",
+      "game_sense": [
+        "Colorado second night of back-to-back could shift defensive pace",
+        "Devils puck possession, power-play deployment, and ice time drive shots"
+      ],
+      "invalidates_if": [
+        "Player scratch or role/ice time changes",
+        "Opponent lineup produces different possession profile",
+        "Shot grading/rules differs"
+      ],
+      "role_confirmation": "PROJECTED_NOT_CONFIRMED",
+      "grading": "Final official shots on goal >= 3, otherwise MISS, VOID/UNKNOWN if did not play or rules unclear"
+    }
+  ],
+  "rejected_controls": [
+    {
+      "case_id": "CT20-R1",
+      "event_id": "DKSPORTS:1003389",
+      "player": "Nathan MacKinnon",
+      "team": "COL",
+      "hypothetical_selection": "4+ shots on goal",
+      "threshold": 4,
+      "decision": "PASS_SHADOW_CONTROL",
+      "reason": "Colorado playing road back-to-back, historical sensitivity, unverified goalie/lineup and no executable fair-price comparison; do not recycle stale 10/19 odds",
+      "outcome_tracking": "Grade as PASS counterfactual only, not missed revenue or failed bet"
+    }
+  ],
+  "constructions": [
+    {
+      "id": "CT20-D1",
+      "type": "CROSS_GAME_DOUBLE",
+      "legs": [
+        "CT20-A",
+        "CT20-B"
+      ],
+      "decision": "HOLD_SHADOW",
+      "joint_probability": null,
+      "offered_combined_price": null,
+      "truth_table_labels": [
+        "BOTH",
+        "A_ONLY",
+        "B_ONLY",
+        "NEITHER"
+      ],
+      "reason": "No verified prices or independent joint outcome model"
+    },
+    {
+      "id": "CT20-D2",
+      "type": "CROSS_SPORT_DOUBLE",
+      "legs": [
+        "CT20-B",
+        "CT20-C"
+      ],
+      "decision": "HOLD_SHADOW",
+      "joint_probability": null,
+      "offered_combined_price": null,
+      "truth_table_labels": [
+        "BOTH",
+        "B_ONLY",
+        "C_ONLY",
+        "NEITHER"
+      ],
+      "reason": "No verified prices; cross-sport pairing not automatically +EV"
+    },
+    {
+      "id": "CT20-T1",
+      "type": "CROSS_SPORT_TRIPLE",
+      "legs": [
+        "CT20-A",
+        "CT20-B",
+        "CT20-C"
+      ],
+      "decision": "PASS_SHADOW",
+      "joint_probability": null,
+      "offered_combined_price": null,
+      "reason": "Three correlated uncertainties and no joint price; only an illustration of candidate coverage"
+    }
+  ],
+  "grade_contract": {
+    "must_check": "Official final league game/player box scores and player participation; do not retroactively edit this packet",
+    "allowed_settlements": [
+      "HIT",
+      "MISS",
+      "PUSH",
+      "VOID",
+      "UNSETTLED",
+      "UNKNOWN"
+    ],
+    "no_prices_means": "NO_PAYOUT_OR_ROI_GRADE",
+    "missing_probabilities_means": "NO_BRIER_OR_LOG_LOSS",
+    "returned_at": "Source-dependent; verify outcome timestamp"
+  },
+  "source_capture_note": "External source fields were researched around pregame snapshot time; exact independent publication timestamps unavailable for most URLs; do not infer them from capture time."
+}
