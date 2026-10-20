@@ -17,6 +17,30 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
+
+      - name: Verify deployed scouts reject anonymous requests (no credentials)
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import json, urllib.request, urllib.error
+          root="https://lhliqbbooproqtslmgqi.supabase.co/functions/v1/"
+          cases=[
+              ("atlas-nfl-free-scout",{"season":2026,"week":7,"persist":False}),
+              ("atlas-free-sports-scout",{"sport":"NHL","date":"2026-10-19","persist":False})
+          ]
+          for slug,body in cases:
+              req=urllib.request.Request(root+slug,method="POST",data=json.dumps(body).encode("utf-8"),headers={"Content-Type":"application/json","User-Agent":"ATLAS-review-authz-proof/0.1"})
+              try:
+                  with urllib.request.urlopen(req,timeout=15) as resp:
+                      status=resp.status
+              except urllib.error.HTTPError as exc:
+                  status=exc.code
+              if status not in (401,403):
+                  raise RuntimeError(f"{slug}: expected auth denial, got HTTP {status}")
+              print(json.dumps({"function":slug,"http_status":status,"conclusion":"ANONYMOUS_DENIED","live_upstream_through_edge":"NOT_TESTED","persisted":False}))
+          print("ATLAS_DEPLOYED_AUTH_GATE_PROOF=PASS | no tokens supplied, no persistence")
+          PY
+
       - name: Retrieve public sources and validate schemas (SHADOW / no persistence)
         shell: bash
         run: |
