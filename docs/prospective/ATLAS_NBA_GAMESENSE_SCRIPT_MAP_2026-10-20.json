@@ -1,0 +1,243 @@
+{
+  "schema": "atlas.gamesense.scenario-map.review.v1",
+  "date": "2026-10-20",
+  "timezone": "America/Chicago",
+  "status": "REVIEW_SHADOW_RESEARCH",
+  "parent_registry_commit": "bf18ee2679ed863bb660552effdea9ec23195ea9",
+  "no_model_probabilities": true,
+  "no_verified_bookmaker_prices": true,
+  "production_authority": false,
+  "principles": [
+    "Intuition is a hypothesis generator, never the independent probability model.",
+    "Describe competing pathways and link each to player opportunity, efficiency, and ticket outcome.",
+    "Keep role and injury uncertainty explicit, avoid anchoring to unverified prices.",
+    "Always record anti-thesis and what pregame / in-game observable would falsify the script.",
+    "Do not add independent marginal hit rates for correlated tickets; use P11/P10/P01/P00 when defensible."
+  ],
+  "matchups": [
+    {
+      "event": "BOS@DET",
+      "scripts": [
+        {
+          "id": "BOSDET-A",
+          "name": "Detroit controls paint/boards; Boston creates perimeter looks",
+          "causal_chain": [
+            "Duren/Ausar rebound opportunities depend on Boston miss count and their own minutes",
+            "Boston shooters may generate 3PA, but steals and transition possessions can shorten halfcourt",
+            "Cade assist upside depends on teammate made shots, not just passes"
+          ],
+          "candidates": [
+            "Jalen Duren rebounds",
+            "Derrick White 3PM",
+            "Cade assists"
+          ],
+          "counter_case": "Boston efficiency reduces rebound chances; role/minutes uncertain"
+        },
+        {
+          "id": "BOSDET-B",
+          "name": "Boston switch/pressure stalls Cade and shrinks Detroit possessions",
+          "causal_chain": [
+            "Cade on-ball pressure alters scoring vs playmaking split",
+            "Ausar deflections and transition opportunities depend on opponent possession rate",
+            "Detroit 3PM can fail even if Cade produces potential assists"
+          ],
+          "candidates": [
+            "Cade points+assists vs assists",
+            "Ausar steals",
+            "Duncan Robinson threes"
+          ],
+          "counter_case": "Detroit off-ball spacing beats switches; foul game yields more total possessions"
+        },
+        {
+          "id": "BOSDET-C",
+          "name": "Boston offense redistributes shots among returners and newcomers",
+          "causal_chain": [
+            "White/Pritchard role sharing depends on Tatum and George usage",
+            "Robinson and Queta compete for big-man minutes",
+            "White made threes and Pritchard assists may split rather than rise together"
+          ],
+          "candidates": [
+            "White 3PA / 3PM",
+            "Pritchard assists",
+            "Mitchell Robinson rebounds"
+          ],
+          "counter_case": "Starting combinations, injuries and new coach utilization unknown"
+        }
+      ],
+      "monitor": [
+        "confirmed starters and bench center split",
+        "Cade assist opportunities/potential assists",
+        "team 3PA and shot-quality early",
+        "rebound opportunities not just rebounds",
+        "score margin and minutes"
+      ]
+    },
+    {
+      "event": "PHI@NYK",
+      "scripts": [
+        {
+          "id": "PHINYK-A",
+          "name": "Philadelphia's multiple creators trade scoring for facilitation",
+          "causal_chain": [
+            "LeBron/Maxey/Brown/Embiid share possessions; usage sum constrained",
+            "Maxey off-ball spot-up threes could grow while self-created points contract",
+            "Knicks perimeter defenders might shift assignments midgame"
+          ],
+          "candidates": [
+            "LeBron assists",
+            "Maxey 3PM",
+            "Jaylen Brown points under as conditional research"
+          ],
+          "counter_case": "Philadelphia staggers stars and preserves high primary usage"
+        },
+        {
+          "id": "PHINYK-B",
+          "name": "Knicks win rebounding battle but lose pace",
+          "causal_chain": [
+            "Towns and Hart benefit only if there are misses to capture",
+            "Embiid availability alters shot and rebound distribution",
+            "Slow pace can suppress Brunson counting stats even in a close game"
+          ],
+          "candidates": [
+            "Towns rebounds",
+            "Hart rebounds+assists",
+            "Brunson points+assists"
+          ],
+          "counter_case": "Fast-paced game with higher FGA offsets better opponent shooting"
+        },
+        {
+          "id": "PHINYK-C",
+          "name": "High-scoring shot-making war",
+          "causal_chain": [
+            "Made shots improve assist settlements but reduce defensive rebound totals",
+            "Three-point attempts favor shot volume markets if player minutes hold",
+            "Two star overs may be coherent yet badly priced and lack +EV"
+          ],
+          "candidates": [
+            "Brunson assists",
+            "Maxey threes",
+            "Towns rebounds under only if line+pricing support"
+          ],
+          "counter_case": "defensive scheme and short rotations suppress pace"
+        }
+      ],
+      "monitor": [
+        "Embiid availability and minute restriction",
+        "LeBron/Maxey/Brown ballhandler shifts",
+        "Hart status",
+        "starter and bench rotations",
+        "shot attempts, potential assists, rebound chances"
+      ]
+    },
+    {
+      "event": "OKC@SAS",
+      "scripts": [
+        {
+          "id": "OKCSAS-A",
+          "name": "Wembanyama controls paint; Thunder take pull-up/three-heavy offense",
+          "causal_chain": [
+            "Wemby block events may decline if fewer attacks reach him even if he plays superb defense",
+            "Chet/Hartenstein rebound opportunity shifts with Spurs shot volume and paint deterrence",
+            "Wemby PRA over 42.5 requires enough points+rebounds+assists; excellent impact need not imply PRA over"
+          ],
+          "candidates": [
+            "Wembanyama blocks vs PRA",
+            "Hartenstein rebounds",
+            "Chet Holmgren rebounds"
+          ],
+          "counter_case": "OKC aggressively attacks rim anyway; foul risk changes Wemby minutes"
+        },
+        {
+          "id": "OKCSAS-B",
+          "name": "SGA pace and free throws dictate game",
+          "causal_chain": [
+            "Repeated SGA drives create both scoring and Wemby rim-defense opportunities",
+            "Thunder live-ball steals may cut Spurs possessions and creation upside",
+            "Wallace steals could coincide with low Spurs PRA outcomes; correlation can be negative"
+          ],
+          "candidates": [
+            "SGA points",
+            "Wallace steals",
+            "Wembanyama PRA vs blocks"
+          ],
+          "counter_case": "Spurs perimeter containment forces SGA assists and limits FTs"
+        },
+        {
+          "id": "OKCSAS-C",
+          "name": "Spurs guards redistribute creation; Wemby benefits as finisher",
+          "causal_chain": [
+            "Fox/Castle/Harper cannot each maintain maximal touches at once",
+            "Castle and Harper assist upside depends on Wemby conversion and lineup overlap",
+            "Early rotation substitution pattern is critical"
+          ],
+          "candidates": [
+            "Castle assists",
+            "Harper assists",
+            "Fox points+assists"
+          ],
+          "counter_case": "Staggered point guard rotations let individual role exceed shared-floor assumptions"
+        },
+        {
+          "id": "OKCSAS-D",
+          "name": "Blowout / foul-trouble stress path",
+          "causal_chain": [
+            "Stars can outperform per-minute and still miss counting thresholds on reduced minutes",
+            "Bench scoring may rise while starting center rebound/assist opportunities fall",
+            "A double-double or 42.5 PRA depends on settlement, not subjective quality of play"
+          ],
+          "candidates": [
+            "Wembanyama PRA 42.5",
+            "Wembanyama double-double",
+            "SGA points"
+          ],
+          "counter_case": "Late comeback preserves full fourth-quarter minutes"
+        }
+      ],
+      "monitor": [
+        "verified starter lineup and injury list",
+        "Wembanyama actual minutes and fouls",
+        "OKC rim attempts and three-point share",
+        "SGA free throw attempts and assists",
+        "Spurs guard lineup overlap",
+        "blowout spread, not narrative"
+      ]
+    }
+  ],
+  "pairing_protocol": {
+    "truth_states": [
+      "BOTH",
+      "A_ONLY",
+      "B_ONLY",
+      "NEITHER"
+    ],
+    "require_joint_distribution_before_EV": true,
+    "default_if_unknown": "HOLD",
+    "examples": [
+      {
+        "legs": [
+          "Wembanyama 3+ blocks",
+          "SGA 30+ points"
+        ],
+        "relationship": "UNKNOWN/CONDITIONAL",
+        "mechanism": "SGA rim attacks can create block chances, but defensive stops can suppress scoring."
+      },
+      {
+        "legs": [
+          "Derrick White 3+ threes",
+          "Jalen Duren 10+ rebounds"
+        ],
+        "relationship": "UNKNOWN/CONDITIONAL",
+        "mechanism": "Boston missed threes can boost Duren boards while made threes support White's leg."
+      },
+      {
+        "legs": [
+          "Stephon Castle 7+ assists",
+          "Wembanyama high PRA"
+        ],
+        "relationship": "POTENTIALLY_POSITIVE_WITH_CONFLICTS",
+        "mechanism": "Castle-to-Wemby scoring can raise assists and points, but guard role distribution and Wemby rebounds/assists may diverge."
+      }
+    ]
+  },
+  "acceptance": "A falsifiable pregame script map, not an approved betslip or proof of predictive performance"
+}
