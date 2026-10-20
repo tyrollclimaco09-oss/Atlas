@@ -73,7 +73,7 @@
   },
   "historical_sample": {
     "scope": "2026 Western Conference Finals, seven games, NOT representative independent model, includes double OT",
-    "settled_by_official_player_game_log_crosscheck": true,
+    "settled_by_official_player_game_log_crosscheck": false,
     "sample": [
       {
         "day": "2026-05-18",
@@ -169,7 +169,9 @@
       "harper10_vassell2_wemby_dd_all": 3,
       "harper10_vassell2_wemby_pra43_all": 2,
       "sga_assists_15plus": 0
-    }
+    },
+    "verification_note": "Crosschecked StatMuse and Land of Basketball historical player box scores. Official NBA play-by-play/stat-correction readback was NOT independently performed. Preserve as secondary-source retrospective reference.",
+    "source_kind": "SECONDARY_HISTORICAL_STATS_NOT_OFFICIAL_OUTCOME_SEAL"
   },
   "season_baselines": [
     {
