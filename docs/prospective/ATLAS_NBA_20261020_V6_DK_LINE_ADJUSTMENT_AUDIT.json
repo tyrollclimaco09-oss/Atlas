@@ -1,7 +1,7 @@
 {
   "schema": "atlas.review.dk-line-adjustment-audit.v6",
-  "observed_at_local": "2026-10-20T00:42:00-05:00",
-  "observation_note": "Approximate research session time. Individual secondary market quote capture timestamps unavailable; NEVER infer quote_as_of from this field.",
+  "observed_at_local": null,
+  "observation_note": "Research session was during the early hours of 2026-10-20 America/Chicago. Source page editorial updated October 19, but individual quote capture timestamps are unavailable; do not fabricate a quote timestamp or infer line movement.",
   "event_date_local": "2026-10-20",
   "timezone": "America/Chicago",
   "mode": "REVIEW_ONLY_SHADOW",
@@ -14,11 +14,16 @@
     "archived": "https://www.scoresandstats.com/blog/nba-player-props-today/",
     "comparison": "https://ats.io/props-nba/",
     "official_injury_reference": "https://www.expressnews.com/sports/spurs/article/spurs-open-season-tobias-harris-22483480.php",
-    "role_minutes_reference": "https://www.draftkings.com/blog/nba-dfs-picks-opening-night-2026",
+    "role_minutes_reference": "https://dknetwork.draftkings.com/2026/10/19/fantasy-basketball-picks-top-draftkings-nba-dfs-targets-values-for-tuesday-10-20-26-2/",
     "notes": [
       "ATS.io editorial last updated October 19, 2026; this does not timestamp each individual quote.",
       "Cross-book prices may reflect different regions and retrieval intervals.",
       "Oct 15 ESPN-associated archived DraftKings feed has dated snapshot, but compare cannot prove time-direction/movement without matching provider snapshots."
+    ],
+    "extra_crosscheck": [
+      "https://courtside.higgsfield.app/projections?date=2026-10-20&team=DET",
+      "https://vates-sports.com/players/john-collins/",
+      "https://www.statmuse.com/nba/ask?q=Jalen+Williams+games+with+5%2B+assists+2025%2F2026"
     ]
   },
   "criteria": {
@@ -38,7 +43,8 @@
       "DFS salary is not sportsbook odds",
       "Injury absence without actual minutes beneficiary is not bet-ready",
       "Pricing from October 15 is no longer executable",
-      "Unknown live betslip acceptance cannot be claimed"
+      "Unknown live betslip acceptance cannot be claimed",
+      "The two available independent projected John Collins totals straddle DK threshold with materially different minutes forecasts"
     ],
     "house_mirror_sharpness": "No live independently derived fair probability or actual forecast edge"
   },
@@ -68,7 +74,7 @@
         "hits": 22,
         "games": 33,
         "season": "2025-26",
-        "source": "https://www.statmuse.com/nba/ask/jalen-williams-5-or-more-assists-2025-26",
+        "source": "https://www.statmuse.com/nba/ask?q=Jalen+Williams+games+with+5%2B+assists+2025%2F2026",
         "empirical_rate": 0.6667,
         "wilson_95": {
           "lower": 0.4961,
@@ -158,9 +164,10 @@
       "counter": [
         "Boston double-big protection",
         "No independent distribution or stable 2026-27 minutes",
-        "Other books quote DIFFERENT 11.5 points; not a direct odds comparison"
+        "Other books quote DIFFERENT 11.5 points; not a direct odds comparison",
+        "Two independent, uncalibrated public projected point totals (Courtside 12.8 with 27 MIN and Vates 11.6 with 22.8 MIN) straddle DK 12.5 and disagree on minutes: no clear underadjustment"
       ],
-      "label": "ROLE_SENSITIVE_INVESTIGATE"
+      "label": "MODELS_DISAGREE_NO_SUPPORTED_EDGE"
     },
     {
       "id": "D",
@@ -219,7 +226,7 @@
         "hits": 46,
         "games": 79,
         "season": "2025-26",
-        "source": "https://www.statmuse.com/nba/ask/payton-pritchard-5-or-more-assists-2025-26",
+        "source": "https://statsnext.com/nba/players/payton-pritchard-816faef8/assists",
         "empirical_rate": 0.5823,
         "wilson_95": {
           "lower": 0.4722,
@@ -329,10 +336,10 @@
   "ranking_research_priority": [
     "A",
     "B",
-    "C",
     "D"
   ],
   "priced_in_or_deprioritized": [
+    "C",
     "E",
     "F",
     "G",
@@ -370,5 +377,10 @@
       ]
     }
   ],
-  "sentinel": "HOLD_NO_INDEPENDENT_FAIR_PROBABILITIES_OR_VERIFIED_EXECUTABLE_QUOTES"
+  "sentinel": "HOLD_NO_INDEPENDENT_FAIR_PROBABILITIES_OR_VERIFIED_EXECUTABLE_QUOTES",
+  "analysis_summary": {
+    "historical_baseline_inference": "Jalen Williams 22/33 empirical 5+ assists: Wilson lower 49.61% versus -103 break even 50.74%; Cade 44/64 empirical 9+ assists: Wilson lower 56.61% versus -131 break even 56.71%. The (non-predictive) intervals alone do not establish even a historical statistically separated edge.",
+    "not_a_current_forecast": true,
+    "source_price_staleness": "Market tables are cross-book aggregator snapshots with no quote_at; cannot assert current executable DK values."
+  }
 }
