@@ -1,0 +1,848 @@
+{
+  "schema": "atlas.scout.wide.review.v2",
+  "run_id": "ATLAS-NBA-20261020-WIDE-RESEARCH-V2",
+  "created_on_local_date": "2026-10-19",
+  "sport": "NBA",
+  "slate_date": "2026-10-20",
+  "timezone": "America/Chicago",
+  "authority": "REVIEW_SHADOW_ONLY",
+  "production_authority": false,
+  "execute_bets": false,
+  "opening_night_games": [
+    {
+      "id": "BOS@DET",
+      "matchup": "Boston Celtics @ Detroit Pistons",
+      "start_at_utc": "2026-10-20T19:00:00Z"
+    },
+    {
+      "id": "PHI@NYK",
+      "matchup": "Philadelphia 76ers @ New York Knicks",
+      "start_at_utc": "2026-10-20T23:00:00Z"
+    },
+    {
+      "id": "OKC@SAS",
+      "matchup": "Oklahoma City Thunder @ San Antonio Spurs",
+      "start_at_utc": "2026-10-21T01:30:00Z"
+    }
+  ],
+  "market_hypotheses": [
+    {
+      "id": "BOSDET-01",
+      "game": "BOS@DET",
+      "team": "DET",
+      "player": "Cade Cunningham",
+      "market_exploration": "assists 8+/10+; points+assists",
+      "priority": "PRIORITIZE",
+      "constructive_case_and_strong_caveat": "9.9 APG 2025-26; compare real line ~9.5; against new Boston defense and new Detroit shooters",
+      "game_script_tags": [
+        "GAME:DET_SCORING",
+        "GAME:CADE_USAGE"
+      ],
+      "estimated_probability": null,
+      "verified_DraftKings_price": null,
+      "offer_observed_at": null,
+      "role_confirmed": false,
+      "decision": "INVESTIGATE",
+      "human_final_gate": false
+    },
+    {
+      "id": "BOSDET-02",
+      "game": "BOS@DET",
+      "team": "DET",
+      "player": "Jalen Duren",
+      "market_exploration": "rebounds 10+/double-double; points",
+      "priority": "PRIORITIZE",
+      "constructive_case_and_strong_caveat": "10.5 RPG 2025-26; Collins arrival and BOS Robinson/Queta rotation create competing forces",
+      "game_script_tags": [
+        "GAME:DET_REBOUNDS"
+      ],
+      "estimated_probability": null,
+      "verified_DraftKings_price": null,
+      "offer_observed_at": null,
+      "role_confirmed": false,
+      "decision": "INVESTIGATE",
+      "human_final_gate": false
+    },
+    {
+      "id": "BOSDET-03",
+      "game": "BOS@DET",
+      "team": "DET",
+      "player": "Ausar Thompson",
+      "market_exploration": "steals 2+; rebounds+assists",
+      "priority": "PRIORITIZE",
+      "constructive_case_and_strong_caveat": "2.0 SPG 2025-26; defense role, opponent ball-handler turnover exposure; high discrete-event variance",
+      "game_script_tags": [
+        "GAME:STOCKS"
+      ],
+      "estimated_probability": null,
+      "verified_DraftKings_price": null,
+      "offer_observed_at": null,
+      "role_confirmed": false,
+      "decision": "INVESTIGATE",
+      "human_final_gate": false
+    },
+    {
+      "id": "BOSDET-04",
+      "game": "BOS@DET",
+      "team": "DET",
+      "player": "Duncan Robinson",
+      "market_exploration": "3PM 3+; 3PA",
+      "priority": "PRIORITIZE",
+      "constructive_case_and_strong_caveat": "2.9 3PM and 7.0 3PA 2025-26; new frontcourt geometry and Boston switch coverage",
+      "game_script_tags": [
+        "GAME:DET_3PT"
+      ],
+      "estimated_probability": null,
+      "verified_DraftKings_price": null,
+      "offer_observed_at": null,
+      "role_confirmed": false,
+      "decision": "INVESTIGATE",
+      "human_final_gate": false
+    },
+    {
+      "id": "BOSDET-05",
+      "game": "BOS@DET",
+      "team": "DET",
+      "player": "John Collins",
+      "market_exploration": "rebounds; points+rebounds",
+      "priority": "INVESTIGATE",
+      "constructive_case_and_strong_caveat": "new Detroit forward; role share with Duren and Ausar needs minute evidence",
+      "game_script_tags": [
+        "GAME:DET_REBOUNDS"
+      ],
+      "estimated_probability": null,
+      "verified_DraftKings_price": null,
+      "offer_observed_at": null,
+      "role_confirmed": false,
+      "decision": "INVESTIGATE",
+      "human_final_gate": false
+    },
+    {
+      "id": "BOSDET-06",
+      "game": "BOS@DET",
+      "team": "DET",
+      "player": "Isaiah Joe",
+      "market_exploration": "3PM 2+; threes attempts",
+      "priority": "CONDITIONAL",
+      "constructive_case_and_strong_caveat": "new Detroit wing, minutes and rotation not confirmed; shot-quality role possible",
+      "game_script_tags": [
+        "GAME:DET_3PT"
+      ],
+      "estimated_probability": null,
+      "verified_DraftKings_price": null,
+      "offer_observed_at": null,
+      "role_confirmed": false,
+      "decision": "WATCH",
+      "human_final_gate": false
+    },
+    {
+      "id": "BOSDET-07",
+      "game": "BOS@DET",
+      "team": "DET",
+      "player": "Ron Holland",
+      "market_exploration": "points+rebounds / steals",
+      "priority": "CONDITIONAL",
+      "constructive_case_and_strong_caveat": "bench minutes unknown; could gain if Prince unavailable",
+      "game_script_tags": [
+        "GAME:STOCKS"
+      ],
+      "estimated_probability": null,
+      "verified_DraftKings_price": null,
+      "offer_observed_at": null,
+      "role_confirmed": false,
+      "decision": "WATCH",
+      "human_final_gate": false
+    },
+    {
+      "id": "BOSDET-08",
+      "game": "BOS@DET",
+      "team": "BOS",
+      "player": "Derrick White",
+      "market_exploration": "3PM 2+/3+; assists",
+      "priority": "PRIORITIZE",
+      "constructive_case_and_strong_caveat": "8.3 3PA 2025-26 baseline; Tatum, PG, Pritchard roles may change touches",
+      "game_script_tags": [
+        "GAME:BOS_3PT"
+      ],
+      "estimated_probability": null,
+      "verified_DraftKings_price": null,
+      "offer_observed_at": null,
+      "role_confirmed": false,
+      "decision": "INVESTIGATE",
+      "human_final_gate": false
+    },
+    {
+      "id": "BOSDET-09",
+      "game": "BOS@DET",
+      "team": "BOS",
+      "player": "Payton Pritchard",
+      "market_exploration": "assists 5+/6+; 3PM",
+      "priority": "PRIORITIZE",
+      "constructive_case_and_strong_caveat": "5.2 APG 2025-26; 11 AST isolated preseason example, not forecast; starting/bench role uncertain",
+      "game_script_tags": [
+        "GAME:BOS_CREATION"
+      ],
+      "estimated_probability": null,
+      "verified_DraftKings_price": null,
+      "offer_observed_at": null,
+      "role_confirmed": false,
+      "decision": "INVESTIGATE",
+      "human_final_gate": false
+    },
+    {
+      "id": "BOSDET-10",
+      "game": "BOS@DET",
+      "team": "BOS",
+      "player": "Mitchell Robinson",
+      "market_exploration": "offensive rebounds; total rebounds; blocks",
+      "priority": "PRIORITIZE",
+      "constructive_case_and_strong_caveat": "former Knick new BOS center; minute split with Queta unknown",
+      "game_script_tags": [
+        "GAME:BOS_REBOUNDS"
+      ],
+      "estimated_probability": null,
+      "verified_DraftKings_price": null,
+      "offer_observed_at": null,
+      "role_confirmed": false,
+      "decision": "INVESTIGATE",
+      "human_final_gate": false
+    },
+    {
+      "id": "BOSDET-11",
+      "game": "BOS@DET",
+      "team": "BOS",
+      "player": "Jayson Tatum",
+      "market_exploration": "rebounds; assists; points",
+      "priority": "INVESTIGATE",
+      "constructive_case_and_strong_caveat": "Achilles return/2025-26 16-game sample; usage with Paul George uncertain",
+      "game_script_tags": [
+        "GAME:BOS_CREATION"
+      ],
+      "estimated_probability": null,
+      "verified_DraftKings_price": null,
+      "offer_observed_at": null,
+      "role_confirmed": false,
+      "decision": "INVESTIGATE",
+      "human_final_gate": false
+    },
+    {
+      "id": "BOSDET-12",
+      "game": "BOS@DET",
+      "team": "BOS",
+      "player": "Paul George",
+      "market_exploration": "points over/under; assists; steals",
+      "priority": "INVESTIGATE",
+      "constructive_case_and_strong_caveat": "Boston acquisition; scoring usage vs Tatum/White/Pritchard may suppress previous base rate",
+      "game_script_tags": [
+        "GAME:BOS_CREATION"
+      ],
+      "estimated_probability": null,
+      "verified_DraftKings_price": null,
+      "offer_observed_at": null,
+      "role_confirmed": false,
+      "decision": "INVESTIGATE",
+      "human_final_gate": false
+    },
+    {
+      "id": "BOSDET-13",
+      "game": "BOS@DET",
+      "team": "BOS",
+      "player": "Sam Hauser",
+      "market_exploration": "3PM; 3PA",
+      "priority": "CONDITIONAL",
+      "constructive_case_and_strong_caveat": "minutes/starting role crowded; differentiate shot attempts from conversion",
+      "game_script_tags": [
+        "GAME:BOS_3PT"
+      ],
+      "estimated_probability": null,
+      "verified_DraftKings_price": null,
+      "offer_observed_at": null,
+      "role_confirmed": false,
+      "decision": "WATCH",
+      "human_final_gate": false
+    },
+    {
+      "id": "BOSDET-14",
+      "game": "BOS@DET",
+      "team": "BOS",
+      "player": "Neemias Queta",
+      "market_exploration": "rebounds; blocks",
+      "priority": "CONDITIONAL",
+      "constructive_case_and_strong_caveat": "possible minutes displacement by Mitchell Robinson; no over without rotation proof",
+      "game_script_tags": [
+        "GAME:BOS_REBOUNDS"
+      ],
+      "estimated_probability": null,
+      "verified_DraftKings_price": null,
+      "offer_observed_at": null,
+      "role_confirmed": false,
+      "decision": "WATCH",
+      "human_final_gate": false
+    },
+    {
+      "id": "PHINYK-01",
+      "game": "PHI@NYK",
+      "team": "NYK",
+      "player": "Jalen Brunson",
+      "market_exploration": "points; assists; points+assists",
+      "priority": "PRIORITIZE",
+      "constructive_case_and_strong_caveat": "championship home opener but motivational narrative alone does not change expected value",
+      "game_script_tags": [
+        "GAME:NYK_ONBALL"
+      ],
+      "estimated_probability": null,
+      "verified_DraftKings_price": null,
+      "offer_observed_at": null,
+      "role_confirmed": false,
+      "decision": "INVESTIGATE",
+      "human_final_gate": false
+    },
+    {
+      "id": "PHINYK-02",
+      "game": "PHI@NYK",
+      "team": "NYK",
+      "player": "Karl-Anthony Towns",
+      "market_exploration": "rebounds 10+/12+; double-double; 3PM",
+      "priority": "PRIORITIZE",
+      "constructive_case_and_strong_caveat": "with core starting lineup 12.1 RPG in 46 prior-season games; Embiid matchup and Drummond bench minutes matter",
+      "game_script_tags": [
+        "GAME:NYK_REBOUNDS"
+      ],
+      "estimated_probability": null,
+      "verified_DraftKings_price": null,
+      "offer_observed_at": null,
+      "role_confirmed": false,
+      "decision": "INVESTIGATE",
+      "human_final_gate": false
+    },
+    {
+      "id": "PHINYK-03",
+      "game": "PHI@NYK",
+      "team": "NYK",
+      "player": "Josh Hart",
+      "market_exploration": "rebounds 8+; rebounds+assists",
+      "priority": "PRIORITIZE",
+      "constructive_case_and_strong_caveat": "guard-forward rebound role; reported prior sore ankle/availability recheck",
+      "game_script_tags": [
+        "GAME:NYK_REBOUNDS"
+      ],
+      "estimated_probability": null,
+      "verified_DraftKings_price": null,
+      "offer_observed_at": null,
+      "role_confirmed": false,
+      "decision": "INVESTIGATE",
+      "human_final_gate": false
+    },
+    {
+      "id": "PHINYK-04",
+      "game": "PHI@NYK",
+      "team": "NYK",
+      "player": "OG Anunoby",
+      "market_exploration": "steals 2+; 3PM",
+      "priority": "INVESTIGATE",
+      "constructive_case_and_strong_caveat": "point-of-attack/wings vs Brown/LeBron; stocks volatile and assignment uncertain",
+      "game_script_tags": [
+        "GAME:NYK_STOCKS"
+      ],
+      "estimated_probability": null,
+      "verified_DraftKings_price": null,
+      "offer_observed_at": null,
+      "role_confirmed": false,
+      "decision": "INVESTIGATE",
+      "human_final_gate": false
+    },
+    {
+      "id": "PHINYK-05",
+      "game": "PHI@NYK",
+      "team": "NYK",
+      "player": "Mikal Bridges",
+      "market_exploration": "3PM 2+; assists; steals",
+      "priority": "INVESTIGATE",
+      "constructive_case_and_strong_caveat": "low/moderate usage alongside core; 5.1 3PA with OG 2025-26",
+      "game_script_tags": [
+        "GAME:NYK_PERIMETER"
+      ],
+      "estimated_probability": null,
+      "verified_DraftKings_price": null,
+      "offer_observed_at": null,
+      "role_confirmed": false,
+      "decision": "INVESTIGATE",
+      "human_final_gate": false
+    },
+    {
+      "id": "PHINYK-06",
+      "game": "PHI@NYK",
+      "team": "NYK",
+      "player": "Andre Drummond",
+      "market_exploration": "rebounds; offensive rebounds",
+      "priority": "CONDITIONAL",
+      "constructive_case_and_strong_caveat": "new backup center replacing Robinson; only evaluate once minutes/rotation confirmed",
+      "game_script_tags": [
+        "GAME:NYK_REBOUNDS"
+      ],
+      "estimated_probability": null,
+      "verified_DraftKings_price": null,
+      "offer_observed_at": null,
+      "role_confirmed": false,
+      "decision": "WATCH",
+      "human_final_gate": false
+    },
+    {
+      "id": "PHINYK-07",
+      "game": "PHI@NYK",
+      "team": "NYK",
+      "player": "Miles McBride",
+      "market_exploration": "3PM; points",
+      "priority": "CONDITIONAL",
+      "constructive_case_and_strong_caveat": "bench shot profile opportunity if 20+ minutes; must confirm game rotation",
+      "game_script_tags": [
+        "GAME:NYK_PERIMETER"
+      ],
+      "estimated_probability": null,
+      "verified_DraftKings_price": null,
+      "offer_observed_at": null,
+      "role_confirmed": false,
+      "decision": "WATCH",
+      "human_final_gate": false
+    },
+    {
+      "id": "PHINYK-08",
+      "game": "PHI@NYK",
+      "team": "PHI",
+      "player": "LeBron James",
+      "market_exploration": "assists 7+/8+; points+assists",
+      "priority": "PRIORITIZE",
+      "constructive_case_and_strong_caveat": "new offense can increase creation or reduce on-ball role; matchup with Knicks core",
+      "game_script_tags": [
+        "GAME:PHI_CREATION"
+      ],
+      "estimated_probability": null,
+      "verified_DraftKings_price": null,
+      "offer_observed_at": null,
+      "role_confirmed": false,
+      "decision": "INVESTIGATE",
+      "human_final_gate": false
+    },
+    {
+      "id": "PHINYK-09",
+      "game": "PHI@NYK",
+      "team": "PHI",
+      "player": "Tyrese Maxey",
+      "market_exploration": "3PM; points; points+assists",
+      "priority": "PRIORITIZE",
+      "constructive_case_and_strong_caveat": "multiple star arrivals radically change volume from 2025-26",
+      "game_script_tags": [
+        "GAME:PHI_CREATION"
+      ],
+      "estimated_probability": null,
+      "verified_DraftKings_price": null,
+      "offer_observed_at": null,
+      "role_confirmed": false,
+      "decision": "INVESTIGATE",
+      "human_final_gate": false
+    },
+    {
+      "id": "PHINYK-10",
+      "game": "PHI@NYK",
+      "team": "PHI",
+      "player": "Jaylen Brown",
+      "market_exploration": "points; PRA",
+      "priority": "INVESTIGATE",
+      "constructive_case_and_strong_caveat": "Boston 2025-26 28.7 PPG is not transferable to loaded Philadelphia usage",
+      "game_script_tags": [
+        "GAME:PHI_CREATION"
+      ],
+      "estimated_probability": null,
+      "verified_DraftKings_price": null,
+      "offer_observed_at": null,
+      "role_confirmed": false,
+      "decision": "INVESTIGATE",
+      "human_final_gate": false
+    },
+    {
+      "id": "PHINYK-11",
+      "game": "PHI@NYK",
+      "team": "PHI",
+      "player": "Joel Embiid",
+      "market_exploration": "rebounds; points; assists; blocks",
+      "priority": "INVESTIGATE",
+      "constructive_case_and_strong_caveat": "status may be cleared but workload/rest/minutes need independent confirmation",
+      "game_script_tags": [
+        "GAME:PHI_INTERIOR"
+      ],
+      "estimated_probability": null,
+      "verified_DraftKings_price": null,
+      "offer_observed_at": null,
+      "role_confirmed": false,
+      "decision": "INVESTIGATE",
+      "human_final_gate": false
+    },
+    {
+      "id": "PHINYK-12",
+      "game": "PHI@NYK",
+      "team": "PHI",
+      "player": "VJ Edgecombe",
+      "market_exploration": "3PM; steals; points",
+      "priority": "CONDITIONAL",
+      "constructive_case_and_strong_caveat": "PHI perimeter starter but shot creation shared by four stars; role-dependent",
+      "game_script_tags": [
+        "GAME:PHI_CREATION"
+      ],
+      "estimated_probability": null,
+      "verified_DraftKings_price": null,
+      "offer_observed_at": null,
+      "role_confirmed": false,
+      "decision": "WATCH",
+      "human_final_gate": false
+    },
+    {
+      "id": "PHINYK-13",
+      "game": "PHI@NYK",
+      "team": "PHI",
+      "player": "Adem Bona",
+      "market_exploration": "rebounds; blocks",
+      "priority": "CONDITIONAL",
+      "constructive_case_and_strong_caveat": "questionable availability/bench-center minutes; backup center depth uncertain",
+      "game_script_tags": [
+        "GAME:PHI_INTERIOR"
+      ],
+      "estimated_probability": null,
+      "verified_DraftKings_price": null,
+      "offer_observed_at": null,
+      "role_confirmed": false,
+      "decision": "WATCH",
+      "human_final_gate": false
+    },
+    {
+      "id": "OKCSAS-01",
+      "game": "OKC@SAS",
+      "team": "OKC",
+      "player": "Shai Gilgeous-Alexander",
+      "market_exploration": "points 30+; free throws; points+assists",
+      "priority": "PRIORITIZE",
+      "constructive_case_and_strong_caveat": "2025-26 32.7 PPG but possible Castle/Harper perimeter matchups and Spurs game scripts",
+      "game_script_tags": [
+        "GAME:OKC_ONBALL"
+      ],
+      "estimated_probability": null,
+      "verified_DraftKings_price": null,
+      "offer_observed_at": null,
+      "role_confirmed": false,
+      "decision": "INVESTIGATE",
+      "human_final_gate": false
+    },
+    {
+      "id": "OKCSAS-02",
+      "game": "OKC@SAS",
+      "team": "OKC",
+      "player": "Cason Wallace",
+      "market_exploration": "steals 2+; 3PM",
+      "priority": "PRIORITIZE",
+      "constructive_case_and_strong_caveat": "1.9 SPG with 77 games in 2025-26; increased role after Dort exit; high variance",
+      "game_script_tags": [
+        "GAME:OKC_STOCKS"
+      ],
+      "estimated_probability": null,
+      "verified_DraftKings_price": null,
+      "offer_observed_at": null,
+      "role_confirmed": false,
+      "decision": "INVESTIGATE",
+      "human_final_gate": false
+    },
+    {
+      "id": "OKCSAS-03",
+      "game": "OKC@SAS",
+      "team": "OKC",
+      "player": "Isaiah Hartenstein",
+      "market_exploration": "rebounds 10+; offensive rebounds",
+      "priority": "PRIORITIZE",
+      "constructive_case_and_strong_caveat": "reference 9.5 rebounds; playing beside Holmgren facing Wemby; minute splits/pace matter",
+      "game_script_tags": [
+        "GAME:OKC_REBOUNDS"
+      ],
+      "estimated_probability": null,
+      "verified_DraftKings_price": null,
+      "offer_observed_at": null,
+      "role_confirmed": false,
+      "decision": "INVESTIGATE",
+      "human_final_gate": false
+    },
+    {
+      "id": "OKCSAS-04",
+      "game": "OKC@SAS",
+      "team": "OKC",
+      "player": "Chet Holmgren",
+      "market_exploration": "blocks 2+; rebounds 8+; PRA",
+      "priority": "PRIORITIZE",
+      "constructive_case_and_strong_caveat": "reference 7.5 rebounds, 22.5 PRA; blocks highly opponent-shot dependent",
+      "game_script_tags": [
+        "GAME:OKC_REBOUNDS"
+      ],
+      "estimated_probability": null,
+      "verified_DraftKings_price": null,
+      "offer_observed_at": null,
+      "role_confirmed": false,
+      "decision": "INVESTIGATE",
+      "human_final_gate": false
+    },
+    {
+      "id": "OKCSAS-05",
+      "game": "OKC@SAS",
+      "team": "OKC",
+      "player": "Jalen Williams",
+      "market_exploration": "rebounds+assists 10+; assists",
+      "priority": "INVESTIGATE",
+      "constructive_case_and_strong_caveat": "reference 9.5 RA; returning from prior injury and usage competition",
+      "game_script_tags": [
+        "GAME:OKC_ONBALL"
+      ],
+      "estimated_probability": null,
+      "verified_DraftKings_price": null,
+      "offer_observed_at": null,
+      "role_confirmed": false,
+      "decision": "INVESTIGATE",
+      "human_final_gate": false
+    },
+    {
+      "id": "OKCSAS-06",
+      "game": "OKC@SAS",
+      "team": "OKC",
+      "player": "Alex Caruso",
+      "market_exploration": "steals; 3PM",
+      "priority": "CONDITIONAL",
+      "constructive_case_and_strong_caveat": "secondary defensive reserve, minutes and role need verification",
+      "game_script_tags": [
+        "GAME:OKC_STOCKS"
+      ],
+      "estimated_probability": null,
+      "verified_DraftKings_price": null,
+      "offer_observed_at": null,
+      "role_confirmed": false,
+      "decision": "WATCH",
+      "human_final_gate": false
+    },
+    {
+      "id": "OKCSAS-07",
+      "game": "OKC@SAS",
+      "team": "OKC",
+      "player": "Ajay Mitchell",
+      "market_exploration": "points+assists; steals",
+      "priority": "CONDITIONAL",
+      "constructive_case_and_strong_caveat": "reserve usage/starting speculation conflicts, requires lineup confirmation",
+      "game_script_tags": [
+        "GAME:OKC_ONBALL"
+      ],
+      "estimated_probability": null,
+      "verified_DraftKings_price": null,
+      "offer_observed_at": null,
+      "role_confirmed": false,
+      "decision": "WATCH",
+      "human_final_gate": false
+    },
+    {
+      "id": "OKCSAS-08",
+      "game": "OKC@SAS",
+      "team": "SAS",
+      "player": "Victor Wembanyama",
+      "market_exploration": "42.5 PRA over/under; 3+ blocks; double-double",
+      "priority": "PRIORITIZE",
+      "constructive_case_and_strong_caveat": "42.5 threshold user proposed, NOT verified DraftKings quote; last season 25 PPG, 11.5 RPG, 3.1 BPG; points+rebounds+assists distribution absent",
+      "game_script_tags": [
+        "GAME:SAS_RIM",
+        "GAME:SAS_USAGE"
+      ],
+      "estimated_probability": null,
+      "verified_DraftKings_price": null,
+      "offer_observed_at": null,
+      "role_confirmed": false,
+      "decision": "INVESTIGATE",
+      "human_final_gate": false
+    },
+    {
+      "id": "OKCSAS-09",
+      "game": "OKC@SAS",
+      "team": "SAS",
+      "player": "Stephon Castle",
+      "market_exploration": "assists 7+; points+assists; rebounds",
+      "priority": "PRIORITIZE",
+      "constructive_case_and_strong_caveat": "2025-26 7.4 APG baseline; Fox/Harper three-guard configuration threatens role stability",
+      "game_script_tags": [
+        "GAME:SAS_USAGE"
+      ],
+      "estimated_probability": null,
+      "verified_DraftKings_price": null,
+      "offer_observed_at": null,
+      "role_confirmed": false,
+      "decision": "INVESTIGATE",
+      "human_final_gate": false
+    },
+    {
+      "id": "OKCSAS-10",
+      "game": "OKC@SAS",
+      "team": "SAS",
+      "player": "Dylan Harper",
+      "market_exploration": "assists 5+; points+assists",
+      "priority": "INVESTIGATE",
+      "constructive_case_and_strong_caveat": "potential starting role; reference 4.5 assists, verify exact minutes",
+      "game_script_tags": [
+        "GAME:SAS_USAGE"
+      ],
+      "estimated_probability": null,
+      "verified_DraftKings_price": null,
+      "offer_observed_at": null,
+      "role_confirmed": false,
+      "decision": "INVESTIGATE",
+      "human_final_gate": false
+    },
+    {
+      "id": "OKCSAS-11",
+      "game": "OKC@SAS",
+      "team": "SAS",
+      "player": "De'Aaron Fox",
+      "market_exploration": "assists 6+; points+assists",
+      "priority": "INVESTIGATE",
+      "constructive_case_and_strong_caveat": "reference 5.5 assists, ballhandling split with Castle/Harper",
+      "game_script_tags": [
+        "GAME:SAS_USAGE"
+      ],
+      "estimated_probability": null,
+      "verified_DraftKings_price": null,
+      "offer_observed_at": null,
+      "role_confirmed": false,
+      "decision": "INVESTIGATE",
+      "human_final_gate": false
+    },
+    {
+      "id": "OKCSAS-12",
+      "game": "OKC@SAS",
+      "team": "SAS",
+      "player": "Devin Vassell",
+      "market_exploration": "3PM; 3PA",
+      "priority": "INVESTIGATE",
+      "constructive_case_and_strong_caveat": "perimeter spacing opportunity but shot mix uncertain after guard changes",
+      "game_script_tags": [
+        "GAME:SAS_3PT"
+      ],
+      "estimated_probability": null,
+      "verified_DraftKings_price": null,
+      "offer_observed_at": null,
+      "role_confirmed": false,
+      "decision": "INVESTIGATE",
+      "human_final_gate": false
+    },
+    {
+      "id": "OKCSAS-13",
+      "game": "OKC@SAS",
+      "team": "SAS",
+      "player": "Julian Champagnie",
+      "market_exploration": "3PM; points+rebounds",
+      "priority": "CONDITIONAL",
+      "constructive_case_and_strong_caveat": "forward spacing role; verify starts/minutes with Harris ruled out",
+      "game_script_tags": [
+        "GAME:SAS_3PT"
+      ],
+      "estimated_probability": null,
+      "verified_DraftKings_price": null,
+      "offer_observed_at": null,
+      "role_confirmed": false,
+      "decision": "WATCH",
+      "human_final_gate": false
+    },
+    {
+      "id": "OKCSAS-14",
+      "game": "OKC@SAS",
+      "team": "SAS",
+      "player": "Keldon Johnson",
+      "market_exploration": "points+rebounds",
+      "priority": "CONDITIONAL",
+      "constructive_case_and_strong_caveat": "second-unit scoring and Harris absence possible extra minutes",
+      "game_script_tags": [
+        "GAME:SAS_BENCH"
+      ],
+      "estimated_probability": null,
+      "verified_DraftKings_price": null,
+      "offer_observed_at": null,
+      "role_confirmed": false,
+      "decision": "WATCH",
+      "human_final_gate": false
+    }
+  ],
+  "notes": [
+    "Wide SCOUT hypothesis registry, not a scored forecast or sportsbook betting slate.",
+    "Preserve previous frozen pregame packet unmodified; this is a separate expanded pass.",
+    "Public odds comparison/reference lines from web are not authenticated live executable DraftKings prices. Recheck within DraftKings before final gate.",
+    "No implicit over-or-under recommendation from season averages; all require independent distribution and paired evaluation.",
+    "NBA 2026-27 rosters radically differ from previous year, particularly BOS Paul George/Mitchell Robinson and PHI LeBron/Jaylen Brown. Do not extrapolate last year's player usage.",
+    "Check official injury report and starting five 30min pre-tip, including PHI bench, BOS C depth, SAS Harris OUT, OKC role and DET Prince status.",
+    "The Wembanyama 42.5 PRA is supplied by user for evaluation and not a verified quote."
+  ],
+  "source_urls": [
+    "https://www.nba.com/news/starting-5-october-19-2026",
+    "https://www.nba.com/sixers/roster",
+    "https://hoopsnightly.com/lineups",
+    "https://www.basketball-reference.com/teams/BOS/2026.html",
+    "https://www.basketball-reference.com/teams/DET/2026.html",
+    "https://www.reuters.com/sports/thunder-sign-g-cason-wallace-contract-extension--flm-2026-10-19/",
+    "https://www.betravon.com/nba-player-props/thunder-vs-spurs-2026-10-20",
+    "https://www.betravon.com/nba/player-props/76ers-vs-knicks-2026-10-20",
+    "https://www.betravon.com/nba-player-props/celtics-vs-pistons-2026-10-20"
+  ],
+  "pairing_lab": [
+    {
+      "id": "PAIR_A",
+      "legs": [
+        "BOSDET-08",
+        "BOSDET-02"
+      ],
+      "kind": "CROSS_TEAM_SAME_GAME",
+      "note": "White threes and Duren rebounds may share miss/pace mechanisms; no automatic +EV"
+    },
+    {
+      "id": "PAIR_B",
+      "legs": [
+        "PHINYK-02",
+        "PHINYK-08"
+      ],
+      "kind": "SAME_GAME",
+      "note": "Towns rebounds with LeBron assists: competing shot/miss paths and minutes"
+    },
+    {
+      "id": "PAIR_C",
+      "legs": [
+        "OKCSAS-02",
+        "OKCSAS-08"
+      ],
+      "kind": "CROSS_TEAM_SAME_GAME",
+      "note": "Wallace steals and Wemby PRA may conflict if turnovers suppress Spurs shot chances"
+    },
+    {
+      "id": "PAIR_D",
+      "legs": [
+        "BOSDET-03",
+        "OKCSAS-03"
+      ],
+      "kind": "CROSS_GAME_DOUBLE",
+      "note": "Ausar steals and Hartenstein rebounds require separate odds and outcome probabilities"
+    }
+  ],
+  "threshold_dependency_matrix": [
+    "P(11) both",
+    "P(10) A only",
+    "P(01) B only",
+    "P(00) neither"
+  ],
+  "shortlist_for_deep_research": [
+    "Ausar Thompson steals",
+    "Derrick White made threes",
+    "Payton Pritchard assists",
+    "Jalen Duren rebounds",
+    "Karl-Anthony Towns rebounds",
+    "Josh Hart rebounds+assists",
+    "LeBron James assists",
+    "Cason Wallace steals",
+    "Isaiah Hartenstein rebounds",
+    "Stephon Castle assists",
+    "Wembanyama PRA/blocks alternatives"
+  ],
+  "sentinel": "NO_EXECUTABLE_BETS_APPROVED"
+}
