@@ -6,6 +6,9 @@ on:
   pull_request:
     paths:
       - 'scripts/scout/nba-scenario-price-envelope.shadow*'
+      - 'scripts/scout/nba-retrospective-mechanism-audit.shadow*'
+      - 'docs/evidence/nba-20261020-postgame-mechanism-observations.json'
+      - 'docs/rill/ATLAS_20261020_DUNCAN_BOSTON_NYK_CAUSAL_FORENSICS.md'
       - 'docs/rill/NBA_VARIANCE_GITHUB_INTEGRATION_20261021.md'
       - '.github/workflows/nba-variance-research-review.yml'
 permissions:
@@ -21,6 +24,8 @@ jobs:
           node-version: '24'
       - name: New independent scenario price envelope
         run: node --test scripts/scout/nba-scenario-price-envelope.shadow.test.cjs
+      - name: Duncan and Brunson pregame vs postgame causal audit
+        run: node --test scripts/scout/nba-retrospective-mechanism-audit.shadow.test.cjs
       - name: Existing coupled team rebound proof preserved
         run: node --test scripts/scout/nba-rebound-opportunity-coupled.shadow.test.cjs
       - name: Existing 100 Worlds and integrated slate preserved
