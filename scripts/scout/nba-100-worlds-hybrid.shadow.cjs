@@ -9,6 +9,9 @@ function simulateSlate(input,opts={}) {
   if(!Number.isFinite(marketWeight)||marketWeight<0||marketWeight>1)throw Error('MARKET_WEIGHT_INVALID');
   if(!['CONSTRAINED','BASE','EXPANDED'].every(k=>typeof weights[k]==='number'&&weights[k]>=0&&weights[k]<=1)||Object.keys(weights).length!==3||Math.abs(Object.values(weights).reduce((a,b)=>a+b,0)-1)>1e-9)throw Error('ROLE_WEIGHTS_INVALID');
   if(!Number.isInteger(samples)||samples<1000||samples>100000 || !Number.isInteger(seed))throw Error("INVALID_SIMULATION_SCOPE");
+  // Optional full-world export for ONE requested matchup, never all 11 silently.
+  const focusGame=opts.focusGame||null;
+  if(focusGame!==null && (!/^[A-Z]{3}-[A-Z]{3}$/.test(focusGame)||!market.games.some(g=>g.away+'-'+g.home===focusGame)))throw Error('FOCUS_GAME_INVALID');
   if(gamelog?.games?.length!==64 || Object.keys(teams?.teams||{}).length!==30 || market?.games?.length!==11)throw Error("DATA_COVERAGE_INCOMPLETE");
   if(new Set(gamelog.games.map(g=>g.date)).size!==64)throw Error("DUPLICATE_GAMELOG_DATE");
   if(gamelog.games.reduce((n,g)=>n+g.points,0)!==2143 || gamelog.games.reduce((n,g)=>n+g.rebounds,0)!==495||gamelog.games.reduce((n,g)=>n+g.assists,0)!==530||gamelog.games.reduce((n,g)=>n+g.threes_made,0)!==254)throw Error("GAMELOG_AGGREGATE_MISMATCH");
@@ -133,6 +136,7 @@ function simulateSlate(input,opts={}) {
         total:numericStats(totals),margin:numericStats(margins),home_score:numericStats(homePts),away_score:numericStats(awayPts),
         script_rates:Object.fromEntries(Object.entries(scenarioCounts).map(([k,v])=>[k,+(v/samples).toFixed(4)]))},
       worlds100:{count:100,script_counts:worldCounts,range_total:[Math.min(...oneHundred.map(w=>w.total)),Math.max(...oneHundred.map(w=>w.total))],worlds:oneHundred},
+      ...(focusGame===game.away+'-'+game.home?{full_worlds:records}:{}),
       reliability:{game_probabilities:"ASSUMPTION_CONDITIONED_NOT_EMPIRICALLY_CALIBRATED",social_weight:0,prices_executable:false,bet_status:"RESEARCH_ONLY",forecast_edge:"NOT_ESTABLISHED"}
     };
     if(lukaOnGame){
