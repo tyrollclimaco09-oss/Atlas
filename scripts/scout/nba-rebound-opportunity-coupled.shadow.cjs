@@ -89,6 +89,8 @@ function simulateCoupledRebounds(input,options={}){
  }
  const avgMinutes=p.minutes/p.games;
  const baseDRB=p.drb/p.games,baseORB=p.orb/p.games;
+ const priorOnCourtDRB=baseDRB/tB.drb*(48/avgMinutes);
+ const priorOnCourtORB=baseORB/tB.orb*(48/avgMinutes);
  const totals=[],records=[],sums={reb:0,orb:0,drb:0,minutes:0,pts:0,assists:0,potentialAssists:0,oppMisses:0,
   teamReb:0,hits:0};
  const scripts={},fourTruth={REB_AND_AST:0,REB_ONLY:0,AST_ONLY:0,NEITHER:0};
@@ -111,8 +113,7 @@ function simulateCoupledRebounds(input,options={}){
     9,g.overtime?53:48);
   // Derived from Sharpe 2025-26 ORB/DRB totals per minute vs Brooklyn
   // historical whole-team reb counts. No fabricated additional rebounds.
-  const priorOnCourtDRB=baseDRB/tB.drb*(48/avgMinutes);
-  const priorOnCourtORB=baseORB/tB.orb*(48/avgMinutes);
+
   const gameShareShift=between(1+normal()*.06,.75,1.20);
   const pDRB=between(priorOnCourtDRB*minutes/48*selected.retention*gameShareShift,0,.85);
   const pORB=between(priorOnCourtORB*minutes/48*selected.retention*gameShareShift,0,.91);
