@@ -98,3 +98,13 @@ test('alt-line market ladder is monotone; never falsely claimed as a book quote'
  }
  assert.equal(l.rebounds.find(x=>x.threshold===9).over_frequency,x.result.reb_over8_5);
 });
+
+test('2025-26 historical-minutes reconstruction agrees with source totals but is in-sample',()=>{
+ const d=run('MIXED',{historicalReplay:true});
+ const actual=413/62,actualHit=14/62;
+ assert.equal(d.historical_replay_in_sample,true);
+ assert.ok(Math.abs(d.result.reb_mean-actual)<0.5);
+ assert.ok(Math.abs(d.result.reb_over8_5-actualHit)<.07);
+ assert.ok(Math.abs(d.result.means.minutes-1160/62)<.25);
+ assert.equal(d.provenance.bet_qualified,false);
+});
