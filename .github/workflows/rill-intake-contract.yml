@@ -1,0 +1,29 @@
+name: RILL Intake Safety Contract
+on:
+  push:
+    branches:
+      - review/rill-live-intake-2026-10-21
+    paths:
+      - 'scripts/rill-intake/**'
+      - '.github/workflows/rill-intake-contract.yml'
+  pull_request:
+    paths:
+      - 'scripts/rill-intake/**'
+      - '.github/workflows/rill-intake-contract.yml'
+permissions:
+  contents: read
+jobs:
+  verify-rill:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: node --test scripts/rill-intake/core.test.mjs
+      - name: Prevent privilege escalation in intake
+        run: |
+          grep -q 'production_authority:false' scripts/rill-intake/index.ts
+          grep -q 'production_influence:false' scripts/rill-intake/index.ts
+          grep -q 'BROWSER_ORIGIN_BLOCKED' scripts/rill-intake/index.ts
