@@ -18,6 +18,7 @@ function simulateCoupledRebounds(input,options={}){
    playerLog.games.reduce((s,g)=>s+g.points,0)!==540||
    playerLog.games.reduce((s,g)=>s+g.assists,0)!==145)throw Error('PLAYER_LOG_UNVERIFIED');
  const scenario=options.scenario||'MIXED';
+ const historicalReplay=options.historicalReplay===true;
  const choices={
    RESTRICTED:{mins:[22,25,28],weights:[.25,.5,.25],retention:.88},
    MIXED:{mins:[23,27,30],weights:[.25,.5,.25],retention:.90},
@@ -107,16 +108,18 @@ function simulateCoupledRebounds(input,options={}){
   const brooklyn={orb:bknMiss.orb,drb:chaMiss.drb,reb:bknMiss.orb+chaMiss.drb};
   const charlotte={orb:chaMiss.orb,drb:bknMiss.drb,reb:chaMiss.orb+bknMiss.drb};
   const orig=playerLog.games[Math.floor(rand()*playerLog.games.length)];
-  const foul=rand()<.10;
+  const foul=!historicalReplay && rand()<.10;
   const blowout=Math.abs(g.home_margin)>=16;
-  const minutes=between(Math.round(choose()+(g.overtime?2:0)-(blowout?2.3:0)-(foul?4.2:0)+normal()*1.2),
+  const minutes=historicalReplay?orig.minutes:
+    between(Math.round(choose()+(g.overtime?2:0)-(blowout?2.3:0)-(foul?4.2:0)+normal()*1.2),
     9,g.overtime?53:48);
   // Derived from Sharpe 2025-26 ORB/DRB totals per minute vs Brooklyn
   // historical whole-team reb counts. No fabricated additional rebounds.
 
   const gameShareShift=between(1+normal()*.06,.75,1.20);
-  const pDRB=between(priorOnCourtDRB*minutes/48*selected.retention*gameShareShift,0,.85);
-  const pORB=between(priorOnCourtORB*minutes/48*selected.retention*gameShareShift,0,.91);
+  const effectiveRetention=historicalReplay?1:selected.retention;
+  const pDRB=between(priorOnCourtDRB*minutes/48*effectiveRetention*gameShareShift,0,.85);
+  const pORB=between(priorOnCourtORB*minutes/48*effectiveRetention*gameShareShift,0,.91);
   const drb=binom(brooklyn.drb,pDRB),orb=binom(brooklyn.orb,pORB),reb=drb+orb;
   const scale=between(minutes/Math.max(1,orig.minutes),.1,3);
   const twoAtt=between(Math.round((orig.field_goals_attempted-orig.threes_attempted)*scale*(1+normal()*.09)),0,bkn.fga-bkn.pa3);
@@ -181,7 +184,7 @@ function simulateCoupledRebounds(input,options={}){
  return {
    schema:'atlas.nba.rebound_opportunity_coupled.v1',
    date:'2026-10-21',game:'CHA@BKN',scope:'SHADOW_ONLY',seed:seeds,
-   total_worlds:count,readable_worlds:100,script_assumptions:scenario,
+   total_worlds:count,readable_worlds:100,script_assumptions:scenario,historical_replay_in_sample:historicalReplay,
    inputs:{minutes:selected.mins,weights:selected.weights,retention:selected.retention,
      priorOnCourtDRB:+priorOnCourtDRB.toFixed(3),priorOnCourtORB:+priorOnCourtORB.toFixed(3)},
    modeled_threshold_ladders:Object.fromEntries(Object.entries({
