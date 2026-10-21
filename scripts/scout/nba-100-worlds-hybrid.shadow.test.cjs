@@ -133,3 +133,15 @@ test('bad scenario weights are rejected, not silently normalized',()=>{
  assert.throws(()=>simulateSlate(input,{samples:1200,
   roleWeights:{CONSTRAINED:.7,BASE:.6,EXPANDED:.2}}),/ROLE_WEIGHTS_INVALID/);
 });
+
+test('the 100 displayed worlds track Luka proposition frequencies, not just game totals',()=>{
+ const r=simulateSlate(input,{samples:12000,seed:20261021});
+ const g=r.results.find(x=>x.luka);
+ const one=g.worlds100.worlds;
+ const pra=one.filter(w=>w.luka.pra>=50).length/100;
+ const threes=one.filter(w=>w.luka.threes_made>=4).length/100;
+ assert.ok(Math.abs(pra-g.luka.simulated_pra50_frequency)<.04);
+ assert.ok(Math.abs(threes-g.luka.simulated_threes4_frequency)<.04);
+ assert.equal(g.luka.joint_truth_counts.both+g.luka.joint_truth_counts.pra_only+
+   g.luka.joint_truth_counts.threes_only+g.luka.joint_truth_counts.neither,12000);
+});
