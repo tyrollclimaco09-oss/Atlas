@@ -37,3 +37,16 @@ test('scene model is deterministic on pinned evidence',()=>{
  assert.deepEqual(a.game_cards,b.game_cards);
  assert.deepEqual(a.market_tournament,b.market_tournament);
 });
+
+test('Sharpe rebound scenario envelope changes with minutes and preserves PASS',()=>{
+ const out=buildSlate();
+ assert.equal(out.coupled_rebound_stress.cases.length,4);
+ assert.equal(out.coupled_rebound_stress.game,'CHA@BKN');
+ const arr=Object.fromEntries(out.coupled_rebound_stress.cases.map(c=>[c.scenario,c]));
+ assert.ok(arr.STARTER.reb9_frequency>arr.RESTRICTED.reb9_frequency);
+ assert.ok(arr.COMPETITION.reb9_frequency<arr.STARTER.reb9_frequency);
+ assert.ok(out.primary_thesis.coupled_rebound_range.worst<out.primary_thesis.coupled_rebound_range.reference_break_even);
+ assert.equal(out.primary_thesis.coupled_rebound_range.all_plausible_worlds_profitable,false);
+ assert.equal(out.controls.selected_bet,null);
+ assert.equal(out.controls.betting_authority,false);
+});
