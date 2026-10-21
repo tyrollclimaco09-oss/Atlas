@@ -6,6 +6,7 @@ const {simulateSlate}=require('./nba-100-worlds-hybrid.shadow.cjs');
 const {simulatePlayerProps}=require('./nba-causal-props.shadow.cjs');
 const {evaluate}=require('./nba-rolling-calibration.shadow.cjs');
 const {simulateCoupledRebounds}=require('./nba-rebound-opportunity-coupled.shadow.cjs');
+const {auditEnvelope}=require('./nba-scenario-price-envelope.shadow.cjs');
 const root=path.resolve(__dirname,'../..');
 const evFile=name=>JSON.parse(fs.readFileSync(path.join(root,'docs/evidence',name),'utf8'));
 const slugs=['dayron-sharpe','bam-adebayo','jalen-johnson','scottie-barnes'];
@@ -32,6 +33,18 @@ function buildSlate(){
  });
  const worst=Math.min(...cases.map(c=>c.reb9_frequency)),
    best=Math.max(...cases.map(c=>c.reb9_frequency));
+ const priceEnvelope=auditEnvelope({
+  identity:{event_id:'20261021-CHA-BKN',player_key:'dayron-sharpe',starts_at:'2026-10-21T23:30:00Z'},
+  market:{stat:'rebounds',operator:'AT_LEAST',threshold:9,units:'COUNT',settlement:'NO_PUSH'},
+  scenarios:cases.map(c=>({name:c.scenario,n:12000,hit_frequency:c.reb9_frequency,
+   calibrated:false,probability_source:'SCENARIO_ASSUMPTION'})),
+  quote:{source:'THIRD_PARTY_REFERENCE',status:'REFERENCE_ONLY',
+   provider:'Archived third-party DK research board',
+   event_id:'20261021-CHA-BKN',player_key:'dayron-sharpe',stat:'rebounds',
+   operator:'AT_LEAST',threshold:9,settlement:'NO_PUSH',american_odds:113,
+   captured_at:'2026-10-21T18:00:00Z'},
+  as_of:'2026-10-21T18:05:00Z'
+ });
  const priceBound=c=>c>0?100/(100+c):-c/(100-c);
  const results=players.reports.map(r=>({
   name:r.player,market:r.market,reference_price:r.reference_american_odds,
@@ -76,6 +89,7 @@ function buildSlate(){
     default_simulation_frequency:players.reports.find(x=>x.player==='dayron-sharpe').model.frequency,
     minutes_30_scenario_requires_new_readback:true,
     coupled_rebound_range:{worst,best,reference_break_even:100/213,all_plausible_worlds_profitable:false},
+    conditional_market_price_envelope:priceEnvelope,
     state:'WATCH_VERIFY_MINUTES_AND_PRICE',bet_qualified:false},
   coupled_rebound_stress:{game:'CHA@BKN',mode:'SHADOW_ONLY',cases},
   calibration:cv.reports.map(r=>({name:r.player,holdout_games:r.holdout_games,brier:r.brier})),
