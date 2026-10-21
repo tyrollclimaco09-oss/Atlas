@@ -110,7 +110,17 @@ function simulateSlate(input,opts={}) {
     // 100 stratified observable world samples by sorted total score. This covers full low/high-scoring spectrum,
     // unlike a cherry-picked scenario slate. Some rare events can still be absent from 100.
     const sorted=[...records].sort((a,b)=>a.total-b.total||a.id.localeCompare(b.id));
-    const oneHundred=Array.from({length:100},(_,j)=>sorted[Math.min(sorted.length-1,Math.floor(((j+.5)/100)*sorted.length))]);
+    // Balanced 10x10 stratification: 10 total-score deciles, then 10 conditional
+    // player PRA (for LAL game) or home-margin quantiles within each decile.
+    // This approximates BOTH relevant distributions; sampling only by total
+    // can mislead about the prop hit rate in the 100 displayed worlds.
+    const oneHundred=[];
+    for(let dec=0;dec<10;dec++){
+      const lo=Math.floor(dec*sorted.length/10),hi=Math.floor((dec+1)*sorted.length/10);
+      const cohort=sorted.slice(lo,hi).sort((a,b)=>
+        (lukaOnGame?a.luka.pra-b.luka.pra:a.home_margin-b.home_margin) || a.id.localeCompare(b.id));
+      for(let j=0;j<10;j++)oneHundred.push(cohort[Math.min(cohort.length-1,Math.floor(((j+.5)/10)*cohort.length))]);
+    }
     const worldCounts={};
     for(const x of oneHundred)worldCounts[x.script]=(worldCounts[x.script]||0)+1;
     const report={
@@ -122,7 +132,7 @@ function simulateSlate(input,opts={}) {
         close_6_rate:+(close/samples).toFixed(4),blowout_16_rate:+(blowout/samples).toFixed(4),comeback_5_rate:+(comeback/samples).toFixed(4),
         total:numericStats(totals),margin:numericStats(margins),home_score:numericStats(homePts),away_score:numericStats(awayPts),
         script_rates:Object.fromEntries(Object.entries(scenarioCounts).map(([k,v])=>[k,+(v/samples).toFixed(4)]))},
-      worlds100:{count:100,script_counts:worldCounts,range_total:[oneHundred[0].total,oneHundred[99].total],worlds:oneHundred},
+      worlds100:{count:100,script_counts:worldCounts,range_total:[Math.min(...oneHundred.map(w=>w.total)),Math.max(...oneHundred.map(w=>w.total))],worlds:oneHundred},
       reliability:{game_probabilities:"ASSUMPTION_CONDITIONED_NOT_EMPIRICALLY_CALIBRATED",social_weight:0,prices_executable:false,bet_status:"RESEARCH_ONLY",forecast_edge:"NOT_ESTABLISHED"}
     };
     if(lukaOnGame){
