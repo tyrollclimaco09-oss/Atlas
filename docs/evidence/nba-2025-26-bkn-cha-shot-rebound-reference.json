@@ -1,0 +1,62 @@
+{
+  "schema": "atlas.nba.rebound_opportunities.historical_reference.v1",
+  "season": "2025-26",
+  "observed_date": "2026-10-21",
+  "truth_status": "VERIFIED_HISTORICAL_TEAM_TOTALS_NOT_CURRENT_LINEUPS",
+  "sources": [
+    "https://www.basketball-reference.com/teams/BRK/2026.html",
+    "https://www.statmuse.com/nba/ask/which-team-is-better-this-year-brooklyn-nets-or-charlotte-hornets",
+    "https://www.basketball-reference.com/players/s/sharpda01.html"
+  ],
+  "note": "Source values are season per-game means (rounded), not today's actual outcomes; playoff excluded. No exact 2026-27 possession-based historical log attached.",
+  "teams": {
+    "BKN": {
+      "fgm": 37.5,
+      "fga": 84.5,
+      "three_made": 13.1,
+      "three_attempts": 38.4,
+      "ftm": 17.9,
+      "fta": 23,
+      "orb": 10.3,
+      "drb": 29,
+      "ast": 25,
+      "pace": 97.06
+    },
+    "CHA": {
+      "fgm": 40.9,
+      "fga": 88.9,
+      "three_made": 16.4,
+      "three_attempts": 43.3,
+      "ftm": 17.8,
+      "fta": 21.7,
+      "orb": 12.8,
+      "drb": 33.3,
+      "ast": 26.3,
+      "pace": 96.8
+    }
+  },
+  "player": {
+    "key": "dayron-sharpe",
+    "team": "BKN",
+    "games": 62,
+    "minutes": 1160,
+    "points": 540,
+    "rebounds": 413,
+    "assists": 145,
+    "orb": 171,
+    "drb": 242,
+    "fgm": 214,
+    "fga": 356,
+    "three_made": 9,
+    "three_attempts": 39,
+    "ftm": 103,
+    "fta": 152
+  },
+  "model_provenance": {
+    "role_share_status": "LEARNED_FROM_PRIOR_TOTALS",
+    "pregame_minutes_status": "SCENARIO_ASSUMED",
+    "current_rebound_rate_status": "UNVERIFIED",
+    "rebound_shot_location_status": "NOT_AVAILABLE",
+    "market_price_status": "THIRD_PARTY_REFERENCE_ONLY"
+  }
+}
