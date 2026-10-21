@@ -154,7 +154,7 @@ function simulateCoupledRebounds(input,options={}){
     )throw Error('CONSERVATION_FAILED');
   const hit=reb>=9,ast=assists>=3;
   fourTruth[hit?(ast?'REB_AND_AST':'REB_ONLY'):(ast?'AST_ONLY':'NEITHER')]++;
-  const record={id:g.id,script:g.script,home_margin:g.home_margin,total:g.total,
+  const record={id:g.id,script:g.script,overtime:g.overtime,home_margin:g.home_margin,total:g.total,
     bkn:{score:bkn.points,fga:bkn.fga,fgm:bkn.fgm,three_made:bkn.made3,ftm:bkn.ftm,orb:brooklyn.orb,drb:brooklyn.drb,total_reb:brooklyn.reb,assists:teamAssists},
     cha:{score:cha.points,fga:cha.fga,fgm:cha.fgm,orb:charlotte.orb,drb:charlotte.drb,total_reb:charlotte.reb},
     rebound_pool:{bkn_missed:bkn.missed,cha_missed:cha.missed,dead_bkn:bknMiss.dead,dead_cha:chaMiss.dead},
