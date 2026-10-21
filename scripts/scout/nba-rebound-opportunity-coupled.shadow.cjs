@@ -91,7 +91,7 @@ function simulateCoupledRebounds(input,options={}){
  const baseDRB=p.drb/p.games,baseORB=p.orb/p.games;
  const priorOnCourtDRB=baseDRB/tB.drb*(48/avgMinutes);
  const priorOnCourtORB=baseORB/tB.orb*(48/avgMinutes);
- const totals=[],records=[],sums={reb:0,orb:0,drb:0,minutes:0,pts:0,assists:0,potentialAssists:0,oppMisses:0,
+ const totals=[],records=[],distribution={rebounds:[],points:[],assists:[],pra:[]},sums={reb:0,orb:0,drb:0,minutes:0,pts:0,assists:0,potentialAssists:0,oppMisses:0,
   teamReb:0,hits:0};
  const scripts={},fourTruth={REB_AND_AST:0,REB_ONLY:0,AST_ONLY:0,NEITHER:0};
  for(const g of fullWorlds){
@@ -162,6 +162,10 @@ function simulateCoupledRebounds(input,options={}){
     teammates:leftover};
   records.push(record);
   totals.push(reb);
+  distribution.rebounds.push(reb);
+  distribution.points.push(points);
+  distribution.assists.push(assists);
+  distribution.pra.push(reb+points+assists);
   for(const [key,value] of Object.entries({reb,orb,drb,minutes,pts:points,assists,potentialAssists:potential,oppMisses:cha.missed,teamReb:brooklyn.reb,hits:Number(hit)}))sums[key]+=value;
   const s=scripts[g.script]||(scripts[g.script]={n:0,hits:0,rebSum:0});s.n++;s.hits+=Number(hit);s.rebSum+=reb;
  }
@@ -180,6 +184,18 @@ function simulateCoupledRebounds(input,options={}){
    total_worlds:count,readable_worlds:100,script_assumptions:scenario,
    inputs:{minutes:selected.mins,weights:selected.weights,retention:selected.retention,
      priorOnCourtDRB:+priorOnCourtDRB.toFixed(3),priorOnCourtORB:+priorOnCourtORB.toFixed(3)},
+   modeled_threshold_ladders:Object.fromEntries(Object.entries({
+      rebounds:[6,7,8,9,10,11,12,13,14],
+      points:[8,10,12,15,18,20,25],
+      assists:[2,3,4,5,6],
+      pra:[17,20,23,26,29,32,35]
+    }).map(([key,thresholds])=>[key,thresholds.map(k=>{
+      const frequency=distribution[key].filter(x=>x>=k).length/count;
+      const mReq=frequency<=0?null:frequency>=1?-10000:
+        frequency>=.5?-Math.round(100*frequency/(1-frequency)):Math.round(100*(1-frequency)/frequency);
+      return {threshold:k,over_frequency:+frequency.toFixed(4),under_frequency:+(1-frequency).toFixed(4),
+         model_zero_margin_american_odds:mReq,calibrated:false};
+    })])),
    result:{reb_over8_5:+(sums.hits/count).toFixed(4),reb_mean:+(sums.reb/count).toFixed(2),
      reb_p10:quantile(totals,.1),reb_median:quantile(totals,.5),reb_p90:quantile(totals,.9),
      means:Object.fromEntries(Object.entries(sums).map(([k,v])=>[k,+(v/count).toFixed(2)])),
