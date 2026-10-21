@@ -50,3 +50,19 @@ test('Sharpe rebound scenario envelope changes with minutes and preserves PASS',
  assert.equal(out.controls.selected_bet,null);
  assert.equal(out.controls.betting_authority,false);
 });
+
+test('lead now exposes conservative scenario-price uncertainty without betting approval',()=>{
+ const slate=buildSlate();
+ const lead=slate.primary_thesis;
+ const envelope=lead.conditional_market_price_envelope;
+ assert.ok(envelope);
+ assert.equal(envelope.schema,'atlas.nba.scenario-price-envelope.shadow.v1');
+ assert.equal(envelope.shadow_outcome,'DISAGREEMENT_ACROSS_SCENARIOS');
+ assert.equal(envelope.epistemic_envelope.min,lead.coupled_rebound_range.worst);
+ assert.equal(envelope.epistemic_envelope.max,lead.coupled_rebound_range.best);
+ assert.equal(envelope.epistemic_envelope.zero_margin_american_odds_worst_assumed_scenario,184);
+ assert.equal(envelope.approved_bet,null);
+ assert.equal(envelope.expected_value,null);
+ assert.equal(envelope.reference_quote.price_executable,false);
+ assert.equal(slate.controls.selected_bet,null);
+});
