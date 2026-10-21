@@ -32,7 +32,7 @@ test('team scores conserve points and FG decomposition in all inspected worlds',
   assert.ok(w.cha.fgm<=w.cha.fga);
   assert.ok(w.sharpe.points>=0 && w.sharpe.points<=w.bkn.score);
   assert.equal(w.sharpe.points+w.teammates.points,w.bkn.score);
-  assert.equal(w.sharpe.minutes+w.teammates.minutes,240);
+  assert.equal(w.sharpe.minutes+w.teammates.minutes,w.overtime?265:240);
   assert.equal(w.sharpe.reb+w.teammates.rebounds,w.bkn.total_reb);
   assert.ok(w.sharpe.orb<=w.bkn.orb);
   assert.ok(w.sharpe.drb<=w.bkn.drb);
