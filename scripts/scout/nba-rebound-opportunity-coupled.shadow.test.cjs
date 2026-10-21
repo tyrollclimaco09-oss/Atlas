@@ -81,3 +81,20 @@ test('invalid model inputs and role scenarios fail closed',()=>{
  assert.throws(()=>run('MADE_UP'),/SCENARIO_UNSUPPORTED/);
  assert.throws(()=>run('MIXED',{override:{weights:[.5,.5,.5]}}),/SCENARIO_INVALID/);
 });
+
+test('alt-line market ladder is monotone; never falsely claimed as a book quote',()=>{
+ const x=run(),l=x.modeled_threshold_ladders;
+ assert.deepEqual(Object.keys(l).sort(),['assists','points','pra','rebounds']);
+ for(const market of Object.values(l)){
+  for(let k=1;k<market.length;k++){
+   assert.ok(market[k].threshold>market[k-1].threshold);
+   assert.ok(market[k].over_frequency<=market[k-1].over_frequency);
+  }
+  for(const selection of market){
+   assert.equal(selection.calibrated,false);
+   assert.ok(selection.over_frequency>=0&&selection.over_frequency<=1);
+   assert.ok(selection.model_zero_margin_american_odds!==0);
+  }
+ }
+ assert.equal(l.rebounds.find(x=>x.threshold===9).over_frequency,x.result.reb_over8_5);
+});
