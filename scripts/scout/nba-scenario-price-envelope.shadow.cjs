@@ -3,7 +3,7 @@
 // No trained scenario likelihoods, no bookmaker routing, no betting authority.
 // Distinguishes mathematical scenario robustness from demonstrated betting edge.
 const VERSION='atlas.nba.scenario-price-envelope.shadow.v1';
-const STAGES=Object.freeze(['REFERENCE_ONLY','ACCOUNT_VERIFIED']);
+const STAGES=Object.freeze(['REFERENCE_ONLY']); // No self-attested executable quotes in shadow research.
 function implied(american){
  if(!Number.isSafeInteger(american)||Math.abs(american)<100||Math.abs(american)>10000)
   throw Error('QUOTE_ODDS_INVALID');
@@ -40,13 +40,11 @@ function auditEnvelope(input){
   seen.add(sc.name);
  }
  if(allowed.some(name=>!seen.has(name)))throw Error('SCENARIO_COVERAGE_INCOMPLETE');
- if(!quote||!STAGES.includes(quote.status)||quote.source!=='THIRD_PARTY_REFERENCE'&&quote.source!=='ACCOUNT_EXECUTABLE'||
+ if(!quote||!STAGES.includes(quote.status)||quote.source!=='THIRD_PARTY_REFERENCE'||
     typeof quote.provider!=='string'||quote.provider.length<2||
     quote.event_id!==identity.event_id||quote.player_key!==identity.player_key||
     quote.stat!==market.stat||quote.operator!==market.operator||quote.threshold!==market.threshold||
     quote.settlement!==market.settlement)throw Error('QUOTE_IDENTITY_UNRESOLVED');
- if(quote.status==='ACCOUNT_VERIFIED'&&quote.source!=='ACCOUNT_EXECUTABLE')throw Error('QUOTE_ATTESTATION_MISSING');
- if(quote.source==='ACCOUNT_EXECUTABLE'&&quote.status!=='ACCOUNT_VERIFIED')throw Error('QUOTE_ATTESTATION_MISSING');
  const pQuote=implied(quote.american_odds);
  const capture=iso(quote.captured_at),start=iso(identity.starts_at),cutoff=iso(input.as_of);
  if(capture>cutoff||cutoff>=start||capture>=start||capture<cutoff-15*60*1000)
@@ -66,7 +64,7 @@ function auditEnvelope(input){
  return Object.freeze({
   schema:VERSION,identity,market,
   reference_quote:{provider:quote.provider,odds:quote.american_odds,implied:round(pQuote),
-   status:quote.status,source:quote.source,captured_at:quote.captured_at,price_executable:quote.status==='ACCOUNT_VERIFIED'},
+   status:quote.status,source:quote.source,captured_at:quote.captured_at,price_executable:false},
   epistemic_envelope:{min:round(pmin),max:round(pmax),spread_percentage_points:round(spread,2),
    zero_margin_american_odds_worst_assumed_scenario:zeroMargin,
    worst_scenario_delta_pp:round((pmin-pQuote)*100,2),
@@ -76,7 +74,7 @@ function auditEnvelope(input){
   shadow_outcome:verdict,
   approved_bet:null,independent_fair_probability:null,expected_value:null,
   unproven:['CURRENT_ROLE_MINUTES','REBOUND_SHARE_TRANSFER','SCENARIO_WEIGHTS','PROSPECTIVE_CALIBRATION',
-            ...(quote.status==='REFERENCE_ONLY'?['EXECUTABLE_PRICE']:[])],
+            'EXECUTABLE_PRICE'],
   execution_authority:false,human_final_gate_required:true,production_influence:false
  });
 }
