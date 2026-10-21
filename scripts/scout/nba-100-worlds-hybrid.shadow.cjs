@@ -4,6 +4,10 @@
 function simulateSlate(input,opts={}) {
   const {gamelog,teams,market}=input;
   const samples=opts.samples||12000,seed=opts.seed||20261021;
+  const marketWeight=opts.marketWeight===undefined?.65:opts.marketWeight;
+  const weights=opts.roleWeights||{CONSTRAINED:.20,BASE:.55,EXPANDED:.25};
+  if(!Number.isFinite(marketWeight)||marketWeight<0||marketWeight>1)throw Error('MARKET_WEIGHT_INVALID');
+  if(!['CONSTRAINED','BASE','EXPANDED'].every(k=>typeof weights[k]==='number'&&weights[k]>=0&&weights[k]<=1)||Object.keys(weights).length!==3||Math.abs(Object.values(weights).reduce((a,b)=>a+b,0)-1)>1e-9)throw Error('ROLE_WEIGHTS_INVALID');
   if(!Number.isInteger(samples)||samples<1000||samples>100000 || !Number.isInteger(seed))throw Error("INVALID_SIMULATION_SCOPE");
   if(gamelog?.games?.length!==64 || Object.keys(teams?.teams||{}).length!==30 || market?.games?.length!==11)throw Error("DATA_COVERAGE_INCOMPLETE");
   if(new Set(gamelog.games.map(g=>g.date)).size!==64)throw Error("DUPLICATE_GAMELOG_DATE");
@@ -35,12 +39,14 @@ function simulateSlate(input,opts={}) {
     const historicTotal=historicalHome+historicalAway,historicMargin=historicalHome-historicalAway;
     const marketMargin=-game.home_spread;
     // Assumed historical/market blend: 35% last season, 65% current market; NOT fitted, NOT an edge model.
-    const centerTotal=.65*game.total+.35*historicTotal;
-    const centerMargin=.65*marketMargin+.35*historicMargin;
+    const centerTotal=marketWeight*game.total+(1-marketWeight)*historicTotal;
+    const centerMargin=marketWeight*marketMargin+(1-marketWeight)*historicMargin;
     const totals=[],margins=[],homePts=[],awayPts=[],records=[],scenarioCounts={};
     const lukaOnGame=game.home==="LAL" && game.away==="GSW";
     const lukaCategories={CONSTRAINED:{n:0,hits50:0,hits4threes:0},BASE:{n:0,hits50:0,hits4threes:0},EXPANDED:{n:0,hits50:0,hits4threes:0}};
     const lukaPRA=[],luka3pm=[],lukaPts=[],lukaReb=[],lukaAst=[],lukaMin=[],lukaHit50=[];
+    const lukaTruth={both:0,pra_only:0,threes_only:0,neither:0};
+    const lukaByScript={};
     let overtime=0,comeback=0,blowout=0,close=0,homewin=0;
     for(let i=0;i<samples;i++){
       // Shared pace shock + independent efficiency/margin shocks; SDs ASSUMED, not fitted on historic residuals.
@@ -77,7 +83,7 @@ function simulateSlate(input,opts={}) {
       if(lukaOnGame) {
         const h=pick(gamelog.games);
         const u=random();
-        const role=u<.20?"CONSTRAINED":u<.75?"BASE":"EXPANDED";
+        const role=u<weights.CONSTRAINED?"CONSTRAINED":u<weights.CONSTRAINED+weights.BASE?"BASE":"EXPANDED";
         const roleMultiplier=role==="CONSTRAINED"?.91:role==="EXPANDED"?1.07:1;
         const minutesShift=role==="CONSTRAINED"?-2.5:role==="EXPANDED"?1.0:0;
         const minutes=Math.round(between(h.minutes+minutesShift-(isBlowout?2.5:0)+(ot?3:0),0,48));
@@ -94,6 +100,10 @@ function simulateSlate(input,opts={}) {
         record.luka={minutes,points,rebounds,assists,threes_attempted:threeAttempts,threes_made:threes,pra,role};
         lukaPRA.push(pra);luka3pm.push(threes);lukaPts.push(points);lukaReb.push(rebounds);lukaAst.push(assists);lukaMin.push(minutes);lukaHit50.push(pra>=50?1:0);
         lukaCategories[role].n++;if(pra>=50)lukaCategories[role].hits50++;if(threes>=4)lukaCategories[role].hits4threes++;
+        const truth=pra>=50?(threes>=4?'both':'pra_only'):(threes>=4?'threes_only':'neither');
+        lukaTruth[truth]++;
+        const scriptRow=lukaByScript[script]||(lukaByScript[script]={n:0,pra50:0,threes4:0});
+        scriptRow.n++;if(pra>=50)scriptRow.pra50++;if(threes>=4)scriptRow.threes4++;
       }
       records.push(record);
     }
@@ -106,7 +116,7 @@ function simulateSlate(input,opts={}) {
     const report={
       game_id:`20261021-${game.away}-${game.home}`,away:game.away,home:game.home,start_utc:game.time_utc,
       reference:{source:"THIRD_PARTY_NONEXECUTABLE",total:game.total,home_spread:game.home_spread,source_observed_at:market.observed_as_of},
-      prior:{season:"2025-26",historical_total:+historicTotal.toFixed(1),historical_home_margin:+historicMargin.toFixed(1),combined_pace:+pace0.toFixed(1),market_blend_weight:.65,roster_transfers_not_fully_modeled:true},
+      prior:{season:"2025-26",historical_total:+historicTotal.toFixed(1),historical_home_margin:+historicMargin.toFixed(1),combined_pace:+pace0.toFixed(1),market_blend_weight:marketWeight,roster_transfers_not_fully_modeled:true},
       modeled_center:{total:+centerTotal.toFixed(1),home_margin:+centerMargin.toFixed(1)},
       simulated:{n:samples,home_win_rate:+(homewin/samples).toFixed(4),overtime_rate:+(overtime/samples).toFixed(4),
         close_6_rate:+(close/samples).toFixed(4),blowout_16_rate:+(blowout/samples).toFixed(4),comeback_5_rate:+(comeback/samples).toFixed(4),
@@ -121,13 +131,15 @@ function simulateSlate(input,opts={}) {
       report.luka={
         historical_games:64,historical_pra50_hits:gamelog.games.filter(g=>g.points+g.rebounds+g.assists>=50).length,
         historical_threes4_hits:gamelog.games.filter(g=>g.threes_made>=4).length,
-        uncertain_role_weights:{CONSTRAINED:.20,BASE:.55,EXPANDED:.25},
+        uncertain_role_weights:{...weights},
         bootstrap_joint_stats_true:true,
         simulated_pra50_frequency:+pr.toFixed(4),
         simulated_threes4_frequency:+(luka3pm.filter(n=>n>=4).length/samples).toFixed(4),
         pra:numericStats(lukaPRA),points:numericStats(lukaPts),rebounds:numericStats(lukaReb),
         assists:numericStats(lukaAst),threes_made:numericStats(luka3pm),minutes:numericStats(lukaMin),
         by_role:categories,
+        joint_truth_counts:lukaTruth,
+        by_script:Object.fromEntries(Object.entries(lukaByScript).map(([k,v])=>[k,{n:v.n,pra50_frequency:+(v.pra50/v.n).toFixed(4),threes4_frequency:+(v.threes4/v.n).toFixed(4)}])),
         caveat:"Weights/pace/minute/role adjustments are scenario assumptions, not empirical calibration. Not a fair probability or +EV proof."
       };
     }
@@ -135,7 +147,7 @@ function simulateSlate(input,opts={}) {
   }
   return {schema:"atlas.nba.100worlds.hybrid.v1",status:"SHADOW_ONLY",season:"2026-27",date:"2026-10-21",seed,samples_per_matchup:samples,
     games:results.length,worlds_representative:results.length*100,
-    modeling:{baseline:"35% prior-season team ORtg/DRtg/pace + 65% third-party market reference",outcome:"Joint pace shock + independent scoring/strength shocks; regulation + simulated overtime resolution; halftime scripts",player:"Luka 64-game joint empirical bootstrap with uncertain role/minute/pace modifiers",risks:["Prior-season roster shifts","Market-anchored model cannot prove independent edge","Scenario weights uncalibrated","Public quotes not account-executable","Shot allocation and defensive matchups approximated"]},
+    modeling:{baseline:"Configurable prior-season team ORtg/DRtg/pace versus third-party market; no empirically calibrated mixing weight",outcome:"Joint pace shock + independent scoring/strength shocks; regulation + simulated overtime resolution; halftime scripts",player:"Luka 64-game joint empirical bootstrap with uncertain role/minute/pace modifiers",risks:["Prior-season roster shifts","Market-anchored model cannot prove independent edge","Scenario weights uncalibrated","Public quotes not account-executable","Shot allocation and defensive matchups approximated"]},
     results};
 }
 module.exports={simulateSlate};
