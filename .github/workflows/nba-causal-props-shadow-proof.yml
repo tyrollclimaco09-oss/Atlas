@@ -1,0 +1,31 @@
+name: NBA Causal Prop Shadow Proof
+on:
+  push:
+    branches:
+      - review/rill-live-intake-2026-10-21
+    paths:
+      - 'scripts/scout/nba-causal-props.shadow*'
+      - 'docs/evidence/nba-2025-26-*gamelog.json'
+      - '.github/workflows/nba-causal-props-shadow-proof.yml'
+  pull_request:
+    paths:
+      - 'scripts/scout/nba-causal-props.shadow*'
+      - 'docs/evidence/nba-2025-26-*gamelog.json'
+      - '.github/workflows/nba-causal-props-shadow-proof.yml'
+permissions:
+  contents: read
+jobs:
+  prove:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: node --test scripts/scout/nba-causal-props.shadow.test.cjs
+      - name: Assert engine cannot authorize bets
+        run: |
+          grep -q "RESEARCH_ONLY_NO_VALIDATED_EDGE" scripts/scout/nba-causal-props.shadow.cjs
+          grep -q "calibrated_probability:false" scripts/scout/nba-causal-props.shadow.cjs
+          grep -q "reference_price_verified_executable:false" scripts/scout/nba-causal-props.shadow.cjs
