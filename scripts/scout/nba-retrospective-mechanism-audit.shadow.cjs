@@ -29,8 +29,8 @@ function evaluateMechanisms({pregameScout,pregameGameSense,postgame}){
  const brunson=find(pregameScout,'PHINYK-01','Jalen Brunson');
  if(!duncan||!duncan.market_exploration.includes('3PM 3+')||
     !brunson||!brunson.market_exploration.includes('points'))error('PREGAME_CLAIMS_MISSING');
- const gdet=pregameGameSense.games.find(g=>g.id==='BOS@DET' || g.event==='BOS@DET');
- const gnyk=pregameGameSense.games.find(g=>g.id==='PHI@NYK' || g.event==='PHI@NYK');
+ const gdet=pregameGameSense.games.find(g=>g.matchup==='BOS@DET');
+ const gnyk=pregameGameSense.games.find(g=>g.matchup==='PHI@NYK');
  if(!gdet||!gnyk)error('PREGAME_SCRIPT_COVERAGE');
  if(!gdet.scripts.some(s=>s.markets_helped?.includes('Duncan Robinson 2+ threes')&&/Cade draws ball pressure/.test(s.causal_mechanism)))error('DUNCAN_SCRIPT_MISSING');
  if(!gnyk.scripts.some(s=>s.markets_helped?.includes('Brunson 25+ points')&&/Brunson exploits/.test(s.causal_mechanism)))error('BRUNSON_SCRIPT_MISSING');
