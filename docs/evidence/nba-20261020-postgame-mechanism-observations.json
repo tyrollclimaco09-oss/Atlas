@@ -1,0 +1,150 @@
+{
+  "schema": "atlas.nba.20261020.postgame-mechanism-observations.v1",
+  "origin": "POSTGAME_MANUAL_TRANSCRIPTION_FROM_OFFICIAL_FINAL_NBA",
+  "retrospective_only": true,
+  "pregame_sha_blobs": {
+    "scout_v2": "ec22f9a25dd3654b40ca80725977eeb75dc4423c",
+    "gamesense_v3": "dcdbe4419429a77a15db102d1204755d31dce2ab"
+  },
+  "observation_date": "2026-10-21",
+  "games": [
+    {
+      "id": "BOS@DET",
+      "event_day": "2026-10-20",
+      "source": "https://www.nba.com/pistons/game/0022600001-celtics-vs-pistons-detroit-mi-10-20-2026/box-score",
+      "summary_url": "https://www.nba.com/game/bos-vs-det-0022600001",
+      "away": "BOS",
+      "home": "DET",
+      "away_pts": 113,
+      "home_pts": 121,
+      "quarter_away": [
+        28,
+        30,
+        30,
+        25
+      ],
+      "quarter_home": [
+        27,
+        18,
+        37,
+        39
+      ],
+      "max_boston_lead": 22,
+      "pistons_unanswered_run": 23,
+      "players": {
+        "duncan_robinson": {
+          "min": "27:49",
+          "pts": 21,
+          "three_made": 5,
+          "three_attempts": 9,
+          "fga": 10,
+          "fgm": 5
+        },
+        "cade_cunningham": {
+          "pts": 22,
+          "ast": 8,
+          "fga": 18
+        },
+        "jalen_duren": {
+          "pts": 22,
+          "reb": 9
+        },
+        "jayson_tatum": {
+          "pts": 13,
+          "ast": 11,
+          "fga": 23,
+          "fgm": 6,
+          "three_made": 0,
+          "three_attempts": 7
+        },
+        "paul_george": {
+          "pts": 38,
+          "three_made": 7,
+          "three_attempts": 12
+        },
+        "javonte_green": {
+          "pts": 19,
+          "first_half_mins": 0
+        }
+      }
+    },
+    {
+      "id": "PHI@NYK",
+      "event_day": "2026-10-20",
+      "source": "https://www.nba.com/knicks/game/0022600002-sixers-vs-knicks-new-york-ny-10-20-2026/box-score",
+      "summary_url": "https://www.nba.com/game/phi-vs-nyk-0022600002?lid=6jxj1xa7r0k8",
+      "away": "PHI",
+      "home": "NYK",
+      "away_pts": 106,
+      "home_pts": 100,
+      "quarter_away": [
+        23,
+        31,
+        29,
+        23
+      ],
+      "quarter_home": [
+        25,
+        33,
+        18,
+        24
+      ],
+      "teams": {
+        "PHI": {
+          "fgm": 37,
+          "fga": 89,
+          "three_made": 11,
+          "three_attempts": 40
+        },
+        "NYK": {
+          "fgm": 35,
+          "fga": 94,
+          "three_made": 11,
+          "three_attempts": 33
+        }
+      },
+      "players": {
+        "jalen_brunson": {
+          "pts": 21,
+          "fgm": 6,
+          "fga": 19,
+          "ftm": 8,
+          "fta": 8
+        },
+        "tyrese_maxey": {
+          "pts": 28,
+          "fga": 19,
+          "three_made": 2,
+          "three_attempts": 9,
+          "ftm": 8,
+          "fta": 9
+        },
+        "karl_anthony_towns": {
+          "pts": 19,
+          "reb": 12
+        },
+        "andre_drummond": {
+          "pts": 12,
+          "reb": 14,
+          "min": "24:27"
+        },
+        "jaylen_brown": {
+          "pts": 19
+        }
+      }
+    }
+  ],
+  "authority": {
+    "betting": false,
+    "production": false,
+    "model_probability": null,
+    "expected_value": null,
+    "actual_bet_receipts_verified": false
+  },
+  "limits": [
+    "Postgame stats cannot retroactively adjust pregame forecasts",
+    "Individual defensive attention/Cade-to-Duncan play links unverified",
+    "Archived V3 Duncan 2+ expression differs from V2 Duncan 3+",
+    "No official quote/accepted betslip included"
+  ]
+}

@@ -1,0 +1,37 @@
+name: NBA Opportunity Variance Review
+on:
+  push:
+    branches:
+      - review/nba-variance-provenance-2026-10-21
+  pull_request:
+    paths:
+      - 'scripts/scout/nba-scenario-price-envelope.shadow*'
+      - 'scripts/scout/nba-retrospective-mechanism-audit.shadow*'
+      - 'docs/evidence/nba-20261020-postgame-mechanism-observations.json'
+      - 'docs/rill/ATLAS_20261020_DUNCAN_BOSTON_NYK_CAUSAL_FORENSICS.md'
+      - 'docs/rill/NBA_VARIANCE_GITHUB_INTEGRATION_20261021.md'
+      - '.github/workflows/nba-variance-research-review.yml'
+permissions:
+  contents: read
+jobs:
+  proof:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: New independent scenario price envelope
+        run: node --test scripts/scout/nba-scenario-price-envelope.shadow.test.cjs
+      - name: Duncan and Brunson pregame vs postgame causal audit
+        run: node --test scripts/scout/nba-retrospective-mechanism-audit.shadow.test.cjs
+      - name: Existing coupled team rebound proof preserved
+        run: node --test scripts/scout/nba-rebound-opportunity-coupled.shadow.test.cjs
+      - name: Existing 100 Worlds and integrated slate preserved
+        run: node --test scripts/scout/nba-100-worlds-hybrid.shadow.test.cjs scripts/scout/nba-integrated-100worlds.shadow.test.cjs
+      - name: Shadow model cannot authorize betting or self-attest odds
+        run: |
+          grep -q "approved_bet:null" scripts/scout/nba-scenario-price-envelope.shadow.cjs
+          grep -q "expected_value:null" scripts/scout/nba-scenario-price-envelope.shadow.cjs
+          grep -q "STAGES=Object.freeze(\['REFERENCE_ONLY'\])" scripts/scout/nba-scenario-price-envelope.shadow.cjs
