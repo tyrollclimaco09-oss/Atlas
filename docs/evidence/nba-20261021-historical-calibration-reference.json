@@ -1,52 +1,78 @@
 {
-  "schema": "atlas.nba.historical_time_ordered_cv.v1",
-  "date": "2026-10-21",
-  "source": "Reconciled 2025-26 NBA season gamelogs",
-  "method": "At each historical game after 20 previous contests, compare past-only smoothed hit rates, 20-game rolling rate, per-minute Poisson forecast using trailing 10-game minutes. No 2026 opponent or future knowledge. 2026 threshold applied retrospectively, selection-biased.",
+  "schema": "atlas.nba.historical_time_ordered_cv.v2",
+  "validation": "SHADOW_ONLY",
+  "historical_scope": "2025-26",
   "reports": [
     {
-      "slug": "dayron-sharpe",
-      "holdout": 42,
-      "actual_hit": 13,
-      "brier_constant_50": 0.23584256475519935,
-      "brier_rolling_full": 0.23584256475519935,
-      "brier_recent": 0.22953561589925225,
-      "brier_minutes_poisson": 0.2316265967197452,
-      "brier_blend": 0.23011825641461683,
-      "neutral_brier": 0.25
+      "player": "dayron-sharpe",
+      "market": {
+        "metric": "rebounds",
+        "threshold": 9
+      },
+      "holdout_games": 42,
+      "outcomes_over": 13,
+      "brier": {
+        "neutral_50": 0.25,
+        "past_smoothed": 0.23584256475519935,
+        "recent20": 0.22953561589925225,
+        "minutes_poisson": 0.2316265967197452,
+        "blend": 0.23011825641461683
+      }
     },
     {
-      "slug": "bam-adebayo",
-      "holdout": 53,
-      "actual_hit": 41,
-      "brier_constant_50": 0.20182395189687669,
-      "brier_rolling_full": 0.20182395189687669,
-      "brier_recent": 0.20123187275845936,
-      "brier_minutes_poisson": 0.1888779303989653,
-      "brier_blend": 0.19555986109568593,
-      "neutral_brier": 0.25
+      "player": "bam-adebayo",
+      "market": {
+        "metric": "rebounds",
+        "threshold": 9
+      },
+      "holdout_games": 53,
+      "outcomes_over": 41,
+      "brier": {
+        "neutral_50": 0.25,
+        "past_smoothed": 0.20182395189687669,
+        "recent20": 0.20123187275845936,
+        "minutes_poisson": 0.1888779303989653,
+        "blend": 0.19555986109568593
+      }
     },
     {
-      "slug": "jalen-johnson",
-      "holdout": 52,
-      "actual_hit": 32,
-      "brier_constant_50": 0.24363278719084175,
-      "brier_rolling_full": 0.24363278719084175,
-      "brier_recent": 0.2465829624920533,
-      "brier_minutes_poisson": 0.23946363122882713,
-      "brier_blend": 0.23641732751034616,
-      "neutral_brier": 0.25
+      "player": "jalen-johnson",
+      "market": {
+        "metric": "pra",
+        "threshold": 40
+      },
+      "holdout_games": 52,
+      "outcomes_over": 32,
+      "brier": {
+        "neutral_50": 0.25,
+        "past_smoothed": 0.24363278719084175,
+        "recent20": 0.2465829624920533,
+        "minutes_poisson": 0.23946363122882713,
+        "blend": 0.23641732751034616
+      }
     },
     {
-      "slug": "scottie-barnes",
-      "holdout": 60,
-      "actual_hit": 32,
-      "brier_constant_50": 0.25866613150944967,
-      "brier_rolling_full": 0.25866613150944967,
-      "brier_recent": 0.26838842975206617,
-      "brier_minutes_poisson": 0.2612597208325362,
-      "brier_blend": 0.258579745245479,
-      "neutral_brier": 0.25
+      "player": "scottie-barnes",
+      "market": {
+        "metric": "assists",
+        "threshold": 6
+      },
+      "holdout_games": 60,
+      "outcomes_over": 32,
+      "brier": {
+        "neutral_50": 0.25,
+        "past_smoothed": 0.25866613150944967,
+        "recent20": 0.26838842975206617,
+        "minutes_poisson": 0.2612597208325362,
+        "blend": 0.258579745245479
+      }
     }
+  ],
+  "date": "2026-10-21",
+  "source": "Point-in-time reconciled 2025-26 player logs (StatMuse)",
+  "warnings": [
+    "Thresholds chosen after observing the prior season; selection-biased",
+    "Prior-season role and team changes invalidate direct 2026 promotion",
+    "Poisson score is a simple historical baseline, not an independent fair sportsbook price"
   ]
 }
