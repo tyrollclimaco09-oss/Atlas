@@ -5,6 +5,7 @@ const fs=require('node:fs'),path=require('node:path');
 const {simulateSlate}=require('./nba-100-worlds-hybrid.shadow.cjs');
 const {simulatePlayerProps}=require('./nba-causal-props.shadow.cjs');
 const {evaluate}=require('./nba-rolling-calibration.shadow.cjs');
+const {simulateCoupledRebounds}=require('./nba-rebound-opportunity-coupled.shadow.cjs');
 const root=path.resolve(__dirname,'../..');
 const evFile=name=>JSON.parse(fs.readFileSync(path.join(root,'docs/evidence',name),'utf8'));
 const slugs=['dayron-sharpe','bam-adebayo','jalen-johnson','scottie-barnes'];
@@ -12,10 +13,25 @@ function buildSlate(){
  const gs=simulateSlate({gamelog:evFile('luka-2025-26-game-log-reference.json'),
   teams:evFile('nba-2025-26-team-ratings-reference.json'),
   market:evFile('nba-20261021-reference-market-snapshot.json')},
-  {samples:12000,seed:20261021});
+  {samples:12000,seed:20261021,focusGame:'CHA-BKN'});
  const logs=Object.fromEntries(slugs.map(slug=>[slug,evFile('nba-2025-26-'+slug+'-gamelog.json')]));
  const players=simulatePlayerProps({logs},{n:20000,seed:20261021});
  const cv=evaluate(logs);
+ const matchup=gs.results.find(g=>g.away==='CHA'&&g.home==='BKN');
+ if(!matchup?.full_worlds||matchup.full_worlds.length!==12000)throw Error('MISSING_COULED_GAME_STATE');
+ const coupledInputs={fullWorlds:matchup.full_worlds,
+   teamHistory:evFile('nba-2025-26-bkn-cha-shot-rebound-reference.json'),
+   playerLog:logs['dayron-sharpe']};
+ const cases=['RESTRICTED','MIXED','STARTER','COMPETITION'].map(scenario=>{
+   const x=simulateCoupledRebounds(coupledInputs,{scenario,seed:20261021});
+   return {scenario,reb9_frequency:x.result.reb_over8_5,
+     model_mean_reb:x.result.reb_mean,average_minutes:x.result.means.minutes,
+     benchmark_american_odds:+113,benchmark_is_executable:false,
+     joint_truth_counts:x.result.fourTruth,
+     alt_rebound_ladder:scenario==='MIXED'?x.modeled_threshold_ladders.rebounds:undefined};
+ });
+ const worst=Math.min(...cases.map(c=>c.reb9_frequency)),
+   best=Math.max(...cases.map(c=>c.reb9_frequency));
  const priceBound=c=>c>0?100/(100+c):-c/(100-c);
  const results=players.reports.map(r=>({
   name:r.player,market:r.market,reference_price:r.reference_american_odds,
@@ -59,7 +75,9 @@ function buildSlate(){
     observed_external_conflict:['Action Network ~30 minutes','NBA Fantasy Edge 26 minutes'],
     default_simulation_frequency:players.reports.find(x=>x.player==='dayron-sharpe').model.frequency,
     minutes_30_scenario_requires_new_readback:true,
+    coupled_rebound_range:{worst,best,reference_break_even:100/213,all_plausible_worlds_profitable:false},
     state:'WATCH_VERIFY_MINUTES_AND_PRICE',bet_qualified:false},
+  coupled_rebound_stress:{game:'CHA@BKN',mode:'SHADOW_ONLY',cases},
   calibration:cv.reports.map(r=>({name:r.player,holdout_games:r.holdout_games,brier:r.brier})),
   controls
  };
