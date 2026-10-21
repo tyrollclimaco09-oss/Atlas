@@ -5,14 +5,18 @@ on:
       - review/rill-live-intake-2026-10-21
     paths:
       - 'scripts/scout/nba-causal-props.shadow*'
+      - 'scripts/scout/nba-rebound-opportunity-coupled.shadow*'
       - 'scripts/scout/nba-integrated-100worlds.shadow*'
       - 'scripts/scout/nba-rolling-calibration.shadow.cjs'
       - 'docs/evidence/nba-2025-26-*gamelog.json'
+      - 'docs/evidence/nba-2025-26-bkn-cha-shot-rebound-reference.json'
       - '.github/workflows/nba-causal-props-shadow-proof.yml'
   pull_request:
     paths:
       - 'scripts/scout/nba-causal-props.shadow*'
+      - 'scripts/scout/nba-rebound-opportunity-coupled.shadow*'
       - 'docs/evidence/nba-2025-26-*gamelog.json'
+      - 'docs/evidence/nba-2025-26-bkn-cha-shot-rebound-reference.json'
       - '.github/workflows/nba-causal-props-shadow-proof.yml'
 permissions:
   contents: read
@@ -27,6 +31,7 @@ jobs:
           node-version: '24'
       - run: node --test scripts/scout/nba-causal-props.shadow.test.cjs
       - run: node --test scripts/scout/nba-integrated-100worlds.shadow.test.cjs
+      - run: node --test scripts/scout/nba-rebound-opportunity-coupled.shadow.test.cjs
       - run: node scripts/scout/nba-integrated-100worlds.shadow.cjs > /tmp/atlas-integrated-slate.json
       - name: Assert engine cannot authorize bets
         run: |
