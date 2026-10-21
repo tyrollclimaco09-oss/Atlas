@@ -27,3 +27,9 @@ jobs:
           grep -q 'production_authority:false' scripts/rill-intake/index.ts
           grep -q 'production_influence:false' scripts/rill-intake/index.ts
           grep -q 'BROWSER_ORIGIN_BLOCKED' scripts/rill-intake/index.ts
+
+      - name: Live deployed endpoint denies anonymous requests
+        run: |
+          status=$(curl --silent --show-error --max-time 15 --output /tmp/rill-anonymous-response.txt --write-out '%{http_code}' --request POST --header 'Content-Type: application/json' --data '{"mode":"list"}' 'https://lhliqbbooproqtslmgqi.supabase.co/functions/v1/atlas-rill-signal-intake')
+          echo "unauthenticated_status=$status"
+          test "$status" = "401"
