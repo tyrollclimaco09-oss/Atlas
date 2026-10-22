@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - review/pass0-slate-regression-2026-10-16
+      - research/odds-api-probe-2026-10-22
     paths:
       - .github/workflows/atlas-free-source-real-io-proof.yml
       - scripts/scout/free-source-live-parity.mjs
