@@ -1,0 +1,29 @@
+name: ATLAS NBA V3 official shot-count parity (read-only)
+on:
+  push:
+    branches: [research/odds-api-probe-2026-10-22]
+    paths:
+      - scripts/proof/nba-v3-shot-coverage.mjs
+      - scripts/proof/nba-v3-shot-coverage.test.mjs
+      - .github/workflows/atlas-nba-v3-shot-parity.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  nba-shot-parity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - run: node --test scripts/proof/nba-v3-shot-coverage.test.mjs
+      - run: node scripts/proof/nba-v3-shot-coverage.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: atlas-nba-one-game-shot-parity
+          path: atlas-nba-shot-coverage.json
+          retention-days: 7
+          if-no-files-found: ignore
