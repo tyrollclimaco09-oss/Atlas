@@ -1,18 +1,20 @@
-name: ATLAS Odds API live source proof (one-shot SHADOW)
+name: ATLAS Odds API one-credit manual source proof (SHADOW)
 
+# No push, schedule, or automatic retries. Spend is opt-in on manual dispatch.
 on:
-  push:
-    branches:
-      - research/odds-api-probe-2026-10-22
-    paths:
-      - .github/workflows/atlas-odds-api-probe.yml
   workflow_dispatch:
+    inputs:
+      authorize_one_credit:
+        description: "Explicitly authorize at most 1 live-odds quota credit (default is 0)."
+        type: boolean
+        required: true
+        default: false
 
 permissions:
   contents: read
 
 concurrency:
-  group: atlas-odds-api-probe
+  group: atlas-odds-api-manual-quota-gate
   cancel-in-progress: false
 
 jobs:
@@ -27,11 +29,12 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Verify schema guards with synthetic quotes
+      - name: Verify schema and quota guards with synthetic quotes
         run: python3 scripts/scout/the-odds-api-probe.py --self-test
-      - name: One-time source proof (one planned billable credit)
+      - name: Zero-credit dry run unless one credit explicitly authorized
         env:
           THE_ODDS_API_KEY: ${{ secrets.THE_ODDS_API_KEY }}
+          ATLAS_ODDS_APPROVED_CREDITS: ${{ inputs.authorize_one_credit && '1' || '0' }}
         run: python3 scripts/scout/the-odds-api-probe.py
       - name: Preserve sanitized evidence only
         if: always()
