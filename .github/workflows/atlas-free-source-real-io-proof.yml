@@ -8,6 +8,8 @@ on:
     paths:
       - .github/workflows/atlas-free-source-real-io-proof.yml
       - scripts/scout/free-source-live-parity.mjs
+      - scripts/scout/public-source-receipt.mjs
+      - scripts/scout/public-source-receipt.test.mjs
       - scripts/scout/free-source-core/**
   workflow_dispatch:
 
@@ -27,8 +29,17 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Validate provenance receipt contract (offline)
+        run: node --test scripts/scout/public-source-receipt.test.mjs
       - name: Parse real sources with snapshots of deployed scout normalizers
         run: node scripts/scout/free-source-live-parity.mjs
+      - name: Preserve sanitized upstream receipts (no raw data or secrets)
+        uses: actions/upload-artifact@v4
+        with:
+          name: atlas-free-source-proof-receipts
+          path: atlas-public-source-proof.json
+          retention-days: 7
+          if-no-files-found: error
       - name: Verify deployed scouts reject anonymous requests (no credentials)
         shell: bash
         run: |
