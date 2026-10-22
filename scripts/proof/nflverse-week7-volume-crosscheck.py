@@ -16,8 +16,8 @@ from datetime import datetime, timezone
 
 URL = "https://github.com/nflverse/nflverse-data/releases/download/stats_player/stats_player_week_2026.csv.gz"
 EXPECTED = (
-    {"name": "C.J. Stroud", "team": "HOU", "field": "passing_attempts", "espn_value": 34},
-    {"name": "Woody Marks", "team": "HOU", "field": "rushing_attempts", "espn_value": 15},
+    {"name": "C.J. Stroud", "team": "HOU", "field": "passing_attempts", "nflverse_field": "attempts", "espn_value": 34},
+    {"name": "Woody Marks", "team": "HOU", "field": "rushing_attempts", "nflverse_field": "carries", "espn_value": 15},
 )
 ESPN_SOURCE_HASH = "aff4bac63af72af2db12fd54f010fd207f577565f0c75a3663403029c9bc87e4"
 
@@ -47,7 +47,8 @@ def evaluate(rows):
             "name": need["name"], "team": need["team"], "stat": need["field"],
             "espn_value": need["espn_value"],
             "nflverse_rows": len(candidates),
-            "nflverse_value": parse_value(candidates[0].get(need["field"])) if len(candidates) == 1 else None,
+            "nflverse_column": need["nflverse_field"],
+            "nflverse_value": parse_value(candidates[0].get(need["nflverse_field"])) if len(candidates) == 1 else None,
         }
         result["matched"] = (
             result["nflverse_rows"] == 1
@@ -59,13 +60,13 @@ def evaluate(rows):
 
 def self_test():
     fixtures = [
-        {"season": "2026", "week": "7", "team": "HOU", "player_display_name": "CJ Stroud", "passing_attempts": "34", "rushing_attempts": "1"},
-        {"season": "2026", "week": "7", "team": "HOU", "player_display_name": "Woody Marks", "passing_attempts": "0", "rushing_attempts": "15"},
+        {"season": "2026", "week": "7", "team": "HOU", "player_display_name": "CJ Stroud", "attempts": "34", "carries": "1"},
+        {"season": "2026", "week": "7", "team": "HOU", "player_display_name": "Woody Marks", "attempts": "0", "carries": "15"},
     ]
     matches = evaluate(fixtures)
     assert len(matches) == 2 and all(x["matched"] for x in matches)
     other = [dict(f) for f in fixtures]
-    other[0]["passing_attempts"] = "33"
+    other[0]["attempts"] = "33"
     assert evaluate(other)[0]["matched"] is False
     other = fixtures + [fixtures[0]]
     assert evaluate(other)[0]["nflverse_rows"] == 2
