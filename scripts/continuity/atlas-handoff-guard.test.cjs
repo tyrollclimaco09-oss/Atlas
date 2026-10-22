@@ -31,3 +31,20 @@ test('source-consistent NFL team candidates are not verified player actors',()=>
  const h=clone(load());h.lanes[1].drive_quality_gate.source_schema.independent_play_actor_coverage_verified=true;
  assert.throws(()=>validate(h),/NFL_TEAM_CANDIDATE_UNEARNED_PROMOTION/);
 });
+
+test('one-game official NBA player FGA agreement never licenses an unreplayed V3 model',()=>{
+ const h=clone(load());h.lanes[0].source_quality_gate.independent_official_one_game.all_57_game_v3_replay_verified=true;
+ assert.throws(()=>validate(h),/NBA_CROSSSOURCE_UNEARNED_PROMOTION/);
+});
+test('NBA absent heave in official FGA cannot be sold as proven rules adjudication',()=>{
+ const h=clone(load());h.lanes[0].source_quality_gate.independent_official_one_game.official_rule_exclusion_cause_verified=true;
+ assert.throws(()=>validate(h),/NBA_CROSSSOURCE_UNEARNED_PROMOTION/);
+});
+test('NFL Houston at Jacksonville cannot regress to New England',()=>{
+ const h=clone(load());h.lanes[1].verified_matchup.home_team='NE';
+ assert.throws(()=>validate(h),/NFL_OPPONENT_IDENTITY_REGRESSION/);
+});
+test('different play row totals cannot be reported as independently verified missing snaps',()=>{
+ const h=clone(load());h.lanes[1].independent_pbp_census.unmatched_8_rows_confirmed_missing_snaps=true;
+ assert.throws(()=>validate(h),/NFL_PBP_UNEARNED_PROMOTION/);
+});

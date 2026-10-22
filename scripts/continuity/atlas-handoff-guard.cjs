@@ -48,7 +48,8 @@ function validate(h,root=ROOT){
  assert(nh?.github_run===39851620052&&nh.identified_heave?.event_id==='401909834198'&&
    nh.identified_heave.player_id==='4432165'&&
    nh.identified_heave.confirmed_official_exclusion===false&&
-   nh.independent_alternative_play_source_checked===false&&
+   nh.independent_alternative_play_source_checked===true&&
+   nh.identified_heave.nba_marked_fga_absent_in_observed_source===true&&
    nh.gate==='NO_V3_Q4_FGA_ADMISSION','NBA_HEAVE_UNEARNED_PROMOTION');
  assert(ns?.source_consistency_class==='SOURCE_CONSISTENT_NOT_INDEPENDENTLY_VERIFIED'&&
    ns.restricted_source_consistent_candidates===116&&
@@ -56,6 +57,34 @@ function validate(h,root=ROOT){
    ns.play_team_id_present===0&&ns.start_vs_drive_team_mismatches===20&&
    ns.team_participants_contain_both_sides===true&&
    ns.independent_play_actor_coverage_verified===false,'NFL_TEAM_CANDIDATE_UNEARNED_PROMOTION');
+ const nbaIndependent=nbaQuality.independent_official_one_game;
+ assert(nbaIndependent?.state==='ONE_GAME_INDEPENDENT_NBA_SHOT_SOURCE_CORROBORATED'&&
+  nbaIndependent.nba_game_id==='0022600085'&&nbaIndependent.espn_game_id==='401909834'&&
+  nbaIndependent.official_nba_actions===629&&nbaIndependent.official_nba_fga_marked===175&&
+  nbaIndependent.daniels.nba_only_action_id==='606'&&
+  nbaIndependent.daniels.espn_fga===12&&nbaIndependent.daniels.nba_pbp_fga===13&&
+  nbaIndependent.suggs.espn_only_event_id==='401909834198'&&
+  nbaIndependent.suggs.espn_fga===9&&nbaIndependent.suggs.nba_pbp_fga===8&&
+  nbaIndependent.one_game_player_fga_consistent_with_official_nba_box===true&&
+  nbaIndependent.all_57_game_v3_replay_verified===false&&
+  nbaIndependent.espn_q4_fga_model_feature_admitted===false&&
+  nbaIndependent.official_rule_exclusion_cause_verified===false&&
+  nbaIndependent.license_rights_verified===false,'NBA_CROSSSOURCE_UNEARNED_PROMOTION');
+ const game=nfl.verified_matchup,census=nfl.independent_pbp_census;
+ assert(game?.espn_event_id==='401872996'&&game.nflverse_game_id==='2026_06_HOU_JAX'&&
+  game.season===2026&&game.week===6&&game.home_team==='JAX'&&
+  game.home_espn_team_id==='30'&&game.away_team==='HOU'&&
+  game.away_espn_team_id==='34'&&game.new_england_prior_label_invalid===true&&
+  game.game_identity_verified===true,'NFL_OPPONENT_IDENTITY_REGRESSION');
+ assert(census?.state==='TWO_SOURCE_GAME_ID_AND_ROW_CENSUS_VERIFIED_NOT_EVENT_ALIGNED'&&
+  census.nflverse_rows===178&&census.espn_drive_event_rows===186&&
+  census.nflverse_pass_attempt_flags===75&&census.nflverse_rush_attempt_flags===52&&
+  census.nflverse_qb_scramble_flags===3&&census.nflverse_no_play_rows===18&&
+  census.source_team_values_outside_game===0&&
+  census.unmatched_8_rows_confirmed_missing_snaps===false&&
+  census.event_id_one_to_one_verified===false&&
+  census.player_actor_map_verified===false&&census.complete_snap_coverage_verified===false&&
+  census.calibrator_eligible===false,'NFL_PBP_UNEARNED_PROMOTION');
  const evidence=h.evidence;
  const registry=JSON.parse(fs.readFileSync(path.join(root,'docs/continuity/ATLAS_RECOVERED_ASSET_REGISTRY_2026-10-22.json'),'utf8'));
  assert(registry.schema==='atlas.recovered-artifact-registry.v1'&&
