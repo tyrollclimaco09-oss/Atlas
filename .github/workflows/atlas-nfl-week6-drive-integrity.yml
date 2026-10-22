@@ -1,0 +1,29 @@
+name: ATLAS NFL Week 6 PBP drive integrity (separate from NBA)
+on:
+  push:
+    branches: [research/odds-api-probe-2026-10-22]
+    paths:
+      - scripts/proof/nfl-week6-drive-integrity.mjs
+      - scripts/proof/nfl-week6-drive-integrity.test.mjs
+      - .github/workflows/atlas-nfl-week6-drive-integrity.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  nfl-drive-identity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - run: node --test scripts/proof/nfl-week6-drive-integrity.test.mjs
+      - run: node scripts/proof/nfl-week6-drive-integrity.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: atlas-nfl-week6-drive-quality-report
+          path: atlas-nfl-week6-drive-quality.json
+          retention-days: 7
+          if-no-files-found: ignore
