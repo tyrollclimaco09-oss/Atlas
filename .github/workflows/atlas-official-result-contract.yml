@@ -1,0 +1,21 @@
+name: ATLAS official outcome join contract (offline)
+on:
+  push:
+    branches: [research/odds-api-probe-2026-10-22]
+    paths:
+      - scripts/proof/nhl-official-result-shadow.mjs
+      - scripts/proof/nhl-official-result-shadow.test.mjs
+      - .github/workflows/atlas-official-result-contract.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate-settlement-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - run: node --test scripts/proof/nhl-official-result-shadow.test.mjs
