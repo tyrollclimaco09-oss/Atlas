@@ -124,7 +124,9 @@ def main():
             reader=csv.DictReader(inp)
             required={"game_id","week","posteam","play_id","qtr","quarter_seconds_remaining",
               "pass_attempt","rush_attempt","no_play"}
-            check(required<=set(reader.fieldnames or []),"NFLVERSE_REQUIRED_COLUMNS_ABSENT")
+            missing=sorted(required-set(reader.fieldnames or []))
+            print("ATLAS_NFL_CLOCK_SCHEMA "+json.dumps({"field_names":list(reader.fieldnames or [])[:120],"missing_required":missing},sort_keys=True))
+            check(not missing,"NFLVERSE_REQUIRED_COLUMNS_ABSENT_"+",".join(missing))
             for i,line in enumerate(reader):
                 check(i<160000,"NFLVERSE_SIZE_ROWS")
                 if line.get("game_id")==GAME:
