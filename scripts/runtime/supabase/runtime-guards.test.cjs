@@ -3,10 +3,10 @@ const fs=require('node:fs');
 const assert=require('node:assert/strict');
 const {test}=require('node:test');
 const root='scripts/runtime/supabase/';
-const locked=['atlas-odds-smoke','atlas-odds-ingest'];
+const locked=['atlas-odds-smoke','atlas-odds-ingest','atlas-therundown-smoke'];
 for (const name of locked) test(name+' cannot spend any API credits',()=>{
  const s=fs.readFileSync(root+name+'/index.ts','utf8');
- assert.match(s,/LEGACY_ODDS_(SMOKE|INGEST)_DISABLED/);
+ assert.match(s,/LEGACY_(ODDS_SMOKE|ODDS_INGEST|THERUNDOWN_SMOKE)_DISABLED/);
  assert.doesNotMatch(s,/\bfetch\s*\(/);
  assert.doesNotMatch(s,/Deno\.env|apiKey|x-api-key|SUPABASE_SERVICE_ROLE_KEY/);
  assert.match(s,/external_api_calls:0/);

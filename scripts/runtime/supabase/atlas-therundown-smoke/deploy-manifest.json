@@ -1,0 +1,6 @@
+{
+  "source_version": 13,
+  "verify_jwt": true,
+  "external_api_calls": 0,
+  "production_execution_authority": false
+}
