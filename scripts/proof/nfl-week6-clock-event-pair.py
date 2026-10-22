@@ -66,7 +66,8 @@ def normalize_nflverse(rows):
         check(r.get("game_id")==GAME and str(r.get("week")) in ("6","6.0"),"NFL_GAME_ID_MISMATCH")
         team=r.get("posteam")
         if team not in ("JAX","HOU"):excluded["UNKNOWN_POSSESSION"]+=1;continue
-        if str(r.get("no_play")) in ("1","1.0"):excluded["NO_PLAY"]+=1;continue
+        if str(r.get("play_type","")).strip()=="no_play" or str(r.get("no_play")) in ("1","1.0"):
+            excluded["NO_PLAY"]+=1;continue
         passing=str(r.get("pass_attempt")) in ("1","1.0")
         rushing=str(r.get("rush_attempt")) in ("1","1.0")
         if passing==rushing:excluded["NOT_EXACTLY_ONE_ATTEMPT_FLAG"]+=1;continue
@@ -107,6 +108,14 @@ def selftest():
     assert matching(esp,other+[other[0]])["ambiguous_count"]==1
     assert clock_display("00:09")==9 and clock_display("INVALID") is None
     assert clock_float("600.0")==600 and clock_float("junk") is None
+    eligible,rejected=normalize_nflverse([
+      {"game_id":GAME,"week":"6","posteam":"HOU","play_id":"10",
+       "qtr":"1","quarter_seconds_remaining":"600.0","play_type":"pass",
+       "pass_attempt":"1","rush_attempt":"0"},
+      {"game_id":GAME,"week":"6","posteam":"HOU","play_id":"11",
+       "qtr":"1","quarter_seconds_remaining":"595.0","play_type":"no_play",
+       "pass_attempt":"0","rush_attempt":"0"}])
+    assert len(eligible)==1 and rejected["NO_PLAY"]==1
     fake={"header":{"id":"401872996"},"boxscore":{"teams":[
       {"team":{"id":"30","abbreviation":"NE"}},{"team":{"id":"34","abbreviation":"HOU"}}]},
       "drives":{"previous":[{"plays":[]}]*11}}
@@ -123,14 +132,14 @@ def main():
         with io.TextIOWrapper(z,encoding="utf-8-sig",newline="") as inp:
             reader=csv.DictReader(inp)
             required={"game_id","week","posteam","play_id","qtr","quarter_seconds_remaining",
-              "pass_attempt","rush_attempt","no_play"}
+              "pass_attempt","rush_attempt","play_type"}
             missing=sorted(required-set(reader.fieldnames or []))
             print("ATLAS_NFL_CLOCK_SCHEMA "+json.dumps({"field_names":list(reader.fieldnames or [])[:120],"missing_required":missing},sort_keys=True))
             check(not missing,"NFLVERSE_REQUIRED_COLUMNS_ABSENT_"+",".join(missing))
             for i,line in enumerate(reader):
                 check(i<160000,"NFLVERSE_SIZE_ROWS")
                 if line.get("game_id")==GAME:
-                    rows.append({k:line.get(k) for k in required|{"play_type"}})
+                    rows.append({k:line.get(k) for k in required|{"play_type","no_play"}})
                     check(len(rows)<500,"NFL_GAME_TOO_MANY_ROWS")
     check(rows,"NFL_WEEK6_NOT_AVAILABLE")
     e,he=load(URL_ESPN,4_000_000)
