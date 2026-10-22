@@ -27,6 +27,9 @@ test('changing Q4 outcomes cannot change Q1-Q3 player selection or features',()=
  f.pbp.game.actions[2].period=1;
  const first=f.pbp.game.actions.find(x=>x.period===4&&x.personId===101);
  first.personId=103;first.teamTricode='BBB';
+ // Keep the synthetic official postgame totals in agreement with the changed Q4 result.
+ f.box.game.awayTeam.players.find(p=>p.personId===101).statistics.fieldGoalsAttempted=2;
+ f.box.game.awayTeam.players.find(p=>p.personId===103).statistics.fieldGoalsAttempted=4;
  const changed=deriveQ3Opportunity(f.pbp,f.box,cfg);
  assert.deepEqual(changed.selected_players.map(x=>[x.player_id,x.pre_q4_fga]),
   before.selected_players.map(x=>[x.player_id,x.pre_q4_fga]));
