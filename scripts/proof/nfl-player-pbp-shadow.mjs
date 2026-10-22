@@ -4,7 +4,7 @@ import {fileURLToPath} from 'node:url';
 import {resolve} from 'node:path';
 
 const BASE='https://site.api.espn.com/apis/site/v2/sports/football/nfl/';
-const DATE='20261018'; // 2026 regular season Week 7; historical/postgame research only
+const DATE='20261018'; // 2026 regular season Week 6; ESPN and nflverse week-6 IDs confirmed
 const sha256=x=>createHash('sha256').update(x).digest('hex');
 const must=(ok,msg)=>{if(!ok)throw Error(msg)};
 const nat=x=>/^\d+$/.test(String(x))?Number(x):null;
@@ -119,7 +119,7 @@ export async function main(){
  must(event,'NFL_COMPLETED_EVENT_MISSING');
  const summary=await read(BASE+'summary?event='+encodeURIComponent(event.id));
  const norm=normalizeNflGame(summary.data,event);
- const receipt={protocol:'ATLAS_NFL_WEEK7_REAL_PLAYER_PBP_SOURCE_PROOF_V1',
+ const receipt={protocol:'ATLAS_NFL_WEEK6_REAL_PLAYER_PBP_SOURCE_PROOF_V2',
   status:'RETROSPECTIVE_SHADOW_NOT_A_FORECAST',
   provider:'ESPN_UNOFFICIAL',provider_rights:'NOT_REVIEWED_FOR_PRODUCTION',
   schedule_at_utc:scoreboard.observed_at_utc,summary_at_utc:summary.observed_at_utc,
@@ -129,8 +129,8 @@ export async function main(){
   pregame_model_trained:false,prospective_predictions:0,
   sportsbook_odds:null,odds_api_credits:0,database_written:false,
   execution_authority:false,production_authority:false};
- writeFileSync('atlas-nfl-week7-pbp-proof.json',JSON.stringify(receipt,null,2)+'\n');
- console.log('ATLAS_NFL_WEEK7_REAL_STATS_PBP_PROOF '+JSON.stringify({
+ writeFileSync('atlas-nfl-week6-pbp-proof.json',JSON.stringify(receipt,null,2)+'\n');
+ console.log('ATLAS_NFL_WEEK6_REAL_STATS_PBP_PROOF '+JSON.stringify({
   game_id:norm.game_id,player_rows:norm.player_rows,
   passing_attempts:norm.passing_attempts_populated,
   rushing_attempts:norm.rushing_attempts_populated,receptions:norm.receptions_populated,
