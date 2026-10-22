@@ -1,0 +1,28 @@
+name: ATLAS NBA ESPN vs NBA official shot-event timestamp reconciliation
+on:
+  push:
+    branches: [research/odds-api-probe-2026-10-22]
+    paths:
+      - scripts/proof/nba-espn-shot-event-alignment.mjs
+      - scripts/proof/nba-espn-shot-event-alignment.test.mjs
+      - .github/workflows/atlas-nba-event-alignment.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  nba-two-source-alignment:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - run: node --test scripts/proof/nba-espn-shot-event-alignment.test.mjs
+      - run: node scripts/proof/nba-espn-shot-event-alignment.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: atlas-nba-event-pair-discrepancies
+          path: atlas-nba-official-espn-event-differences.json
+          retention-days: 7
+          if-no-files-found: error
