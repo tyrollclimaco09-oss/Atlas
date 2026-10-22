@@ -17,3 +17,6 @@ test('historical Arc III sign-offs are not rewritten',()=>{const h=clone(load())
 test('missing repo files become explicit hard failures',()=>{const h=clone(load());h.evidence.source_repo_files.push('docs/missing_forced_artifact.md');assert.throws(()=>validate(h),/MISSING_HANDOFF_ARTIFACT/);});
 
 test('audit ZIP byte fingerprint is pinned while primary replay archive is not fabricated',()=>{const h=clone(load());assert.equal(validate(h).checkpoint_id,h.checkpoint_id);h.lanes[0].recovered_audit.audit_zip_sha256='0'.repeat(64);assert.throws(()=>validate(h),/RECOVERY_REGISTRY_NOT_LINKED/);});
+
+test('unexplained NBA shot-team mismatch cannot be labeled reconciled',()=>{const h=clone(load());h.lanes[0].source_quality_gate.reconciled_per_team=true;assert.throws(()=>validate(h),/NBA_FGA_FALSE_RECONCILIATION/);});
+test('NFL drive IDs do not imply player/team attribution',()=>{const h=clone(load());h.lanes[1].drive_quality_gate.event_team_attribution_ready=true;assert.throws(()=>validate(h),/NFL_TEAM_MAPPING_FALSE_APPROVAL/);});

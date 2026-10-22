@@ -1,6 +1,6 @@
 {
   "schema": "atlas.engineering.handoff.v1",
-  "checkpoint_id": "ATLAS-20261022-NBA-V3-RECOVERY-CONTINUITY-01",
+  "checkpoint_id": "ATLAS-20261022-NBA-NFL-DATA-QUALITY-CONTINUITY-02",
   "as_of_date": "2026-10-22",
   "repository": "tyrollclimaco09-oss/Atlas",
   "source_branch": "research/odds-api-probe-2026-10-22",
@@ -48,7 +48,32 @@
         "replayed_verified": false
       },
       "decision": "NO_PRODUCTION_PROMOTION",
-      "next": "RECOVER_57_ROW_REPLAY_AND_RUN_CHRONOLOGICAL_HOLDOUT"
+      "next": "RECOVER_57_ROW_REPLAY_AND_RUN_CHRONOLOGICAL_HOLDOUT",
+      "source_quality_gate": {
+        "status": "BLOCKED_ONE_SHOT_ATTRIBUTION_MISMATCH",
+        "source_game_id": "401909834",
+        "shot_candidate_attempts": 175,
+        "source_box_total_attempts": 175,
+        "source_team_counts": [
+          {
+            "team_id": "1",
+            "box_fga": 90,
+            "pbp_fga": 89
+          },
+          {
+            "team_id": "19",
+            "box_fga": 85,
+            "pbp_fga": 86
+          }
+        ],
+        "player_roster_team_mismatches": 0,
+        "missed_shooter_ids": 0,
+        "reconciled_per_team": false,
+        "made_shots_per_team_match": true,
+        "test_run_failed_as_expected": 39848951461,
+        "gate": "NO_V3_Q4_FGA_ADMISSION",
+        "next": "ISOLATE_REASON_FOR_ONE_ATTEMPT_PER_TEAM_DISCREPANCY;DO_NOT_IMPUTE"
+      }
     },
     {
       "id": "NFL_WEEK6",
@@ -65,7 +90,23 @@
       },
       "readme": "docs/prospective/ATLAS_NFL_20261018_WEEK6_PLAYER_PBP_CROSSSOURCE_PROOF.md",
       "decision": "NO_PBP_COMPLETENESS_CLAIM",
-      "next": "VERIFY_PLAY_LEVEL_COMPLETENESS_SEPARATELY"
+      "next": "VERIFY_PLAY_LEVEL_COMPLETENESS_SEPARATELY",
+      "drive_quality_gate": {
+        "status": "INTERNAL_ORDER_MATCH_TEAM_ATTRIBUTION_BLOCKED",
+        "game_id": "401872996",
+        "week": 6,
+        "completed_drives": 20,
+        "unique_play_ids": 186,
+        "duplicate_play_ids": 0,
+        "missing_periods": 0,
+        "period_order_violations": 0,
+        "clock_order_violations": 0,
+        "play_records_missing_team_id": 186,
+        "event_team_attribution_ready": false,
+        "complete_play_coverage_verified": false,
+        "github_run": 39849511946,
+        "next": "VALIDATE_TEAM_ID_VIA_INDEPENDENT_EVENT_ATTRIBUTES_NOT_UNSAFE_DRIVE_INHERITANCE"
+      }
     }
   ],
   "backend": {
@@ -103,7 +144,14 @@
       39836988809,
       39837577620
     ],
-    "recovered_asset_registry": "docs/continuity/ATLAS_RECOVERED_ASSET_REGISTRY_2026-10-22.json"
+    "recovered_asset_registry": "docs/continuity/ATLAS_RECOVERED_ASSET_REGISTRY_2026-10-22.json",
+    "last_engineering_pass_git_sha": "9c1f186cfd60051414f494bf4d11f00ab7806e14",
+    "additional_github_runs": [
+      39848546540,
+      39848787129,
+      39848951461,
+      39849511946
+    ]
   },
   "resume_protocol": [
     "FETCH_THIS_JSON_AT_RESEARCH_BRANCH_HEAD",
@@ -114,13 +162,16 @@
     "RUN_CONTINUITY_REGRESSIONS_NO_PAID_ODDS",
     "WORK_NBA_BEFORE_NFL_AND_PRESERVE_SEPARATE_LABELS",
     "UPDATE_THIS_JSON_AND_HANDOFF_WITH_VERIFIABLE_EVIDENCE_AND_SHA",
-    "LEAVE_RELEASE_AUTHORITY_FALSE_UNLESS_EXPLICIT_HUMAN_APPROVAL"
+    "LEAVE_RELEASE_AUTHORITY_FALSE_UNLESS_EXPLICIT_HUMAN_APPROVAL",
+    "AUDIT_SOURCE_COUNTING_AND_TEAM_ATTRIBUTION_BEFORE_ANY_MODEL_FEATURE_ACCEPTANCE"
   ],
   "known_gaps": [
     "ORIGINAL_57_GAME_V3_ARCHIVE_RAW_BYTES_UNAVAILABLE_VIA_CURRENT_FILES_ACCESS",
     "REPORTED_V3_METRICS_NOT_REPLAYED",
     "CANONICAL_REAL_PRE_GAME_MODEL_WITH_OFFICIAL_FINAL_OUTCOME_NOT_ADMITTED",
     "AUTHORIZED_VERCEL_SUPABASE_RUNTIME_PARITY_NOT_PROVED",
-    "NFL_FULL_SNAP_COVERAGE_NOT_PROVED"
+    "NFL_FULL_SNAP_COVERAGE_NOT_PROVED",
+    "NBA_ONE_GAME_FGA_EXTRACTOR_TEAM_COUNTERS_DISAGREE_WITH_BOXSCORE",
+    "NFL_ESPN_DRIVE_PBP_ALL_186_PLAYS_LACK_PLAY_LEVEL_TEAM_ID"
   ]
 }

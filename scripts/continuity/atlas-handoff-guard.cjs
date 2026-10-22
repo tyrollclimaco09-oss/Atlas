@@ -25,6 +25,18 @@ function validate(h,root=ROOT){
  assert(b.active_release==='ATLAS_RC9_PRODUCTION_PROOF_2026_09_21'&&b.readiness==='HOLD_NO_ACTIVE_RUNTIME_CANDIDATE'&&b.historical_r3==='RETIRED_DO_NOT_REFREEZE','RELEASE_PROMOTION');
  assert(b.vercel_supabase_authenticated_parity==='UNKNOWN'&&b.sportsbook_ingest_legacy==='RETIRED_FAIL_CLOSED','BACKEND_UNEARNED_PROOF');
  assert(b.forecast_outcome_admissible==='NONE_CONFIRMED','CALIBRATION_INFLATION');
+ const nbaQuality=nba.source_quality_gate,nflQuality=nfl.drive_quality_gate;
+ assert(nbaQuality?.status==='BLOCKED_ONE_SHOT_ATTRIBUTION_MISMATCH'&&
+  nbaQuality.shot_candidate_attempts===175&&nbaQuality.source_box_total_attempts===175&&
+  nbaQuality.reconciled_per_team===false&&
+  nbaQuality.source_team_counts[0].pbp_fga===89&&nbaQuality.source_team_counts[0].box_fga===90&&
+  nbaQuality.source_team_counts[1].pbp_fga===86&&nbaQuality.source_team_counts[1].box_fga===85&&
+  nbaQuality.gate==='NO_V3_Q4_FGA_ADMISSION','NBA_FGA_FALSE_RECONCILIATION');
+ assert(nflQuality?.status==='INTERNAL_ORDER_MATCH_TEAM_ATTRIBUTION_BLOCKED'&&
+  nflQuality.game_id==='401872996'&&nflQuality.week===6&&
+  nflQuality.unique_play_ids===186&&nflQuality.play_records_missing_team_id===186&&
+  nflQuality.event_team_attribution_ready===false&&
+  nflQuality.complete_play_coverage_verified===false,'NFL_TEAM_MAPPING_FALSE_APPROVAL');
  const evidence=h.evidence;
  const registry=JSON.parse(fs.readFileSync(path.join(root,'docs/continuity/ATLAS_RECOVERED_ASSET_REGISTRY_2026-10-22.json'),'utf8'));
  assert(registry.schema==='atlas.recovered-artifact-registry.v1'&&

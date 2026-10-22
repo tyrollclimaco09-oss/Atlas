@@ -40,3 +40,11 @@
 ## Exact recovered-asset hashes
 
 The [recovery asset registry](./ATLAS_RECOVERED_ASSET_REGISTRY_2026-10-22.json) fixes the **actual recovered audit ZIP** SHA-256 and each extracted file's SHA-256. No identity hash is claimed for the **unreadable primary 57-game V3 archive**. A handoff CI regression asserts that the archive remains blocked rather than converting its reported 57-game results to verified science.
+
+## Engineering Pass 02 — new source-quality boundaries (October 22)
+
+**NBA first:** GitHub real-source [event schema probe 39848546540](https://github.com/tyrollclimaco09-oss/Atlas/actions/runs/39848546540) fetched 538 PBP events, including 63 substitutions. Shot-type classification found 175 total FGA, matching the two team box-score combined attempts, but **team-by-team** totals do not match: team 1 official 90 vs PBP 89; team 19 official 85 vs PBP 86. All shooters resolved to their correct roster teams, so automatic identity correction did **not** fix the mismatch. The [fail-closed parity check 39848951461](https://github.com/tyrollclimaco09-oss/Atlas/actions/runs/39848951461) correctly FAILED. Do not construct V3 Q4 targets from this feed without an explained reconciliation and independent per-player evidence.
+
+**NFL second:** The separate [Week 6 drive-integrity CI 39849511946](https://github.com/tyrollclimaco09-oss/Atlas/actions/runs/39849511946) PASSED 4/4 unit checks and one real-source test: 20 drives, 186 unique play IDs, no duplicates or quarter/clock order violations. **All 186 play rows lack directly attributed team IDs**, so event-to-team training is BLOCKED. Clean order != complete or usable player-level attribution; don't infer the actor from drive possession. Paired ESPN/nflverse player totals (34 Stroud attempts, 15 Marks carries) remain narrowly verified.
+
+The machine-readable [current handoff](./ATLAS_CURRENT_HANDOFF.json) records both quality gates and future acceptance requirements. The original 57-game V3 replay is **still blocked by unavailable raw original archive**. We made no model promotion, no paid odds calls, no Supabase/Vercel deployments in this pass.
