@@ -43,7 +43,7 @@ def normalize_espn(summary):
     check(str(summary.get("header",{}).get("id"))=="401872996","ESPN_GAME_ID_INVALID")
     drive=summary.get("drives",{}).get("previous",[])
     check(isinstance(drive,list) and len(drive)>10,"ESPN_DRIVE_MISSING")
-    eligible=[],excluded=Counter()
+    eligible=[];excluded=Counter()
     for d in drive:
         for p in d.get("plays",[]):
             kind=TYPES.get(p.get("type",{}).get("text"))
@@ -61,7 +61,7 @@ def normalize_espn(summary):
              "kind":kind,"type":p.get("type",{}).get("text")})
     return eligible,dict(excluded)
 def normalize_nflverse(rows):
-    eligible=[],excluded=Counter()
+    eligible=[];excluded=Counter()
     for r in rows:
         check(r.get("game_id")==GAME and str(r.get("week")) in ("6","6.0"),"NFL_GAME_ID_MISMATCH")
         team=r.get("posteam")
@@ -139,7 +139,7 @@ def main():
             for i,line in enumerate(reader):
                 check(i<160000,"NFLVERSE_SIZE_ROWS")
                 if line.get("game_id")==GAME:
-                    rows.append({k:line.get(k) for k in required|{"play_type","no_play"}})
+                    rows.append({k:line.get(k) for k in required})
                     check(len(rows)<500,"NFL_GAME_TOO_MANY_ROWS")
     check(rows,"NFL_WEEK6_NOT_AVAILABLE")
     e,he=load(URL_ESPN,4_000_000)
