@@ -30,3 +30,18 @@ The 11 additional nflverse rows are **not** verified missing ESPN snaps or error
 - **Earned:** all 116 narrowly eligible ESPN source-consistent plays possess a unique counterpart key in independent nflverse data. This is beyond game-level 75/75 pass and 52/52 rush totals.
 - **NOT earned:** actor/player IDs, complete snap accounting, exact official provider-native event ID equality, liability for edge calculation, QB player prop calibration, source licensing, or production readiness.
 - **Next NFL:** inspect the 11 unmatched nflverse records by type and quarter, handle touchdown/interception/penalty ambiguities, and **separately** audit actual passer/rusher/receiver identifiers against box-score evidence. Refuse automatic player mapping.
+
+## Unmatched 11 — additional same-clock diagnostic
+
+[Run 39863207585](https://github.com/tyrollclimaco09-oss/Atlas/actions/runs/39863207585) completed the 11-row first-pass diagnostic using ESPN's *existing* 186 event list, matching only quarter and exact remaining second (not athlete identity):
+
+| ESPN neighbor class at the same clock | nflverse-only candidates |
+| --- | ---: |
+| No ESPN event at that exact second | 5 |
+| Timeout | 2 |
+| Pass Interception Return | 2 |
+| Penalty | 1 |
+| Rush | 1 |
+| **Total** | **11** |
+
+The source's time stamps may differ between administrative and scoring events, and some excluded ESPN play types differ from nflverse's classification. **Do not claim any of the 11 are verified missing snaps, equal source events, resolved turnovers or recovered athlete actors.** Keep original 116 strict matches unchanged. The run emitted bounded IDs, quarter, clock, type and source SHA; data rights are still unreviewed.

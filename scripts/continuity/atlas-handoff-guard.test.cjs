@@ -70,3 +70,8 @@ test('eleven unmatched NFL source candidates cannot be called verified missing s
  const h=clone(load());h.lanes[1].strict_event_correspondence.extra_11_verified_missing_snaps=true;
  assert.throws(()=>validate(h),/NFL_STRICT_CLOCK_MATCH_FALSE_PROMOTION/);
 });
+
+test('NFL clock-neighbor categories cannot be promoted into verified missing plays',()=>{
+ const h=clone(load());h.lanes[1].strict_event_correspondence.unmatched_clock_diagnostic.cause_confirmed=true;
+ assert.throws(()=>validate(h),/NFL_UNMATCHED_CAUSALITY_FALSE_PROMOTION/);
+});

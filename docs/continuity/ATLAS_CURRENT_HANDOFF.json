@@ -332,7 +332,22 @@
         "official_native_play_id_equivalence_verified": false,
         "source_run": 39862414581,
         "documentation": "docs/prospective/ATLAS_NFL_20261022_WEEK6_CLOCK_CORRESPONDENCE_06.md",
-        "next": "CLASSIFY_11_NFLVERSE_ONLY_PLAY_TYPES_AND_CHECK_PLAYER_ACTORS_NO_AUTOMATIC_IMPORT"
+        "next": "CLASSIFY_11_NFLVERSE_ONLY_PLAY_TYPES_AND_CHECK_PLAYER_ACTORS_NO_AUTOMATIC_IMPORT",
+        "unmatched_clock_diagnostic": {
+          "run_id": 39863207585,
+          "nflverse_only_count": 11,
+          "same_clock_espn_type_counts": {
+            "NO_ESPN_EVENT_AT_EXACT_CLOCK": 5,
+            "Timeout": 2,
+            "Pass Interception Return": 2,
+            "Penalty": 1,
+            "Rush": 1
+          },
+          "cause_confirmed": false,
+          "actor_identity_verified": false,
+          "correction_applied": false,
+          "interpretation": "CANDIDATE_SAME_CLOCK_NEIGHBORS_ONLY_NO_IDENTITY_ASSERTION"
+        }
       }
     }
   ],
@@ -378,7 +393,7 @@
       39837577620
     ],
     "recovered_asset_registry": "docs/continuity/ATLAS_RECOVERED_ASSET_REGISTRY_2026-10-22.json",
-    "last_engineering_pass_git_sha": "860426590dbd2e5a2750cd365354afa0a30f5c73",
+    "last_engineering_pass_git_sha": "8ea696aae823572bbd040f67e4a8b04a7dccddee",
     "additional_github_runs": [
       39848546540,
       39848787129,
@@ -395,7 +410,8 @@
       39855261656,
       39856084383,
       39861684656,
-      39862414581
+      39862414581,
+      39863207585
     ]
   },
   "resume_protocol": [

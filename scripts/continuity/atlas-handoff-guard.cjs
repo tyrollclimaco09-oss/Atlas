@@ -116,6 +116,17 @@ function validate(h,root=ROOT){
   strict.extra_11_verified_missing_snaps===false&&
   strict.official_native_play_id_equivalence_verified===false,
   'NFL_STRICT_CLOCK_MATCH_FALSE_PROMOTION');
+ const nearby=strict.unmatched_clock_diagnostic;
+ assert(nearby?.run_id===39863207585&&nearby.nflverse_only_count===11&&
+  nearby.same_clock_espn_type_counts.NO_ESPN_EVENT_AT_EXACT_CLOCK===5&&
+  nearby.same_clock_espn_type_counts.Timeout===2&&
+  nearby.same_clock_espn_type_counts['Pass Interception Return']===2&&
+  nearby.same_clock_espn_type_counts.Penalty===1&&
+  nearby.same_clock_espn_type_counts.Rush===1&&
+  nearby.cause_confirmed===false&&nearby.actor_identity_verified===false&&
+  nearby.correction_applied===false&&
+  nearby.interpretation==='CANDIDATE_SAME_CLOCK_NEIGHBORS_ONLY_NO_IDENTITY_ASSERTION',
+  'NFL_UNMATCHED_CAUSALITY_FALSE_PROMOTION');
  const evidence=h.evidence;
  const registry=JSON.parse(fs.readFileSync(path.join(root,'docs/continuity/ATLAS_RECOVERED_ASSET_REGISTRY_2026-10-22.json'),'utf8'));
  assert(registry.schema==='atlas.recovered-artifact-registry.v1'&&
