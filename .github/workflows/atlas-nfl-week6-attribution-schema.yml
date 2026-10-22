@@ -1,0 +1,30 @@
+name: ATLAS NFL week6 source attribution schema (no key)
+on:
+  push:
+    branches: [research/odds-api-probe-2026-10-22]
+    paths:
+      - scripts/proof/nfl-week6-attribution-schema.mjs
+      - scripts/proof/nfl-week6-attribution-schema.test.mjs
+      - .github/workflows/atlas-nfl-week6-attribution-schema.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  nfl-play-source-coverage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --test scripts/proof/nfl-week6-attribution-schema.test.mjs
+      - run: node scripts/proof/nfl-week6-attribution-schema.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: atlas-nfl-week6-actor-schema-sanitized
+          path: atlas-nfl-week6-actor-schema.json
+          retention-days: 7
+          if-no-files-found: error
