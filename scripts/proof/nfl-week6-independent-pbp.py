@@ -84,6 +84,16 @@ def selftest():
     assert norm_plays(sample+[sample[0]])["issues"]["empty_or_duplicate_play_ids"]==1
     bad=dict(sample[0],play_id="12",posteam="NE")
     assert norm_plays(sample+[bad])["issues"]["outside_game_team"]==1
+    espn_ok={"header":{"id":"401872996"},"boxscore":{"teams":[
+        {"team":{"id":"30","abbreviation":"JAX"}},
+        {"team":{"id":"34","abbreviation":"HOU"}}]},
+        "drives":{"previous":[{"plays":[{"id":"1","type":{"text":"Rush"}}]}]}}
+    assert espn_reference(espn_ok)["home_team"]=="JAX"
+    espn_wrong=json.loads(json.dumps(espn_ok))
+    espn_wrong["boxscore"]["teams"][0]["team"]["abbreviation"]="NE"
+    try:espn_reference(espn_wrong)
+    except ValueError as e:assert "ESPN_TEAM_IDENTITY_CONFLICT" in str(e)
+    else:raise AssertionError("NEW_ENGLAND_IDENTITY_FALSELY_ACCEPTED")
     incorrect=[dict(sample[0],week="7")]
     try:norm_plays(incorrect)
     except ValueError as e: assert "GAME_CONFLICT" in str(e)
