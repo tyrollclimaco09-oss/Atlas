@@ -1,5 +1,5 @@
 # ATLAS / Source-to-Proof Reconciliation — 2026-10-22
-Status: connected Supabase + Vercel + GitHub read-only audit, SHADOW-only code. No sportsbook calls, no deployment, no Supabase writes, no betting execution.
+Status: initial read-only audit, followed by verified targeted Supabase security deployments and two shadow evidence writes. No paid sportsbook calls, no betting execution, no production release promotion. Details in later sections.
 
 ## Grounded state
 - Supabase: 258 tables and 442 views. Nine ACTIVE functions. A healthy database is not an operating data pipeline.
@@ -9,9 +9,9 @@ Status: connected Supabase + Vercel + GitHub read-only audit, SHADOW-only code. 
 - Oracle: 3 verified datasets, 5 validation rows on HOLD, 0 validated models.
 - Calibrator: 21 bets/21 outcomes in older tables, but 0 oracle independence proofs and 0 calibration memberships; stage WAIT_FIRST_CAUSAL_OUTCOME.
 - Existing execution ingress health: eight receipts, five matched and three partial (two missing identity, one pending canonicalization).
-- Release R3: 12 pass, 5 fail, 4 await genuine samples. RED/BLOCKED. Nine critical function hash drifts (no missing objects, 196 matches). Verify each change against pinned manifest; DO NOT silently refreeze.
+- Historical RETIRED release R3: 12 pass, 5 fail, 4 await genuine samples, with 9 function definition mismatches. R3 was retired September 21; these are archival results, NOT the active release gate. Active RC9 separately passes 205/205 manifest matches with zero drift; runtime HOLD persists.
 - Vercel: atlas_x_vercel has configured production Supabase env keys and GitHub-triggered READY previews; Vercel->Supabase authenticated runtime response NOT verified. The private-status project also has READY deployment.
-- Cost/security risk: deployed atlas-odds-smoke has verify_jwt=false and publishable-key handler that fetches three paid-market types; atlas-odds-ingest requires JWT service role but can also fetch three market types. Need explicit spend gate/preflight, one-market quota ceiling, allowlisted caller, and safe error-handling before invoking. DO NOT call either for curiosity. No claim of proven exploit.
+- Original cost/security risk (since fixed): old odds smoke and ingest routes could request paid provider markets. Both have now been retired with JWT gating and zero upstream fetch code, as has the old TheRundown smoke. The replacement ingestion path is NOT built.
 - Supabase advisers: 81 RLS-on/no-policy notices, 20 unindexed FKs, 211 unused indexes (INFO); no bulk grants or deletes.
 
 ## Required chain, without creating a second ATLAS
@@ -54,3 +54,38 @@ Source of truth: `scripts/runtime/supabase/` on this research branch. Tests: CI 
 **Vercel cost caveat:** `atlas_x_vercel` auto-created READY **preview** deployments for these research commits (e.g. dpl_3Aa3oBcNWicTW4J73ZVxcoLX1aDT and dpl_GgLbNim21Fes8zpHPcA1GSrD2P2e). No production promotion was performed. Scope/ignore preview builds from backend-only research commits in a separate, reviewed Vercel configuration pass; don't change production policy blindly.
 
 **Remaining priority:** one actual non-paid source -> timestamped normalizer -> permitted existing Supabase evidence record -> verified readback + heartbeat -> prospective externally timestamped model forecast -> independent official result -> statistically honest Forensics admission. Vercel-to-Supabase authenticated runtime parity is still UNKNOWN. Provider spend remains locked until approval and a tested, capped replacement.
+
+
+## Reconciliation after actual provider, release and prospective readbacks — 2026-10-22
+
+### Active release reality (supersedes stale R3-release claims)
+- `atlas_system_releases` confirms only **ATLAS_RC9_PRODUCTION_PROOF_2026_09_21** ACTIVE. R3 and earlier revisions are RETIRED. R3's five failures and nine old-definition differences are historical and must not be "fixed" by tampering with retired baselines.
+- RC9 frozen manifest: **205/205 MATCH, 0 DRIFT, 0 MISSING** (read via `atlas_object_definition_hash_v1`). Its registry class is **PRODUCTION_PROOF_RC**, not production bet execution.
+- Active `atlas_red_release_guard_v10`: `HOLD_NO_ACTIVE_RUNTIME_CANDIDATE`, with zero complete runtime traces, zero valid Final Gates, zero performance-eligible bets, 12 terminal expired candidates, 1 stale provider. `atlas_operator_control_plane_v16` next actions: `INGEST_FRESH_ACTIVE_CANDIDATE` and `VALIDATE_NATIVE_BASELINES`. Autonomous betting execution DISABLED.
+- **Do not alter** provider `The Odds API` status merely to make the stale warning disappear. Its old adapter still says active with a `OPEN_STALE` circuit and fallback `REFERENCE_ONLY_BLOCK_EXECUTION`; the upstream ingestion function has deliberately been retired and has no paid-calling code. The stale warning is legitimate until a governed replacement feed has real health evidence.
+
+### Real no-key source proof
+- GitHub run [39827326081](https://github.com/tyrollclimaco09-oss/Atlas/actions/runs/39827326081) successfully fetched actual nflverse, MLB and NHL data, normalized NFL 14 Week 7 games, MLB 1 Oct 19 game and NHL 4 Oct 19 games; verified anonymous denial of existing free-scout Edge functions.
+- Byte-for-byte comparison of `scripts/scout/free-source-core/nfl-core.mjs` and `multisport-core.mjs` with deployed Supabase Edge Function `core.mjs` sources was MATCH.
+- Saved an immutable one-shot `SHADOW_RESEARCH` receipt in existing `public.evidence_snapshots`: id `e6b1d158-bcac-47a2-b16a-5c4e3370aac5`. It retains the NFL upstream SHA-256, normalizer SHA-256, 14 identities and GitHub run. Readback matched. This is not a continuously healthy feed.
+- Fixed response observation clock in `scripts/scout/free-source-live-parity.mjs`: capture `observed_at` AFTER HTTP response instead of before. Added restricted-source receipt validation and artifact preservation. CI run [39828497580](https://github.com/tyrollclimaco09-oss/Atlas/actions/runs/39828497580): PASS. The source receipt artifact expires after seven days; durable research records must be independently maintained.
+
+### First actual prospective pregame forecast
+- NHL game `NHL:NHL_WEB_API:2026020154`: Nashville (NSH) at Boston (BOS), scheduled **2026-10-22T23:00:00Z**.
+- External NHL schedule observed **2026-10-22T18:10:58.313Z**; a deliberately uninformed **home-win p=0.50 benchmark** frozen by GitHub at **2026-10-22T18:10:58.569Z** (4.817 hours ahead of scheduled start).
+- External GitHub Actions run [39829074596](https://github.com/tyrollclimaco09-oss/Atlas/actions/runs/39829074596), artifact `12447547815` created at **18:10:59Z**, packet SHA-256 `d5b66d9a42314f2ab6f5ed83f8ccf5e6fa0d2fe78d4504bd32d0ffc179380e62`. The original downloaded bytes were independently hashed and matched.
+- Persisted immutable **noncanonical** research receipt to existing Supabase `public.evidence_snapshots`: id `3c9df21b-1ca2-4439-aaf2-cb40742a36dc` created **18:13:11.288085Z**, strictly before scheduled start. SQL readback matched key facts.
+- Full original packet is now permanently archived in `docs/prospective/ATLAS_NHL_20261022_2026020154_UNPRICED_FREEZE.json`. Offline integrity regression [39829817192](https://github.com/tyrollclimaco09-oss/Atlas/actions/runs/39829817192) PASS. This is a true pregame reference baseline, but **NOT** a validated predictive model, priced EV, independent book comparison, or canonical calibration sample.
+- Postgame verifier `scripts/proof/nhl-official-result-shadow.mjs` is implemented and tested against synthetic official result fixtures, [39830076509](https://github.com/tyrollclimaco09-oss/Atlas/actions/runs/39830076509) 4/4 PASS. It requires official final game status, exact game/team IDs, official score, after-tipoff observation and hash. NO actual game result has been fetched or settled by ATLAS in this session.
+
+### Live safety HTTP proof
+- Four deployed Supabase functions (`atlas-odds-smoke`, `atlas-odds-ingest`, `atlas-therundown-smoke`, `atlas-core-health`) now reject unauthenticated HTTP POST with **401**. GitHub live run [39830258530](https://github.com/tyrollclimaco09-oss/Atlas/actions/runs/39830258530) PASS; absolutely no credentials, paid odds calls or database mutations in that test.
+- This proves the anonymous gate ONLY. Authenticated Vercel → Supabase runtime parity remains UNKNOWN, and disabled paid-provider functions are intentionally not available for authorized ingestion.
+
+### Honest remaining gates
+1. Record independent official final NHL result later and test the exact pregame freeze→result join. No future background settlement is scheduled.
+2. Earn at least one **canonical** runtime candidate with authenticated source ingestion, stable event and selection IDs, complete decision trace and separate Final Gate validation. Today's source and NHL baseline receipts are shadow research, NOT a canonical candidate.
+3. Verify protected Vercel → Supabase runtime readback with correctly scoped preview secrets and 401/403 denial cases. GitHub Vercel previews currently deploy on research commits; skip/deployment settings must be reviewed separately.
+4. Replace the retired paid odds path only with explicit one-credit approval, quota preflight and source-timestamped receipts. No reactivation by tweaking provider `active` flags.
+5. Bring the MLB research model validations out of `HOLD` through independent baseline review; three VERIFIED_LAB datasets have retrospective metrics, but all five model validation records are on HOLD and not operator approved.
+6. Do not claim profit, automatic betting authority, or production readiness while RC9 says HOLD.
