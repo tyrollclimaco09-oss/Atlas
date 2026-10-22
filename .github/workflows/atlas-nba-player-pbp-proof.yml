@@ -1,0 +1,30 @@
+name: ATLAS NBA real player-box and PBP evidence (read-only)
+on:
+  push:
+    branches: [research/odds-api-probe-2026-10-22]
+    paths:
+      - scripts/proof/nba-player-pbp-shadow.mjs
+      - scripts/proof/nba-player-pbp-shadow.test.mjs
+      - .github/workflows/atlas-nba-player-pbp-proof.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  nba-player-pbp:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - name: Test identity and missing data policy without network
+        run: node --test scripts/proof/nba-player-pbp-shadow.test.mjs
+      - name: Read one prior NBA game via public scoreboard and summary
+        run: node scripts/proof/nba-player-pbp-shadow.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: atlas-nba-stats-pbp-source-proof
+          path: atlas-nba-real-stats-pbp-proof.json
+          if-no-files-found: error
+          retention-days: 7
