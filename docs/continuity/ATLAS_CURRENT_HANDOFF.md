@@ -36,3 +36,7 @@
 **NBA:** recover an authorized raw copy of original V3 archive or reconstruct a clearly labeled new version, rerun 57-game independent holdout and compare per-game predictions, source hashes, and clock cutoffs. **Then NFL:** complete nflverse PBP cross-source matching, with missing/canceled plays explicitly counted. **Then backend:** verify canonical research admission, official outcomes and authenticated Vercel↔Supabase runtime, without paid odds queries.
 
 **Doctrine:** knowledge over greed; truth over ego; evidence over confidence; process over outcomes.
+
+## Exact recovered-asset hashes
+
+The [recovery asset registry](./ATLAS_RECOVERED_ASSET_REGISTRY_2026-10-22.json) fixes the **actual recovered audit ZIP** SHA-256 and each extracted file's SHA-256. No identity hash is claimed for the **unreadable primary 57-game V3 archive**. A handoff CI regression asserts that the archive remains blocked rather than converting its reported 57-game results to verified science.

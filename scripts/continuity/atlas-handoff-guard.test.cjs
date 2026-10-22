@@ -15,3 +15,5 @@ test('cannot declare retired R3 active or RC9 production-ready',()=>{const h=clo
 test('cannot erase the calibration proof gap',()=>{const h=clone(load());h.backend.forecast_outcome_admissible='VERIFIED';assert.throws(()=>validate(h),/CALIBRATION_INFLATION/);});
 test('historical Arc III sign-offs are not rewritten',()=>{const h=clone(load());h.arc3.formally_signed_off=15;assert.throws(()=>validate(h),/HISTORICAL_ARCIII_REWRITE/);});
 test('missing repo files become explicit hard failures',()=>{const h=clone(load());h.evidence.source_repo_files.push('docs/missing_forced_artifact.md');assert.throws(()=>validate(h),/MISSING_HANDOFF_ARTIFACT/);});
+
+test('audit ZIP byte fingerprint is pinned while primary replay archive is not fabricated',()=>{const h=clone(load());assert.equal(validate(h).checkpoint_id,h.checkpoint_id);h.lanes[0].recovered_audit.audit_zip_sha256='0'.repeat(64);assert.throws(()=>validate(h),/RECOVERY_REGISTRY_NOT_LINKED/);});

@@ -26,6 +26,15 @@ function validate(h,root=ROOT){
  assert(b.vercel_supabase_authenticated_parity==='UNKNOWN'&&b.sportsbook_ingest_legacy==='RETIRED_FAIL_CLOSED','BACKEND_UNEARNED_PROOF');
  assert(b.forecast_outcome_admissible==='NONE_CONFIRMED','CALIBRATION_INFLATION');
  const evidence=h.evidence;
+ const registry=JSON.parse(fs.readFileSync(path.join(root,'docs/continuity/ATLAS_RECOVERED_ASSET_REGISTRY_2026-10-22.json'),'utf8'));
+ assert(registry.schema==='atlas.recovered-artifact-registry.v1'&&
+   registry.primary_v3.container_materialized===false&&registry.primary_v3.replay_complete===false&&
+   registry.audit_v3.sha256==='911a3e25497869650ba0fcf0ef85f7bfd0a7017ea33aff2c26ba680218367236'&&
+   registry.audit_v3.offline_tests_rerun.pass===16&&registry.audit_v3.offline_tests_rerun.fail===0&&
+   registry.audit_v3.reconstructed_57_game_predictions===false&&
+   registry.disposition==='AUDIT_RECOVERED_FULL_V3_REPLAY_BLOCKED','RECOVERED_ARCHIVE_FALSE_PROMOTION');
+ assert(evidence.recovered_asset_registry==='docs/continuity/ATLAS_RECOVERED_ASSET_REGISTRY_2026-10-22.json'&&
+   nba.recovered_audit.audit_zip_sha256===registry.audit_v3.sha256,'RECOVERY_REGISTRY_NOT_LINKED');
  assert(evidence.reported_only.includes('NBA_V3_57_GAMES_MAE')&&!evidence.verified_in_this_pass.includes('NBA_V3_57_GAMES_MAE'),'REPORTED_AS_VERIFIED');
  assert(h.known_gaps.includes('REPORTED_V3_METRICS_NOT_REPLAYED'),'GAP_ERASURE');
  const paths=[h.arc3.arc3_handoff,b.recovery_audit,...evidence.source_repo_files,'docs/continuity/ATLAS_CURRENT_HANDOFF.md','docs/continuity/ATLAS_CURRENT_HANDOFF.json'];

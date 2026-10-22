@@ -37,7 +37,8 @@
         "name": "ATLAS_NBA_PBP_V3_AUDIT_SHADOW_20261022.zip",
         "library_file_id": "file_00000000ee58823095e41b019ebd58e6",
         "verified_synthetic_tests": 16,
-        "artifact_source": "PERSONAL_LIBRARY"
+        "artifact_source": "PERSONAL_LIBRARY",
+        "audit_zip_sha256": "911a3e25497869650ba0fcf0ef85f7bfd0a7017ea33aff2c26ba680218367236"
       },
       "reported_october_metrics": {
         "games": 14,
@@ -94,13 +95,15 @@
       "docs/continuity/ATLAS_MASTER_CHECKPOINT_2026-10-18.json",
       "docs/ATLAS_NEXT_PROOF_MILESTONES_2026-10-22.md",
       "docs/prospective/ATLAS_NBA_20261021_PLAYER_PBP_SOURCE_PROOF.md",
-      "docs/prospective/ATLAS_NFL_20261018_WEEK6_PLAYER_PBP_CROSSSOURCE_PROOF.md"
+      "docs/prospective/ATLAS_NFL_20261018_WEEK6_PLAYER_PBP_CROSSSOURCE_PROOF.md",
+      "docs/continuity/ATLAS_RECOVERED_ASSET_REGISTRY_2026-10-22.json"
     ],
     "immutable_git_runs": [
       39834900969,
       39836988809,
       39837577620
-    ]
+    ],
+    "recovered_asset_registry": "docs/continuity/ATLAS_RECOVERED_ASSET_REGISTRY_2026-10-22.json"
   },
   "resume_protocol": [
     "FETCH_THIS_JSON_AT_RESEARCH_BRANCH_HEAD",

@@ -5,6 +5,7 @@ on:
     paths:
       - docs/continuity/ATLAS_CURRENT_HANDOFF.json
       - docs/continuity/ATLAS_CURRENT_HANDOFF.md
+      - docs/continuity/ATLAS_RECOVERED_ASSET_REGISTRY_2026-10-22.json
       - scripts/continuity/atlas-handoff-guard.cjs
       - scripts/continuity/atlas-handoff-guard.test.cjs
       - .github/workflows/atlas-continuity-regression.yml
