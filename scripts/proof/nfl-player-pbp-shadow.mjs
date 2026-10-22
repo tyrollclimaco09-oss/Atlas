@@ -61,8 +61,15 @@ export function normalizeNflGame(summary,event){
  }
  const rows=[...players.values()];
  must(rows.length>=15,'NFL_PLAYER_COVERAGE_LOW');
- const plays=summary?.plays;
- const pbpAvailable=Array.isArray(plays);
+ // NFL summary differs from NBA: plays commonly live inside drives.previous[].plays.
+ // A field being absent is not evidence of zero actual football plays.
+ const drives=summary?.drives?.previous;
+ const perDrive=Array.isArray(drives)?drives.flatMap(d=>Array.isArray(d.plays)?d.plays:[]):[];
+ const root=summary?.plays;
+ const plays=Array.isArray(root)&&root.length>0?root:perDrive;
+ const playSource=Array.isArray(root)&&root.length>0?'SUMMARY_ROOT':
+   perDrive.length>0?'DRIVES_PREVIOUS':'NOT_AVAILABLE';
+ const pbpAvailable=playSource!=='NOT_AVAILABLE';
  const ids=new Set(),quarters=new Set();
  let duplicates=0;
  if(pbpAvailable)for(const p of plays){
@@ -83,7 +90,9 @@ export function normalizeNflGame(summary,event){
  rushing_attempts_populated:rows.filter(x=>x.rushing_attempts!==null).length,
  receptions_populated:rows.filter(x=>x.receptions!==null).length,
  targets_populated:rows.filter(x=>x.targets!==null).length,
- play_by_play_present:pbpAvailable,play_by_play_unique_ids:ids.size,
+ play_by_play_present:pbpAvailable,play_by_play_origin:playSource,
+ observed_completed_drives:Array.isArray(drives)?drives.length:null,
+ play_by_play_unique_ids:ids.size,
  play_by_play_duplicate_ids:duplicates,play_by_play_periods:[...quarters].sort((a,b)=>a-b),
  // This single-source proof does not establish that every snap or target was recorded.
  complete_play_coverage_verified:false,
@@ -127,6 +136,7 @@ export async function main(){
   rushing_attempts:norm.rushing_attempts_populated,receptions:norm.receptions_populated,
   receiving_targets:norm.targets_populated,
   plays:norm.play_by_play_unique_ids,pbp_present:norm.play_by_play_present,
+  pbp_origin:norm.play_by_play_origin,drives:norm.observed_completed_drives,
   source_sha256:summary.sha256,credits:0,execution_authority:false}));
 }
 if(process.argv[1]&&fileURLToPath(import.meta.url)===resolve(process.argv[1]))main().catch(e=>{console.error('ATLAS_NFL_SOURCE_FAIL '+e.message);process.exitCode=1});

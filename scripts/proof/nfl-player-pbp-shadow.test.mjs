@@ -28,3 +28,18 @@ test('NFL event mismatch and non-final results rejected',()=>{
  let x=synthetic();x.summary.header.id='wrong';assert.throws(()=>normalizeNflGame(x.summary,x.event),/SUMMARY_GAME_IDENTITY/);
  x=synthetic();x.event.status.type.completed=false;assert.throws(()=>normalizeNflGame(x.summary,x.event),/NOT_FINAL/);
 });
+
+test('NFL PBP falls back to real drive-level plays, retaining missing source truth',()=>{
+ const x=synthetic();delete x.summary.plays;
+ x.summary.drives={previous:[{plays:[{id:'10',period:{number:1}},{id:'11',period:{number:2}}]},
+                               {plays:[{id:'12',period:{number:4}}]}]};
+ const r=normalizeNflGame(x.summary,x.event);
+ assert.equal(r.play_by_play_present,true);
+ assert.equal(r.play_by_play_unique_ids,3);
+ assert.equal(r.play_by_play_origin,'DRIVES_PREVIOUS');
+ assert.equal(r.observed_completed_drives,2);
+ const y=synthetic();delete y.summary.plays;
+ const missing=normalizeNflGame(y.summary,y.event);
+ assert.equal(missing.play_by_play_present,false);
+ assert.equal(missing.play_by_play_origin,'NOT_AVAILABLE');
+});
