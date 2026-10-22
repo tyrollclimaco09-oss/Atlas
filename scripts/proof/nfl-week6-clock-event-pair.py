@@ -109,7 +109,7 @@ def audit_nflverse_only_espn_clock_neighbors(unmatched,summary):
         categories[label]+=1
         out.append({"nflverse_id":row["play_id"],"q":row["q"],"sec":row["sec"],
           "nflverse_team":row["team"],"kind":row["kind"],
-          "nflverse_play_type":row["type"],"espn_clock_neighbor_types":types,
+          "nflverse_play_type":row.get("type","UNKNOWN"),"espn_clock_neighbor_types":types,
           "espn_clock_neighbor_count":len(neighbors)})
     return {"clock_neighbor_type_counts":dict(categories),"nflverse_only_diagnostics":out,
       "neighbor_identity_or_actor_verified":False}
