@@ -1,3 +1,5 @@
+> **2026-10-22 continuity correction:** This historical Pass 04 document incorrectly named New England. ESPN team ID `30` is Jacksonville. The verified Week 6 event is **Houston at Jacksonville** (`401872996` / `2026_06_HOU_JAX`). Consult [Pass 05 NFL cross-source correction](ATLAS_NFL_20261022_WEEK6_NFLVERSE_PBP_CROSSCHECK_05.md). All other original Pass 04 numeric observations are retained.
+
 # NFL: Week 6 conditional play-team research boundary
 
 **Authority: shadow research only.** Oct 18 game `401872996`, Week **6**, Houston/New England. Separate from NBA.
