@@ -96,6 +96,31 @@ def main():
     if not rows:
         raise ValueError("NO_NFLVERSE_ROWS")
     match = evaluate(rows)
+    coverage = {}
+    for row in rows:
+        if str(row.get("season")) == "2026":
+            week = str(row.get("week"))
+            coverage[week] = coverage.get(week, 0) + 1
+    source_names = []
+    for row in rows:
+        name = normalize_name(row.get("player_display_name") or row.get("player_name") or "")
+        if name in ("cjstroud", "woodymarks"):
+            source_names.append({
+                "name": row.get("player_display_name") or row.get("player_name"),
+                "season": row.get("season"), "week": row.get("week"),
+                "team": row.get("team") or row.get("recent_team")
+            })
+    if all(x["matched"] for x in match):
+        source_status = "MATCH"
+    elif coverage.get("7", 0) == 0:
+        source_status = "WEEK7_NOT_PRESENT_IN_RELEASE"
+    else:
+        source_status = "CONFLICT_OR_IDENTITY_MISMATCH"
+    print("ATLAS_NFLVERSE_COVERAGE "+json.dumps({
+        "weekly_rows_2026": coverage,
+        "relevant_player_rows": source_names[:25],
+        "column_names": list(rows[0].keys())[:35]
+    }, sort_keys=True))
     report = {
         "schema": "atlas.nfl.cross_provider_volumes.shadow.v1",
         "classification": "POSTGAME_INDEPENDENT_SOURCE_CORROBORATION",
@@ -108,7 +133,9 @@ def main():
         "source_publish_time_verified": False,
         "nflverse_row_count_all_season": len(rows),
         "comparisons": match,
-        "cross_source_status": "MATCH" if all(x["matched"] for x in match) else "CONFLICT_OR_NOT_AVAILABLE",
+        "cross_source_status": source_status,
+        "source_week_coverage": coverage,
+        "relevant_player_rows": source_names[:25],
         "canonical_event_identity_independently_matched": False,
         "pre_event_player_features_verified": False,
         "production_authority": False,
@@ -123,7 +150,7 @@ def main():
         "status": report["cross_source_status"], "comparison": match,
         "sha256": report["nflverse_downloaded_sha256"],
     }, sort_keys=True))
-    if report["cross_source_status"] != "MATCH":
+    if report["cross_source_status"] == "CONFLICT_OR_IDENTITY_MISMATCH":
         raise ValueError("INDEPENDENT_NFL_STAT_CONFLICT")
 
 if __name__ == "__main__":
