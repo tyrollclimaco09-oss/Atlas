@@ -1,0 +1,4367 @@
+{
+  "schema": "atlas.nba.causal_props.v1",
+  "mode": "SHADOW",
+  "date": "2026-10-21",
+  "n": 20000,
+  "seed": 20261021,
+  "method": "2025-26 regular season empirical joint bootstrap + scenario-adjusted minutes, shared pace, usage, rebound opportunity, foul/blowout shock; perturbations uncalibrated",
+  "reports": [
+    {
+      "player": "dayron-sharpe",
+      "metric": "rebounds",
+      "market": "Rebounds OVER 8.5",
+      "reference_american_odds": 113,
+      "reference_price_verified_executable": false,
+      "implied_probability": 0.4695,
+      "n": 20000,
+      "historical": {
+        "n": 62,
+        "hits": 14,
+        "rate": 0.2258,
+        "minutes_mean": 18.7
+      },
+      "model": {
+        "frequency": 0.4365,
+        "median": 8,
+        "p10": 4,
+        "p90": 13,
+        "mean": 8.3,
+        "hypothetical_roi": -0.0704,
+        "by_minutes": {
+          "LT24": {
+            "n": 5901,
+            "freq": 0.2647
+          },
+          "24to28": {
+            "n": 8439,
+            "freq": 0.4632
+          },
+          "28to32": {
+            "n": 4958,
+            "freq": 0.5623
+          },
+          "GE32": {
+            "n": 702,
+            "freq": 0.6695
+          }
+        },
+        "by_script": {
+          "BLOWOUT": {
+            "n": 4091,
+            "freq": 0.3967
+          },
+          "REGULAR": {
+            "n": 13933,
+            "freq": 0.4743
+          },
+          "FOUL_REGULAR": {
+            "n": 1492,
+            "freq": 0.2741
+          },
+          "FOUL_BLOWOUT": {
+            "n": 484,
+            "freq": 0.1818
+          }
+        },
+        "joint_truth": {
+          "BOTH": 4722,
+          "REB_ONLY": 4007,
+          "AST_ONLY": 6285,
+          "NEITHER": 4986
+        }
+      },
+      "assumptions": {
+        "minutes": [
+          22,
+          27,
+          31
+        ],
+        "minute_weights": [
+          0.2,
+          0.55,
+          0.25
+        ],
+        "rebound_share": 0.91,
+        "usage": 1,
+        "shot_pace": 0.99,
+        "opponent_miss": 0.99,
+        "foul_downside": 0.1,
+        "blowout_chance": 0.23,
+        "notes": "Projected starter after Claxton trade; Randle/Porter compete for rebounds. Role assumptions NOT empirically fitted."
+      },
+      "worlds100": {
+        "sampled_count": 100,
+        "hits": 44,
+        "examples": [
+          {
+            "minutes": 17.254401120465523,
+            "pts": 7,
+            "rebounds": 2,
+            "assists": 1,
+            "pra": 10,
+            "blowout": true,
+            "foul": true,
+            "value": 2
+          },
+          {
+            "minutes": 22.901489297992267,
+            "pts": 3,
+            "rebounds": 2,
+            "assists": 3,
+            "pra": 8,
+            "blowout": true,
+            "foul": false,
+            "value": 2
+          },
+          {
+            "minutes": 26.7291470875615,
+            "pts": 4,
+            "rebounds": 2,
+            "assists": 0,
+            "pra": 6,
+            "blowout": false,
+            "foul": false,
+            "value": 2
+          },
+          {
+            "minutes": 31.788095166115884,
+            "pts": 7,
+            "rebounds": 2,
+            "assists": 1,
+            "pra": 10,
+            "blowout": false,
+            "foul": false,
+            "value": 2
+          },
+          {
+            "minutes": 21.057628723118913,
+            "pts": 7,
+            "rebounds": 3,
+            "assists": 0,
+            "pra": 10,
+            "blowout": false,
+            "foul": false,
+            "value": 3
+          },
+          {
+            "minutes": 23.310437060205494,
+            "pts": 19,
+            "rebounds": 3,
+            "assists": 4,
+            "pra": 26,
+            "blowout": false,
+            "foul": false,
+            "value": 3
+          },
+          {
+            "minutes": 25.77067319163112,
+            "pts": 8,
+            "rebounds": 3,
+            "assists": 8,
+            "pra": 19,
+            "blowout": false,
+            "foul": false,
+            "value": 3
+          },
+          {
+            "minutes": 27.725625557268142,
+            "pts": 1,
+            "rebounds": 3,
+            "assists": 0,
+            "pra": 4,
+            "blowout": false,
+            "foul": false,
+            "value": 3
+          },
+          {
+            "minutes": 12.810494343114854,
+            "pts": 5,
+            "rebounds": 4,
+            "assists": 4,
+            "pra": 13,
+            "blowout": true,
+            "foul": true,
+            "value": 4
+          },
+          {
+            "minutes": 20.583014617349985,
+            "pts": 7,
+            "rebounds": 4,
+            "assists": 1,
+            "pra": 12,
+            "blowout": true,
+            "foul": false,
+            "value": 4
+          },
+          {
+            "minutes": 22.813583910676424,
+            "pts": 7,
+            "rebounds": 4,
+            "assists": 4,
+            "pra": 15,
+            "blowout": false,
+            "foul": false,
+            "value": 4
+          },
+          {
+            "minutes": 25.59957351479607,
+            "pts": 12,
+            "rebounds": 4,
+            "assists": 2,
+            "pra": 18,
+            "blowout": false,
+            "foul": true,
+            "value": 4
+          },
+          {
+            "minutes": 27.028351193068186,
+            "pts": 13,
+            "rebounds": 4,
+            "assists": 6,
+            "pra": 23,
+            "blowout": false,
+            "foul": false,
+            "value": 4
+          },
+          {
+            "minutes": 29.169087540803165,
+            "pts": 13,
+            "rebounds": 4,
+            "assists": 2,
+            "pra": 19,
+            "blowout": true,
+            "foul": false,
+            "value": 4
+          },
+          {
+            "minutes": 17.32979416300565,
+            "pts": 6,
+            "rebounds": 5,
+            "assists": 1,
+            "pra": 12,
+            "blowout": false,
+            "foul": true,
+            "value": 5
+          },
+          {
+            "minutes": 20.23093039780105,
+            "pts": 11,
+            "rebounds": 5,
+            "assists": 3,
+            "pra": 19,
+            "blowout": false,
+            "foul": false,
+            "value": 5
+          },
+          {
+            "minutes": 21.46118344441758,
+            "pts": 12,
+            "rebounds": 5,
+            "assists": 3,
+            "pra": 20,
+            "blowout": false,
+            "foul": false,
+            "value": 5
+          },
+          {
+            "minutes": 22.5897138248817,
+            "pts": 6,
+            "rebounds": 5,
+            "assists": 0,
+            "pra": 11,
+            "blowout": false,
+            "foul": false,
+            "value": 5
+          },
+          {
+            "minutes": 24.06598001564357,
+            "pts": 14,
+            "rebounds": 5,
+            "assists": 1,
+            "pra": 20,
+            "blowout": true,
+            "foul": false,
+            "value": 5
+          },
+          {
+            "minutes": 25.636570124740746,
+            "pts": 27,
+            "rebounds": 5,
+            "assists": 0,
+            "pra": 32,
+            "blowout": false,
+            "foul": false,
+            "value": 5
+          },
+          {
+            "minutes": 26.65415822450495,
+            "pts": 12,
+            "rebounds": 5,
+            "assists": 4,
+            "pra": 21,
+            "blowout": true,
+            "foul": false,
+            "value": 5
+          },
+          {
+            "minutes": 27.49099788132625,
+            "pts": 10,
+            "rebounds": 5,
+            "assists": 7,
+            "pra": 22,
+            "blowout": false,
+            "foul": false,
+            "value": 5
+          },
+          {
+            "minutes": 29.379895721513897,
+            "pts": 10,
+            "rebounds": 5,
+            "assists": 4,
+            "pra": 19,
+            "blowout": false,
+            "foul": false,
+            "value": 5
+          },
+          {
+            "minutes": 16.848403353069948,
+            "pts": 5,
+            "rebounds": 6,
+            "assists": 3,
+            "pra": 14,
+            "blowout": false,
+            "foul": true,
+            "value": 6
+          },
+          {
+            "minutes": 20.471255210413545,
+            "pts": 14,
+            "rebounds": 6,
+            "assists": 3,
+            "pra": 23,
+            "blowout": false,
+            "foul": false,
+            "value": 6
+          },
+          {
+            "minutes": 21.88194934724677,
+            "pts": 3,
+            "rebounds": 6,
+            "assists": 4,
+            "pra": 13,
+            "blowout": false,
+            "foul": false,
+            "value": 6
+          },
+          {
+            "minutes": 23.02667075908463,
+            "pts": 8,
+            "rebounds": 6,
+            "assists": 2,
+            "pra": 16,
+            "blowout": false,
+            "foul": false,
+            "value": 6
+          },
+          {
+            "minutes": 24.560252091565463,
+            "pts": 2,
+            "rebounds": 6,
+            "assists": 4,
+            "pra": 12,
+            "blowout": true,
+            "foul": false,
+            "value": 6
+          },
+          {
+            "minutes": 25.792198756211825,
+            "pts": 17,
+            "rebounds": 6,
+            "assists": 4,
+            "pra": 27,
+            "blowout": true,
+            "foul": false,
+            "value": 6
+          },
+          {
+            "minutes": 26.59141033197007,
+            "pts": 5,
+            "rebounds": 6,
+            "assists": 4,
+            "pra": 15,
+            "blowout": false,
+            "foul": false,
+            "value": 6
+          },
+          {
+            "minutes": 27.38625105531648,
+            "pts": 15,
+            "rebounds": 6,
+            "assists": 2,
+            "pra": 23,
+            "blowout": false,
+            "foul": false,
+            "value": 6
+          },
+          {
+            "minutes": 28.316826371506938,
+            "pts": 6,
+            "rebounds": 6,
+            "assists": 0,
+            "pra": 12,
+            "blowout": false,
+            "foul": false,
+            "value": 6
+          },
+          {
+            "minutes": 30.278549327521585,
+            "pts": 26,
+            "rebounds": 6,
+            "assists": 3,
+            "pra": 35,
+            "blowout": false,
+            "foul": false,
+            "value": 6
+          },
+          {
+            "minutes": 16.857319523692805,
+            "pts": 10,
+            "rebounds": 7,
+            "assists": 4,
+            "pra": 21,
+            "blowout": false,
+            "foul": true,
+            "value": 7
+          },
+          {
+            "minutes": 20.64392494433346,
+            "pts": 5,
+            "rebounds": 7,
+            "assists": 0,
+            "pra": 12,
+            "blowout": false,
+            "foul": false,
+            "value": 7
+          },
+          {
+            "minutes": 21.914650854816188,
+            "pts": 21,
+            "rebounds": 7,
+            "assists": 2,
+            "pra": 30,
+            "blowout": false,
+            "foul": false,
+            "value": 7
+          },
+          {
+            "minutes": 22.858185647229295,
+            "pts": 10,
+            "rebounds": 7,
+            "assists": 3,
+            "pra": 20,
+            "blowout": false,
+            "foul": true,
+            "value": 7
+          },
+          {
+            "minutes": 23.98116033115041,
+            "pts": 16,
+            "rebounds": 7,
+            "assists": 4,
+            "pra": 27,
+            "blowout": true,
+            "foul": false,
+            "value": 7
+          },
+          {
+            "minutes": 25.100896847626814,
+            "pts": 4,
+            "rebounds": 7,
+            "assists": 0,
+            "pra": 11,
+            "blowout": true,
+            "foul": false,
+            "value": 7
+          },
+          {
+            "minutes": 25.905698876777844,
+            "pts": 8,
+            "rebounds": 7,
+            "assists": 4,
+            "pra": 19,
+            "blowout": false,
+            "foul": true,
+            "value": 7
+          },
+          {
+            "minutes": 26.558634917577756,
+            "pts": 24,
+            "rebounds": 7,
+            "assists": 2,
+            "pra": 33,
+            "blowout": false,
+            "foul": false,
+            "value": 7
+          },
+          {
+            "minutes": 27.174323955609328,
+            "pts": 3,
+            "rebounds": 7,
+            "assists": 6,
+            "pra": 16,
+            "blowout": true,
+            "foul": false,
+            "value": 7
+          },
+          {
+            "minutes": 27.832344140021412,
+            "pts": 16,
+            "rebounds": 7,
+            "assists": 3,
+            "pra": 26,
+            "blowout": false,
+            "foul": false,
+            "value": 7
+          },
+          {
+            "minutes": 28.900700213262734,
+            "pts": 6,
+            "rebounds": 7,
+            "assists": 7,
+            "pra": 20,
+            "blowout": false,
+            "foul": false,
+            "value": 7
+          },
+          {
+            "minutes": 30.892491704498546,
+            "pts": 8,
+            "rebounds": 7,
+            "assists": 0,
+            "pra": 15,
+            "blowout": false,
+            "foul": false,
+            "value": 7
+          },
+          {
+            "minutes": 18.253943527532403,
+            "pts": 12,
+            "rebounds": 8,
+            "assists": 1,
+            "pra": 21,
+            "blowout": true,
+            "foul": false,
+            "value": 8
+          },
+          {
+            "minutes": 21.291827294491778,
+            "pts": 6,
+            "rebounds": 8,
+            "assists": 0,
+            "pra": 14,
+            "blowout": false,
+            "foul": false,
+            "value": 8
+          },
+          {
+            "minutes": 22.516233279778326,
+            "pts": 8,
+            "rebounds": 8,
+            "assists": 0,
+            "pra": 16,
+            "blowout": false,
+            "foul": false,
+            "value": 8
+          },
+          {
+            "minutes": 24.068302315495725,
+            "pts": 3,
+            "rebounds": 8,
+            "assists": 0,
+            "pra": 11,
+            "blowout": true,
+            "foul": true,
+            "value": 8
+          },
+          {
+            "minutes": 25.48151402695368,
+            "pts": 5,
+            "rebounds": 8,
+            "assists": 2,
+            "pra": 15,
+            "blowout": true,
+            "foul": false,
+            "value": 8
+          },
+          {
+            "minutes": 26.290442815792005,
+            "pts": 18,
+            "rebounds": 8,
+            "assists": 3,
+            "pra": 29,
+            "blowout": false,
+            "foul": false,
+            "value": 8
+          },
+          {
+            "minutes": 26.944269426408866,
+            "pts": 7,
+            "rebounds": 8,
+            "assists": 3,
+            "pra": 18,
+            "blowout": false,
+            "foul": false,
+            "value": 8
+          },
+          {
+            "minutes": 27.566969216917148,
+            "pts": 13,
+            "rebounds": 8,
+            "assists": 0,
+            "pra": 21,
+            "blowout": false,
+            "foul": false,
+            "value": 8
+          },
+          {
+            "minutes": 28.346421704061882,
+            "pts": 9,
+            "rebounds": 8,
+            "assists": 3,
+            "pra": 20,
+            "blowout": false,
+            "foul": false,
+            "value": 8
+          },
+          {
+            "minutes": 29.572120202682413,
+            "pts": 15,
+            "rebounds": 8,
+            "assists": 4,
+            "pra": 27,
+            "blowout": false,
+            "foul": false,
+            "value": 8
+          },
+          {
+            "minutes": 30.88239614337246,
+            "pts": 7,
+            "rebounds": 8,
+            "assists": 3,
+            "pra": 18,
+            "blowout": false,
+            "foul": false,
+            "value": 8
+          },
+          {
+            "minutes": 18.412947142208395,
+            "pts": 14,
+            "rebounds": 9,
+            "assists": 1,
+            "pra": 24,
+            "blowout": true,
+            "foul": false,
+            "value": 9
+          },
+          {
+            "minutes": 21.367910082845963,
+            "pts": 19,
+            "rebounds": 9,
+            "assists": 4,
+            "pra": 32,
+            "blowout": true,
+            "foul": false,
+            "value": 9
+          },
+          {
+            "minutes": 22.80385093062136,
+            "pts": 16,
+            "rebounds": 9,
+            "assists": 2,
+            "pra": 27,
+            "blowout": false,
+            "foul": false,
+            "value": 9
+          },
+          {
+            "minutes": 24.606538803846856,
+            "pts": 5,
+            "rebounds": 9,
+            "assists": 2,
+            "pra": 16,
+            "blowout": true,
+            "foul": false,
+            "value": 9
+          },
+          {
+            "minutes": 25.788057081679188,
+            "pts": 5,
+            "rebounds": 9,
+            "assists": 5,
+            "pra": 19,
+            "blowout": false,
+            "foul": false,
+            "value": 9
+          },
+          {
+            "minutes": 26.492648300789458,
+            "pts": 9,
+            "rebounds": 9,
+            "assists": 3,
+            "pra": 21,
+            "blowout": false,
+            "foul": false,
+            "value": 9
+          },
+          {
+            "minutes": 27.253021050374198,
+            "pts": 27,
+            "rebounds": 9,
+            "assists": 7,
+            "pra": 43,
+            "blowout": false,
+            "foul": false,
+            "value": 9
+          },
+          {
+            "minutes": 28.116747273307794,
+            "pts": 9,
+            "rebounds": 9,
+            "assists": 3,
+            "pra": 21,
+            "blowout": false,
+            "foul": false,
+            "value": 9
+          },
+          {
+            "minutes": 29.661449719194458,
+            "pts": 19,
+            "rebounds": 9,
+            "assists": 5,
+            "pra": 33,
+            "blowout": false,
+            "foul": false,
+            "value": 9
+          },
+          {
+            "minutes": 31.553551666060287,
+            "pts": 26,
+            "rebounds": 9,
+            "assists": 2,
+            "pra": 37,
+            "blowout": false,
+            "foul": false,
+            "value": 9
+          },
+          {
+            "minutes": 20.946394273642447,
+            "pts": 6,
+            "rebounds": 10,
+            "assists": 5,
+            "pra": 21,
+            "blowout": false,
+            "foul": false,
+            "value": 10
+          },
+          {
+            "minutes": 23.176513924508434,
+            "pts": 12,
+            "rebounds": 10,
+            "assists": 3,
+            "pra": 25,
+            "blowout": false,
+            "foul": false,
+            "value": 10
+          },
+          {
+            "minutes": 25.322016075944852,
+            "pts": 8,
+            "rebounds": 10,
+            "assists": 0,
+            "pra": 18,
+            "blowout": false,
+            "foul": false,
+            "value": 10
+          },
+          {
+            "minutes": 26.434646594815188,
+            "pts": 17,
+            "rebounds": 10,
+            "assists": 5,
+            "pra": 32,
+            "blowout": false,
+            "foul": false,
+            "value": 10
+          },
+          {
+            "minutes": 27.357745057241257,
+            "pts": 8,
+            "rebounds": 10,
+            "assists": 0,
+            "pra": 18,
+            "blowout": false,
+            "foul": false,
+            "value": 10
+          },
+          {
+            "minutes": 28.371714298494314,
+            "pts": 2,
+            "rebounds": 10,
+            "assists": 5,
+            "pra": 17,
+            "blowout": false,
+            "foul": false,
+            "value": 10
+          },
+          {
+            "minutes": 30.214287190511126,
+            "pts": 4,
+            "rebounds": 10,
+            "assists": 5,
+            "pra": 19,
+            "blowout": false,
+            "foul": false,
+            "value": 10
+          },
+          {
+            "minutes": 32.44013118295936,
+            "pts": 21,
+            "rebounds": 10,
+            "assists": 8,
+            "pra": 39,
+            "blowout": false,
+            "foul": false,
+            "value": 10
+          },
+          {
+            "minutes": 22.588770097965593,
+            "pts": 17,
+            "rebounds": 11,
+            "assists": 2,
+            "pra": 30,
+            "blowout": false,
+            "foul": true,
+            "value": 11
+          },
+          {
+            "minutes": 24.686760746210865,
+            "pts": 12,
+            "rebounds": 11,
+            "assists": 6,
+            "pra": 29,
+            "blowout": false,
+            "foul": false,
+            "value": 11
+          },
+          {
+            "minutes": 26.053923104886994,
+            "pts": 14,
+            "rebounds": 11,
+            "assists": 5,
+            "pra": 30,
+            "blowout": false,
+            "foul": false,
+            "value": 11
+          },
+          {
+            "minutes": 26.945133459066824,
+            "pts": 10,
+            "rebounds": 11,
+            "assists": 0,
+            "pra": 21,
+            "blowout": false,
+            "foul": false,
+            "value": 11
+          },
+          {
+            "minutes": 27.80698112354449,
+            "pts": 7,
+            "rebounds": 11,
+            "assists": 0,
+            "pra": 18,
+            "blowout": false,
+            "foul": false,
+            "value": 11
+          },
+          {
+            "minutes": 29.37527074631914,
+            "pts": 6,
+            "rebounds": 11,
+            "assists": 1,
+            "pra": 18,
+            "blowout": false,
+            "foul": false,
+            "value": 11
+          },
+          {
+            "minutes": 31.633765290315186,
+            "pts": 7,
+            "rebounds": 11,
+            "assists": 13,
+            "pra": 31,
+            "blowout": false,
+            "foul": false,
+            "value": 11
+          },
+          {
+            "minutes": 23.176908034602043,
+            "pts": 15,
+            "rebounds": 12,
+            "assists": 4,
+            "pra": 31,
+            "blowout": false,
+            "foul": false,
+            "value": 12
+          },
+          {
+            "minutes": 25.37986026504498,
+            "pts": 16,
+            "rebounds": 12,
+            "assists": 7,
+            "pra": 35,
+            "blowout": false,
+            "foul": false,
+            "value": 12
+          },
+          {
+            "minutes": 26.625030166359288,
+            "pts": 20,
+            "rebounds": 12,
+            "assists": 5,
+            "pra": 37,
+            "blowout": false,
+            "foul": false,
+            "value": 12
+          },
+          {
+            "minutes": 27.507512655142158,
+            "pts": 19,
+            "rebounds": 12,
+            "assists": 2,
+            "pra": 33,
+            "blowout": false,
+            "foul": false,
+            "value": 12
+          },
+          {
+            "minutes": 29.037058142407652,
+            "pts": 9,
+            "rebounds": 12,
+            "assists": 9,
+            "pra": 30,
+            "blowout": true,
+            "foul": false,
+            "value": 12
+          },
+          {
+            "minutes": 31.124593145528266,
+            "pts": 20,
+            "rebounds": 12,
+            "assists": 7,
+            "pra": 39,
+            "blowout": false,
+            "foul": false,
+            "value": 12
+          },
+          {
+            "minutes": 23.11609413520673,
+            "pts": 18,
+            "rebounds": 13,
+            "assists": 1,
+            "pra": 32,
+            "blowout": false,
+            "foul": false,
+            "value": 13
+          },
+          {
+            "minutes": 26.28561262805566,
+            "pts": 11,
+            "rebounds": 13,
+            "assists": 12,
+            "pra": 36,
+            "blowout": false,
+            "foul": false,
+            "value": 13
+          },
+          {
+            "minutes": 27.608571605317987,
+            "pts": 7,
+            "rebounds": 13,
+            "assists": 3,
+            "pra": 23,
+            "blowout": false,
+            "foul": false,
+            "value": 13
+          },
+          {
+            "minutes": 29.690959247523814,
+            "pts": 10,
+            "rebounds": 13,
+            "assists": 3,
+            "pra": 26,
+            "blowout": false,
+            "foul": false,
+            "value": 13
+          },
+          {
+            "minutes": 32.982660496019456,
+            "pts": 30,
+            "rebounds": 13,
+            "assists": 4,
+            "pra": 47,
+            "blowout": false,
+            "foul": false,
+            "value": 13
+          },
+          {
+            "minutes": 26.947980557054617,
+            "pts": 17,
+            "rebounds": 14,
+            "assists": 2,
+            "pra": 33,
+            "blowout": false,
+            "foul": false,
+            "value": 14
+          },
+          {
+            "minutes": 28.945288506800285,
+            "pts": 11,
+            "rebounds": 14,
+            "assists": 3,
+            "pra": 28,
+            "blowout": false,
+            "foul": false,
+            "value": 14
+          },
+          {
+            "minutes": 32.66810008598496,
+            "pts": 19,
+            "rebounds": 14,
+            "assists": 7,
+            "pra": 40,
+            "blowout": false,
+            "foul": false,
+            "value": 14
+          },
+          {
+            "minutes": 27.862133355414176,
+            "pts": 13,
+            "rebounds": 15,
+            "assists": 5,
+            "pra": 33,
+            "blowout": false,
+            "foul": false,
+            "value": 15
+          },
+          {
+            "minutes": 31.462418860323506,
+            "pts": 11,
+            "rebounds": 15,
+            "assists": 6,
+            "pra": 32,
+            "blowout": false,
+            "foul": false,
+            "value": 15
+          },
+          {
+            "minutes": 29.710880369319515,
+            "pts": 8,
+            "rebounds": 16,
+            "assists": 1,
+            "pra": 25,
+            "blowout": false,
+            "foul": false,
+            "value": 16
+          },
+          {
+            "minutes": 29.249494007629202,
+            "pts": 18,
+            "rebounds": 17,
+            "assists": 6,
+            "pra": 41,
+            "blowout": true,
+            "foul": false,
+            "value": 17
+          },
+          {
+            "minutes": 27.397857341977698,
+            "pts": 16,
+            "rebounds": 19,
+            "assists": 6,
+            "pra": 41,
+            "blowout": false,
+            "foul": false,
+            "value": 19
+          }
+        ]
+      },
+      "verdict": "RESEARCH_ONLY_NO_VALIDATED_EDGE",
+      "calibrated_probability": false,
+      "bet_authority": false
+    },
+    {
+      "player": "bam-adebayo",
+      "metric": "rebounds",
+      "market": "Rebounds OVER 8.5",
+      "reference_american_odds": -156,
+      "reference_price_verified_executable": false,
+      "implied_probability": 0.6094,
+      "n": 20000,
+      "historical": {
+        "n": 73,
+        "hits": 51,
+        "rate": 0.6986,
+        "minutes_mean": 32.4
+      },
+      "model": {
+        "frequency": 0.5076,
+        "median": 9,
+        "p10": 5,
+        "p90": 13,
+        "mean": 8.8,
+        "hypothetical_roi": -0.167,
+        "by_minutes": {
+          "24to28": {
+            "n": 2695,
+            "freq": 0.3388
+          },
+          "GE32": {
+            "n": 7603,
+            "freq": 0.6091
+          },
+          "28to32": {
+            "n": 9345,
+            "freq": 0.4844
+          },
+          "LT24": {
+            "n": 357,
+            "freq": 0.2269
+          }
+        },
+        "by_script": {
+          "REGULAR": {
+            "n": 14008,
+            "freq": 0.5466
+          },
+          "BLOWOUT": {
+            "n": 3937,
+            "freq": 0.459
+          },
+          "FOUL_REGULAR": {
+            "n": 1596,
+            "freq": 0.3534
+          },
+          "FOUL_BLOWOUT": {
+            "n": 459,
+            "freq": 0.2702
+          }
+        },
+        "joint_truth": null
+      },
+      "assumptions": {
+        "minutes": [
+          29,
+          32,
+          35
+        ],
+        "minute_weights": [
+          0.2,
+          0.6,
+          0.2
+        ],
+        "rebound_share": 0.92,
+        "usage": 1,
+        "shot_pace": 1,
+        "opponent_miss": 1,
+        "foul_downside": 0.1,
+        "blowout_chance": 0.22,
+        "notes": "Giannis arrives in Miami; shared rebounds modeled via hypothetical role multiplier."
+      },
+      "worlds100": {
+        "sampled_count": 100,
+        "hits": 51,
+        "examples": [
+          {
+            "minutes": 22.948463452013172,
+            "pts": 15,
+            "rebounds": 2,
+            "assists": 3,
+            "pra": 20,
+            "blowout": true,
+            "foul": false,
+            "value": 2
+          },
+          {
+            "minutes": 24.29555293781071,
+            "pts": 8,
+            "rebounds": 3,
+            "assists": 0,
+            "pra": 11,
+            "blowout": true,
+            "foul": true,
+            "value": 3
+          },
+          {
+            "minutes": 29.760983433930626,
+            "pts": 18,
+            "rebounds": 3,
+            "assists": 6,
+            "pra": 27,
+            "blowout": false,
+            "foul": false,
+            "value": 3
+          },
+          {
+            "minutes": 32.97507250001964,
+            "pts": 19,
+            "rebounds": 3,
+            "assists": 4,
+            "pra": 26,
+            "blowout": false,
+            "foul": false,
+            "value": 3
+          },
+          {
+            "minutes": 25.973199013027813,
+            "pts": 12,
+            "rebounds": 4,
+            "assists": 1,
+            "pra": 17,
+            "blowout": true,
+            "foul": false,
+            "value": 4
+          },
+          {
+            "minutes": 29.146901212331112,
+            "pts": 25,
+            "rebounds": 4,
+            "assists": 1,
+            "pra": 30,
+            "blowout": false,
+            "foul": false,
+            "value": 4
+          },
+          {
+            "minutes": 32.04329475179062,
+            "pts": 23,
+            "rebounds": 4,
+            "assists": 5,
+            "pra": 32,
+            "blowout": false,
+            "foul": false,
+            "value": 4
+          },
+          {
+            "minutes": 22.951283147695133,
+            "pts": 17,
+            "rebounds": 5,
+            "assists": 3,
+            "pra": 25,
+            "blowout": true,
+            "foul": true,
+            "value": 5
+          },
+          {
+            "minutes": 27.13195893760514,
+            "pts": 14,
+            "rebounds": 5,
+            "assists": 1,
+            "pra": 20,
+            "blowout": false,
+            "foul": true,
+            "value": 5
+          },
+          {
+            "minutes": 28.76864402938683,
+            "pts": 17,
+            "rebounds": 5,
+            "assists": 3,
+            "pra": 25,
+            "blowout": false,
+            "foul": false,
+            "value": 5
+          },
+          {
+            "minutes": 30.023140183022708,
+            "pts": 27,
+            "rebounds": 5,
+            "assists": 5,
+            "pra": 37,
+            "blowout": true,
+            "foul": false,
+            "value": 5
+          },
+          {
+            "minutes": 31.38401588353244,
+            "pts": 7,
+            "rebounds": 5,
+            "assists": 2,
+            "pra": 14,
+            "blowout": false,
+            "foul": false,
+            "value": 5
+          },
+          {
+            "minutes": 32.840718789311694,
+            "pts": 29,
+            "rebounds": 5,
+            "assists": 6,
+            "pra": 40,
+            "blowout": false,
+            "foul": false,
+            "value": 5
+          },
+          {
+            "minutes": 24.68034340171065,
+            "pts": 8,
+            "rebounds": 6,
+            "assists": 2,
+            "pra": 16,
+            "blowout": false,
+            "foul": true,
+            "value": 6
+          },
+          {
+            "minutes": 27.028877951144374,
+            "pts": 5,
+            "rebounds": 6,
+            "assists": 2,
+            "pra": 13,
+            "blowout": false,
+            "foul": true,
+            "value": 6
+          },
+          {
+            "minutes": 28.23525655593257,
+            "pts": 16,
+            "rebounds": 6,
+            "assists": 1,
+            "pra": 23,
+            "blowout": false,
+            "foul": false,
+            "value": 6
+          },
+          {
+            "minutes": 29.15710619304008,
+            "pts": 26,
+            "rebounds": 6,
+            "assists": 2,
+            "pra": 34,
+            "blowout": false,
+            "foul": false,
+            "value": 6
+          },
+          {
+            "minutes": 29.91078516186273,
+            "pts": 14,
+            "rebounds": 6,
+            "assists": 6,
+            "pra": 26,
+            "blowout": true,
+            "foul": false,
+            "value": 6
+          },
+          {
+            "minutes": 30.642937394204445,
+            "pts": 17,
+            "rebounds": 6,
+            "assists": 2,
+            "pra": 25,
+            "blowout": false,
+            "foul": false,
+            "value": 6
+          },
+          {
+            "minutes": 31.300513279675588,
+            "pts": 18,
+            "rebounds": 6,
+            "assists": 1,
+            "pra": 25,
+            "blowout": false,
+            "foul": false,
+            "value": 6
+          },
+          {
+            "minutes": 31.904438285901062,
+            "pts": 19,
+            "rebounds": 6,
+            "assists": 1,
+            "pra": 26,
+            "blowout": false,
+            "foul": false,
+            "value": 6
+          },
+          {
+            "minutes": 32.61960894239733,
+            "pts": 13,
+            "rebounds": 6,
+            "assists": 4,
+            "pra": 23,
+            "blowout": false,
+            "foul": false,
+            "value": 6
+          },
+          {
+            "minutes": 33.63932571051132,
+            "pts": 29,
+            "rebounds": 6,
+            "assists": 4,
+            "pra": 39,
+            "blowout": false,
+            "foul": false,
+            "value": 6
+          },
+          {
+            "minutes": 36.93447594727139,
+            "pts": 22,
+            "rebounds": 6,
+            "assists": 1,
+            "pra": 29,
+            "blowout": false,
+            "foul": false,
+            "value": 6
+          },
+          {
+            "minutes": 26.249975605109373,
+            "pts": 13,
+            "rebounds": 7,
+            "assists": 3,
+            "pra": 23,
+            "blowout": true,
+            "foul": false,
+            "value": 7
+          },
+          {
+            "minutes": 27.610236822015967,
+            "pts": 22,
+            "rebounds": 7,
+            "assists": 3,
+            "pra": 32,
+            "blowout": true,
+            "foul": false,
+            "value": 7
+          },
+          {
+            "minutes": 28.62700972848079,
+            "pts": 14,
+            "rebounds": 7,
+            "assists": 2,
+            "pra": 23,
+            "blowout": false,
+            "foul": false,
+            "value": 7
+          },
+          {
+            "minutes": 29.33338136162947,
+            "pts": 18,
+            "rebounds": 7,
+            "assists": 2,
+            "pra": 27,
+            "blowout": true,
+            "foul": false,
+            "value": 7
+          },
+          {
+            "minutes": 29.921791905006334,
+            "pts": 23,
+            "rebounds": 7,
+            "assists": 1,
+            "pra": 31,
+            "blowout": false,
+            "foul": false,
+            "value": 7
+          },
+          {
+            "minutes": 30.51442076751386,
+            "pts": 14,
+            "rebounds": 7,
+            "assists": 0,
+            "pra": 21,
+            "blowout": false,
+            "foul": true,
+            "value": 7
+          },
+          {
+            "minutes": 31.051190216268765,
+            "pts": 5,
+            "rebounds": 7,
+            "assists": 3,
+            "pra": 15,
+            "blowout": true,
+            "foul": false,
+            "value": 7
+          },
+          {
+            "minutes": 31.49037128339065,
+            "pts": 17,
+            "rebounds": 7,
+            "assists": 2,
+            "pra": 26,
+            "blowout": true,
+            "foul": false,
+            "value": 7
+          },
+          {
+            "minutes": 31.96188864580218,
+            "pts": 16,
+            "rebounds": 7,
+            "assists": 6,
+            "pra": 29,
+            "blowout": false,
+            "foul": false,
+            "value": 7
+          },
+          {
+            "minutes": 32.48593421657305,
+            "pts": 24,
+            "rebounds": 7,
+            "assists": 4,
+            "pra": 35,
+            "blowout": false,
+            "foul": false,
+            "value": 7
+          },
+          {
+            "minutes": 33.057597674951566,
+            "pts": 14,
+            "rebounds": 7,
+            "assists": 0,
+            "pra": 21,
+            "blowout": false,
+            "foul": false,
+            "value": 7
+          },
+          {
+            "minutes": 33.87226373263708,
+            "pts": 22,
+            "rebounds": 7,
+            "assists": 1,
+            "pra": 30,
+            "blowout": false,
+            "foul": false,
+            "value": 7
+          },
+          {
+            "minutes": 35.11883789489235,
+            "pts": 24,
+            "rebounds": 7,
+            "assists": 8,
+            "pra": 39,
+            "blowout": false,
+            "foul": false,
+            "value": 7
+          },
+          {
+            "minutes": 25.196339739519768,
+            "pts": 12,
+            "rebounds": 8,
+            "assists": 0,
+            "pra": 20,
+            "blowout": true,
+            "foul": false,
+            "value": 8
+          },
+          {
+            "minutes": 27.58031889409034,
+            "pts": 21,
+            "rebounds": 8,
+            "assists": 1,
+            "pra": 30,
+            "blowout": false,
+            "foul": false,
+            "value": 8
+          },
+          {
+            "minutes": 28.53295954945549,
+            "pts": 14,
+            "rebounds": 8,
+            "assists": 5,
+            "pra": 27,
+            "blowout": false,
+            "foul": true,
+            "value": 8
+          },
+          {
+            "minutes": 29.36959691831931,
+            "pts": 11,
+            "rebounds": 8,
+            "assists": 1,
+            "pra": 20,
+            "blowout": false,
+            "foul": false,
+            "value": 8
+          },
+          {
+            "minutes": 30.1163886555014,
+            "pts": 30,
+            "rebounds": 8,
+            "assists": 2,
+            "pra": 40,
+            "blowout": false,
+            "foul": false,
+            "value": 8
+          },
+          {
+            "minutes": 30.804433785483894,
+            "pts": 18,
+            "rebounds": 8,
+            "assists": 2,
+            "pra": 28,
+            "blowout": false,
+            "foul": true,
+            "value": 8
+          },
+          {
+            "minutes": 31.446363533796625,
+            "pts": 21,
+            "rebounds": 8,
+            "assists": 4,
+            "pra": 33,
+            "blowout": false,
+            "foul": false,
+            "value": 8
+          },
+          {
+            "minutes": 31.941029449059023,
+            "pts": 22,
+            "rebounds": 8,
+            "assists": 6,
+            "pra": 36,
+            "blowout": false,
+            "foul": false,
+            "value": 8
+          },
+          {
+            "minutes": 32.45176145349841,
+            "pts": 24,
+            "rebounds": 8,
+            "assists": 6,
+            "pra": 38,
+            "blowout": false,
+            "foul": false,
+            "value": 8
+          },
+          {
+            "minutes": 33.04122972908862,
+            "pts": 25,
+            "rebounds": 8,
+            "assists": 3,
+            "pra": 36,
+            "blowout": false,
+            "foul": false,
+            "value": 8
+          },
+          {
+            "minutes": 33.8302568596904,
+            "pts": 21,
+            "rebounds": 8,
+            "assists": 4,
+            "pra": 33,
+            "blowout": false,
+            "foul": false,
+            "value": 8
+          },
+          {
+            "minutes": 35.11283481274082,
+            "pts": 26,
+            "rebounds": 8,
+            "assists": 3,
+            "pra": 37,
+            "blowout": true,
+            "foul": false,
+            "value": 8
+          },
+          {
+            "minutes": 24.768702018843545,
+            "pts": 22,
+            "rebounds": 9,
+            "assists": 2,
+            "pra": 33,
+            "blowout": true,
+            "foul": true,
+            "value": 9
+          },
+          {
+            "minutes": 27.566772645779302,
+            "pts": 12,
+            "rebounds": 9,
+            "assists": 3,
+            "pra": 24,
+            "blowout": true,
+            "foul": false,
+            "value": 9
+          },
+          {
+            "minutes": 28.625307888476105,
+            "pts": 22,
+            "rebounds": 9,
+            "assists": 4,
+            "pra": 35,
+            "blowout": true,
+            "foul": false,
+            "value": 9
+          },
+          {
+            "minutes": 29.477219630986482,
+            "pts": 18,
+            "rebounds": 9,
+            "assists": 5,
+            "pra": 32,
+            "blowout": true,
+            "foul": false,
+            "value": 9
+          },
+          {
+            "minutes": 30.183307791273947,
+            "pts": 17,
+            "rebounds": 9,
+            "assists": 2,
+            "pra": 28,
+            "blowout": false,
+            "foul": false,
+            "value": 9
+          },
+          {
+            "minutes": 30.825508676868502,
+            "pts": 27,
+            "rebounds": 9,
+            "assists": 3,
+            "pra": 39,
+            "blowout": true,
+            "foul": false,
+            "value": 9
+          },
+          {
+            "minutes": 31.40668358838686,
+            "pts": 12,
+            "rebounds": 9,
+            "assists": 4,
+            "pra": 25,
+            "blowout": false,
+            "foul": false,
+            "value": 9
+          },
+          {
+            "minutes": 31.898498945797385,
+            "pts": 18,
+            "rebounds": 9,
+            "assists": 1,
+            "pra": 28,
+            "blowout": false,
+            "foul": false,
+            "value": 9
+          },
+          {
+            "minutes": 32.343158751650876,
+            "pts": 23,
+            "rebounds": 9,
+            "assists": 6,
+            "pra": 38,
+            "blowout": true,
+            "foul": false,
+            "value": 9
+          },
+          {
+            "minutes": 32.8775175284546,
+            "pts": 19,
+            "rebounds": 9,
+            "assists": 10,
+            "pra": 38,
+            "blowout": false,
+            "foul": false,
+            "value": 9
+          },
+          {
+            "minutes": 33.58153466952461,
+            "pts": 23,
+            "rebounds": 9,
+            "assists": 5,
+            "pra": 37,
+            "blowout": false,
+            "foul": false,
+            "value": 9
+          },
+          {
+            "minutes": 34.54231263408988,
+            "pts": 19,
+            "rebounds": 9,
+            "assists": 2,
+            "pra": 30,
+            "blowout": false,
+            "foul": false,
+            "value": 9
+          },
+          {
+            "minutes": 36.058279651604046,
+            "pts": 20,
+            "rebounds": 9,
+            "assists": 2,
+            "pra": 31,
+            "blowout": false,
+            "foul": false,
+            "value": 9
+          },
+          {
+            "minutes": 26.904582034957826,
+            "pts": 6,
+            "rebounds": 10,
+            "assists": 3,
+            "pra": 19,
+            "blowout": false,
+            "foul": true,
+            "value": 10
+          },
+          {
+            "minutes": 28.43141350665755,
+            "pts": 25,
+            "rebounds": 10,
+            "assists": 3,
+            "pra": 38,
+            "blowout": false,
+            "foul": false,
+            "value": 10
+          },
+          {
+            "minutes": 29.477227835396764,
+            "pts": 25,
+            "rebounds": 10,
+            "assists": 5,
+            "pra": 40,
+            "blowout": false,
+            "foul": false,
+            "value": 10
+          },
+          {
+            "minutes": 30.390446724482157,
+            "pts": 16,
+            "rebounds": 10,
+            "assists": 1,
+            "pra": 27,
+            "blowout": false,
+            "foul": false,
+            "value": 10
+          },
+          {
+            "minutes": 31.086140904049145,
+            "pts": 15,
+            "rebounds": 10,
+            "assists": 1,
+            "pra": 26,
+            "blowout": false,
+            "foul": false,
+            "value": 10
+          },
+          {
+            "minutes": 31.732695907508454,
+            "pts": 17,
+            "rebounds": 10,
+            "assists": 7,
+            "pra": 34,
+            "blowout": false,
+            "foul": false,
+            "value": 10
+          },
+          {
+            "minutes": 32.315905724090335,
+            "pts": 19,
+            "rebounds": 10,
+            "assists": 5,
+            "pra": 34,
+            "blowout": false,
+            "foul": false,
+            "value": 10
+          },
+          {
+            "minutes": 32.86220863955356,
+            "pts": 19,
+            "rebounds": 10,
+            "assists": 2,
+            "pra": 31,
+            "blowout": false,
+            "foul": false,
+            "value": 10
+          },
+          {
+            "minutes": 33.657860843198506,
+            "pts": 24,
+            "rebounds": 10,
+            "assists": 8,
+            "pra": 42,
+            "blowout": false,
+            "foul": false,
+            "value": 10
+          },
+          {
+            "minutes": 34.860662239013415,
+            "pts": 23,
+            "rebounds": 10,
+            "assists": 6,
+            "pra": 39,
+            "blowout": false,
+            "foul": false,
+            "value": 10
+          },
+          {
+            "minutes": 37.75060829907239,
+            "pts": 24,
+            "rebounds": 10,
+            "assists": 8,
+            "pra": 42,
+            "blowout": false,
+            "foul": false,
+            "value": 10
+          },
+          {
+            "minutes": 28.089840158839785,
+            "pts": 7,
+            "rebounds": 11,
+            "assists": 3,
+            "pra": 21,
+            "blowout": false,
+            "foul": false,
+            "value": 11
+          },
+          {
+            "minutes": 29.511218630728866,
+            "pts": 17,
+            "rebounds": 11,
+            "assists": 2,
+            "pra": 30,
+            "blowout": false,
+            "foul": false,
+            "value": 11
+          },
+          {
+            "minutes": 30.596272423812437,
+            "pts": 8,
+            "rebounds": 11,
+            "assists": 3,
+            "pra": 22,
+            "blowout": true,
+            "foul": false,
+            "value": 11
+          },
+          {
+            "minutes": 31.44689576852363,
+            "pts": 18,
+            "rebounds": 11,
+            "assists": 4,
+            "pra": 33,
+            "blowout": false,
+            "foul": false,
+            "value": 11
+          },
+          {
+            "minutes": 32.068826380737335,
+            "pts": 17,
+            "rebounds": 11,
+            "assists": 2,
+            "pra": 30,
+            "blowout": false,
+            "foul": false,
+            "value": 11
+          },
+          {
+            "minutes": 32.80210253599605,
+            "pts": 15,
+            "rebounds": 11,
+            "assists": 3,
+            "pra": 29,
+            "blowout": false,
+            "foul": false,
+            "value": 11
+          },
+          {
+            "minutes": 33.93627386536678,
+            "pts": 31,
+            "rebounds": 11,
+            "assists": 4,
+            "pra": 46,
+            "blowout": false,
+            "foul": false,
+            "value": 11
+          },
+          {
+            "minutes": 36.213434584602304,
+            "pts": 23,
+            "rebounds": 11,
+            "assists": 5,
+            "pra": 39,
+            "blowout": false,
+            "foul": false,
+            "value": 11
+          },
+          {
+            "minutes": 28.437604702696873,
+            "pts": 18,
+            "rebounds": 12,
+            "assists": 1,
+            "pra": 31,
+            "blowout": false,
+            "foul": false,
+            "value": 12
+          },
+          {
+            "minutes": 30.208697806234486,
+            "pts": 4,
+            "rebounds": 12,
+            "assists": 5,
+            "pra": 21,
+            "blowout": false,
+            "foul": false,
+            "value": 12
+          },
+          {
+            "minutes": 31.335686577598306,
+            "pts": 19,
+            "rebounds": 12,
+            "assists": 5,
+            "pra": 36,
+            "blowout": true,
+            "foul": false,
+            "value": 12
+          },
+          {
+            "minutes": 32.29366377271364,
+            "pts": 14,
+            "rebounds": 12,
+            "assists": 2,
+            "pra": 28,
+            "blowout": false,
+            "foul": false,
+            "value": 12
+          },
+          {
+            "minutes": 33.205403154463895,
+            "pts": 9,
+            "rebounds": 12,
+            "assists": 3,
+            "pra": 24,
+            "blowout": false,
+            "foul": false,
+            "value": 12
+          },
+          {
+            "minutes": 34.68006167842786,
+            "pts": 42,
+            "rebounds": 12,
+            "assists": 4,
+            "pra": 58,
+            "blowout": false,
+            "foul": false,
+            "value": 12
+          },
+          {
+            "minutes": 27.34820346333823,
+            "pts": 21,
+            "rebounds": 13,
+            "assists": 3,
+            "pra": 37,
+            "blowout": false,
+            "foul": false,
+            "value": 13
+          },
+          {
+            "minutes": 30.488993493258494,
+            "pts": 12,
+            "rebounds": 13,
+            "assists": 0,
+            "pra": 25,
+            "blowout": false,
+            "foul": false,
+            "value": 13
+          },
+          {
+            "minutes": 32.0131265770128,
+            "pts": 28,
+            "rebounds": 13,
+            "assists": 2,
+            "pra": 43,
+            "blowout": false,
+            "foul": false,
+            "value": 13
+          },
+          {
+            "minutes": 33.653796516222876,
+            "pts": 27,
+            "rebounds": 13,
+            "assists": 3,
+            "pra": 43,
+            "blowout": false,
+            "foul": false,
+            "value": 13
+          },
+          {
+            "minutes": 27.11842086438834,
+            "pts": 15,
+            "rebounds": 14,
+            "assists": 4,
+            "pra": 33,
+            "blowout": true,
+            "foul": false,
+            "value": 14
+          },
+          {
+            "minutes": 31.25313554193358,
+            "pts": 6,
+            "rebounds": 14,
+            "assists": 4,
+            "pra": 24,
+            "blowout": false,
+            "foul": false,
+            "value": 14
+          },
+          {
+            "minutes": 32.77944115462754,
+            "pts": 31,
+            "rebounds": 14,
+            "assists": 6,
+            "pra": 51,
+            "blowout": false,
+            "foul": false,
+            "value": 14
+          },
+          {
+            "minutes": 34.84490165177366,
+            "pts": 6,
+            "rebounds": 14,
+            "assists": 6,
+            "pra": 26,
+            "blowout": false,
+            "foul": false,
+            "value": 14
+          },
+          {
+            "minutes": 30.640041998013928,
+            "pts": 28,
+            "rebounds": 15,
+            "assists": 2,
+            "pra": 45,
+            "blowout": false,
+            "foul": false,
+            "value": 15
+          },
+          {
+            "minutes": 33.56161199488697,
+            "pts": 21,
+            "rebounds": 15,
+            "assists": 3,
+            "pra": 39,
+            "blowout": false,
+            "foul": false,
+            "value": 15
+          },
+          {
+            "minutes": 31.13490689902354,
+            "pts": 14,
+            "rebounds": 16,
+            "assists": 3,
+            "pra": 33,
+            "blowout": false,
+            "foul": false,
+            "value": 16
+          },
+          {
+            "minutes": 29.53224051721295,
+            "pts": 8,
+            "rebounds": 17,
+            "assists": 1,
+            "pra": 26,
+            "blowout": true,
+            "foul": false,
+            "value": 17
+          },
+          {
+            "minutes": 34.56472825550093,
+            "pts": 23,
+            "rebounds": 18,
+            "assists": 4,
+            "pra": 45,
+            "blowout": false,
+            "foul": false,
+            "value": 18
+          }
+        ]
+      },
+      "verdict": "RESEARCH_ONLY_NO_VALIDATED_EDGE",
+      "calibrated_probability": false,
+      "bet_authority": false
+    },
+    {
+      "player": "jalen-johnson",
+      "metric": "pra",
+      "market": "PRA OVER 39.5",
+      "reference_american_odds": -108,
+      "reference_price_verified_executable": false,
+      "implied_probability": 0.5192,
+      "n": 20000,
+      "historical": {
+        "n": 72,
+        "hits": 43,
+        "rate": 0.5972,
+        "minutes_mean": 35.2
+      },
+      "model": {
+        "frequency": 0.4627,
+        "median": 39,
+        "p10": 27,
+        "p90": 51,
+        "mean": 38.8,
+        "hypothetical_roi": -0.109,
+        "by_minutes": {
+          "GE32": {
+            "n": 15471,
+            "freq": 0.5294
+          },
+          "28to32": {
+            "n": 3970,
+            "freq": 0.2524
+          },
+          "24to28": {
+            "n": 531,
+            "freq": 0.1149
+          },
+          "LT24": {
+            "n": 28,
+            "freq": 0
+          }
+        },
+        "by_script": {
+          "REGULAR": {
+            "n": 14316,
+            "freq": 0.5131
+          },
+          "BLOWOUT": {
+            "n": 3982,
+            "freq": 0.3795
+          },
+          "FOUL_REGULAR": {
+            "n": 1345,
+            "freq": 0.2595
+          },
+          "FOUL_BLOWOUT": {
+            "n": 357,
+            "freq": 0.1345
+          }
+        },
+        "joint_truth": null
+      },
+      "assumptions": {
+        "minutes": [
+          32,
+          35,
+          38
+        ],
+        "minute_weights": [
+          0.2,
+          0.6,
+          0.2
+        ],
+        "rebound_share": 1,
+        "usage": 0.98,
+        "shot_pace": 1.015,
+        "opponent_miss": 1,
+        "foul_downside": 0.08,
+        "blowout_chance": 0.22,
+        "notes": "Role retention uncertain with Hawks redesigned perimeter roster."
+      },
+      "worlds100": {
+        "sampled_count": 100,
+        "hits": 46,
+        "examples": [
+          {
+            "minutes": 29.118407904176983,
+            "pts": 8,
+            "rebounds": 5,
+            "assists": 5,
+            "pra": 18,
+            "blowout": false,
+            "foul": false,
+            "value": 18
+          },
+          {
+            "minutes": 22.54858501497471,
+            "pts": 13,
+            "rebounds": 5,
+            "assists": 3,
+            "pra": 21,
+            "blowout": true,
+            "foul": true,
+            "value": 21
+          },
+          {
+            "minutes": 28.28651492429339,
+            "pts": 12,
+            "rebounds": 6,
+            "assists": 4,
+            "pra": 22,
+            "blowout": true,
+            "foul": false,
+            "value": 22
+          },
+          {
+            "minutes": 25.39043184825324,
+            "pts": 9,
+            "rebounds": 9,
+            "assists": 5,
+            "pra": 23,
+            "blowout": false,
+            "foul": true,
+            "value": 23
+          },
+          {
+            "minutes": 34.536914385857266,
+            "pts": 7,
+            "rebounds": 11,
+            "assists": 5,
+            "pra": 23,
+            "blowout": false,
+            "foul": false,
+            "value": 23
+          },
+          {
+            "minutes": 32.45695414663171,
+            "pts": 14,
+            "rebounds": 9,
+            "assists": 1,
+            "pra": 24,
+            "blowout": false,
+            "foul": false,
+            "value": 24
+          },
+          {
+            "minutes": 26.29389195292539,
+            "pts": 9,
+            "rebounds": 7,
+            "assists": 9,
+            "pra": 25,
+            "blowout": false,
+            "foul": true,
+            "value": 25
+          },
+          {
+            "minutes": 34.17437765516459,
+            "pts": 12,
+            "rebounds": 8,
+            "assists": 5,
+            "pra": 25,
+            "blowout": false,
+            "foul": false,
+            "value": 25
+          },
+          {
+            "minutes": 30.591485061969713,
+            "pts": 12,
+            "rebounds": 7,
+            "assists": 7,
+            "pra": 26,
+            "blowout": true,
+            "foul": true,
+            "value": 26
+          },
+          {
+            "minutes": 35.269277873755705,
+            "pts": 9,
+            "rebounds": 8,
+            "assists": 9,
+            "pra": 26,
+            "blowout": false,
+            "foul": false,
+            "value": 26
+          },
+          {
+            "minutes": 31.53609640507599,
+            "pts": 16,
+            "rebounds": 7,
+            "assists": 4,
+            "pra": 27,
+            "blowout": false,
+            "foul": false,
+            "value": 27
+          },
+          {
+            "minutes": 34.99689925678081,
+            "pts": 12,
+            "rebounds": 10,
+            "assists": 5,
+            "pra": 27,
+            "blowout": false,
+            "foul": false,
+            "value": 27
+          },
+          {
+            "minutes": 30.129772986222342,
+            "pts": 13,
+            "rebounds": 10,
+            "assists": 5,
+            "pra": 28,
+            "blowout": false,
+            "foul": false,
+            "value": 28
+          },
+          {
+            "minutes": 34.407587677284596,
+            "pts": 10,
+            "rebounds": 10,
+            "assists": 8,
+            "pra": 28,
+            "blowout": false,
+            "foul": false,
+            "value": 28
+          },
+          {
+            "minutes": 28.287244012160688,
+            "pts": 14,
+            "rebounds": 9,
+            "assists": 6,
+            "pra": 29,
+            "blowout": true,
+            "foul": false,
+            "value": 29
+          },
+          {
+            "minutes": 33.81865765128333,
+            "pts": 13,
+            "rebounds": 11,
+            "assists": 5,
+            "pra": 29,
+            "blowout": true,
+            "foul": false,
+            "value": 29
+          },
+          {
+            "minutes": 38.97595509015693,
+            "pts": 9,
+            "rebounds": 14,
+            "assists": 6,
+            "pra": 29,
+            "blowout": false,
+            "foul": false,
+            "value": 29
+          },
+          {
+            "minutes": 32.30693162312307,
+            "pts": 11,
+            "rebounds": 12,
+            "assists": 7,
+            "pra": 30,
+            "blowout": true,
+            "foul": false,
+            "value": 30
+          },
+          {
+            "minutes": 35.686687613993634,
+            "pts": 18,
+            "rebounds": 11,
+            "assists": 1,
+            "pra": 30,
+            "blowout": true,
+            "foul": false,
+            "value": 30
+          },
+          {
+            "minutes": 30.090751391249178,
+            "pts": 19,
+            "rebounds": 5,
+            "assists": 7,
+            "pra": 31,
+            "blowout": false,
+            "foul": false,
+            "value": 31
+          },
+          {
+            "minutes": 33.92752010655416,
+            "pts": 19,
+            "rebounds": 7,
+            "assists": 5,
+            "pra": 31,
+            "blowout": false,
+            "foul": false,
+            "value": 31
+          },
+          {
+            "minutes": 39.45616679113638,
+            "pts": 17,
+            "rebounds": 7,
+            "assists": 7,
+            "pra": 31,
+            "blowout": false,
+            "foul": false,
+            "value": 31
+          },
+          {
+            "minutes": 31.313510727494542,
+            "pts": 13,
+            "rebounds": 12,
+            "assists": 7,
+            "pra": 32,
+            "blowout": false,
+            "foul": false,
+            "value": 32
+          },
+          {
+            "minutes": 34.12021412114416,
+            "pts": 13,
+            "rebounds": 13,
+            "assists": 6,
+            "pra": 32,
+            "blowout": false,
+            "foul": false,
+            "value": 32
+          },
+          {
+            "minutes": 36.89441343766812,
+            "pts": 14,
+            "rebounds": 10,
+            "assists": 8,
+            "pra": 32,
+            "blowout": false,
+            "foul": false,
+            "value": 32
+          },
+          {
+            "minutes": 30.89009853136217,
+            "pts": 18,
+            "rebounds": 9,
+            "assists": 6,
+            "pra": 33,
+            "blowout": false,
+            "foul": true,
+            "value": 33
+          },
+          {
+            "minutes": 33.12309392518375,
+            "pts": 24,
+            "rebounds": 6,
+            "assists": 3,
+            "pra": 33,
+            "blowout": false,
+            "foul": false,
+            "value": 33
+          },
+          {
+            "minutes": 35.18769694306121,
+            "pts": 15,
+            "rebounds": 8,
+            "assists": 10,
+            "pra": 33,
+            "blowout": false,
+            "foul": false,
+            "value": 33
+          },
+          {
+            "minutes": 29.037053206128327,
+            "pts": 17,
+            "rebounds": 9,
+            "assists": 8,
+            "pra": 34,
+            "blowout": false,
+            "foul": true,
+            "value": 34
+          },
+          {
+            "minutes": 32.27133447533733,
+            "pts": 20,
+            "rebounds": 10,
+            "assists": 4,
+            "pra": 34,
+            "blowout": false,
+            "foul": false,
+            "value": 34
+          },
+          {
+            "minutes": 34.15595825192766,
+            "pts": 25,
+            "rebounds": 6,
+            "assists": 3,
+            "pra": 34,
+            "blowout": false,
+            "foul": false,
+            "value": 34
+          },
+          {
+            "minutes": 36.12835227883763,
+            "pts": 17,
+            "rebounds": 9,
+            "assists": 8,
+            "pra": 34,
+            "blowout": true,
+            "foul": false,
+            "value": 34
+          },
+          {
+            "minutes": 29.507516694719666,
+            "pts": 20,
+            "rebounds": 9,
+            "assists": 6,
+            "pra": 35,
+            "blowout": false,
+            "foul": false,
+            "value": 35
+          },
+          {
+            "minutes": 32.061406902638346,
+            "pts": 21,
+            "rebounds": 9,
+            "assists": 5,
+            "pra": 35,
+            "blowout": false,
+            "foul": false,
+            "value": 35
+          },
+          {
+            "minutes": 34.130142867436916,
+            "pts": 22,
+            "rebounds": 6,
+            "assists": 7,
+            "pra": 35,
+            "blowout": true,
+            "foul": false,
+            "value": 35
+          },
+          {
+            "minutes": 35.94131047709867,
+            "pts": 17,
+            "rebounds": 13,
+            "assists": 5,
+            "pra": 35,
+            "blowout": false,
+            "foul": false,
+            "value": 35
+          },
+          {
+            "minutes": 30.168224197129607,
+            "pts": 23,
+            "rebounds": 10,
+            "assists": 3,
+            "pra": 36,
+            "blowout": false,
+            "foul": true,
+            "value": 36
+          },
+          {
+            "minutes": 32.57569351376553,
+            "pts": 22,
+            "rebounds": 11,
+            "assists": 3,
+            "pra": 36,
+            "blowout": false,
+            "foul": false,
+            "value": 36
+          },
+          {
+            "minutes": 34.3414396515696,
+            "pts": 18,
+            "rebounds": 6,
+            "assists": 12,
+            "pra": 36,
+            "blowout": true,
+            "foul": false,
+            "value": 36
+          },
+          {
+            "minutes": 35.98237755332345,
+            "pts": 19,
+            "rebounds": 8,
+            "assists": 9,
+            "pra": 36,
+            "blowout": false,
+            "foul": false,
+            "value": 36
+          },
+          {
+            "minutes": 29.866001335634277,
+            "pts": 15,
+            "rebounds": 13,
+            "assists": 9,
+            "pra": 37,
+            "blowout": true,
+            "foul": false,
+            "value": 37
+          },
+          {
+            "minutes": 32.483826862190135,
+            "pts": 17,
+            "rebounds": 11,
+            "assists": 9,
+            "pra": 37,
+            "blowout": false,
+            "foul": false,
+            "value": 37
+          },
+          {
+            "minutes": 34.054735992444776,
+            "pts": 24,
+            "rebounds": 11,
+            "assists": 2,
+            "pra": 37,
+            "blowout": false,
+            "foul": false,
+            "value": 37
+          },
+          {
+            "minutes": 35.39169471247802,
+            "pts": 20,
+            "rebounds": 7,
+            "assists": 10,
+            "pra": 37,
+            "blowout": false,
+            "foul": false,
+            "value": 37
+          },
+          {
+            "minutes": 38.233110506861316,
+            "pts": 14,
+            "rebounds": 16,
+            "assists": 7,
+            "pra": 37,
+            "blowout": false,
+            "foul": false,
+            "value": 37
+          },
+          {
+            "minutes": 31.53360717820829,
+            "pts": 23,
+            "rebounds": 9,
+            "assists": 6,
+            "pra": 38,
+            "blowout": true,
+            "foul": false,
+            "value": 38
+          },
+          {
+            "minutes": 33.56626774315208,
+            "pts": 22,
+            "rebounds": 12,
+            "assists": 4,
+            "pra": 38,
+            "blowout": false,
+            "foul": false,
+            "value": 38
+          },
+          {
+            "minutes": 34.87561215827228,
+            "pts": 18,
+            "rebounds": 10,
+            "assists": 10,
+            "pra": 38,
+            "blowout": false,
+            "foul": false,
+            "value": 38
+          },
+          {
+            "minutes": 36.56967117106225,
+            "pts": 25,
+            "rebounds": 10,
+            "assists": 3,
+            "pra": 38,
+            "blowout": false,
+            "foul": false,
+            "value": 38
+          },
+          {
+            "minutes": 30.17502989862464,
+            "pts": 19,
+            "rebounds": 13,
+            "assists": 7,
+            "pra": 39,
+            "blowout": true,
+            "foul": false,
+            "value": 39
+          },
+          {
+            "minutes": 32.59601701714519,
+            "pts": 23,
+            "rebounds": 9,
+            "assists": 7,
+            "pra": 39,
+            "blowout": false,
+            "foul": false,
+            "value": 39
+          },
+          {
+            "minutes": 34.13436450085954,
+            "pts": 23,
+            "rebounds": 7,
+            "assists": 9,
+            "pra": 39,
+            "blowout": false,
+            "foul": false,
+            "value": 39
+          },
+          {
+            "minutes": 35.46844373585465,
+            "pts": 24,
+            "rebounds": 11,
+            "assists": 4,
+            "pra": 39,
+            "blowout": false,
+            "foul": false,
+            "value": 39
+          },
+          {
+            "minutes": 38.12574818600239,
+            "pts": 18,
+            "rebounds": 10,
+            "assists": 11,
+            "pra": 39,
+            "blowout": false,
+            "foul": false,
+            "value": 39
+          },
+          {
+            "minutes": 31.991505750232605,
+            "pts": 26,
+            "rebounds": 7,
+            "assists": 7,
+            "pra": 40,
+            "blowout": false,
+            "foul": false,
+            "value": 40
+          },
+          {
+            "minutes": 33.90050130414976,
+            "pts": 19,
+            "rebounds": 13,
+            "assists": 8,
+            "pra": 40,
+            "blowout": false,
+            "foul": false,
+            "value": 40
+          },
+          {
+            "minutes": 35.0722673649867,
+            "pts": 25,
+            "rebounds": 13,
+            "assists": 2,
+            "pra": 40,
+            "blowout": false,
+            "foul": false,
+            "value": 40
+          },
+          {
+            "minutes": 36.742867434085724,
+            "pts": 24,
+            "rebounds": 9,
+            "assists": 7,
+            "pra": 40,
+            "blowout": false,
+            "foul": false,
+            "value": 40
+          },
+          {
+            "minutes": 31.47186963433196,
+            "pts": 14,
+            "rebounds": 16,
+            "assists": 11,
+            "pra": 41,
+            "blowout": true,
+            "foul": false,
+            "value": 41
+          },
+          {
+            "minutes": 33.536700794084254,
+            "pts": 18,
+            "rebounds": 14,
+            "assists": 9,
+            "pra": 41,
+            "blowout": false,
+            "foul": false,
+            "value": 41
+          },
+          {
+            "minutes": 34.833305059001184,
+            "pts": 24,
+            "rebounds": 8,
+            "assists": 9,
+            "pra": 41,
+            "blowout": false,
+            "foul": false,
+            "value": 41
+          },
+          {
+            "minutes": 36.04256409977969,
+            "pts": 28,
+            "rebounds": 8,
+            "assists": 5,
+            "pra": 41,
+            "blowout": false,
+            "foul": false,
+            "value": 41
+          },
+          {
+            "minutes": 39.15213751296352,
+            "pts": 23,
+            "rebounds": 12,
+            "assists": 6,
+            "pra": 41,
+            "blowout": false,
+            "foul": false,
+            "value": 41
+          },
+          {
+            "minutes": 32.36041867924631,
+            "pts": 29,
+            "rebounds": 10,
+            "assists": 3,
+            "pra": 42,
+            "blowout": false,
+            "foul": false,
+            "value": 42
+          },
+          {
+            "minutes": 34.301319339098605,
+            "pts": 23,
+            "rebounds": 7,
+            "assists": 12,
+            "pra": 42,
+            "blowout": false,
+            "foul": false,
+            "value": 42
+          },
+          {
+            "minutes": 35.703759166298056,
+            "pts": 22,
+            "rebounds": 14,
+            "assists": 6,
+            "pra": 42,
+            "blowout": false,
+            "foul": false,
+            "value": 42
+          },
+          {
+            "minutes": 37.85991746039145,
+            "pts": 31,
+            "rebounds": 7,
+            "assists": 4,
+            "pra": 42,
+            "blowout": false,
+            "foul": false,
+            "value": 42
+          },
+          {
+            "minutes": 32.44498746695875,
+            "pts": 20,
+            "rebounds": 15,
+            "assists": 8,
+            "pra": 43,
+            "blowout": false,
+            "foul": false,
+            "value": 43
+          },
+          {
+            "minutes": 34.482313745817535,
+            "pts": 26,
+            "rebounds": 12,
+            "assists": 5,
+            "pra": 43,
+            "blowout": false,
+            "foul": false,
+            "value": 43
+          },
+          {
+            "minutes": 35.79314051783724,
+            "pts": 25,
+            "rebounds": 12,
+            "assists": 6,
+            "pra": 43,
+            "blowout": false,
+            "foul": false,
+            "value": 43
+          },
+          {
+            "minutes": 38.10976865041434,
+            "pts": 28,
+            "rebounds": 7,
+            "assists": 8,
+            "pra": 43,
+            "blowout": false,
+            "foul": false,
+            "value": 43
+          },
+          {
+            "minutes": 32.72186955623524,
+            "pts": 20,
+            "rebounds": 17,
+            "assists": 7,
+            "pra": 44,
+            "blowout": false,
+            "foul": false,
+            "value": 44
+          },
+          {
+            "minutes": 34.8447020073193,
+            "pts": 24,
+            "rebounds": 14,
+            "assists": 6,
+            "pra": 44,
+            "blowout": false,
+            "foul": false,
+            "value": 44
+          },
+          {
+            "minutes": 36.211121328934574,
+            "pts": 16,
+            "rebounds": 17,
+            "assists": 11,
+            "pra": 44,
+            "blowout": true,
+            "foul": false,
+            "value": 44
+          },
+          {
+            "minutes": 30.987950408979586,
+            "pts": 30,
+            "rebounds": 10,
+            "assists": 5,
+            "pra": 45,
+            "blowout": false,
+            "foul": false,
+            "value": 45
+          },
+          {
+            "minutes": 34.42175387092846,
+            "pts": 31,
+            "rebounds": 9,
+            "assists": 5,
+            "pra": 45,
+            "blowout": false,
+            "foul": false,
+            "value": 45
+          },
+          {
+            "minutes": 36.174559465954886,
+            "pts": 20,
+            "rebounds": 14,
+            "assists": 11,
+            "pra": 45,
+            "blowout": false,
+            "foul": false,
+            "value": 45
+          },
+          {
+            "minutes": 26.354245289830235,
+            "pts": 26,
+            "rebounds": 11,
+            "assists": 9,
+            "pra": 46,
+            "blowout": true,
+            "foul": false,
+            "value": 46
+          },
+          {
+            "minutes": 34.23191297705976,
+            "pts": 30,
+            "rebounds": 7,
+            "assists": 9,
+            "pra": 46,
+            "blowout": false,
+            "foul": true,
+            "value": 46
+          },
+          {
+            "minutes": 36.088883171162735,
+            "pts": 30,
+            "rebounds": 10,
+            "assists": 6,
+            "pra": 46,
+            "blowout": false,
+            "foul": false,
+            "value": 46
+          },
+          {
+            "minutes": 29.99417436344964,
+            "pts": 28,
+            "rebounds": 11,
+            "assists": 8,
+            "pra": 47,
+            "blowout": false,
+            "foul": false,
+            "value": 47
+          },
+          {
+            "minutes": 34.73327293324056,
+            "pts": 23,
+            "rebounds": 12,
+            "assists": 12,
+            "pra": 47,
+            "blowout": false,
+            "foul": false,
+            "value": 47
+          },
+          {
+            "minutes": 37.31793631524131,
+            "pts": 22,
+            "rebounds": 13,
+            "assists": 12,
+            "pra": 47,
+            "blowout": false,
+            "foul": false,
+            "value": 47
+          },
+          {
+            "minutes": 33.00416658546405,
+            "pts": 26,
+            "rebounds": 15,
+            "assists": 7,
+            "pra": 48,
+            "blowout": true,
+            "foul": false,
+            "value": 48
+          },
+          {
+            "minutes": 35.92351595581613,
+            "pts": 33,
+            "rebounds": 9,
+            "assists": 6,
+            "pra": 48,
+            "blowout": false,
+            "foul": false,
+            "value": 48
+          },
+          {
+            "minutes": 31.805843810964557,
+            "pts": 25,
+            "rebounds": 14,
+            "assists": 10,
+            "pra": 49,
+            "blowout": false,
+            "foul": false,
+            "value": 49
+          },
+          {
+            "minutes": 35.5062704282815,
+            "pts": 22,
+            "rebounds": 16,
+            "assists": 11,
+            "pra": 49,
+            "blowout": false,
+            "foul": false,
+            "value": 49
+          },
+          {
+            "minutes": 29.61166150675523,
+            "pts": 34,
+            "rebounds": 10,
+            "assists": 6,
+            "pra": 50,
+            "blowout": false,
+            "foul": true,
+            "value": 50
+          },
+          {
+            "minutes": 35.474851470664255,
+            "pts": 22,
+            "rebounds": 15,
+            "assists": 13,
+            "pra": 50,
+            "blowout": false,
+            "foul": false,
+            "value": 50
+          },
+          {
+            "minutes": 28.415479802768836,
+            "pts": 35,
+            "rebounds": 8,
+            "assists": 8,
+            "pra": 51,
+            "blowout": true,
+            "foul": false,
+            "value": 51
+          },
+          {
+            "minutes": 35.857954221273296,
+            "pts": 31,
+            "rebounds": 11,
+            "assists": 9,
+            "pra": 51,
+            "blowout": false,
+            "foul": false,
+            "value": 51
+          },
+          {
+            "minutes": 33.88496379280961,
+            "pts": 37,
+            "rebounds": 8,
+            "assists": 7,
+            "pra": 52,
+            "blowout": false,
+            "foul": false,
+            "value": 52
+          },
+          {
+            "minutes": 39.54801987821747,
+            "pts": 28,
+            "rebounds": 11,
+            "assists": 13,
+            "pra": 52,
+            "blowout": false,
+            "foul": false,
+            "value": 52
+          },
+          {
+            "minutes": 37.263554757410056,
+            "pts": 35,
+            "rebounds": 10,
+            "assists": 8,
+            "pra": 53,
+            "blowout": false,
+            "foul": false,
+            "value": 53
+          },
+          {
+            "minutes": 35.777113753835344,
+            "pts": 19,
+            "rebounds": 17,
+            "assists": 18,
+            "pra": 54,
+            "blowout": false,
+            "foul": false,
+            "value": 54
+          },
+          {
+            "minutes": 36.151385481166464,
+            "pts": 32,
+            "rebounds": 15,
+            "assists": 8,
+            "pra": 55,
+            "blowout": false,
+            "foul": false,
+            "value": 55
+          },
+          {
+            "minutes": 37.54021572535412,
+            "pts": 32,
+            "rebounds": 16,
+            "assists": 8,
+            "pra": 56,
+            "blowout": false,
+            "foul": false,
+            "value": 56
+          },
+          {
+            "minutes": 34.996605010529535,
+            "pts": 33,
+            "rebounds": 13,
+            "assists": 12,
+            "pra": 58,
+            "blowout": false,
+            "foul": false,
+            "value": 58
+          },
+          {
+            "minutes": 38.18728943673996,
+            "pts": 38,
+            "rebounds": 12,
+            "assists": 10,
+            "pra": 60,
+            "blowout": false,
+            "foul": false,
+            "value": 60
+          },
+          {
+            "minutes": 38.34728025271959,
+            "pts": 44,
+            "rebounds": 11,
+            "assists": 9,
+            "pra": 64,
+            "blowout": false,
+            "foul": false,
+            "value": 64
+          }
+        ]
+      },
+      "verdict": "RESEARCH_ONLY_NO_VALIDATED_EDGE",
+      "calibrated_probability": false,
+      "bet_authority": false
+    },
+    {
+      "player": "scottie-barnes",
+      "metric": "assists",
+      "market": "Assists OVER 5.5",
+      "reference_american_odds": -139,
+      "reference_price_verified_executable": false,
+      "implied_probability": 0.5816,
+      "n": 20000,
+      "historical": {
+        "n": 80,
+        "hits": 40,
+        "rate": 0.5,
+        "minutes_mean": 33.5
+      },
+      "model": {
+        "frequency": 0.4798,
+        "median": 5,
+        "p10": 2,
+        "p90": 10,
+        "mean": 5.9,
+        "hypothetical_roi": -0.1751,
+        "by_minutes": {
+          "GE32": {
+            "n": 12685,
+            "freq": 0.5173
+          },
+          "28to32": {
+            "n": 6222,
+            "freq": 0.4291
+          },
+          "24to28": {
+            "n": 1018,
+            "freq": 0.331
+          },
+          "LT24": {
+            "n": 75,
+            "freq": 0.3467
+          }
+        },
+        "by_script": {
+          "BLOWOUT": {
+            "n": 5988,
+            "freq": 0.4566
+          },
+          "REGULAR": {
+            "n": 12462,
+            "freq": 0.5058
+          },
+          "FOUL_REGULAR": {
+            "n": 1059,
+            "freq": 0.3872
+          },
+          "FOUL_BLOWOUT": {
+            "n": 491,
+            "freq": 0.3014
+          }
+        },
+        "joint_truth": null
+      },
+      "assumptions": {
+        "minutes": [
+          31,
+          34,
+          37
+        ],
+        "minute_weights": [
+          0.2,
+          0.6,
+          0.2
+        ],
+        "rebound_share": 1,
+        "usage": 1,
+        "shot_pace": 1.01,
+        "opponent_miss": 1,
+        "foul_downside": 0.08,
+        "blowout_chance": 0.33,
+        "notes": "Toronto offense and blowout exposure vs Chicago; assists require teammate shot conversion."
+      },
+      "worlds100": {
+        "sampled_count": 100,
+        "hits": 48,
+        "examples": [
+          {
+            "minutes": 30.73098648493642,
+            "pts": 22,
+            "rebounds": 4,
+            "assists": 0,
+            "pra": 26,
+            "blowout": true,
+            "foul": false,
+            "value": 0
+          },
+          {
+            "minutes": 36.28779237682981,
+            "pts": 18,
+            "rebounds": 5,
+            "assists": 0,
+            "pra": 23,
+            "blowout": false,
+            "foul": false,
+            "value": 0
+          },
+          {
+            "minutes": 30.046297786483148,
+            "pts": 13,
+            "rebounds": 10,
+            "assists": 1,
+            "pra": 24,
+            "blowout": true,
+            "foul": false,
+            "value": 1
+          },
+          {
+            "minutes": 32.49841876980497,
+            "pts": 6,
+            "rebounds": 6,
+            "assists": 1,
+            "pra": 13,
+            "blowout": false,
+            "foul": false,
+            "value": 1
+          },
+          {
+            "minutes": 34.52555249736407,
+            "pts": 11,
+            "rebounds": 2,
+            "assists": 1,
+            "pra": 14,
+            "blowout": false,
+            "foul": false,
+            "value": 1
+          },
+          {
+            "minutes": 26.34523923840922,
+            "pts": 21,
+            "rebounds": 2,
+            "assists": 2,
+            "pra": 25,
+            "blowout": true,
+            "foul": false,
+            "value": 2
+          },
+          {
+            "minutes": 29.158127128824837,
+            "pts": 18,
+            "rebounds": 4,
+            "assists": 2,
+            "pra": 24,
+            "blowout": true,
+            "foul": true,
+            "value": 2
+          },
+          {
+            "minutes": 30.46064809235247,
+            "pts": 13,
+            "rebounds": 11,
+            "assists": 2,
+            "pra": 26,
+            "blowout": true,
+            "foul": false,
+            "value": 2
+          },
+          {
+            "minutes": 31.339311970656095,
+            "pts": 15,
+            "rebounds": 9,
+            "assists": 2,
+            "pra": 26,
+            "blowout": true,
+            "foul": false,
+            "value": 2
+          },
+          {
+            "minutes": 32.147725408391956,
+            "pts": 8,
+            "rebounds": 3,
+            "assists": 2,
+            "pra": 13,
+            "blowout": false,
+            "foul": false,
+            "value": 2
+          },
+          {
+            "minutes": 32.92408266361846,
+            "pts": 12,
+            "rebounds": 11,
+            "assists": 2,
+            "pra": 25,
+            "blowout": false,
+            "foul": false,
+            "value": 2
+          },
+          {
+            "minutes": 33.64088100278901,
+            "pts": 24,
+            "rebounds": 5,
+            "assists": 2,
+            "pra": 31,
+            "blowout": false,
+            "foul": false,
+            "value": 2
+          },
+          {
+            "minutes": 34.40014615886492,
+            "pts": 17,
+            "rebounds": 4,
+            "assists": 2,
+            "pra": 23,
+            "blowout": true,
+            "foul": false,
+            "value": 2
+          },
+          {
+            "minutes": 35.405840211114324,
+            "pts": 17,
+            "rebounds": 7,
+            "assists": 2,
+            "pra": 26,
+            "blowout": false,
+            "foul": false,
+            "value": 2
+          },
+          {
+            "minutes": 37.543748795879786,
+            "pts": 25,
+            "rebounds": 13,
+            "assists": 2,
+            "pra": 40,
+            "blowout": true,
+            "foul": false,
+            "value": 2
+          },
+          {
+            "minutes": 27.80985390021506,
+            "pts": 13,
+            "rebounds": 9,
+            "assists": 3,
+            "pra": 25,
+            "blowout": true,
+            "foul": false,
+            "value": 3
+          },
+          {
+            "minutes": 29.552766455094524,
+            "pts": 22,
+            "rebounds": 7,
+            "assists": 3,
+            "pra": 32,
+            "blowout": false,
+            "foul": false,
+            "value": 3
+          },
+          {
+            "minutes": 30.767285044454564,
+            "pts": 12,
+            "rebounds": 5,
+            "assists": 3,
+            "pra": 20,
+            "blowout": false,
+            "foul": true,
+            "value": 3
+          },
+          {
+            "minutes": 31.74041837156807,
+            "pts": 26,
+            "rebounds": 7,
+            "assists": 3,
+            "pra": 36,
+            "blowout": false,
+            "foul": false,
+            "value": 3
+          },
+          {
+            "minutes": 32.5264788671706,
+            "pts": 14,
+            "rebounds": 2,
+            "assists": 3,
+            "pra": 19,
+            "blowout": false,
+            "foul": false,
+            "value": 3
+          },
+          {
+            "minutes": 33.44599023975761,
+            "pts": 15,
+            "rebounds": 2,
+            "assists": 3,
+            "pra": 20,
+            "blowout": false,
+            "foul": false,
+            "value": 3
+          },
+          {
+            "minutes": 34.20535984694112,
+            "pts": 15,
+            "rebounds": 4,
+            "assists": 3,
+            "pra": 22,
+            "blowout": false,
+            "foul": false,
+            "value": 3
+          },
+          {
+            "minutes": 35.084277932073704,
+            "pts": 18,
+            "rebounds": 8,
+            "assists": 3,
+            "pra": 29,
+            "blowout": false,
+            "foul": false,
+            "value": 3
+          },
+          {
+            "minutes": 36.82040054214871,
+            "pts": 25,
+            "rebounds": 5,
+            "assists": 3,
+            "pra": 33,
+            "blowout": false,
+            "foul": false,
+            "value": 3
+          },
+          {
+            "minutes": 26.858626574204507,
+            "pts": 7,
+            "rebounds": 6,
+            "assists": 4,
+            "pra": 17,
+            "blowout": false,
+            "foul": true,
+            "value": 4
+          },
+          {
+            "minutes": 28.846074373395215,
+            "pts": 19,
+            "rebounds": 8,
+            "assists": 4,
+            "pra": 31,
+            "blowout": false,
+            "foul": true,
+            "value": 4
+          },
+          {
+            "minutes": 29.927526696332645,
+            "pts": 18,
+            "rebounds": 7,
+            "assists": 4,
+            "pra": 29,
+            "blowout": false,
+            "foul": false,
+            "value": 4
+          },
+          {
+            "minutes": 30.69619016069646,
+            "pts": 14,
+            "rebounds": 6,
+            "assists": 4,
+            "pra": 24,
+            "blowout": true,
+            "foul": false,
+            "value": 4
+          },
+          {
+            "minutes": 31.299816944236998,
+            "pts": 17,
+            "rebounds": 7,
+            "assists": 4,
+            "pra": 28,
+            "blowout": false,
+            "foul": false,
+            "value": 4
+          },
+          {
+            "minutes": 31.786770285015816,
+            "pts": 14,
+            "rebounds": 9,
+            "assists": 4,
+            "pra": 27,
+            "blowout": true,
+            "foul": false,
+            "value": 4
+          },
+          {
+            "minutes": 32.311231633548516,
+            "pts": 14,
+            "rebounds": 8,
+            "assists": 4,
+            "pra": 26,
+            "blowout": false,
+            "foul": false,
+            "value": 4
+          },
+          {
+            "minutes": 32.82942705375459,
+            "pts": 29,
+            "rebounds": 10,
+            "assists": 4,
+            "pra": 43,
+            "blowout": false,
+            "foul": false,
+            "value": 4
+          },
+          {
+            "minutes": 33.337663950048466,
+            "pts": 16,
+            "rebounds": 8,
+            "assists": 4,
+            "pra": 28,
+            "blowout": false,
+            "foul": false,
+            "value": 4
+          },
+          {
+            "minutes": 33.79885538220911,
+            "pts": 15,
+            "rebounds": 8,
+            "assists": 4,
+            "pra": 27,
+            "blowout": false,
+            "foul": false,
+            "value": 4
+          },
+          {
+            "minutes": 34.26916493875285,
+            "pts": 15,
+            "rebounds": 13,
+            "assists": 4,
+            "pra": 32,
+            "blowout": true,
+            "foul": false,
+            "value": 4
+          },
+          {
+            "minutes": 34.78221734310368,
+            "pts": 17,
+            "rebounds": 7,
+            "assists": 4,
+            "pra": 28,
+            "blowout": true,
+            "foul": false,
+            "value": 4
+          },
+          {
+            "minutes": 35.46201057140672,
+            "pts": 22,
+            "rebounds": 8,
+            "assists": 4,
+            "pra": 34,
+            "blowout": false,
+            "foul": false,
+            "value": 4
+          },
+          {
+            "minutes": 36.41517637205267,
+            "pts": 24,
+            "rebounds": 8,
+            "assists": 4,
+            "pra": 36,
+            "blowout": false,
+            "foul": false,
+            "value": 4
+          },
+          {
+            "minutes": 38.46713104082658,
+            "pts": 12,
+            "rebounds": 10,
+            "assists": 4,
+            "pra": 26,
+            "blowout": false,
+            "foul": false,
+            "value": 4
+          },
+          {
+            "minutes": 28.304914806676557,
+            "pts": 9,
+            "rebounds": 8,
+            "assists": 5,
+            "pra": 22,
+            "blowout": true,
+            "foul": false,
+            "value": 5
+          },
+          {
+            "minutes": 29.87530920088497,
+            "pts": 19,
+            "rebounds": 10,
+            "assists": 5,
+            "pra": 34,
+            "blowout": true,
+            "foul": false,
+            "value": 5
+          },
+          {
+            "minutes": 30.699422061241865,
+            "pts": 13,
+            "rebounds": 9,
+            "assists": 5,
+            "pra": 27,
+            "blowout": false,
+            "foul": false,
+            "value": 5
+          },
+          {
+            "minutes": 31.34330541984118,
+            "pts": 12,
+            "rebounds": 9,
+            "assists": 5,
+            "pra": 26,
+            "blowout": false,
+            "foul": false,
+            "value": 5
+          },
+          {
+            "minutes": 31.941816683166486,
+            "pts": 12,
+            "rebounds": 4,
+            "assists": 5,
+            "pra": 21,
+            "blowout": false,
+            "foul": false,
+            "value": 5
+          },
+          {
+            "minutes": 32.48648144550082,
+            "pts": 25,
+            "rebounds": 9,
+            "assists": 5,
+            "pra": 39,
+            "blowout": true,
+            "foul": false,
+            "value": 5
+          },
+          {
+            "minutes": 33.01729274205394,
+            "pts": 15,
+            "rebounds": 14,
+            "assists": 5,
+            "pra": 34,
+            "blowout": false,
+            "foul": false,
+            "value": 5
+          },
+          {
+            "minutes": 33.58088350064308,
+            "pts": 14,
+            "rebounds": 9,
+            "assists": 5,
+            "pra": 28,
+            "blowout": false,
+            "foul": false,
+            "value": 5
+          },
+          {
+            "minutes": 34.03096371792122,
+            "pts": 17,
+            "rebounds": 4,
+            "assists": 5,
+            "pra": 26,
+            "blowout": false,
+            "foul": false,
+            "value": 5
+          },
+          {
+            "minutes": 34.49123626083082,
+            "pts": 17,
+            "rebounds": 10,
+            "assists": 5,
+            "pra": 32,
+            "blowout": false,
+            "foul": false,
+            "value": 5
+          },
+          {
+            "minutes": 35.029875924395824,
+            "pts": 18,
+            "rebounds": 13,
+            "assists": 5,
+            "pra": 36,
+            "blowout": false,
+            "foul": false,
+            "value": 5
+          },
+          {
+            "minutes": 35.84683550832833,
+            "pts": 19,
+            "rebounds": 11,
+            "assists": 5,
+            "pra": 35,
+            "blowout": false,
+            "foul": false,
+            "value": 5
+          },
+          {
+            "minutes": 37.22830203943236,
+            "pts": 15,
+            "rebounds": 10,
+            "assists": 5,
+            "pra": 30,
+            "blowout": false,
+            "foul": false,
+            "value": 5
+          },
+          {
+            "minutes": 27.69780917923419,
+            "pts": 13,
+            "rebounds": 9,
+            "assists": 6,
+            "pra": 28,
+            "blowout": true,
+            "foul": false,
+            "value": 6
+          },
+          {
+            "minutes": 29.59164859446686,
+            "pts": 28,
+            "rebounds": 3,
+            "assists": 6,
+            "pra": 37,
+            "blowout": false,
+            "foul": false,
+            "value": 6
+          },
+          {
+            "minutes": 30.61215457985424,
+            "pts": 11,
+            "rebounds": 6,
+            "assists": 6,
+            "pra": 23,
+            "blowout": true,
+            "foul": false,
+            "value": 6
+          },
+          {
+            "minutes": 31.38549540427164,
+            "pts": 14,
+            "rebounds": 4,
+            "assists": 6,
+            "pra": 24,
+            "blowout": true,
+            "foul": false,
+            "value": 6
+          },
+          {
+            "minutes": 32.088791818004346,
+            "pts": 29,
+            "rebounds": 4,
+            "assists": 6,
+            "pra": 39,
+            "blowout": false,
+            "foul": false,
+            "value": 6
+          },
+          {
+            "minutes": 32.71614539274006,
+            "pts": 11,
+            "rebounds": 12,
+            "assists": 6,
+            "pra": 29,
+            "blowout": false,
+            "foul": false,
+            "value": 6
+          },
+          {
+            "minutes": 33.2770066111875,
+            "pts": 27,
+            "rebounds": 4,
+            "assists": 6,
+            "pra": 37,
+            "blowout": false,
+            "foul": false,
+            "value": 6
+          },
+          {
+            "minutes": 33.85661977136891,
+            "pts": 19,
+            "rebounds": 6,
+            "assists": 6,
+            "pra": 31,
+            "blowout": false,
+            "foul": false,
+            "value": 6
+          },
+          {
+            "minutes": 34.406843958272674,
+            "pts": 16,
+            "rebounds": 8,
+            "assists": 6,
+            "pra": 30,
+            "blowout": false,
+            "foul": false,
+            "value": 6
+          },
+          {
+            "minutes": 35.08513610801364,
+            "pts": 16,
+            "rebounds": 11,
+            "assists": 6,
+            "pra": 33,
+            "blowout": false,
+            "foul": false,
+            "value": 6
+          },
+          {
+            "minutes": 36.02105647800699,
+            "pts": 19,
+            "rebounds": 8,
+            "assists": 6,
+            "pra": 33,
+            "blowout": false,
+            "foul": false,
+            "value": 6
+          },
+          {
+            "minutes": 37.786899046481636,
+            "pts": 29,
+            "rebounds": 9,
+            "assists": 6,
+            "pra": 44,
+            "blowout": false,
+            "foul": false,
+            "value": 6
+          },
+          {
+            "minutes": 28.592977397341265,
+            "pts": 22,
+            "rebounds": 7,
+            "assists": 7,
+            "pra": 36,
+            "blowout": true,
+            "foul": false,
+            "value": 7
+          },
+          {
+            "minutes": 30.22058430168881,
+            "pts": 10,
+            "rebounds": 11,
+            "assists": 7,
+            "pra": 28,
+            "blowout": true,
+            "foul": false,
+            "value": 7
+          },
+          {
+            "minutes": 31.309908576825915,
+            "pts": 9,
+            "rebounds": 7,
+            "assists": 7,
+            "pra": 23,
+            "blowout": false,
+            "foul": false,
+            "value": 7
+          },
+          {
+            "minutes": 32.26725639095404,
+            "pts": 30,
+            "rebounds": 4,
+            "assists": 7,
+            "pra": 41,
+            "blowout": false,
+            "foul": false,
+            "value": 7
+          },
+          {
+            "minutes": 33.10919815347584,
+            "pts": 11,
+            "rebounds": 10,
+            "assists": 7,
+            "pra": 28,
+            "blowout": true,
+            "foul": false,
+            "value": 7
+          },
+          {
+            "minutes": 33.79963353241004,
+            "pts": 21,
+            "rebounds": 13,
+            "assists": 7,
+            "pra": 41,
+            "blowout": false,
+            "foul": false,
+            "value": 7
+          },
+          {
+            "minutes": 34.55580161729426,
+            "pts": 14,
+            "rebounds": 10,
+            "assists": 7,
+            "pra": 31,
+            "blowout": true,
+            "foul": false,
+            "value": 7
+          },
+          {
+            "minutes": 35.496197943685594,
+            "pts": 30,
+            "rebounds": 5,
+            "assists": 7,
+            "pra": 42,
+            "blowout": false,
+            "foul": false,
+            "value": 7
+          },
+          {
+            "minutes": 37.3714574684148,
+            "pts": 29,
+            "rebounds": 15,
+            "assists": 7,
+            "pra": 51,
+            "blowout": false,
+            "foul": false,
+            "value": 7
+          },
+          {
+            "minutes": 29.07779340125967,
+            "pts": 9,
+            "rebounds": 6,
+            "assists": 8,
+            "pra": 23,
+            "blowout": true,
+            "foul": false,
+            "value": 8
+          },
+          {
+            "minutes": 30.994547257753112,
+            "pts": 16,
+            "rebounds": 9,
+            "assists": 8,
+            "pra": 33,
+            "blowout": true,
+            "foul": false,
+            "value": 8
+          },
+          {
+            "minutes": 32.05600631361005,
+            "pts": 22,
+            "rebounds": 5,
+            "assists": 8,
+            "pra": 35,
+            "blowout": false,
+            "foul": false,
+            "value": 8
+          },
+          {
+            "minutes": 32.957235069311864,
+            "pts": 22,
+            "rebounds": 9,
+            "assists": 8,
+            "pra": 39,
+            "blowout": false,
+            "foul": false,
+            "value": 8
+          },
+          {
+            "minutes": 33.74031997533976,
+            "pts": 13,
+            "rebounds": 4,
+            "assists": 8,
+            "pra": 25,
+            "blowout": false,
+            "foul": false,
+            "value": 8
+          },
+          {
+            "minutes": 34.43770816150447,
+            "pts": 18,
+            "rebounds": 11,
+            "assists": 8,
+            "pra": 37,
+            "blowout": false,
+            "foul": false,
+            "value": 8
+          },
+          {
+            "minutes": 35.37064533278402,
+            "pts": 14,
+            "rebounds": 10,
+            "assists": 8,
+            "pra": 32,
+            "blowout": false,
+            "foul": false,
+            "value": 8
+          },
+          {
+            "minutes": 36.87320359425851,
+            "pts": 26,
+            "rebounds": 7,
+            "assists": 8,
+            "pra": 41,
+            "blowout": false,
+            "foul": false,
+            "value": 8
+          },
+          {
+            "minutes": 28.35781080040383,
+            "pts": 15,
+            "rebounds": 11,
+            "assists": 9,
+            "pra": 35,
+            "blowout": false,
+            "foul": false,
+            "value": 9
+          },
+          {
+            "minutes": 31.463985095425727,
+            "pts": 25,
+            "rebounds": 7,
+            "assists": 9,
+            "pra": 41,
+            "blowout": true,
+            "foul": false,
+            "value": 9
+          },
+          {
+            "minutes": 33.170213810738716,
+            "pts": 10,
+            "rebounds": 9,
+            "assists": 9,
+            "pra": 28,
+            "blowout": false,
+            "foul": false,
+            "value": 9
+          },
+          {
+            "minutes": 34.376536393883235,
+            "pts": 17,
+            "rebounds": 10,
+            "assists": 9,
+            "pra": 36,
+            "blowout": false,
+            "foul": false,
+            "value": 9
+          },
+          {
+            "minutes": 36.084647325773815,
+            "pts": 28,
+            "rebounds": 5,
+            "assists": 9,
+            "pra": 42,
+            "blowout": false,
+            "foul": false,
+            "value": 9
+          },
+          {
+            "minutes": 28.69516268784119,
+            "pts": 20,
+            "rebounds": 14,
+            "assists": 10,
+            "pra": 44,
+            "blowout": true,
+            "foul": false,
+            "value": 10
+          },
+          {
+            "minutes": 32.16975829301423,
+            "pts": 20,
+            "rebounds": 14,
+            "assists": 10,
+            "pra": 44,
+            "blowout": true,
+            "foul": false,
+            "value": 10
+          },
+          {
+            "minutes": 34.02350437917141,
+            "pts": 18,
+            "rebounds": 7,
+            "assists": 10,
+            "pra": 35,
+            "blowout": false,
+            "foul": false,
+            "value": 10
+          },
+          {
+            "minutes": 35.58143952884605,
+            "pts": 21,
+            "rebounds": 22,
+            "assists": 10,
+            "pra": 53,
+            "blowout": false,
+            "foul": false,
+            "value": 10
+          },
+          {
+            "minutes": 28.34012097498195,
+            "pts": 17,
+            "rebounds": 9,
+            "assists": 11,
+            "pra": 37,
+            "blowout": true,
+            "foul": false,
+            "value": 11
+          },
+          {
+            "minutes": 33.858294814281585,
+            "pts": 19,
+            "rebounds": 4,
+            "assists": 11,
+            "pra": 34,
+            "blowout": false,
+            "foul": false,
+            "value": 11
+          },
+          {
+            "minutes": 38.630866379094975,
+            "pts": 23,
+            "rebounds": 6,
+            "assists": 11,
+            "pra": 40,
+            "blowout": false,
+            "foul": false,
+            "value": 11
+          },
+          {
+            "minutes": 32.244949956066485,
+            "pts": 23,
+            "rebounds": 6,
+            "assists": 12,
+            "pra": 41,
+            "blowout": false,
+            "foul": false,
+            "value": 12
+          },
+          {
+            "minutes": 34.52506279421195,
+            "pts": 21,
+            "rebounds": 14,
+            "assists": 12,
+            "pra": 47,
+            "blowout": false,
+            "foul": false,
+            "value": 12
+          },
+          {
+            "minutes": 31.010802665988557,
+            "pts": 25,
+            "rebounds": 6,
+            "assists": 13,
+            "pra": 44,
+            "blowout": true,
+            "foul": false,
+            "value": 13
+          },
+          {
+            "minutes": 35.60670955303278,
+            "pts": 20,
+            "rebounds": 12,
+            "assists": 13,
+            "pra": 45,
+            "blowout": false,
+            "foul": false,
+            "value": 13
+          },
+          {
+            "minutes": 36.187174574558064,
+            "pts": 26,
+            "rebounds": 10,
+            "assists": 14,
+            "pra": 50,
+            "blowout": false,
+            "foul": false,
+            "value": 14
+          },
+          {
+            "minutes": 32.627184359650954,
+            "pts": 5,
+            "rebounds": 1,
+            "assists": 16,
+            "pra": 22,
+            "blowout": true,
+            "foul": false,
+            "value": 16
+          },
+          {
+            "minutes": 35.167248793931925,
+            "pts": 29,
+            "rebounds": 8,
+            "assists": 19,
+            "pra": 56,
+            "blowout": true,
+            "foul": false,
+            "value": 19
+          }
+        ]
+      },
+      "verdict": "RESEARCH_ONLY_NO_VALIDATED_EDGE",
+      "calibrated_probability": false,
+      "bet_authority": false
+    }
+  ]
+}
