@@ -1,0 +1,28 @@
+name: ATLAS NBA player-to-PBP shot anomaly diagnosis
+on:
+  push:
+    branches: [research/odds-api-probe-2026-10-22]
+    paths:
+      - scripts/proof/nba-v3-player-fga-difference.mjs
+      - scripts/proof/nba-v3-player-fga-difference.test.mjs
+      - .github/workflows/atlas-nba-player-fga-diagnostic.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  explain-shot-anomaly:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - run: node --test scripts/proof/nba-v3-player-fga-difference.test.mjs
+      - run: node scripts/proof/nba-v3-player-fga-difference.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: atlas-nba-shot-player-diagnostic
+          path: atlas-nba-per-player-fga-differences.json
+          if-no-files-found: error
+          retention-days: 7
