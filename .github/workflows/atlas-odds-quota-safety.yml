@@ -1,0 +1,55 @@
+name: ATLAS Odds API quota safety (offline only)
+
+on:
+  push:
+    branches:
+      - research/odds-api-probe-2026-10-22
+    paths:
+      - .github/workflows/atlas-odds-quota-safety.yml
+      - scripts/scout/the-odds-api-probe.py
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-no-credit-default:
+    name: Offline safety and fail-closed budget checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exercise budget, malformed quote and schema checks (offline)
+        run: python3 scripts/scout/the-odds-api-probe.py --self-test
+      - name: Assert default is zero-network, zero-credit
+        run: |
+          python3 scripts/scout/the-odds-api-probe.py
+          python3 - <<'PY'
+          import json
+          p = json.load(open('atlas-odds-probe-evidence.json', encoding='utf-8'))
+          assert p['classification'] == 'SKIPPED_NO_APPROVAL'
+          assert p['execution_authority'] is False
+          assert p['authorized_bet'] is False
+          assert p['raw_odds_persisted'] is False
+          print('ATLAS_ZERO_CREDIT_DEFAULT=PASS')
+          PY
+      - name: Assert missing secret cannot reach the provider (offline)
+        env:
+          ATLAS_ODDS_APPROVED_CREDITS: '1'
+        run: |
+          if python3 scripts/scout/the-odds-api-probe.py; then
+            echo "Unexpectedly accepted approval with no secret"
+            exit 1
+          fi
+          python3 - <<'PY'
+          import json
+          p = json.load(open('atlas-odds-probe-evidence.json', encoding='utf-8'))
+          assert p['classification'] == 'FAIL'
+          assert p['reason'] == 'MISSING_OR_INVALID_SECRET'
+          print('ATLAS_MISSING_KEY_FAIL_CLOSED=PASS')
+          PY
