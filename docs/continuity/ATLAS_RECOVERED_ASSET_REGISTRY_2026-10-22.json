@@ -1,0 +1,69 @@
+{
+  "schema": "atlas.recovered-artifact-registry.v1",
+  "as_of_date": "2026-10-22",
+  "authority": "RECOVERY_HASH_RECORD_SHADOW",
+  "origin": "Atlas🦾 personal Library",
+  "primary_v3": {
+    "file": "ATLAS_PBP_V3_CHRONOLOGICAL_SHADOW.zip",
+    "library_ref": "file_0000000053e481f7a9f4b1048f7ba2ef",
+    "bytes_reported": 73043,
+    "container_materialized": false,
+    "sha256_unavailable": true,
+    "replay_complete": false,
+    "label": "PRIMARY_ARCHIVE_PRESENT_NOT_READABLE"
+  },
+  "audit_v3": {
+    "file": "ATLAS_NBA_PBP_V3_AUDIT_SHADOW_20261022.zip",
+    "library_ref": "file_00000000ee58823095e41b019ebd58e6",
+    "bytes_verified": 8317,
+    "sha256": "911a3e25497869650ba0fcf0ef85f7bfd0a7017ea33aff2c26ba680218367236",
+    "extracted": [
+      {
+        "path": "scripts/scout/nba-pbp-v3-audit.shadow.cjs",
+        "bytes": 9365,
+        "sha256": "509280ff894876f26f68ea1bfedf641cce7e1b5e2d0fe448cada42fd05cb3dfe"
+      },
+      {
+        "path": "scripts/scout/nba-pbp-v3-audit.shadow.test.cjs",
+        "bytes": 5312,
+        "sha256": "3fcd47b6552fccd4481805cd4cd688b1282ecc3e26b4b7d92b382230b9b338b5"
+      },
+      {
+        "path": "docs/research/ATLAS_NBA_PBP_V3_EVIDENCE_AUDIT_20261022.md",
+        "bytes": 5248,
+        "sha256": "f5a3ab2bd26d1bf52168dff37a8826b02c8f913b884562d431f2b3850010f4fe"
+      }
+    ],
+    "offline_tests_rerun": {
+      "pass": 16,
+      "fail": 0
+    },
+    "validation_scope": "SYNTHETIC_CONTRACT_ONLY",
+    "reconstructed_57_game_predictions": false
+  },
+  "prior_report": {
+    "file": "REPORT.md",
+    "library_ref": "file_0000000091f881fdacfb0bfb950a0204",
+    "metrics_status": "REPORTED_NOT_REPLAYED",
+    "sample_57": true,
+    "earlier_checkpoint_54": true
+  },
+  "disposition": "AUDIT_RECOVERED_FULL_V3_REPLAY_BLOCKED",
+  "next": "ONLY MARK REPLAY VERIFIED AFTER PRIMARY ZIP BYTES AND 57 ROW LEVEL FOLDS ARE REPRODUCED",
+  "acceptance": [
+    "PRIMARY_BYTES_ACCESSIBLE",
+    "ZIP_SHA256_RECORDED",
+    "57_UNIQUE_GAME_IDS",
+    "CHRONOLOGY_WITNESSED",
+    "TRAIN_TEST_CUTOFFS_VERIFIED",
+    "PRE_Q4_SELECTION_LOCKED",
+    "PER_GAME_PREDICTIONS_REPLAYED",
+    "METRIC_COMPARISON_DOCUMENTED"
+  ],
+  "actions_without_user_input": [
+    "PRESERVE_THIS_REGISTRY",
+    "KEEP_REPLAY_GATE_BLOCKED",
+    "RUN_OFFLINE_ANTI_REGRESSION",
+    "WORK_ON_OWN_SOURCE_BASELINE_SEPARATELY_LABELLED"
+  ]
+}
