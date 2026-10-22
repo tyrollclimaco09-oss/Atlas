@@ -1,0 +1,30 @@
+name: ATLAS NBA disputed player shot trace (zero odds)
+on:
+  push:
+    branches: [research/odds-api-probe-2026-10-22]
+    paths:
+      - scripts/proof/nba-v3-disputed-shot-trace.mjs
+      - scripts/proof/nba-v3-disputed-shot-trace.test.mjs
+      - .github/workflows/atlas-nba-disputed-shot-trace.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  trace-anomaly:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --test scripts/proof/nba-v3-disputed-shot-trace.test.mjs
+      - run: node scripts/proof/nba-v3-disputed-shot-trace.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: atlas-nba-two-player-shot-trace
+          path: atlas-nba-player-shot-anomaly-trace.json
+          retention-days: 7
+          if-no-files-found: error
