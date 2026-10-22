@@ -1,0 +1,28 @@
+name: ATLAS NFL Week 6 independent PBP census (nflverse vs ESPN)
+on:
+  push:
+    branches: [research/odds-api-probe-2026-10-22]
+    paths:
+      - scripts/proof/nfl-week6-independent-pbp.py
+      - .github/workflows/atlas-nfl-week6-independent-pbp.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  nfl-pbp-two-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python3 scripts/proof/nfl-week6-independent-pbp.py --self-test
+      - run: python3 scripts/proof/nfl-week6-independent-pbp.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: atlas-nfl-week6-independent-play-census
+          path: atlas-nfl-week6-independent-pbp.json
+          retention-days: 7
+          if-no-files-found: ignore
