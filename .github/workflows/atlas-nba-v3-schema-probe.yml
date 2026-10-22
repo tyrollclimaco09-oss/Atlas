@@ -1,0 +1,26 @@
+name: ATLAS NBA V3 event integrity probe (one free game)
+on:
+  push:
+    branches: [research/odds-api-probe-2026-10-22]
+    paths:
+      - scripts/proof/nba-v3-event-schema-audit.mjs
+      - .github/workflows/atlas-nba-v3-schema-probe.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  schema-coverage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - run: node scripts/proof/nba-v3-event-schema-audit.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: atlas-nba-v3-one-game-schema-sanitized
+          path: atlas-nba-v3-event-schema-audit.json
+          retention-days: 7
+          if-no-files-found: error
