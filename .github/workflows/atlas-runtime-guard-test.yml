@@ -1,0 +1,20 @@
+name: ATLAS P0 runtime guards (offline)
+on:
+  push:
+    branches: [research/odds-api-probe-2026-10-22]
+    paths:
+      - scripts/runtime/supabase/**
+      - .github/workflows/atlas-runtime-guard-test.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify-runtime-guards:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - run: node --test scripts/runtime/supabase/runtime-guards.test.cjs scripts/health/health-policy.test.cjs
