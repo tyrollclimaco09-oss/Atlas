@@ -1,0 +1,27 @@
+name: ATLAS NBA Q3-to-Q4 opportunity feature chronology proof
+on:
+  push:
+    branches: [research/odds-api-probe-2026-10-22]
+    paths:
+      - scripts/proof/nba-q3-opportunity-shadow.mjs
+      - scripts/proof/nba-q3-opportunity-shadow.test.mjs
+      - .github/workflows/atlas-nba-q3-opportunity.yml
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  nba-q3-no-leak:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - run: node --test scripts/proof/nba-q3-opportunity-shadow.test.mjs
+      - run: node scripts/proof/nba-q3-opportunity-shadow.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: atlas-nba-q3-frozen-feature-research
+          path: atlas-nba-q3-opportunity-three-game.json
+          retention-days: 7
+          if-no-files-found: error
