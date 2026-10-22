@@ -89,3 +89,9 @@ Source of truth: `scripts/runtime/supabase/` on this research branch. Tests: CI 
 4. Replace the retired paid odds path only with explicit one-credit approval, quota preflight and source-timestamped receipts. No reactivation by tweaking provider `active` flags.
 5. Bring the MLB research model validations out of `HOLD` through independent baseline review; three VERIFIED_LAB datasets have retrospective metrics, but all five model validation records are on HOLD and not operator approved.
 6. Do not claim profit, automatic betting authority, or production readiness while RC9 says HOLD.
+
+## Two sequential sport-specific data passes (NBA → NFL) — October 22
+
+- **NBA first:** real Oct 21 game 401909834, 19 usable player stat rows and 538 distinct PBP IDs, no prices. Github run 39834900969 PASS; Supabase immutable shadow `74af21a2-b637-4ab4-834c-6110b52a5fb8`. The pre-existing 57-game NBA V3 Q4 field-goal-attempt experiment is separate research and was not replayed/promoted. Details: `docs/prospective/ATLAS_NBA_20261021_PLAYER_PBP_SOURCE_PROOF.md`.
+- **NFL second:** Oct 18 game 401872996 is **Week 6**, correcting earlier mislabeled Week 7 references. Corrected GitHub run 39837577620 PASS, 22 player rows, 186 play IDs in 20 drives. Independently paired NFLverse and ESPN Week 6 samples matched C.J. Stroud 34 passing attempts and Woody Marks 15 carries (run 39836988809). The nflverse release did NOT have Week 7 rows. Supabase additive immutable correction `e5e3f656-ffc6-4c67-9391-ad7b8e299a99` preserves mistaken original rather than editing historical evidence. Details: `docs/prospective/ATLAS_NFL_20261018_WEEK6_PLAYER_PBP_CROSSSOURCE_PROOF.md`.
+- Both pipelines are **retrospective source validation only**; no automatically graded forecasts, no odds API usage, no claims of profit, no canonical production promotion.
