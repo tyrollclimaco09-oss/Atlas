@@ -1,0 +1,21 @@
+name: ATLAS frozen NBA proof archive integrity
+on:
+  push:
+    branches: [research/odds-api-probe-2026-10-22]
+    paths:
+      - docs/prospective/ATLAS_NBA_20261022_CLE_PHI_UNPRICED_FREEZE.json
+      - scripts/proof/verify-nba-archive.test.mjs
+      - .github/workflows/atlas-nba-archive-integrity.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  frozen-nba-archive-integrity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - run: node --test scripts/proof/verify-nba-archive.test.mjs
