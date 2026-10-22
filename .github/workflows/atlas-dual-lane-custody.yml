@@ -1,0 +1,39 @@
+name: ATLAS dual-lane source-to-shadow research custody (no paid APIs)
+on:
+  push:
+    branches: [research/odds-api-probe-2026-10-22]
+    paths:
+      - scripts/proof/dual-lane-research-custody.cjs
+      - scripts/proof/dual-lane-research-custody.test.cjs
+      - .github/workflows/atlas-dual-lane-custody.yml
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  check-research-not-production:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - name: Check custody contract with adversarial fixtures
+        run: node --test scripts/proof/dual-lane-research-custody.test.cjs
+      - name: Produce separate NBA Q3 and Q4 research
+        run: node scripts/proof/nba-q3-opportunity-shadow.mjs
+      - name: Produce separate NFL player-level source corroboration
+        run: python3 scripts/proof/nfl-week6-player-actors.py
+      - name: Validate input hashes and quarantine as shadow
+        run: node scripts/proof/dual-lane-research-custody.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: atlas-dual-lane-source-custody
+          path: |
+            atlas-nba-q3-opportunity-three-game.json
+            atlas-nfl-week6-actor-volume.json
+            atlas-dual-lane-custody.json
+          retention-days: 7
+          if-no-files-found: ignore
