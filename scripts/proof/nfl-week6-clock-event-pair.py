@@ -97,6 +97,23 @@ def matching(a,b):
             "ambiguous_count":len(ambiguous),
             "espn_only_count":len(missing_a),"nflverse_only_count":len(missing_b),
             "strict_match_is_actor_proof":False,"source_admin_events_equivalent":False}
+def audit_nflverse_only_espn_clock_neighbors(unmatched,summary):
+    """Diagnostic only. Same clock is not a source event ID or actor match."""
+    plays=[p for d in summary.get("drives",{}).get("previous",[]) for p in d.get("plays",[])]
+    out=[];categories=Counter()
+    for row in unmatched:
+        neighbors=[p for p in plays if p.get("period",{}).get("number")==row["q"]
+          and clock_display(p.get("clock",{}).get("displayValue"))==row["sec"]]
+        types=sorted({str(p.get("type",{}).get("text","UNKNOWN")) for p in neighbors})
+        label="|".join(types) if types else "NO_ESPN_EVENT_AT_EXACT_CLOCK"
+        categories[label]+=1
+        out.append({"nflverse_id":row["play_id"],"q":row["q"],"sec":row["sec"],
+          "nflverse_team":row["team"],"kind":row["kind"],
+          "nflverse_play_type":row["type"],"espn_clock_neighbor_types":types,
+          "espn_clock_neighbor_count":len(neighbors)})
+    return {"clock_neighbor_type_counts":dict(categories),"nflverse_only_diagnostics":out,
+      "neighbor_identity_or_actor_verified":False}
+
 def selftest():
     esp=[{"play_id":"e1","q":1,"sec":600,"team":"HOU","kind":"PASS"},
          {"play_id":"e2","q":1,"sec":580,"team":"JAX","kind":"RUSH"}]
@@ -106,6 +123,11 @@ def selftest():
     assert a["unique_correspondences"]==1 and a["espn_only_count"]==1 and a["nflverse_only_count"]==1
     assert a["strict_match_is_actor_proof"] is False
     assert matching(esp,other+[other[0]])["ambiguous_count"]==1
+    diag=audit_nflverse_only_espn_clock_neighbors([other[1]],{"drives":{"previous":[
+      {"plays":[{"id":"sample","type":{"text":"Passing Touchdown"},"period":{"number":1},
+        "clock":{"displayValue":"9:40"}}]}]}})
+    assert diag["clock_neighbor_type_counts"]["Passing Touchdown"]==1
+    assert diag["neighbor_identity_or_actor_verified"] is False
     assert clock_display("00:09")==9 and clock_display("INVALID") is None
     assert clock_float("600.0")==600 and clock_float("junk") is None
     eligible,rejected=normalize_nflverse([
@@ -143,15 +165,18 @@ def main():
                     check(len(rows)<500,"NFL_GAME_TOO_MANY_ROWS")
     check(rows,"NFL_WEEK6_NOT_AVAILABLE")
     e,he=load(URL_ESPN,4_000_000)
-    a,excluded_a=normalize_espn(json.loads(e))
+    espn_obj=json.loads(e)
+    a,excluded_a=normalize_espn(espn_obj)
     n,excluded_n=normalize_nflverse(rows)
     result=matching(a,n)
+    remaining_diag=audit_nflverse_only_espn_clock_neighbors(result["nflverse_only"],espn_obj)
     receipt={"schema":"atlas.nfl.week6.clock-event-correspondence.shadow.v1",
       "classification":"STRICT_CLOCK_TEAM_KIND_CORRESPONDENCE_NOT_ACTOR_CERTIFICATION",
       "game":"2026_06_HOU_JAX","observed_at_utc":datetime.now(timezone.utc).isoformat(),
       "nflverse_sha256":hb,"espn_sha256":he,
       "espn_restricted_candidates":len(a),"nflverse_attempt_candidates":len(n),
       "espn_rejections":excluded_a,"nflverse_rejections":excluded_n,
+      "unmatched_source_clock_diagnostic":remaining_diag,
       "comparison":{k:(v[:30] if isinstance(v,list) else v) for k,v in result.items()
                     if k!="exact_clock_key_pairs"},
       "example_matched_pairs":result["exact_clock_key_pairs"][:20],
@@ -165,6 +190,8 @@ def main():
       "matched":result["unique_correspondences"],"ambiguous_keys":result["ambiguous_count"],
       "espn_only":result["espn_only_count"],"nflverse_only":result["nflverse_only_count"],
       "espn_rejections":excluded_a,"nflverse_rejections":excluded_n,
+      "extra_clock_neighbor_types":remaining_diag["clock_neighbor_type_counts"],
+      "extra_examples":remaining_diag["nflverse_only_diagnostics"][:12],
       "actor_proof":False,"nflverse_sha":hb},sort_keys=True))
 if __name__=="__main__":
     try:main()
