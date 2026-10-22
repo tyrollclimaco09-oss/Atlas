@@ -1,0 +1,30 @@
+name: ATLAS NFL Week 6 paired source coverage audit
+on:
+  push:
+    branches: [research/odds-api-probe-2026-10-22]
+    paths:
+      - scripts/proof/nfl-week6-independent-pair.py
+      - .github/workflows/atlas-nfl-week6-paired-proof.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  real-crosssource:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - name: Check exact player and provider stat mappings offline
+        run: python3 scripts/proof/nfl-week6-independent-pair.py --self-test
+      - name: Verify available Week 6 passing/rushing inputs across two sources
+        run: python3 scripts/proof/nfl-week6-independent-pair.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: atlas-nfl-week6-crosssource-proof
+          path: atlas-nfl-week6-crosssource-proof.json
+          if-no-files-found: ignore
+          retention-days: 7
