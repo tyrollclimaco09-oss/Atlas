@@ -1,0 +1,48 @@
+{
+  "packet": {
+    "schema": "atlas.prospective.unpriced-baseline.v1",
+    "classification": "REAL_EVENT_UNVALIDATED_UNPRICED_BASELINE",
+    "sport": "NHL",
+    "league": "NHL",
+    "event_key": "NHL:NHL_WEB_API:2026020154",
+    "source_event_id": "2026020154",
+    "home": {
+      "id": "6",
+      "name": "BOS"
+    },
+    "away": {
+      "id": "18",
+      "name": "NSH"
+    },
+    "event_starts_at_utc": "2026-10-22T23:00:00.000Z",
+    "source_url": "https://api-web.nhle.com/v1/score/2026-10-22",
+    "source_observed_at_utc": "2026-10-22T18:10:58.313Z",
+    "source_published_at_utc": null,
+    "source_response_sha256": "d06716fff05d0e6238201d1d1cb1e7272170221b1f400c82d23b7205681ba479",
+    "normalizer_sha256": "c4b229d2c6e7dc3b61d43b222d28c6c244540d097b0fbb247fe44a5311a2773d",
+    "source_normalized_state": "FUT",
+    "frozen_at_utc": "2026-10-22T18:10:58.569Z",
+    "forecast": {
+      "model_key": "UNIFORM_HOME_WIN_REFERENCE_BASELINE",
+      "model_version": "0.1.0",
+      "selection_side": "HOME",
+      "selection_id": "6",
+      "estimated_probability": 0.5,
+      "origin": "DELIBERATELY_UNINFORMED_BASELINE",
+      "model_trained": false,
+      "model_validated": false
+    },
+    "market_price": null,
+    "executable_price_verified": false,
+    "sportsbook_offer": null,
+    "profitability_claim": false,
+    "external_timing_verified": false,
+    "benchmark_only": true,
+    "calibrator_eligible": false,
+    "database_persisted": false,
+    "production_authority": false,
+    "execution_authority": false,
+    "bet_authorized": false
+  },
+  "packet_sha256": "d5b66d9a42314f2ab6f5ed83f8ccf5e6fa0d2fe78d4504bd32d0ffc179380e62"
+}
