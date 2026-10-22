@@ -187,9 +187,8 @@ def quota_preflight(headers):
 
 
 def write_evidence(evidence):
-    EVIDENCE.write_text(json.dumps(evidence, indent=2, sort_keys=True) + "\\n", encoding="utf-8")
+    EVIDENCE.write_text(json.dumps(evidence, indent=2, sort_keys=True) + chr(10), encoding="utf-8")
     print(json.dumps(evidence, sort_keys=True))
-
 
 def main():
     if len(sys.argv) > 1 and sys.argv[1] == "--self-test":
