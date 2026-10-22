@@ -13,7 +13,7 @@ from datetime import datetime, timezone
 
 NFLVERSE="https://github.com/nflverse/nflverse-data/releases/download/pbp/play_by_play_2026.csv.gz"
 ESPN="https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872996"
-GAME="2026_06_HOU_NE"
+GAME="2026_06_HOU_JAX"
 ALL_FIELDS=["season","week","game_id","home_team","away_team","qtr","play_id","posteam",
             "play_type","pass_attempt","rush_attempt","qb_dropback","sack","qb_scramble",
             "no_play","penalty","passer_player_name","rusher_player_name","receiver_player_name"]
@@ -35,7 +35,7 @@ def norm_plays(rows):
     for r in rows:
         if r.get("game_id")!=GAME or str(r.get("week")) not in ("6","6.0") or str(r.get("season")) not in ("2026","2026.0"):
             raise ValueError("NFLVERSE_WEEK_OR_GAME_CONFLICT")
-        if r.get("home_team")!="NE" or r.get("away_team")!="HOU":
+        if r.get("home_team")!="JAX" or r.get("away_team")!="HOU":
             raise ValueError("NFLVERSE_HOME_AWAY_CONFLICT")
         uid=str(r.get("play_id",""))
         if not uid or uid in distinct:issues["empty_or_duplicate_play_ids"]+=1
@@ -55,21 +55,26 @@ def norm_plays(rows):
 def espn_reference(summary):
     game_id=str(summary.get("header",{}).get("id") or summary.get("header",{}).get("competitions",[{}])[0].get("id"))
     if game_id!="401872996":raise ValueError("ESPN_EVENT_IDENTITY_CONFLICT")
+    teams=summary.get("boxscore",{}).get("teams",[])
+    names={str(t.get("team",{}).get("id")):str(t.get("team",{}).get("abbreviation","")).upper() for t in teams}
+    if names.get("30")!="JAX" or names.get("34")!="HOU":
+        raise ValueError("ESPN_TEAM_IDENTITY_CONFLICT_"+str(names))
     drives=summary.get("drives",{}).get("previous",[])
     if not isinstance(drives,list) or not drives:raise ValueError("ESPN_COMPLETED_DRIVES_MISSING")
     plays=[p for d in drives for p in d.get("plays",[])]
     cats=Counter(str(p.get("type",{}).get("text","UNKNOWN")) for p in plays)
-    return {"game_id":game_id,"completed_drives":len(drives),"observed_plays":len(plays),
+    return {"game_id":game_id,"home_team":"JAX","away_team":"HOU","espn_team_ids":names,
+        "completed_drives":len(drives),"observed_plays":len(plays),
         "source_consistent_candidate_types":{
             "Pass Reception":cats.get("Pass Reception",0),
             "Pass Incompletion":cats.get("Pass Incompletion",0),
             "Rush":cats.get("Rush",0)},
         "all_play_types":dict(cats)}
 def selftest():
-    sample=[{"season":"2026","week":"6","game_id":GAME,"home_team":"NE","away_team":"HOU",
+    sample=[{"season":"2026","week":"6","game_id":GAME,"home_team":"JAX","away_team":"HOU",
              "play_id":"10","qtr":"1","posteam":"HOU","play_type":"pass","pass_attempt":"1",
              "qb_dropback":"1","sack":"0","no_play":"0"},
-            {"season":"2026","week":"6","game_id":GAME,"home_team":"NE","away_team":"HOU",
+            {"season":"2026","week":"6","game_id":GAME,"home_team":"JAX","away_team":"HOU",
              "play_id":"11","qtr":"1","posteam":"HOU","play_type":"run","rush_attempt":"1",
              "no_play":"0"}]
     got=norm_plays(sample)
