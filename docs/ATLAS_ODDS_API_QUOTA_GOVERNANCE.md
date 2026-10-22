@@ -51,3 +51,39 @@ Status: 2026-10-22. Review-only. No production promotion, no live wagering, no b
 - `.github/workflows/atlas-odds-api-probe.yml`: manual dispatch only, one-credit explicit opt-in.
 - `main`, the prior review branch, Command Center, Supabase and placement systems are untouched.
 - A manual-only workflow on a nondefault GitHub branch may not be dispatchable from the Actions UI until its workflow exists on the default branch. **Do not merge/promote silently**. Treat existing recorded proof as sufficient until a reviewed activation path is approved.
+
+
+## Existing-ATLAS-first integration inventory — October 22, 2026
+
+No independent replacement framework was created. The zero-credit EV research seam calls the **existing** `command-center/pricing.js` through `scripts/scout/ev-research-shadow.cjs` and reuses the existing `scripts/scout/house-mirror-shadow.cjs` for bookmaker quote validation, provider-family balancing, proportional de-vig and chronology checks.
+
+| Canonical/source component | Use and authority | Current caveat |
+| --- | --- | --- |
+| `command-center/pricing.js` | Exact American odds -> decimal, break-even, expected ROI from a supplied probability | A supplied probability is NOT a verified forecast |
+| `scripts/scout/house-mirror-shadow.cjs` | Synthetic two-sided odds, provider-family balancing, quote age/identity/overround checks | Live-origin quotes forbidden, correctly; do not weaken this |
+| `scripts/scout/opportunity-shadow.cjs` and Outcome Intelligence | Price-blind hypothetical/experimental forecast-side research | No validated real probability distribution is established |
+| `scripts/scout/free-source-core/` | Existing free NFL/other sports source adapters | Not an odds oracle |
+| `scripts/scout/the-odds-api-probe.py` | Observed credential/provider/market contract and bounded usage | First proof did not persist raw quotes, so cannot backtest it |
+| `scripts/scout/ev-research-shadow.cjs` | Offline **synthetic-only** composition of actual Atlas pricing + House Mirror; reports probability-minus-market and executable-odds expected ROI as **different** quantities | Every probability is a hypothetical scenario, not +EV evidence |
+| `tyrollclimaco09-oss/shin` | Candidate independent de-vig methodology to benchmark against proportional | No code imported or model validated; on two-outcome markets Shin reduces to additive |
+| `tyrollclimaco09-oss/penaltyblog` | Candidate alternative margin removal, calibration research | Soccer focus; no immediate NFL/NBA performance claim |
+| `tyrollclimaco09-oss/sports-betting` | Research candidate for backtest/dataloading structure | Contains real-wager execution capabilities; DO NOT import execution/MCP components into ATLAS |
+| `tyrollclimaco09-oss/nflreadpy` | Candidate NFL statistical records | Historical endpoint/data rights and availability must be checked independently |
+| `tyrollclimaco09-oss/nba_api` | Candidate NBA game/player stat retrieval | Reliability/rate limits and dataset access not yet proven in ATLAS runtime |
+
+### Validated offline proof
+
+- GitHub Actions run `39745845765` at commit `ab16f0e9f953cc249006e958989a443ef2c280f6`: **success**.
+- Combined offline JS test run: **15 pass, 0 fail**, consisting of 7 new integration assertions plus 8 existing House Mirror assertions. Budget/probe Python guards separately passed.
+- Demonstrated important false-positive case: at `-110/-110`, hypothetical 51% chance exceeds market's 50% no-vig center yet results in **negative expected ROI** at `-110`.
+- Guardrails: synthetic-only, no network/API calls, no execution authority, no current bets, no authority promotions.
+- Tests prove math/contract composition only, not economic profitability, independent calibration, production runtime, or live market settlement.
+
+### Next unearned proof
+
+1. Rights review and a **separate** read-only real quote normalization contract with exact identities and quote provenance (not a relaxation of synthetic-only HM-01).
+2. Frozen, access-controlled point-in-time quotes, strict timestamp matching, and private SHA-256 receipts.
+3. Calibrated price-independent forecast with genuinely prospective evaluation; replay against actual quotes.
+4. External executable price confirmation and human Final Gate; no automatic bookmaker execution.
+
+Do not spend a second API credit solely to make the synthetic demonstration look realistic.
