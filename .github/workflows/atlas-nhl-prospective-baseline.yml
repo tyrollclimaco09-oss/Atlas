@@ -1,0 +1,30 @@
+name: ATLAS NHL first real prospective baseline (no odds or bets)
+on:
+  push:
+    branches: [research/odds-api-probe-2026-10-22]
+    paths:
+      - scripts/proof/prospective-nhl-baseline.mjs
+      - scripts/proof/prospective-nhl-baseline.test.mjs
+      - .github/workflows/atlas-nhl-prospective-baseline.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  real-prospective-baseline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - name: Reject fake identity, late prediction and unearned model authority
+        run: node --test scripts/proof/prospective-nhl-baseline.test.mjs
+      - name: Freeze a live NHL fixture before start; no bookmaker credentials
+        run: node scripts/proof/prospective-nhl-baseline.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: atlas-real-unpriced-nhl-prospective-freeze
+          path: atlas-prospective-nhl-baseline.json
+          retention-days: 7
+          if-no-files-found: error
