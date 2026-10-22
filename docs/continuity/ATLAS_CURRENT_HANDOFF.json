@@ -1,6 +1,6 @@
 {
   "schema": "atlas.engineering.handoff.v1",
-  "checkpoint_id": "ATLAS-20261022-CROSSSOURCE-05",
+  "checkpoint_id": "ATLAS-20261022-DUALSOURCE-06",
   "as_of_date": "2026-10-22",
   "repository": "tyrollclimaco09-oss/Atlas",
   "source_branch": "research/odds-api-probe-2026-10-22",
@@ -143,6 +143,52 @@
           "classification": "ONE_GAME_SOURCE_VALIDATION_NOT_MODEL_VALIDATION",
           "documentation": "docs/prospective/ATLAS_NBA_20261022_OFFICIAL_SHOT_RECONCILIATION_05.md"
         }
+      },
+      "preregistered_official_source_cohort": {
+        "state": "THREE_GAME_OFFICIAL_SOURCE_INTEGRITY_PASS_NOT_MODEL_VALIDATION",
+        "date": "2026-10-21",
+        "game_codes": [
+          "20261021/ATLORL",
+          "20261021/CHABKN",
+          "20261021/GSWLAL"
+        ],
+        "game_ids": [
+          "0022600085",
+          "0022600087",
+          "0022600005"
+        ],
+        "actions_by_game": [
+          629,
+          591,
+          619
+        ],
+        "fga_by_game": [
+          175,
+          173,
+          173
+        ],
+        "players_by_game": [
+          26,
+          28,
+          26
+        ],
+        "game_count": 3,
+        "passed_games": 3,
+        "actions_total": 1839,
+        "fga_total": 521,
+        "rostered_players_total": 80,
+        "unknown_shooter_ids": 0,
+        "player_fga_discrepancies": 0,
+        "duplicate_action_ids": 0,
+        "missing_official_fga_fields": 0,
+        "nba_cdn_box_and_pbp_same_ecosystem": true,
+        "rights_reviewed": false,
+        "pre_q4_feature_freeze_verified": false,
+        "original_57_game_v3_replay_verified": false,
+        "model_calibration_verified": false,
+        "source_run": 39861684656,
+        "documentation": "docs/prospective/ATLAS_NBA_20261022_THREE_GAME_FGA_INTEGRITY_06.md",
+        "next": "Q1_Q3_ONLY_PLAYER_SELECTION_AND_CAUSAL_CUTOFF_TESTS_WITH_NEW_VERSION_ID"
       }
     },
     {
@@ -256,6 +302,37 @@
           "play_id_one_to_one_verified": false,
           "official_snap_completeness_verified": false
         }
+      },
+      "strict_event_correspondence": {
+        "state": "UNIQUE_CLOCK_TEAM_KIND_MATCH_FOR_116_RESTRICTED_PLAYS",
+        "same_game_id": "2026_06_HOU_JAX",
+        "espn_drive_rows": 186,
+        "nflverse_pbp_rows": 178,
+        "eligible_espn_candidates": 116,
+        "eligible_nflverse_candidates": 127,
+        "unique_key_matched_pairs": 116,
+        "ambiguous_shared_keys": 0,
+        "espn_eligible_unmatched": 0,
+        "nflverse_eligible_unmatched": 11,
+        "espn_excluded_other_types": 69,
+        "espn_excluded_penalty_or_turnover": 1,
+        "nflverse_excluded_non_attempt": 31,
+        "nflverse_excluded_no_play": 10,
+        "nflverse_excluded_unknown_possession": 10,
+        "matching_key": [
+          "quarter",
+          "remaining_seconds",
+          "source-consistent-offense-team",
+          "pass-or-rush"
+        ],
+        "nflverse_gzip_sha256": "a6ddee607edda2d530bc65fd869c0eb2f8019ea0d962b020e039dae52c840399",
+        "actor_ids_independently_verified": false,
+        "complete_snap_coverage_verified": false,
+        "extra_11_verified_missing_snaps": false,
+        "official_native_play_id_equivalence_verified": false,
+        "source_run": 39862414581,
+        "documentation": "docs/prospective/ATLAS_NFL_20261022_WEEK6_CLOCK_CORRESPONDENCE_06.md",
+        "next": "CLASSIFY_11_NFLVERSE_ONLY_PLAY_TYPES_AND_CHECK_PLAYER_ACTORS_NO_AUTOMATIC_IMPORT"
       }
     }
   ],
@@ -291,7 +368,9 @@
       "docs/prospective/ATLAS_NBA_20261022_FGA_SHOT_FORENSICS_04.md",
       "docs/prospective/ATLAS_NFL_20261022_WEEK6_TEAM_CANDIDATES_04.md",
       "docs/prospective/ATLAS_NBA_20261022_OFFICIAL_SHOT_RECONCILIATION_05.md",
-      "docs/prospective/ATLAS_NFL_20261022_WEEK6_NFLVERSE_PBP_CROSSCHECK_05.md"
+      "docs/prospective/ATLAS_NFL_20261022_WEEK6_NFLVERSE_PBP_CROSSCHECK_05.md",
+      "docs/prospective/ATLAS_NBA_20261022_THREE_GAME_FGA_INTEGRITY_06.md",
+      "docs/prospective/ATLAS_NFL_20261022_WEEK6_CLOCK_CORRESPONDENCE_06.md"
     ],
     "immutable_git_runs": [
       39834900969,
@@ -299,7 +378,7 @@
       39837577620
     ],
     "recovered_asset_registry": "docs/continuity/ATLAS_RECOVERED_ASSET_REGISTRY_2026-10-22.json",
-    "last_engineering_pass_git_sha": "5ed03ceb56786a24e791973b13fb1467f2877b54",
+    "last_engineering_pass_git_sha": "860426590dbd2e5a2750cd365354afa0a30f5c73",
     "additional_github_runs": [
       39848546540,
       39848787129,
@@ -314,7 +393,9 @@
       39854629608,
       39855261687,
       39855261656,
-      39856084383
+      39856084383,
+      39861684656,
+      39862414581
     ]
   },
   "resume_protocol": [
@@ -329,7 +410,8 @@
     "LEAVE_RELEASE_AUTHORITY_FALSE_UNLESS_EXPLICIT_HUMAN_APPROVAL",
     "AUDIT_SOURCE_COUNTING_AND_TEAM_ATTRIBUTION_BEFORE_ANY_MODEL_FEATURE_ACCEPTANCE",
     "READ_THE_TWO_FORENSIC_04_AUDITS_AND_REPLAY_SOURCE_QUALITY_TESTS_BEFORE_MODEL_WORK",
-    "START_FROM_CHECKPOINT_05_FGA_EVENT_WITNESSES_AND_HOU_JAX_OPPONENT_CORRECTION"
+    "START_FROM_CHECKPOINT_05_FGA_EVENT_WITNESSES_AND_HOU_JAX_OPPONENT_CORRECTION",
+    "READ_TIMESKIP_06_NBA_AND_NFL_AUDITS;DO_NOT_MISINTERPRET_3_GAME_SOURCE_PASS_OR_116_CLOCK_MATCHES"
   ],
   "known_gaps": [
     "ORIGINAL_57_GAME_V3_ARCHIVE_RAW_BYTES_UNAVAILABLE_VIA_CURRENT_FILES_ACCESS",
@@ -342,6 +424,10 @@
     "NBA_Q1_0_SECOND_HEAVE_OFFICIAL_EXCLUSION_UNCONFIRMED",
     "NFL_116_TEAM_CANDIDATES_NOT_INDEPENDENT_PLAY_ACTORS",
     "NBA_OFFICIAL_ONE_GAME_VALIDATION_NOT_57_GAME_V3_REPLAY",
-    "NFL_178_VS_186_SOURCE_EVENTS_NOT_ONE_TO_ONE_OR_MISSING_SNAPS"
+    "NFL_178_VS_186_SOURCE_EVENTS_NOT_ONE_TO_ONE_OR_MISSING_SNAPS",
+    "NBA_Q4_FEATURE_TIMECUTOFF_AND_PRE_Q4_SELECTION_NOT_TESTED",
+    "NBA_3_GAME_INTEGRITY_DOES_NOT_REPLAY_57_GAME_V3",
+    "NFL_11_ADDITIONAL_SOURCE_CANDIDATES_NOT_YET_ADJUDICATED",
+    "NFL_116_UNIQUE_KEYS_ARE_NOT_VERIFIED_PLAYER_ACTORS"
   ]
 }

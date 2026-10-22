@@ -93,6 +93,29 @@ function validate(h,root=ROOT){
   parity.scope==='GAME_LEVEL_EVENT_CATEGORY_TOTALS_ONLY_NOT_PLAYER_OR_PLAY_ID_PARITY'&&
   parity.player_actor_verified===false&&parity.play_id_one_to_one_verified===false&&
   parity.official_snap_completeness_verified===false,'NFL_GAME_COUNTS_UNEARNED_PROMOTION');
+ const cohort=nba.preregistered_official_source_cohort;
+ assert(cohort?.state==='THREE_GAME_OFFICIAL_SOURCE_INTEGRITY_PASS_NOT_MODEL_VALIDATION'&&
+  JSON.stringify(cohort.game_codes)===JSON.stringify(['20261021/ATLORL','20261021/CHABKN','20261021/GSWLAL'])&&
+  cohort.game_count===3&&cohort.passed_games===3&&cohort.actions_total===1839&&
+  cohort.fga_total===521&&cohort.rostered_players_total===80&&
+  cohort.player_fga_discrepancies===0&&cohort.unknown_shooter_ids===0&&
+  cohort.duplicate_action_ids===0&&cohort.missing_official_fga_fields===0&&
+  cohort.nba_cdn_box_and_pbp_same_ecosystem===true&&
+  cohort.rights_reviewed===false&&cohort.pre_q4_feature_freeze_verified===false&&
+  cohort.original_57_game_v3_replay_verified===false&&
+  cohort.model_calibration_verified===false,'NBA_THREE_GAME_UNEARNED_PROMOTION');
+ const strict=nfl.strict_event_correspondence;
+ assert(strict?.state==='UNIQUE_CLOCK_TEAM_KIND_MATCH_FOR_116_RESTRICTED_PLAYS'&&
+  strict.same_game_id==='2026_06_HOU_JAX'&&
+  strict.eligible_espn_candidates===116&&strict.eligible_nflverse_candidates===127&&
+  strict.unique_key_matched_pairs===116&&strict.espn_eligible_unmatched===0&&
+  strict.nflverse_eligible_unmatched===11&&strict.ambiguous_shared_keys===0&&
+  strict.espn_excluded_other_types===69&&strict.espn_excluded_penalty_or_turnover===1&&
+  strict.actor_ids_independently_verified===false&&
+  strict.complete_snap_coverage_verified===false&&
+  strict.extra_11_verified_missing_snaps===false&&
+  strict.official_native_play_id_equivalence_verified===false,
+  'NFL_STRICT_CLOCK_MATCH_FALSE_PROMOTION');
  const evidence=h.evidence;
  const registry=JSON.parse(fs.readFileSync(path.join(root,'docs/continuity/ATLAS_RECOVERED_ASSET_REGISTRY_2026-10-22.json'),'utf8'));
  assert(registry.schema==='atlas.recovered-artifact-registry.v1'&&

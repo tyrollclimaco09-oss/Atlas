@@ -113,3 +113,8 @@ Both audits are retrospective and source-license status remains unverified for E
 These new findings are pinned in `docs/continuity/ATLAS_CURRENT_HANDOFF.json` with fail-closed regression guards; **RC9 remains HOLD**, no betting execution, no paid Odds API calls, no change to Supabase/Vercel.
 
 **NFL Pass 05 addendum:** Paired source event-category check [39856084383](https://github.com/tyrollclimaco09-oss/Atlas/actions/runs/39856084383) confirms **75/75 game-level pass attempts, 52/52 game-level rush attempts** while preserving unknown per-play and actor equivalence.
+
+## Timeskip 06 source gate (NBA then NFL)
+
+- **NBA:** Oct 21 NBA CDN cohort ATL@ORL, CHA@BKN, GSW@LAL: 3/3 source-integrity checks, 521 FGA, 80 rostered players, no per-player discrepancy; [run 39861684656](https://github.com/tyrollclimaco09-oss/Atlas/actions/runs/39861684656). `original V3 replay=false`, `rights reviewed=false`, `pre-Q4 feature freeze=false`.
+- **NFL:** Week 6 HOU@JAX strict key subset paired 116/116 ESPN restricted plays with 116 nflverse correspondences, 11 nflverse-only eligible pass/rush candidates; [run 39862414581](https://github.com/tyrollclimaco09-oss/Atlas/actions/runs/39862414581). No actor IDs or complete snap map proved. Identity code remains fail-closed.

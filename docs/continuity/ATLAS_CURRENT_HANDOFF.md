@@ -70,3 +70,11 @@ The machine-readable [current handoff](./ATLAS_CURRENT_HANDOFF.json) records bot
 **Both sports:** no live bet, no paid Odds API credit, no Supabase writes, no RC9 promotion. Old immutable historical receipts stay intact; this GitHub handoff supersedes their incorrect opponent label. Always read both Pass 05 documents before using older Pass 04 NFL materials.
 
 **NFL Pass 05 addendum:** Game-level attempts now corroborated: **75/75 pass attempts, 52/52 rush attempts** in two source classifications. [Evidence run](https://github.com/tyrollclimaco09-oss/Atlas/actions/runs/39856084383). Actor and snap identities are still unverified; refer to the Pass 05 NFL audit.
+
+## Timeskip 06 — two bounded source-integrity passes
+
+**NBA first:** [3-game verified GitHub run](https://github.com/tyrollclimaco09-oss/Atlas/actions/runs/39861684656) fetched an explicitly fixed set of Oct 21 game codes (ATL@ORL, CHA@BKN, GSW@LAL). Official NBA CDN PBP and NBA CDN box scores reconciled every rostered player's FGA: 3/3 games passed, **80 rostered players, 521 marked FGA, 0 per-player FGA differences, 0 unknown shooters, 0 duplicate actions**. Same provider ecosystem—not three independent forecast backtests. Rights and pre-Q4 feature cutoffs unproven. **Original V3 57-game replay still BLOCKED**. [NBA audit](../prospective/ATLAS_NBA_20261022_THREE_GAME_FGA_INTEGRITY_06.md).
+
+**NFL second:** [strict correspondence run](https://github.com/tyrollclimaco09-oss/Atlas/actions/runs/39862414581) PASS. On the corrected **Houston @ Jacksonville** Week 6 game, **116/116 restricted ESPN candidates** have a unique matching nflverse `(quarter, clock seconds, team, pass/rush)` key. nflverse has **127** eligible attempts; **11 unmatched extras**, **0 ambiguous keys**. This is a strong narrow two-source event correspondence, **not athlete actor ID verification, identical provider event IDs, all-snap coverage, or profitable prediction evidence**. The 11 extras need separate scrutiny. [NFL audit](../prospective/ATLAS_NFL_20261022_WEEK6_CLOCK_CORRESPONDENCE_06.md).
+
+All tests run on research branch. No odds credits, DB writes, runtime changes or production promotion. Treat these findings as upstream data contracts for eventual NEW forecast evaluation, not as a betting slate.

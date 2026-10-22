@@ -53,3 +53,20 @@ test('NFL aggregate parity never implies specific actor attribution',()=>{
  const h=clone(load());h.lanes[1].independent_pbp_census.game_level_attempt_parity.player_actor_verified=true;
  assert.throws(()=>validate(h),/NFL_GAME_COUNTS_UNEARNED_PROMOTION/);
 });
+
+test('three source-consistent NBA games cannot certify the missing V3 57-game replay',()=>{
+ const h=clone(load());h.lanes[0].preregistered_official_source_cohort.original_57_game_v3_replay_verified=true;
+ assert.throws(()=>validate(h),/NBA_THREE_GAME_UNEARNED_PROMOTION/);
+});
+test('NBA source consistency alone cannot certify prospective cutoff integrity',()=>{
+ const h=clone(load());h.lanes[0].preregistered_official_source_cohort.pre_q4_feature_freeze_verified=true;
+ assert.throws(()=>validate(h),/NBA_THREE_GAME_UNEARNED_PROMOTION/);
+});
+test('116 strict NFL cross-source clocks never imply athlete identity',()=>{
+ const h=clone(load());h.lanes[1].strict_event_correspondence.actor_ids_independently_verified=true;
+ assert.throws(()=>validate(h),/NFL_STRICT_CLOCK_MATCH_FALSE_PROMOTION/);
+});
+test('eleven unmatched NFL source candidates cannot be called verified missing snaps',()=>{
+ const h=clone(load());h.lanes[1].strict_event_correspondence.extra_11_verified_missing_snaps=true;
+ assert.throws(()=>validate(h),/NFL_STRICT_CLOCK_MATCH_FALSE_PROMOTION/);
+});

@@ -4,7 +4,7 @@
 
 ## Predeclared narrow matching protocol
 
-1. **ESPN candidate set:** from 186 drive events, only non-penalty, non-turnover `Pass Reception`, `Pass Incompletion` and `Rush` with numeric play ID, Q1–Q4, parsable quarter clock, drive team ID matching start-field team ID. This yields 116 (41 receptions + 25 incompletions + 50 rush).
+1. **ESPN candidate set:** from 186 drive events, only non-penalty, non-turnover `Pass Reception`, `Pass Incompletion` and `Rush` with source play ID, Q1–Q4, parsable quarter clock, drive team ID matching start-field team ID. This yields 116 (41 receptions + 25 incompletions + 50 rush).
 2. **nflverse candidate set:** from the 178 PBP rows for `2026_06_HOU_JAX`, require `posteam in (JAX,HOU)`, one of `pass_attempt=1` or `rush_attempt=1`, Q1–Q4 and valid `quarter_seconds_remaining`, excluding `play_type=no_play`. The source has no `no_play` column; treating it as required was caught and corrected.
 3. Generate `(quarter, remaining seconds, offensive team, pass/rush kind)` keys. **Count a correspondence only when each provider has exactly one candidate with that key.** Record missing and ambiguous keys rather than filling gaps. ESPN's source team is only **source-consistent**, not a proven independent player actor identity.
 
@@ -12,7 +12,7 @@
 
 [Final GitHub run 39862414581](https://github.com/tyrollclimaco09-oss/Atlas/actions/runs/39862414581): offline self-test PASS; live source proof PASS.
 
-<escape>| Evidence | Observed |
+| Evidence | Observed |
 | --- | --- |
 | ESPN restricted candidates | **116** |
 | nflverse pass/rush candidates | **127** |
@@ -21,7 +21,7 @@
 | Restricted ESPN candidates unmatched | **0** |
 | Additional unmatched nflverse candidates | **11** |
 | ESPN candidate rejections from all 186 event rows | 69 other types + 1 penalty/turnover = **70** |
-| nflverse exclusions from 178 rows | 31 non-attempt + 10 `no_play` + 10 unknown possession = **51** |</escape>
+| nflverse exclusions from 178 rows | 31 non-attempt + 10 `no_play` + 10 unknown possession = **51** |
 
 The 11 additional nflverse rows are **not** verified missing ESPN snaps or errors. The restricted ESPN set excludes touchdowns, interception returns, penalties and administrative events by design. A per-type investigation can account for the 11 later; no causal conclusion now.
 
