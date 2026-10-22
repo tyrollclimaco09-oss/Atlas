@@ -86,15 +86,42 @@ def main():
     if "--self-test" in sys.argv:
         selftest();return
     zipped,pbp_hash,pbp_at=fetch(NFLVERSE,9_000_000)
-    rows=[];headers=[]
+    rows=[];headers=[];available_weeks=Counter();week6_games=set();hou_examples=set()
     with gzip.GzipFile(fileobj=io.BytesIO(zipped)) as gz:
         with io.TextIOWrapper(gz,encoding="utf-8-sig",newline="") as s:
             reader=csv.DictReader(s);headers=list(reader.fieldnames or [])
             for n,r in enumerate(reader):
                 if n>160000:raise ValueError("DATASET_ROW_LIMIT")
+                if str(r.get("season","")) in ("2026","2026.0"):
+                    week=str(r.get("week",""))
+                    available_weeks[week]+=1
+                    if week in ("6","6.0"):
+                        week6_games.add(str(r.get("game_id","")))
+                    if "HOU" in str(r.get("game_id","")) and len(hou_examples)<20:
+                        hou_examples.add(str(r.get("game_id","")))
                 if r.get("game_id")==GAME:rows.append({k:r.get(k) for k in ALL_FIELDS})
                 if len(rows)>500:raise ValueError("GAME_PLAY_COUNT_LIMIT")
-    if not rows:raise ValueError("WEEK6_GAME_NOT_IN_NFLVERSE_RELEASE")
+    if not rows:
+        state="WEEK6_NOT_IN_PLAY_BY_PLAY_RELEASE" if not any(x in available_weeks for x in ("6","6.0")) else "EXPECTED_GAME_ID_NOT_IN_WEEK6"
+        report={"schema":"atlas.nfl.week6.independent-pbp-availability.v1",
+          "classification":"SOURCE_COVERAGE_AUDIT_NOT_PLAYER_PROOF",
+          "nflverse_url":NFLVERSE,"nflverse_sha256":pbp_hash,
+          "nflverse_observed_at_utc":pbp_at,
+          "weeks_2026":dict(available_weeks),
+          "week6_game_ids":sorted(week6_games)[:35],
+          "hou_game_id_examples":sorted(hou_examples),
+          "expected_game_id":GAME,"status":state,
+          "independent_week6_pbp_verified":False,
+          "play_id_one_to_one_verified":False,
+          "production_authority":False,"calibrator_eligible":False,
+          "execution_authority":False,"odds_api_credits":0,"database_written":False}
+        with open("atlas-nfl-week6-independent-pbp.json","w",encoding="utf-8") as f:
+            json.dump(report,f,indent=2,sort_keys=True);f.write("\n")
+        print("ATLAS_NFL_PBP_SOURCE_COVERAGE "+json.dumps({
+          "status":state,"weeks_2026":dict(available_weeks),
+          "week6_game_ids":sorted(week6_games)[:35],
+          "hou_games":sorted(hou_examples)},sort_keys=True))
+        return
     esbytes,es_hash,es_at=fetch(ESPN,4_000_000)
     espn=espn_reference(json.loads(esbytes))
     independent=norm_plays(rows)
