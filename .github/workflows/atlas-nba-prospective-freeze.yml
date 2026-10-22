@@ -1,0 +1,28 @@
+name: ATLAS NBA real pregame research freeze (zero odds credits)
+on:
+  push:
+    branches: [research/odds-api-probe-2026-10-22]
+    paths:
+      - scripts/proof/prospective-nba-reference.mjs
+      - scripts/proof/prospective-nba-reference.test.mjs
+      - .github/workflows/atlas-nba-prospective-freeze.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  nba-unpriced-prospective-freeze:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - run: node --test scripts/proof/prospective-nba-reference.test.mjs
+      - run: node scripts/proof/prospective-nba-reference.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: atlas-nba-one-shot-prospective-unpriced
+          path: atlas-nba-20261022-first-freeze.json
+          retention-days: 7
+          if-no-files-found: error
