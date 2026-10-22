@@ -1,0 +1,28 @@
+name: ATLAS NFL strict clock+team+kind event correspondence (shadow)
+on:
+  push:
+    branches: [research/odds-api-probe-2026-10-22]
+    paths:
+      - scripts/proof/nfl-week6-clock-event-pair.py
+      - .github/workflows/atlas-nfl-week6-clock-pair.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  nfl-correspondence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python3 scripts/proof/nfl-week6-clock-event-pair.py --self-test
+      - run: python3 scripts/proof/nfl-week6-clock-event-pair.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: atlas-nfl-week6-pairing-research
+          path: atlas-nfl-week6-clock-pairing.json
+          if-no-files-found: ignore
+          retention-days: 7
