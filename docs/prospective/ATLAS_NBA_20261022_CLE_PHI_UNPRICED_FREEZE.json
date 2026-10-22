@@ -1,0 +1,50 @@
+{
+  "packet": {
+    "schema": "atlas.prospective.unpriced-nba-baseline.v1",
+    "classification": "REAL_NBA_EVENT_UNVALIDATED_REFERENCE_ONLY",
+    "sport": "NBA",
+    "league": "NBA",
+    "event_key": "NBA:ESPN_UNOFFICIAL:401909093",
+    "source_event_id": "401909093",
+    "home": {
+      "id": "20",
+      "name": "Philadelphia 76ers"
+    },
+    "away": {
+      "id": "5",
+      "name": "Cleveland Cavaliers"
+    },
+    "event_starts_at_utc": "2026-10-22T23:00:00.000Z",
+    "source_provider": "ESPN_UNOFFICIAL",
+    "source_trust": "UNOFFICIAL_UNSUPPORTED_ENDPOINT",
+    "source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard?dates=20261022",
+    "source_observed_at_utc": "2026-10-22T18:43:05.079Z",
+    "source_published_at_utc": null,
+    "source_response_sha256": "1fd6b9df83135a64ae66c526c94b4144c63516ddad2995ac35fed2d48801026b",
+    "normalizer_sha256": "c4b229d2c6e7dc3b61d43b222d28c6c244540d097b0fbb247fe44a5311a2773d",
+    "source_normalized_state": "STATUS_SCHEDULED",
+    "frozen_at_utc": "2026-10-22T18:43:05.095Z",
+    "forecast": {
+      "model_key": "NBA_UNIFORM_HOME_WIN_REFERENCE",
+      "model_version": "0.1.0",
+      "selection": "HOME",
+      "team_id": "20",
+      "estimated_probability": 0.5,
+      "origin": "UNINFORMED_REFERENCE_BASELINE",
+      "model_trained": false,
+      "model_validated": false
+    },
+    "quote": null,
+    "market_price": null,
+    "team_or_player_prop_probability": null,
+    "executable_price_verified": false,
+    "official_lineup_verified": false,
+    "external_timing_verified": false,
+    "calibrator_eligible": false,
+    "production_authority": false,
+    "execution_authority": false,
+    "bet_authorized": false,
+    "source_authority": "UNVERIFIED_UNOFFICIAL"
+  },
+  "packet_sha256": "6b8a4cc4d50a2b8d3306bc89801054d87e4acf39889e4221f6b938d15411f9c4"
+}
