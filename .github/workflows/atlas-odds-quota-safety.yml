@@ -7,6 +7,11 @@ on:
     paths:
       - .github/workflows/atlas-odds-quota-safety.yml
       - scripts/scout/the-odds-api-probe.py
+      - scripts/scout/ev-research-shadow.cjs
+      - scripts/scout/ev-research-shadow.test.cjs
+      - scripts/scout/house-mirror-shadow.cjs
+      - scripts/scout/house-mirror-shadow.test.cjs
+      - command-center/pricing.js
   workflow_dispatch:
 
 permissions:
@@ -24,6 +29,11 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Run existing House Mirror and compositional EV contract tests (offline)
+        run: node --test scripts/scout/house-mirror-shadow.test.cjs scripts/scout/ev-research-shadow.test.cjs
       - name: Exercise budget, malformed quote and schema checks (offline)
         run: python3 scripts/scout/the-odds-api-probe.py --self-test
       - name: Assert default is zero-network, zero-credit
