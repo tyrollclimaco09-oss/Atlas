@@ -75,3 +75,18 @@ test('NFL clock-neighbor categories cannot be promoted into verified missing pla
  const h=clone(load());h.lanes[1].strict_event_correspondence.unmatched_clock_diagnostic.cause_confirmed=true;
  assert.throws(()=>validate(h),/NFL_UNMATCHED_CAUSALITY_FALSE_PROMOTION/);
 });
+
+test('retrospective NBA Q3 feature is not an externally frozen Q3 forecast',()=>{
+ const h=clone(load());h.lanes[0].q3_to_q4_retro_shadow.external_q3_freeze=true;
+ assert.throws(()=>validate(h),/NBA_Q3_RETRO_FALSE_PROMOTION/);
+});
+test('NFL player matching by name and volume is not cross-provider player ID proof',()=>{
+ const h=clone(load());h.lanes[1].player_volume_actor_shadow.nflverse_to_espn_player_id_verified=true;
+ assert.throws(()=>validate(h),/NFL_PLAYER_ACTORS_UNEARNED/);
+});
+test('zero causal outcomes and shadow artifacts prevent automatic model promotion',()=>{
+ const h=clone(load());h.backend.latest_read_only_proof.model_validation_count=1;
+ assert.throws(()=>validate(h),/BACKEND_RUNTIME_FALSE_CERTIFICATION/);
+ const x=clone(load());x.evidence.dual_source_custody.real_time_freeze_verified=true;
+ assert.throws(()=>validate(x),/SHADOW_CUSTODY_UNEARNED_PROMOTION/);
+});

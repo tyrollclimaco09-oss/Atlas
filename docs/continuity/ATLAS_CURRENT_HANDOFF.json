@@ -1,6 +1,6 @@
 {
   "schema": "atlas.engineering.handoff.v1",
-  "checkpoint_id": "ATLAS-20261022-DUALSOURCE-06",
+  "checkpoint_id": "ATLAS-20261022-TRIPLE-TIMESKIP-07-09",
   "as_of_date": "2026-10-22",
   "repository": "tyrollclimaco09-oss/Atlas",
   "source_branch": "research/odds-api-probe-2026-10-22",
@@ -189,6 +189,38 @@
         "source_run": 39861684656,
         "documentation": "docs/prospective/ATLAS_NBA_20261022_THREE_GAME_FGA_INTEGRITY_06.md",
         "next": "Q1_Q3_ONLY_PLAYER_SELECTION_AND_CAUSAL_CUTOFF_TESTS_WITH_NEW_VERSION_ID"
+      },
+      "q3_to_q4_retro_shadow": {
+        "state": "THREE_GAME_Q1_Q3_FEATURE_SELECTION_WITH_Q4_LABEL_NOT_PROSPECTIVE",
+        "source_run": 39864872638,
+        "original_v3_replay": false,
+        "external_q3_freeze": false,
+        "roster_player_slots": 12,
+        "selected_fga_by_game": [
+          49,
+          55,
+          54
+        ],
+        "q4_actual_by_game": [
+          18,
+          24,
+          3
+        ],
+        "rate_baseline_by_game": [
+          16.333333333333332,
+          18.333333333333332,
+          18
+        ],
+        "absolute_errors": [
+          1.6666666666666679,
+          5.666666666666668,
+          15
+        ],
+        "retrospective_naive_mae": 7.4444444444444455,
+        "pre_q4_mutation_invariance_test_passed": true,
+        "gsw_lal_q4_low_volume_cause_verified": false,
+        "model_validation": false,
+        "documentation": "docs/research/ATLAS_20261022_TRIPLE_TIMESKIP_07_09.md"
       }
     },
     {
@@ -348,6 +380,29 @@
           "correction_applied": false,
           "interpretation": "CANDIDATE_SAME_CLOCK_NEIGHBORS_ONLY_NO_IDENTITY_ASSERTION"
         }
+      },
+      "player_volume_actor_shadow": {
+        "state": "TWO_HOU_PLAYER_NAME_TEAM_AND_VOLUME_CORROBORATION_ONLY",
+        "source_run": 39864788837,
+        "opponent": "JAX",
+        "game_id": "2026_06_HOU_JAX",
+        "stroud": {
+          "nflverse_gsis": "00-0039163",
+          "passing_attempts": 34,
+          "espn_attempts": 34
+        },
+        "marks": {
+          "nflverse_gsis": "00-0040583",
+          "rushing_attempts": 15,
+          "espn_attempts": 15
+        },
+        "known_pass_actors": 2,
+        "known_rush_actors": 9,
+        "unknown_actor_ids_in_eligible_volume": 0,
+        "nflverse_to_espn_player_id_verified": false,
+        "full_play_coverage_verified": false,
+        "pregame_player_model_validated": false,
+        "documentation": "docs/research/ATLAS_20261022_TRIPLE_TIMESKIP_07_09.md"
       }
     }
   ],
@@ -361,7 +416,19 @@
     "vercel_supabase_authenticated_parity": "UNKNOWN",
     "sportsbook_ingest_legacy": "RETIRED_FAIL_CLOSED",
     "forecast_outcome_admissible": "NONE_CONFIRMED",
-    "recovery_audit": "docs/ATLAS_PIPELINE_PROOF_RECOVERY_2026-10-22.md"
+    "recovery_audit": "docs/ATLAS_PIPELINE_PROOF_RECOVERY_2026-10-22.md",
+    "latest_read_only_proof": {
+      "observed_at_utc": "2026-10-22T22:27:02Z",
+      "supabase_calibration_stage": "WAIT_FIRST_CAUSAL_OUTCOME",
+      "admissible_causal_outcomes": 0,
+      "model_validation_count": 0,
+      "verified_datasets": 3,
+      "feed_state": "MANUAL_ONLY",
+      "configured_feeds": 0,
+      "query_read_only": true,
+      "authenticated_vercel_to_supabase_verified": false,
+      "external_production_health_asserted": false
+    }
   },
   "evidence": {
     "verified_in_this_pass": [
@@ -385,7 +452,8 @@
       "docs/prospective/ATLAS_NBA_20261022_OFFICIAL_SHOT_RECONCILIATION_05.md",
       "docs/prospective/ATLAS_NFL_20261022_WEEK6_NFLVERSE_PBP_CROSSCHECK_05.md",
       "docs/prospective/ATLAS_NBA_20261022_THREE_GAME_FGA_INTEGRITY_06.md",
-      "docs/prospective/ATLAS_NFL_20261022_WEEK6_CLOCK_CORRESPONDENCE_06.md"
+      "docs/prospective/ATLAS_NFL_20261022_WEEK6_CLOCK_CORRESPONDENCE_06.md",
+      "docs/research/ATLAS_20261022_TRIPLE_TIMESKIP_07_09.md"
     ],
     "immutable_git_runs": [
       39834900969,
@@ -393,7 +461,7 @@
       39837577620
     ],
     "recovered_asset_registry": "docs/continuity/ATLAS_RECOVERED_ASSET_REGISTRY_2026-10-22.json",
-    "last_engineering_pass_git_sha": "8ea696aae823572bbd040f67e4a8b04a7dccddee",
+    "last_engineering_pass_git_sha": "d7008785aa533bd6f78504d0d7e54041c55451f6",
     "additional_github_runs": [
       39848546540,
       39848787129,
@@ -411,8 +479,21 @@
       39856084383,
       39861684656,
       39862414581,
-      39863207585
-    ]
+      39863207585,
+      39864872638,
+      39864788837,
+      39865337273
+    ],
+    "dual_source_custody": {
+      "state": "SHADOW_UNATTESTED_RESEARCH_ONLY",
+      "workflow_run": 39865337273,
+      "nba_packet_sha256": "a8d2bd42936291105a3d5ec180387df9073bb94368cea1ec67569fb9199e275e",
+      "nfl_packet_sha256": "8fcd084a77af61aa7d5ef8484c4086d4c76594010668ef5edb354f629e8f2250",
+      "paid_odds_credits": 0,
+      "production_authority": false,
+      "calibrator_eligible": false,
+      "real_time_freeze_verified": false
+    }
   },
   "resume_protocol": [
     "FETCH_THIS_JSON_AT_RESEARCH_BRANCH_HEAD",
@@ -427,7 +508,8 @@
     "AUDIT_SOURCE_COUNTING_AND_TEAM_ATTRIBUTION_BEFORE_ANY_MODEL_FEATURE_ACCEPTANCE",
     "READ_THE_TWO_FORENSIC_04_AUDITS_AND_REPLAY_SOURCE_QUALITY_TESTS_BEFORE_MODEL_WORK",
     "START_FROM_CHECKPOINT_05_FGA_EVENT_WITNESSES_AND_HOU_JAX_OPPONENT_CORRECTION",
-    "READ_TIMESKIP_06_NBA_AND_NFL_AUDITS;DO_NOT_MISINTERPRET_3_GAME_SOURCE_PASS_OR_116_CLOCK_MATCHES"
+    "READ_TIMESKIP_06_NBA_AND_NFL_AUDITS;DO_NOT_MISINTERPRET_3_GAME_SOURCE_PASS_OR_116_CLOCK_MATCHES",
+    "READ_TRIPLE_TIMESKIP_07_09_AND_VERIFY_CUSTODY_RUN_THEN_RESUME_INDEPENDENT_FORECAST_GATES"
   ],
   "known_gaps": [
     "ORIGINAL_57_GAME_V3_ARCHIVE_RAW_BYTES_UNAVAILABLE_VIA_CURRENT_FILES_ACCESS",
@@ -444,6 +526,10 @@
     "NBA_Q4_FEATURE_TIMECUTOFF_AND_PRE_Q4_SELECTION_NOT_TESTED",
     "NBA_3_GAME_INTEGRITY_DOES_NOT_REPLAY_57_GAME_V3",
     "NFL_11_ADDITIONAL_SOURCE_CANDIDATES_NOT_YET_ADJUDICATED",
-    "NFL_116_UNIQUE_KEYS_ARE_NOT_VERIFIED_PLAYER_ACTORS"
+    "NFL_116_UNIQUE_KEYS_ARE_NOT_VERIFIED_PLAYER_ACTORS",
+    "Q3_NBA_RETROSPECTIVE_FEATURE_EXTRACTION_NOT_PROSPECTIVELY_FROZEN",
+    "NFL_PLAYER_SOURCE_NAME_VOLUME_MATCH_NOT_DIRECT_CROSS_PROVIDER_ID_PARITY",
+    "CANONICAL_SETTLED_ATLAS_CALIBRATION_STILL_ZERO",
+    "VERCEL_TO_SUPABASE_AUTHORIZED_RUNTIME_PARITY_UNKNOWN"
   ]
 }

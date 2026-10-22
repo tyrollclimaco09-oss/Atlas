@@ -118,3 +118,7 @@ These new findings are pinned in `docs/continuity/ATLAS_CURRENT_HANDOFF.json` wi
 
 - **NBA:** Oct 21 NBA CDN cohort ATL@ORL, CHA@BKN, GSW@LAL: 3/3 source-integrity checks, 521 FGA, 80 rostered players, no per-player discrepancy; [run 39861684656](https://github.com/tyrollclimaco09-oss/Atlas/actions/runs/39861684656). `original V3 replay=false`, `rights reviewed=false`, `pre-Q4 feature freeze=false`.
 - **NFL:** Week 6 HOU@JAX strict key subset paired 116/116 ESPN restricted plays with 116 nflverse correspondences, 11 nflverse-only eligible pass/rush candidates; [run 39862414581](https://github.com/tyrollclimaco09-oss/Atlas/actions/runs/39862414581). No actor IDs or complete snap map proved. Identity code remains fail-closed.
+
+## Triple Timeskip 07–09 — NBA Q3 feature, NFL actor and custody
+
+[Read the durable three-pass report](research/ATLAS_20261022_TRIPLE_TIMESKIP_07_09.md). NBA new three-game retrospective (4 Q1–Q3 selected players, Q4 target, naïve historical MAE **7.444**), not V3 replay, no genuine external Q3 freeze. NFL HOU@JAX W6 player actors `C.Stroud 34` / `W.Marks 15` matched ESPN's named volumes but no cross-provider player-ID proof. Integrated GitHub CI [39865337273](https://github.com/tyrollclimaco09-oss/Atlas/actions/runs/39865337273) kept two independent research packets hash-linked and SHADOW. Fresh read-only Supabase state still 0 admitted causal outcomes, 0 validated models, MANUAL_ONLY, 0 configured feeds. Production remains HOLD.

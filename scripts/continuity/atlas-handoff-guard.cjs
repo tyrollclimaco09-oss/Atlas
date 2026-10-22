@@ -127,6 +127,38 @@ function validate(h,root=ROOT){
   nearby.correction_applied===false&&
   nearby.interpretation==='CANDIDATE_SAME_CLOCK_NEIGHBORS_ONLY_NO_IDENTITY_ASSERTION',
   'NFL_UNMATCHED_CAUSALITY_FALSE_PROMOTION');
+ const nbaQ3=nba.q3_to_q4_retro_shadow;
+ assert(nbaQ3?.state==='THREE_GAME_Q1_Q3_FEATURE_SELECTION_WITH_Q4_LABEL_NOT_PROSPECTIVE'&&
+  nbaQ3.source_run===39864872638&&nbaQ3.original_v3_replay===false&&
+  nbaQ3.external_q3_freeze===false&&nbaQ3.roster_player_slots===12&&
+  JSON.stringify(nbaQ3.q4_actual_by_game)===JSON.stringify([18,24,3])&&
+  Math.abs(nbaQ3.retrospective_naive_mae-7.4444444444444455)<1e-10&&
+  nbaQ3.pre_q4_mutation_invariance_test_passed===true&&
+  nbaQ3.gsw_lal_q4_low_volume_cause_verified===false&&
+  nbaQ3.model_validation===false,'NBA_Q3_RETRO_FALSE_PROMOTION');
+ const nflActors=nfl.player_volume_actor_shadow;
+ assert(nflActors?.state==='TWO_HOU_PLAYER_NAME_TEAM_AND_VOLUME_CORROBORATION_ONLY'&&
+  nflActors.game_id==='2026_06_HOU_JAX'&&nflActors.source_run===39864788837&&
+  nflActors.stroud.nflverse_gsis==='00-0039163'&&
+  nflActors.stroud.passing_attempts===34&&nflActors.stroud.espn_attempts===34&&
+  nflActors.marks.nflverse_gsis==='00-0040583'&&
+  nflActors.marks.rushing_attempts===15&&nflActors.marks.espn_attempts===15&&
+  nflActors.nflverse_to_espn_player_id_verified===false&&
+  nflActors.full_play_coverage_verified===false&&
+  nflActors.pregame_player_model_validated===false,'NFL_PLAYER_ACTORS_UNEARNED');
+ const backendProof=b.latest_read_only_proof;
+ assert(backendProof?.admissible_causal_outcomes===0&&backendProof.model_validation_count===0&&
+  backendProof.supabase_calibration_stage==='WAIT_FIRST_CAUSAL_OUTCOME'&&
+  backendProof.feed_state==='MANUAL_ONLY'&&backendProof.configured_feeds===0&&
+  backendProof.query_read_only===true&&
+  backendProof.authenticated_vercel_to_supabase_verified===false,
+  'BACKEND_RUNTIME_FALSE_CERTIFICATION');
+ const custody=h.evidence.dual_source_custody;
+ assert(custody?.workflow_run===39865337273&&
+  custody.nba_packet_sha256==='a8d2bd42936291105a3d5ec180387df9073bb94368cea1ec67569fb9199e275e'&&
+  custody.nfl_packet_sha256==='8fcd084a77af61aa7d5ef8484c4086d4c76594010668ef5edb354f629e8f2250'&&
+  custody.calibrator_eligible===false&&custody.production_authority===false&&
+  custody.real_time_freeze_verified===false,'SHADOW_CUSTODY_UNEARNED_PROMOTION');
  const evidence=h.evidence;
  const registry=JSON.parse(fs.readFileSync(path.join(root,'docs/continuity/ATLAS_RECOVERED_ASSET_REGISTRY_2026-10-22.json'),'utf8'));
  assert(registry.schema==='atlas.recovered-artifact-registry.v1'&&
