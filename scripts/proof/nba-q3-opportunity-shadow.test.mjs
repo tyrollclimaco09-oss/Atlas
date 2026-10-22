@@ -23,8 +23,6 @@ test('selects two per team deterministically with q4 excluded from rankings',()=
 });
 test('changing Q4 outcomes cannot change Q1-Q3 player selection or features',()=>{
  const f=fixture(),before=deriveQ3Opportunity(f.pbp,f.box,cfg);
- f.pbp.game.actions[2].period=5; // overtime counts do not join Q4
- f.pbp.game.actions[2].period=1;
  const first=f.pbp.game.actions.find(x=>x.period===4&&x.personId===101);
  first.personId=103;first.teamTricode='BBB';
  // Keep the synthetic official postgame totals in agreement with the changed Q4 result.
