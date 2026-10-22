@@ -54,6 +54,9 @@ export function auditDriveEvents(summary){
   missing_team_attribution:missingTeam,
   quarters,play_type_counts:types,drive_summary:drives,
   internal_identity_gate:duplicates===0&&missingId===0&&missingPeriod===0&&periodGoesBackward===0,
+  // Drive ordering is NOT usable team-level play attribution.
+  event_team_attribution_ready:missingTeam===0&&duplicates===0&&missingId===0,
+  usable_player_volume_from_drive_plays:false,
   complete_play_coverage_verified:complete_claim,
   nflverse_event_level_id_match:false,
   player_stat_coverage_independently_qualified:false};
@@ -86,7 +89,9 @@ export async function main(){
   period_order_violations:drive.period_order_violations,
   clock_order_violations:drive.clock_order_violations,clock_missing:drive.clock_missing,
   missing_team_attribution:drive.missing_team_attribution,quarters:drive.quarters,
-  internal_identity_gate:drive.internal_identity_gate,full_completeness_verified:false,
+  internal_identity_gate:drive.internal_identity_gate,
+  event_team_attribution_ready:drive.event_team_attribution_ready,
+  full_completeness_verified:false,
   source_sha256:packet.upstream_sha256
  }));
  ok(drive.internal_identity_gate,'NFL_INTERNAL_PLAY_IDENTITY_FAILURE');

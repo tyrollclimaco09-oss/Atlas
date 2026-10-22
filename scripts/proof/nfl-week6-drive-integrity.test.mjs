@@ -8,3 +8,13 @@ function fixture(){return {drives:{previous:[
 test('identities and quarter chronology valid without declaring independent snap completeness',()=>{const x=auditDriveEvents(fixture());assert.equal(x.unique_play_ids,3);assert.equal(x.duplicate_ids,0);assert.equal(x.internal_identity_gate,true);assert.equal(x.complete_play_coverage_verified,false);});
 test('duplicate plays and reversed quarters fail internal integrity',()=>{const f=fixture();f.drives.previous[1].plays[0].id='2';let x=auditDriveEvents(f);assert.equal(x.duplicate_ids,1);assert.equal(x.internal_identity_gate,false);f.drives.previous[1].plays[0].id='3';f.drives.previous[1].plays[0].period.number=0;assert.equal(auditDriveEvents(f).missing_periods,1);});
 test('clock regression tracked as quality boundary',()=>{const f=fixture();f.drives.previous[0].plays[1].clock.displayValue='15:30';const x=auditDriveEvents(f);assert.equal(x.clock_order_violations,1);assert.equal(x.complete_play_coverage_verified,false);});
+
+test('all drive plays without team IDs are ineligible for event-to-team feature training',()=>{
+ const x=fixture();
+ for(const d of x.drives.previous)for(const p of d.plays)delete p.team;
+ const result=auditDriveEvents(x);
+ assert.equal(result.internal_identity_gate,true);
+ assert.equal(result.missing_team_attribution,3);
+ assert.equal(result.event_team_attribution_ready,false);
+ assert.equal(result.usable_player_volume_from_drive_plays,false);
+});
