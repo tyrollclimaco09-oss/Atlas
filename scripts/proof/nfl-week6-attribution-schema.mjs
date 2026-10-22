@@ -14,7 +14,10 @@ export function inspectAttribution(summary){
     'play.participants[]':0,'play.scoringPlay':0,'drive.team.id':0,'drive.start.team.id':0},
   distinct_drive_team_ids:[],
   play_key_frequency:{},drive_key_frequency:{},play_type_frequency:{},
-  samples:[],team_inheritance_safe:false,canonical_offense_attribution_verified:false,
+  samples:[],team_participant_shapes:{},team_participant_sample:[],
+  start_team_vs_drive_team_differences:0,
+  start_team_vs_drive_team_type_counts:{},
+  team_inheritance_safe:false,canonical_offense_attribution_verified:false,
   canonical_defense_attribution_verified:false,player_target_model_eligible:false,
   execution_authority:false,production_authority:false};
  const driveTeams=new Set();
@@ -27,6 +30,26 @@ export function inspectAttribution(summary){
   for(const p of plays){
    evidence.play_count++;
    for(const key of Object.keys(p))evidence.play_key_frequency[key]=(evidence.play_key_frequency[key]||0)+1;
+   const participant=p.teamParticipants;
+   const participantShape=Array.isArray(participant)?'ARRAY':
+     participant&&typeof participant==='object'?'OBJECT':
+     participant===null?'NULL':typeof participant;
+   evidence.team_participant_shapes[participantShape]=(evidence.team_participant_shapes[participantShape]||0)+1;
+   if(evidence.team_participant_sample.length<5){
+     const entries=Array.isArray(participant)?participant.slice(0,4):participant;
+     evidence.team_participant_sample.push({
+       shape:participantShape,keys:Array.isArray(entries)?entries.map(x=>Object.keys(x??{})):
+         entries&&typeof entries==='object'?Object.keys(entries):[],
+       team_ids:Array.isArray(entries)?entries.map(x=>String(x?.team?.id??x?.id??'')):
+        null
+     });
+   }
+   const st=String(p.start?.team?.id??''),dt=String(d.team?.id??'');
+   if(validId(st)&&validId(dt)&&st!==dt){
+     evidence.start_team_vs_drive_team_differences++;
+     const label=String(p.type?.text??'UNKNOWN');
+     evidence.start_team_vs_drive_team_type_counts[label]=(evidence.start_team_vs_drive_team_type_counts[label]||0)+1;
+   }
    if(validId(p.team?.id))evidence.candidate_paths['play.team.id']++;
    if(validId(p.start?.team?.id))evidence.candidate_paths['play.start.team.id']++;
    if(validId(p.end?.team?.id))evidence.candidate_paths['play.end.team.id']++;
@@ -62,6 +85,10 @@ async function main(){
   drives:r.drive_count,plays:r.play_count,candidate_paths:r.candidate_paths,
   drive_team_ids:r.distinct_drive_team_ids,
   drive_keys:r.drive_key_frequency,play_keys:r.play_key_frequency,
+  team_participant_shapes:r.team_participant_shapes,
+  team_participant_sample:r.team_participant_sample,
+  start_team_vs_drive_team_differences:r.start_team_vs_drive_team_differences,
+  start_team_vs_drive_team_type_counts:r.start_team_vs_drive_team_type_counts,
   samples:r.samples.slice(0,4),actor_attribution_verified:false,
   source_sha256:r.source_sha256
  }));

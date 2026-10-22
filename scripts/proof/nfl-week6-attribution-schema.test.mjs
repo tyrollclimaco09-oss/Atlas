@@ -19,3 +19,12 @@ test('individual play team and participants presence measured separately',()=>{
  assert.equal(r.candidate_paths['play.participants[]'],1);
  assert.equal(r.canonical_offense_attribution_verified,false);
 });
+
+test('teamParticipants structure cannot be reinterpreted as a ballcarrier without player identity',()=>{
+ const f=fixture();f.drives.previous[0].plays[0].teamParticipants=[{team:{id:'30'}},{team:{id:'34'}}];
+ f.drives.previous[0].plays[0].start={team:{id:'30'}};
+ const r=inspectAttribution(f);
+ assert.equal(r.team_participant_shapes.ARRAY,1);
+ assert.equal(r.start_team_vs_drive_team_differences,1);
+ assert.equal(r.canonical_offense_attribution_verified,false);
+});
