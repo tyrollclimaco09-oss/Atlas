@@ -1,0 +1,21 @@
+name: ATLAS immutable pregame artifact audit (offline)
+on:
+  push:
+    branches: [research/odds-api-probe-2026-10-22]
+    paths:
+      - docs/prospective/ATLAS_NHL_20261022_2026020154_UNPRICED_FREEZE.json
+      - scripts/proof/verify-archived-freeze.test.mjs
+      - .github/workflows/atlas-archived-freeze-integrity.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify-archive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - run: node --test scripts/proof/verify-archived-freeze.test.mjs
