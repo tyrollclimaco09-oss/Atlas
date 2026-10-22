@@ -1,0 +1,17 @@
+'use strict';
+const {test}=require('node:test');
+const assert=require('node:assert/strict');
+const {validate,load,sha256,FILE}=require('./atlas-handoff-guard.cjs');
+const fs=require('node:fs');
+const clone=o=>structuredClone(o);
+test('canonical handoff current schema and every linked repo file exists',()=>{const r=validate(load());assert.ok(r.verified_required_paths>=6);});
+test('handoff byte digest is stable and non-empty',()=>{assert.match(sha256(fs.readFileSync(FILE)),/^[0-9a-f]{64}$/);});
+test('cannot silently enable betting, production, or Supabase writes',()=>{for(const k of ['autonomous_betting','production_release','paid_odds_automatic_calls','merge_to_main_authorized','supabase_canonical_mutations_authorized']){const h=clone(load());h.authority[k]=true;assert.throws(()=>validate(h),/AUTHORITY_ESCALATION/)}});
+test('cannot silently turn V3 reported scores into replay-verified',()=>{const h=clone(load());h.lanes[0].reported_october_metrics.replayed_verified=true;assert.throws(()=>validate(h),/UNVERIFIED_NBA_MODEL_ADVANCEMENT/);});
+test('cannot change NBA 57-game checkpoint into earlier 54-game revision',()=>{const h=clone(load());h.lanes[0].sample_reported=54;assert.throws(()=>validate(h),/UNVERIFIED_NBA_REPLAY/);});
+test('cannot conflate NFL Week 6 with Week 7',()=>{const h=clone(load());h.lanes[1].true_week=7;assert.throws(()=>validate(h),/NFL_WEEK_REGRESSION/);});
+test('cannot swap sequence or merge sports into one lineage',()=>{const h=clone(load());h.lanes.reverse();assert.throws(()=>validate(h),/SPORT_ORDER/);});
+test('cannot declare retired R3 active or RC9 production-ready',()=>{const h=clone(load());h.backend.readiness='PRODUCTION_READY';assert.throws(()=>validate(h),/RELEASE_PROMOTION/);});
+test('cannot erase the calibration proof gap',()=>{const h=clone(load());h.backend.forecast_outcome_admissible='VERIFIED';assert.throws(()=>validate(h),/CALIBRATION_INFLATION/);});
+test('historical Arc III sign-offs are not rewritten',()=>{const h=clone(load());h.arc3.formally_signed_off=15;assert.throws(()=>validate(h),/HISTORICAL_ARCIII_REWRITE/);});
+test('missing repo files become explicit hard failures',()=>{const h=clone(load());h.evidence.source_repo_files.push('docs/missing_forced_artifact.md');assert.throws(()=>validate(h),/MISSING_HANDOFF_ARTIFACT/);});

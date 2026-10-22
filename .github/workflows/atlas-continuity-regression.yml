@@ -1,0 +1,24 @@
+name: ATLAS continuity and handoff anti-regression (zero credentials)
+on:
+  push:
+    branches: [research/odds-api-probe-2026-10-22]
+    paths:
+      - docs/continuity/ATLAS_CURRENT_HANDOFF.json
+      - docs/continuity/ATLAS_CURRENT_HANDOFF.md
+      - scripts/continuity/atlas-handoff-guard.cjs
+      - scripts/continuity/atlas-handoff-guard.test.cjs
+      - .github/workflows/atlas-continuity-regression.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  historical-lineage-and-authority:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - name: Verify frozen authority, separate NBA/NFL, and repo pointers
+        run: node --test scripts/continuity/atlas-handoff-guard.test.cjs

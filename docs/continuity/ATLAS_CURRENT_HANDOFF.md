@@ -1,0 +1,38 @@
+# ATLAS — CURRENT ENGINEERING HANDOFF (start here)
+
+**Canonical current handoff:** [ATLAS_CURRENT_HANDOFF.json](./ATLAS_CURRENT_HANDOFF.json). The JSON file is a **source-and-evidence checkpoint**, not a mutable claim that all external services are healthy. This handoff supplements, NEVER overwrites, [the October 18 master checkpoint](./ATLAS_MASTER_CHECKPOINT_2026-10-18.json), [Operator Remote V2](./ATLAS_OPERATOR_REMOTE_V2.json), and [Arc III's 15-pass plan](../ARCIII_REALITY_FORGE_RESUME_HANDOFF_2026-10-18.md).
+
+## Resume command for a new conversation
+
+> Continue ATLAS from `tyrollclimaco09-oss/Atlas`, branch `research/odds-api-probe-2026-10-22`. Read `docs/continuity/ATLAS_CURRENT_HANDOFF.json` and `docs/continuity/ATLAS_CURRENT_HANDOFF.md` at the **current branch HEAD**, then verify the latest GitHub CI, live Supabase and Vercel independently. Respect the original Arc III checkpoint and append-only provenance. NBA first, NFL second. Never promote reported research to verified proof, infer live health from stale receipts, spend paid odds credits or authorize betting. Make targeted improvements, test them, and update the handoff before ending.
+
+## Architecture state as of October 22, 2026
+
+| Surface | Verified / present | Unproven / blocked |
+| --- | --- | --- |
+| GitHub | Research branch and source documentation; historical immutable checkpoints | No main/production promotion |
+| NBA | Real player/PBP source proof + 16/16 archived audit contract tests recovered and run | Full 57-game original V3 manifest/replay raw archive inaccessible via current Library permissions; reported metrics unverified |
+| NFL | Week 6 ESPN↔nflverse two-stat match, corrected identity | Full plays/drive coverage; future QB prop forecast |
+| Supabase | Source and pregame shadow evidence, active RC9 object definitions matched 205/205 previously | Validated live candidate→Final Gate→outcome, authenticated Vercel parity, continuous heartbeat |
+| Odds | Paid handlers retired behind JWT; manual credit guard in research branch | Governed production ingest not yet built |
+| Release | Human Final Gate remains required | RC9 active runtime HOLD; no autonomous execution |
+
+## Avoid fragmentation
+
+1. **One authoritative project:** code, handoffs, evidence statuses, CI and research notes stay in this GitHub repo. Notion, Library, Drive, Create State and chat are referenced by IDs/links as **secondary/recovery surfaces**, not separately authoritative projects.
+2. **Every timeskip ends with a git checkpoint:** source changes + tests + evidence refs + unresolved blockers + current branch HEAD readback. If any mirror cannot be synced, record `UNKNOWN` and do not say Mastersave complete.
+3. **Keep true lineage:** historical older checkpoints, correction receipts, and retired R3 remain intact. No overwriting the Arc III 0/15 formal sign-off or relabeling synthetic tests as model efficacy.
+4. **No silent regressions:** `node --test scripts/continuity/atlas-handoff-guard.test.cjs` checks the handoff invariants, separate NBA/NFL lanes, and required repo paths. CI runs offline with no credentials.
+5. **Unverified metric display:** NBA 57 games, October MAE 7.062 vs 6.456 are marked *reported retrospective* until row-level replay is accessible and reproduced.
+
+## Today's precise recovery
+
+- Retrieved raw bytes of **audit ZIP** `ATLAS_NBA_PBP_V3_AUDIT_SHADOW_20261022.zip` from the personal Library, extracted three files and independently ran **16/16 offline synthetic audit tests**. Their standalone source is still a Library recovery asset; this new handoff locates them.
+- Located original `ATLAS_PBP_V3_CHRONOLOGICAL_SHADOW.zip` in Library, but materialization **failed**: current Project permissions did not provide an authorized raw-byte path. No source manifest or prediction rows replayed. This distinction is enforced by checkpoint status.
+- The archived audit's date/target/census and anti-leakage safeguards can guide future replay; success of 16 synthetic tests is *not* predictive validation.
+
+## Next earned proof
+
+**NBA:** recover an authorized raw copy of original V3 archive or reconstruct a clearly labeled new version, rerun 57-game independent holdout and compare per-game predictions, source hashes, and clock cutoffs. **Then NFL:** complete nflverse PBP cross-source matching, with missing/canceled plays explicitly counted. **Then backend:** verify canonical research admission, official outcomes and authenticated Vercel↔Supabase runtime, without paid odds queries.
+
+**Doctrine:** knowledge over greed; truth over ego; evidence over confidence; process over outcomes.

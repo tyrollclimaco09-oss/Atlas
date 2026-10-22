@@ -1,0 +1,123 @@
+{
+  "schema": "atlas.engineering.handoff.v1",
+  "checkpoint_id": "ATLAS-20261022-NBA-V3-RECOVERY-CONTINUITY-01",
+  "as_of_date": "2026-10-22",
+  "repository": "tyrollclimaco09-oss/Atlas",
+  "source_branch": "research/odds-api-probe-2026-10-22",
+  "checkpoint_parent_sha": "20dd2f792b6a924d808ed95ecae87b136f758fc0",
+  "authority": {
+    "production_release": false,
+    "autonomous_betting": false,
+    "human_final_gate_required": true,
+    "paid_odds_automatic_calls": false,
+    "source_of_truth": "GITHUB_VERSIONED_EVIDENCE",
+    "historical_checkpoints_append_only": true,
+    "merge_to_main_authorized": false,
+    "supabase_canonical_mutations_authorized": false
+  },
+  "arc3": {
+    "planned_passes": 15,
+    "formally_signed_off": 0,
+    "arc3_handoff": "docs/ARCIII_REALITY_FORGE_RESUME_HANDOFF_2026-10-18.md"
+  },
+  "lanes": [
+    {
+      "id": "NBA_V3",
+      "order": 1,
+      "status": "BLOCKED_PRIMARY_REPLAY_UNAVAILABLE",
+      "target": "q4_four_pre_q4_selected_players_combined_fga",
+      "sample_reported": 57,
+      "earlier_checkpoint_reported": 54,
+      "archive": {
+        "name": "ATLAS_PBP_V3_CHRONOLOGICAL_SHADOW.zip",
+        "library_file_id": "file_0000000053e481f7a9f4b1048f7ba2ef",
+        "raw_bytes_accessible": false
+      },
+      "recovered_audit": {
+        "name": "ATLAS_NBA_PBP_V3_AUDIT_SHADOW_20261022.zip",
+        "library_file_id": "file_00000000ee58823095e41b019ebd58e6",
+        "verified_synthetic_tests": 16,
+        "artifact_source": "PERSONAL_LIBRARY"
+      },
+      "reported_october_metrics": {
+        "games": 14,
+        "baseline_mae": 7.062,
+        "model_mae": 6.456,
+        "confidence_interval_includes_zero": true,
+        "replayed_verified": false
+      },
+      "decision": "NO_PRODUCTION_PROMOTION",
+      "next": "RECOVER_57_ROW_REPLAY_AND_RUN_CHRONOLOGICAL_HOLDOUT"
+    },
+    {
+      "id": "NFL_WEEK6",
+      "order": 2,
+      "status": "PARTIAL_TWO_STATS_CORROBORATED",
+      "game_id": "401872996",
+      "true_week": 6,
+      "first_source_players": 22,
+      "first_source_play_ids": 186,
+      "nflverse_week7_available_at_observation": false,
+      "corroborated": {
+        "cj_stroud_pass_attempts": 34,
+        "woody_marks_carries": 15
+      },
+      "readme": "docs/prospective/ATLAS_NFL_20261018_WEEK6_PLAYER_PBP_CROSSSOURCE_PROOF.md",
+      "decision": "NO_PBP_COMPLETENESS_CLAIM",
+      "next": "VERIFY_PLAY_LEVEL_COMPLETENESS_SEPARATELY"
+    }
+  ],
+  "backend": {
+    "active_release": "ATLAS_RC9_PRODUCTION_PROOF_2026_09_21",
+    "active_manifest_observed": "205_MATCH_ZERO_DRIFT",
+    "readiness": "HOLD_NO_ACTIVE_RUNTIME_CANDIDATE",
+    "historical_r3": "RETIRED_DO_NOT_REFREEZE",
+    "free_source_observed": true,
+    "source_heartbeat_fully_verified": false,
+    "vercel_supabase_authenticated_parity": "UNKNOWN",
+    "sportsbook_ingest_legacy": "RETIRED_FAIL_CLOSED",
+    "forecast_outcome_admissible": "NONE_CONFIRMED",
+    "recovery_audit": "docs/ATLAS_PIPELINE_PROOF_RECOVERY_2026-10-22.md"
+  },
+  "evidence": {
+    "verified_in_this_pass": [
+      "NBA_AUDIT_LOCAL_SYNTHETIC_16_OF_16",
+      "GITHUB_BRANCH_READBACK_2026_10_22",
+      "LIBRARY_AUDIT_ZIP_BYTES_READ"
+    ],
+    "reported_only": [
+      "NBA_V3_57_GAMES_MAE",
+      "NBA_V3_OCTOBER_HOLDOUT"
+    ],
+    "source_repo_files": [
+      "docs/continuity/ATLAS_OPERATOR_REMOTE_V2.json",
+      "docs/continuity/ATLAS_MASTER_CHECKPOINT_2026-10-18.json",
+      "docs/ATLAS_NEXT_PROOF_MILESTONES_2026-10-22.md",
+      "docs/prospective/ATLAS_NBA_20261021_PLAYER_PBP_SOURCE_PROOF.md",
+      "docs/prospective/ATLAS_NFL_20261018_WEEK6_PLAYER_PBP_CROSSSOURCE_PROOF.md"
+    ],
+    "immutable_git_runs": [
+      39834900969,
+      39836988809,
+      39837577620
+    ]
+  },
+  "resume_protocol": [
+    "FETCH_THIS_JSON_AT_RESEARCH_BRANCH_HEAD",
+    "FETCH_GITHUB_BRANCH_AND_READ_RECENT_CI",
+    "READ_HISTORICAL_ARCIII_AND_OPERATOR_REMOTE_V2",
+    "CHECK_LIVE_SUPABASE_AND_VERCEL_HEALTH_SEPARATELY",
+    "DIFF_NEW_REPORTS_AGAINST_OLD_POINT_IN_TIME_EVIDENCE",
+    "RUN_CONTINUITY_REGRESSIONS_NO_PAID_ODDS",
+    "WORK_NBA_BEFORE_NFL_AND_PRESERVE_SEPARATE_LABELS",
+    "UPDATE_THIS_JSON_AND_HANDOFF_WITH_VERIFIABLE_EVIDENCE_AND_SHA",
+    "LEAVE_RELEASE_AUTHORITY_FALSE_UNLESS_EXPLICIT_HUMAN_APPROVAL"
+  ],
+  "known_gaps": [
+    "ORIGINAL_57_GAME_V3_ARCHIVE_RAW_BYTES_UNAVAILABLE_VIA_CURRENT_FILES_ACCESS",
+    "REPORTED_V3_METRICS_NOT_REPLAYED",
+    "CANONICAL_REAL_PRE_GAME_MODEL_WITH_OFFICIAL_FINAL_OUTCOME_NOT_ADMITTED",
+    "AUTHORIZED_VERCEL_SUPABASE_RUNTIME_PARITY_NOT_PROVED",
+    "NFL_FULL_SNAP_COVERAGE_NOT_PROVED"
+  ]
+}
