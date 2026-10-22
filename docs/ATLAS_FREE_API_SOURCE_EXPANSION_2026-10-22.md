@@ -1,70 +1,79 @@
-# ATLAS Free-First Source Expansion — 2026-10-22 (READ-ONLY AUDIT)
+# ATLAS / Real Free-Key Sources — Access-Verified Reconciliation
+**2026-10-22 | read-only Supabase inspection | no external paid odds requests | no Supabase writes | SHADOW only**
 
-## Scope and doctrine
+## Correction to earlier recommendations (supersedes previous version of this document)
 
-The user's request: identify **useful** free sources/API keys to configure as Supabase Edge Function secrets, before the next paid odds request. This is an audit and staged integration plan, **not deployment or production promotion**. No paid The Odds API calls, no third-party sports-feed calls from ATLAS, no Supabase modifications and no wager execution occurred during this pass. Source/pricing claims are based on provider docs viewed October 22, 2026; provider eligibility and exact season coverage must be validated before ingesting.
+The original shortlist treated marketing descriptions as evidence that a user could obtain a useful free-tier API key. That was NOT sufficient. The user reported inaccessible/confusing signup and no visible key. This audit requires evidence of an ACTUAL published signup form, quota, key-delivery steps, and permitted free data. **None of the new keys have been obtained or tested on ATLAS; signup page verification is not credential verification.** Do not say a service is connected until it passes authenticated readback.
 
-Respect existing ATLAS canon: SCOUT -> FILTER/VERIFY -> ORACLE + EDGE THIEF -> PRICING -> KAIROS -> SENTINEL -> TACTICIAN -> HUMAN FINAL GATE -> LEDGER -> FORENSICS -> CALIBRATOR. Source data is not evidence of a calibrated betting edge.
+**API-SPORTS correction:** A *single API-SPORTS account/key* works across sports products, not separately generated NFL/NBA/Basketball keys as previously recommended. Their official signup routes to `https://dashboard.api-football.com/register`, which could not be fetched from this research environment (403) and the operator reported signup difficulty. DEFER; do not keep instructing operator to create multiple keys. Free claims of 100/day per API are supplier claims and data may be limited by competition/season.
 
-## Existing Supabase live inventory, read-only
+**SportsGameOdds correction:** Free Amateur plan advertises useful NFL/NBA props, 9 books, ~2500 objects/month. But the official key setup page explicitly REQUIRES a credit card for signup, contradicting several marketing landing pages. DEFER as friction/card-gated; never claim no-card.
 
-Connected project `lhliqbbooproqtslmgqi`, reported ACTIVE_HEALTHY. Deployed Edge Functions exist:
-- `atlas-odds-ingest` and `atlas-odds-smoke`: already reference `THE_ODDS_API_KEY` and `api.the-odds-api.com` in deployed source
-- `atlas-therundown-smoke`: references `THERUNDOWN_API_KEY`, provider access unproven
-- `atlas-nfl-free-scout`: nflverse/GitHub-source code present
-- `atlas-free-sports-scout`: ESPN, NHL API and MLB StatsAPI source code present
-- `atlas-runtime-intake`, `atlas-site-runtime`, `atlas-core-health`, `atlas-rill-signal-intake` also present.
-Project lists 258 tables in public including `providers`, `provider_adapters`, `provider_events`, `market_snapshots`, `evidence_snapshots`, `ingestion_runs`, `ingestion_records`, `data_quality_flags`. These are schema/infrastructure observations, NOT proof of live end-to-end source ingestion. No new table required for API scout proposal before assessing existing schema.
+**TheOddsAPI distinction:** `theoddsapi.com` (base `api.theoddsapi.com`, auth `x-api-key`) is a DIFFERENT provider from our tested `the-odds-api.com` (base `api.the-odds-api.com`, v4). Similar names are not interchangeable. Its official free signup form is verifiably present; key issuance and reliability are still UNTESTED. Its free tier advertises 25 requests/day, US NFL/NBA/MLB moneylines only. The provider's pages contained minor inconsistencies in older indexed descriptions; never rely on an undocumented feature/market without authenticated verification.
 
-## Sign-up priorities — new credential candidates
+## Operator-ready candidates: actual free-key signup pages verified
 
-| Stage | Provider | Free offer at research time | Valuable information / likely ATLAS consumer | Proposed Edge secret | Caveat |
-| --- | --- | --- | --- | --- | --- |
-| P1 | API-SPORTS NFL & NCAA | 100 requests/day **for that API**, free tier | NFL + college games, events, teams/player stats and injuries -> SCOUT/VERIFY/ORACLE features | `API_SPORTS_NFL_KEY` | Confirm free subscription and **2026 season** coverage in dashboard before tests |
-| P1 | API-SPORTS NBA | 100 requests/day **for that API**, free tier | NBA games, rosters, player/game stats; potential second-source injury/rotation evaluation | `API_SPORTS_NBA_KEY` | Confirm endpoints available in free tier, especially player-game data and season freshness |
-| P2 | FantasyPros Public API | Free by application for *personal noncommercial nonproduction* work | NFL/NBA/MLB/NHL player news, injuries, projections; valuable independent signal / alert evidence | `FANTASYPROS_API_KEY` | Approval required; limits and exact free endpoint scope must be verified. Attribution and non-compete terms. Do not use as unrestricted production feed |
-| P2 | API-SPORTS Basketball | 100 requests/day for that API | Other basketball leagues and possible women's/college coverage | `API_SPORTS_BASKETBALL_KEY` | Audit league/season and statistics before subscribing or ingesting |
-| P3 optional | API-FOOTBALL soccer | 100 requests/day; free tier has season limits | Match schedules, injuries, lineups, players, odds for future soccer lane | `API_FOOTBALL_KEY` | No immediate NFL/NBA EV milestone need |
+| Rank | Provider | Direct account/key URL | Free entitlement advertised | ATLAS benefit | Supabase proposed secret | Access certainty |
+| --- | --- | --- | --- | --- | --- | --- |
+| P0 | CollegeFootballData (CFBD) | https://collegefootballdata.com/key | **1,000 requests/month** on free tier; email-delivered key; no credit card | Historical and current college football games, team/player stats; CFB Game Sense/ORACLE baseline | `CFBD_API_KEY` | Real email form seen; no authenticated readback |
+| P0 | CollegeBasketballData (CBBD) | https://collegebasketballdata.com/key | Permanent free Core API; email-delivered key. **Shares quota** with CFBD account/plan | CBB box scores, PBP, lineup/substitution and player-level modeling; new coverage | `CBBD_API_KEY` | Real email form seen; no authenticated readback |
+| P1 | TheOddsAPI (distinct from current provider) | https://theoddsapi.com/start | 25 requests/day, no credit card; NFL/NBA/MLB h2h US books | Independent sportsbook comparison / moneyline quote reference | `THEODDSAPI_SECONDARY_KEY` | Real form seen, backend/key quality untested |
+| P1 | WeatherAPI.com | https://www.weatherapi.com/signup | Free ongoing 100,000 requests/month, 3-day forecasts, 1-day history; starts with 7-day trial automatically downgrading to Free | Stadium wind/rain/temperature and prospective weather forecasts | `WEATHERAPI_KEY` | Real email/Google signup verified; account delivery untested |
+| P2 | BALLDONTLIE (metadata only) | https://www.balldontlie.io/ ; https://www.balldontlie.io/account/ | Free key immediately after signup; 5 requests/minute; NBA free endpoints: teams/players/games only | NFL/NBA identity and event reconciliation fallback; NOT player props/stat models | `BALLDONTLIE_API_KEY` | Public signup/auth schema verified; no account |
+| P3 | Sportmonks (SOCcer only) | https://my.sportmonks.com | Free signup/token; **Danish Superliga and Scottish Premiership** only | Future soccer research; not needed for NFL/NBA immediate pilot | `SPORTMONKS_API_TOKEN` | Direct token process documented; free leagues too narrow |
 
-API-SPORTS reports 100 free requests/day **per API**, reset at 00:00 UTC. Avoid assuming one key authorizes all products or that all seasons are free; check each product's dashboard. Official: https://api-sports.io/ ; https://api-sports.io/sports/nfl ; https://api-sports.io/sports/nba ; https://api-sports.io/sports/basketball and https://www.api-football.com/pricing .
+### CRITICAL SHARED CFBD/CBBD QUOTA
+CFBD and CBBD are operated by Rad Sports Analytics LLC; their current terms explicitly say API requests across both draw from the SAME plan's quota. **Do not add the two free allowances together**, and verify credentials/entitlements after signup. Free CFBD is reported as 1,000/month; student .edu emails may qualify for 3,000/month academic plan, but do not assume user eligibility. CBBD data range varies by endpoint; e.g. plays from 2005–06, substitution/lineup data from 2023–24, 2026-27 season parameter is `season=2027`. The user must confirm prospective season records are available before claiming 2026 coverage.
 
-FantasyPros official docs: https://api.fantasypros.com/public/v2/docs/ ; https://support.fantasypros.com/hc/en-us/articles/49749297704475-How-do-I-request-access-to-the-FantasyPros-API ; https://secure.fantasypros.com/api-keys/request/ . Public API's key header is `x-api-key`; sports are `nfl`, `nba`, `mlb`, `nhl`, plus others. Free access is research and prototype only; published/prod/redistribution require separate permissions.
+Sources:
+- https://collegefootballdata.com/api-tiers
+- https://collegefootballdata.com/key
+- https://collegebasketballdata.com/key
+- https://www.collegebasketballdata.com/api-tiers
+- https://collegebasketballdata.com/terms
+- https://api.collegebasketballdata.com/data-availability
+- https://theoddsapi.com/start
+- https://theoddsapi.com/pricing
+- https://theoddsapi.com/docs/
+- https://www.weatherapi.com/signup
+- https://www.weatherapi.com/pricing
+- https://www.balldontlie.io/account/
+- https://docs.balldontlie.io/
+- https://www.sportmonks.com/football-api/
+- https://sportsgameodds.com/docs/basics/setup
+- https://api-sports.io/
+- https://www.api-football.com/news/post/how-to-get-started-with-api-nfl-the-complete-beginners-guide
+- https://api-sports.io/terms
 
-## Free/no-key sources — reuse, do not create Supabase secrets
+## Existing Atlas & Supabase — DO NOT RECREATE
 
-| Source | Best use | ATLAS status / caution |
-| --- | --- | --- |
-| MLB StatsAPI: `statsapi.mlb.com` | Schedule, live feed, batter/pitcher game stats | Present in `atlas-free-sports-scout`; no signup; MLB data-use rights still apply; unofficial reference https://github.com/toddrob99/MLB-StatsAPI/wiki/Endpoints |
-| NHL public web API: `api-web.nhle.com` | NHL schedule/gamecenter play by play | Present in `atlas-free-sports-scout`; unofficial documented interface; stability and usage terms unverified https://github.com/Zmalski/NHL-API-Reference |
-| nflverse releases + nflreadpy | NFL PBP, historical stats, player usage | Existing NFL source adapter and fork. Dataset may update after games rather than instant/live; keep timestamp and source license https://github.com/nflverse/nflverse-data |
-| NBA live NBA.com endpoints via existing `nba_api` fork | NBA scores, play-by-play and box scores | Existing fork but not confirmed as connected live Supabase adapter; free access is not an official guaranteed public API https://github.com/swar/nba_api |
-| hoopR / sportsdataverse release assets | Historical NBA PBP, box scores, player/game datasets | No key; preserve dataset-version/time-cutoff controls; GitHub releases may be missing for a season; verify redistribution rights https://github.com/sportsdataverse/hoopR |
-| wehoop / sportsdataverse releases | WNBA and women's college play-by-play, player box, shot/possession modeling | No key; some 2026 release files absent per README; validate exact seasons before relying https://github.com/sportsdataverse/wehoop |
-| NWS / weather.gov | Outdoor NFL wind, precipitation, field conditions, observational reference | Official US government open API no key; rate limit is not published, cache and identify application via User-Agent https://www.weather.gov/documentation/services-web-api |
-| TheSportsDB V1 | Supplemental event/team identity fallback | Shared public example key `123`, no private secret; free subset not enough for detailed player EV https://www.thesportsdb.com/docs/api |
-| Open-Meteo | Weather cross-check, historical model features | Free non-commercial allowance 10,000 calls/day and no availability SLA; assess use rights first https://open-meteo.com/en/pricing |
+Live Supabase project previously checked: `lhliqbbooproqtslmgqi`, project status `ACTIVE_HEALTHY`. Deployed function sources include:
+- `atlas-odds-ingest`, `atlas-odds-smoke`: The Odds API key/env support already coded, **not proof the current GitHub secret was replicated to Supabase**.
+- `atlas-therundown-smoke`: references `THERUNDOWN_API_KEY`, provider status unverified.
+- `atlas-nfl-free-scout`: nflverse/GitHub NFL data.
+- `atlas-free-sports-scout`: MLB StatsAPI, NHL public API, ESPN source integrations.
+- `atlas-runtime-intake`, `atlas-site-runtime`, `atlas-core-health` and others: keep existing authority/guardrails.
 
-## Negative selection — do NOT spend time / keys yet
+Public schema has 258 tables including existing `providers`, `provider_adapters`, `provider_events`, `market_snapshots`, `evidence_snapshots`, `ingestion_runs`, `ingestion_records`, `data_quality_flags`. Do not invent new database tables or claim live ingestion based on table/function existence.
 
-- BALLDONTLIE's free NBA tier allows only 5 requests/minute and has major advanced endpoints (box scores, player stats, lineups, PBP, betting odds) paid-only. Useful for limited metadata, not our player-prop model without subscription. https://docs.balldontlie.io/
-- SportsDataIO free trial provides **scrambled** sample data, not honest prospective results: https://sportsdata.io/developers/apis
-- Odds-API.io has **paused new free keys indefinitely**; existing old free keys are grandfathered. https://odds-api.io/pricing/free
-- The Odds API free monthly balance must be reserved for real odds, not used to fill statistical data gaps. Existing one-credit live proof: GitHub run 39743068149, observed 499 remaining at that moment only.
+Key-free sources already worth using: NHL public score/gamecenter API; MLB StatsAPI; nflverse/nflreadpy; ESPN source adapter with rate/terms caveat; hoopR and wehoop historical replay; National Weather Service `api.weather.gov` for US stadium weather (no key). Caching and point-in-time provenance still required. User expressly prefers utilizing these before new paid keys.
 
-## Supabase setup card (operator action only, no actual credentials in repo or chat)
+## Exact Supabase secret setup (operator only)
 
-Open https://supabase.com/dashboard/project/lhliqbbooproqtslmgqi/functions/secrets
-Choose **Add new secrets**, Key = exact proposed name, Value = key obtained from vendor, Save. Set ONLY keys for which the provider account is actually provisioned. Provider API plans are not created by adding a Supabase environment variable. GitHub Actions secrets and Supabase Edge Function secrets are separate stores: do not assume the existing GitHub `THE_ODDS_API_KEY` automatically appears in Supabase. Source for secrets: https://supabase.com/docs/guides/functions/secrets .
+URL: https://supabase.com/dashboard/project/lhliqbbooproqtslmgqi/functions/secrets
 
-No need to enter secrets for no-key providers. Do not use `SUPABASE_` prefix for custom secrets. Do not paste values into ChatGPT, browser frontend JS, repo files, logging or database rows.
+1. Obtain a key on the **direct provider link**. Do not paste the key in ChatGPT or any GitHub file.
+2. Add a secret with the exact proposed name and value from the vendor. No key? No secret required.
+3. Supabase Edge Function secrets and GitHub Actions repository secrets are **different vaults**.
+4. A secret by itself DOES NOT enable ingestion: existing or new function code must read it server-side via `Deno.env.get()`.
+5. Before any new requests, agree on one endpoint, identity, expected quota cost, as-of time, receipt format and research value. Cap quotas and fail closed. No credential echo, no automatic polling and no betting execution.
 
-## Proposed gated integration sequence
+## Next implementation gates
 
-1. Operators only obtain P1 API-SPORTS NFL and NBA free keys, and (optional, if accepted) FantasyPros research key. Record only the key **names**, not values.
-2. Before external requests, compare source capabilities with existing `atlas-free-sports-scout` and `atlas-nfl-free-scout`; determine exactly which missing information each source would add.
-3. Probe one narrowly-scoped NFL and one NBA statistical endpoint. Require exact 2026 data and nonempty ID/time fields. Observe provider rate headers, licensing and free tier access; no retrospective confidence from mock responses.
-4. Normalize into existing event/provider IDs with independent timestamps, provenance, hash and quality flags. Use existing schemas and receipt tables subject to validation; do not create a competing master DB.
-5. Calibrate model features OFFLINE before spending additional The Odds API credits; isolate model inputs from the target event's future data and from sportsbook outcome price features.
-6. Promote only after prospective source->freeze->prediction->result pairing is demonstrated and user explicitly approves authority changes. No automatic betting execution.
+1. **Operator acquisition P0**: free CFBD and CBBD keys via actual forms (or one to start). User signals key NAMES only, never values.
+2. **Access proof**: authenticated response for one dataset per source with proper 2026/2027 season identity, schema, quota headers, and provenance; no implied profits.
+3. **Unify source contracts** in existing `atlas-free-sports-scout` and ledger schemas after read-only schema verification; NEVER replace canonical DB.
+4. **Source quality audit**: missing fields, player/event matching, late updates, rights, injury freshness, and retrospective leakage.
+5. Only then consider a new paid-odds credit for price-vs-forecast comparison. Maintain the 100-credit reserve and manual quota gates from `docs/ATLAS_ODDS_API_QUOTA_GOVERNANCE.md`.
 
-No live data rights, key provisioning, or source reliability has been proven by this planning document.
+**Authority:** SHADOW-only, existing HUMAN FINAL GATE intact. No live provider calls, Supabase schema/deployment changes, secrets mutations, or production promotion in this audit.
