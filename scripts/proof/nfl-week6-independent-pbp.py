@@ -47,7 +47,7 @@ def norm_plays(rows):
         ptype[typ if typ else "UNKNOWN"]+=1
         for k in ("pass_attempt","rush_attempt","qb_dropback","sack","qb_scramble","no_play","penalty"):
             if flag(r,k):stats[k]+=1
-        if team and team not in ("NE","HOU"):
+        if team and team not in ("JAX","HOU"):
             issues["outside_game_team"]+=1
     return {"row_count":len(rows),"unique_play_ids":len(distinct),
             "play_type_counts":dict(ptype),"qtr_counts":dict(quarters),"posteam_counts":dict(teams),
@@ -82,6 +82,8 @@ def selftest():
     assert got["binary_event_indicators"]["rush_attempt"]==1
     assert got["issues"]=={}
     assert norm_plays(sample+[sample[0]])["issues"]["empty_or_duplicate_play_ids"]==1
+    bad=dict(sample[0],play_id="12",posteam="NE")
+    assert norm_plays(sample+[bad])["issues"]["outside_game_team"]==1
     incorrect=[dict(sample[0],week="7")]
     try:norm_plays(incorrect)
     except ValueError as e: assert "GAME_CONFLICT" in str(e)
