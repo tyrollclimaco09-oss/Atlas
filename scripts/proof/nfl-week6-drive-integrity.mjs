@@ -17,6 +17,10 @@ export function auditDriveEvents(summary){
   clockGoesBackward=0,periodGoesBackward=0,clockMissing=0,missingTeam=0;
  let playCount=0,priorPeriod=0,priorClock=null;
  const quarters={};const types={};const drives=[];
+ const sourceConsistentTypes=new Set(['Pass Reception','Pass Incompletion','Rush']);
+ const candidateByType={},candidateByTeam={},rejectionReasons={};
+ let offensiveTeamCandidates=0;
+ const rejected=why=>{rejectionReasons[why]=(rejectionReasons[why]||0)+1;};
  for(const drive of d){
   const p=drive.plays;
   ok(Array.isArray(p),'DRIVE_PLAYS_SCHEMA');
@@ -40,6 +44,18 @@ export function auditDriveEvents(summary){
    }
    const typ=String(play.type?.text??'UNKNOWN');
    types[typ]=(types[typ]||0)+1;
+   // Candidate team attribution only, NEVER independent actor validation.
+   // Kickoffs/timeouts/turnovers/penalties cannot inherit possession safely.
+   const driveTeam=String(drive.team?.id??''),startTeam=String(play.start?.team?.id??'');
+   if(!sourceConsistentTypes.has(typ))rejected('TYPE_OUTSIDE_ALLOWLIST');
+   else if(play.isPenalty===true||play.isTurnover===true)rejected('PENALTY_OR_TURNOVER');
+   else if(!/^\d+$/.test(driveTeam)||startTeam!==driveTeam)rejected('TEAM_IDENTITY_NOT_CONSISTENT');
+   else if(!/^\d+$/.test(id)||!Number.isInteger(period))rejected('PLAY_ID_OR_PERIOD_UNKNOWN');
+   else{
+    offensiveTeamCandidates++;
+    candidateByType[typ]=(candidateByType[typ]||0)+1;
+    candidateByTeam[driveTeam]=(candidateByTeam[driveTeam]||0)+1;
+   }
    if(play.team?.id===null||play.team?.id===undefined)missingTeam++;
    counted++;
   }
@@ -52,6 +68,10 @@ export function auditDriveEvents(summary){
   period_order_violations:periodGoesBackward,
   clock_order_violations:clockGoesBackward,clock_missing:clockMissing,
   missing_team_attribution:missingTeam,
+  offensive_team_candidates_source_consistent:offensiveTeamCandidates,
+  candidate_types:candidateByType,candidate_teams:candidateByTeam,
+  candidate_rejections:rejectionReasons,
+  candidate_authority:'SOURCE_CONSISTENT_NOT_INDEPENDENTLY_VERIFIED',
   quarters,play_type_counts:types,drive_summary:drives,
   internal_identity_gate:duplicates===0&&missingId===0&&missingPeriod===0&&periodGoesBackward===0,
   // Drive ordering is NOT usable team-level play attribution.
@@ -91,6 +111,9 @@ export async function main(){
   missing_team_attribution:drive.missing_team_attribution,quarters:drive.quarters,
   internal_identity_gate:drive.internal_identity_gate,
   event_team_attribution_ready:drive.event_team_attribution_ready,
+  offensive_team_candidates_source_consistent:drive.offensive_team_candidates_source_consistent,
+  candidate_types:drive.candidate_types,candidate_rejections:drive.candidate_rejections,
+  candidate_authority:drive.candidate_authority,
   full_completeness_verified:false,
   source_sha256:packet.upstream_sha256
  }));

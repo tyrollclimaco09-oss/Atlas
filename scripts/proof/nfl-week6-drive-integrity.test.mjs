@@ -18,3 +18,29 @@ test('all drive plays without team IDs are ineligible for event-to-team feature 
  assert.equal(result.event_team_attribution_ready,false);
  assert.equal(result.usable_player_volume_from_drive_plays,false);
 });
+
+test('only ordinary unpenalized matching-team plays become source-consistent candidates',()=>{
+ const f=fixture(),plays=f.drives.previous.flatMap(d=>d.plays);
+ f.drives.previous[0].team={id:'30'};
+ f.drives.previous[1].team={id:'30'};
+ plays[0].type.text='Pass Reception';plays[0].start={team:{id:'30'}};
+ plays[1].type.text='Kickoff';plays[1].start={team:{id:'34'}};
+ plays[2].type.text='Rush';plays[2].start={team:{id:'30'}};
+ const r=auditDriveEvents(f);
+ assert.equal(r.offensive_team_candidates_source_consistent,2);
+ assert.equal(r.candidate_rejections.TYPE_OUTSIDE_ALLOWLIST,1);
+ assert.equal(r.candidate_authority,'SOURCE_CONSISTENT_NOT_INDEPENDENTLY_VERIFIED');
+ assert.equal(r.event_team_attribution_ready,true);
+ assert.equal(r.usable_player_volume_from_drive_plays,false);
+});
+test('turnovers, penalties and mismatched source team IDs never qualify',()=>{
+ const f=fixture(),plays=f.drives.previous.flatMap(d=>d.plays);
+ f.drives.previous[0].team={id:'30'};f.drives.previous[1].team={id:'30'};
+ for(const p of plays){p.type.text='Rush';p.start={team:{id:'30'}}}
+ plays[0].isPenalty=true;plays[1].isTurnover=true;plays[2].start.team.id='34';
+ const r=auditDriveEvents(f);
+ assert.equal(r.offensive_team_candidates_source_consistent,0);
+ assert.equal(r.candidate_rejections.PENALTY_OR_TURNOVER,2);
+ assert.equal(r.candidate_rejections.TEAM_IDENTITY_NOT_CONSISTENT,1);
+ assert.equal(r.complete_play_coverage_verified,false);
+});
