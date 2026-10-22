@@ -1,0 +1,34 @@
+name: ATLAS deployed paid-provider denials (live, no credentials)
+on:
+  push:
+    branches: [research/odds-api-probe-2026-10-22]
+    paths: [.github/workflows/atlas-live-unauthorized-denials.yml]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  unauthenticated-denial-readback:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Check actual deployed HTTP auth boundary without secrets or paid calls
+        run: |
+          python3 - <<'PY'
+          import json, urllib.request, urllib.error
+          root='https://lhliqbbooproqtslmgqi.supabase.co/functions/v1/'
+          names=['atlas-odds-smoke','atlas-odds-ingest','atlas-therundown-smoke','atlas-core-health']
+          for name in names:
+              req=urllib.request.Request(
+                root+name, method='POST', data=b'{}',
+                headers={'Content-Type':'application/json','User-Agent':'ATLAS-no-key-auth-boundary-check/1'})
+              try:
+                  with urllib.request.urlopen(req,timeout=12) as res:
+                      status=res.status
+              except urllib.error.HTTPError as e:
+                  status=e.code
+              if status not in (401,403):
+                  raise AssertionError(f'{name} FAILED unauthorized denial: HTTP {status}')
+              print(json.dumps({'function':name,'status':status,'auth_denied':True,
+                'credentials_supplied':False,'paid_upstream_calls':0},sort_keys=True))
+          print('ATLAS_NO_CREDENTIAL_DEPLOYED_DENIAL=PASS')
+          PY
