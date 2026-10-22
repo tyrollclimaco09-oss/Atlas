@@ -63,7 +63,13 @@ def espn_reference(summary):
     if not isinstance(drives,list) or not drives:raise ValueError("ESPN_COMPLETED_DRIVES_MISSING")
     plays=[p for d in drives for p in d.get("plays",[])]
     cats=Counter(str(p.get("type",{}).get("text","UNKNOWN")) for p in plays)
+    # Predeclared event-type mapping; these are whole-game event counts, not per-actor IDs.
+    pass_types=("Pass Reception","Pass Incompletion","Passing Touchdown","Pass Interception Return")
+    rush_types=("Rush","Rushing Touchdown")
     return {"game_id":game_id,"home_team":"JAX","away_team":"HOU","espn_team_ids":names,
+        "derived_espn_pass_attempt_events":sum(cats.get(t,0) for t in pass_types),
+        "derived_espn_rush_attempt_events":sum(cats.get(t,0) for t in rush_types),
+        "pass_type_mapping":list(pass_types),"rush_type_mapping":list(rush_types),
         "completed_drives":len(drives),"observed_plays":len(plays),
         "source_consistent_candidate_types":{
             "Pass Reception":cats.get("Pass Reception",0),
@@ -89,6 +95,8 @@ def selftest():
         {"team":{"id":"34","abbreviation":"HOU"}}]},
         "drives":{"previous":[{"plays":[{"id":"1","type":{"text":"Rush"}}]}]}}
     assert espn_reference(espn_ok)["home_team"]=="JAX"
+    assert espn_reference(espn_ok)["derived_espn_rush_attempt_events"]==1
+    assert espn_reference(espn_ok)["derived_espn_pass_attempt_events"]==0
     espn_wrong=json.loads(json.dumps(espn_ok))
     espn_wrong["boxscore"]["teams"][0]["team"]["abbreviation"]="NE"
     try:espn_reference(espn_wrong)
@@ -142,13 +150,22 @@ def main():
     esbytes,es_hash,es_at=fetch(ESPN,4_000_000)
     espn=espn_reference(json.loads(esbytes))
     independent=norm_plays(rows)
+    volume={
+        "espn_pass_attempt_events":espn["derived_espn_pass_attempt_events"],
+        "nflverse_pass_attempt_flags":independent["binary_event_indicators"].get("pass_attempt",0),
+        "espn_rush_attempt_events":espn["derived_espn_rush_attempt_events"],
+        "nflverse_rush_attempt_flags":independent["binary_event_indicators"].get("rush_attempt",0)
+    }
+    volume["game_pass_attempt_count_matches"]=volume["espn_pass_attempt_events"]==volume["nflverse_pass_attempt_flags"]
+    volume["game_rush_attempt_count_matches"]=volume["espn_rush_attempt_events"]==volume["nflverse_rush_attempt_flags"]
+    volume["scope"]="GAME_LEVEL_EVENT_CATEGORY_TOTALS_ONLY_NOT_PLAYER_OR_PLAY_ID_PARITY"
     proof={"schema":"atlas.nfl.week6.independent-pbp-census.v1",
        "classification":"TWO_SOURCE_POSTGAME_COVERAGE_AUDIT_NO_MODEL",
        "nflverse_game_id":GAME,"espn_event_id":espn["game_id"],
        "nflverse_url":NFLVERSE,"nflverse_sha256":pbp_hash,"nflverse_observed_at_utc":pbp_at,
        "espn_url":ESPN,"espn_sha256":es_hash,"espn_observed_at_utc":es_at,
        "nflverse_columns_expected_present":[x for x in ALL_FIELDS if x in headers],
-       "nflverse":independent,"espn":espn,
+       "nflverse":independent,"espn":espn,"cross_source_game_attempt_totals":volume,
        "player_actor_ids_event_aligned":False,
        "play_id_one_to_one_verified":False,
        "official_play_completeness_verified":False,
@@ -158,7 +175,7 @@ def main():
         json.dump(proof,f,indent=2,sort_keys=True);f.write("\n")
     print("ATLAS_NFL_INDEPENDENT_PBP "+json.dumps({
       "nflverse":independent,"espn_summary":espn,
-      "game_id":GAME,"hash":pbp_hash,
+      "game_id":GAME,"hash":pbp_hash,"attempt_parity":volume,
       "actor_mapping_verified":False,"play_id_pairing_verified":False},sort_keys=True))
 if __name__=="__main__":
     try:main()
