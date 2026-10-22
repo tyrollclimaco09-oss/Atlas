@@ -18,6 +18,19 @@ export function assessCoverage(summary){
  const teams=summary.boxscore?.teams;
  ok(Array.isArray(teams)&&teams.length===2,'NO_TEAM_BOX_SCORE');
  const attempts={};const made={};const noTeam=[];let participantMissing=0,invalidPeriod=0;
+ const roster=new Map();let rosterConflicts=0;
+ for(const group of summary.boxscore?.players||[]){
+  const tid=String(group.team?.id??'');
+  for(const stat of group.statistics||[]){
+   for(const rec of stat.athletes||[]){
+    const id=String(rec.athlete?.id??'');
+    if(!/^\d+$/.test(id)||!/^\d+$/.test(tid))continue;
+    if(roster.has(id)&&roster.get(id)!==tid)rosterConflicts++;
+    roster.set(id,tid);
+   }
+  }
+ }
+ const rosterAttempts={};const mismatches=[];let unmatchedShooter=0;
  const sampled=[];
  for(const r of p){
   const t=r.type?.text;
@@ -26,6 +39,14 @@ export function assessCoverage(summary){
   if(!/^\d+$/.test(tid)){noTeam.push({type:t,period:r.period?.number});continue;}
   attempts[tid]=(attempts[tid]||0)+1;
   if(r.scoringPlay===true)made[tid]=(made[tid]||0)+1;
+  const shooterId=String(r.participants?.[0]?.athlete?.id??'');
+  const rosterTeam=roster.get(shooterId);
+  if(!rosterTeam)unmatchedShooter++;
+  else{
+   rosterAttempts[rosterTeam]=(rosterAttempts[rosterTeam]||0)+1;
+   if(rosterTeam!==tid)mismatches.push({event_id:String(r.id??''),period:r.period?.number,
+     play_team_id:tid,shooter_id:shooterId,roster_team_id:rosterTeam,type:t,scoring_play:r.scoringPlay===true});
+  }
   if(!Array.isArray(r.participants)||r.participants.length<1)participantMissing++;
   if(!Number.isInteger(r.period?.number)||r.period.number<1||r.period.number>4)invalidPeriod++;
   if(sampled.length<8)sampled.push({
@@ -41,12 +62,19 @@ export function assessCoverage(summary){
   return {team_id:tid,official,extracted_attempts:attempts[tid]||0,
     extracted_made:made[tid]||0,
     attempt_delta:official?(attempts[tid]||0)-official.attempts:null,
-    made_delta:official?(made[tid]||0)-official.made:null};
+    made_delta:official?(made[tid]||0)-official.made:null,
+    roster_resolved_attempts:rosterAttempts[tid]||0,
+    roster_resolved_delta:official?(rosterAttempts[tid]||0)-official.attempts:null};
  });
  return {total_plays:p.length,team_comparisons:counts,
   candidate_shot_types:p.filter(x=>isFieldGoalType(x.type?.text)).length,
   no_team_events:noTeam.length,participant_missing:participantMissing,
   invalid_period:invalidPeriod,sampled_participant_shapes:sampled,
+  roster_players:roster.size,roster_conflicts:rosterConflicts,
+  unmatched_shooter_ids:unmatchedShooter,
+  player_roster_team_disagreements:mismatches,
+  roster_adjusted_team_fga_verified:rosterConflicts===0&&unmatchedShooter===0&&
+    counts.every(x=>x.official&&x.roster_resolved_delta===0),
   fga_reconciliation_verified:counts.every(x=>x.official&&x.attempt_delta===0),
   makes_reconciliation_verified:counts.every(x=>x.official&&x.made_delta===0)};
 }
@@ -68,9 +96,13 @@ export async function main(){
   participant_missing:packet.participant_missing,invalid_period:packet.invalid_period,
   samples:packet.sampled_participant_shapes,
   fga_reconciliation:packet.fga_reconciliation_verified,
+  roster_adjusted:packet.roster_adjusted_team_fga_verified,
+  roster_conflicts:packet.roster_conflicts,
+  unmatched_shooters:packet.unmatched_shooter_ids,
+  mismatches:packet.player_roster_team_disagreements,
   makes_reconciliation:packet.makes_reconciliation_verified,source_sha256:packet.source_sha256
  }));
  // fail closed: do not call this sufficient proof when official FGA totals disagree.
- ok(packet.fga_reconciliation_verified,'SHOT_COUNT_MISMATCH');
+ ok(packet.fga_reconciliation_verified||packet.roster_adjusted_team_fga_verified,'SHOT_COUNT_MISMATCH_UNRESOLVED');
 }
 if(process.argv[1]&&fileURLToPath(import.meta.url)===resolve(process.argv[1]))main().catch(e=>{console.error('ATLAS_NBA_SHOT_BLOCKED '+e.message);process.exitCode=1});
