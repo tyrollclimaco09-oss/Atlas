@@ -48,3 +48,8 @@ test('different play row totals cannot be reported as independently verified mis
  const h=clone(load());h.lanes[1].independent_pbp_census.unmatched_8_rows_confirmed_missing_snaps=true;
  assert.throws(()=>validate(h),/NFL_PBP_UNEARNED_PROMOTION/);
 });
+
+test('NFL aggregate parity never implies specific actor attribution',()=>{
+ const h=clone(load());h.lanes[1].independent_pbp_census.game_level_attempt_parity.player_actor_verified=true;
+ assert.throws(()=>validate(h),/NFL_GAME_COUNTS_UNEARNED_PROMOTION/);
+});

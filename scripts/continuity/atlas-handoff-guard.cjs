@@ -85,6 +85,14 @@ function validate(h,root=ROOT){
   census.event_id_one_to_one_verified===false&&
   census.player_actor_map_verified===false&&census.complete_snap_coverage_verified===false&&
   census.calibrator_eligible===false,'NFL_PBP_UNEARNED_PROMOTION');
+ const parity=census.game_level_attempt_parity;
+ assert(parity?.evidence_run===39856084383&&
+  parity.espn_derived_pass_attempt_events===75&&parity.nflverse_pass_attempt_flags===75&&
+  parity.espn_derived_rush_attempt_events===52&&parity.nflverse_rush_attempt_flags===52&&
+  parity.pass_counts_match===true&&parity.rush_counts_match===true&&
+  parity.scope==='GAME_LEVEL_EVENT_CATEGORY_TOTALS_ONLY_NOT_PLAYER_OR_PLAY_ID_PARITY'&&
+  parity.player_actor_verified===false&&parity.play_id_one_to_one_verified===false&&
+  parity.official_snap_completeness_verified===false,'NFL_GAME_COUNTS_UNEARNED_PROMOTION');
  const evidence=h.evidence;
  const registry=JSON.parse(fs.readFileSync(path.join(root,'docs/continuity/ATLAS_RECOVERED_ASSET_REGISTRY_2026-10-22.json'),'utf8'));
  assert(registry.schema==='atlas.recovered-artifact-registry.v1'&&

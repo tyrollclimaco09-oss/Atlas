@@ -232,7 +232,30 @@
         "calibrator_eligible": false,
         "diagnostic_run": 39854629608,
         "final_regression_run": 39855261656,
-        "documentation": "docs/prospective/ATLAS_NFL_20261022_WEEK6_NFLVERSE_PBP_CROSSCHECK_05.md"
+        "documentation": "docs/prospective/ATLAS_NFL_20261022_WEEK6_NFLVERSE_PBP_CROSSCHECK_05.md",
+        "game_level_attempt_parity": {
+          "evidence_run": 39856084383,
+          "espn_derived_pass_attempt_events": 75,
+          "nflverse_pass_attempt_flags": 75,
+          "espn_derived_rush_attempt_events": 52,
+          "nflverse_rush_attempt_flags": 52,
+          "pass_category_counts": {
+            "Pass Reception": 41,
+            "Pass Incompletion": 25,
+            "Passing Touchdown": 7,
+            "Pass Interception Return": 2
+          },
+          "rush_category_counts": {
+            "Rush": 51,
+            "Rushing Touchdown": 1
+          },
+          "pass_counts_match": true,
+          "rush_counts_match": true,
+          "scope": "GAME_LEVEL_EVENT_CATEGORY_TOTALS_ONLY_NOT_PLAYER_OR_PLAY_ID_PARITY",
+          "player_actor_verified": false,
+          "play_id_one_to_one_verified": false,
+          "official_snap_completeness_verified": false
+        }
       }
     }
   ],
@@ -276,7 +299,7 @@
       39837577620
     ],
     "recovered_asset_registry": "docs/continuity/ATLAS_RECOVERED_ASSET_REGISTRY_2026-10-22.json",
-    "last_engineering_pass_git_sha": "e5a825a16661f43494b9dca49b86aadb1e3dac36",
+    "last_engineering_pass_git_sha": "5ed03ceb56786a24e791973b13fb1467f2877b54",
     "additional_github_runs": [
       39848546540,
       39848787129,
@@ -290,7 +313,8 @@
       39853902974,
       39854629608,
       39855261687,
-      39855261656
+      39855261656,
+      39856084383
     ]
   },
   "resume_protocol": [

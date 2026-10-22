@@ -19,3 +19,11 @@
 - Passes: [paired-source final run 39855261656](https://github.com/tyrollclimaco09-oss/Atlas/actions/runs/39855261656) and [earlier source-consistent 116-candidate run](https://github.com/tyrollclimaco09-oss/Atlas/actions/runs/39852360645). These prove discrete source parsing contracts, not prediction value.
 - **Next:** a conservatively timestamped, player-and-play actor matching algorithm that reconciles source-specific administrative events and explicitly records unmatched plays/sacks/scrambles/penalties. Do not infer missing plays by subtracting 178 from 186.
 - ZERO new paid sportsbook odds calls, zero DB writes, no production or Calibrator approval.
+
+### Additional verified game-level attempt parity
+
+[Run 39856084383](https://github.com/tyrollclimaco09-oss/Atlas/actions/runs/39856084383) compared explicit ESPN source event types with nflverse's binary attempt flags on the same Houston–Jacksonville Week 6 game:
+
+- ESPN passing = 41 Pass Reception + 25 Pass Incompletion + 7 Passing Touchdown + 2 Pass Interception Return = **75**, nflverse = **75**.
+- ESPN rushing = 51 Rush + 1 Rushing Touchdown = **52**, nflverse = **52**.
+- Scope: **GAME_LEVEL_EVENT_CATEGORY_TOTALS_ONLY_NOT_PLAYER_OR_PLAY_ID_PARITY**. No actor identities, exact ESPN/nflverse play IDs, or snap completeness were established. The 178 vs 186 row difference remains.
