@@ -1,0 +1,43 @@
+name: ATLAS Odds API live source proof (one-shot SHADOW)
+
+on:
+  push:
+    branches:
+      - research/odds-api-probe-2026-10-22
+    paths:
+      - .github/workflows/atlas-odds-api-probe.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: atlas-odds-api-probe
+  cancel-in-progress: false
+
+jobs:
+  read-only-provider-proof:
+    name: NFL h2h / DraftKings source validation
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify schema guards with synthetic quotes
+        run: python3 scripts/scout/the-odds-api-probe.py --self-test
+      - name: One-time source proof (one planned billable credit)
+        env:
+          THE_ODDS_API_KEY: ${{ secrets.THE_ODDS_API_KEY }}
+        run: python3 scripts/scout/the-odds-api-probe.py
+      - name: Preserve sanitized evidence only
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: atlas-odds-source-proof
+          path: atlas-odds-probe-evidence.json
+          if-no-files-found: ignore
+          retention-days: 7
