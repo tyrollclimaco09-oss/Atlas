@@ -1,6 +1,6 @@
 {
   "schema": "atlas.engineering.handoff.v1",
-  "checkpoint_id": "ATLAS-20261022-NBA-NFL-DATA-QUALITY-CONTINUITY-02",
+  "checkpoint_id": "ATLAS-20261022-NBA-PLAYER-FGA-DIAGNOSIS-03",
   "as_of_date": "2026-10-22",
   "repository": "tyrollclimaco09-oss/Atlas",
   "source_branch": "research/odds-api-probe-2026-10-22",
@@ -72,7 +72,22 @@
         "made_shots_per_team_match": true,
         "test_run_failed_as_expected": 39848951461,
         "gate": "NO_V3_Q4_FGA_ADMISSION",
-        "next": "ISOLATE_REASON_FOR_ONE_ATTEMPT_PER_TEAM_DISCREPANCY;DO_NOT_IMPUTE"
+        "next": "TRACE_TWO_PLAYER_FGA_DIFFERENCES_BY_SOURCE_EVENT_AND_CONFIRM_WITH_INDEPENDENT_SHOT_LOG",
+        "mismatch_players": [
+          {
+            "player_id": "4869342",
+            "team_id": "1",
+            "official_fga": 13,
+            "pbp_fga": 12
+          },
+          {
+            "player_id": "4432165",
+            "team_id": "19",
+            "official_fga": 8,
+            "pbp_fga": 9
+          }
+        ],
+        "diagnostic_github_run": 39850105464
       }
     },
     {
@@ -145,12 +160,13 @@
       39837577620
     ],
     "recovered_asset_registry": "docs/continuity/ATLAS_RECOVERED_ASSET_REGISTRY_2026-10-22.json",
-    "last_engineering_pass_git_sha": "9c1f186cfd60051414f494bf4d11f00ab7806e14",
+    "last_engineering_pass_git_sha": "53cd10c9665a413fa601e15f7b0e26ef28f96987",
     "additional_github_runs": [
       39848546540,
       39848787129,
       39848951461,
-      39849511946
+      39849511946,
+      39850105464
     ]
   },
   "resume_protocol": [

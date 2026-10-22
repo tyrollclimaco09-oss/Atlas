@@ -31,7 +31,14 @@ function validate(h,root=ROOT){
   nbaQuality.reconciled_per_team===false&&
   nbaQuality.source_team_counts[0].pbp_fga===89&&nbaQuality.source_team_counts[0].box_fga===90&&
   nbaQuality.source_team_counts[1].pbp_fga===86&&nbaQuality.source_team_counts[1].box_fga===85&&
-  nbaQuality.gate==='NO_V3_Q4_FGA_ADMISSION','NBA_FGA_FALSE_RECONCILIATION');
+  nbaQuality.gate==='NO_V3_Q4_FGA_ADMISSION'&&
+  nbaQuality.mismatch_players?.length===2&&
+  nbaQuality.mismatch_players[0].player_id==='4869342'&&
+  nbaQuality.mismatch_players[0].official_fga===13&&
+  nbaQuality.mismatch_players[0].pbp_fga===12&&
+  nbaQuality.mismatch_players[1].player_id==='4432165'&&
+  nbaQuality.mismatch_players[1].official_fga===8&&
+  nbaQuality.mismatch_players[1].pbp_fga===9,'NBA_FGA_FALSE_RECONCILIATION');
  assert(nflQuality?.status==='INTERNAL_ORDER_MATCH_TEAM_ATTRIBUTION_BLOCKED'&&
   nflQuality.game_id==='401872996'&&nflQuality.week===6&&
   nflQuality.unique_play_ids===186&&nflQuality.play_records_missing_team_id===186&&

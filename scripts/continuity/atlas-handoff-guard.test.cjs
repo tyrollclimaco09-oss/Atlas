@@ -20,3 +20,5 @@ test('audit ZIP byte fingerprint is pinned while primary replay archive is not f
 
 test('unexplained NBA shot-team mismatch cannot be labeled reconciled',()=>{const h=clone(load());h.lanes[0].source_quality_gate.reconciled_per_team=true;assert.throws(()=>validate(h),/NBA_FGA_FALSE_RECONCILIATION/);});
 test('NFL drive IDs do not imply player/team attribution',()=>{const h=clone(load());h.lanes[1].drive_quality_gate.event_team_attribution_ready=true;assert.throws(()=>validate(h),/NFL_TEAM_MAPPING_FALSE_APPROVAL/);});
+
+test('NBA shooter-level discordance stays tied to the original player IDs',()=>{const h=clone(load());h.lanes[0].source_quality_gate.mismatch_players[1].pbp_fga=8;assert.throws(()=>validate(h),/NBA_FGA_FALSE_RECONCILIATION/);});
