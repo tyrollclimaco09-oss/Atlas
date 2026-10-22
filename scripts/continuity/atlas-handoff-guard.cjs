@@ -44,6 +44,18 @@ function validate(h,root=ROOT){
   nflQuality.unique_play_ids===186&&nflQuality.play_records_missing_team_id===186&&
   nflQuality.event_team_attribution_ready===false&&
   nflQuality.complete_play_coverage_verified===false,'NFL_TEAM_MAPPING_FALSE_APPROVAL');
+ const nh=nbaQuality.shot_trace,ns=nflQuality.source_schema;
+ assert(nh?.github_run===39851620052&&nh.identified_heave?.event_id==='401909834198'&&
+   nh.identified_heave.player_id==='4432165'&&
+   nh.identified_heave.confirmed_official_exclusion===false&&
+   nh.independent_alternative_play_source_checked===false&&
+   nh.gate==='NO_V3_Q4_FGA_ADMISSION','NBA_HEAVE_UNEARNED_PROMOTION');
+ assert(ns?.source_consistency_class==='SOURCE_CONSISTENT_NOT_INDEPENDENTLY_VERIFIED'&&
+   ns.restricted_source_consistent_candidates===116&&
+   ns.rejected_types+ns.rejected_penalty_or_turnover===70&&
+   ns.play_team_id_present===0&&ns.start_vs_drive_team_mismatches===20&&
+   ns.team_participants_contain_both_sides===true&&
+   ns.independent_play_actor_coverage_verified===false,'NFL_TEAM_CANDIDATE_UNEARNED_PROMOTION');
  const evidence=h.evidence;
  const registry=JSON.parse(fs.readFileSync(path.join(root,'docs/continuity/ATLAS_RECOVERED_ASSET_REGISTRY_2026-10-22.json'),'utf8'));
  assert(registry.schema==='atlas.recovered-artifact-registry.v1'&&

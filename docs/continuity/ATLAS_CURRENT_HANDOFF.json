@@ -1,6 +1,6 @@
 {
   "schema": "atlas.engineering.handoff.v1",
-  "checkpoint_id": "ATLAS-20261022-NBA-PLAYER-FGA-DIAGNOSIS-03",
+  "checkpoint_id": "ATLAS-20261022-FORENSICS-04",
   "as_of_date": "2026-10-22",
   "repository": "tyrollclimaco09-oss/Atlas",
   "source_branch": "research/odds-api-probe-2026-10-22",
@@ -87,7 +87,22 @@
             "pbp_fga": 9
           }
         ],
-        "diagnostic_github_run": 39850105464
+        "diagnostic_github_run": 39850105464,
+        "shot_trace": {
+          "github_run": 39851620052,
+          "identified_heave": {
+            "event_id": "401909834198",
+            "player_id": "4432165",
+            "period": 1,
+            "clock": "0.0",
+            "suspected_official_exclusion": true,
+            "confirmed_official_exclusion": false
+          },
+          "disputed_daniels_fga_missing": 1,
+          "independent_alternative_play_source_checked": false,
+          "gate": "NO_V3_Q4_FGA_ADMISSION",
+          "next": "INDEPENDENT_SHOT_LOG_FOR_DANIELS_AND_SUGGS;NO_UNVERIFIED_HEAVE_PATCH"
+        }
       }
     },
     {
@@ -120,7 +135,29 @@
         "event_team_attribution_ready": false,
         "complete_play_coverage_verified": false,
         "github_run": 39849511946,
-        "next": "VALIDATE_TEAM_ID_VIA_INDEPENDENT_EVENT_ATTRIBUTES_NOT_UNSAFE_DRIVE_INHERITANCE"
+        "next": "VALIDATE_TEAM_ID_VIA_INDEPENDENT_EVENT_ATTRIBUTES_NOT_UNSAFE_DRIVE_INHERITANCE",
+        "source_schema": {
+          "schema_github_run": 39852086736,
+          "boundary_github_run": 39852360645,
+          "play_team_id_present": 0,
+          "play_start_team_id_present": 186,
+          "play_end_team_id_present": 185,
+          "team_participants_contain_both_sides": true,
+          "start_vs_drive_team_mismatches": 20,
+          "mismatches_kickoffs": 12,
+          "mismatches_official_timeouts": 8,
+          "restricted_source_consistent_candidates": 116,
+          "restricted_candidate_types": {
+            "Pass Reception": 41,
+            "Rush": 50,
+            "Pass Incompletion": 25
+          },
+          "rejected_types": 69,
+          "rejected_penalty_or_turnover": 1,
+          "source_consistency_class": "SOURCE_CONSISTENT_NOT_INDEPENDENTLY_VERIFIED",
+          "independent_play_actor_coverage_verified": false,
+          "next": "MATCH_NFLVERSE_PLAY_BY_PLAY_BEFORE_MODEL_FEATURES"
+        }
       }
     }
   ],
@@ -152,7 +189,9 @@
       "docs/ATLAS_NEXT_PROOF_MILESTONES_2026-10-22.md",
       "docs/prospective/ATLAS_NBA_20261021_PLAYER_PBP_SOURCE_PROOF.md",
       "docs/prospective/ATLAS_NFL_20261018_WEEK6_PLAYER_PBP_CROSSSOURCE_PROOF.md",
-      "docs/continuity/ATLAS_RECOVERED_ASSET_REGISTRY_2026-10-22.json"
+      "docs/continuity/ATLAS_RECOVERED_ASSET_REGISTRY_2026-10-22.json",
+      "docs/prospective/ATLAS_NBA_20261022_FGA_SHOT_FORENSICS_04.md",
+      "docs/prospective/ATLAS_NFL_20261022_WEEK6_TEAM_CANDIDATES_04.md"
     ],
     "immutable_git_runs": [
       39834900969,
@@ -160,13 +199,16 @@
       39837577620
     ],
     "recovered_asset_registry": "docs/continuity/ATLAS_RECOVERED_ASSET_REGISTRY_2026-10-22.json",
-    "last_engineering_pass_git_sha": "53cd10c9665a413fa601e15f7b0e26ef28f96987",
+    "last_engineering_pass_git_sha": "20813d0391bdbfa6810d3f17d1ca186b72c5665a",
     "additional_github_runs": [
       39848546540,
       39848787129,
       39848951461,
       39849511946,
-      39850105464
+      39850105464,
+      39851620052,
+      39852086736,
+      39852360645
     ]
   },
   "resume_protocol": [
@@ -179,7 +221,8 @@
     "WORK_NBA_BEFORE_NFL_AND_PRESERVE_SEPARATE_LABELS",
     "UPDATE_THIS_JSON_AND_HANDOFF_WITH_VERIFIABLE_EVIDENCE_AND_SHA",
     "LEAVE_RELEASE_AUTHORITY_FALSE_UNLESS_EXPLICIT_HUMAN_APPROVAL",
-    "AUDIT_SOURCE_COUNTING_AND_TEAM_ATTRIBUTION_BEFORE_ANY_MODEL_FEATURE_ACCEPTANCE"
+    "AUDIT_SOURCE_COUNTING_AND_TEAM_ATTRIBUTION_BEFORE_ANY_MODEL_FEATURE_ACCEPTANCE",
+    "READ_THE_TWO_FORENSIC_04_AUDITS_AND_REPLAY_SOURCE_QUALITY_TESTS_BEFORE_MODEL_WORK"
   ],
   "known_gaps": [
     "ORIGINAL_57_GAME_V3_ARCHIVE_RAW_BYTES_UNAVAILABLE_VIA_CURRENT_FILES_ACCESS",
@@ -188,6 +231,8 @@
     "AUTHORIZED_VERCEL_SUPABASE_RUNTIME_PARITY_NOT_PROVED",
     "NFL_FULL_SNAP_COVERAGE_NOT_PROVED",
     "NBA_ONE_GAME_FGA_EXTRACTOR_TEAM_COUNTERS_DISAGREE_WITH_BOXSCORE",
-    "NFL_ESPN_DRIVE_PBP_ALL_186_PLAYS_LACK_PLAY_LEVEL_TEAM_ID"
+    "NFL_ESPN_DRIVE_PBP_ALL_186_PLAYS_LACK_PLAY_LEVEL_TEAM_ID",
+    "NBA_Q1_0_SECOND_HEAVE_OFFICIAL_EXCLUSION_UNCONFIRMED",
+    "NFL_116_TEAM_CANDIDATES_NOT_INDEPENDENT_PLAY_ACTORS"
   ]
 }
