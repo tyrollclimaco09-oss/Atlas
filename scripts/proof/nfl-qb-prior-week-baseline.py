@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """ATLAS NFL 2026 first chronological price-blind QB passing-attempt baseline. No odds, shadow."""
-import csv,gzip,hashlib,io,json,statistics,sys,urllib.request
+import csv,gzip,hashlib,io,json,statistics,sys,urllib.request,random
 from collections import defaultdict,Counter
 from datetime import datetime,timezone
 URL="https://github.com/nflverse/nflverse-data/releases/download/pbp/play_by_play_2026.csv.gz"
@@ -83,6 +83,20 @@ def summarize(preds):
     return {"all_w4_plus":metrics(preds),"by_week":{str(w):metrics([p for p in preds if p["week"]==w])
                 for w in sorted(set(p["week"] for p in preds))},
             "week6":metrics([p for p in preds if p["week"]==6])}
+def bootstrap_game_cluster(preds,iterations=2500,seed=20261022):
+    """Exploratory game-level cluster resampling of paired prediction error."""
+    grouped=defaultdict(list)
+    for p in preds:grouped[p["game_id"]].append(p)
+    keys=sorted(grouped)
+    if len(keys)<4:return {"games":len(keys),"samples":iterations,"ci95":None}
+    rng=random.Random(seed);deltas=[]
+    for _ in range(iterations):
+        sample=[p for k in (rng.choice(keys) for j in range(len(keys))) for p in grouped[k]]
+        deltas.append(sum(p["model_absolute_error"]-p["league_absolute_error"] for p in sample)/len(sample))
+    deltas.sort()
+    return {"games":len(keys),"samples":iterations,
+        "ci95":[deltas[int(.025*(len(deltas)-1))],deltas[int(.975*(len(deltas)-1))]],
+        "source":"POSTHOC_GAME_CLUSTER_RESAMPLING_NOT_PROSPECTIVE_CERTIFICATION"}
 def selftest():
     samples=[]
     for w,n in [(1,30),(2,40),(3,10),(4,15)]:
@@ -100,6 +114,7 @@ def selftest():
     except Exception:pass
     # Rejects classification of no_play even with a stray pass flag.
     need(classify({"play_type":"no_play","pass_attempt":"1","posteam":"HOU"}) is None,"NO_PLAY_LEAK")
+    need(bootstrap_game_cluster(got)["ci95"] is None,"SMALL_SAMPLE_UNCERTAINTY")
     print("ATLAS_NFL_QB_CHRONO_OFFLINE=PASS")
 def main():
     if "--self-test" in sys.argv:selftest();return
@@ -122,6 +137,7 @@ def main():
     need(games,"NO_SOURCE_GAMES")
     preds=paired_backtest(games)
     report=summarize(preds)
+    report["game_cluster_uncertainty"]=bootstrap_game_cluster(preds)
     w6=[x for x in preds if x["week"]==6]
     corpus={"schema":"atlas.nfl.qb.pass_attempt_prior_week_baseline.shadow.v1",
         "research_observed_at_utc":datetime.now(timezone.utc).isoformat(),
@@ -132,6 +148,9 @@ def main():
         "source_pass_attempt_counts_by_week":source_attempts,
         "protocol":"PRIOR_WEEKS_ONLY_LAST3_MEAN_VS_LEAGUE_PRIOR_10PLUS_PASSER_BASELINE",
         "eligibility":"TWO_PRIOR_APPEARANCES_AND_LAST_PRIOR_GAME_GE10_PASS_ATTEMPTS",
+        "selection_limitation":"ONLY_QBS_WITH_CURRENT_WEEK_POSTGAME_PASS_ATTEMPT_ROWS",
+        "zero_attempt_futures_not_included":True,
+        "uncertainty_analysis_posthoc":True,
         "metrics":report,"week6_examples":w6[:50],
         "pre_game_real_timestamped_freeze":False,"past_weeks_available_at_prediction_time_proven":False,
         "actual_future_live_proof":False,"production_authority":False,
