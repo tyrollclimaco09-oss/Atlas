@@ -1,0 +1,886 @@
+{
+  "schema": "atlas.gamesense.turnover_first_score_strict_fg_32game_v1",
+  "date_research": "2026-10-23",
+  "source_blob_prior": [
+    {
+      "path": "docs/research/ATLAS_NBA_20250115_FULL_DATE_11GAME_SCORE_CENSUS.json",
+      "sha": "a7ab4b3d5646899f91c23a1184ba09da3c464543"
+    },
+    {
+      "path": "docs/research/ATLAS_NBA_20250116_COMPLETE_DATE_FIVEGAME_PBP_V2.json",
+      "sha": "1107c284c58cc5080740975e308f821e73d9811f"
+    },
+    {
+      "path": "docs/research/ATLAS_NBA_OPENING_16_GAME_SCORE_REGIME_20261023.json",
+      "sha": "c8e0d2ee1610e4c9f45d40464d85b6d511ccef5e"
+    }
+  ],
+  "method": "Source-rendered BRef PBP parse all Jan15 Jan16 2025 and Oct20-22 2026, revalidate every period end and scoreboard, classify turnover 'steal by' vs unmarked. First opponent score at most 15 game-clock seconds later before original side scores or opponent turnover. Strict FG only counts opponent MADE FIELD GOAL as first score with at least ONE second of running game-clock elapsed; equal-clock and FT first score denied. This is STILL NOT causal possession or official points off turnovers.",
+  "requested": 32,
+  "accepted": 32,
+  "rejected": 0,
+  "rejection_rows": [],
+  "by_cohort": {
+    "2025-01-15": {
+      "games": 11,
+      "steal": {
+        "n": 174,
+        "any_15": 102,
+        "strict_FG_15": 90,
+        "same_clock": 1,
+        "ft_first_15": 12
+      },
+      "unmarked": {
+        "n": 128,
+        "any_15": 29,
+        "strict_FG_15": 23,
+        "same_clock": 0,
+        "ft_first_15": 6
+      }
+    },
+    "2025-01-16": {
+      "games": 5,
+      "steal": {
+        "n": 86,
+        "any_15": 51,
+        "strict_FG_15": 47,
+        "same_clock": 1,
+        "ft_first_15": 4
+      },
+      "unmarked": {
+        "n": 60,
+        "any_15": 20,
+        "strict_FG_15": 12,
+        "same_clock": 1,
+        "ft_first_15": 8
+      }
+    },
+    "2026-10": {
+      "games": 16,
+      "steal": {
+        "n": 306,
+        "any_15": 163,
+        "strict_FG_15": 129,
+        "same_clock": 2,
+        "ft_first_15": 33
+      },
+      "unmarked": {
+        "n": 234,
+        "any_15": 72,
+        "strict_FG_15": 50,
+        "same_clock": 2,
+        "ft_first_15": 22
+      }
+    }
+  },
+  "records": [
+    {
+      "date": "2025-01-15",
+      "game": "Atlanta@CHI",
+      "url": "https://www.basketball-reference.com/boxscores/pbp/202501150CHI.html",
+      "rows": 476,
+      "regulation": true,
+      "OT": 0,
+      "reordered_clock_events": 0,
+      "counts": {
+        "steal": {
+          "n": 16,
+          "any_15": 10,
+          "strict_FG_15": 7,
+          "same_clock": 0,
+          "ft_first_15": 3
+        },
+        "unmarked": {
+          "n": 15,
+          "any_15": 3,
+          "strict_FG_15": 2,
+          "same_clock": 0,
+          "ft_first_15": 1
+        }
+      }
+    },
+    {
+      "date": "2025-01-15",
+      "game": "Houston@DEN",
+      "url": "https://www.basketball-reference.com/boxscores/pbp/202501150DEN.html",
+      "rows": 422,
+      "regulation": true,
+      "OT": 0,
+      "reordered_clock_events": 0,
+      "counts": {
+        "steal": {
+          "n": 18,
+          "any_15": 12,
+          "strict_FG_15": 10,
+          "same_clock": 1,
+          "ft_first_15": 2
+        },
+        "unmarked": {
+          "n": 13,
+          "any_15": 3,
+          "strict_FG_15": 2,
+          "same_clock": 0,
+          "ft_first_15": 1
+        }
+      }
+    },
+    {
+      "date": "2025-01-15",
+      "game": "Brooklyn@LAC",
+      "url": "https://www.basketball-reference.com/boxscores/pbp/202501150LAC.html",
+      "rows": 463,
+      "regulation": true,
+      "OT": 0,
+      "reordered_clock_events": 0,
+      "counts": {
+        "steal": {
+          "n": 22,
+          "any_15": 12,
+          "strict_FG_15": 11,
+          "same_clock": 0,
+          "ft_first_15": 1
+        },
+        "unmarked": {
+          "n": 16,
+          "any_15": 4,
+          "strict_FG_15": 3,
+          "same_clock": 0,
+          "ft_first_15": 1
+        }
+      }
+    },
+    {
+      "date": "2025-01-15",
+      "game": "Miami@LAL",
+      "url": "https://www.basketball-reference.com/boxscores/pbp/202501150LAL.html",
+      "rows": 390,
+      "regulation": true,
+      "OT": 0,
+      "reordered_clock_events": 0,
+      "counts": {
+        "steal": {
+          "n": 15,
+          "any_15": 9,
+          "strict_FG_15": 8,
+          "same_clock": 0,
+          "ft_first_15": 1
+        },
+        "unmarked": {
+          "n": 12,
+          "any_15": 2,
+          "strict_FG_15": 2,
+          "same_clock": 0,
+          "ft_first_15": 0
+        }
+      }
+    },
+    {
+      "date": "2025-01-15",
+      "game": "Orlando@MIL",
+      "url": "https://www.basketball-reference.com/boxscores/pbp/202501150MIL.html",
+      "rows": 470,
+      "regulation": true,
+      "OT": 0,
+      "reordered_clock_events": 0,
+      "counts": {
+        "steal": {
+          "n": 23,
+          "any_15": 13,
+          "strict_FG_15": 13,
+          "same_clock": 0,
+          "ft_first_15": 0
+        },
+        "unmarked": {
+          "n": 11,
+          "any_15": 2,
+          "strict_FG_15": 2,
+          "same_clock": 0,
+          "ft_first_15": 0
+        }
+      }
+    },
+    {
+      "date": "2025-01-15",
+      "game": "Golden State@MIN",
+      "url": "https://www.basketball-reference.com/boxscores/pbp/202501150MIN.html",
+      "rows": 468,
+      "regulation": true,
+      "OT": 0,
+      "reordered_clock_events": 0,
+      "counts": {
+        "steal": {
+          "n": 12,
+          "any_15": 7,
+          "strict_FG_15": 7,
+          "same_clock": 0,
+          "ft_first_15": 0
+        },
+        "unmarked": {
+          "n": 10,
+          "any_15": 2,
+          "strict_FG_15": 2,
+          "same_clock": 0,
+          "ft_first_15": 0
+        }
+      }
+    },
+    {
+      "date": "2025-01-15",
+      "game": "Dallas@NOP",
+      "url": "https://www.basketball-reference.com/boxscores/pbp/202501150NOP.html",
+      "rows": 492,
+      "regulation": true,
+      "OT": 0,
+      "reordered_clock_events": 0,
+      "counts": {
+        "steal": {
+          "n": 20,
+          "any_15": 12,
+          "strict_FG_15": 11,
+          "same_clock": 0,
+          "ft_first_15": 1
+        },
+        "unmarked": {
+          "n": 7,
+          "any_15": 2,
+          "strict_FG_15": 2,
+          "same_clock": 0,
+          "ft_first_15": 0
+        }
+      }
+    },
+    {
+      "date": "2025-01-15",
+      "game": "New York@PHI",
+      "url": "https://www.basketball-reference.com/boxscores/pbp/202501150PHI.html",
+      "rows": 438,
+      "regulation": true,
+      "OT": 1,
+      "reordered_clock_events": 0,
+      "counts": {
+        "steal": {
+          "n": 15,
+          "any_15": 10,
+          "strict_FG_15": 9,
+          "same_clock": 0,
+          "ft_first_15": 1
+        },
+        "unmarked": {
+          "n": 8,
+          "any_15": 2,
+          "strict_FG_15": 2,
+          "same_clock": 0,
+          "ft_first_15": 0
+        }
+      }
+    },
+    {
+      "date": "2025-01-15",
+      "game": "Memphis@SAS",
+      "url": "https://www.basketball-reference.com/boxscores/pbp/202501150SAS.html",
+      "rows": 482,
+      "regulation": true,
+      "OT": 0,
+      "reordered_clock_events": 0,
+      "counts": {
+        "steal": {
+          "n": 12,
+          "any_15": 7,
+          "strict_FG_15": 5,
+          "same_clock": 0,
+          "ft_first_15": 2
+        },
+        "unmarked": {
+          "n": 7,
+          "any_15": 1,
+          "strict_FG_15": 0,
+          "same_clock": 0,
+          "ft_first_15": 1
+        }
+      }
+    },
+    {
+      "date": "2025-01-15",
+      "game": "Boston@TOR",
+      "url": "https://www.basketball-reference.com/boxscores/pbp/202501150TOR.html",
+      "rows": 450,
+      "regulation": true,
+      "OT": 0,
+      "reordered_clock_events": 0,
+      "counts": {
+        "steal": {
+          "n": 10,
+          "any_15": 5,
+          "strict_FG_15": 4,
+          "same_clock": 0,
+          "ft_first_15": 1
+        },
+        "unmarked": {
+          "n": 10,
+          "any_15": 3,
+          "strict_FG_15": 1,
+          "same_clock": 0,
+          "ft_first_15": 2
+        }
+      }
+    },
+    {
+      "date": "2025-01-15",
+      "game": "Charlotte@UTA",
+      "url": "https://www.basketball-reference.com/boxscores/pbp/202501150UTA.html",
+      "rows": 457,
+      "regulation": true,
+      "OT": 0,
+      "reordered_clock_events": 0,
+      "counts": {
+        "steal": {
+          "n": 11,
+          "any_15": 5,
+          "strict_FG_15": 5,
+          "same_clock": 0,
+          "ft_first_15": 0
+        },
+        "unmarked": {
+          "n": 19,
+          "any_15": 5,
+          "strict_FG_15": 5,
+          "same_clock": 0,
+          "ft_first_15": 0
+        }
+      }
+    },
+    {
+      "date": "2025-01-16",
+      "game": "IND@DET",
+      "url": "https://www.basketball-reference.com/boxscores/pbp/202501160DET.html",
+      "rows": 476,
+      "regulation": true,
+      "OT": 0,
+      "reordered_clock_events": 0,
+      "counts": {
+        "steal": {
+          "n": 16,
+          "any_15": 6,
+          "strict_FG_15": 6,
+          "same_clock": 0,
+          "ft_first_15": 0
+        },
+        "unmarked": {
+          "n": 13,
+          "any_15": 1,
+          "strict_FG_15": 1,
+          "same_clock": 0,
+          "ft_first_15": 0
+        }
+      }
+    },
+    {
+      "date": "2025-01-16",
+      "game": "CLE@OKC",
+      "url": "https://www.basketball-reference.com/boxscores/pbp/202501160OKC.html",
+      "rows": 452,
+      "regulation": true,
+      "OT": 0,
+      "reordered_clock_events": 0,
+      "counts": {
+        "steal": {
+          "n": 14,
+          "any_15": 7,
+          "strict_FG_15": 7,
+          "same_clock": 0,
+          "ft_first_15": 0
+        },
+        "unmarked": {
+          "n": 14,
+          "any_15": 8,
+          "strict_FG_15": 6,
+          "same_clock": 0,
+          "ft_first_15": 2
+        }
+      }
+    },
+    {
+      "date": "2025-01-16",
+      "game": "LAC@POR",
+      "url": "https://www.basketball-reference.com/boxscores/pbp/202501160POR.html",
+      "rows": 443,
+      "regulation": true,
+      "OT": 0,
+      "reordered_clock_events": 0,
+      "counts": {
+        "steal": {
+          "n": 18,
+          "any_15": 11,
+          "strict_FG_15": 11,
+          "same_clock": 0,
+          "ft_first_15": 0
+        },
+        "unmarked": {
+          "n": 16,
+          "any_15": 5,
+          "strict_FG_15": 2,
+          "same_clock": 1,
+          "ft_first_15": 3
+        }
+      }
+    },
+    {
+      "date": "2025-01-16",
+      "game": "HOU@SAC",
+      "url": "https://www.basketball-reference.com/boxscores/pbp/202501160SAC.html",
+      "rows": 462,
+      "regulation": true,
+      "OT": 0,
+      "reordered_clock_events": 0,
+      "counts": {
+        "steal": {
+          "n": 15,
+          "any_15": 11,
+          "strict_FG_15": 9,
+          "same_clock": 1,
+          "ft_first_15": 2
+        },
+        "unmarked": {
+          "n": 11,
+          "any_15": 4,
+          "strict_FG_15": 2,
+          "same_clock": 0,
+          "ft_first_15": 2
+        }
+      }
+    },
+    {
+      "date": "2025-01-16",
+      "game": "PHX@WAS",
+      "url": "https://www.basketball-reference.com/boxscores/pbp/202501160WAS.html",
+      "rows": 491,
+      "regulation": true,
+      "OT": 0,
+      "reordered_clock_events": 0,
+      "counts": {
+        "steal": {
+          "n": 23,
+          "any_15": 16,
+          "strict_FG_15": 14,
+          "same_clock": 0,
+          "ft_first_15": 2
+        },
+        "unmarked": {
+          "n": 6,
+          "any_15": 2,
+          "strict_FG_15": 1,
+          "same_clock": 0,
+          "ft_first_15": 1
+        }
+      }
+    },
+    {
+      "date": "2026-10-20",
+      "game": "BOS@DET",
+      "url": "https://www.basketball-reference.com/boxscores/pbp/202610200DET.html",
+      "rows": 488,
+      "regulation": true,
+      "OT": 0,
+      "reordered_clock_events": 0,
+      "counts": {
+        "steal": {
+          "n": 17,
+          "any_15": 7,
+          "strict_FG_15": 6,
+          "same_clock": 0,
+          "ft_first_15": 1
+        },
+        "unmarked": {
+          "n": 14,
+          "any_15": 3,
+          "strict_FG_15": 3,
+          "same_clock": 0,
+          "ft_first_15": 0
+        }
+      }
+    },
+    {
+      "date": "2026-10-20",
+      "game": "PHI@NYK",
+      "url": "https://www.basketball-reference.com/boxscores/pbp/202610200NYK.html",
+      "rows": 524,
+      "regulation": true,
+      "OT": 0,
+      "reordered_clock_events": 0,
+      "counts": {
+        "steal": {
+          "n": 14,
+          "any_15": 11,
+          "strict_FG_15": 10,
+          "same_clock": 0,
+          "ft_first_15": 1
+        },
+        "unmarked": {
+          "n": 13,
+          "any_15": 5,
+          "strict_FG_15": 3,
+          "same_clock": 1,
+          "ft_first_15": 2
+        }
+      }
+    },
+    {
+      "date": "2026-10-20",
+      "game": "OKC@SAS",
+      "url": "https://www.basketball-reference.com/boxscores/pbp/202610200SAS.html",
+      "rows": 533,
+      "regulation": true,
+      "OT": 0,
+      "reordered_clock_events": 0,
+      "counts": {
+        "steal": {
+          "n": 14,
+          "any_15": 6,
+          "strict_FG_15": 4,
+          "same_clock": 0,
+          "ft_first_15": 2
+        },
+        "unmarked": {
+          "n": 14,
+          "any_15": 7,
+          "strict_FG_15": 6,
+          "same_clock": 0,
+          "ft_first_15": 1
+        }
+      }
+    },
+    {
+      "date": "2026-10-21",
+      "game": "ATL@ORL",
+      "url": "https://www.basketball-reference.com/boxscores/pbp/202610210ORL.html",
+      "rows": 532,
+      "regulation": true,
+      "OT": 0,
+      "reordered_clock_events": 0,
+      "counts": {
+        "steal": {
+          "n": 19,
+          "any_15": 12,
+          "strict_FG_15": 10,
+          "same_clock": 0,
+          "ft_first_15": 2
+        },
+        "unmarked": {
+          "n": 18,
+          "any_15": 6,
+          "strict_FG_15": 4,
+          "same_clock": 0,
+          "ft_first_15": 2
+        }
+      }
+    },
+    {
+      "date": "2026-10-21",
+      "game": "MIL@WAS",
+      "url": "https://www.basketball-reference.com/boxscores/pbp/202610210WAS.html",
+      "rows": 514,
+      "regulation": true,
+      "OT": 0,
+      "reordered_clock_events": 0,
+      "counts": {
+        "steal": {
+          "n": 16,
+          "any_15": 5,
+          "strict_FG_15": 2,
+          "same_clock": 0,
+          "ft_first_15": 3
+        },
+        "unmarked": {
+          "n": 13,
+          "any_15": 4,
+          "strict_FG_15": 3,
+          "same_clock": 0,
+          "ft_first_15": 1
+        }
+      }
+    },
+    {
+      "date": "2026-10-21",
+      "game": "MIN@MIA",
+      "url": "https://www.basketball-reference.com/boxscores/pbp/202610210MIA.html",
+      "rows": 524,
+      "regulation": true,
+      "OT": 0,
+      "reordered_clock_events": 0,
+      "counts": {
+        "steal": {
+          "n": 18,
+          "any_15": 8,
+          "strict_FG_15": 5,
+          "same_clock": 1,
+          "ft_first_15": 2
+        },
+        "unmarked": {
+          "n": 17,
+          "any_15": 6,
+          "strict_FG_15": 5,
+          "same_clock": 1,
+          "ft_first_15": 1
+        }
+      }
+    },
+    {
+      "date": "2026-10-21",
+      "game": "CHA@BKN",
+      "url": "https://www.basketball-reference.com/boxscores/pbp/202610210BRK.html",
+      "rows": 495,
+      "regulation": true,
+      "OT": 0,
+      "reordered_clock_events": 0,
+      "counts": {
+        "steal": {
+          "n": 16,
+          "any_15": 8,
+          "strict_FG_15": 8,
+          "same_clock": 0,
+          "ft_first_15": 0
+        },
+        "unmarked": {
+          "n": 27,
+          "any_15": 9,
+          "strict_FG_15": 6,
+          "same_clock": 0,
+          "ft_first_15": 3
+        }
+      }
+    },
+    {
+      "date": "2026-10-21",
+      "game": "CHI@TOR",
+      "url": "https://www.basketball-reference.com/boxscores/pbp/202610210TOR.html",
+      "rows": 607,
+      "regulation": true,
+      "OT": 0,
+      "reordered_clock_events": 0,
+      "counts": {
+        "steal": {
+          "n": 21,
+          "any_15": 14,
+          "strict_FG_15": 12,
+          "same_clock": 0,
+          "ft_first_15": 2
+        },
+        "unmarked": {
+          "n": 17,
+          "any_15": 4,
+          "strict_FG_15": 2,
+          "same_clock": 0,
+          "ft_first_15": 2
+        }
+      }
+    },
+    {
+      "date": "2026-10-21",
+      "game": "UTA@MEM",
+      "url": "https://www.basketball-reference.com/boxscores/pbp/202610210MEM.html",
+      "rows": 507,
+      "regulation": true,
+      "OT": 0,
+      "reordered_clock_events": 0,
+      "counts": {
+        "steal": {
+          "n": 17,
+          "any_15": 10,
+          "strict_FG_15": 6,
+          "same_clock": 0,
+          "ft_first_15": 4
+        },
+        "unmarked": {
+          "n": 16,
+          "any_15": 7,
+          "strict_FG_15": 4,
+          "same_clock": 0,
+          "ft_first_15": 3
+        }
+      }
+    },
+    {
+      "date": "2026-10-21",
+      "game": "IND@NOP",
+      "url": "https://www.basketball-reference.com/boxscores/pbp/202610210NOP.html",
+      "rows": 513,
+      "regulation": true,
+      "OT": 0,
+      "reordered_clock_events": 0,
+      "counts": {
+        "steal": {
+          "n": 20,
+          "any_15": 12,
+          "strict_FG_15": 10,
+          "same_clock": 0,
+          "ft_first_15": 2
+        },
+        "unmarked": {
+          "n": 8,
+          "any_15": 1,
+          "strict_FG_15": 0,
+          "same_clock": 0,
+          "ft_first_15": 1
+        }
+      }
+    },
+    {
+      "date": "2026-10-21",
+      "game": "DAL@HOU",
+      "url": "https://www.basketball-reference.com/boxscores/pbp/202610210HOU.html",
+      "rows": 485,
+      "regulation": true,
+      "OT": 0,
+      "reordered_clock_events": 0,
+      "counts": {
+        "steal": {
+          "n": 23,
+          "any_15": 14,
+          "strict_FG_15": 11,
+          "same_clock": 0,
+          "ft_first_15": 3
+        },
+        "unmarked": {
+          "n": 14,
+          "any_15": 6,
+          "strict_FG_15": 4,
+          "same_clock": 0,
+          "ft_first_15": 2
+        }
+      }
+    },
+    {
+      "date": "2026-10-21",
+      "game": "GSW@LAL",
+      "url": "https://www.basketball-reference.com/boxscores/pbp/202610210LAL.html",
+      "rows": 494,
+      "regulation": true,
+      "OT": 0,
+      "reordered_clock_events": 0,
+      "counts": {
+        "steal": {
+          "n": 26,
+          "any_15": 16,
+          "strict_FG_15": 14,
+          "same_clock": 1,
+          "ft_first_15": 2
+        },
+        "unmarked": {
+          "n": 8,
+          "any_15": 3,
+          "strict_FG_15": 2,
+          "same_clock": 0,
+          "ft_first_15": 1
+        }
+      }
+    },
+    {
+      "date": "2026-10-21",
+      "game": "PHX@POR",
+      "url": "https://www.basketball-reference.com/boxscores/pbp/202610210POR.html",
+      "rows": 472,
+      "regulation": true,
+      "OT": 0,
+      "reordered_clock_events": 0,
+      "counts": {
+        "steal": {
+          "n": 22,
+          "any_15": 9,
+          "strict_FG_15": 7,
+          "same_clock": 0,
+          "ft_first_15": 2
+        },
+        "unmarked": {
+          "n": 11,
+          "any_15": 1,
+          "strict_FG_15": 1,
+          "same_clock": 0,
+          "ft_first_15": 0
+        }
+      }
+    },
+    {
+      "date": "2026-10-21",
+      "game": "SAC@LAC",
+      "url": "https://www.basketball-reference.com/boxscores/pbp/202610210LAC.html",
+      "rows": 487,
+      "regulation": true,
+      "OT": 0,
+      "reordered_clock_events": 0,
+      "counts": {
+        "steal": {
+          "n": 24,
+          "any_15": 12,
+          "strict_FG_15": 8,
+          "same_clock": 0,
+          "ft_first_15": 4
+        },
+        "unmarked": {
+          "n": 11,
+          "any_15": 4,
+          "strict_FG_15": 3,
+          "same_clock": 0,
+          "ft_first_15": 1
+        }
+      }
+    },
+    {
+      "date": "2026-10-22",
+      "game": "CLE@PHI",
+      "url": "https://www.basketball-reference.com/boxscores/pbp/202610220PHI.html",
+      "rows": 510,
+      "regulation": true,
+      "OT": 0,
+      "reordered_clock_events": 0,
+      "counts": {
+        "steal": {
+          "n": 20,
+          "any_15": 11,
+          "strict_FG_15": 10,
+          "same_clock": 0,
+          "ft_first_15": 1
+        },
+        "unmarked": {
+          "n": 18,
+          "any_15": 5,
+          "strict_FG_15": 3,
+          "same_clock": 0,
+          "ft_first_15": 2
+        }
+      }
+    },
+    {
+      "date": "2026-10-22",
+      "game": "DEN@OKC",
+      "url": "https://www.basketball-reference.com/boxscores/pbp/202610220OKC.html",
+      "rows": 501,
+      "regulation": true,
+      "OT": 0,
+      "reordered_clock_events": 0,
+      "counts": {
+        "steal": {
+          "n": 19,
+          "any_15": 8,
+          "strict_FG_15": 6,
+          "same_clock": 0,
+          "ft_first_15": 2
+        },
+        "unmarked": {
+          "n": 15,
+          "any_15": 1,
+          "strict_FG_15": 1,
+          "same_clock": 0,
+          "ft_first_15": 0
+        }
+      }
+    }
+  ],
+  "limits": [
+    "NBA CDNs inaccessible; shared BRef provider for all years",
+    "No on-floor lineup, defended matchup or original raw PBP bytes",
+    "FT after TO can be due to referee/technical and same clock; strict filter retains possible confounding",
+    "Within-game repeated turnover rows correlated; not a calibrated model or money outcome",
+    "This metric uses future event outcome and cannot be consumed before observed time cutoff"
+  ],
+  "research_only": true
+}
