@@ -1,0 +1,754 @@
+{
+  "schema": "atlas.gamesense.nba.pressure_features.ridge_train_only.v1",
+  "research_date": "2026-10-23",
+  "status": "RETROSPECTIVE_CHRONOLOGICAL_RESEARCH_ONLY",
+  "provenance": [
+    {
+      "path": "docs/research/ATLAS_NBA_20250115_FULL_DATE_11GAME_PBP_RECONCILIATION_V1.json",
+      "sha": "4b75ff1c4836373318d120c0031af72d50db3e73"
+    },
+    {
+      "path": "docs/research/ATLAS_NBA_20250115_FULL_DATE_11GAME_SCORE_CENSUS.json",
+      "sha": "a7ab4b3d5646899f91c23a1184ba09da3c464543"
+    },
+    {
+      "path": "docs/research/ATLAS_NBA_OPENING16_PBP_PERIOD_EVENTS_20261023_V2.json",
+      "sha": "ee83617990f03b1c9a2ae2608db4431693c16973"
+    },
+    {
+      "path": "docs/research/ATLAS_NBA_OPENING_16_GAME_SCORE_REGIME_20261023.json",
+      "sha": "c8e0d2ee1610e4c9f45d40464d85b6d511ccef5e"
+    }
+  ],
+  "train_games": 11,
+  "train_calendar_dates": 1,
+  "holdout_games": 16,
+  "holdout_dates": [
+    "2026-10-20",
+    "2026-10-21",
+    "2026-10-22"
+  ],
+  "source_data_features": "Only H1 events: FGA/TO/FTA/ORB/FGM/3PM, shots-derived possession estimator, eFG, halftime combined points. No H2 events used for fitting; H2 solely target. External sources' records were retrieved retrospectively after games finished.",
+  "predeclared_candidate_families": [
+    {
+      "id": "prior_only",
+      "fields": []
+    },
+    {
+      "id": "score_only",
+      "fields": [
+        "h1points"
+      ]
+    },
+    {
+      "id": "possession_only",
+      "fields": [
+        "estimated_half_possessions"
+      ]
+    },
+    {
+      "id": "turnover_only",
+      "fields": [
+        "turnovers"
+      ]
+    },
+    {
+      "id": "pace_and_ft",
+      "fields": [
+        "estimated_half_possessions",
+        "ft_attempts"
+      ]
+    },
+    {
+      "id": "pace_and_pressure",
+      "fields": [
+        "estimated_half_possessions",
+        "turnovers",
+        "ft_attempts"
+      ]
+    },
+    {
+      "id": "volume_efficiency",
+      "fields": [
+        "estimated_half_possessions",
+        "efg"
+      ]
+    },
+    {
+      "id": "score_and_possession",
+      "fields": [
+        "h1points",
+        "estimated_half_possessions"
+      ]
+    },
+    {
+      "id": "all_available",
+      "fields": [
+        "h1points",
+        "estimated_half_possessions",
+        "turnovers",
+        "ft_attempts",
+        "efg",
+        "ft_rate"
+      ]
+    }
+  ],
+  "penalties": [
+    1,
+    10,
+    100
+  ],
+  "model_selection": "leave one game out within single Jan15 2025 training date; models centered/standardized per fold, intercept unpenalized, ridge penalty fixed candidate list. Selection biased due same-day training/hyperparameter search.",
+  "ranked_train_loo": [
+    {
+      "id": "prior_only",
+      "lambda": 0,
+      "fields": [],
+      "LOO_MAE": 9.672727272727272
+    },
+    {
+      "id": "possession_only",
+      "lambda": 100,
+      "fields": [
+        "estimated_half_possessions"
+      ],
+      "LOO_MAE": 9.76787213768193
+    },
+    {
+      "id": "turnover_only",
+      "lambda": 100,
+      "fields": [
+        "turnovers"
+      ],
+      "LOO_MAE": 9.768766440563716
+    },
+    {
+      "id": "score_only",
+      "lambda": 100,
+      "fields": [
+        "h1points"
+      ],
+      "LOO_MAE": 9.794634798885603
+    },
+    {
+      "id": "volume_efficiency",
+      "lambda": 100,
+      "fields": [
+        "estimated_half_possessions",
+        "efg"
+      ],
+      "LOO_MAE": 9.805251468571889
+    },
+    {
+      "id": "pace_and_ft",
+      "lambda": 100,
+      "fields": [
+        "estimated_half_possessions",
+        "ft_attempts"
+      ],
+      "LOO_MAE": 9.86122530284505
+    },
+    {
+      "id": "score_and_possession",
+      "lambda": 100,
+      "fields": [
+        "h1points",
+        "estimated_half_possessions"
+      ],
+      "LOO_MAE": 9.88784590220967
+    },
+    {
+      "id": "pace_and_pressure",
+      "lambda": 100,
+      "fields": [
+        "estimated_half_possessions",
+        "turnovers",
+        "ft_attempts"
+      ],
+      "LOO_MAE": 9.964055283779613
+    }
+  ],
+  "selected_model": {
+    "id": "prior_only",
+    "lambda": 0,
+    "fields": [],
+    "test_mae": 10.340909090909093,
+    "prior_mae": 10.340909090909093,
+    "last_rate_mae": 11.8125,
+    "day": [
+      {
+        "date": "2026-10-20",
+        "n": 3,
+        "mae": 12.575757575757578
+      },
+      {
+        "date": "2026-10-21",
+        "n": 11,
+        "mae": 8.933884297520661
+      },
+      {
+        "date": "2026-10-22",
+        "n": 2,
+        "mae": 14.727272727272734
+      }
+    ],
+    "coefficients": [],
+    "trainMean": 111.72727272727273,
+    "per_game": [
+      {
+        "id": "BOS@DET",
+        "date": "2026-10-20",
+        "actual": 131,
+        "estimated": 111.73,
+        "absError": 19.27
+      },
+      {
+        "id": "PHI@NYK",
+        "date": "2026-10-20",
+        "actual": 94,
+        "estimated": 111.73,
+        "absError": 17.73
+      },
+      {
+        "id": "OKC@SAS",
+        "date": "2026-10-20",
+        "actual": 111,
+        "estimated": 111.73,
+        "absError": 0.73
+      },
+      {
+        "id": "ATL@ORL",
+        "date": "2026-10-21",
+        "actual": 123,
+        "estimated": 111.73,
+        "absError": 11.27
+      },
+      {
+        "id": "MIL@WAS",
+        "date": "2026-10-21",
+        "actual": 137,
+        "estimated": 111.73,
+        "absError": 25.27
+      },
+      {
+        "id": "MIN@MIA",
+        "date": "2026-10-21",
+        "actual": 109,
+        "estimated": 111.73,
+        "absError": 2.73
+      },
+      {
+        "id": "CHA@BKN",
+        "date": "2026-10-21",
+        "actual": 111,
+        "estimated": 111.73,
+        "absError": 0.73
+      },
+      {
+        "id": "CHI@TOR",
+        "date": "2026-10-21",
+        "actual": 114,
+        "estimated": 111.73,
+        "absError": 2.27
+      },
+      {
+        "id": "UTA@MEM",
+        "date": "2026-10-21",
+        "actual": 111,
+        "estimated": 111.73,
+        "absError": 0.73
+      },
+      {
+        "id": "IND@NOP",
+        "date": "2026-10-21",
+        "actual": 121,
+        "estimated": 111.73,
+        "absError": 9.27
+      },
+      {
+        "id": "DAL@HOU",
+        "date": "2026-10-21",
+        "actual": 130,
+        "estimated": 111.73,
+        "absError": 18.27
+      },
+      {
+        "id": "GSW@LAL",
+        "date": "2026-10-21",
+        "actual": 114,
+        "estimated": 111.73,
+        "absError": 2.27
+      },
+      {
+        "id": "PHX@POR",
+        "date": "2026-10-21",
+        "actual": 96,
+        "estimated": 111.73,
+        "absError": 15.73
+      },
+      {
+        "id": "SAC@LAC",
+        "date": "2026-10-21",
+        "actual": 102,
+        "estimated": 111.73,
+        "absError": 9.73
+      },
+      {
+        "id": "CLE@PHI",
+        "date": "2026-10-22",
+        "actual": 106,
+        "estimated": 111.73,
+        "absError": 5.73
+      },
+      {
+        "id": "DEN@OKC",
+        "date": "2026-10-22",
+        "actual": 88,
+        "estimated": 111.73,
+        "absError": 23.73
+      }
+    ]
+  },
+  "specific_predefined_challengers": [
+    {
+      "id": "prior_only",
+      "lambda": 0,
+      "fields": [],
+      "test_mae": 10.340909090909093,
+      "prior_mae": 10.340909090909093,
+      "last_rate_mae": 11.8125,
+      "day": [
+        {
+          "date": "2026-10-20",
+          "n": 3,
+          "mae": 12.575757575757578
+        },
+        {
+          "date": "2026-10-21",
+          "n": 11,
+          "mae": 8.933884297520661
+        },
+        {
+          "date": "2026-10-22",
+          "n": 2,
+          "mae": 14.727272727272734
+        }
+      ],
+      "coefficients": [],
+      "trainMean": 111.72727272727273,
+      "per_game": [
+        {
+          "id": "BOS@DET",
+          "date": "2026-10-20",
+          "actual": 131,
+          "estimated": 111.73,
+          "absError": 19.27
+        },
+        {
+          "id": "PHI@NYK",
+          "date": "2026-10-20",
+          "actual": 94,
+          "estimated": 111.73,
+          "absError": 17.73
+        },
+        {
+          "id": "OKC@SAS",
+          "date": "2026-10-20",
+          "actual": 111,
+          "estimated": 111.73,
+          "absError": 0.73
+        },
+        {
+          "id": "ATL@ORL",
+          "date": "2026-10-21",
+          "actual": 123,
+          "estimated": 111.73,
+          "absError": 11.27
+        },
+        {
+          "id": "MIL@WAS",
+          "date": "2026-10-21",
+          "actual": 137,
+          "estimated": 111.73,
+          "absError": 25.27
+        },
+        {
+          "id": "MIN@MIA",
+          "date": "2026-10-21",
+          "actual": 109,
+          "estimated": 111.73,
+          "absError": 2.73
+        },
+        {
+          "id": "CHA@BKN",
+          "date": "2026-10-21",
+          "actual": 111,
+          "estimated": 111.73,
+          "absError": 0.73
+        },
+        {
+          "id": "CHI@TOR",
+          "date": "2026-10-21",
+          "actual": 114,
+          "estimated": 111.73,
+          "absError": 2.27
+        },
+        {
+          "id": "UTA@MEM",
+          "date": "2026-10-21",
+          "actual": 111,
+          "estimated": 111.73,
+          "absError": 0.73
+        },
+        {
+          "id": "IND@NOP",
+          "date": "2026-10-21",
+          "actual": 121,
+          "estimated": 111.73,
+          "absError": 9.27
+        },
+        {
+          "id": "DAL@HOU",
+          "date": "2026-10-21",
+          "actual": 130,
+          "estimated": 111.73,
+          "absError": 18.27
+        },
+        {
+          "id": "GSW@LAL",
+          "date": "2026-10-21",
+          "actual": 114,
+          "estimated": 111.73,
+          "absError": 2.27
+        },
+        {
+          "id": "PHX@POR",
+          "date": "2026-10-21",
+          "actual": 96,
+          "estimated": 111.73,
+          "absError": 15.73
+        },
+        {
+          "id": "SAC@LAC",
+          "date": "2026-10-21",
+          "actual": 102,
+          "estimated": 111.73,
+          "absError": 9.73
+        },
+        {
+          "id": "CLE@PHI",
+          "date": "2026-10-22",
+          "actual": 106,
+          "estimated": 111.73,
+          "absError": 5.73
+        },
+        {
+          "id": "DEN@OKC",
+          "date": "2026-10-22",
+          "actual": 88,
+          "estimated": 111.73,
+          "absError": 23.73
+        }
+      ]
+    },
+    {
+      "id": "pace_and_pressure",
+      "lambda": 10,
+      "fields": [
+        "estimated_half_possessions",
+        "turnovers",
+        "ft_attempts"
+      ],
+      "test_mae": 10.869924441490472,
+      "prior_mae": 10.340909090909093,
+      "last_rate_mae": 11.8125,
+      "day": [
+        {
+          "date": "2026-10-20",
+          "n": 3,
+          "mae": 11.107000397604708
+        },
+        {
+          "date": "2026-10-21",
+          "n": 11,
+          "mae": 10.24868919872637
+        },
+        {
+          "date": "2026-10-22",
+          "n": 2,
+          "mae": 13.931104342521692
+        }
+      ],
+      "coefficients": [
+        -1.5957829853427707,
+        0.06791098482361292,
+        -1.1078103057960806
+      ],
+      "trainMean": 111.72727272727273,
+      "per_game": [
+        {
+          "id": "BOS@DET",
+          "date": "2026-10-20",
+          "actual": 131,
+          "estimated": 112.41,
+          "absError": 18.59
+        },
+        {
+          "id": "PHI@NYK",
+          "date": "2026-10-20",
+          "actual": 94,
+          "estimated": 108.3,
+          "absError": 14.3
+        },
+        {
+          "id": "OKC@SAS",
+          "date": "2026-10-20",
+          "actual": 111,
+          "estimated": 110.57,
+          "absError": 0.43
+        },
+        {
+          "id": "ATL@ORL",
+          "date": "2026-10-21",
+          "actual": 123,
+          "estimated": 107.12,
+          "absError": 15.88
+        },
+        {
+          "id": "MIL@WAS",
+          "date": "2026-10-21",
+          "actual": 137,
+          "estimated": 109.92,
+          "absError": 27.08
+        },
+        {
+          "id": "MIN@MIA",
+          "date": "2026-10-21",
+          "actual": 109,
+          "estimated": 111.02,
+          "absError": 2.02
+        },
+        {
+          "id": "CHA@BKN",
+          "date": "2026-10-21",
+          "actual": 111,
+          "estimated": 113.72,
+          "absError": 2.72
+        },
+        {
+          "id": "CHI@TOR",
+          "date": "2026-10-21",
+          "actual": 114,
+          "estimated": 106.96,
+          "absError": 7.04
+        },
+        {
+          "id": "UTA@MEM",
+          "date": "2026-10-21",
+          "actual": 111,
+          "estimated": 108.91,
+          "absError": 2.09
+        },
+        {
+          "id": "IND@NOP",
+          "date": "2026-10-21",
+          "actual": 121,
+          "estimated": 108.38,
+          "absError": 12.62
+        },
+        {
+          "id": "DAL@HOU",
+          "date": "2026-10-21",
+          "actual": 130,
+          "estimated": 111.6,
+          "absError": 18.4
+        },
+        {
+          "id": "GSW@LAL",
+          "date": "2026-10-21",
+          "actual": 114,
+          "estimated": 111.76,
+          "absError": 2.24
+        },
+        {
+          "id": "PHX@POR",
+          "date": "2026-10-21",
+          "actual": 96,
+          "estimated": 111.26,
+          "absError": 15.26
+        },
+        {
+          "id": "SAC@LAC",
+          "date": "2026-10-21",
+          "actual": 102,
+          "estimated": 109.38,
+          "absError": 7.38
+        },
+        {
+          "id": "CLE@PHI",
+          "date": "2026-10-22",
+          "actual": 106,
+          "estimated": 109.28,
+          "absError": 3.28
+        },
+        {
+          "id": "DEN@OKC",
+          "date": "2026-10-22",
+          "actual": 88,
+          "estimated": 112.58,
+          "absError": 24.58
+        }
+      ]
+    },
+    {
+      "id": "score_only",
+      "lambda": 10,
+      "fields": [
+        "h1points"
+      ],
+      "test_mae": 10.32647442220227,
+      "prior_mae": 10.340909090909093,
+      "last_rate_mae": 11.8125,
+      "day": [
+        {
+          "date": "2026-10-20",
+          "n": 3,
+          "mae": 12.599404814594692
+        },
+        {
+          "date": "2026-10-21",
+          "n": 11,
+          "mae": 8.91718791373567
+        },
+        {
+          "date": "2026-10-22",
+          "n": 2,
+          "mae": 14.668154630179949
+        }
+      ],
+      "coefficients": [
+        0.07988116771834385
+      ],
+      "trainMean": 111.72727272727273,
+      "per_game": [
+        {
+          "id": "BOS@DET",
+          "date": "2026-10-20",
+          "actual": 131,
+          "estimated": 111.67,
+          "absError": 19.33
+        },
+        {
+          "id": "PHI@NYK",
+          "date": "2026-10-20",
+          "actual": 94,
+          "estimated": 111.75,
+          "absError": 17.75
+        },
+        {
+          "id": "OKC@SAS",
+          "date": "2026-10-20",
+          "actual": 111,
+          "estimated": 111.72,
+          "absError": 0.72
+        },
+        {
+          "id": "ATL@ORL",
+          "date": "2026-10-21",
+          "actual": 123,
+          "estimated": 111.94,
+          "absError": 11.06
+        },
+        {
+          "id": "MIL@WAS",
+          "date": "2026-10-21",
+          "actual": 137,
+          "estimated": 111.7,
+          "absError": 25.3
+        },
+        {
+          "id": "MIN@MIA",
+          "date": "2026-10-21",
+          "actual": 109,
+          "estimated": 111.88,
+          "absError": 2.88
+        },
+        {
+          "id": "CHA@BKN",
+          "date": "2026-10-21",
+          "actual": 111,
+          "estimated": 111.66,
+          "absError": 0.66
+        },
+        {
+          "id": "CHI@TOR",
+          "date": "2026-10-21",
+          "actual": 114,
+          "estimated": 111.75,
+          "absError": 2.25
+        },
+        {
+          "id": "UTA@MEM",
+          "date": "2026-10-21",
+          "actual": 111,
+          "estimated": 111.77,
+          "absError": 0.77
+        },
+        {
+          "id": "IND@NOP",
+          "date": "2026-10-21",
+          "actual": 121,
+          "estimated": 111.83,
+          "absError": 9.17
+        },
+        {
+          "id": "DAL@HOU",
+          "date": "2026-10-21",
+          "actual": 130,
+          "estimated": 111.71,
+          "absError": 18.29
+        },
+        {
+          "id": "GSW@LAL",
+          "date": "2026-10-21",
+          "actual": 114,
+          "estimated": 111.8,
+          "absError": 2.2
+        },
+        {
+          "id": "PHX@POR",
+          "date": "2026-10-21",
+          "actual": 96,
+          "estimated": 111.74,
+          "absError": 15.74
+        },
+        {
+          "id": "SAC@LAC",
+          "date": "2026-10-21",
+          "actual": 102,
+          "estimated": 111.77,
+          "absError": 9.77
+        },
+        {
+          "id": "CLE@PHI",
+          "date": "2026-10-22",
+          "actual": 106,
+          "estimated": 111.76,
+          "absError": 5.76
+        },
+        {
+          "id": "DEN@OKC",
+          "date": "2026-10-22",
+          "actual": 88,
+          "estimated": 111.57,
+          "absError": 23.57
+        }
+      ]
+    }
+  ],
+  "no_official_possession_boundaries": true,
+  "no_player_lineup_assignment": true,
+  "probabilistic_uncertainty_calibrated": false,
+  "at_prediction_time_witnessed": false,
+  "production_authority": false
+}
