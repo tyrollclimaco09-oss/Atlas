@@ -1,0 +1,6636 @@
+{
+  "schema": "atlas.nba.gamesense.jan15_2023_2024_2026_complete_pbp_and_quickscore.v2",
+  "date_saved": "2026-10-23",
+  "denominator_index_sha": "4bec9cdf983bc6d93ec307a154471e1abf694ff9",
+  "source_type": "Basketball-Reference postgame rendered play by play source across three complete day indexes",
+  "selection": "all 28 games from 2023 Jan15,2024 Jan15,2026 Jan15, including overtime handled separately",
+  "requested": 28,
+  "accepted": 28,
+  "rejected": 0,
+  "rejections": [],
+  "period_checks": 226,
+  "end_checks": 113,
+  "windows_seconds": [
+    10,
+    15,
+    24
+  ],
+  "quickscore_aggregate": {
+    "H1": {
+      "steal": {
+        "n": 203,
+        "hit_counts": [
+          81,
+          96,
+          107
+        ]
+      },
+      "unmarked": {
+        "n": 163,
+        "hit_counts": [
+          20,
+          54,
+          84
+        ]
+      }
+    },
+    "H2": {
+      "steal": {
+        "n": 189,
+        "hit_counts": [
+          101,
+          115,
+          125
+        ]
+      },
+      "unmarked": {
+        "n": 183,
+        "hit_counts": [
+          22,
+          53,
+          83
+        ]
+      }
+    },
+    "OT": {
+      "steal": {
+        "n": 0,
+        "hit_counts": [
+          0,
+          0,
+          0
+        ]
+      },
+      "unmarked": {
+        "n": 2,
+        "hit_counts": [
+          0,
+          1,
+          1
+        ]
+      }
+    },
+    "REGULATION": {
+      "steal": {
+        "n": 392,
+        "hit_counts": [
+          182,
+          211,
+          232
+        ]
+      },
+      "unmarked": {
+        "n": 346,
+        "hit_counts": [
+          42,
+          107,
+          167
+        ]
+      }
+    }
+  },
+  "games": [
+    {
+      "game": "Oklahoma City@Brooklyn",
+      "date": "2023-01-15",
+      "year": 2023,
+      "source_url": "https://www.basketball-reference.com/boxscores/pbp/202301150BRK.html",
+      "rows": 476,
+      "periods": 4,
+      "period_points_checks": 8,
+      "end_score_checks": 4,
+      "halves": {
+        "H1": {
+          "away": {
+            "FGA": 49,
+            "FGM": 20,
+            "TPM": 6,
+            "TPA": 16,
+            "FTA": 2,
+            "FTM": 2,
+            "TO": 5,
+            "ORB": 6,
+            "DRB": 20,
+            "SUB": 10
+          },
+          "home": {
+            "FGA": 45,
+            "FGM": 19,
+            "TPM": 6,
+            "TPA": 17,
+            "FTA": 10,
+            "FTM": 6,
+            "TO": 9,
+            "ORB": 10,
+            "DRB": 23,
+            "SUB": 11
+          },
+          "combined_points": 98
+        },
+        "H2": {
+          "away": {
+            "FGA": 41,
+            "FGM": 20,
+            "TPM": 6,
+            "TPA": 15,
+            "FTA": 24,
+            "FTM": 18,
+            "TO": 4,
+            "ORB": 12,
+            "DRB": 20,
+            "SUB": 13
+          },
+          "home": {
+            "FGA": 46,
+            "FGM": 20,
+            "TPM": 6,
+            "TPA": 24,
+            "FTA": 9,
+            "FTM": 6,
+            "TO": 7,
+            "ORB": 9,
+            "DRB": 15,
+            "SUB": 15
+          },
+          "combined_points": 116
+        }
+      },
+      "quickscore": {
+        "H1": {
+          "steal": {
+            "n": 7,
+            "hits": [
+              3,
+              3,
+              4
+            ]
+          },
+          "unmarked": {
+            "n": 7,
+            "hits": [
+              2,
+              2,
+              4
+            ]
+          }
+        },
+        "H2": {
+          "steal": {
+            "n": 2,
+            "hits": [
+              2,
+              2,
+              2
+            ]
+          },
+          "unmarked": {
+            "n": 9,
+            "hits": [
+              0,
+              3,
+              3
+            ]
+          }
+        },
+        "OT": {
+          "steal": {
+            "n": 0,
+            "hits": [
+              0,
+              0,
+              0
+            ]
+          },
+          "unmarked": {
+            "n": 0,
+            "hits": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      },
+      "quarter_event_counts": {
+        "1": {
+          "away": {
+            "FGA": 24,
+            "FGM": 11,
+            "TPM": 4,
+            "TPA": 8,
+            "FTA": 2,
+            "FTM": 2,
+            "TO": 1,
+            "ORB": 1,
+            "DRB": 11,
+            "SUB": 4
+          },
+          "home": {
+            "FGA": 20,
+            "FGM": 9,
+            "TPM": 1,
+            "TPA": 6,
+            "FTA": 6,
+            "FTM": 5,
+            "TO": 4,
+            "ORB": 1,
+            "DRB": 12,
+            "SUB": 5
+          }
+        },
+        "2": {
+          "away": {
+            "FGA": 25,
+            "FGM": 9,
+            "TPM": 2,
+            "TPA": 8,
+            "FTA": 0,
+            "FTM": 0,
+            "TO": 4,
+            "ORB": 5,
+            "DRB": 9,
+            "SUB": 6
+          },
+          "home": {
+            "FGA": 25,
+            "FGM": 10,
+            "TPM": 5,
+            "TPA": 11,
+            "FTA": 4,
+            "FTM": 1,
+            "TO": 5,
+            "ORB": 9,
+            "DRB": 11,
+            "SUB": 6
+          }
+        },
+        "3": {
+          "away": {
+            "FGA": 21,
+            "FGM": 7,
+            "TPM": 1,
+            "TPA": 7,
+            "FTA": 13,
+            "FTM": 12,
+            "TO": 2,
+            "ORB": 6,
+            "DRB": 7,
+            "SUB": 8
+          },
+          "home": {
+            "FGA": 23,
+            "FGM": 12,
+            "TPM": 4,
+            "TPA": 11,
+            "FTA": 3,
+            "FTM": 2,
+            "TO": 5,
+            "ORB": 5,
+            "DRB": 9,
+            "SUB": 7
+          }
+        },
+        "4": {
+          "away": {
+            "FGA": 20,
+            "FGM": 13,
+            "TPM": 5,
+            "TPA": 8,
+            "FTA": 11,
+            "FTM": 6,
+            "TO": 2,
+            "ORB": 6,
+            "DRB": 13,
+            "SUB": 5
+          },
+          "home": {
+            "FGA": 23,
+            "FGM": 8,
+            "TPM": 2,
+            "TPA": 13,
+            "FTA": 6,
+            "FTM": 4,
+            "TO": 2,
+            "ORB": 4,
+            "DRB": 6,
+            "SUB": 8
+          }
+        }
+      },
+      "raw_original_bytes_sha": null,
+      "official_provider_parity": false,
+      "actual_possession_ownership": false
+    },
+    {
+      "game": "Golden State@Chicago",
+      "date": "2023-01-15",
+      "year": 2023,
+      "source_url": "https://www.basketball-reference.com/boxscores/pbp/202301150CHI.html",
+      "rows": 474,
+      "periods": 4,
+      "period_points_checks": 8,
+      "end_score_checks": 4,
+      "halves": {
+        "H1": {
+          "away": {
+            "FGA": 43,
+            "FGM": 21,
+            "TPM": 12,
+            "TPA": 28,
+            "FTA": 13,
+            "FTM": 8,
+            "TO": 11,
+            "ORB": 7,
+            "DRB": 22,
+            "SUB": 13
+          },
+          "home": {
+            "FGA": 51,
+            "FGM": 23,
+            "TPM": 7,
+            "TPA": 19,
+            "FTA": 6,
+            "FTM": 6,
+            "TO": 7,
+            "ORB": 6,
+            "DRB": 20,
+            "SUB": 13
+          },
+          "combined_points": 121
+        },
+        "H2": {
+          "away": {
+            "FGA": 40,
+            "FGM": 20,
+            "TPM": 9,
+            "TPA": 23,
+            "FTA": 9,
+            "FTM": 7,
+            "TO": 12,
+            "ORB": 6,
+            "DRB": 15,
+            "SUB": 14
+          },
+          "home": {
+            "FGA": 44,
+            "FGM": 25,
+            "TPM": 8,
+            "TPA": 20,
+            "FTA": 18,
+            "FTM": 15,
+            "TO": 3,
+            "ORB": 7,
+            "DRB": 16,
+            "SUB": 12
+          },
+          "combined_points": 129
+        }
+      },
+      "quickscore": {
+        "H1": {
+          "steal": {
+            "n": 12,
+            "hits": [
+              7,
+              7,
+              8
+            ]
+          },
+          "unmarked": {
+            "n": 6,
+            "hits": [
+              0,
+              1,
+              3
+            ]
+          }
+        },
+        "H2": {
+          "steal": {
+            "n": 6,
+            "hits": [
+              3,
+              4,
+              4
+            ]
+          },
+          "unmarked": {
+            "n": 9,
+            "hits": [
+              1,
+              1,
+              5
+            ]
+          }
+        },
+        "OT": {
+          "steal": {
+            "n": 0,
+            "hits": [
+              0,
+              0,
+              0
+            ]
+          },
+          "unmarked": {
+            "n": 0,
+            "hits": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      },
+      "quarter_event_counts": {
+        "1": {
+          "away": {
+            "FGA": 18,
+            "FGM": 8,
+            "TPM": 4,
+            "TPA": 12,
+            "FTA": 2,
+            "FTM": 0,
+            "TO": 7,
+            "ORB": 1,
+            "DRB": 9,
+            "SUB": 6
+          },
+          "home": {
+            "FGA": 26,
+            "FGM": 14,
+            "TPM": 6,
+            "TPA": 13,
+            "FTA": 1,
+            "FTM": 1,
+            "TO": 3,
+            "ORB": 3,
+            "DRB": 11,
+            "SUB": 5
+          }
+        },
+        "2": {
+          "away": {
+            "FGA": 25,
+            "FGM": 13,
+            "TPM": 8,
+            "TPA": 16,
+            "FTA": 11,
+            "FTM": 8,
+            "TO": 4,
+            "ORB": 6,
+            "DRB": 13,
+            "SUB": 7
+          },
+          "home": {
+            "FGA": 25,
+            "FGM": 9,
+            "TPM": 1,
+            "TPA": 6,
+            "FTA": 5,
+            "FTM": 5,
+            "TO": 4,
+            "ORB": 3,
+            "DRB": 9,
+            "SUB": 8
+          }
+        },
+        "3": {
+          "away": {
+            "FGA": 18,
+            "FGM": 7,
+            "TPM": 4,
+            "TPA": 10,
+            "FTA": 8,
+            "FTM": 6,
+            "TO": 7,
+            "ORB": 3,
+            "DRB": 9,
+            "SUB": 4
+          },
+          "home": {
+            "FGA": 22,
+            "FGM": 12,
+            "TPM": 4,
+            "TPA": 12,
+            "FTA": 8,
+            "FTM": 5,
+            "TO": 1,
+            "ORB": 4,
+            "DRB": 10,
+            "SUB": 4
+          }
+        },
+        "4": {
+          "away": {
+            "FGA": 22,
+            "FGM": 13,
+            "TPM": 5,
+            "TPA": 13,
+            "FTA": 1,
+            "FTM": 1,
+            "TO": 5,
+            "ORB": 3,
+            "DRB": 6,
+            "SUB": 10
+          },
+          "home": {
+            "FGA": 22,
+            "FGM": 13,
+            "TPM": 4,
+            "TPA": 8,
+            "FTA": 10,
+            "FTM": 10,
+            "TO": 2,
+            "ORB": 3,
+            "DRB": 6,
+            "SUB": 8
+          }
+        }
+      },
+      "raw_original_bytes_sha": null,
+      "official_provider_parity": false,
+      "actual_possession_ownership": false
+    },
+    {
+      "game": "Orlando@Denver",
+      "date": "2023-01-15",
+      "year": 2023,
+      "source_url": "https://www.basketball-reference.com/boxscores/pbp/202301150DEN.html",
+      "rows": 466,
+      "periods": 4,
+      "period_points_checks": 8,
+      "end_score_checks": 4,
+      "halves": {
+        "H1": {
+          "away": {
+            "FGA": 40,
+            "FGM": 16,
+            "TPM": 5,
+            "TPA": 16,
+            "FTA": 19,
+            "FTM": 17,
+            "TO": 9,
+            "ORB": 9,
+            "DRB": 13,
+            "SUB": 11
+          },
+          "home": {
+            "FGA": 45,
+            "FGM": 28,
+            "TPM": 8,
+            "TPA": 20,
+            "FTA": 9,
+            "FTM": 5,
+            "TO": 8,
+            "ORB": 8,
+            "DRB": 17,
+            "SUB": 11
+          },
+          "combined_points": 123
+        },
+        "H2": {
+          "away": {
+            "FGA": 44,
+            "FGM": 25,
+            "TPM": 2,
+            "TPA": 13,
+            "FTA": 15,
+            "FTM": 10,
+            "TO": 4,
+            "ORB": 10,
+            "DRB": 17,
+            "SUB": 13
+          },
+          "home": {
+            "FGA": 44,
+            "FGM": 20,
+            "TPM": 5,
+            "TPA": 19,
+            "FTA": 10,
+            "FTM": 5,
+            "TO": 8,
+            "ORB": 12,
+            "DRB": 14,
+            "SUB": 11
+          },
+          "combined_points": 112
+        }
+      },
+      "quickscore": {
+        "H1": {
+          "steal": {
+            "n": 10,
+            "hits": [
+              5,
+              5,
+              5
+            ]
+          },
+          "unmarked": {
+            "n": 7,
+            "hits": [
+              2,
+              3,
+              4
+            ]
+          }
+        },
+        "H2": {
+          "steal": {
+            "n": 7,
+            "hits": [
+              4,
+              6,
+              6
+            ]
+          },
+          "unmarked": {
+            "n": 5,
+            "hits": [
+              3,
+              3,
+              4
+            ]
+          }
+        },
+        "OT": {
+          "steal": {
+            "n": 0,
+            "hits": [
+              0,
+              0,
+              0
+            ]
+          },
+          "unmarked": {
+            "n": 0,
+            "hits": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      },
+      "quarter_event_counts": {
+        "1": {
+          "away": {
+            "FGA": 20,
+            "FGM": 7,
+            "TPM": 3,
+            "TPA": 11,
+            "FTA": 9,
+            "FTM": 8,
+            "TO": 3,
+            "ORB": 3,
+            "DRB": 9,
+            "SUB": 5
+          },
+          "home": {
+            "FGA": 23,
+            "FGM": 13,
+            "TPM": 4,
+            "TPA": 10,
+            "FTA": 2,
+            "FTM": 1,
+            "TO": 4,
+            "ORB": 2,
+            "DRB": 11,
+            "SUB": 5
+          }
+        },
+        "2": {
+          "away": {
+            "FGA": 20,
+            "FGM": 9,
+            "TPM": 2,
+            "TPA": 5,
+            "FTA": 10,
+            "FTM": 9,
+            "TO": 6,
+            "ORB": 6,
+            "DRB": 4,
+            "SUB": 6
+          },
+          "home": {
+            "FGA": 22,
+            "FGM": 15,
+            "TPM": 4,
+            "TPA": 10,
+            "FTA": 7,
+            "FTM": 4,
+            "TO": 4,
+            "ORB": 6,
+            "DRB": 6,
+            "SUB": 6
+          }
+        },
+        "3": {
+          "away": {
+            "FGA": 24,
+            "FGM": 14,
+            "TPM": 1,
+            "TPA": 7,
+            "FTA": 7,
+            "FTM": 5,
+            "TO": 2,
+            "ORB": 4,
+            "DRB": 7,
+            "SUB": 5
+          },
+          "home": {
+            "FGA": 23,
+            "FGM": 11,
+            "TPM": 2,
+            "TPA": 8,
+            "FTA": 4,
+            "FTM": 1,
+            "TO": 7,
+            "ORB": 8,
+            "DRB": 8,
+            "SUB": 5
+          }
+        },
+        "4": {
+          "away": {
+            "FGA": 20,
+            "FGM": 11,
+            "TPM": 1,
+            "TPA": 6,
+            "FTA": 8,
+            "FTM": 5,
+            "TO": 2,
+            "ORB": 6,
+            "DRB": 10,
+            "SUB": 8
+          },
+          "home": {
+            "FGA": 21,
+            "FGM": 9,
+            "TPM": 3,
+            "TPA": 11,
+            "FTA": 6,
+            "FTM": 4,
+            "TO": 1,
+            "ORB": 4,
+            "DRB": 6,
+            "SUB": 6
+          }
+        }
+      },
+      "raw_original_bytes_sha": null,
+      "official_provider_parity": false,
+      "actual_possession_ownership": false
+    },
+    {
+      "game": "New York@Detroit",
+      "date": "2023-01-15",
+      "year": 2023,
+      "source_url": "https://www.basketball-reference.com/boxscores/pbp/202301150DET.html",
+      "rows": 426,
+      "periods": 4,
+      "period_points_checks": 8,
+      "end_score_checks": 4,
+      "halves": {
+        "H1": {
+          "away": {
+            "FGA": 51,
+            "FGM": 23,
+            "TPM": 7,
+            "TPA": 18,
+            "FTA": 11,
+            "FTM": 9,
+            "TO": 3,
+            "ORB": 12,
+            "DRB": 20,
+            "SUB": 8
+          },
+          "home": {
+            "FGA": 43,
+            "FGM": 19,
+            "TPM": 10,
+            "TPA": 23,
+            "FTA": 10,
+            "FTM": 7,
+            "TO": 7,
+            "ORB": 7,
+            "DRB": 18,
+            "SUB": 10
+          },
+          "combined_points": 117
+        },
+        "H2": {
+          "away": {
+            "FGA": 37,
+            "FGM": 17,
+            "TPM": 5,
+            "TPA": 12,
+            "FTA": 20,
+            "FTM": 16,
+            "TO": 5,
+            "ORB": 10,
+            "DRB": 17,
+            "SUB": 6
+          },
+          "home": {
+            "FGA": 40,
+            "FGM": 18,
+            "TPM": 8,
+            "TPA": 21,
+            "FTA": 5,
+            "FTM": 5,
+            "TO": 5,
+            "ORB": 5,
+            "DRB": 14,
+            "SUB": 9
+          },
+          "combined_points": 104
+        }
+      },
+      "quickscore": {
+        "H1": {
+          "steal": {
+            "n": 5,
+            "hits": [
+              2,
+              2,
+              2
+            ]
+          },
+          "unmarked": {
+            "n": 5,
+            "hits": [
+              0,
+              3,
+              3
+            ]
+          }
+        },
+        "H2": {
+          "steal": {
+            "n": 2,
+            "hits": [
+              2,
+              2,
+              2
+            ]
+          },
+          "unmarked": {
+            "n": 8,
+            "hits": [
+              0,
+              2,
+              2
+            ]
+          }
+        },
+        "OT": {
+          "steal": {
+            "n": 0,
+            "hits": [
+              0,
+              0,
+              0
+            ]
+          },
+          "unmarked": {
+            "n": 0,
+            "hits": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      },
+      "quarter_event_counts": {
+        "1": {
+          "away": {
+            "FGA": 27,
+            "FGM": 14,
+            "TPM": 4,
+            "TPA": 10,
+            "FTA": 9,
+            "FTM": 7,
+            "TO": 1,
+            "ORB": 8,
+            "DRB": 12,
+            "SUB": 3
+          },
+          "home": {
+            "FGA": 21,
+            "FGM": 7,
+            "TPM": 3,
+            "TPA": 10,
+            "FTA": 6,
+            "FTM": 5,
+            "TO": 3,
+            "ORB": 3,
+            "DRB": 7,
+            "SUB": 6
+          }
+        },
+        "2": {
+          "away": {
+            "FGA": 24,
+            "FGM": 9,
+            "TPM": 3,
+            "TPA": 8,
+            "FTA": 2,
+            "FTM": 2,
+            "TO": 2,
+            "ORB": 4,
+            "DRB": 8,
+            "SUB": 5
+          },
+          "home": {
+            "FGA": 22,
+            "FGM": 12,
+            "TPM": 7,
+            "TPA": 13,
+            "FTA": 4,
+            "FTM": 2,
+            "TO": 4,
+            "ORB": 4,
+            "DRB": 11,
+            "SUB": 4
+          }
+        },
+        "3": {
+          "away": {
+            "FGA": 22,
+            "FGM": 11,
+            "TPM": 3,
+            "TPA": 7,
+            "FTA": 4,
+            "FTM": 3,
+            "TO": 3,
+            "ORB": 6,
+            "DRB": 7,
+            "SUB": 2
+          },
+          "home": {
+            "FGA": 19,
+            "FGM": 10,
+            "TPM": 5,
+            "TPA": 11,
+            "FTA": 0,
+            "FTM": 0,
+            "TO": 4,
+            "ORB": 2,
+            "DRB": 6,
+            "SUB": 5
+          }
+        },
+        "4": {
+          "away": {
+            "FGA": 15,
+            "FGM": 6,
+            "TPM": 2,
+            "TPA": 5,
+            "FTA": 16,
+            "FTM": 13,
+            "TO": 2,
+            "ORB": 4,
+            "DRB": 10,
+            "SUB": 4
+          },
+          "home": {
+            "FGA": 21,
+            "FGM": 8,
+            "TPM": 3,
+            "TPA": 10,
+            "FTA": 5,
+            "FTM": 5,
+            "TO": 1,
+            "ORB": 3,
+            "DRB": 8,
+            "SUB": 4
+          }
+        }
+      },
+      "raw_original_bytes_sha": null,
+      "official_provider_parity": false,
+      "actual_possession_ownership": false
+    },
+    {
+      "game": "Houston@LA Clippers",
+      "date": "2023-01-15",
+      "year": 2023,
+      "source_url": "https://www.basketball-reference.com/boxscores/pbp/202301150LAC.html",
+      "rows": 461,
+      "periods": 4,
+      "period_points_checks": 8,
+      "end_score_checks": 4,
+      "halves": {
+        "H1": {
+          "away": {
+            "FGA": 45,
+            "FGM": 25,
+            "TPM": 3,
+            "TPA": 12,
+            "FTA": 14,
+            "FTM": 10,
+            "TO": 7,
+            "ORB": 7,
+            "DRB": 18,
+            "SUB": 11
+          },
+          "home": {
+            "FGA": 50,
+            "FGM": 26,
+            "TPM": 9,
+            "TPA": 20,
+            "FTA": 4,
+            "FTM": 1,
+            "TO": 8,
+            "ORB": 9,
+            "DRB": 17,
+            "SUB": 10
+          },
+          "combined_points": 125
+        },
+        "H2": {
+          "away": {
+            "FGA": 39,
+            "FGM": 13,
+            "TPM": 4,
+            "TPA": 19,
+            "FTA": 9,
+            "FTM": 7,
+            "TO": 13,
+            "ORB": 8,
+            "DRB": 14,
+            "SUB": 12
+          },
+          "home": {
+            "FGA": 38,
+            "FGM": 20,
+            "TPM": 5,
+            "TPA": 12,
+            "FTA": 17,
+            "FTM": 14,
+            "TO": 9,
+            "ORB": 7,
+            "DRB": 20,
+            "SUB": 10
+          },
+          "combined_points": 96
+        }
+      },
+      "quickscore": {
+        "H1": {
+          "steal": {
+            "n": 6,
+            "hits": [
+              1,
+              3,
+              4
+            ]
+          },
+          "unmarked": {
+            "n": 9,
+            "hits": [
+              0,
+              2,
+              3
+            ]
+          }
+        },
+        "H2": {
+          "steal": {
+            "n": 15,
+            "hits": [
+              8,
+              10,
+              10
+            ]
+          },
+          "unmarked": {
+            "n": 7,
+            "hits": [
+              2,
+              2,
+              2
+            ]
+          }
+        },
+        "OT": {
+          "steal": {
+            "n": 0,
+            "hits": [
+              0,
+              0,
+              0
+            ]
+          },
+          "unmarked": {
+            "n": 0,
+            "hits": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      },
+      "quarter_event_counts": {
+        "1": {
+          "away": {
+            "FGA": 19,
+            "FGM": 11,
+            "TPM": 1,
+            "TPA": 6,
+            "FTA": 10,
+            "FTM": 7,
+            "TO": 3,
+            "ORB": 4,
+            "DRB": 10,
+            "SUB": 5
+          },
+          "home": {
+            "FGA": 27,
+            "FGM": 14,
+            "TPM": 3,
+            "TPA": 8,
+            "FTA": 0,
+            "FTM": 0,
+            "TO": 2,
+            "ORB": 3,
+            "DRB": 7,
+            "SUB": 5
+          }
+        },
+        "2": {
+          "away": {
+            "FGA": 26,
+            "FGM": 14,
+            "TPM": 2,
+            "TPA": 6,
+            "FTA": 4,
+            "FTM": 3,
+            "TO": 4,
+            "ORB": 3,
+            "DRB": 8,
+            "SUB": 6
+          },
+          "home": {
+            "FGA": 23,
+            "FGM": 12,
+            "TPM": 6,
+            "TPA": 12,
+            "FTA": 4,
+            "FTM": 1,
+            "TO": 6,
+            "ORB": 6,
+            "DRB": 10,
+            "SUB": 5
+          }
+        },
+        "3": {
+          "away": {
+            "FGA": 19,
+            "FGM": 8,
+            "TPM": 4,
+            "TPA": 12,
+            "FTA": 9,
+            "FTM": 7,
+            "TO": 6,
+            "ORB": 5,
+            "DRB": 7,
+            "SUB": 4
+          },
+          "home": {
+            "FGA": 17,
+            "FGM": 10,
+            "TPM": 2,
+            "TPA": 5,
+            "FTA": 9,
+            "FTM": 7,
+            "TO": 4,
+            "ORB": 2,
+            "DRB": 8,
+            "SUB": 4
+          }
+        },
+        "4": {
+          "away": {
+            "FGA": 20,
+            "FGM": 5,
+            "TPM": 0,
+            "TPA": 7,
+            "FTA": 0,
+            "FTM": 0,
+            "TO": 7,
+            "ORB": 3,
+            "DRB": 7,
+            "SUB": 8
+          },
+          "home": {
+            "FGA": 21,
+            "FGM": 10,
+            "TPM": 3,
+            "TPA": 7,
+            "FTA": 8,
+            "FTM": 7,
+            "TO": 5,
+            "ORB": 5,
+            "DRB": 12,
+            "SUB": 6
+          }
+        }
+      },
+      "raw_original_bytes_sha": null,
+      "official_provider_parity": false,
+      "actual_possession_ownership": false
+    },
+    {
+      "game": "Philadelphia@LA Lakers",
+      "date": "2023-01-15",
+      "year": 2023,
+      "source_url": "https://www.basketball-reference.com/boxscores/pbp/202301150LAL.html",
+      "rows": 428,
+      "periods": 4,
+      "period_points_checks": 8,
+      "end_score_checks": 4,
+      "halves": {
+        "H1": {
+          "away": {
+            "FGA": 45,
+            "FGM": 20,
+            "TPM": 7,
+            "TPA": 21,
+            "FTA": 10,
+            "FTM": 10,
+            "TO": 5,
+            "ORB": 4,
+            "DRB": 19,
+            "SUB": 15
+          },
+          "home": {
+            "FGA": 45,
+            "FGM": 26,
+            "TPM": 1,
+            "TPA": 8,
+            "FTA": 6,
+            "FTM": 5,
+            "TO": 5,
+            "ORB": 1,
+            "DRB": 21,
+            "SUB": 16
+          },
+          "combined_points": 115
+        },
+        "H2": {
+          "away": {
+            "FGA": 40,
+            "FGM": 23,
+            "TPM": 5,
+            "TPA": 13,
+            "FTA": 9,
+            "FTM": 5,
+            "TO": 5,
+            "ORB": 7,
+            "DRB": 16,
+            "SUB": 9
+          },
+          "home": {
+            "FGA": 42,
+            "FGM": 22,
+            "TPM": 5,
+            "TPA": 12,
+            "FTA": 7,
+            "FTM": 5,
+            "TO": 6,
+            "ORB": 6,
+            "DRB": 14,
+            "SUB": 14
+          },
+          "combined_points": 110
+        }
+      },
+      "quickscore": {
+        "H1": {
+          "steal": {
+            "n": 5,
+            "hits": [
+              1,
+              1,
+              1
+            ]
+          },
+          "unmarked": {
+            "n": 5,
+            "hits": [
+              1,
+              2,
+              3
+            ]
+          }
+        },
+        "H2": {
+          "steal": {
+            "n": 2,
+            "hits": [
+              2,
+              2,
+              2
+            ]
+          },
+          "unmarked": {
+            "n": 9,
+            "hits": [
+              0,
+              2,
+              5
+            ]
+          }
+        },
+        "OT": {
+          "steal": {
+            "n": 0,
+            "hits": [
+              0,
+              0,
+              0
+            ]
+          },
+          "unmarked": {
+            "n": 0,
+            "hits": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      },
+      "quarter_event_counts": {
+        "1": {
+          "away": {
+            "FGA": 23,
+            "FGM": 11,
+            "TPM": 3,
+            "TPA": 11,
+            "FTA": 8,
+            "FTM": 8,
+            "TO": 1,
+            "ORB": 2,
+            "DRB": 10,
+            "SUB": 5
+          },
+          "home": {
+            "FGA": 25,
+            "FGM": 16,
+            "TPM": 0,
+            "TPA": 3,
+            "FTA": 1,
+            "FTM": 0,
+            "TO": 1,
+            "ORB": 0,
+            "DRB": 10,
+            "SUB": 6
+          }
+        },
+        "2": {
+          "away": {
+            "FGA": 22,
+            "FGM": 9,
+            "TPM": 4,
+            "TPA": 10,
+            "FTA": 2,
+            "FTM": 2,
+            "TO": 4,
+            "ORB": 2,
+            "DRB": 9,
+            "SUB": 10
+          },
+          "home": {
+            "FGA": 20,
+            "FGM": 10,
+            "TPM": 1,
+            "TPA": 5,
+            "FTA": 5,
+            "FTM": 5,
+            "TO": 4,
+            "ORB": 1,
+            "DRB": 11,
+            "SUB": 10
+          }
+        },
+        "3": {
+          "away": {
+            "FGA": 21,
+            "FGM": 12,
+            "TPM": 3,
+            "TPA": 8,
+            "FTA": 5,
+            "FTM": 2,
+            "TO": 3,
+            "ORB": 5,
+            "DRB": 10,
+            "SUB": 5
+          },
+          "home": {
+            "FGA": 20,
+            "FGM": 10,
+            "TPM": 3,
+            "TPA": 5,
+            "FTA": 3,
+            "FTM": 2,
+            "TO": 3,
+            "ORB": 1,
+            "DRB": 7,
+            "SUB": 7
+          }
+        },
+        "4": {
+          "away": {
+            "FGA": 19,
+            "FGM": 11,
+            "TPM": 2,
+            "TPA": 5,
+            "FTA": 4,
+            "FTM": 3,
+            "TO": 2,
+            "ORB": 2,
+            "DRB": 6,
+            "SUB": 4
+          },
+          "home": {
+            "FGA": 22,
+            "FGM": 12,
+            "TPM": 2,
+            "TPA": 7,
+            "FTA": 4,
+            "FTM": 3,
+            "TO": 3,
+            "ORB": 5,
+            "DRB": 7,
+            "SUB": 7
+          }
+        }
+      },
+      "raw_original_bytes_sha": null,
+      "official_provider_parity": false,
+      "actual_possession_ownership": false
+    },
+    {
+      "game": "Dallas@Portland",
+      "date": "2023-01-15",
+      "year": 2023,
+      "source_url": "https://www.basketball-reference.com/boxscores/pbp/202301150POR.html",
+      "rows": 493,
+      "periods": 4,
+      "period_points_checks": 8,
+      "end_score_checks": 4,
+      "halves": {
+        "H1": {
+          "away": {
+            "FGA": 46,
+            "FGM": 18,
+            "TPM": 7,
+            "TPA": 21,
+            "FTA": 12,
+            "FTM": 11,
+            "TO": 5,
+            "ORB": 12,
+            "DRB": 16,
+            "SUB": 9
+          },
+          "home": {
+            "FGA": 46,
+            "FGM": 20,
+            "TPM": 8,
+            "TPA": 24,
+            "FTA": 15,
+            "FTM": 13,
+            "TO": 4,
+            "ORB": 12,
+            "DRB": 17,
+            "SUB": 9
+          },
+          "combined_points": 115
+        },
+        "H2": {
+          "away": {
+            "FGA": 43,
+            "FGM": 23,
+            "TPM": 7,
+            "TPA": 21,
+            "FTA": 21,
+            "FTM": 16,
+            "TO": 4,
+            "ORB": 7,
+            "DRB": 14,
+            "SUB": 12
+          },
+          "home": {
+            "FGA": 39,
+            "FGM": 23,
+            "TPM": 9,
+            "TPA": 20,
+            "FTA": 27,
+            "FTM": 24,
+            "TO": 4,
+            "ORB": 5,
+            "DRB": 18,
+            "SUB": 15
+          },
+          "combined_points": 148
+        }
+      },
+      "quickscore": {
+        "H1": {
+          "steal": {
+            "n": 3,
+            "hits": [
+              3,
+              3,
+              3
+            ]
+          },
+          "unmarked": {
+            "n": 6,
+            "hits": [
+              1,
+              2,
+              2
+            ]
+          }
+        },
+        "H2": {
+          "steal": {
+            "n": 3,
+            "hits": [
+              2,
+              3,
+              3
+            ]
+          },
+          "unmarked": {
+            "n": 5,
+            "hits": [
+              1,
+              3,
+              4
+            ]
+          }
+        },
+        "OT": {
+          "steal": {
+            "n": 0,
+            "hits": [
+              0,
+              0,
+              0
+            ]
+          },
+          "unmarked": {
+            "n": 0,
+            "hits": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      },
+      "quarter_event_counts": {
+        "1": {
+          "away": {
+            "FGA": 26,
+            "FGM": 11,
+            "TPM": 3,
+            "TPA": 10,
+            "FTA": 6,
+            "FTM": 6,
+            "TO": 1,
+            "ORB": 8,
+            "DRB": 6,
+            "SUB": 4
+          },
+          "home": {
+            "FGA": 24,
+            "FGM": 12,
+            "TPM": 4,
+            "TPA": 11,
+            "FTA": 6,
+            "FTM": 5,
+            "TO": 1,
+            "ORB": 7,
+            "DRB": 7,
+            "SUB": 5
+          }
+        },
+        "2": {
+          "away": {
+            "FGA": 20,
+            "FGM": 7,
+            "TPM": 4,
+            "TPA": 11,
+            "FTA": 6,
+            "FTM": 5,
+            "TO": 4,
+            "ORB": 4,
+            "DRB": 10,
+            "SUB": 5
+          },
+          "home": {
+            "FGA": 22,
+            "FGM": 8,
+            "TPM": 4,
+            "TPA": 13,
+            "FTA": 9,
+            "FTM": 8,
+            "TO": 3,
+            "ORB": 5,
+            "DRB": 10,
+            "SUB": 4
+          }
+        },
+        "3": {
+          "away": {
+            "FGA": 19,
+            "FGM": 13,
+            "TPM": 5,
+            "TPA": 8,
+            "FTA": 12,
+            "FTM": 10,
+            "TO": 3,
+            "ORB": 3,
+            "DRB": 8,
+            "SUB": 6
+          },
+          "home": {
+            "FGA": 19,
+            "FGM": 11,
+            "TPM": 4,
+            "TPA": 9,
+            "FTA": 11,
+            "FTM": 11,
+            "TO": 2,
+            "ORB": 0,
+            "DRB": 5,
+            "SUB": 7
+          }
+        },
+        "4": {
+          "away": {
+            "FGA": 24,
+            "FGM": 10,
+            "TPM": 2,
+            "TPA": 13,
+            "FTA": 9,
+            "FTM": 6,
+            "TO": 1,
+            "ORB": 4,
+            "DRB": 6,
+            "SUB": 6
+          },
+          "home": {
+            "FGA": 20,
+            "FGM": 12,
+            "TPM": 5,
+            "TPA": 11,
+            "FTA": 16,
+            "FTM": 13,
+            "TO": 2,
+            "ORB": 5,
+            "DRB": 13,
+            "SUB": 8
+          }
+        }
+      },
+      "raw_original_bytes_sha": null,
+      "official_provider_parity": false,
+      "actual_possession_ownership": false
+    },
+    {
+      "game": "Sacramento@San Antonio",
+      "date": "2023-01-15",
+      "year": 2023,
+      "source_url": "https://www.basketball-reference.com/boxscores/pbp/202301150SAS.html",
+      "rows": 451,
+      "periods": 4,
+      "period_points_checks": 8,
+      "end_score_checks": 4,
+      "halves": {
+        "H1": {
+          "away": {
+            "FGA": 47,
+            "FGM": 23,
+            "TPM": 6,
+            "TPA": 15,
+            "FTA": 13,
+            "FTM": 11,
+            "TO": 1,
+            "ORB": 6,
+            "DRB": 15,
+            "SUB": 14
+          },
+          "home": {
+            "FGA": 44,
+            "FGM": 28,
+            "TPM": 2,
+            "TPA": 8,
+            "FTA": 9,
+            "FTM": 6,
+            "TO": 5,
+            "ORB": 4,
+            "DRB": 20,
+            "SUB": 13
+          },
+          "combined_points": 127
+        },
+        "H2": {
+          "away": {
+            "FGA": 42,
+            "FGM": 26,
+            "TPM": 8,
+            "TPA": 15,
+            "FTA": 12,
+            "FTM": 9,
+            "TO": 5,
+            "ORB": 6,
+            "DRB": 19,
+            "SUB": 10
+          },
+          "home": {
+            "FGA": 49,
+            "FGM": 20,
+            "TPM": 8,
+            "TPA": 18,
+            "FTA": 11,
+            "FTM": 7,
+            "TO": 5,
+            "ORB": 14,
+            "DRB": 13,
+            "SUB": 11
+          },
+          "combined_points": 124
+        }
+      },
+      "quickscore": {
+        "H1": {
+          "steal": {
+            "n": 2,
+            "hits": [
+              1,
+              1,
+              2
+            ]
+          },
+          "unmarked": {
+            "n": 4,
+            "hits": [
+              0,
+              1,
+              2
+            ]
+          }
+        },
+        "H2": {
+          "steal": {
+            "n": 4,
+            "hits": [
+              2,
+              2,
+              2
+            ]
+          },
+          "unmarked": {
+            "n": 6,
+            "hits": [
+              0,
+              1,
+              2
+            ]
+          }
+        },
+        "OT": {
+          "steal": {
+            "n": 0,
+            "hits": [
+              0,
+              0,
+              0
+            ]
+          },
+          "unmarked": {
+            "n": 0,
+            "hits": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      },
+      "quarter_event_counts": {
+        "1": {
+          "away": {
+            "FGA": 24,
+            "FGM": 11,
+            "TPM": 4,
+            "TPA": 8,
+            "FTA": 8,
+            "FTM": 7,
+            "TO": 0,
+            "ORB": 4,
+            "DRB": 7,
+            "SUB": 6
+          },
+          "home": {
+            "FGA": 22,
+            "FGM": 15,
+            "TPM": 1,
+            "TPA": 3,
+            "FTA": 2,
+            "FTM": 1,
+            "TO": 4,
+            "ORB": 1,
+            "DRB": 10,
+            "SUB": 6
+          }
+        },
+        "2": {
+          "away": {
+            "FGA": 23,
+            "FGM": 12,
+            "TPM": 2,
+            "TPA": 7,
+            "FTA": 5,
+            "FTM": 4,
+            "TO": 1,
+            "ORB": 2,
+            "DRB": 8,
+            "SUB": 8
+          },
+          "home": {
+            "FGA": 22,
+            "FGM": 13,
+            "TPM": 1,
+            "TPA": 5,
+            "FTA": 7,
+            "FTM": 5,
+            "TO": 1,
+            "ORB": 3,
+            "DRB": 10,
+            "SUB": 7
+          }
+        },
+        "3": {
+          "away": {
+            "FGA": 23,
+            "FGM": 14,
+            "TPM": 5,
+            "TPA": 10,
+            "FTA": 8,
+            "FTM": 6,
+            "TO": 1,
+            "ORB": 4,
+            "DRB": 11,
+            "SUB": 4
+          },
+          "home": {
+            "FGA": 23,
+            "FGM": 9,
+            "TPM": 2,
+            "TPA": 6,
+            "FTA": 9,
+            "FTM": 6,
+            "TO": 2,
+            "ORB": 6,
+            "DRB": 7,
+            "SUB": 5
+          }
+        },
+        "4": {
+          "away": {
+            "FGA": 19,
+            "FGM": 12,
+            "TPM": 3,
+            "TPA": 5,
+            "FTA": 4,
+            "FTM": 3,
+            "TO": 4,
+            "ORB": 2,
+            "DRB": 8,
+            "SUB": 6
+          },
+          "home": {
+            "FGA": 26,
+            "FGM": 11,
+            "TPM": 6,
+            "TPA": 12,
+            "FTA": 2,
+            "FTM": 1,
+            "TO": 3,
+            "ORB": 8,
+            "DRB": 6,
+            "SUB": 6
+          }
+        }
+      },
+      "raw_original_bytes_sha": null,
+      "official_provider_parity": false,
+      "actual_possession_ownership": false
+    },
+    {
+      "game": "San Antonio@Atlanta",
+      "date": "2024-01-15",
+      "year": 2024,
+      "source_url": "https://www.basketball-reference.com/boxscores/pbp/202401150ATL.html",
+      "rows": 500,
+      "periods": 4,
+      "period_points_checks": 8,
+      "end_score_checks": 4,
+      "halves": {
+        "H1": {
+          "away": {
+            "FGA": 45,
+            "FGM": 12,
+            "TPM": 4,
+            "TPA": 22,
+            "FTA": 9,
+            "FTM": 6,
+            "TO": 11,
+            "ORB": 8,
+            "DRB": 19,
+            "SUB": 14
+          },
+          "home": {
+            "FGA": 54,
+            "FGM": 28,
+            "TPM": 9,
+            "TPA": 21,
+            "FTA": 4,
+            "FTM": 4,
+            "TO": 6,
+            "ORB": 7,
+            "DRB": 28,
+            "SUB": 12
+          },
+          "combined_points": 103
+        },
+        "H2": {
+          "away": {
+            "FGA": 50,
+            "FGM": 26,
+            "TPM": 7,
+            "TPA": 20,
+            "FTA": 8,
+            "FTM": 6,
+            "TO": 7,
+            "ORB": 9,
+            "DRB": 22,
+            "SUB": 12
+          },
+          "home": {
+            "FGA": 39,
+            "FGM": 12,
+            "TPM": 4,
+            "TPA": 17,
+            "FTA": 17,
+            "FTM": 12,
+            "TO": 14,
+            "ORB": 10,
+            "DRB": 17,
+            "SUB": 14
+          },
+          "combined_points": 105
+        }
+      },
+      "quickscore": {
+        "H1": {
+          "steal": {
+            "n": 11,
+            "hits": [
+              4,
+              5,
+              5
+            ]
+          },
+          "unmarked": {
+            "n": 6,
+            "hits": [
+              1,
+              2,
+              4
+            ]
+          }
+        },
+        "H2": {
+          "steal": {
+            "n": 7,
+            "hits": [
+              4,
+              4,
+              4
+            ]
+          },
+          "unmarked": {
+            "n": 14,
+            "hits": [
+              1,
+              5,
+              7
+            ]
+          }
+        },
+        "OT": {
+          "steal": {
+            "n": 0,
+            "hits": [
+              0,
+              0,
+              0
+            ]
+          },
+          "unmarked": {
+            "n": 0,
+            "hits": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      },
+      "quarter_event_counts": {
+        "1": {
+          "away": {
+            "FGA": 21,
+            "FGM": 6,
+            "TPM": 2,
+            "TPA": 11,
+            "FTA": 4,
+            "FTM": 2,
+            "TO": 4,
+            "ORB": 3,
+            "DRB": 10,
+            "SUB": 6
+          },
+          "home": {
+            "FGA": 30,
+            "FGM": 15,
+            "TPM": 4,
+            "TPA": 10,
+            "FTA": 1,
+            "FTM": 1,
+            "TO": 1,
+            "ORB": 5,
+            "DRB": 14,
+            "SUB": 6
+          }
+        },
+        "2": {
+          "away": {
+            "FGA": 24,
+            "FGM": 6,
+            "TPM": 2,
+            "TPA": 11,
+            "FTA": 5,
+            "FTM": 4,
+            "TO": 7,
+            "ORB": 5,
+            "DRB": 9,
+            "SUB": 8
+          },
+          "home": {
+            "FGA": 24,
+            "FGM": 13,
+            "TPM": 5,
+            "TPA": 11,
+            "FTA": 3,
+            "FTM": 3,
+            "TO": 5,
+            "ORB": 2,
+            "DRB": 14,
+            "SUB": 6
+          }
+        },
+        "3": {
+          "away": {
+            "FGA": 25,
+            "FGM": 12,
+            "TPM": 5,
+            "TPA": 12,
+            "FTA": 6,
+            "FTM": 4,
+            "TO": 3,
+            "ORB": 6,
+            "DRB": 11,
+            "SUB": 5
+          },
+          "home": {
+            "FGA": 18,
+            "FGM": 6,
+            "TPM": 2,
+            "TPA": 8,
+            "FTA": 6,
+            "FTM": 4,
+            "TO": 8,
+            "ORB": 3,
+            "DRB": 9,
+            "SUB": 6
+          }
+        },
+        "4": {
+          "away": {
+            "FGA": 25,
+            "FGM": 14,
+            "TPM": 2,
+            "TPA": 8,
+            "FTA": 2,
+            "FTM": 2,
+            "TO": 4,
+            "ORB": 3,
+            "DRB": 11,
+            "SUB": 7
+          },
+          "home": {
+            "FGA": 21,
+            "FGM": 6,
+            "TPM": 2,
+            "TPA": 9,
+            "FTA": 11,
+            "FTM": 8,
+            "TO": 6,
+            "ORB": 7,
+            "DRB": 8,
+            "SUB": 8
+          }
+        }
+      },
+      "raw_original_bytes_sha": null,
+      "official_provider_parity": false,
+      "actual_possession_ownership": false
+    },
+    {
+      "game": "Miami@Brooklyn",
+      "date": "2024-01-15",
+      "year": 2024,
+      "source_url": "https://www.basketball-reference.com/boxscores/pbp/202401150BRK.html",
+      "rows": 481,
+      "periods": 5,
+      "period_points_checks": 10,
+      "end_score_checks": 5,
+      "halves": {
+        "H1": {
+          "away": {
+            "FGA": 42,
+            "FGM": 11,
+            "TPM": 0,
+            "TPA": 12,
+            "FTA": 9,
+            "FTM": 9,
+            "TO": 6,
+            "ORB": 5,
+            "DRB": 24,
+            "SUB": 11
+          },
+          "home": {
+            "FGA": 49,
+            "FGM": 18,
+            "TPM": 4,
+            "TPA": 25,
+            "FTA": 6,
+            "FTM": 5,
+            "TO": 3,
+            "ORB": 8,
+            "DRB": 26,
+            "SUB": 10
+          },
+          "combined_points": 76
+        },
+        "H2": {
+          "away": {
+            "FGA": 37,
+            "FGM": 20,
+            "TPM": 6,
+            "TPA": 14,
+            "FTA": 14,
+            "FTM": 11,
+            "TO": 6,
+            "ORB": 7,
+            "DRB": 25,
+            "SUB": 8
+          },
+          "home": {
+            "FGA": 42,
+            "FGM": 13,
+            "TPM": 7,
+            "TPA": 27,
+            "FTA": 10,
+            "FTM": 10,
+            "TO": 4,
+            "ORB": 4,
+            "DRB": 13,
+            "SUB": 16
+          },
+          "combined_points": 100
+        }
+      },
+      "quickscore": {
+        "H1": {
+          "steal": {
+            "n": 7,
+            "hits": [
+              1,
+              2,
+              3
+            ]
+          },
+          "unmarked": {
+            "n": 2,
+            "hits": [
+              0,
+              1,
+              2
+            ]
+          }
+        },
+        "H2": {
+          "steal": {
+            "n": 8,
+            "hits": [
+              1,
+              1,
+              2
+            ]
+          },
+          "unmarked": {
+            "n": 2,
+            "hits": [
+              0,
+              1,
+              2
+            ]
+          }
+        },
+        "OT": {
+          "steal": {
+            "n": 0,
+            "hits": [
+              0,
+              0,
+              0
+            ]
+          },
+          "unmarked": {
+            "n": 2,
+            "hits": [
+              0,
+              1,
+              1
+            ]
+          }
+        }
+      },
+      "quarter_event_counts": {
+        "1": {
+          "away": {
+            "FGA": 20,
+            "FGM": 7,
+            "TPM": 0,
+            "TPA": 7,
+            "FTA": 2,
+            "FTM": 2,
+            "TO": 4,
+            "ORB": 2,
+            "DRB": 13,
+            "SUB": 5
+          },
+          "home": {
+            "FGA": 24,
+            "FGM": 9,
+            "TPM": 3,
+            "TPA": 14,
+            "FTA": 2,
+            "FTM": 1,
+            "TO": 1,
+            "ORB": 3,
+            "DRB": 11,
+            "SUB": 5
+          }
+        },
+        "2": {
+          "away": {
+            "FGA": 22,
+            "FGM": 4,
+            "TPM": 0,
+            "TPA": 5,
+            "FTA": 7,
+            "FTM": 7,
+            "TO": 2,
+            "ORB": 3,
+            "DRB": 11,
+            "SUB": 6
+          },
+          "home": {
+            "FGA": 25,
+            "FGM": 9,
+            "TPM": 1,
+            "TPA": 11,
+            "FTA": 4,
+            "FTM": 4,
+            "TO": 2,
+            "ORB": 5,
+            "DRB": 15,
+            "SUB": 5
+          }
+        },
+        "3": {
+          "away": {
+            "FGA": 17,
+            "FGM": 12,
+            "TPM": 5,
+            "TPA": 7,
+            "FTA": 8,
+            "FTM": 8,
+            "TO": 2,
+            "ORB": 1,
+            "DRB": 11,
+            "SUB": 4
+          },
+          "home": {
+            "FGA": 21,
+            "FGM": 8,
+            "TPM": 4,
+            "TPA": 12,
+            "FTA": 4,
+            "FTM": 4,
+            "TO": 2,
+            "ORB": 2,
+            "DRB": 4,
+            "SUB": 5
+          }
+        },
+        "4": {
+          "away": {
+            "FGA": 20,
+            "FGM": 8,
+            "TPM": 1,
+            "TPA": 7,
+            "FTA": 6,
+            "FTM": 3,
+            "TO": 4,
+            "ORB": 6,
+            "DRB": 14,
+            "SUB": 4
+          },
+          "home": {
+            "FGA": 21,
+            "FGM": 5,
+            "TPM": 3,
+            "TPA": 15,
+            "FTA": 6,
+            "FTM": 6,
+            "TO": 2,
+            "ORB": 2,
+            "DRB": 9,
+            "SUB": 11
+          }
+        },
+        "5": {
+          "away": {
+            "FGA": 8,
+            "FGM": 2,
+            "TPM": 2,
+            "TPA": 5,
+            "FTA": 2,
+            "FTM": 2,
+            "TO": 1,
+            "ORB": 3,
+            "DRB": 4,
+            "SUB": 0
+          },
+          "home": {
+            "FGA": 8,
+            "FGM": 3,
+            "TPM": 1,
+            "TPA": 3,
+            "FTA": 0,
+            "FTM": 0,
+            "TO": 1,
+            "ORB": 1,
+            "DRB": 3,
+            "SUB": 1
+          }
+        }
+      },
+      "raw_original_bytes_sha": null,
+      "official_provider_parity": false,
+      "actual_possession_ownership": false
+    },
+    {
+      "game": "Chicago@Cleveland",
+      "date": "2024-01-15",
+      "year": 2024,
+      "source_url": "https://www.basketball-reference.com/boxscores/pbp/202401150CLE.html",
+      "rows": 456,
+      "periods": 4,
+      "period_points_checks": 8,
+      "end_score_checks": 4,
+      "halves": {
+        "H1": {
+          "away": {
+            "FGA": 45,
+            "FGM": 20,
+            "TPM": 4,
+            "TPA": 18,
+            "FTA": 2,
+            "FTM": 2,
+            "TO": 7,
+            "ORB": 3,
+            "DRB": 19,
+            "SUB": 12,
+            "clear_path_FTA": 0
+          },
+          "home": {
+            "FGA": 50,
+            "FGM": 22,
+            "TPM": 11,
+            "TPA": 28,
+            "FTA": 5,
+            "FTM": 5,
+            "TO": 6,
+            "ORB": 9,
+            "DRB": 22,
+            "SUB": 12,
+            "clear_path_FTA": 0
+          },
+          "combined_points": 106
+        },
+        "H2": {
+          "away": {
+            "FGA": 38,
+            "FGM": 15,
+            "TPM": 5,
+            "TPA": 14,
+            "FTA": 14,
+            "FTM": 10,
+            "TO": 12,
+            "ORB": 9,
+            "DRB": 21,
+            "SUB": 17,
+            "clear_path_FTA": 2
+          },
+          "home": {
+            "FGA": 45,
+            "FGM": 17,
+            "TPM": 9,
+            "TPA": 29,
+            "FTA": 6,
+            "FTM": 6,
+            "TO": 8,
+            "ORB": 7,
+            "DRB": 18,
+            "SUB": 10,
+            "clear_path_FTA": 0
+          },
+          "combined_points": 94
+        }
+      },
+      "quickscore": {
+        "H1": {
+          "steal": {
+            "n": 6,
+            "hits": [
+              1,
+              1,
+              1
+            ]
+          },
+          "unmarked": {
+            "n": 7,
+            "hits": [
+              0,
+              2,
+              2
+            ]
+          }
+        },
+        "H2": {
+          "steal": {
+            "n": 11,
+            "hits": [
+              3,
+              4,
+              4
+            ]
+          },
+          "unmarked": {
+            "n": 9,
+            "hits": [
+              1,
+              2,
+              4
+            ]
+          }
+        },
+        "OT": {
+          "steal": {
+            "n": 0,
+            "hits": [
+              0,
+              0,
+              0
+            ]
+          },
+          "unmarked": {
+            "n": 0,
+            "hits": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      },
+      "quarter_event_counts": {
+        "1": {
+          "away": {
+            "FGA": 23,
+            "FGM": 9,
+            "TPM": 3,
+            "TPA": 13,
+            "FTA": 0,
+            "FTM": 0,
+            "TO": 4,
+            "ORB": 1,
+            "DRB": 7,
+            "SUB": 6,
+            "clear_path_FTA": 0
+          },
+          "home": {
+            "FGA": 26,
+            "FGM": 15,
+            "TPM": 8,
+            "TPA": 14,
+            "FTA": 2,
+            "FTM": 2,
+            "TO": 3,
+            "ORB": 4,
+            "DRB": 13,
+            "SUB": 5,
+            "clear_path_FTA": 0
+          }
+        },
+        "2": {
+          "away": {
+            "FGA": 22,
+            "FGM": 11,
+            "TPM": 1,
+            "TPA": 5,
+            "FTA": 2,
+            "FTM": 2,
+            "TO": 3,
+            "ORB": 2,
+            "DRB": 12,
+            "SUB": 6,
+            "clear_path_FTA": 0
+          },
+          "home": {
+            "FGA": 24,
+            "FGM": 7,
+            "TPM": 3,
+            "TPA": 14,
+            "FTA": 3,
+            "FTM": 3,
+            "TO": 3,
+            "ORB": 5,
+            "DRB": 9,
+            "SUB": 7,
+            "clear_path_FTA": 0
+          }
+        },
+        "3": {
+          "away": {
+            "FGA": 22,
+            "FGM": 10,
+            "TPM": 4,
+            "TPA": 10,
+            "FTA": 9,
+            "FTM": 7,
+            "TO": 3,
+            "ORB": 5,
+            "DRB": 12,
+            "SUB": 4,
+            "clear_path_FTA": 0
+          },
+          "home": {
+            "FGA": 22,
+            "FGM": 8,
+            "TPM": 3,
+            "TPA": 14,
+            "FTA": 1,
+            "FTM": 1,
+            "TO": 5,
+            "ORB": 2,
+            "DRB": 9,
+            "SUB": 5,
+            "clear_path_FTA": 0
+          }
+        },
+        "4": {
+          "away": {
+            "FGA": 16,
+            "FGM": 5,
+            "TPM": 1,
+            "TPA": 4,
+            "FTA": 5,
+            "FTM": 3,
+            "TO": 9,
+            "ORB": 4,
+            "DRB": 9,
+            "SUB": 13,
+            "clear_path_FTA": 2
+          },
+          "home": {
+            "FGA": 23,
+            "FGM": 9,
+            "TPM": 6,
+            "TPA": 15,
+            "FTA": 5,
+            "FTM": 5,
+            "TO": 3,
+            "ORB": 5,
+            "DRB": 9,
+            "SUB": 5,
+            "clear_path_FTA": 0
+          }
+        }
+      },
+      "raw_original_bytes_sha": null,
+      "official_provider_parity": false,
+      "actual_possession_ownership": false,
+      "parser_change": "include clear path free throws"
+    },
+    {
+      "game": "New Orleans@Dallas",
+      "date": "2024-01-15",
+      "year": 2024,
+      "source_url": "https://www.basketball-reference.com/boxscores/pbp/202401150DAL.html",
+      "rows": 516,
+      "periods": 4,
+      "period_points_checks": 8,
+      "end_score_checks": 4,
+      "halves": {
+        "H1": {
+          "away": {
+            "FGA": 36,
+            "FGM": 18,
+            "TPM": 3,
+            "TPA": 10,
+            "FTA": 23,
+            "FTM": 20,
+            "TO": 6,
+            "ORB": 8,
+            "DRB": 16,
+            "SUB": 11
+          },
+          "home": {
+            "FGA": 44,
+            "FGM": 18,
+            "TPM": 8,
+            "TPA": 22,
+            "FTA": 15,
+            "FTM": 15,
+            "TO": 8,
+            "ORB": 10,
+            "DRB": 13,
+            "SUB": 16
+          },
+          "combined_points": 118
+        },
+        "H2": {
+          "away": {
+            "FGA": 45,
+            "FGM": 23,
+            "TPM": 4,
+            "TPA": 13,
+            "FTA": 18,
+            "FTM": 11,
+            "TO": 4,
+            "ORB": 12,
+            "DRB": 16,
+            "SUB": 20
+          },
+          "home": {
+            "FGA": 41,
+            "FGM": 21,
+            "TPM": 10,
+            "TPA": 21,
+            "FTA": 20,
+            "FTM": 14,
+            "TO": 4,
+            "ORB": 10,
+            "DRB": 17,
+            "SUB": 15
+          },
+          "combined_points": 127
+        }
+      },
+      "quickscore": {
+        "H1": {
+          "steal": {
+            "n": 9,
+            "hits": [
+              4,
+              5,
+              5
+            ]
+          },
+          "unmarked": {
+            "n": 5,
+            "hits": [
+              1,
+              4,
+              4
+            ]
+          }
+        },
+        "H2": {
+          "steal": {
+            "n": 4,
+            "hits": [
+              2,
+              2,
+              3
+            ]
+          },
+          "unmarked": {
+            "n": 4,
+            "hits": [
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "OT": {
+          "steal": {
+            "n": 0,
+            "hits": [
+              0,
+              0,
+              0
+            ]
+          },
+          "unmarked": {
+            "n": 0,
+            "hits": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      },
+      "quarter_event_counts": {
+        "1": {
+          "away": {
+            "FGA": 17,
+            "FGM": 3,
+            "TPM": 0,
+            "TPA": 3,
+            "FTA": 12,
+            "FTM": 11,
+            "TO": 3,
+            "ORB": 5,
+            "DRB": 6,
+            "SUB": 5
+          },
+          "home": {
+            "FGA": 23,
+            "FGM": 11,
+            "TPM": 2,
+            "TPA": 8,
+            "FTA": 9,
+            "FTM": 9,
+            "TO": 2,
+            "ORB": 6,
+            "DRB": 10,
+            "SUB": 6
+          }
+        },
+        "2": {
+          "away": {
+            "FGA": 19,
+            "FGM": 15,
+            "TPM": 3,
+            "TPA": 7,
+            "FTA": 11,
+            "FTM": 9,
+            "TO": 3,
+            "ORB": 3,
+            "DRB": 10,
+            "SUB": 6
+          },
+          "home": {
+            "FGA": 21,
+            "FGM": 7,
+            "TPM": 6,
+            "TPA": 14,
+            "FTA": 6,
+            "FTM": 6,
+            "TO": 6,
+            "ORB": 4,
+            "DRB": 3,
+            "SUB": 10
+          }
+        },
+        "3": {
+          "away": {
+            "FGA": 24,
+            "FGM": 14,
+            "TPM": 4,
+            "TPA": 5,
+            "FTA": 11,
+            "FTM": 8,
+            "TO": 2,
+            "ORB": 6,
+            "DRB": 9,
+            "SUB": 5
+          },
+          "home": {
+            "FGA": 20,
+            "FGM": 11,
+            "TPM": 5,
+            "TPA": 10,
+            "FTA": 9,
+            "FTM": 6,
+            "TO": 2,
+            "ORB": 3,
+            "DRB": 7,
+            "SUB": 9
+          }
+        },
+        "4": {
+          "away": {
+            "FGA": 21,
+            "FGM": 9,
+            "TPM": 0,
+            "TPA": 8,
+            "FTA": 7,
+            "FTM": 3,
+            "TO": 2,
+            "ORB": 6,
+            "DRB": 7,
+            "SUB": 15
+          },
+          "home": {
+            "FGA": 21,
+            "FGM": 10,
+            "TPM": 5,
+            "TPA": 11,
+            "FTA": 11,
+            "FTM": 8,
+            "TO": 2,
+            "ORB": 7,
+            "DRB": 10,
+            "SUB": 6
+          }
+        }
+      },
+      "raw_original_bytes_sha": null,
+      "official_provider_parity": false,
+      "actual_possession_ownership": false
+    },
+    {
+      "game": "Oklahoma City@LA Lakers",
+      "date": "2024-01-15",
+      "year": 2024,
+      "source_url": "https://www.basketball-reference.com/boxscores/pbp/202401150LAL.html",
+      "rows": 446,
+      "periods": 4,
+      "period_points_checks": 8,
+      "end_score_checks": 4,
+      "halves": {
+        "H1": {
+          "away": {
+            "FGA": 48,
+            "FGM": 18,
+            "TPM": 7,
+            "TPA": 24,
+            "FTA": 7,
+            "FTM": 7,
+            "TO": 3,
+            "ORB": 8,
+            "DRB": 19,
+            "SUB": 14
+          },
+          "home": {
+            "FGA": 48,
+            "FGM": 20,
+            "TPM": 4,
+            "TPA": 15,
+            "FTA": 6,
+            "FTM": 6,
+            "TO": 4,
+            "ORB": 9,
+            "DRB": 22,
+            "SUB": 9
+          },
+          "combined_points": 100
+        },
+        "H2": {
+          "away": {
+            "FGA": 48,
+            "FGM": 22,
+            "TPM": 8,
+            "TPA": 25,
+            "FTA": 4,
+            "FTM": 3,
+            "TO": 8,
+            "ORB": 9,
+            "DRB": 10,
+            "SUB": 18
+          },
+          "home": {
+            "FGA": 36,
+            "FGM": 24,
+            "TPM": 4,
+            "TPA": 9,
+            "FTA": 12,
+            "FTM": 10,
+            "TO": 13,
+            "ORB": 4,
+            "DRB": 18,
+            "SUB": 14
+          },
+          "combined_points": 117
+        }
+      },
+      "quickscore": {
+        "H1": {
+          "steal": {
+            "n": 5,
+            "hits": [
+              0,
+              1,
+              2
+            ]
+          },
+          "unmarked": {
+            "n": 2,
+            "hits": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        "H2": {
+          "steal": {
+            "n": 13,
+            "hits": [
+              6,
+              7,
+              8
+            ]
+          },
+          "unmarked": {
+            "n": 8,
+            "hits": [
+              1,
+              4,
+              5
+            ]
+          }
+        },
+        "OT": {
+          "steal": {
+            "n": 0,
+            "hits": [
+              0,
+              0,
+              0
+            ]
+          },
+          "unmarked": {
+            "n": 0,
+            "hits": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      },
+      "quarter_event_counts": {
+        "1": {
+          "away": {
+            "FGA": 26,
+            "FGM": 10,
+            "TPM": 5,
+            "TPA": 15,
+            "FTA": 1,
+            "FTM": 1,
+            "TO": 2,
+            "ORB": 4,
+            "DRB": 11,
+            "SUB": 6
+          },
+          "home": {
+            "FGA": 25,
+            "FGM": 11,
+            "TPM": 1,
+            "TPA": 6,
+            "FTA": 4,
+            "FTM": 4,
+            "TO": 1,
+            "ORB": 3,
+            "DRB": 12,
+            "SUB": 4
+          }
+        },
+        "2": {
+          "away": {
+            "FGA": 22,
+            "FGM": 8,
+            "TPM": 2,
+            "TPA": 9,
+            "FTA": 6,
+            "FTM": 6,
+            "TO": 1,
+            "ORB": 4,
+            "DRB": 8,
+            "SUB": 8
+          },
+          "home": {
+            "FGA": 23,
+            "FGM": 9,
+            "TPM": 3,
+            "TPA": 9,
+            "FTA": 2,
+            "FTM": 2,
+            "TO": 3,
+            "ORB": 6,
+            "DRB": 10,
+            "SUB": 5
+          }
+        },
+        "3": {
+          "away": {
+            "FGA": 24,
+            "FGM": 11,
+            "TPM": 4,
+            "TPA": 14,
+            "FTA": 0,
+            "FTM": 0,
+            "TO": 4,
+            "ORB": 2,
+            "DRB": 4,
+            "SUB": 9
+          },
+          "home": {
+            "FGA": 20,
+            "FGM": 14,
+            "TPM": 3,
+            "TPA": 7,
+            "FTA": 4,
+            "FTM": 3,
+            "TO": 6,
+            "ORB": 3,
+            "DRB": 11,
+            "SUB": 7
+          }
+        },
+        "4": {
+          "away": {
+            "FGA": 24,
+            "FGM": 11,
+            "TPM": 4,
+            "TPA": 11,
+            "FTA": 4,
+            "FTM": 3,
+            "TO": 4,
+            "ORB": 7,
+            "DRB": 6,
+            "SUB": 9
+          },
+          "home": {
+            "FGA": 16,
+            "FGM": 10,
+            "TPM": 1,
+            "TPA": 2,
+            "FTA": 8,
+            "FTM": 7,
+            "TO": 7,
+            "ORB": 1,
+            "DRB": 7,
+            "SUB": 7
+          }
+        }
+      },
+      "raw_original_bytes_sha": null,
+      "official_provider_parity": false,
+      "actual_possession_ownership": false
+    },
+    {
+      "game": "Golden State@Memphis",
+      "date": "2024-01-15",
+      "year": 2024,
+      "source_url": "https://www.basketball-reference.com/boxscores/pbp/202401150MEM.html",
+      "rows": 479,
+      "periods": 4,
+      "period_points_checks": 8,
+      "end_score_checks": 4,
+      "halves": {
+        "H1": {
+          "away": {
+            "FGA": 45,
+            "FGM": 23,
+            "TPM": 6,
+            "TPA": 21,
+            "FTA": 5,
+            "FTM": 4,
+            "TO": 8,
+            "ORB": 8,
+            "DRB": 22,
+            "SUB": 12
+          },
+          "home": {
+            "FGA": 45,
+            "FGM": 17,
+            "TPM": 10,
+            "TPA": 29,
+            "FTA": 14,
+            "FTM": 10,
+            "TO": 6,
+            "ORB": 10,
+            "DRB": 15,
+            "SUB": 11
+          },
+          "combined_points": 110
+        },
+        "H2": {
+          "away": {
+            "FGA": 45,
+            "FGM": 21,
+            "TPM": 4,
+            "TPA": 10,
+            "FTA": 5,
+            "FTM": 5,
+            "TO": 11,
+            "ORB": 7,
+            "DRB": 19,
+            "SUB": 15
+          },
+          "home": {
+            "FGA": 41,
+            "FGM": 15,
+            "TPM": 10,
+            "TPA": 25,
+            "FTA": 26,
+            "FTM": 22,
+            "TO": 7,
+            "ORB": 11,
+            "DRB": 17,
+            "SUB": 12
+          },
+          "combined_points": 113
+        }
+      },
+      "quickscore": {
+        "H1": {
+          "steal": {
+            "n": 8,
+            "hits": [
+              3,
+              5,
+              6
+            ]
+          },
+          "unmarked": {
+            "n": 6,
+            "hits": [
+              1,
+              2,
+              2
+            ]
+          }
+        },
+        "H2": {
+          "steal": {
+            "n": 9,
+            "hits": [
+              8,
+              8,
+              8
+            ]
+          },
+          "unmarked": {
+            "n": 9,
+            "hits": [
+              3,
+              3,
+              3
+            ]
+          }
+        },
+        "OT": {
+          "steal": {
+            "n": 0,
+            "hits": [
+              0,
+              0,
+              0
+            ]
+          },
+          "unmarked": {
+            "n": 0,
+            "hits": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      },
+      "quarter_event_counts": {
+        "1": {
+          "away": {
+            "FGA": 23,
+            "FGM": 12,
+            "TPM": 3,
+            "TPA": 11,
+            "FTA": 3,
+            "FTM": 2,
+            "TO": 3,
+            "ORB": 5,
+            "DRB": 12,
+            "SUB": 5
+          },
+          "home": {
+            "FGA": 22,
+            "FGM": 7,
+            "TPM": 3,
+            "TPA": 12,
+            "FTA": 7,
+            "FTM": 6,
+            "TO": 3,
+            "ORB": 4,
+            "DRB": 7,
+            "SUB": 5
+          }
+        },
+        "2": {
+          "away": {
+            "FGA": 22,
+            "FGM": 11,
+            "TPM": 3,
+            "TPA": 10,
+            "FTA": 2,
+            "FTM": 2,
+            "TO": 5,
+            "ORB": 3,
+            "DRB": 10,
+            "SUB": 7
+          },
+          "home": {
+            "FGA": 23,
+            "FGM": 10,
+            "TPM": 7,
+            "TPA": 17,
+            "FTA": 7,
+            "FTM": 4,
+            "TO": 3,
+            "ORB": 6,
+            "DRB": 8,
+            "SUB": 6
+          }
+        },
+        "3": {
+          "away": {
+            "FGA": 23,
+            "FGM": 13,
+            "TPM": 2,
+            "TPA": 3,
+            "FTA": 2,
+            "FTM": 2,
+            "TO": 5,
+            "ORB": 4,
+            "DRB": 11,
+            "SUB": 9
+          },
+          "home": {
+            "FGA": 23,
+            "FGM": 8,
+            "TPM": 6,
+            "TPA": 14,
+            "FTA": 13,
+            "FTM": 9,
+            "TO": 1,
+            "ORB": 8,
+            "DRB": 6,
+            "SUB": 9
+          }
+        },
+        "4": {
+          "away": {
+            "FGA": 22,
+            "FGM": 8,
+            "TPM": 2,
+            "TPA": 7,
+            "FTA": 3,
+            "FTM": 3,
+            "TO": 6,
+            "ORB": 3,
+            "DRB": 8,
+            "SUB": 6
+          },
+          "home": {
+            "FGA": 18,
+            "FGM": 7,
+            "TPM": 4,
+            "TPA": 11,
+            "FTA": 13,
+            "FTM": 13,
+            "TO": 6,
+            "ORB": 3,
+            "DRB": 11,
+            "SUB": 3
+          }
+        }
+      },
+      "raw_original_bytes_sha": null,
+      "official_provider_parity": false,
+      "actual_possession_ownership": false
+    },
+    {
+      "game": "Orlando@New York",
+      "date": "2024-01-15",
+      "year": 2024,
+      "source_url": "https://www.basketball-reference.com/boxscores/pbp/202401150NYK.html",
+      "rows": 447,
+      "periods": 4,
+      "period_points_checks": 8,
+      "end_score_checks": 4,
+      "halves": {
+        "H1": {
+          "away": {
+            "FGA": 43,
+            "FGM": 19,
+            "TPM": 6,
+            "TPA": 15,
+            "FTA": 10,
+            "FTM": 6,
+            "TO": 3,
+            "ORB": 10,
+            "DRB": 17,
+            "SUB": 11
+          },
+          "home": {
+            "FGA": 44,
+            "FGM": 18,
+            "TPM": 5,
+            "TPA": 20,
+            "FTA": 13,
+            "FTM": 11,
+            "TO": 3,
+            "ORB": 11,
+            "DRB": 18,
+            "SUB": 9
+          },
+          "combined_points": 102
+        },
+        "H2": {
+          "away": {
+            "FGA": 42,
+            "FGM": 19,
+            "TPM": 2,
+            "TPA": 14,
+            "FTA": 11,
+            "FTM": 8,
+            "TO": 5,
+            "ORB": 10,
+            "DRB": 18,
+            "SUB": 13
+          },
+          "home": {
+            "FGA": 39,
+            "FGM": 15,
+            "TPM": 8,
+            "TPA": 20,
+            "FTA": 9,
+            "FTM": 4,
+            "TO": 7,
+            "ORB": 11,
+            "DRB": 16,
+            "SUB": 8
+          },
+          "combined_points": 90
+        }
+      },
+      "quickscore": {
+        "H1": {
+          "steal": {
+            "n": 1,
+            "hits": [
+              0,
+              1,
+              1
+            ]
+          },
+          "unmarked": {
+            "n": 5,
+            "hits": [
+              0,
+              0,
+              3
+            ]
+          }
+        },
+        "H2": {
+          "steal": {
+            "n": 4,
+            "hits": [
+              1,
+              1,
+              1
+            ]
+          },
+          "unmarked": {
+            "n": 8,
+            "hits": [
+              0,
+              1,
+              4
+            ]
+          }
+        },
+        "OT": {
+          "steal": {
+            "n": 0,
+            "hits": [
+              0,
+              0,
+              0
+            ]
+          },
+          "unmarked": {
+            "n": 0,
+            "hits": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      },
+      "quarter_event_counts": {
+        "1": {
+          "away": {
+            "FGA": 24,
+            "FGM": 10,
+            "TPM": 3,
+            "TPA": 9,
+            "FTA": 1,
+            "FTM": 1,
+            "TO": 2,
+            "ORB": 6,
+            "DRB": 9,
+            "SUB": 5
+          },
+          "home": {
+            "FGA": 20,
+            "FGM": 7,
+            "TPM": 3,
+            "TPA": 10,
+            "FTA": 7,
+            "FTM": 7,
+            "TO": 1,
+            "ORB": 4,
+            "DRB": 8,
+            "SUB": 4
+          }
+        },
+        "2": {
+          "away": {
+            "FGA": 19,
+            "FGM": 9,
+            "TPM": 3,
+            "TPA": 6,
+            "FTA": 9,
+            "FTM": 5,
+            "TO": 1,
+            "ORB": 4,
+            "DRB": 8,
+            "SUB": 6
+          },
+          "home": {
+            "FGA": 24,
+            "FGM": 11,
+            "TPM": 2,
+            "TPA": 10,
+            "FTA": 6,
+            "FTM": 4,
+            "TO": 2,
+            "ORB": 7,
+            "DRB": 10,
+            "SUB": 5
+          }
+        },
+        "3": {
+          "away": {
+            "FGA": 20,
+            "FGM": 8,
+            "TPM": 1,
+            "TPA": 6,
+            "FTA": 7,
+            "FTM": 6,
+            "TO": 2,
+            "ORB": 4,
+            "DRB": 7,
+            "SUB": 5
+          },
+          "home": {
+            "FGA": 19,
+            "FGM": 9,
+            "TPM": 6,
+            "TPA": 9,
+            "FTA": 3,
+            "FTM": 2,
+            "TO": 5,
+            "ORB": 4,
+            "DRB": 9,
+            "SUB": 5
+          }
+        },
+        "4": {
+          "away": {
+            "FGA": 22,
+            "FGM": 11,
+            "TPM": 1,
+            "TPA": 8,
+            "FTA": 4,
+            "FTM": 2,
+            "TO": 3,
+            "ORB": 6,
+            "DRB": 11,
+            "SUB": 8
+          },
+          "home": {
+            "FGA": 20,
+            "FGM": 6,
+            "TPM": 2,
+            "TPA": 11,
+            "FTA": 6,
+            "FTM": 2,
+            "TO": 2,
+            "ORB": 7,
+            "DRB": 7,
+            "SUB": 3
+          }
+        }
+      },
+      "raw_original_bytes_sha": null,
+      "official_provider_parity": false,
+      "actual_possession_ownership": false
+    },
+    {
+      "game": "Houston@Philadelphia",
+      "date": "2024-01-15",
+      "year": 2024,
+      "source_url": "https://www.basketball-reference.com/boxscores/pbp/202401150PHI.html",
+      "rows": 493,
+      "periods": 4,
+      "period_points_checks": 8,
+      "end_score_checks": 4,
+      "halves": {
+        "H1": {
+          "away": {
+            "FGA": 42,
+            "FGM": 18,
+            "TPM": 5,
+            "TPA": 15,
+            "FTA": 9,
+            "FTM": 6,
+            "TO": 10,
+            "ORB": 8,
+            "DRB": 17,
+            "SUB": 14
+          },
+          "home": {
+            "FGA": 43,
+            "FGM": 20,
+            "TPM": 9,
+            "TPA": 17,
+            "FTA": 18,
+            "FTM": 17,
+            "TO": 4,
+            "ORB": 7,
+            "DRB": 19,
+            "SUB": 10
+          },
+          "combined_points": 113
+        },
+        "H2": {
+          "away": {
+            "FGA": 46,
+            "FGM": 26,
+            "TPM": 3,
+            "TPA": 12,
+            "FTA": 23,
+            "FTM": 13,
+            "TO": 3,
+            "ORB": 15,
+            "DRB": 14,
+            "SUB": 7
+          },
+          "home": {
+            "FGA": 40,
+            "FGM": 20,
+            "TPM": 6,
+            "TPA": 14,
+            "FTA": 16,
+            "FTM": 12,
+            "TO": 7,
+            "ORB": 10,
+            "DRB": 15,
+            "SUB": 15
+          },
+          "combined_points": 126
+        }
+      },
+      "quickscore": {
+        "H1": {
+          "steal": {
+            "n": 9,
+            "hits": [
+              5,
+              6,
+              6
+            ]
+          },
+          "unmarked": {
+            "n": 5,
+            "hits": [
+              0,
+              1,
+              2
+            ]
+          }
+        },
+        "H2": {
+          "steal": {
+            "n": 6,
+            "hits": [
+              5,
+              5,
+              6
+            ]
+          },
+          "unmarked": {
+            "n": 4,
+            "hits": [
+              0,
+              1,
+              1
+            ]
+          }
+        },
+        "OT": {
+          "steal": {
+            "n": 0,
+            "hits": [
+              0,
+              0,
+              0
+            ]
+          },
+          "unmarked": {
+            "n": 0,
+            "hits": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      },
+      "quarter_event_counts": {
+        "1": {
+          "away": {
+            "FGA": 20,
+            "FGM": 8,
+            "TPM": 3,
+            "TPA": 9,
+            "FTA": 0,
+            "FTM": 0,
+            "TO": 7,
+            "ORB": 3,
+            "DRB": 9,
+            "SUB": 7
+          },
+          "home": {
+            "FGA": 20,
+            "FGM": 10,
+            "TPM": 4,
+            "TPA": 9,
+            "FTA": 9,
+            "FTM": 9,
+            "TO": 2,
+            "ORB": 1,
+            "DRB": 9,
+            "SUB": 4
+          }
+        },
+        "2": {
+          "away": {
+            "FGA": 22,
+            "FGM": 10,
+            "TPM": 2,
+            "TPA": 6,
+            "FTA": 9,
+            "FTM": 6,
+            "TO": 3,
+            "ORB": 5,
+            "DRB": 8,
+            "SUB": 7
+          },
+          "home": {
+            "FGA": 23,
+            "FGM": 10,
+            "TPM": 5,
+            "TPA": 8,
+            "FTA": 9,
+            "FTM": 8,
+            "TO": 2,
+            "ORB": 6,
+            "DRB": 10,
+            "SUB": 6
+          }
+        },
+        "3": {
+          "away": {
+            "FGA": 21,
+            "FGM": 10,
+            "TPM": 2,
+            "TPA": 5,
+            "FTA": 15,
+            "FTM": 8,
+            "TO": 0,
+            "ORB": 10,
+            "DRB": 5,
+            "SUB": 4
+          },
+          "home": {
+            "FGA": 22,
+            "FGM": 11,
+            "TPM": 3,
+            "TPA": 6,
+            "FTA": 8,
+            "FTM": 7,
+            "TO": 1,
+            "ORB": 7,
+            "DRB": 8,
+            "SUB": 6
+          }
+        },
+        "4": {
+          "away": {
+            "FGA": 25,
+            "FGM": 16,
+            "TPM": 1,
+            "TPA": 7,
+            "FTA": 8,
+            "FTM": 5,
+            "TO": 3,
+            "ORB": 5,
+            "DRB": 9,
+            "SUB": 3
+          },
+          "home": {
+            "FGA": 18,
+            "FGM": 9,
+            "TPM": 3,
+            "TPA": 8,
+            "FTA": 8,
+            "FTM": 5,
+            "TO": 6,
+            "ORB": 3,
+            "DRB": 7,
+            "SUB": 9
+          }
+        }
+      },
+      "raw_original_bytes_sha": null,
+      "official_provider_parity": false,
+      "actual_possession_ownership": false
+    },
+    {
+      "game": "Boston@Toronto",
+      "date": "2024-01-15",
+      "year": 2024,
+      "source_url": "https://www.basketball-reference.com/boxscores/pbp/202401150TOR.html",
+      "rows": 454,
+      "periods": 4,
+      "period_points_checks": 8,
+      "end_score_checks": 4,
+      "halves": {
+        "H1": {
+          "away": {
+            "FGA": 44,
+            "FGM": 20,
+            "TPM": 10,
+            "TPA": 18,
+            "FTA": 12,
+            "FTM": 11,
+            "TO": 6,
+            "ORB": 5,
+            "DRB": 22,
+            "SUB": 11
+          },
+          "home": {
+            "FGA": 51,
+            "FGM": 21,
+            "TPM": 4,
+            "TPA": 19,
+            "FTA": 9,
+            "FTM": 9,
+            "TO": 2,
+            "ORB": 8,
+            "DRB": 20,
+            "SUB": 11
+          },
+          "combined_points": 116
+        },
+        "H2": {
+          "away": {
+            "FGA": 38,
+            "FGM": 13,
+            "TPM": 6,
+            "TPA": 21,
+            "FTA": 13,
+            "FTM": 12,
+            "TO": 7,
+            "ORB": 0,
+            "DRB": 26,
+            "SUB": 10
+          },
+          "home": {
+            "FGA": 44,
+            "FGM": 17,
+            "TPM": 0,
+            "TPA": 13,
+            "FTA": 12,
+            "FTM": 7,
+            "TO": 5,
+            "ORB": 6,
+            "DRB": 26,
+            "SUB": 8
+          },
+          "combined_points": 85
+        }
+      },
+      "quickscore": {
+        "H1": {
+          "steal": {
+            "n": 3,
+            "hits": [
+              3,
+              3,
+              3
+            ]
+          },
+          "unmarked": {
+            "n": 5,
+            "hits": [
+              0,
+              1,
+              2
+            ]
+          }
+        },
+        "H2": {
+          "steal": {
+            "n": 6,
+            "hits": [
+              3,
+              4,
+              4
+            ]
+          },
+          "unmarked": {
+            "n": 6,
+            "hits": [
+              0,
+              2,
+              2
+            ]
+          }
+        },
+        "OT": {
+          "steal": {
+            "n": 0,
+            "hits": [
+              0,
+              0,
+              0
+            ]
+          },
+          "unmarked": {
+            "n": 0,
+            "hits": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      },
+      "quarter_event_counts": {
+        "1": {
+          "away": {
+            "FGA": 19,
+            "FGM": 11,
+            "TPM": 5,
+            "TPA": 9,
+            "FTA": 3,
+            "FTM": 2,
+            "TO": 5,
+            "ORB": 0,
+            "DRB": 12,
+            "SUB": 4
+          },
+          "home": {
+            "FGA": 29,
+            "FGM": 11,
+            "TPM": 2,
+            "TPA": 9,
+            "FTA": 1,
+            "FTM": 1,
+            "TO": 1,
+            "ORB": 6,
+            "DRB": 9,
+            "SUB": 5
+          }
+        },
+        "2": {
+          "away": {
+            "FGA": 25,
+            "FGM": 9,
+            "TPM": 5,
+            "TPA": 9,
+            "FTA": 9,
+            "FTM": 9,
+            "TO": 1,
+            "ORB": 5,
+            "DRB": 10,
+            "SUB": 7
+          },
+          "home": {
+            "FGA": 22,
+            "FGM": 10,
+            "TPM": 2,
+            "TPA": 10,
+            "FTA": 8,
+            "FTM": 8,
+            "TO": 1,
+            "ORB": 2,
+            "DRB": 11,
+            "SUB": 6
+          }
+        },
+        "3": {
+          "away": {
+            "FGA": 20,
+            "FGM": 7,
+            "TPM": 2,
+            "TPA": 9,
+            "FTA": 7,
+            "FTM": 7,
+            "TO": 3,
+            "ORB": 0,
+            "DRB": 13,
+            "SUB": 4
+          },
+          "home": {
+            "FGA": 20,
+            "FGM": 8,
+            "TPM": 0,
+            "TPA": 5,
+            "FTA": 8,
+            "FTM": 4,
+            "TO": 5,
+            "ORB": 3,
+            "DRB": 13,
+            "SUB": 5
+          }
+        },
+        "4": {
+          "away": {
+            "FGA": 18,
+            "FGM": 6,
+            "TPM": 4,
+            "TPA": 12,
+            "FTA": 6,
+            "FTM": 5,
+            "TO": 4,
+            "ORB": 0,
+            "DRB": 13,
+            "SUB": 6
+          },
+          "home": {
+            "FGA": 24,
+            "FGM": 9,
+            "TPM": 0,
+            "TPA": 8,
+            "FTA": 4,
+            "FTM": 3,
+            "TO": 0,
+            "ORB": 3,
+            "DRB": 13,
+            "SUB": 3
+          }
+        }
+      },
+      "raw_original_bytes_sha": null,
+      "official_provider_parity": false,
+      "actual_possession_ownership": false
+    },
+    {
+      "game": "Indiana@Utah",
+      "date": "2024-01-15",
+      "year": 2024,
+      "source_url": "https://www.basketball-reference.com/boxscores/pbp/202401150UTA.html",
+      "rows": 480,
+      "periods": 4,
+      "period_points_checks": 8,
+      "end_score_checks": 4,
+      "halves": {
+        "H1": {
+          "away": {
+            "FGA": 45,
+            "FGM": 18,
+            "TPM": 5,
+            "TPA": 13,
+            "FTA": 11,
+            "FTM": 9,
+            "TO": 8,
+            "ORB": 10,
+            "DRB": 12,
+            "SUB": 18
+          },
+          "home": {
+            "FGA": 45,
+            "FGM": 24,
+            "TPM": 4,
+            "TPA": 13,
+            "FTA": 15,
+            "FTM": 12,
+            "TO": 6,
+            "ORB": 12,
+            "DRB": 19,
+            "SUB": 10
+          },
+          "combined_points": 114
+        },
+        "H2": {
+          "away": {
+            "FGA": 50,
+            "FGM": 20,
+            "TPM": 4,
+            "TPA": 18,
+            "FTA": 14,
+            "FTM": 11,
+            "TO": 6,
+            "ORB": 13,
+            "DRB": 14,
+            "SUB": 9
+          },
+          "home": {
+            "FGA": 36,
+            "FGM": 21,
+            "TPM": 7,
+            "TPA": 12,
+            "FTA": 20,
+            "FTM": 19,
+            "TO": 8,
+            "ORB": 2,
+            "DRB": 20,
+            "SUB": 9
+          },
+          "combined_points": 123
+        }
+      },
+      "quickscore": {
+        "H1": {
+          "steal": {
+            "n": 6,
+            "hits": [
+              3,
+              3,
+              3
+            ]
+          },
+          "unmarked": {
+            "n": 8,
+            "hits": [
+              1,
+              1,
+              3
+            ]
+          }
+        },
+        "H2": {
+          "steal": {
+            "n": 8,
+            "hits": [
+              5,
+              5,
+              6
+            ]
+          },
+          "unmarked": {
+            "n": 6,
+            "hits": [
+              2,
+              2,
+              2
+            ]
+          }
+        },
+        "OT": {
+          "steal": {
+            "n": 0,
+            "hits": [
+              0,
+              0,
+              0
+            ]
+          },
+          "unmarked": {
+            "n": 0,
+            "hits": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      },
+      "quarter_event_counts": {
+        "1": {
+          "away": {
+            "FGA": 25,
+            "FGM": 11,
+            "TPM": 3,
+            "TPA": 6,
+            "FTA": 1,
+            "FTM": 1,
+            "TO": 4,
+            "ORB": 5,
+            "DRB": 5,
+            "SUB": 7
+          },
+          "home": {
+            "FGA": 22,
+            "FGM": 13,
+            "TPM": 3,
+            "TPA": 7,
+            "FTA": 5,
+            "FTM": 4,
+            "TO": 4,
+            "ORB": 5,
+            "DRB": 9,
+            "SUB": 5
+          }
+        },
+        "2": {
+          "away": {
+            "FGA": 20,
+            "FGM": 7,
+            "TPM": 2,
+            "TPA": 7,
+            "FTA": 10,
+            "FTM": 8,
+            "TO": 4,
+            "ORB": 5,
+            "DRB": 7,
+            "SUB": 11
+          },
+          "home": {
+            "FGA": 23,
+            "FGM": 11,
+            "TPM": 1,
+            "TPA": 6,
+            "FTA": 10,
+            "FTM": 8,
+            "TO": 2,
+            "ORB": 7,
+            "DRB": 10,
+            "SUB": 5
+          }
+        },
+        "3": {
+          "away": {
+            "FGA": 24,
+            "FGM": 12,
+            "TPM": 3,
+            "TPA": 8,
+            "FTA": 2,
+            "FTM": 2,
+            "TO": 3,
+            "ORB": 2,
+            "DRB": 7,
+            "SUB": 8
+          },
+          "home": {
+            "FGA": 20,
+            "FGM": 12,
+            "TPM": 3,
+            "TPA": 6,
+            "FTA": 15,
+            "FTM": 14,
+            "TO": 0,
+            "ORB": 2,
+            "DRB": 10,
+            "SUB": 4
+          }
+        },
+        "4": {
+          "away": {
+            "FGA": 26,
+            "FGM": 8,
+            "TPM": 1,
+            "TPA": 10,
+            "FTA": 12,
+            "FTM": 9,
+            "TO": 3,
+            "ORB": 11,
+            "DRB": 7,
+            "SUB": 1
+          },
+          "home": {
+            "FGA": 16,
+            "FGM": 9,
+            "TPM": 4,
+            "TPA": 6,
+            "FTA": 5,
+            "FTM": 5,
+            "TO": 8,
+            "ORB": 0,
+            "DRB": 10,
+            "SUB": 5
+          }
+        }
+      },
+      "raw_original_bytes_sha": null,
+      "official_provider_parity": false,
+      "actual_possession_ownership": false
+    },
+    {
+      "game": "Detroit@Washington",
+      "date": "2024-01-15",
+      "year": 2024,
+      "source_url": "https://www.basketball-reference.com/boxscores/pbp/202401150WAS.html",
+      "rows": 445,
+      "periods": 4,
+      "period_points_checks": 8,
+      "end_score_checks": 4,
+      "halves": {
+        "H1": {
+          "away": {
+            "FGA": 44,
+            "FGM": 24,
+            "TPM": 8,
+            "TPA": 19,
+            "FTA": 9,
+            "FTM": 7,
+            "TO": 9,
+            "ORB": 6,
+            "DRB": 23,
+            "SUB": 11
+          },
+          "home": {
+            "FGA": 51,
+            "FGM": 23,
+            "TPM": 10,
+            "TPA": 20,
+            "FTA": 7,
+            "FTM": 6,
+            "TO": 3,
+            "ORB": 6,
+            "DRB": 16,
+            "SUB": 10
+          },
+          "combined_points": 125
+        },
+        "H2": {
+          "away": {
+            "FGA": 46,
+            "FGM": 26,
+            "TPM": 4,
+            "TPA": 12,
+            "FTA": 14,
+            "FTM": 10,
+            "TO": 7,
+            "ORB": 13,
+            "DRB": 18,
+            "SUB": 11
+          },
+          "home": {
+            "FGA": 44,
+            "FGM": 21,
+            "TPM": 9,
+            "TPA": 21,
+            "FTA": 4,
+            "FTM": 4,
+            "TO": 5,
+            "ORB": 5,
+            "DRB": 11,
+            "SUB": 14
+          },
+          "combined_points": 121
+        }
+      },
+      "quickscore": {
+        "H1": {
+          "steal": {
+            "n": 7,
+            "hits": [
+              4,
+              4,
+              4
+            ]
+          },
+          "unmarked": {
+            "n": 5,
+            "hits": [
+              1,
+              2,
+              4
+            ]
+          }
+        },
+        "H2": {
+          "steal": {
+            "n": 5,
+            "hits": [
+              3,
+              4,
+              5
+            ]
+          },
+          "unmarked": {
+            "n": 7,
+            "hits": [
+              1,
+              2,
+              3
+            ]
+          }
+        },
+        "OT": {
+          "steal": {
+            "n": 0,
+            "hits": [
+              0,
+              0,
+              0
+            ]
+          },
+          "unmarked": {
+            "n": 0,
+            "hits": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      },
+      "quarter_event_counts": {
+        "1": {
+          "away": {
+            "FGA": 22,
+            "FGM": 11,
+            "TPM": 4,
+            "TPA": 11,
+            "FTA": 4,
+            "FTM": 3,
+            "TO": 5,
+            "ORB": 3,
+            "DRB": 15,
+            "SUB": 5
+          },
+          "home": {
+            "FGA": 26,
+            "FGM": 9,
+            "TPM": 2,
+            "TPA": 8,
+            "FTA": 3,
+            "FTM": 2,
+            "TO": 1,
+            "ORB": 3,
+            "DRB": 9,
+            "SUB": 5
+          }
+        },
+        "2": {
+          "away": {
+            "FGA": 22,
+            "FGM": 13,
+            "TPM": 4,
+            "TPA": 8,
+            "FTA": 5,
+            "FTM": 4,
+            "TO": 4,
+            "ORB": 3,
+            "DRB": 8,
+            "SUB": 6
+          },
+          "home": {
+            "FGA": 25,
+            "FGM": 14,
+            "TPM": 8,
+            "TPA": 12,
+            "FTA": 4,
+            "FTM": 4,
+            "TO": 2,
+            "ORB": 3,
+            "DRB": 7,
+            "SUB": 5
+          }
+        },
+        "3": {
+          "away": {
+            "FGA": 22,
+            "FGM": 12,
+            "TPM": 2,
+            "TPA": 7,
+            "FTA": 6,
+            "FTM": 5,
+            "TO": 5,
+            "ORB": 6,
+            "DRB": 11,
+            "SUB": 3
+          },
+          "home": {
+            "FGA": 23,
+            "FGM": 10,
+            "TPM": 3,
+            "TPA": 8,
+            "FTA": 2,
+            "FTM": 2,
+            "TO": 1,
+            "ORB": 2,
+            "DRB": 5,
+            "SUB": 5
+          }
+        },
+        "4": {
+          "away": {
+            "FGA": 24,
+            "FGM": 14,
+            "TPM": 2,
+            "TPA": 5,
+            "FTA": 8,
+            "FTM": 5,
+            "TO": 2,
+            "ORB": 7,
+            "DRB": 7,
+            "SUB": 8
+          },
+          "home": {
+            "FGA": 21,
+            "FGM": 11,
+            "TPM": 6,
+            "TPA": 13,
+            "FTA": 2,
+            "FTM": 2,
+            "TO": 4,
+            "ORB": 3,
+            "DRB": 6,
+            "SUB": 9
+          }
+        }
+      },
+      "raw_original_bytes_sha": null,
+      "official_provider_parity": false,
+      "actual_possession_ownership": false
+    },
+    {
+      "game": "Utah@Dallas",
+      "date": "2026-01-15",
+      "year": 2026,
+      "source_url": "https://www.basketball-reference.com/boxscores/pbp/202601150DAL.html",
+      "rows": 464,
+      "periods": 4,
+      "period_points_checks": 8,
+      "end_score_checks": 4,
+      "halves": {
+        "H1": {
+          "away": {
+            "FGA": 47,
+            "FGM": 18,
+            "TPM": 2,
+            "TPA": 19,
+            "FTA": 13,
+            "FTM": 12,
+            "TO": 8,
+            "ORB": 8,
+            "DRB": 14,
+            "SUB": 10
+          },
+          "home": {
+            "FGA": 48,
+            "FGM": 27,
+            "TPM": 6,
+            "TPA": 20,
+            "FTA": 13,
+            "FTM": 10,
+            "TO": 6,
+            "ORB": 10,
+            "DRB": 22,
+            "SUB": 13
+          },
+          "combined_points": 120
+        },
+        "H2": {
+          "away": {
+            "FGA": 49,
+            "FGM": 29,
+            "TPM": 8,
+            "TPA": 17,
+            "FTA": 10,
+            "FTM": 6,
+            "TO": 9,
+            "ORB": 9,
+            "DRB": 18,
+            "SUB": 7
+          },
+          "home": {
+            "FGA": 49,
+            "FGM": 28,
+            "TPM": 13,
+            "TPA": 26,
+            "FTA": 6,
+            "FTM": 5,
+            "TO": 7,
+            "ORB": 5,
+            "DRB": 15,
+            "SUB": 12
+          },
+          "combined_points": 146
+        }
+      },
+      "quickscore": {
+        "H1": {
+          "steal": {
+            "n": 12,
+            "hits": [
+              5,
+              6,
+              7
+            ]
+          },
+          "unmarked": {
+            "n": 2,
+            "hits": [
+              1,
+              2,
+              2
+            ]
+          }
+        },
+        "H2": {
+          "steal": {
+            "n": 10,
+            "hits": [
+              8,
+              8,
+              8
+            ]
+          },
+          "unmarked": {
+            "n": 6,
+            "hits": [
+              1,
+              2,
+              2
+            ]
+          }
+        },
+        "OT": {
+          "steal": {
+            "n": 0,
+            "hits": [
+              0,
+              0,
+              0
+            ]
+          },
+          "unmarked": {
+            "n": 0,
+            "hits": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      },
+      "quarter_event_counts": {
+        "1": {
+          "away": {
+            "FGA": 27,
+            "FGM": 9,
+            "TPM": 1,
+            "TPA": 12,
+            "FTA": 6,
+            "FTM": 5,
+            "TO": 1,
+            "ORB": 4,
+            "DRB": 8,
+            "SUB": 5
+          },
+          "home": {
+            "FGA": 23,
+            "FGM": 13,
+            "TPM": 2,
+            "TPA": 9,
+            "FTA": 8,
+            "FTM": 7,
+            "TO": 3,
+            "ORB": 3,
+            "DRB": 15,
+            "SUB": 5
+          }
+        },
+        "2": {
+          "away": {
+            "FGA": 20,
+            "FGM": 9,
+            "TPM": 1,
+            "TPA": 7,
+            "FTA": 7,
+            "FTM": 7,
+            "TO": 7,
+            "ORB": 4,
+            "DRB": 6,
+            "SUB": 5
+          },
+          "home": {
+            "FGA": 25,
+            "FGM": 14,
+            "TPM": 4,
+            "TPA": 11,
+            "FTA": 5,
+            "FTM": 3,
+            "TO": 3,
+            "ORB": 7,
+            "DRB": 7,
+            "SUB": 8
+          }
+        },
+        "3": {
+          "away": {
+            "FGA": 26,
+            "FGM": 12,
+            "TPM": 3,
+            "TPA": 9,
+            "FTA": 4,
+            "FTM": 2,
+            "TO": 8,
+            "ORB": 7,
+            "DRB": 8,
+            "SUB": 5
+          },
+          "home": {
+            "FGA": 26,
+            "FGM": 16,
+            "TPM": 6,
+            "TPA": 12,
+            "FTA": 4,
+            "FTM": 4,
+            "TO": 3,
+            "ORB": 3,
+            "DRB": 9,
+            "SUB": 5
+          }
+        },
+        "4": {
+          "away": {
+            "FGA": 23,
+            "FGM": 17,
+            "TPM": 5,
+            "TPA": 8,
+            "FTA": 6,
+            "FTM": 4,
+            "TO": 1,
+            "ORB": 2,
+            "DRB": 10,
+            "SUB": 2
+          },
+          "home": {
+            "FGA": 23,
+            "FGM": 12,
+            "TPM": 7,
+            "TPA": 14,
+            "FTA": 2,
+            "FTM": 1,
+            "TO": 4,
+            "ORB": 2,
+            "DRB": 6,
+            "SUB": 7
+          }
+        }
+      },
+      "raw_original_bytes_sha": null,
+      "official_provider_parity": false,
+      "actual_possession_ownership": false
+    },
+    {
+      "game": "Phoenix@Detroit",
+      "date": "2026-01-15",
+      "year": 2026,
+      "source_url": "https://www.basketball-reference.com/boxscores/pbp/202601150DET.html",
+      "rows": 532,
+      "periods": 4,
+      "period_points_checks": 8,
+      "end_score_checks": 4,
+      "halves": {
+        "H1": {
+          "away": {
+            "FGA": 42,
+            "FGM": 19,
+            "TPM": 11,
+            "TPA": 25,
+            "FTA": 21,
+            "FTM": 14,
+            "TO": 10,
+            "ORB": 10,
+            "DRB": 17,
+            "SUB": 16
+          },
+          "home": {
+            "FGA": 42,
+            "FGM": 18,
+            "TPM": 6,
+            "TPA": 17,
+            "FTA": 16,
+            "FTM": 14,
+            "TO": 11,
+            "ORB": 10,
+            "DRB": 20,
+            "SUB": 15
+          },
+          "combined_points": 119
+        },
+        "H2": {
+          "away": {
+            "FGA": 45,
+            "FGM": 17,
+            "TPM": 6,
+            "TPA": 21,
+            "FTA": 4,
+            "FTM": 2,
+            "TO": 4,
+            "ORB": 8,
+            "DRB": 20,
+            "SUB": 25
+          },
+          "home": {
+            "FGA": 39,
+            "FGM": 20,
+            "TPM": 3,
+            "TPA": 15,
+            "FTA": 21,
+            "FTM": 9,
+            "TO": 6,
+            "ORB": 11,
+            "DRB": 23,
+            "SUB": 18
+          },
+          "combined_points": 94
+        }
+      },
+      "quickscore": {
+        "H1": {
+          "steal": {
+            "n": 16,
+            "hits": [
+              3,
+              3,
+              6
+            ]
+          },
+          "unmarked": {
+            "n": 5,
+            "hits": [
+              2,
+              4,
+              4
+            ]
+          }
+        },
+        "H2": {
+          "steal": {
+            "n": 8,
+            "hits": [
+              5,
+              5,
+              5
+            ]
+          },
+          "unmarked": {
+            "n": 2,
+            "hits": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        "OT": {
+          "steal": {
+            "n": 0,
+            "hits": [
+              0,
+              0,
+              0
+            ]
+          },
+          "unmarked": {
+            "n": 0,
+            "hits": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      },
+      "quarter_event_counts": {
+        "1": {
+          "away": {
+            "FGA": 22,
+            "FGM": 11,
+            "TPM": 6,
+            "TPA": 14,
+            "FTA": 5,
+            "FTM": 4,
+            "TO": 3,
+            "ORB": 3,
+            "DRB": 12,
+            "SUB": 7
+          },
+          "home": {
+            "FGA": 25,
+            "FGM": 9,
+            "TPM": 3,
+            "TPA": 11,
+            "FTA": 3,
+            "FTM": 2,
+            "TO": 2,
+            "ORB": 6,
+            "DRB": 9,
+            "SUB": 6
+          }
+        },
+        "2": {
+          "away": {
+            "FGA": 20,
+            "FGM": 8,
+            "TPM": 5,
+            "TPA": 11,
+            "FTA": 16,
+            "FTM": 10,
+            "TO": 7,
+            "ORB": 7,
+            "DRB": 5,
+            "SUB": 9
+          },
+          "home": {
+            "FGA": 17,
+            "FGM": 9,
+            "TPM": 3,
+            "TPA": 6,
+            "FTA": 13,
+            "FTM": 12,
+            "TO": 9,
+            "ORB": 4,
+            "DRB": 11,
+            "SUB": 9
+          }
+        },
+        "3": {
+          "away": {
+            "FGA": 20,
+            "FGM": 10,
+            "TPM": 5,
+            "TPA": 10,
+            "FTA": 4,
+            "FTM": 2,
+            "TO": 1,
+            "ORB": 4,
+            "DRB": 8,
+            "SUB": 7
+          },
+          "home": {
+            "FGA": 23,
+            "FGM": 14,
+            "TPM": 2,
+            "TPA": 6,
+            "FTA": 7,
+            "FTM": 3,
+            "TO": 3,
+            "ORB": 5,
+            "DRB": 9,
+            "SUB": 5
+          }
+        },
+        "4": {
+          "away": {
+            "FGA": 25,
+            "FGM": 7,
+            "TPM": 1,
+            "TPA": 11,
+            "FTA": 0,
+            "FTM": 0,
+            "TO": 3,
+            "ORB": 4,
+            "DRB": 12,
+            "SUB": 18
+          },
+          "home": {
+            "FGA": 16,
+            "FGM": 6,
+            "TPM": 1,
+            "TPA": 9,
+            "FTA": 14,
+            "FTM": 6,
+            "TO": 3,
+            "ORB": 6,
+            "DRB": 14,
+            "SUB": 13
+          }
+        }
+      },
+      "raw_original_bytes_sha": null,
+      "official_provider_parity": false,
+      "actual_possession_ownership": false
+    },
+    {
+      "game": "New York@Golden State",
+      "date": "2026-01-15",
+      "year": 2026,
+      "source_url": "https://www.basketball-reference.com/boxscores/pbp/202601150GSW.html",
+      "rows": 457,
+      "periods": 4,
+      "period_points_checks": 8,
+      "end_score_checks": 4,
+      "halves": {
+        "H1": {
+          "away": {
+            "FGA": 46,
+            "FGM": 21,
+            "TPM": 7,
+            "TPA": 18,
+            "FTA": 12,
+            "FTM": 10,
+            "TO": 6,
+            "ORB": 15,
+            "DRB": 9,
+            "SUB": 15
+          },
+          "home": {
+            "FGA": 40,
+            "FGM": 24,
+            "TPM": 9,
+            "TPA": 19,
+            "FTA": 6,
+            "FTM": 5,
+            "TO": 8,
+            "ORB": 9,
+            "DRB": 12,
+            "SUB": 15
+          },
+          "combined_points": 121
+        },
+        "H2": {
+          "away": {
+            "FGA": 45,
+            "FGM": 21,
+            "TPM": 7,
+            "TPA": 20,
+            "FTA": 7,
+            "FTM": 5,
+            "TO": 6,
+            "ORB": 6,
+            "DRB": 19,
+            "SUB": 17
+          },
+          "home": {
+            "FGA": 49,
+            "FGM": 24,
+            "TPM": 11,
+            "TPA": 26,
+            "FTA": 7,
+            "FTM": 5,
+            "TO": 4,
+            "ORB": 8,
+            "DRB": 20,
+            "SUB": 20
+          },
+          "combined_points": 118
+        }
+      },
+      "quickscore": {
+        "H1": {
+          "steal": {
+            "n": 6,
+            "hits": [
+              2,
+              2,
+              2
+            ]
+          },
+          "unmarked": {
+            "n": 8,
+            "hits": [
+              1,
+              3,
+              6
+            ]
+          }
+        },
+        "H2": {
+          "steal": {
+            "n": 4,
+            "hits": [
+              2,
+              2,
+              3
+            ]
+          },
+          "unmarked": {
+            "n": 6,
+            "hits": [
+              1,
+              3,
+              5
+            ]
+          }
+        },
+        "OT": {
+          "steal": {
+            "n": 0,
+            "hits": [
+              0,
+              0,
+              0
+            ]
+          },
+          "unmarked": {
+            "n": 0,
+            "hits": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      },
+      "quarter_event_counts": {
+        "1": {
+          "away": {
+            "FGA": 24,
+            "FGM": 13,
+            "TPM": 6,
+            "TPA": 9,
+            "FTA": 4,
+            "FTM": 3,
+            "TO": 4,
+            "ORB": 7,
+            "DRB": 7,
+            "SUB": 7
+          },
+          "home": {
+            "FGA": 23,
+            "FGM": 12,
+            "TPM": 4,
+            "TPA": 11,
+            "FTA": 2,
+            "FTM": 2,
+            "TO": 4,
+            "ORB": 4,
+            "DRB": 5,
+            "SUB": 7
+          }
+        },
+        "2": {
+          "away": {
+            "FGA": 22,
+            "FGM": 8,
+            "TPM": 1,
+            "TPA": 9,
+            "FTA": 8,
+            "FTM": 7,
+            "TO": 2,
+            "ORB": 8,
+            "DRB": 2,
+            "SUB": 8
+          },
+          "home": {
+            "FGA": 17,
+            "FGM": 12,
+            "TPM": 5,
+            "TPA": 8,
+            "FTA": 4,
+            "FTM": 3,
+            "TO": 4,
+            "ORB": 5,
+            "DRB": 7,
+            "SUB": 8
+          }
+        },
+        "3": {
+          "away": {
+            "FGA": 22,
+            "FGM": 12,
+            "TPM": 4,
+            "TPA": 10,
+            "FTA": 0,
+            "FTM": 0,
+            "TO": 3,
+            "ORB": 0,
+            "DRB": 9,
+            "SUB": 6
+          },
+          "home": {
+            "FGA": 27,
+            "FGM": 13,
+            "TPM": 7,
+            "TPA": 14,
+            "FTA": 6,
+            "FTM": 4,
+            "TO": 2,
+            "ORB": 7,
+            "DRB": 10,
+            "SUB": 6
+          }
+        },
+        "4": {
+          "away": {
+            "FGA": 23,
+            "FGM": 9,
+            "TPM": 3,
+            "TPA": 10,
+            "FTA": 7,
+            "FTM": 5,
+            "TO": 3,
+            "ORB": 6,
+            "DRB": 10,
+            "SUB": 11
+          },
+          "home": {
+            "FGA": 22,
+            "FGM": 11,
+            "TPM": 4,
+            "TPA": 12,
+            "FTA": 1,
+            "FTM": 1,
+            "TO": 2,
+            "ORB": 1,
+            "DRB": 10,
+            "SUB": 14
+          }
+        }
+      },
+      "raw_original_bytes_sha": null,
+      "official_provider_parity": false,
+      "actual_possession_ownership": false
+    },
+    {
+      "game": "Oklahoma City@Houston",
+      "date": "2026-01-15",
+      "year": 2026,
+      "source_url": "https://www.basketball-reference.com/boxscores/pbp/202601150HOU.html",
+      "rows": 485,
+      "periods": 4,
+      "period_points_checks": 8,
+      "end_score_checks": 4,
+      "halves": {
+        "H1": {
+          "away": {
+            "FGA": 47,
+            "FGM": 22,
+            "TPM": 8,
+            "TPA": 20,
+            "FTA": 4,
+            "FTM": 3,
+            "TO": 9,
+            "ORB": 6,
+            "DRB": 20,
+            "SUB": 11
+          },
+          "home": {
+            "FGA": 54,
+            "FGM": 18,
+            "TPM": 2,
+            "TPA": 8,
+            "FTA": 12,
+            "FTM": 10,
+            "TO": 8,
+            "ORB": 19,
+            "DRB": 20,
+            "SUB": 13
+          },
+          "combined_points": 103
+        },
+        "H2": {
+          "away": {
+            "FGA": 42,
+            "FGM": 19,
+            "TPM": 8,
+            "TPA": 21,
+            "FTA": 11,
+            "FTM": 10,
+            "TO": 3,
+            "ORB": 5,
+            "DRB": 18,
+            "SUB": 16
+          },
+          "home": {
+            "FGA": 50,
+            "FGM": 17,
+            "TPM": 5,
+            "TPA": 16,
+            "FTA": 5,
+            "FTM": 4,
+            "TO": 8,
+            "ORB": 17,
+            "DRB": 19,
+            "SUB": 14
+          },
+          "combined_points": 99
+        }
+      },
+      "quickscore": {
+        "H1": {
+          "steal": {
+            "n": 12,
+            "hits": [
+              4,
+              5,
+              5
+            ]
+          },
+          "unmarked": {
+            "n": 5,
+            "hits": [
+              3,
+              3,
+              3
+            ]
+          }
+        },
+        "H2": {
+          "steal": {
+            "n": 7,
+            "hits": [
+              2,
+              2,
+              3
+            ]
+          },
+          "unmarked": {
+            "n": 4,
+            "hits": [
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "OT": {
+          "steal": {
+            "n": 0,
+            "hits": [
+              0,
+              0,
+              0
+            ]
+          },
+          "unmarked": {
+            "n": 0,
+            "hits": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      },
+      "quarter_event_counts": {
+        "1": {
+          "away": {
+            "FGA": 20,
+            "FGM": 8,
+            "TPM": 3,
+            "TPA": 10,
+            "FTA": 3,
+            "FTM": 2,
+            "TO": 7,
+            "ORB": 3,
+            "DRB": 14,
+            "SUB": 4
+          },
+          "home": {
+            "FGA": 28,
+            "FGM": 8,
+            "TPM": 2,
+            "TPA": 7,
+            "FTA": 2,
+            "FTM": 1,
+            "TO": 4,
+            "ORB": 7,
+            "DRB": 10,
+            "SUB": 7
+          }
+        },
+        "2": {
+          "away": {
+            "FGA": 27,
+            "FGM": 14,
+            "TPM": 5,
+            "TPA": 10,
+            "FTA": 1,
+            "FTM": 1,
+            "TO": 2,
+            "ORB": 3,
+            "DRB": 6,
+            "SUB": 7
+          },
+          "home": {
+            "FGA": 26,
+            "FGM": 10,
+            "TPM": 0,
+            "TPA": 1,
+            "FTA": 10,
+            "FTM": 9,
+            "TO": 4,
+            "ORB": 12,
+            "DRB": 10,
+            "SUB": 6
+          }
+        },
+        "3": {
+          "away": {
+            "FGA": 21,
+            "FGM": 8,
+            "TPM": 2,
+            "TPA": 9,
+            "FTA": 4,
+            "FTM": 4,
+            "TO": 2,
+            "ORB": 3,
+            "DRB": 5,
+            "SUB": 5
+          },
+          "home": {
+            "FGA": 23,
+            "FGM": 10,
+            "TPM": 3,
+            "TPA": 9,
+            "FTA": 5,
+            "FTM": 4,
+            "TO": 4,
+            "ORB": 9,
+            "DRB": 10,
+            "SUB": 5
+          }
+        },
+        "4": {
+          "away": {
+            "FGA": 21,
+            "FGM": 11,
+            "TPM": 6,
+            "TPA": 12,
+            "FTA": 7,
+            "FTM": 6,
+            "TO": 1,
+            "ORB": 2,
+            "DRB": 13,
+            "SUB": 11
+          },
+          "home": {
+            "FGA": 27,
+            "FGM": 7,
+            "TPM": 2,
+            "TPA": 7,
+            "FTA": 0,
+            "FTM": 0,
+            "TO": 4,
+            "ORB": 8,
+            "DRB": 9,
+            "SUB": 9
+          }
+        }
+      },
+      "raw_original_bytes_sha": null,
+      "official_provider_parity": false,
+      "actual_possession_ownership": false
+    },
+    {
+      "game": "Charlotte@LA Lakers",
+      "date": "2026-01-15",
+      "year": 2026,
+      "source_url": "https://www.basketball-reference.com/boxscores/pbp/202601150LAL.html",
+      "rows": 476,
+      "periods": 4,
+      "period_points_checks": 8,
+      "end_score_checks": 4,
+      "halves": {
+        "H1": {
+          "away": {
+            "FGA": 45,
+            "FGM": 25,
+            "TPM": 7,
+            "TPA": 19,
+            "FTA": 7,
+            "FTM": 7,
+            "TO": 5,
+            "ORB": 6,
+            "DRB": 20,
+            "SUB": 14
+          },
+          "home": {
+            "FGA": 45,
+            "FGM": 20,
+            "TPM": 9,
+            "TPA": 18,
+            "FTA": 8,
+            "FTM": 6,
+            "TO": 5,
+            "ORB": 8,
+            "DRB": 14,
+            "SUB": 16
+          },
+          "combined_points": 119
+        },
+        "H2": {
+          "away": {
+            "FGA": 47,
+            "FGM": 25,
+            "TPM": 13,
+            "TPA": 24,
+            "FTA": 9,
+            "FTM": 8,
+            "TO": 8,
+            "ORB": 10,
+            "DRB": 18,
+            "SUB": 15
+          },
+          "home": {
+            "FGA": 48,
+            "FGM": 23,
+            "TPM": 5,
+            "TPA": 20,
+            "FTA": 15,
+            "FTM": 11,
+            "TO": 4,
+            "ORB": 11,
+            "DRB": 13,
+            "SUB": 18
+          },
+          "combined_points": 133
+        }
+      },
+      "quickscore": {
+        "H1": {
+          "steal": {
+            "n": 3,
+            "hits": [
+              3,
+              3,
+              3
+            ]
+          },
+          "unmarked": {
+            "n": 7,
+            "hits": [
+              0,
+              0,
+              2
+            ]
+          }
+        },
+        "H2": {
+          "steal": {
+            "n": 8,
+            "hits": [
+              6,
+              7,
+              7
+            ]
+          },
+          "unmarked": {
+            "n": 4,
+            "hits": [
+              0,
+              1,
+              2
+            ]
+          }
+        },
+        "OT": {
+          "steal": {
+            "n": 0,
+            "hits": [
+              0,
+              0,
+              0
+            ]
+          },
+          "unmarked": {
+            "n": 0,
+            "hits": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      },
+      "quarter_event_counts": {
+        "1": {
+          "away": {
+            "FGA": 23,
+            "FGM": 12,
+            "TPM": 3,
+            "TPA": 10,
+            "FTA": 3,
+            "FTM": 3,
+            "TO": 3,
+            "ORB": 3,
+            "DRB": 9,
+            "SUB": 6
+          },
+          "home": {
+            "FGA": 27,
+            "FGM": 15,
+            "TPM": 7,
+            "TPA": 12,
+            "FTA": 4,
+            "FTM": 2,
+            "TO": 1,
+            "ORB": 5,
+            "DRB": 8,
+            "SUB": 4
+          }
+        },
+        "2": {
+          "away": {
+            "FGA": 22,
+            "FGM": 13,
+            "TPM": 4,
+            "TPA": 9,
+            "FTA": 4,
+            "FTM": 4,
+            "TO": 2,
+            "ORB": 3,
+            "DRB": 11,
+            "SUB": 8
+          },
+          "home": {
+            "FGA": 18,
+            "FGM": 5,
+            "TPM": 2,
+            "TPA": 6,
+            "FTA": 4,
+            "FTM": 4,
+            "TO": 4,
+            "ORB": 3,
+            "DRB": 6,
+            "SUB": 12
+          }
+        },
+        "3": {
+          "away": {
+            "FGA": 28,
+            "FGM": 13,
+            "TPM": 9,
+            "TPA": 17,
+            "FTA": 5,
+            "FTM": 5,
+            "TO": 2,
+            "ORB": 5,
+            "DRB": 9,
+            "SUB": 6
+          },
+          "home": {
+            "FGA": 24,
+            "FGM": 14,
+            "TPM": 3,
+            "TPA": 10,
+            "FTA": 10,
+            "FTM": 7,
+            "TO": 1,
+            "ORB": 4,
+            "DRB": 10,
+            "SUB": 6
+          }
+        },
+        "4": {
+          "away": {
+            "FGA": 19,
+            "FGM": 12,
+            "TPM": 4,
+            "TPA": 7,
+            "FTA": 4,
+            "FTM": 3,
+            "TO": 6,
+            "ORB": 5,
+            "DRB": 9,
+            "SUB": 9
+          },
+          "home": {
+            "FGA": 24,
+            "FGM": 9,
+            "TPM": 2,
+            "TPA": 10,
+            "FTA": 5,
+            "FTM": 4,
+            "TO": 3,
+            "ORB": 7,
+            "DRB": 3,
+            "SUB": 12
+          }
+        }
+      },
+      "raw_original_bytes_sha": null,
+      "official_provider_parity": false,
+      "actual_possession_ownership": false
+    },
+    {
+      "game": "Boston@Miami",
+      "date": "2026-01-15",
+      "year": 2026,
+      "source_url": "https://www.basketball-reference.com/boxscores/pbp/202601150MIA.html",
+      "rows": 479,
+      "periods": 4,
+      "period_points_checks": 8,
+      "end_score_checks": 4,
+      "halves": {
+        "H1": {
+          "away": {
+            "FGA": 45,
+            "FGM": 19,
+            "TPM": 7,
+            "TPA": 20,
+            "FTA": 10,
+            "FTM": 9,
+            "TO": 8,
+            "ORB": 14,
+            "DRB": 15,
+            "SUB": 13
+          },
+          "home": {
+            "FGA": 47,
+            "FGM": 24,
+            "TPM": 10,
+            "TPA": 23,
+            "FTA": 10,
+            "FTM": 6,
+            "TO": 4,
+            "ORB": 13,
+            "DRB": 14,
+            "SUB": 12
+          },
+          "combined_points": 118
+        },
+        "H2": {
+          "away": {
+            "FGA": 46,
+            "FGM": 22,
+            "TPM": 6,
+            "TPA": 19,
+            "FTA": 15,
+            "FTM": 15,
+            "TO": 4,
+            "ORB": 8,
+            "DRB": 21,
+            "SUB": 12
+          },
+          "home": {
+            "FGA": 40,
+            "FGM": 15,
+            "TPM": 5,
+            "TPA": 19,
+            "FTA": 17,
+            "FTM": 15,
+            "TO": 6,
+            "ORB": 7,
+            "DRB": 16,
+            "SUB": 13
+          },
+          "combined_points": 115
+        }
+      },
+      "quickscore": {
+        "H1": {
+          "steal": {
+            "n": 6,
+            "hits": [
+              3,
+              3,
+              3
+            ]
+          },
+          "unmarked": {
+            "n": 6,
+            "hits": [
+              0,
+              2,
+              3
+            ]
+          }
+        },
+        "H2": {
+          "steal": {
+            "n": 6,
+            "hits": [
+              4,
+              4,
+              5
+            ]
+          },
+          "unmarked": {
+            "n": 4,
+            "hits": [
+              1,
+              2,
+              3
+            ]
+          }
+        },
+        "OT": {
+          "steal": {
+            "n": 0,
+            "hits": [
+              0,
+              0,
+              0
+            ]
+          },
+          "unmarked": {
+            "n": 0,
+            "hits": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      },
+      "quarter_event_counts": {
+        "1": {
+          "away": {
+            "FGA": 24,
+            "FGM": 9,
+            "TPM": 5,
+            "TPA": 15,
+            "FTA": 2,
+            "FTM": 2,
+            "TO": 5,
+            "ORB": 8,
+            "DRB": 8,
+            "SUB": 7
+          },
+          "home": {
+            "FGA": 26,
+            "FGM": 13,
+            "TPM": 6,
+            "TPA": 12,
+            "FTA": 6,
+            "FTM": 4,
+            "TO": 1,
+            "ORB": 7,
+            "DRB": 8,
+            "SUB": 7
+          }
+        },
+        "2": {
+          "away": {
+            "FGA": 21,
+            "FGM": 10,
+            "TPM": 2,
+            "TPA": 5,
+            "FTA": 8,
+            "FTM": 7,
+            "TO": 3,
+            "ORB": 6,
+            "DRB": 7,
+            "SUB": 6
+          },
+          "home": {
+            "FGA": 21,
+            "FGM": 11,
+            "TPM": 4,
+            "TPA": 11,
+            "FTA": 4,
+            "FTM": 2,
+            "TO": 3,
+            "ORB": 6,
+            "DRB": 6,
+            "SUB": 5
+          }
+        },
+        "3": {
+          "away": {
+            "FGA": 21,
+            "FGM": 10,
+            "TPM": 2,
+            "TPA": 9,
+            "FTA": 7,
+            "FTM": 7,
+            "TO": 4,
+            "ORB": 3,
+            "DRB": 10,
+            "SUB": 6
+          },
+          "home": {
+            "FGA": 18,
+            "FGM": 8,
+            "TPM": 2,
+            "TPA": 9,
+            "FTA": 13,
+            "FTM": 11,
+            "TO": 3,
+            "ORB": 3,
+            "DRB": 8,
+            "SUB": 5
+          }
+        },
+        "4": {
+          "away": {
+            "FGA": 25,
+            "FGM": 12,
+            "TPM": 4,
+            "TPA": 10,
+            "FTA": 8,
+            "FTM": 8,
+            "TO": 0,
+            "ORB": 5,
+            "DRB": 11,
+            "SUB": 6
+          },
+          "home": {
+            "FGA": 22,
+            "FGM": 7,
+            "TPM": 3,
+            "TPA": 10,
+            "FTA": 4,
+            "FTM": 4,
+            "TO": 3,
+            "ORB": 4,
+            "DRB": 8,
+            "SUB": 8
+          }
+        }
+      },
+      "raw_original_bytes_sha": null,
+      "official_provider_parity": false,
+      "actual_possession_ownership": false
+    },
+    {
+      "game": "Memphis@Orlando",
+      "date": "2026-01-15",
+      "year": 2026,
+      "source_url": "https://www.basketball-reference.com/boxscores/pbp/202601150ORL.html",
+      "rows": 483,
+      "periods": 4,
+      "period_points_checks": 8,
+      "end_score_checks": 4,
+      "halves": {
+        "H1": {
+          "away": {
+            "FGA": 44,
+            "FGM": 25,
+            "TPM": 12,
+            "TPA": 20,
+            "FTA": 5,
+            "FTM": 5,
+            "TO": 10,
+            "ORB": 6,
+            "DRB": 18,
+            "SUB": 16
+          },
+          "home": {
+            "FGA": 52,
+            "FGM": 22,
+            "TPM": 8,
+            "TPA": 20,
+            "FTA": 7,
+            "FTM": 6,
+            "TO": 8,
+            "ORB": 14,
+            "DRB": 14,
+            "SUB": 11
+          },
+          "combined_points": 125
+        },
+        "H2": {
+          "away": {
+            "FGA": 39,
+            "FGM": 13,
+            "TPM": 5,
+            "TPA": 16,
+            "FTA": 16,
+            "FTM": 13,
+            "TO": 6,
+            "ORB": 6,
+            "DRB": 14,
+            "SUB": 20
+          },
+          "home": {
+            "FGA": 43,
+            "FGM": 19,
+            "TPM": 7,
+            "TPA": 20,
+            "FTA": 16,
+            "FTM": 15,
+            "TO": 8,
+            "ORB": 11,
+            "DRB": 24,
+            "SUB": 16
+          },
+          "combined_points": 104
+        }
+      },
+      "quickscore": {
+        "H1": {
+          "steal": {
+            "n": 9,
+            "hits": [
+              4,
+              5,
+              5
+            ]
+          },
+          "unmarked": {
+            "n": 9,
+            "hits": [
+              1,
+              4,
+              5
+            ]
+          }
+        },
+        "H2": {
+          "steal": {
+            "n": 5,
+            "hits": [
+              3,
+              3,
+              3
+            ]
+          },
+          "unmarked": {
+            "n": 9,
+            "hits": [
+              1,
+              2,
+              6
+            ]
+          }
+        },
+        "OT": {
+          "steal": {
+            "n": 0,
+            "hits": [
+              0,
+              0,
+              0
+            ]
+          },
+          "unmarked": {
+            "n": 0,
+            "hits": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      },
+      "quarter_event_counts": {
+        "1": {
+          "away": {
+            "FGA": 23,
+            "FGM": 15,
+            "TPM": 9,
+            "TPA": 14,
+            "FTA": 0,
+            "FTM": 0,
+            "TO": 3,
+            "ORB": 3,
+            "DRB": 9,
+            "SUB": 6
+          },
+          "home": {
+            "FGA": 24,
+            "FGM": 9,
+            "TPM": 3,
+            "TPA": 11,
+            "FTA": 2,
+            "FTM": 2,
+            "TO": 4,
+            "ORB": 7,
+            "DRB": 5,
+            "SUB": 5
+          }
+        },
+        "2": {
+          "away": {
+            "FGA": 21,
+            "FGM": 10,
+            "TPM": 3,
+            "TPA": 6,
+            "FTA": 5,
+            "FTM": 5,
+            "TO": 7,
+            "ORB": 3,
+            "DRB": 9,
+            "SUB": 10
+          },
+          "home": {
+            "FGA": 28,
+            "FGM": 13,
+            "TPM": 5,
+            "TPA": 9,
+            "FTA": 5,
+            "FTM": 4,
+            "TO": 4,
+            "ORB": 7,
+            "DRB": 9,
+            "SUB": 6
+          }
+        },
+        "3": {
+          "away": {
+            "FGA": 18,
+            "FGM": 3,
+            "TPM": 0,
+            "TPA": 7,
+            "FTA": 7,
+            "FTM": 6,
+            "TO": 4,
+            "ORB": 4,
+            "DRB": 7,
+            "SUB": 11
+          },
+          "home": {
+            "FGA": 24,
+            "FGM": 9,
+            "TPM": 4,
+            "TPA": 13,
+            "FTA": 4,
+            "FTM": 4,
+            "TO": 4,
+            "ORB": 8,
+            "DRB": 13,
+            "SUB": 8
+          }
+        },
+        "4": {
+          "away": {
+            "FGA": 21,
+            "FGM": 10,
+            "TPM": 5,
+            "TPA": 9,
+            "FTA": 9,
+            "FTM": 7,
+            "TO": 2,
+            "ORB": 2,
+            "DRB": 7,
+            "SUB": 9
+          },
+          "home": {
+            "FGA": 19,
+            "FGM": 10,
+            "TPM": 3,
+            "TPA": 7,
+            "FTA": 12,
+            "FTM": 11,
+            "TO": 4,
+            "ORB": 3,
+            "DRB": 11,
+            "SUB": 8
+          }
+        }
+      },
+      "raw_original_bytes_sha": null,
+      "official_provider_parity": false,
+      "actual_possession_ownership": false
+    },
+    {
+      "game": "Atlanta@Portland",
+      "date": "2026-01-15",
+      "year": 2026,
+      "source_url": "https://www.basketball-reference.com/boxscores/pbp/202601150POR.html",
+      "rows": 483,
+      "periods": 4,
+      "period_points_checks": 8,
+      "end_score_checks": 4,
+      "halves": {
+        "H1": {
+          "away": {
+            "FGA": 38,
+            "FGM": 18,
+            "TPM": 7,
+            "TPA": 19,
+            "FTA": 15,
+            "FTM": 13,
+            "TO": 11,
+            "ORB": 6,
+            "DRB": 19,
+            "SUB": 16
+          },
+          "home": {
+            "FGA": 45,
+            "FGM": 19,
+            "TPM": 6,
+            "TPA": 23,
+            "FTA": 15,
+            "FTM": 10,
+            "TO": 9,
+            "ORB": 12,
+            "DRB": 17,
+            "SUB": 13
+          },
+          "combined_points": 110
+        },
+        "H2": {
+          "away": {
+            "FGA": 43,
+            "FGM": 17,
+            "TPM": 7,
+            "TPA": 25,
+            "FTA": 7,
+            "FTM": 4,
+            "TO": 9,
+            "ORB": 8,
+            "DRB": 17,
+            "SUB": 12
+          },
+          "home": {
+            "FGA": 50,
+            "FGM": 24,
+            "TPM": 8,
+            "TPA": 23,
+            "FTA": 9,
+            "FTM": 7,
+            "TO": 6,
+            "ORB": 11,
+            "DRB": 21,
+            "SUB": 13
+          },
+          "combined_points": 108
+        }
+      },
+      "quickscore": {
+        "H1": {
+          "steal": {
+            "n": 12,
+            "hits": [
+              4,
+              5,
+              5
+            ]
+          },
+          "unmarked": {
+            "n": 8,
+            "hits": [
+              1,
+              3,
+              5
+            ]
+          }
+        },
+        "H2": {
+          "steal": {
+            "n": 11,
+            "hits": [
+              3,
+              5,
+              6
+            ]
+          },
+          "unmarked": {
+            "n": 4,
+            "hits": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        "OT": {
+          "steal": {
+            "n": 0,
+            "hits": [
+              0,
+              0,
+              0
+            ]
+          },
+          "unmarked": {
+            "n": 0,
+            "hits": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      },
+      "quarter_event_counts": {
+        "1": {
+          "away": {
+            "FGA": 18,
+            "FGM": 8,
+            "TPM": 3,
+            "TPA": 10,
+            "FTA": 6,
+            "FTM": 6,
+            "TO": 5,
+            "ORB": 1,
+            "DRB": 9,
+            "SUB": 7
+          },
+          "home": {
+            "FGA": 25,
+            "FGM": 12,
+            "TPM": 5,
+            "TPA": 13,
+            "FTA": 7,
+            "FTM": 4,
+            "TO": 3,
+            "ORB": 7,
+            "DRB": 10,
+            "SUB": 6
+          }
+        },
+        "2": {
+          "away": {
+            "FGA": 20,
+            "FGM": 10,
+            "TPM": 4,
+            "TPA": 9,
+            "FTA": 9,
+            "FTM": 7,
+            "TO": 6,
+            "ORB": 5,
+            "DRB": 10,
+            "SUB": 9
+          },
+          "home": {
+            "FGA": 20,
+            "FGM": 7,
+            "TPM": 1,
+            "TPA": 10,
+            "FTA": 8,
+            "FTM": 6,
+            "TO": 6,
+            "ORB": 5,
+            "DRB": 7,
+            "SUB": 7
+          }
+        },
+        "3": {
+          "away": {
+            "FGA": 23,
+            "FGM": 13,
+            "TPM": 5,
+            "TPA": 9,
+            "FTA": 0,
+            "FTM": 0,
+            "TO": 4,
+            "ORB": 1,
+            "DRB": 9,
+            "SUB": 5
+          },
+          "home": {
+            "FGA": 28,
+            "FGM": 14,
+            "TPM": 4,
+            "TPA": 14,
+            "FTA": 3,
+            "FTM": 2,
+            "TO": 3,
+            "ORB": 6,
+            "DRB": 9,
+            "SUB": 5
+          }
+        },
+        "4": {
+          "away": {
+            "FGA": 20,
+            "FGM": 4,
+            "TPM": 2,
+            "TPA": 16,
+            "FTA": 7,
+            "FTM": 4,
+            "TO": 5,
+            "ORB": 7,
+            "DRB": 8,
+            "SUB": 7
+          },
+          "home": {
+            "FGA": 22,
+            "FGM": 10,
+            "TPM": 4,
+            "TPA": 9,
+            "FTA": 6,
+            "FTM": 5,
+            "TO": 3,
+            "ORB": 5,
+            "DRB": 12,
+            "SUB": 8
+          }
+        }
+      },
+      "raw_original_bytes_sha": null,
+      "official_provider_parity": false,
+      "actual_possession_ownership": false
+    },
+    {
+      "game": "Milwaukee@San Antonio",
+      "date": "2026-01-15",
+      "year": 2026,
+      "source_url": "https://www.basketball-reference.com/boxscores/pbp/202601150SAS.html",
+      "rows": 461,
+      "periods": 4,
+      "period_points_checks": 8,
+      "end_score_checks": 4,
+      "halves": {
+        "H1": {
+          "away": {
+            "FGA": 48,
+            "FGM": 18,
+            "TPM": 11,
+            "TPA": 29,
+            "FTA": 10,
+            "FTM": 6,
+            "TO": 5,
+            "ORB": 14,
+            "DRB": 12,
+            "SUB": 10,
+            "clear_path_FTA": 2
+          },
+          "home": {
+            "FGA": 35,
+            "FGM": 19,
+            "TPM": 8,
+            "TPA": 16,
+            "FTA": 23,
+            "FTM": 20,
+            "TO": 8,
+            "ORB": 7,
+            "DRB": 22,
+            "SUB": 15,
+            "clear_path_FTA": 0
+          },
+          "combined_points": 119
+        },
+        "H2": {
+          "away": {
+            "FGA": 39,
+            "FGM": 16,
+            "TPM": 6,
+            "TPA": 19,
+            "FTA": 12,
+            "FTM": 10,
+            "TO": 8,
+            "ORB": 5,
+            "DRB": 18,
+            "SUB": 11,
+            "clear_path_FTA": 0
+          },
+          "home": {
+            "FGA": 44,
+            "FGM": 21,
+            "TPM": 8,
+            "TPA": 21,
+            "FTA": 4,
+            "FTM": 3,
+            "TO": 9,
+            "ORB": 6,
+            "DRB": 20,
+            "SUB": 12,
+            "clear_path_FTA": 0
+          },
+          "combined_points": 101
+        }
+      },
+      "quickscore": {
+        "H1": {
+          "steal": {
+            "n": 5,
+            "hits": [
+              2,
+              3,
+              3
+            ]
+          },
+          "unmarked": {
+            "n": 8,
+            "hits": [
+              0,
+              1,
+              2
+            ]
+          }
+        },
+        "H2": {
+          "steal": {
+            "n": 8,
+            "hits": [
+              2,
+              3,
+              3
+            ]
+          },
+          "unmarked": {
+            "n": 9,
+            "hits": [
+              0,
+              1,
+              3
+            ]
+          }
+        },
+        "OT": {
+          "steal": {
+            "n": 0,
+            "hits": [
+              0,
+              0,
+              0
+            ]
+          },
+          "unmarked": {
+            "n": 0,
+            "hits": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      },
+      "quarter_event_counts": {
+        "1": {
+          "away": {
+            "FGA": 23,
+            "FGM": 9,
+            "TPM": 4,
+            "TPA": 12,
+            "FTA": 6,
+            "FTM": 5,
+            "TO": 3,
+            "ORB": 7,
+            "DRB": 7,
+            "SUB": 4,
+            "clear_path_FTA": 2
+          },
+          "home": {
+            "FGA": 17,
+            "FGM": 9,
+            "TPM": 5,
+            "TPA": 9,
+            "FTA": 9,
+            "FTM": 8,
+            "TO": 4,
+            "ORB": 2,
+            "DRB": 9,
+            "SUB": 5,
+            "clear_path_FTA": 0
+          }
+        },
+        "2": {
+          "away": {
+            "FGA": 25,
+            "FGM": 9,
+            "TPM": 7,
+            "TPA": 17,
+            "FTA": 4,
+            "FTM": 1,
+            "TO": 2,
+            "ORB": 7,
+            "DRB": 5,
+            "SUB": 6,
+            "clear_path_FTA": 0
+          },
+          "home": {
+            "FGA": 18,
+            "FGM": 10,
+            "TPM": 3,
+            "TPA": 7,
+            "FTA": 14,
+            "FTM": 12,
+            "TO": 4,
+            "ORB": 5,
+            "DRB": 13,
+            "SUB": 10,
+            "clear_path_FTA": 0
+          }
+        },
+        "3": {
+          "away": {
+            "FGA": 21,
+            "FGM": 6,
+            "TPM": 3,
+            "TPA": 12,
+            "FTA": 1,
+            "FTM": 1,
+            "TO": 3,
+            "ORB": 0,
+            "DRB": 8,
+            "SUB": 6,
+            "clear_path_FTA": 0
+          },
+          "home": {
+            "FGA": 26,
+            "FGM": 15,
+            "TPM": 7,
+            "TPA": 12,
+            "FTA": 4,
+            "FTM": 3,
+            "TO": 1,
+            "ORB": 4,
+            "DRB": 15,
+            "SUB": 7,
+            "clear_path_FTA": 0
+          }
+        },
+        "4": {
+          "away": {
+            "FGA": 18,
+            "FGM": 10,
+            "TPM": 3,
+            "TPA": 7,
+            "FTA": 11,
+            "FTM": 9,
+            "TO": 5,
+            "ORB": 5,
+            "DRB": 10,
+            "SUB": 5,
+            "clear_path_FTA": 0
+          },
+          "home": {
+            "FGA": 18,
+            "FGM": 6,
+            "TPM": 1,
+            "TPA": 9,
+            "FTA": 0,
+            "FTM": 0,
+            "TO": 8,
+            "ORB": 2,
+            "DRB": 5,
+            "SUB": 5,
+            "clear_path_FTA": 0
+          }
+        }
+      },
+      "raw_original_bytes_sha": null,
+      "official_provider_parity": false,
+      "actual_possession_ownership": false,
+      "parser_change": "include clear path free throws"
+    }
+  ],
+  "guardrails": [
+    "Original HTML bytes and original NBA CDN source response not captured",
+    "Same BRef provider as previous 27-game set, not independent provider",
+    "No five-player lineup or defended shooter assignment",
+    "Quick opponent scoring within elapsed game-clock window is adjacency, not official points-off-turnovers, causal possession or actual transition possession",
+    "Quarter=end cumulative score, FGM/3PM/FTM reconciled for accepted games only",
+    "Any failed games remain rejected and are not silently imputed",
+    "No prospective prediction or live sportsbook ROI"
+  ],
+  "promotion_authority": false,
+  "supersedes_v1_blob": "adbd59a1281ca6bdcb0b13c6eb9369efbbcd2eec",
+  "original_failure_receipt": [
+    {
+      "game": "Chicago@Cleveland",
+      "issue": "PERIOD_POINT_RECON_4_13_29_expected_14_29"
+    },
+    {
+      "game": "Milwaukee@San Antonio",
+      "issue": "PERIOD_POINT_RECON_1_25_31_expected_27_31"
+    }
+  ],
+  "parser_repair": "expand free-throw classifier to recognize clear path free throws, preserve V1 two mismatches"
+}
