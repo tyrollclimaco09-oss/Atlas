@@ -1,0 +1,745 @@
+{
+  "date": "2026-10-23",
+  "selection": "The first two listed games on each Basketball-Reference Jan 15 daily index, across 2023, 2024, 2025, 2026, predeclared before event-count evaluation. Page listing order is not asserted to be tipoff order.",
+  "population": [
+    {
+      "season": "2022-23",
+      "id": "202301150BRK",
+      "away": "OKC",
+      "home": "BRK",
+      "date": "2023-01-15"
+    },
+    {
+      "season": "2022-23",
+      "id": "202301150CHI",
+      "away": "GSW",
+      "home": "CHI",
+      "date": "2023-01-15"
+    },
+    {
+      "season": "2023-24",
+      "id": "202401150ATL",
+      "away": "SAS",
+      "home": "ATL",
+      "date": "2024-01-15"
+    },
+    {
+      "season": "2023-24",
+      "id": "202401150BRK",
+      "away": "MIA",
+      "home": "BRK",
+      "date": "2024-01-15"
+    },
+    {
+      "season": "2024-25",
+      "id": "202501150CHI",
+      "away": "ATL",
+      "home": "CHI",
+      "date": "2025-01-15"
+    },
+    {
+      "season": "2024-25",
+      "id": "202501150DEN",
+      "away": "HOU",
+      "home": "DEN",
+      "date": "2025-01-15"
+    },
+    {
+      "season": "2025-26",
+      "id": "202601150DAL",
+      "away": "UTA",
+      "home": "DAL",
+      "date": "2026-01-15"
+    },
+    {
+      "season": "2025-26",
+      "id": "202601150DET",
+      "away": "PHX",
+      "home": "DET",
+      "date": "2026-01-15"
+    }
+  ],
+  "accepted": 8,
+  "rejected": 0,
+  "errors": [],
+  "observed_games": [
+    {
+      "season": "2022-23",
+      "id": "202301150BRK",
+      "away": "OKC",
+      "home": "BRK",
+      "date": "2023-01-15",
+      "url": "https://www.basketball-reference.com/boxscores/pbp/202301150BRK.html",
+      "rows": 476,
+      "periods": 4,
+      "overtime": 0,
+      "regulation_H1": 98,
+      "regulation_H2": 116,
+      "half_delta": 18,
+      "estimated_possessions_H1": 48.64,
+      "estimated_possessions_H2": 45.76,
+      "halves": {
+        "H1": {
+          "away": {
+            "FGA": 49,
+            "FGM": 20,
+            "threePA": 16,
+            "threePM": 6,
+            "FTA": 2,
+            "FTM": 2,
+            "specialFTA": 0,
+            "TO": 5,
+            "ORB": 6,
+            "DRB": 20,
+            "subs": 10
+          },
+          "home": {
+            "FGA": 45,
+            "FGM": 19,
+            "threePA": 17,
+            "threePM": 6,
+            "FTA": 10,
+            "FTM": 6,
+            "specialFTA": 0,
+            "TO": 9,
+            "ORB": 10,
+            "DRB": 23,
+            "subs": 11
+          }
+        },
+        "H2": {
+          "away": {
+            "FGA": 41,
+            "FGM": 20,
+            "threePA": 15,
+            "threePM": 6,
+            "FTA": 24,
+            "FTM": 18,
+            "specialFTA": 0,
+            "TO": 4,
+            "ORB": 12,
+            "DRB": 20,
+            "subs": 13
+          },
+          "home": {
+            "FGA": 46,
+            "FGM": 20,
+            "threePA": 24,
+            "threePM": 6,
+            "FTA": 9,
+            "FTM": 6,
+            "specialFTA": 1,
+            "TO": 7,
+            "ORB": 9,
+            "DRB": 15,
+            "subs": 15
+          }
+        }
+      },
+      "finalScore": {
+        "away": 112,
+        "home": 102
+      },
+      "regulation_score": {
+        "away": 112,
+        "home": 102
+      },
+      "period_checks": 12,
+      "prospective_freeze": false
+    },
+    {
+      "season": "2022-23",
+      "id": "202301150CHI",
+      "away": "GSW",
+      "home": "CHI",
+      "date": "2023-01-15",
+      "url": "https://www.basketball-reference.com/boxscores/pbp/202301150CHI.html",
+      "rows": 474,
+      "periods": 4,
+      "overtime": 0,
+      "regulation_H1": 121,
+      "regulation_H2": 129,
+      "half_delta": 8,
+      "estimated_possessions_H1": 53.68,
+      "estimated_possessions_H2": 48.94,
+      "halves": {
+        "H1": {
+          "away": {
+            "FGA": 43,
+            "FGM": 21,
+            "threePA": 28,
+            "threePM": 12,
+            "FTA": 13,
+            "FTM": 8,
+            "specialFTA": 0,
+            "TO": 11,
+            "ORB": 7,
+            "DRB": 22,
+            "subs": 13
+          },
+          "home": {
+            "FGA": 51,
+            "FGM": 23,
+            "threePA": 19,
+            "threePM": 7,
+            "FTA": 6,
+            "FTM": 6,
+            "specialFTA": 2,
+            "TO": 7,
+            "ORB": 6,
+            "DRB": 20,
+            "subs": 13
+          }
+        },
+        "H2": {
+          "away": {
+            "FGA": 40,
+            "FGM": 20,
+            "threePA": 23,
+            "threePM": 9,
+            "FTA": 9,
+            "FTM": 7,
+            "specialFTA": 0,
+            "TO": 12,
+            "ORB": 6,
+            "DRB": 15,
+            "subs": 14
+          },
+          "home": {
+            "FGA": 44,
+            "FGM": 25,
+            "threePA": 20,
+            "threePM": 8,
+            "FTA": 18,
+            "FTM": 15,
+            "specialFTA": 0,
+            "TO": 3,
+            "ORB": 7,
+            "DRB": 16,
+            "subs": 12
+          }
+        }
+      },
+      "finalScore": {
+        "away": 118,
+        "home": 132
+      },
+      "regulation_score": {
+        "away": 118,
+        "home": 132
+      },
+      "period_checks": 12,
+      "prospective_freeze": false
+    },
+    {
+      "season": "2023-24",
+      "id": "202401150ATL",
+      "away": "SAS",
+      "home": "ATL",
+      "date": "2024-01-15",
+      "url": "https://www.basketball-reference.com/boxscores/pbp/202401150ATL.html",
+      "rows": 500,
+      "periods": 4,
+      "overtime": 0,
+      "regulation_H1": 103,
+      "regulation_H2": 105,
+      "half_delta": 2,
+      "estimated_possessions_H1": 53.36,
+      "estimated_possessions_H2": 51,
+      "halves": {
+        "H1": {
+          "away": {
+            "FGA": 45,
+            "FGM": 12,
+            "threePA": 22,
+            "threePM": 4,
+            "FTA": 9,
+            "FTM": 6,
+            "specialFTA": 0,
+            "TO": 11,
+            "ORB": 8,
+            "DRB": 19,
+            "subs": 14
+          },
+          "home": {
+            "FGA": 54,
+            "FGM": 28,
+            "threePA": 21,
+            "threePM": 9,
+            "FTA": 4,
+            "FTM": 4,
+            "specialFTA": 0,
+            "TO": 6,
+            "ORB": 7,
+            "DRB": 28,
+            "subs": 12
+          }
+        },
+        "H2": {
+          "away": {
+            "FGA": 50,
+            "FGM": 26,
+            "threePA": 20,
+            "threePM": 7,
+            "FTA": 8,
+            "FTM": 6,
+            "specialFTA": 0,
+            "TO": 7,
+            "ORB": 9,
+            "DRB": 22,
+            "subs": 12
+          },
+          "home": {
+            "FGA": 39,
+            "FGM": 12,
+            "threePA": 17,
+            "threePM": 4,
+            "FTA": 17,
+            "FTM": 12,
+            "specialFTA": 0,
+            "TO": 14,
+            "ORB": 10,
+            "DRB": 17,
+            "subs": 14
+          }
+        }
+      },
+      "finalScore": {
+        "away": 99,
+        "home": 109
+      },
+      "regulation_score": {
+        "away": 99,
+        "home": 109
+      },
+      "period_checks": 12,
+      "prospective_freeze": false
+    },
+    {
+      "season": "2023-24",
+      "id": "202401150BRK",
+      "away": "MIA",
+      "home": "BRK",
+      "date": "2024-01-15",
+      "url": "https://www.basketball-reference.com/boxscores/pbp/202401150BRK.html",
+      "rows": 481,
+      "periods": 5,
+      "overtime": 1,
+      "regulation_H1": 76,
+      "regulation_H2": 100,
+      "half_delta": 24,
+      "estimated_possessions_H1": 46.8,
+      "estimated_possessions_H2": 44.28,
+      "halves": {
+        "H1": {
+          "away": {
+            "FGA": 42,
+            "FGM": 11,
+            "threePA": 12,
+            "threePM": 0,
+            "FTA": 9,
+            "FTM": 9,
+            "specialFTA": 1,
+            "TO": 6,
+            "ORB": 5,
+            "DRB": 24,
+            "subs": 11
+          },
+          "home": {
+            "FGA": 49,
+            "FGM": 18,
+            "threePA": 25,
+            "threePM": 4,
+            "FTA": 6,
+            "FTM": 5,
+            "specialFTA": 1,
+            "TO": 3,
+            "ORB": 8,
+            "DRB": 26,
+            "subs": 10
+          }
+        },
+        "H2": {
+          "away": {
+            "FGA": 37,
+            "FGM": 20,
+            "threePA": 14,
+            "threePM": 6,
+            "FTA": 14,
+            "FTM": 11,
+            "specialFTA": 0,
+            "TO": 6,
+            "ORB": 7,
+            "DRB": 25,
+            "subs": 8
+          },
+          "home": {
+            "FGA": 42,
+            "FGM": 13,
+            "threePA": 27,
+            "threePM": 7,
+            "FTA": 10,
+            "FTM": 10,
+            "specialFTA": 1,
+            "TO": 4,
+            "ORB": 4,
+            "DRB": 13,
+            "subs": 16
+          }
+        }
+      },
+      "finalScore": {
+        "away": 96,
+        "home": 95
+      },
+      "regulation_score": {
+        "away": 88,
+        "home": 88
+      },
+      "period_checks": 15,
+      "prospective_freeze": false
+    },
+    {
+      "season": "2024-25",
+      "id": "202501150CHI",
+      "away": "ATL",
+      "home": "CHI",
+      "date": "2025-01-15",
+      "url": "https://www.basketball-reference.com/boxscores/pbp/202501150CHI.html",
+      "rows": 476,
+      "periods": 4,
+      "overtime": 0,
+      "regulation_H1": 108,
+      "regulation_H2": 96,
+      "half_delta": -12,
+      "estimated_possessions_H1": 54.3,
+      "estimated_possessions_H2": 47.74,
+      "halves": {
+        "H1": {
+          "away": {
+            "FGA": 54,
+            "FGM": 23,
+            "threePA": 19,
+            "threePM": 5,
+            "FTA": 12,
+            "FTM": 10,
+            "specialFTA": 0,
+            "TO": 3,
+            "ORB": 7,
+            "DRB": 18,
+            "subs": 16
+          },
+          "home": {
+            "FGA": 47,
+            "FGM": 21,
+            "threePA": 15,
+            "threePM": 2,
+            "FTA": 3,
+            "FTM": 3,
+            "specialFTA": 0,
+            "TO": 13,
+            "ORB": 8,
+            "DRB": 26,
+            "subs": 15
+          }
+        },
+        "H2": {
+          "away": {
+            "FGA": 46,
+            "FGM": 18,
+            "threePA": 24,
+            "threePM": 8,
+            "FTA": 10,
+            "FTM": 5,
+            "specialFTA": 0,
+            "TO": 8,
+            "ORB": 12,
+            "DRB": 21,
+            "subs": 10
+          },
+          "home": {
+            "FGA": 41,
+            "FGM": 18,
+            "threePA": 12,
+            "threePM": 4,
+            "FTA": 7,
+            "FTM": 7,
+            "specialFTA": 0,
+            "TO": 7,
+            "ORB": 2,
+            "DRB": 21,
+            "subs": 17
+          }
+        }
+      },
+      "finalScore": {
+        "away": 110,
+        "home": 94
+      },
+      "regulation_score": {
+        "away": 110,
+        "home": 94
+      },
+      "period_checks": 12,
+      "prospective_freeze": false
+    },
+    {
+      "season": "2024-25",
+      "id": "202501150DEN",
+      "away": "HOU",
+      "home": "DEN",
+      "date": "2025-01-15",
+      "url": "https://www.basketball-reference.com/boxscores/pbp/202501150DEN.html",
+      "rows": 422,
+      "periods": 4,
+      "overtime": 0,
+      "regulation_H1": 117,
+      "regulation_H2": 119,
+      "half_delta": 2,
+      "estimated_possessions_H1": 44.9,
+      "estimated_possessions_H2": 44.96,
+      "halves": {
+        "H1": {
+          "away": {
+            "FGA": 47,
+            "FGM": 25,
+            "threePA": 19,
+            "threePM": 10,
+            "FTA": 11,
+            "FTM": 9,
+            "specialFTA": 0,
+            "TO": 5,
+            "ORB": 10,
+            "DRB": 13,
+            "subs": 12
+          },
+          "home": {
+            "FGA": 36,
+            "FGM": 19,
+            "threePA": 12,
+            "threePM": 6,
+            "FTA": 9,
+            "FTM": 4,
+            "specialFTA": 0,
+            "TO": 12,
+            "ORB": 9,
+            "DRB": 14,
+            "subs": 10
+          }
+        },
+        "H2": {
+          "away": {
+            "FGA": 47,
+            "FGM": 24,
+            "threePA": 19,
+            "threePM": 7,
+            "FTA": 6,
+            "FTM": 4,
+            "specialFTA": 0,
+            "TO": 6,
+            "ORB": 12,
+            "DRB": 14,
+            "subs": 9
+          },
+          "home": {
+            "FGA": 39,
+            "FGM": 21,
+            "threePA": 17,
+            "threePM": 8,
+            "FTA": 12,
+            "FTM": 10,
+            "specialFTA": 0,
+            "TO": 8,
+            "ORB": 6,
+            "DRB": 13,
+            "subs": 8
+          }
+        }
+      },
+      "finalScore": {
+        "away": 128,
+        "home": 108
+      },
+      "regulation_score": {
+        "away": 128,
+        "home": 108
+      },
+      "period_checks": 12,
+      "prospective_freeze": false
+    },
+    {
+      "season": "2025-26",
+      "id": "202601150DAL",
+      "away": "UTA",
+      "home": "DAL",
+      "date": "2026-01-15",
+      "url": "https://www.basketball-reference.com/boxscores/pbp/202601150DAL.html",
+      "rows": 464,
+      "periods": 4,
+      "overtime": 0,
+      "regulation_H1": 120,
+      "regulation_H2": 146,
+      "half_delta": 26,
+      "estimated_possessions_H1": 51.22,
+      "estimated_possessions_H2": 53.52,
+      "halves": {
+        "H1": {
+          "away": {
+            "FGA": 47,
+            "FGM": 18,
+            "threePA": 19,
+            "threePM": 2,
+            "FTA": 13,
+            "FTM": 12,
+            "specialFTA": 0,
+            "TO": 8,
+            "ORB": 8,
+            "DRB": 14,
+            "subs": 10
+          },
+          "home": {
+            "FGA": 48,
+            "FGM": 27,
+            "threePA": 20,
+            "threePM": 6,
+            "FTA": 13,
+            "FTM": 10,
+            "specialFTA": 0,
+            "TO": 6,
+            "ORB": 10,
+            "DRB": 22,
+            "subs": 13
+          }
+        },
+        "H2": {
+          "away": {
+            "FGA": 49,
+            "FGM": 29,
+            "threePA": 17,
+            "threePM": 8,
+            "FTA": 10,
+            "FTM": 6,
+            "specialFTA": 0,
+            "TO": 9,
+            "ORB": 9,
+            "DRB": 18,
+            "subs": 7
+          },
+          "home": {
+            "FGA": 49,
+            "FGM": 28,
+            "threePA": 26,
+            "threePM": 13,
+            "FTA": 6,
+            "FTM": 5,
+            "specialFTA": 0,
+            "TO": 7,
+            "ORB": 5,
+            "DRB": 15,
+            "subs": 12
+          }
+        }
+      },
+      "finalScore": {
+        "away": 122,
+        "home": 144
+      },
+      "regulation_score": {
+        "away": 122,
+        "home": 144
+      },
+      "period_checks": 12,
+      "prospective_freeze": false
+    },
+    {
+      "season": "2025-26",
+      "id": "202601150DET",
+      "away": "PHX",
+      "home": "DET",
+      "date": "2026-01-15",
+      "url": "https://www.basketball-reference.com/boxscores/pbp/202601150DET.html",
+      "rows": 532,
+      "periods": 4,
+      "overtime": 0,
+      "regulation_H1": 119,
+      "regulation_H2": 94,
+      "half_delta": -25,
+      "estimated_possessions_H1": 50.64,
+      "estimated_possessions_H2": 43,
+      "halves": {
+        "H1": {
+          "away": {
+            "FGA": 42,
+            "FGM": 19,
+            "threePA": 25,
+            "threePM": 11,
+            "FTA": 21,
+            "FTM": 14,
+            "specialFTA": 4,
+            "TO": 10,
+            "ORB": 10,
+            "DRB": 17,
+            "subs": 16
+          },
+          "home": {
+            "FGA": 42,
+            "FGM": 18,
+            "threePA": 17,
+            "threePM": 6,
+            "FTA": 16,
+            "FTM": 14,
+            "specialFTA": 2,
+            "TO": 11,
+            "ORB": 10,
+            "DRB": 20,
+            "subs": 15
+          }
+        },
+        "H2": {
+          "away": {
+            "FGA": 45,
+            "FGM": 17,
+            "threePA": 21,
+            "threePM": 6,
+            "FTA": 4,
+            "FTM": 2,
+            "specialFTA": 0,
+            "TO": 4,
+            "ORB": 8,
+            "DRB": 20,
+            "subs": 25
+          },
+          "home": {
+            "FGA": 39,
+            "FGM": 20,
+            "threePA": 15,
+            "threePM": 3,
+            "FTA": 21,
+            "FTM": 9,
+            "specialFTA": 1,
+            "TO": 6,
+            "ORB": 11,
+            "DRB": 23,
+            "subs": 18
+          }
+        }
+      },
+      "finalScore": {
+        "away": 105,
+        "home": 108
+      },
+      "regulation_score": {
+        "away": 105,
+        "home": 108
+      },
+      "period_checks": 12,
+      "prospective_freeze": false
+    }
+  ],
+  "period_checks": 99,
+  "source_custody": "Postgame Basketball-Reference pages read through web-extract; raw bytes/hash absent",
+  "phase": "JANUARY_MIDSEASON_CONTROL",
+  "note": "One or more overtime games kept distinct; 4-quarter halves exclude OT. Small nonrandom sample. Not legal historical data warehouse. No betting.",
+  "model_evidence": "retrospective descriptive only",
+  "source_auth_verified": false
+}
