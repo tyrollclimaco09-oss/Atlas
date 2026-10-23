@@ -1,0 +1,27 @@
+name: ATLAS NBA Q3 feature firewall and postgame settlement separation
+on:
+  push:
+    branches: [research/odds-api-probe-2026-10-22]
+    paths:
+      - scripts/proof/nba-q3-feature-firewall.mjs
+      - scripts/proof/nba-q3-feature-firewall.test.mjs
+      - .github/workflows/atlas-nba-feature-firewall.yml
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  strict-feature-timing:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - run: node --test scripts/proof/nba-q3-feature-firewall.test.mjs
+      - run: node scripts/proof/nba-q3-feature-firewall.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: atlas-nba-q3-temporal-firewall
+          path: atlas-nba-q3-feature-firewall.json
+          retention-days: 7
+          if-no-files-found: ignore
