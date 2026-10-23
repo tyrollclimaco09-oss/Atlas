@@ -1,0 +1,926 @@
+{
+  "schema": "atlas.oracle.2025_two_dates_to_2026_half_steals_futurelabel_gate.v1",
+  "created": "2026-10-23",
+  "source_paths": [
+    {
+      "path": "docs/research/ATLAS_NBA_20250115_FULL_DATE_11GAME_PBP_RECONCILIATION_V1.json",
+      "sha": "4b75ff1c4836373318d120c0031af72d50db3e73"
+    },
+    {
+      "path": "docs/research/ATLAS_NBA_20250115_11GAME_TURNOVER_QUICKSCORE_REPLICATION_V1.json",
+      "sha": "4abd65860e22c27a95613d4b679d65390556f0c9"
+    },
+    {
+      "path": "docs/research/ATLAS_NBA_20250116_COMPLETE_DATE_FIVEGAME_PBP_V2.json",
+      "sha": "1107c284c58cc5080740975e308f821e73d9811f"
+    },
+    {
+      "path": "docs/research/ATLAS_NBA_OPENING16_PBP_PERIOD_EVENTS_20261023_V2.json",
+      "sha": "ee83617990f03b1c9a2ae2608db4431693c16973"
+    },
+    {
+      "path": "docs/research/ATLAS_NBA_16GAME_TURNOVER_SCORE_ADJACENCY_20261023_V1.json",
+      "sha": "cbef2dcffa79bd68acd055c5c18bc616ab8b92ca"
+    },
+    {
+      "path": "docs/research/ATLAS_NBA_OPENING_16_GAME_SCORE_REGIME_20261023.json",
+      "sha": "c8e0d2ee1610e4c9f45d40464d85b6d511ccef5e"
+    }
+  ],
+  "training": 16,
+  "training_dates": [
+    "2025-01-15",
+    "2025-01-16"
+  ],
+  "evaluation": 16,
+  "evaluation_dates": [
+    "2026-10-20",
+    "2026-10-21",
+    "2026-10-22"
+  ],
+  "feature_known_asof": "H1 score, FGA-based possession estimate, H1 TO/FTA, number and share of turnovers marked steal-by in H1 only. Outcome H2 from source. No future H2 labels used for fitting.",
+  "join_fix": "Jan15 source game display names varied (e.g. Atlanta@Chicago vs Atlanta@CHI), so join on exact PBP source URL; Jan16 steal labels re-read from PBP and checked H1 TO count.",
+  "method": "Ridge standardized within fold, 10 predefined feature families with ridge penalties 10/100/1000. HOLD OUT WHOLE Jan15 date then Jan16 date, choose minimum average DATE MAE, fit full 16 historical Jan 2025 games, report all Oct20–22 2026 16 games without test-based model selection. This is RETROSPECTIVE chronological trial, not point-in-time witnessed.",
+  "all_training_models": [
+    {
+      "name": "all_known",
+      "fields": [
+        "points",
+        "pos_est",
+        "TO",
+        "FTA",
+        "steal",
+        "steal_share"
+      ],
+      "lambda": 100,
+      "CV_equal_date_MAE": 15.55441624249065,
+      "CV_gameweighted_MAE": 14.353384070149712,
+      "folds": [
+        {
+          "date": "2025-01-15",
+          "n": 11,
+          "mae": 12.351663782914814
+        },
+        {
+          "date": "2025-01-16",
+          "n": 5,
+          "mae": 18.757168702066487
+        }
+      ]
+    },
+    {
+      "name": "pace_and_pressure",
+      "fields": [
+        "pos_est",
+        "TO",
+        "FTA",
+        "steal_share"
+      ],
+      "lambda": 100,
+      "CV_equal_date_MAE": 15.559355777934751,
+      "CV_gameweighted_MAE": 14.35589714548053,
+      "folds": [
+        {
+          "date": "2025-01-15",
+          "n": 11,
+          "mae": 12.350132758056827
+        },
+        {
+          "date": "2025-01-16",
+          "n": 5,
+          "mae": 18.768578797812676
+        }
+      ]
+    },
+    {
+      "name": "steal_count",
+      "fields": [
+        "steal"
+      ],
+      "lambda": 10,
+      "CV_equal_date_MAE": 15.775109479892087,
+      "CV_gameweighted_MAE": 14.626554755630846,
+      "folds": [
+        {
+          "date": "2025-01-15",
+          "n": 11,
+          "mae": 12.712296881862104
+        },
+        {
+          "date": "2025-01-16",
+          "n": 5,
+          "mae": 18.837922077922073
+        }
+      ]
+    },
+    {
+      "name": "steal_fraction",
+      "fields": [
+        "steal_share"
+      ],
+      "lambda": 10,
+      "CV_equal_date_MAE": 15.846717551664412,
+      "CV_gameweighted_MAE": 14.677336004744634,
+      "folds": [
+        {
+          "date": "2025-01-15",
+          "n": 11,
+          "mae": 12.728366759878334
+        },
+        {
+          "date": "2025-01-16",
+          "n": 5,
+          "mae": 18.96506834345049
+        }
+      ]
+    },
+    {
+      "name": "all_known",
+      "fields": [
+        "points",
+        "pos_est",
+        "TO",
+        "FTA",
+        "steal",
+        "steal_share"
+      ],
+      "lambda": 1000,
+      "CV_equal_date_MAE": 15.884939669468178,
+      "CV_gameweighted_MAE": 14.73957817967517,
+      "folds": [
+        {
+          "date": "2025-01-15",
+          "n": 11,
+          "mae": 12.830642363353496
+        },
+        {
+          "date": "2025-01-16",
+          "n": 5,
+          "mae": 18.93923697558286
+        }
+      ]
+    },
+    {
+      "name": "pace_and_pressure",
+      "fields": [
+        "pos_est",
+        "TO",
+        "FTA",
+        "steal_share"
+      ],
+      "lambda": 1000,
+      "CV_equal_date_MAE": 15.88634441635375,
+      "CV_gameweighted_MAE": 14.740638495851416,
+      "folds": [
+        {
+          "date": "2025-01-15",
+          "n": 11,
+          "mae": 12.831128628347523
+        },
+        {
+          "date": "2025-01-16",
+          "n": 5,
+          "mae": 18.94156020435998
+        }
+      ]
+    },
+    {
+      "name": "steal_count",
+      "fields": [
+        "steal"
+      ],
+      "lambda": 100,
+      "CV_equal_date_MAE": 15.902622820448908,
+      "CV_gameweighted_MAE": 14.763661660672534,
+      "folds": [
+        {
+          "date": "2025-01-15",
+          "n": 11,
+          "mae": 12.865393061045241
+        },
+        {
+          "date": "2025-01-16",
+          "n": 5,
+          "mae": 18.939852579852577
+        }
+      ]
+    },
+    {
+      "name": "steal_fraction",
+      "fields": [
+        "steal_share"
+      ],
+      "lambda": 100,
+      "CV_equal_date_MAE": 15.915798018320515,
+      "CV_gameweighted_MAE": 14.772757045664585,
+      "folds": [
+        {
+          "date": "2025-01-15",
+          "n": 11,
+          "mae": 12.8676887579047
+        },
+        {
+          "date": "2025-01-16",
+          "n": 5,
+          "mae": 18.963907278736333
+        }
+      ]
+    },
+    {
+      "name": "score_and_steals",
+      "fields": [
+        "points",
+        "steal_share"
+      ],
+      "lambda": 10,
+      "CV_equal_date_MAE": 15.917350126350524,
+      "CV_gameweighted_MAE": 14.773254279690963,
+      "folds": [
+        {
+          "date": "2025-01-15",
+          "n": 11,
+          "mae": 12.866427868591694
+        },
+        {
+          "date": "2025-01-16",
+          "n": 5,
+          "mae": 18.968272384109355
+        }
+      ]
+    },
+    {
+      "name": "steal_count",
+      "fields": [
+        "steal"
+      ],
+      "lambda": 1000,
+      "CV_equal_date_MAE": 15.924634162357346,
+      "CV_gameweighted_MAE": 14.785987565364362,
+      "folds": [
+        {
+          "date": "2025-01-15",
+          "n": 11,
+          "mae": 12.888243237042722
+        },
+        {
+          "date": "2025-01-16",
+          "n": 5,
+          "mae": 18.96102508767197
+        }
+      ]
+    },
+    {
+      "name": "steal_fraction",
+      "fields": [
+        "steal_share"
+      ],
+      "lambda": 1000,
+      "CV_equal_date_MAE": 15.926074596996264,
+      "CV_gameweighted_MAE": 14.786977780360791,
+      "folds": [
+        {
+          "date": "2025-01-15",
+          "n": 11,
+          "mae": 12.888483085968335
+        },
+        {
+          "date": "2025-01-16",
+          "n": 5,
+          "mae": 18.963666108024192
+        }
+      ]
+    },
+    {
+      "name": "score_and_steals",
+      "fields": [
+        "points",
+        "steal_share"
+      ],
+      "lambda": 100,
+      "CV_equal_date_MAE": 15.926245525060654,
+      "CV_gameweighted_MAE": 14.786734910629509,
+      "folds": [
+        {
+          "date": "2025-01-15",
+          "n": 11,
+          "mae": 12.88755055324427
+        },
+        {
+          "date": "2025-01-16",
+          "n": 5,
+          "mae": 18.964940496877038
+        }
+      ]
+    },
+    {
+      "name": "score_and_steals",
+      "fields": [
+        "points",
+        "steal_share"
+      ],
+      "lambda": 1000,
+      "CV_equal_date_MAE": 15.927174028902183,
+      "CV_gameweighted_MAE": 14.788443289609578,
+      "folds": [
+        {
+          "date": "2025-01-15",
+          "n": 11,
+          "mae": 12.890558724121904
+        },
+        {
+          "date": "2025-01-16",
+          "n": 5,
+          "mae": 18.96378933368246
+        }
+      ]
+    },
+    {
+      "name": "prior_only",
+      "fields": [],
+      "lambda": 0,
+      "CV_equal_date_MAE": 15.927272727272728,
+      "CV_gameweighted_MAE": 14.788636363636366,
+      "folds": [
+        {
+          "date": "2025-01-15",
+          "n": 11,
+          "mae": 12.890909090909094
+        },
+        {
+          "date": "2025-01-16",
+          "n": 5,
+          "mae": 18.96363636363636
+        }
+      ]
+    },
+    {
+      "name": "turnovers_only",
+      "fields": [
+        "TO"
+      ],
+      "lambda": 1000,
+      "CV_equal_date_MAE": 15.927934900220627,
+      "CV_gameweighted_MAE": 14.789597367934022,
+      "folds": [
+        {
+          "date": "2025-01-15",
+          "n": 11,
+          "mae": 12.892368147456347
+        },
+        {
+          "date": "2025-01-16",
+          "n": 5,
+          "mae": 18.963501652984906
+        }
+      ]
+    },
+    {
+      "name": "pace_and_steals",
+      "fields": [
+        "pos_est",
+        "steal_share"
+      ],
+      "lambda": 1000,
+      "CV_equal_date_MAE": 15.928235417657051,
+      "CV_gameweighted_MAE": 14.791235365714364,
+      "folds": [
+        {
+          "date": "2025-01-15",
+          "n": 11,
+          "mae": 12.89623527914322
+        },
+        {
+          "date": "2025-01-16",
+          "n": 5,
+          "mae": 18.960235556170883
+        }
+      ]
+    },
+    {
+      "name": "score_only",
+      "fields": [
+        "points"
+      ],
+      "lambda": 1000,
+      "CV_equal_date_MAE": 15.928372781032257,
+      "CV_gameweighted_MAE": 14.790102274606678,
+      "folds": [
+        {
+          "date": "2025-01-15",
+          "n": 11,
+          "mae": 12.892984763897381
+        },
+        {
+          "date": "2025-01-16",
+          "n": 5,
+          "mae": 18.963760798167133
+        }
+      ]
+    },
+    {
+      "name": "pace_only",
+      "fields": [
+        "pos_est"
+      ],
+      "lambda": 1000,
+      "CV_equal_date_MAE": 15.929437146398083,
+      "CV_gameweighted_MAE": 14.792889587206437,
+      "folds": [
+        {
+          "date": "2025-01-15",
+          "n": 11,
+          "mae": 12.898643655220356
+        },
+        {
+          "date": "2025-01-16",
+          "n": 5,
+          "mae": 18.960230637575812
+        }
+      ]
+    },
+    {
+      "name": "turnovers_only",
+      "fields": [
+        "TO"
+      ],
+      "lambda": 100,
+      "CV_equal_date_MAE": 15.933641875446202,
+      "CV_gameweighted_MAE": 14.797854052066175,
+      "folds": [
+        {
+          "date": "2025-01-15",
+          "n": 11,
+          "mae": 12.904874346432793
+        },
+        {
+          "date": "2025-01-16",
+          "n": 5,
+          "mae": 18.96240940445961
+        }
+      ]
+    },
+    {
+      "name": "pace_and_steals",
+      "fields": [
+        "pos_est",
+        "steal_share"
+      ],
+      "lambda": 100,
+      "CV_equal_date_MAE": 15.93708651571902,
+      "CV_gameweighted_MAE": 14.814434713468533,
+      "folds": [
+        {
+          "date": "2025-01-15",
+          "n": 11,
+          "mae": 12.943348376384387
+        },
+        {
+          "date": "2025-01-16",
+          "n": 5,
+          "mae": 18.93082465505365
+        }
+      ]
+    },
+    {
+      "name": "score_only",
+      "fields": [
+        "points"
+      ],
+      "lambda": 100,
+      "CV_equal_date_MAE": 15.937772986724575,
+      "CV_gameweighted_MAE": 14.802649209198151,
+      "folds": [
+        {
+          "date": "2025-01-15",
+          "n": 11,
+          "mae": 12.910776246654114
+        },
+        {
+          "date": "2025-01-16",
+          "n": 5,
+          "mae": 18.964769726795033
+        }
+      ]
+    },
+    {
+      "name": "pace_only",
+      "fields": [
+        "pos_est"
+      ],
+      "lambda": 100,
+      "CV_equal_date_MAE": 15.948778281617889,
+      "CV_gameweighted_MAE": 14.829838896290731,
+      "folds": [
+        {
+          "date": "2025-01-15",
+          "n": 11,
+          "mae": 12.964939920745472
+        },
+        {
+          "date": "2025-01-16",
+          "n": 5,
+          "mae": 18.932616642490306
+        }
+      ]
+    },
+    {
+      "name": "score_only",
+      "fields": [
+        "points"
+      ],
+      "lambda": 10,
+      "CV_equal_date_MAE": 15.999803089299661,
+      "CV_gameweighted_MAE": 14.886119123733874,
+      "folds": [
+        {
+          "date": "2025-01-15",
+          "n": 11,
+          "mae": 13.029979181124226
+        },
+        {
+          "date": "2025-01-16",
+          "n": 5,
+          "mae": 18.969626997475096
+        }
+      ]
+    },
+    {
+      "name": "turnovers_only",
+      "fields": [
+        "TO"
+      ],
+      "lambda": 10,
+      "CV_equal_date_MAE": 16.04114929384043,
+      "CV_gameweighted_MAE": 14.947648651035157,
+      "folds": [
+        {
+          "date": "2025-01-15",
+          "n": 11,
+          "mae": 13.125147579693037
+        },
+        {
+          "date": "2025-01-16",
+          "n": 5,
+          "mae": 18.957151007987825
+        }
+      ]
+    },
+    {
+      "name": "all_known",
+      "fields": [
+        "points",
+        "pos_est",
+        "TO",
+        "FTA",
+        "steal",
+        "steal_share"
+      ],
+      "lambda": 10,
+      "CV_equal_date_MAE": 16.330270972640626,
+      "CV_gameweighted_MAE": 15.679302528162026,
+      "folds": [
+        {
+          "date": "2025-01-15",
+          "n": 11,
+          "mae": 14.594355120697692
+        },
+        {
+          "date": "2025-01-16",
+          "n": 5,
+          "mae": 18.06618682458356
+        }
+      ]
+    },
+    {
+      "name": "pace_and_pressure",
+      "fields": [
+        "pos_est",
+        "TO",
+        "FTA",
+        "steal_share"
+      ],
+      "lambda": 10,
+      "CV_equal_date_MAE": 16.35179397018034,
+      "CV_gameweighted_MAE": 15.700879666845093,
+      "folds": [
+        {
+          "date": "2025-01-15",
+          "n": 11,
+          "mae": 14.616022494619678
+        },
+        {
+          "date": "2025-01-16",
+          "n": 5,
+          "mae": 18.087565445741003
+        }
+      ]
+    },
+    {
+      "name": "pace_and_steals",
+      "fields": [
+        "pos_est",
+        "steal_share"
+      ],
+      "lambda": 10,
+      "CV_equal_date_MAE": 16.39906688478999,
+      "CV_gameweighted_MAE": 15.520143532419278,
+      "folds": [
+        {
+          "date": "2025-01-15",
+          "n": 11,
+          "mae": 14.05527127846809
+        },
+        {
+          "date": "2025-01-16",
+          "n": 5,
+          "mae": 18.74286249111189
+        }
+      ]
+    },
+    {
+      "name": "pace_only",
+      "fields": [
+        "pos_est"
+      ],
+      "lambda": 10,
+      "CV_equal_date_MAE": 16.51265444172509,
+      "CV_gameweighted_MAE": 15.655021739708577,
+      "folds": [
+        {
+          "date": "2025-01-15",
+          "n": 11,
+          "mae": 14.225633903014387
+        },
+        {
+          "date": "2025-01-16",
+          "n": 5,
+          "mae": 18.799674980435793
+        }
+      ]
+    }
+  ],
+  "selection": {
+    "name": "all_known",
+    "lambda": 100,
+    "fields": [
+      "points",
+      "pos_est",
+      "TO",
+      "FTA",
+      "steal",
+      "steal_share"
+    ],
+    "CV_equal_date_MAE": 15.55441624249065
+  },
+  "later_metrics": {
+    "candidate": 10.960705176995765,
+    "prior": 10.7890625,
+    "latest": 11.8125
+  },
+  "by_day": [
+    {
+      "date": "2026-10-20",
+      "n": 3,
+      "MAE": {
+        "candidate": 12.68589313156805,
+        "prior": 13.479166666666666,
+        "latest": 16
+      }
+    },
+    {
+      "date": "2026-10-21",
+      "n": 11,
+      "MAE": {
+        "candidate": 9.506811714237028,
+        "prior": 8.846590909090908,
+        "latest": 11.727272727272727
+      }
+    },
+    {
+      "date": "2026-10-22",
+      "n": 2,
+      "MAE": {
+        "candidate": 16.369337290310384,
+        "prior": 17.4375,
+        "latest": 6
+      }
+    }
+  ],
+  "per_game": [
+    {
+      "game": "BOS@DET",
+      "date": "2026-10-20",
+      "actual": 131,
+      "predicted": 113.78271171780945,
+      "prior": 114.4375,
+      "latest_rate": 103,
+      "abs_error": {
+        "candidate": 17.21728828219055,
+        "prior": 16.5625,
+        "latest": 28
+      }
+    },
+    {
+      "game": "PHI@NYK",
+      "date": "2026-10-20",
+      "actual": 94,
+      "predicted": 111.41541138405208,
+      "prior": 114.4375,
+      "latest_rate": 112,
+      "abs_error": {
+        "candidate": 17.415411384052078,
+        "prior": 20.4375,
+        "latest": 18
+      }
+    },
+    {
+      "game": "OKC@SAS",
+      "date": "2026-10-20",
+      "actual": 111,
+      "predicted": 114.42497972846152,
+      "prior": 114.4375,
+      "latest_rate": 109,
+      "abs_error": {
+        "candidate": 3.4249797284615227,
+        "prior": 3.4375,
+        "latest": 2
+      }
+    },
+    {
+      "game": "ATL@ORL",
+      "date": "2026-10-21",
+      "actual": 123,
+      "predicted": 110.02521945401942,
+      "prior": 114.4375,
+      "latest_rate": 134,
+      "abs_error": {
+        "candidate": 12.974780545980579,
+        "prior": 8.5625,
+        "latest": 11
+      }
+    },
+    {
+      "game": "MIL@WAS",
+      "date": "2026-10-21",
+      "actual": 137,
+      "predicted": 113.2705851659904,
+      "prior": 114.4375,
+      "latest_rate": 107,
+      "abs_error": {
+        "candidate": 23.729414834009603,
+        "prior": 22.5625,
+        "latest": 30
+      }
+    },
+    {
+      "game": "MIN@MIA",
+      "date": "2026-10-21",
+      "actual": 109,
+      "predicted": 113.71460654374788,
+      "prior": 114.4375,
+      "latest_rate": 128,
+      "abs_error": {
+        "candidate": 4.714606543747877,
+        "prior": 5.4375,
+        "latest": 19
+      }
+    },
+    {
+      "game": "CHA@BKN",
+      "date": "2026-10-21",
+      "actual": 111,
+      "predicted": 116.40674252282096,
+      "prior": 114.4375,
+      "latest_rate": 102,
+      "abs_error": {
+        "candidate": 5.406742522820963,
+        "prior": 3.4375,
+        "latest": 9
+      }
+    },
+    {
+      "game": "CHI@TOR",
+      "date": "2026-10-21",
+      "actual": 114,
+      "predicted": 111.26733400038206,
+      "prior": 114.4375,
+      "latest_rate": 113,
+      "abs_error": {
+        "candidate": 2.732665999617936,
+        "prior": 0.4375,
+        "latest": 1
+      }
+    },
+    {
+      "game": "UTA@MEM",
+      "date": "2026-10-21",
+      "actual": 111,
+      "predicted": 112.53160277569515,
+      "prior": 114.4375,
+      "latest_rate": 115,
+      "abs_error": {
+        "candidate": 1.5316027756951485,
+        "prior": 3.4375,
+        "latest": 4
+      }
+    },
+    {
+      "game": "IND@NOP",
+      "date": "2026-10-21",
+      "actual": 121,
+      "predicted": 111.14795338137472,
+      "prior": 114.4375,
+      "latest_rate": 122,
+      "abs_error": {
+        "candidate": 9.85204661862528,
+        "prior": 6.5625,
+        "latest": 1
+      }
+    },
+    {
+      "game": "DAL@HOU",
+      "date": "2026-10-21",
+      "actual": 130,
+      "predicted": 112.37873876127217,
+      "prior": 114.4375,
+      "latest_rate": 108,
+      "abs_error": {
+        "candidate": 17.621261238727826,
+        "prior": 15.5625,
+        "latest": 22
+      }
+    },
+    {
+      "game": "GSW@LAL",
+      "date": "2026-10-21",
+      "actual": 114,
+      "predicted": 113.67386303990922,
+      "prior": 114.4375,
+      "latest_rate": 118,
+      "abs_error": {
+        "candidate": 0.3261369600907784,
+        "prior": 0.4375,
+        "latest": 4
+      }
+    },
+    {
+      "game": "PHX@POR",
+      "date": "2026-10-21",
+      "actual": 96,
+      "predicted": 112.2639463571658,
+      "prior": 114.4375,
+      "latest_rate": 111,
+      "abs_error": {
+        "candidate": 16.263946357165807,
+        "prior": 18.4375,
+        "latest": 15
+      }
+    },
+    {
+      "game": "SAC@LAC",
+      "date": "2026-10-21",
+      "actual": 102,
+      "predicted": 111.4217244601255,
+      "prior": 114.4375,
+      "latest_rate": 115,
+      "abs_error": {
+        "candidate": 9.421724460125503,
+        "prior": 12.4375,
+        "latest": 13
+      }
+    },
+    {
+      "game": "CLE@PHI",
+      "date": "2026-10-22",
+      "actual": 106,
+      "predicted": 111.56412738440903,
+      "prior": 114.4375,
+      "latest_rate": 114,
+      "abs_error": {
+        "candidate": 5.5641273844090335,
+        "prior": 8.4375,
+        "latest": 8
+      }
+    },
+    {
+      "game": "DEN@OKC",
+      "date": "2026-10-22",
+      "actual": 88,
+      "predicted": 115.17454719621173,
+      "prior": 114.4375,
+      "latest_rate": 92,
+      "abs_error": {
+        "candidate": 27.174547196211734,
+        "prior": 26.4375,
+        "latest": 4
+      }
+    }
+  ],
+  "limitations": [
+    "Only TWO independent training dates Jan2025, CV underpowered; a five-game fold can be unrepresentative",
+    "Postgame BRef source, not actual witnessed halftime data at cutoff",
+    "No true possession ownership/five-man lineup and no official raw CDN cross-provider parity",
+    "Do not promote any model based on lucky 2026 outcome sample nor declare EV without line/juice"
+  ],
+  "production_authority": false
+}
