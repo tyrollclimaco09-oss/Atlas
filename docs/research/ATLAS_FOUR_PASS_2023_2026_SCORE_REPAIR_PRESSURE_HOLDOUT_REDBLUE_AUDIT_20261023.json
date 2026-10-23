@@ -1,0 +1,287 @@
+{
+  "schema": "atlas.gamesense.2023_2026_four_pass_adversarial_gate_v1",
+  "archived_date": "2026-10-23",
+  "source_blobs": [
+    {
+      "path": "docs/research/ATLAS_ORACLE_55GAME_YEAR_HELDOUT_PRESSURE_MODEL_TOURNAMENT_20261023_V1.json",
+      "sha": "89d05dde826d71cc317dda85c34049d41b3a364d"
+    },
+    {
+      "path": "docs/research/ATLAS_GAME_SENSE_55GAME_HALFTIME_FEATURE_MART_20261023_V1.json",
+      "sha": "f6f7b8df574e683fbb2100dc2dbae68fff9682c9"
+    },
+    {
+      "path": "docs/research/ATLAS_GAMESENSE_55GAME_SEVEN_DATE_TURNOVER_REPLICATION_V1.json",
+      "sha": "ed801f13561479e19369b800d9776cc657b2fb6a"
+    },
+    {
+      "path": "docs/research/ATLAS_NBA_JAN15_2023_2024_2026_FULL28_PBP_AND_TURNOVER_QUICKSCORE_V1.json",
+      "sha": "adbd59a1281ca6bdcb0b13c6eb9369efbbcd2eec"
+    },
+    {
+      "path": "docs/research/ATLAS_NBA_JAN15_2023_2024_2026_FULL28_PBP_AND_TURNOVER_QUICKSCORE_V2.json",
+      "sha": "4c7b851c74a610c2693663148990904da34e1501"
+    }
+  ],
+  "p1": "Complete 2023 Jan15 eight games + 2024 Jan15 eleven games + 2026 Jan15 nine games = 28 additional boxscore-index date-complete games; original 26/28 PBP parser accepted, two failed clear-path FT; repaired V2 accepts 28/28 with original rejection evidence preserved.",
+  "p2": {
+    "cohort_games": 55,
+    "cohort_dates": 7,
+    "aggregate": {
+      "games": 55,
+      "steal_n": 872,
+      "steal_quick15": 476,
+      "steal_rate": 0.5458715596330275,
+      "unmarked_n": 708,
+      "unmarked_quick15": 208,
+      "unmarked_rate": 0.2937853107344633,
+      "gap": 0.2520862488985642
+    },
+    "per_date": [
+      {
+        "date": "2023-01-15",
+        "games": 8,
+        "gap": 0.3069734004313444
+      },
+      {
+        "date": "2024-01-15",
+        "games": 11,
+        "gap": 0.22865988500663426
+      },
+      {
+        "date": "2025-01-15",
+        "games": 11,
+        "gap": 0.3596443965517241
+      },
+      {
+        "date": "2026-01-15",
+        "games": 9,
+        "gap": 0.17924528301886794
+      },
+      {
+        "date": "2026-10-20",
+        "games": 3,
+        "gap": 0.16747967479674797
+      },
+      {
+        "date": "2026-10-21",
+        "games": 11,
+        "gap": 0.2217905405405406
+      },
+      {
+        "date": "2026-10-22",
+        "games": 2,
+        "gap": 0.30536130536130535
+      }
+    ],
+    "negative_games": 6
+  },
+  "p3": {
+    "model_selection": "19 candidates, trained on 2023+2024 (19 games), chose using 2025 (11), refit 2023-25 (30), evaluated once on 2026 25 (4 dates), retrospective after games",
+    "selected": "possession_ridge",
+    "lambda": 20,
+    "validation_mae": 8.909555,
+    "holdout_mae": 11.2095,
+    "prior_mae": 11.396,
+    "latest_window_mae": 12.2
+  },
+  "p4": {
+    "forecast_paired": {
+      "games": 25,
+      "model_better": 15,
+      "prior_better": 10,
+      "ties": 0,
+      "mean_abs_error_improvement": 0.18650015999999822,
+      "by_date": [
+        {
+          "date": "2026-01-15",
+          "n": 9,
+          "model_mae": 12.662940555555558,
+          "prior_mae": 13.144444444444444,
+          "gain": 0.48150388888888546,
+          "wins": 7,
+          "losses": 2
+        },
+        {
+          "date": "2026-10-20",
+          "n": 3,
+          "model_mae": 12.220138,
+          "prior_mae": 12.766666666666666,
+          "gain": 0.5465286666666648,
+          "wins": 3,
+          "losses": 0
+        },
+        {
+          "date": "2026-10-21",
+          "n": 11,
+          "model_mae": 9.050583272727273,
+          "prior_mae": 8.881818181818183,
+          "gain": -0.16876509090909184,
+          "wins": 4,
+          "losses": 7
+        },
+        {
+          "date": "2026-10-22",
+          "n": 2,
+          "model_mae": 15.027100499999996,
+          "prior_mae": 15.299999999999997,
+          "gain": 0.2728995000000012,
+          "wins": 1,
+          "losses": 1
+        }
+      ],
+      "day_cluster_signflip_two_sided_p_exploratory": 0.5,
+      "worst_models": [
+        {
+          "game": "ATL@ORL",
+          "date": "2026-10-21",
+          "actual": 123,
+          "model_point": 110.896956,
+          "prior_point": 112.3,
+          "model_error": 12.103043999999997,
+          "prior_error": 10.700000000000003,
+          "gain": -1.4030439999999942
+        },
+        {
+          "game": "Milwaukee@San Antonio",
+          "date": "2026-01-15",
+          "actual": 101,
+          "model_point": 113.558052,
+          "prior_point": 112.3,
+          "model_error": 12.558052000000004,
+          "prior_error": 11.299999999999997,
+          "gain": -1.2580520000000064
+        },
+        {
+          "game": "IND@NOP",
+          "date": "2026-10-21",
+          "actual": 121,
+          "model_point": 111.166351,
+          "prior_point": 112.3,
+          "model_error": 9.833648999999994,
+          "prior_error": 8.700000000000003,
+          "gain": -1.1336489999999912
+        },
+        {
+          "game": "CHI@TOR",
+          "date": "2026-10-21",
+          "actual": 114,
+          "model_point": 111.337187,
+          "prior_point": 112.3,
+          "model_error": 2.662813,
+          "prior_error": 1.7000000000000028,
+          "gain": -0.962812999999997
+        },
+        {
+          "game": "DEN@OKC",
+          "date": "2026-10-22",
+          "actual": 88,
+          "model_point": 113.203239,
+          "prior_point": 112.3,
+          "model_error": 25.203238999999996,
+          "prior_error": 24.299999999999997,
+          "gain": -0.9032389999999992
+        }
+      ],
+      "best_models": [
+        {
+          "game": "New York@Golden State",
+          "date": "2026-01-15",
+          "actual": 118,
+          "model_point": 114.477937,
+          "prior_point": 112.3,
+          "model_error": 3.522063000000003,
+          "prior_error": 5.700000000000003,
+          "gain": 2.177937
+        },
+        {
+          "game": "Boston@Miami",
+          "date": "2026-01-15",
+          "actual": 115,
+          "model_point": 114.169119,
+          "prior_point": 112.3,
+          "model_error": 0.8308810000000051,
+          "prior_error": 2.700000000000003,
+          "gain": 1.8691189999999978
+        },
+        {
+          "game": "MIN@MIA",
+          "date": "2026-10-21",
+          "actual": 109,
+          "model_point": 110.476437,
+          "prior_point": 112.3,
+          "model_error": 1.4764370000000042,
+          "prior_error": 3.299999999999997,
+          "gain": 1.823562999999993
+        },
+        {
+          "game": "CLE@PHI",
+          "date": "2026-10-22",
+          "actual": 106,
+          "model_point": 110.850962,
+          "prior_point": 112.3,
+          "model_error": 4.8509619999999956,
+          "prior_error": 6.299999999999997,
+          "gain": 1.4490380000000016
+        },
+        {
+          "game": "UTA@MEM",
+          "date": "2026-10-21",
+          "actual": 111,
+          "model_point": 111.218916,
+          "prior_point": 112.3,
+          "model_error": 0.218915999999993,
+          "prior_error": 1.2999999999999972,
+          "gain": 1.0810840000000042
+        }
+      ]
+    },
+    "source_issues": {
+      "source_family": "All historical extracted Basketball Reference postgame; raw NBA CDN original bytes not owned; provider-independent validation unresolved",
+      "true_possessions": false,
+      "defender_matchups": false,
+      "injury_known_time": false,
+      "actual_market_lines": false,
+      "signed_asof_forecasts": false
+    },
+    "leakage_review": {
+      "h1_features_source": "H1 only, but all records extracted after full games were played; not a future-signed receipt",
+      "no_h2_in_feature_mart": true,
+      "train_before_validation_before_test": true,
+      "selected_by_validation_2025_only": true,
+      "heldout_2026_used_to_select": false
+    },
+    "parser_fix": {
+      "v1_rejections": [
+        {
+          "game": "Chicago@Cleveland",
+          "issue": "PERIOD_POINT_RECON_4_13_29_expected_14_29"
+        },
+        {
+          "game": "Milwaukee@San Antonio",
+          "issue": "PERIOD_POINT_RECON_1_25_31_expected_27_31"
+        }
+      ],
+      "retained_in_v2": [
+        {
+          "game": "Chicago@Cleveland",
+          "issue": "PERIOD_POINT_RECON_4_13_29_expected_14_29"
+        },
+        {
+          "game": "Milwaukee@San Antonio",
+          "issue": "PERIOD_POINT_RECON_1_25_31_expected_27_31"
+        }
+      ],
+      "fix_description": "expand free-throw classifier to recognize clear path free throws, preserve V1 two mismatches"
+    },
+    "decision": "No activation. Source/score PBP 28-gate PASS; source raw NBA/lineup BLOCKED; event timing replication DESCRIPTIVE; selected forecast pressure model WATCH research only, no statistically validated incremental skill, no +EV or DraftKings quote."
+  },
+  "release_conditions": [
+    "Independently verifiable source bytes and event order/lineup five-man preservation",
+    "More whole-day earlier seasons, cross-season phase-aligned holdouts, distinct positive and negative controls",
+    "True prospective halftime freeze receipts and official odds later, not retrospective reconstruction",
+    "Calibrated forecast distributions, game/date-cluster uncertainty, no test-dependent selection",
+    "Human Final Gate and Sentinel before any priced ticket"
+  ],
+  "deployed": false
+}
