@@ -5,6 +5,8 @@ on:
     paths:
       - scripts/proof/nba-q1-q4-final-settlement.mjs
       - scripts/proof/nba-q1-q4-final-settlement.test.mjs
+      - scripts/proof/nba-q3-operator-one-shot.mjs
+      - scripts/proof/nba-q3-operator-one-shot.test.mjs
       - .github/workflows/atlas-nba-q1-q4-final-settlement.yml
 permissions: {contents: read}
 jobs:
@@ -16,4 +18,4 @@ jobs:
         with: {persist-credentials: false}
       - uses: actions/setup-node@v4
         with: {node-version: '22'}
-      - run: node --test scripts/proof/nba-q1-q4-final-settlement.test.mjs
+      - run: node --test scripts/proof/nba-q1-q4-final-settlement.test.mjs scripts/proof/nba-q3-operator-one-shot.test.mjs

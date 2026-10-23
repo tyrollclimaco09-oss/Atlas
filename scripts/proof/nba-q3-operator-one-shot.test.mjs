@@ -24,3 +24,9 @@ test('early Q1-only capture is a distinct explicitly authorized research outcome
  assert.equal(validate(x),'q1_capture');
  assert.throws(()=>validate({...x,intent:'CAPTURE_ONLY_IF_STRICT_LIVE_Q3_CLOCK_ZERO'}),/INVALID_Q1_CAPTURE_INTENT/);
 });
+
+test('final-only settlement uses a separate explicit operator intent, not capture',()=>{
+ const p={...c,mode:'settle_q1',intent:'SETTLE_Q1_SHADOW_ONLY_AFTER_OFFICIAL_FINAL'};
+ assert.equal(validate(p),'settle_q1');
+ assert.throws(()=>validate({...p,intent:'CAPTURE_Q1_ONLY_FOR_FUTURE_Q4_BEFORE_Q4'}),/INVALID_SETTLEMENT_INTENT/);
+});
