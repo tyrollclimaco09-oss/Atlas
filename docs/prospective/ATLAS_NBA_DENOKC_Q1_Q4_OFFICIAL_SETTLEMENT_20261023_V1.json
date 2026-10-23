@@ -1,0 +1,53 @@
+{
+  "schema": "atlas.nba.q1_to_q4.outcome_shadow_receipt.v1",
+  "freeze_sha256": "17b0e41790953c386669316b13956681c2c64cac3d8da747541a0114bab4702c",
+  "freeze_github_run_id": "39891028392",
+  "freeze_created_utc": "2026-10-23T02:42:35.059Z",
+  "game_id": "0022600007",
+  "frozen_point_reference": 23,
+  "actual_q4_selected_fga": 9,
+  "absolute_error": 14,
+  "per_player": [
+    {
+      "player_id": "203999",
+      "team": "DEN",
+      "frozen_q1_fga": 8,
+      "official_q4_fga": 1
+    },
+    {
+      "player_id": "1627750",
+      "team": "DEN",
+      "frozen_q1_fga": 6,
+      "official_q4_fga": 1
+    },
+    {
+      "player_id": "1631114",
+      "team": "OKC",
+      "frozen_q1_fga": 5,
+      "official_q4_fga": 4
+    },
+    {
+      "player_id": "1628392",
+      "team": "OKC",
+      "frozen_q1_fga": 4,
+      "official_q4_fga": 3
+    }
+  ],
+  "comparability": "SAME_Q1_SELECTED_PLAYERS_AND_POSTGAME_OFFICIAL_Q4_ONLY",
+  "no_price_or_market_ev_evaluated": true,
+  "model_validated": false,
+  "calibration_eligible": false,
+  "betting_authority": false,
+  "original_live_freeze_unchanged": true,
+  "settlement_observed_utc": "2026-10-23T05:39:08.346Z",
+  "source_pbp_sha256": "7964cec9f5725a37cde70ec6fff1f4cf79d6d20b080cbc0905624d37a9d8d66e",
+  "source_box_sha256": "901a19b719a8f9bf922e4ae3b5ed4cf77b547c7554e8b44124e0d162d089a237",
+  "separate_from_original_packet": true,
+  "production_authority": false,
+  "github_settlement_run_id": "39906926778",
+  "github_settlement_job_id": "120260910323",
+  "github_settlement_commit": "7d93d7592228e3cb99de97ad9ee325e0addccf21",
+  "archival_lineage": "VERBATIM_GITHUB_ACTIONS_SETTLEMENT_LOG_PLUS_GITHUB_JOB_METADATA",
+  "other_source_player_q4_validation": "NOT_YET_INDEPENDENTLY_CONFIRMED",
+  "is_separate_after_outcome_archive": true
+}
