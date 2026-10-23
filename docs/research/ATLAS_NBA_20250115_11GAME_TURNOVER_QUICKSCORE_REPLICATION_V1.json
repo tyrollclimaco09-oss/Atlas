@@ -1,0 +1,749 @@
+{
+  "schema": "atlas.nba.gamesense.turnover_score_adjacency_2025_jan15.replication.v1",
+  "research_date": "2026-10-23",
+  "index_score_sha": "a7ab4b3d5646899f91c23a1184ba09da3c464543",
+  "previous_event_counts_sha": "4b75ff1c4836373318d120c0031af72d50db3e73",
+  "method": "Identical regulation Q1-Q4 clock-adjacency test as Oct2026 cohort: after steal-labelled versus unmarked turnover, first opponent score within 10/15/24 game-clock seconds before opponent turnover or original-turnover-side score; includes FT; NOT official points off turnovers or exact possessions. OT events parsed and verified separately but excluded from regulator comparison.",
+  "windows_seconds": [
+    10,
+    15,
+    24
+  ],
+  "requested": 11,
+  "accepted": 11,
+  "rejected": 0,
+  "rejections": [],
+  "aggregate_regulation": {
+    "steal": {
+      "n": 174,
+      "hits": [
+        91,
+        102,
+        111
+      ]
+    },
+    "unmarked": {
+      "n": 128,
+      "hits": [
+        11,
+        29,
+        50
+      ]
+    }
+  },
+  "game_records": [
+    {
+      "game": "Atlanta@CHI",
+      "date": "2025-01-15",
+      "source": "https://www.basketball-reference.com/boxscores/pbp/202501150CHI.html",
+      "source_rows": 476,
+      "periods": 4,
+      "regulation": {
+        "H1": {
+          "steal": {
+            "n": 10,
+            "hits": [
+              5,
+              6,
+              7
+            ]
+          },
+          "unmarked": {
+            "n": 6,
+            "hits": [
+              1,
+              1,
+              2
+            ]
+          }
+        },
+        "H2": {
+          "steal": {
+            "n": 6,
+            "hits": [
+              3,
+              4,
+              4
+            ]
+          },
+          "unmarked": {
+            "n": 9,
+            "hits": [
+              0,
+              2,
+              2
+            ]
+          }
+        }
+      },
+      "overtime": {
+        "steal": {
+          "n": 0,
+          "hits": [
+            0,
+            0,
+            0
+          ]
+        },
+        "unmarked": {
+          "n": 0,
+          "hits": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "period_and_turnover_checks_passed": true
+    },
+    {
+      "game": "Houston@DEN",
+      "date": "2025-01-15",
+      "source": "https://www.basketball-reference.com/boxscores/pbp/202501150DEN.html",
+      "source_rows": 422,
+      "periods": 4,
+      "regulation": {
+        "H1": {
+          "steal": {
+            "n": 9,
+            "hits": [
+              5,
+              5,
+              5
+            ]
+          },
+          "unmarked": {
+            "n": 8,
+            "hits": [
+              1,
+              2,
+              3
+            ]
+          }
+        },
+        "H2": {
+          "steal": {
+            "n": 9,
+            "hits": [
+              7,
+              7,
+              7
+            ]
+          },
+          "unmarked": {
+            "n": 5,
+            "hits": [
+              0,
+              1,
+              1
+            ]
+          }
+        }
+      },
+      "overtime": {
+        "steal": {
+          "n": 0,
+          "hits": [
+            0,
+            0,
+            0
+          ]
+        },
+        "unmarked": {
+          "n": 0,
+          "hits": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "period_and_turnover_checks_passed": true
+    },
+    {
+      "game": "Brooklyn@LAC",
+      "date": "2025-01-15",
+      "source": "https://www.basketball-reference.com/boxscores/pbp/202501150LAC.html",
+      "source_rows": 463,
+      "periods": 4,
+      "regulation": {
+        "H1": {
+          "steal": {
+            "n": 10,
+            "hits": [
+              5,
+              6,
+              6
+            ]
+          },
+          "unmarked": {
+            "n": 8,
+            "hits": [
+              0,
+              2,
+              3
+            ]
+          }
+        },
+        "H2": {
+          "steal": {
+            "n": 12,
+            "hits": [
+              6,
+              6,
+              6
+            ]
+          },
+          "unmarked": {
+            "n": 8,
+            "hits": [
+              0,
+              2,
+              4
+            ]
+          }
+        }
+      },
+      "overtime": {
+        "steal": {
+          "n": 0,
+          "hits": [
+            0,
+            0,
+            0
+          ]
+        },
+        "unmarked": {
+          "n": 0,
+          "hits": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "period_and_turnover_checks_passed": true
+    },
+    {
+      "game": "Miami@LAL",
+      "date": "2025-01-15",
+      "source": "https://www.basketball-reference.com/boxscores/pbp/202501150LAL.html",
+      "source_rows": 390,
+      "periods": 4,
+      "regulation": {
+        "H1": {
+          "steal": {
+            "n": 9,
+            "hits": [
+              5,
+              6,
+              6
+            ]
+          },
+          "unmarked": {
+            "n": 5,
+            "hits": [
+              1,
+              1,
+              3
+            ]
+          }
+        },
+        "H2": {
+          "steal": {
+            "n": 6,
+            "hits": [
+              3,
+              3,
+              3
+            ]
+          },
+          "unmarked": {
+            "n": 7,
+            "hits": [
+              0,
+              1,
+              2
+            ]
+          }
+        }
+      },
+      "overtime": {
+        "steal": {
+          "n": 0,
+          "hits": [
+            0,
+            0,
+            0
+          ]
+        },
+        "unmarked": {
+          "n": 0,
+          "hits": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "period_and_turnover_checks_passed": true
+    },
+    {
+      "game": "Orlando@MIL",
+      "date": "2025-01-15",
+      "source": "https://www.basketball-reference.com/boxscores/pbp/202501150MIL.html",
+      "source_rows": 470,
+      "periods": 4,
+      "regulation": {
+        "H1": {
+          "steal": {
+            "n": 10,
+            "hits": [
+              5,
+              6,
+              6
+            ]
+          },
+          "unmarked": {
+            "n": 8,
+            "hits": [
+              0,
+              2,
+              2
+            ]
+          }
+        },
+        "H2": {
+          "steal": {
+            "n": 13,
+            "hits": [
+              6,
+              7,
+              7
+            ]
+          },
+          "unmarked": {
+            "n": 3,
+            "hits": [
+              0,
+              0,
+              1
+            ]
+          }
+        }
+      },
+      "overtime": {
+        "steal": {
+          "n": 0,
+          "hits": [
+            0,
+            0,
+            0
+          ]
+        },
+        "unmarked": {
+          "n": 0,
+          "hits": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "period_and_turnover_checks_passed": true
+    },
+    {
+      "game": "Golden State@MIN",
+      "date": "2025-01-15",
+      "source": "https://www.basketball-reference.com/boxscores/pbp/202501150MIN.html",
+      "source_rows": 468,
+      "periods": 4,
+      "regulation": {
+        "H1": {
+          "steal": {
+            "n": 10,
+            "hits": [
+              5,
+              6,
+              8
+            ]
+          },
+          "unmarked": {
+            "n": 6,
+            "hits": [
+              0,
+              0,
+              1
+            ]
+          }
+        },
+        "H2": {
+          "steal": {
+            "n": 2,
+            "hits": [
+              1,
+              1,
+              2
+            ]
+          },
+          "unmarked": {
+            "n": 4,
+            "hits": [
+              2,
+              2,
+              2
+            ]
+          }
+        }
+      },
+      "overtime": {
+        "steal": {
+          "n": 0,
+          "hits": [
+            0,
+            0,
+            0
+          ]
+        },
+        "unmarked": {
+          "n": 0,
+          "hits": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "period_and_turnover_checks_passed": true
+    },
+    {
+      "game": "Dallas@NOP",
+      "date": "2025-01-15",
+      "source": "https://www.basketball-reference.com/boxscores/pbp/202501150NOP.html",
+      "source_rows": 492,
+      "periods": 4,
+      "regulation": {
+        "H1": {
+          "steal": {
+            "n": 13,
+            "hits": [
+              8,
+              8,
+              8
+            ]
+          },
+          "unmarked": {
+            "n": 4,
+            "hits": [
+              1,
+              1,
+              2
+            ]
+          }
+        },
+        "H2": {
+          "steal": {
+            "n": 7,
+            "hits": [
+              4,
+              4,
+              5
+            ]
+          },
+          "unmarked": {
+            "n": 3,
+            "hits": [
+              1,
+              1,
+              2
+            ]
+          }
+        }
+      },
+      "overtime": {
+        "steal": {
+          "n": 0,
+          "hits": [
+            0,
+            0,
+            0
+          ]
+        },
+        "unmarked": {
+          "n": 0,
+          "hits": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "period_and_turnover_checks_passed": true
+    },
+    {
+      "game": "New York@PHI",
+      "date": "2025-01-15",
+      "source": "https://www.basketball-reference.com/boxscores/pbp/202501150PHI.html",
+      "source_rows": 438,
+      "periods": 5,
+      "regulation": {
+        "H1": {
+          "steal": {
+            "n": 6,
+            "hits": [
+              3,
+              3,
+              3
+            ]
+          },
+          "unmarked": {
+            "n": 3,
+            "hits": [
+              0,
+              0,
+              1
+            ]
+          }
+        },
+        "H2": {
+          "steal": {
+            "n": 9,
+            "hits": [
+              5,
+              7,
+              8
+            ]
+          },
+          "unmarked": {
+            "n": 5,
+            "hits": [
+              0,
+              2,
+              4
+            ]
+          }
+        }
+      },
+      "overtime": {
+        "steal": {
+          "n": 3,
+          "hits": [
+            3,
+            3,
+            3
+          ]
+        },
+        "unmarked": {
+          "n": 2,
+          "hits": [
+            0,
+            1,
+            1
+          ]
+        }
+      },
+      "period_and_turnover_checks_passed": true
+    },
+    {
+      "game": "Memphis@SAS",
+      "date": "2025-01-15",
+      "source": "https://www.basketball-reference.com/boxscores/pbp/202501150SAS.html",
+      "source_rows": 482,
+      "periods": 4,
+      "regulation": {
+        "H1": {
+          "steal": {
+            "n": 8,
+            "hits": [
+              6,
+              6,
+              6
+            ]
+          },
+          "unmarked": {
+            "n": 4,
+            "hits": [
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "H2": {
+          "steal": {
+            "n": 4,
+            "hits": [
+              0,
+              1,
+              2
+            ]
+          },
+          "unmarked": {
+            "n": 3,
+            "hits": [
+              0,
+              0,
+              1
+            ]
+          }
+        }
+      },
+      "overtime": {
+        "steal": {
+          "n": 0,
+          "hits": [
+            0,
+            0,
+            0
+          ]
+        },
+        "unmarked": {
+          "n": 0,
+          "hits": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "period_and_turnover_checks_passed": true
+    },
+    {
+      "game": "Boston@TOR",
+      "date": "2025-01-15",
+      "source": "https://www.basketball-reference.com/boxscores/pbp/202501150TOR.html",
+      "source_rows": 450,
+      "periods": 4,
+      "regulation": {
+        "H1": {
+          "steal": {
+            "n": 8,
+            "hits": [
+              4,
+              4,
+              6
+            ]
+          },
+          "unmarked": {
+            "n": 4,
+            "hits": [
+              0,
+              0,
+              3
+            ]
+          }
+        },
+        "H2": {
+          "steal": {
+            "n": 2,
+            "hits": [
+              0,
+              1,
+              1
+            ]
+          },
+          "unmarked": {
+            "n": 6,
+            "hits": [
+              1,
+              3,
+              3
+            ]
+          }
+        }
+      },
+      "overtime": {
+        "steal": {
+          "n": 0,
+          "hits": [
+            0,
+            0,
+            0
+          ]
+        },
+        "unmarked": {
+          "n": 0,
+          "hits": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "period_and_turnover_checks_passed": true
+    },
+    {
+      "game": "Charlotte@UTA",
+      "date": "2025-01-15",
+      "source": "https://www.basketball-reference.com/boxscores/pbp/202501150UTA.html",
+      "source_rows": 457,
+      "periods": 4,
+      "regulation": {
+        "H1": {
+          "steal": {
+            "n": 6,
+            "hits": [
+              2,
+              2,
+              2
+            ]
+          },
+          "unmarked": {
+            "n": 11,
+            "hits": [
+              2,
+              5,
+              6
+            ]
+          }
+        },
+        "H2": {
+          "steal": {
+            "n": 5,
+            "hits": [
+              3,
+              3,
+              3
+            ]
+          },
+          "unmarked": {
+            "n": 8,
+            "hits": [
+              0,
+              0,
+              1
+            ]
+          }
+        }
+      },
+      "overtime": {
+        "steal": {
+          "n": 0,
+          "hits": [
+            0,
+            0,
+            0
+          ]
+        },
+        "unmarked": {
+          "n": 0,
+          "hits": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "period_and_turnover_checks_passed": true
+    }
+  ],
+  "interpretation_gates": {
+    "original_page_hash": false,
+    "independent_nba_provider_parity": false,
+    "causal_transition_classification": false,
+    "matched_defender": false,
+    "market_ev": false,
+    "at_prediction_time_witness": false
+  },
+  "production_promotion": false
+}
