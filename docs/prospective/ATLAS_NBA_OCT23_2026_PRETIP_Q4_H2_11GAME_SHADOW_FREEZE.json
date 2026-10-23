@@ -1,0 +1,203 @@
+{
+  "schema": "atlas.gamesense.true_prospective_oct23_2026_pregame_regulation_quarter_benchmark_v1",
+  "creation_anchor": "2026-10-23 GitHub immutable content commit time (created after an independent local clock read at 2026-10-23T15:41:47-05:00)",
+  "local_timezone": "America/Chicago",
+  "source_schedule": "https://www.nba.com/games?date=2026-10-23",
+  "schedule_corrob": "https://www.cbssports.com/nba/schedule/20261023/",
+  "target_date": "2026-10-23",
+  "scheduled_universe_12": true,
+  "already_live_excluded": {
+    "away": "CHI",
+    "home": "MIL",
+    "scheduled_tip_ET": "16:00",
+    "observation": "NBA.com rendered CHI@MIL LIVE on 2026-10-23 as of read, so excluded from PRETIP freeze rather than including post-tip as pre-tip."
+  },
+  "future_rows": [
+    {
+      "away": "NYK",
+      "home": "BOS",
+      "scheduled_tip_ET": "19:00",
+      "game_id": null,
+      "eligible_at_submission": "scheduled future (independently verify actual NBA start on grading)",
+      "frozen_pregame_prediction": {
+        "q4_regulation_combined_points": 54.25,
+        "h2_regulation_combined_points": 114.4375
+      },
+      "actual_outcome": null,
+      "admission_status": "SHADOW_FORECAST_NOT_WAGER"
+    },
+    {
+      "away": "ATL",
+      "home": "CHA",
+      "scheduled_tip_ET": "19:00",
+      "game_id": null,
+      "eligible_at_submission": "scheduled future (independently verify actual NBA start on grading)",
+      "frozen_pregame_prediction": {
+        "q4_regulation_combined_points": 54.25,
+        "h2_regulation_combined_points": 114.4375
+      },
+      "actual_outcome": null,
+      "admission_status": "SHADOW_FORECAST_NOT_WAGER"
+    },
+    {
+      "away": "DAL",
+      "home": "IND",
+      "scheduled_tip_ET": "19:00",
+      "game_id": null,
+      "eligible_at_submission": "scheduled future (independently verify actual NBA start on grading)",
+      "frozen_pregame_prediction": {
+        "q4_regulation_combined_points": 54.25,
+        "h2_regulation_combined_points": 114.4375
+      },
+      "actual_outcome": null,
+      "admission_status": "SHADOW_FORECAST_NOT_WAGER"
+    },
+    {
+      "away": "MIN",
+      "home": "ORL",
+      "scheduled_tip_ET": "19:00",
+      "game_id": null,
+      "eligible_at_submission": "scheduled future (independently verify actual NBA start on grading)",
+      "frozen_pregame_prediction": {
+        "q4_regulation_combined_points": 54.25,
+        "h2_regulation_combined_points": 114.4375
+      },
+      "actual_outcome": null,
+      "admission_status": "SHADOW_FORECAST_NOT_WAGER"
+    },
+    {
+      "away": "TOR",
+      "home": "WAS",
+      "scheduled_tip_ET": "19:00",
+      "game_id": null,
+      "eligible_at_submission": "scheduled future (independently verify actual NBA start on grading)",
+      "frozen_pregame_prediction": {
+        "q4_regulation_combined_points": 54.25,
+        "h2_regulation_combined_points": 114.4375
+      },
+      "actual_outcome": null,
+      "admission_status": "SHADOW_FORECAST_NOT_WAGER"
+    },
+    {
+      "away": "DET",
+      "home": "MIA",
+      "scheduled_tip_ET": "20:00",
+      "game_id": null,
+      "eligible_at_submission": "scheduled future (independently verify actual NBA start on grading)",
+      "frozen_pregame_prediction": {
+        "q4_regulation_combined_points": 54.25,
+        "h2_regulation_combined_points": 114.4375
+      },
+      "actual_outcome": null,
+      "admission_status": "SHADOW_FORECAST_NOT_WAGER"
+    },
+    {
+      "away": "HOU",
+      "home": "SAS",
+      "scheduled_tip_ET": "21:30",
+      "game_id": null,
+      "eligible_at_submission": "scheduled future (independently verify actual NBA start on grading)",
+      "frozen_pregame_prediction": {
+        "q4_regulation_combined_points": 54.25,
+        "h2_regulation_combined_points": 114.4375
+      },
+      "actual_outcome": null,
+      "admission_status": "SHADOW_FORECAST_NOT_WAGER"
+    },
+    {
+      "away": "NOP",
+      "home": "UTA",
+      "scheduled_tip_ET": "21:30",
+      "game_id": null,
+      "eligible_at_submission": "scheduled future (independently verify actual NBA start on grading)",
+      "frozen_pregame_prediction": {
+        "q4_regulation_combined_points": 54.25,
+        "h2_regulation_combined_points": 114.4375
+      },
+      "actual_outcome": null,
+      "admission_status": "SHADOW_FORECAST_NOT_WAGER"
+    },
+    {
+      "away": "MEM",
+      "home": "GSW",
+      "scheduled_tip_ET": "22:00",
+      "game_id": null,
+      "eligible_at_submission": "scheduled future (independently verify actual NBA start on grading)",
+      "frozen_pregame_prediction": {
+        "q4_regulation_combined_points": 54.25,
+        "h2_regulation_combined_points": 114.4375
+      },
+      "actual_outcome": null,
+      "admission_status": "SHADOW_FORECAST_NOT_WAGER"
+    },
+    {
+      "away": "LAC",
+      "home": "LAL",
+      "scheduled_tip_ET": "22:00",
+      "game_id": null,
+      "eligible_at_submission": "scheduled future (independently verify actual NBA start on grading)",
+      "frozen_pregame_prediction": {
+        "q4_regulation_combined_points": 54.25,
+        "h2_regulation_combined_points": 114.4375
+      },
+      "actual_outcome": null,
+      "admission_status": "SHADOW_FORECAST_NOT_WAGER"
+    },
+    {
+      "away": "POR",
+      "home": "SAC",
+      "scheduled_tip_ET": "22:00",
+      "game_id": null,
+      "eligible_at_submission": "scheduled future (independently verify actual NBA start on grading)",
+      "frozen_pregame_prediction": {
+        "q4_regulation_combined_points": 54.25,
+        "h2_regulation_combined_points": 114.4375
+      },
+      "actual_outcome": null,
+      "admission_status": "SHADOW_FORECAST_NOT_WAGER"
+    }
+  ],
+  "n_targeted": 11,
+  "derivation": {
+    "earlier_historical_full_date_games": 16,
+    "earlier_dates": [
+      "2025-01-15",
+      "2025-01-16"
+    ],
+    "sources": [
+      {
+        "path": "docs/research/ATLAS_NBA_20250115_FULL_DATE_11GAME_SCORE_CENSUS.json",
+        "sha": "a7ab4b3d5646899f91c23a1184ba09da3c464543"
+      },
+      {
+        "path": "docs/research/ATLAS_NBA_20250116_COMPLETE_DATE_FIVEGAME_PBP_V2.json",
+        "sha": "1107c284c58cc5080740975e308f821e73d9811f"
+      }
+    ],
+    "q4_historical_points_mean": 54.25,
+    "h2_historical_points_mean": 114.4375,
+    "model": "Unconditional two-date historical mean; no 2026 Oct 23 results, no current game H1/Q3 data, no injury/rotation/odds input. No tuning to 2026 Oct23 outcomes."
+  },
+  "grading_contract": {
+    "regulation_only": true,
+    "score_each_future_game_actual_q4_sum": "team A regulation Q4 points + team B regulation Q4 points",
+    "score_each_future_game_actual_h2_sum": "regulation Q3 + Q4 team A and B",
+    "metrics": [
+      "all-game MAE",
+      "date-conditional non-independence",
+      "coverage n of complete eligible 11 games",
+      "lineup/OT missingness"
+    ],
+    "preserve_rejected_cancelled_games": true,
+    "cross_validate_NBA_official_results": true,
+    "no_retroactive_predictions": true,
+    "do_not_include_started_at_creation": true
+  },
+  "safety": {
+    "no_market_odds_or_EV": true,
+    "no_bets": true,
+    "do_not_autonomously_monitor_future": true,
+    "requires_user_invocation_for_later_grading": true,
+    "ArcIII_signoffs_zero": true
+  }
+}
