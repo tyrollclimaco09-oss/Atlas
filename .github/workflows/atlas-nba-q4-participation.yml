@@ -1,0 +1,28 @@
+name: ATLAS NBA zero-shot is not zero-minutes audit
+on:
+  push:
+    branches: [research/odds-api-probe-2026-10-22]
+    paths:
+      - scripts/proof/nba-q4-zero-participation.mjs
+      - scripts/proof/nba-q4-zero-participation.test.mjs
+      - .github/workflows/atlas-nba-q4-participation.yml
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  q4-zero-does-not-imply-bench:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - run: node --test scripts/proof/nba-q4-zero-participation.test.mjs
+      - run: node scripts/proof/nba-q4-zero-participation.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: atlas-nba-zero-shot-boundary
+          path: atlas-nba-q4-zero-participation.json
+          retention-days: 7
+          if-no-files-found: ignore
