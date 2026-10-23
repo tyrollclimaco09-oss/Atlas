@@ -1,0 +1,858 @@
+{
+  "schema": "atlas.oracle.gamesense.2023_2024_train_2025_validate_2026_test.v1",
+  "computed_on": "2026-10-23",
+  "source_feature_mart_sha": "f6f7b8df574e683fbb2100dc2dbae68fff9682c9",
+  "method": "2023 and 2024 complete January 15 games training (19); January 15 2025 full day validation (11) selects among 19 fixed models; refit selected on 2023-2025 (30), evaluate ONCE January15 and Oct20-22 2026 (25). All H1-only features are chronologically before their H2 labels; retrospective extraction is not a real-time point-in-time receipt.",
+  "splits": {
+    "train": 19,
+    "validation": 11,
+    "test": 25,
+    "test_dates": [
+      "2026-01-15",
+      "2026-10-20",
+      "2026-10-21",
+      "2026-10-22"
+    ]
+  },
+  "candidate_registry": [
+    {
+      "id": "historical_prior",
+      "mode": "ridge",
+      "features": [],
+      "lambda": 0,
+      "alpha": null
+    },
+    {
+      "id": "blend_0.25",
+      "mode": "blend",
+      "features": [
+        "h1_points"
+      ],
+      "lambda": 0,
+      "alpha": 0.25
+    },
+    {
+      "id": "blend_0.5",
+      "mode": "blend",
+      "features": [
+        "h1_points"
+      ],
+      "lambda": 0,
+      "alpha": 0.5
+    },
+    {
+      "id": "blend_0.75",
+      "mode": "blend",
+      "features": [
+        "h1_points"
+      ],
+      "lambda": 0,
+      "alpha": 0.75
+    },
+    {
+      "id": "blend_1",
+      "mode": "blend",
+      "features": [
+        "h1_points"
+      ],
+      "lambda": 0,
+      "alpha": 1
+    },
+    {
+      "id": "score_ridge",
+      "mode": "ridge",
+      "features": [
+        "h1_points"
+      ],
+      "lambda": 20,
+      "alpha": null
+    },
+    {
+      "id": "score_ridge",
+      "mode": "ridge",
+      "features": [
+        "h1_points"
+      ],
+      "lambda": 100,
+      "alpha": null
+    },
+    {
+      "id": "possession_ridge",
+      "mode": "ridge",
+      "features": [
+        "estimate_poss"
+      ],
+      "lambda": 20,
+      "alpha": null
+    },
+    {
+      "id": "possession_ridge",
+      "mode": "ridge",
+      "features": [
+        "estimate_poss"
+      ],
+      "lambda": 100,
+      "alpha": null
+    },
+    {
+      "id": "turnover_ridge",
+      "mode": "ridge",
+      "features": [
+        "turnovers",
+        "steal_fraction",
+        "quick_score_n"
+      ],
+      "lambda": 20,
+      "alpha": null
+    },
+    {
+      "id": "turnover_ridge",
+      "mode": "ridge",
+      "features": [
+        "turnovers",
+        "steal_fraction",
+        "quick_score_n"
+      ],
+      "lambda": 100,
+      "alpha": null
+    },
+    {
+      "id": "steal_response_ridge",
+      "mode": "ridge",
+      "features": [
+        "steal_fraction",
+        "steal_quick_rate",
+        "unmarked_quick_rate"
+      ],
+      "lambda": 20,
+      "alpha": null
+    },
+    {
+      "id": "steal_response_ridge",
+      "mode": "ridge",
+      "features": [
+        "steal_fraction",
+        "steal_quick_rate",
+        "unmarked_quick_rate"
+      ],
+      "lambda": 100,
+      "alpha": null
+    },
+    {
+      "id": "score_pressure_ridge",
+      "mode": "ridge",
+      "features": [
+        "h1_points",
+        "steal_fraction",
+        "quick_score_n"
+      ],
+      "lambda": 20,
+      "alpha": null
+    },
+    {
+      "id": "score_pressure_ridge",
+      "mode": "ridge",
+      "features": [
+        "h1_points",
+        "steal_fraction",
+        "quick_score_n"
+      ],
+      "lambda": 100,
+      "alpha": null
+    },
+    {
+      "id": "pace_pressure_ridge",
+      "mode": "ridge",
+      "features": [
+        "estimate_poss",
+        "turnovers",
+        "free_throws",
+        "steal_fraction",
+        "quick_score_n"
+      ],
+      "lambda": 20,
+      "alpha": null
+    },
+    {
+      "id": "pace_pressure_ridge",
+      "mode": "ridge",
+      "features": [
+        "estimate_poss",
+        "turnovers",
+        "free_throws",
+        "steal_fraction",
+        "quick_score_n"
+      ],
+      "lambda": 100,
+      "alpha": null
+    },
+    {
+      "id": "full_ridge",
+      "mode": "ridge",
+      "features": [
+        "h1_points",
+        "estimate_poss",
+        "turnovers",
+        "free_throws",
+        "steal_fraction",
+        "quick_score_n"
+      ],
+      "lambda": 20,
+      "alpha": null
+    },
+    {
+      "id": "full_ridge",
+      "mode": "ridge",
+      "features": [
+        "h1_points",
+        "estimate_poss",
+        "turnovers",
+        "free_throws",
+        "steal_fraction",
+        "quick_score_n"
+      ],
+      "lambda": 100,
+      "alpha": null
+    }
+  ],
+  "validation_ranking": [
+    {
+      "id": "possession_ridge",
+      "lambda": 20,
+      "mae": 8.909555
+    },
+    {
+      "id": "possession_ridge",
+      "lambda": 100,
+      "mae": 9.041123
+    },
+    {
+      "id": "score_ridge",
+      "lambda": 100,
+      "mae": 9.067111
+    },
+    {
+      "id": "historical_prior",
+      "lambda": 0,
+      "mae": 9.105263
+    },
+    {
+      "id": "steal_response_ridge",
+      "lambda": 100,
+      "mae": 9.141801
+    },
+    {
+      "id": "score_ridge",
+      "lambda": 20,
+      "mae": 9.168577
+    },
+    {
+      "id": "blend_0.25",
+      "lambda": 0,
+      "mae": 9.174641
+    },
+    {
+      "id": "score_pressure_ridge",
+      "lambda": 100,
+      "mae": 9.463647
+    },
+    {
+      "id": "steal_response_ridge",
+      "lambda": 20,
+      "mae": 9.540326
+    },
+    {
+      "id": "blend_0.5",
+      "lambda": 0,
+      "mae": 9.574163
+    },
+    {
+      "id": "turnover_ridge",
+      "lambda": 100,
+      "mae": 9.60282
+    },
+    {
+      "id": "full_ridge",
+      "lambda": 100,
+      "mae": 9.604304
+    },
+    {
+      "id": "pace_pressure_ridge",
+      "lambda": 100,
+      "mae": 9.670918
+    },
+    {
+      "id": "score_pressure_ridge",
+      "lambda": 20,
+      "mae": 10.045682
+    },
+    {
+      "id": "turnover_ridge",
+      "lambda": 20,
+      "mae": 10.218943
+    },
+    {
+      "id": "blend_0.75",
+      "lambda": 0,
+      "mae": 10.394737
+    },
+    {
+      "id": "full_ridge",
+      "lambda": 20,
+      "mae": 10.454429
+    },
+    {
+      "id": "pace_pressure_ridge",
+      "lambda": 20,
+      "mae": 10.768273
+    },
+    {
+      "id": "blend_1",
+      "lambda": 0,
+      "mae": 11.727273
+    }
+  ],
+  "winner": {
+    "id": "possession_ridge",
+    "lambda": 20,
+    "validation_mae": 8.909555,
+    "test_mae": 11.2095,
+    "weights": [
+      -1.098836
+    ],
+    "by_date": [
+      {
+        "date": "2026-01-15",
+        "n": 9,
+        "mae": 12.662941
+      },
+      {
+        "date": "2026-10-20",
+        "n": 3,
+        "mae": 12.220138
+      },
+      {
+        "date": "2026-10-21",
+        "n": 11,
+        "mae": 9.050583
+      },
+      {
+        "date": "2026-10-22",
+        "n": 2,
+        "mae": 15.027101
+      }
+    ],
+    "predictions": [
+      {
+        "game": "Utah@Dallas",
+        "date": "2026-01-15",
+        "actual": 146,
+        "point": 111.435746,
+        "absolute_error": 34.564254
+      },
+      {
+        "game": "Phoenix@Detroit",
+        "date": "2026-01-15",
+        "actual": 94,
+        "point": 111.626294,
+        "absolute_error": 17.626294
+      },
+      {
+        "game": "New York@Golden State",
+        "date": "2026-01-15",
+        "actual": 118,
+        "point": 114.477937,
+        "absolute_error": 3.522063
+      },
+      {
+        "game": "Oklahoma City@Houston",
+        "date": "2026-01-15",
+        "actual": 99,
+        "point": 111.829983,
+        "absolute_error": 12.829983
+      },
+      {
+        "game": "Charlotte@LA Lakers",
+        "date": "2026-01-15",
+        "actual": 133,
+        "point": 113.052116,
+        "absolute_error": 19.947884
+      },
+      {
+        "game": "Boston@Miami",
+        "date": "2026-01-15",
+        "actual": 115,
+        "point": 114.169119,
+        "absolute_error": 0.830881
+      },
+      {
+        "game": "Memphis@Orlando",
+        "date": "2026-01-15",
+        "actual": 104,
+        "point": 111.954824,
+        "absolute_error": 7.954824
+      },
+      {
+        "game": "Atlanta@Portland",
+        "date": "2026-01-15",
+        "actual": 108,
+        "point": 112.13223,
+        "absolute_error": 4.13223
+      },
+      {
+        "game": "Milwaukee@San Antonio",
+        "date": "2026-01-15",
+        "actual": 101,
+        "point": 113.558052,
+        "absolute_error": 12.558052
+      },
+      {
+        "game": "BOS@DET",
+        "date": "2026-10-20",
+        "actual": 131,
+        "point": 112.598744,
+        "absolute_error": 18.401256
+      },
+      {
+        "game": "PHI@NYK",
+        "date": "2026-10-20",
+        "actual": 94,
+        "point": 111.790559,
+        "absolute_error": 17.790559
+      },
+      {
+        "game": "OKC@SAS",
+        "date": "2026-10-20",
+        "actual": 111,
+        "point": 111.468599,
+        "absolute_error": 0.468599
+      },
+      {
+        "game": "ATL@ORL",
+        "date": "2026-10-21",
+        "actual": 123,
+        "point": 110.896956,
+        "absolute_error": 12.103044
+      },
+      {
+        "game": "MIL@WAS",
+        "date": "2026-10-21",
+        "actual": 137,
+        "point": 111.600011,
+        "absolute_error": 25.399989
+      },
+      {
+        "game": "MIN@MIA",
+        "date": "2026-10-21",
+        "actual": 109,
+        "point": 110.476437,
+        "absolute_error": 1.476437
+      },
+      {
+        "game": "CHA@BKN",
+        "date": "2026-10-21",
+        "actual": 111,
+        "point": 112.960127,
+        "absolute_error": 1.960127
+      },
+      {
+        "game": "CHI@TOR",
+        "date": "2026-10-21",
+        "actual": 114,
+        "point": 111.337187,
+        "absolute_error": 2.662813
+      },
+      {
+        "game": "UTA@MEM",
+        "date": "2026-10-21",
+        "actual": 111,
+        "point": 111.218916,
+        "absolute_error": 0.218916
+      },
+      {
+        "game": "IND@NOP",
+        "date": "2026-10-21",
+        "actual": 121,
+        "point": 111.166351,
+        "absolute_error": 9.833649
+      },
+      {
+        "game": "DAL@HOU",
+        "date": "2026-10-21",
+        "actual": 130,
+        "point": 113.006121,
+        "absolute_error": 16.993879
+      },
+      {
+        "game": "GSW@LAL",
+        "date": "2026-10-21",
+        "actual": 114,
+        "point": 112.546179,
+        "absolute_error": 1.453821
+      },
+      {
+        "game": "PHX@POR",
+        "date": "2026-10-21",
+        "actual": 96,
+        "point": 112.933845,
+        "absolute_error": 16.933845
+      },
+      {
+        "game": "SAC@LAC",
+        "date": "2026-10-21",
+        "actual": 102,
+        "point": 112.519896,
+        "absolute_error": 10.519896
+      },
+      {
+        "game": "CLE@PHI",
+        "date": "2026-10-22",
+        "actual": 106,
+        "point": 110.850962,
+        "absolute_error": 4.850962
+      },
+      {
+        "game": "DEN@OKC",
+        "date": "2026-10-22",
+        "actual": 88,
+        "point": 113.203239,
+        "absolute_error": 25.203239
+      }
+    ]
+  },
+  "comparators": {
+    "historical_prior": {
+      "id": "historical_prior",
+      "lambda": 0,
+      "validation_mae": 9.105263,
+      "test_mae": 11.396,
+      "weights": [],
+      "by_date": [
+        {
+          "date": "2026-01-15",
+          "n": 9,
+          "mae": 13.144444
+        },
+        {
+          "date": "2026-10-20",
+          "n": 3,
+          "mae": 12.766667
+        },
+        {
+          "date": "2026-10-21",
+          "n": 11,
+          "mae": 8.881818
+        },
+        {
+          "date": "2026-10-22",
+          "n": 2,
+          "mae": 15.3
+        }
+      ],
+      "predictions": [
+        {
+          "game": "Utah@Dallas",
+          "date": "2026-01-15",
+          "actual": 146,
+          "point": 112.3,
+          "absolute_error": 33.7
+        },
+        {
+          "game": "Phoenix@Detroit",
+          "date": "2026-01-15",
+          "actual": 94,
+          "point": 112.3,
+          "absolute_error": 18.3
+        },
+        {
+          "game": "New York@Golden State",
+          "date": "2026-01-15",
+          "actual": 118,
+          "point": 112.3,
+          "absolute_error": 5.7
+        },
+        {
+          "game": "Oklahoma City@Houston",
+          "date": "2026-01-15",
+          "actual": 99,
+          "point": 112.3,
+          "absolute_error": 13.3
+        },
+        {
+          "game": "Charlotte@LA Lakers",
+          "date": "2026-01-15",
+          "actual": 133,
+          "point": 112.3,
+          "absolute_error": 20.7
+        },
+        {
+          "game": "Boston@Miami",
+          "date": "2026-01-15",
+          "actual": 115,
+          "point": 112.3,
+          "absolute_error": 2.7
+        },
+        {
+          "game": "Memphis@Orlando",
+          "date": "2026-01-15",
+          "actual": 104,
+          "point": 112.3,
+          "absolute_error": 8.3
+        },
+        {
+          "game": "Atlanta@Portland",
+          "date": "2026-01-15",
+          "actual": 108,
+          "point": 112.3,
+          "absolute_error": 4.3
+        },
+        {
+          "game": "Milwaukee@San Antonio",
+          "date": "2026-01-15",
+          "actual": 101,
+          "point": 112.3,
+          "absolute_error": 11.3
+        },
+        {
+          "game": "BOS@DET",
+          "date": "2026-10-20",
+          "actual": 131,
+          "point": 112.3,
+          "absolute_error": 18.7
+        },
+        {
+          "game": "PHI@NYK",
+          "date": "2026-10-20",
+          "actual": 94,
+          "point": 112.3,
+          "absolute_error": 18.3
+        },
+        {
+          "game": "OKC@SAS",
+          "date": "2026-10-20",
+          "actual": 111,
+          "point": 112.3,
+          "absolute_error": 1.3
+        },
+        {
+          "game": "ATL@ORL",
+          "date": "2026-10-21",
+          "actual": 123,
+          "point": 112.3,
+          "absolute_error": 10.7
+        },
+        {
+          "game": "MIL@WAS",
+          "date": "2026-10-21",
+          "actual": 137,
+          "point": 112.3,
+          "absolute_error": 24.7
+        },
+        {
+          "game": "MIN@MIA",
+          "date": "2026-10-21",
+          "actual": 109,
+          "point": 112.3,
+          "absolute_error": 3.3
+        },
+        {
+          "game": "CHA@BKN",
+          "date": "2026-10-21",
+          "actual": 111,
+          "point": 112.3,
+          "absolute_error": 1.3
+        },
+        {
+          "game": "CHI@TOR",
+          "date": "2026-10-21",
+          "actual": 114,
+          "point": 112.3,
+          "absolute_error": 1.7
+        },
+        {
+          "game": "UTA@MEM",
+          "date": "2026-10-21",
+          "actual": 111,
+          "point": 112.3,
+          "absolute_error": 1.3
+        },
+        {
+          "game": "IND@NOP",
+          "date": "2026-10-21",
+          "actual": 121,
+          "point": 112.3,
+          "absolute_error": 8.7
+        },
+        {
+          "game": "DAL@HOU",
+          "date": "2026-10-21",
+          "actual": 130,
+          "point": 112.3,
+          "absolute_error": 17.7
+        },
+        {
+          "game": "GSW@LAL",
+          "date": "2026-10-21",
+          "actual": 114,
+          "point": 112.3,
+          "absolute_error": 1.7
+        },
+        {
+          "game": "PHX@POR",
+          "date": "2026-10-21",
+          "actual": 96,
+          "point": 112.3,
+          "absolute_error": 16.3
+        },
+        {
+          "game": "SAC@LAC",
+          "date": "2026-10-21",
+          "actual": 102,
+          "point": 112.3,
+          "absolute_error": 10.3
+        },
+        {
+          "game": "CLE@PHI",
+          "date": "2026-10-22",
+          "actual": 106,
+          "point": 112.3,
+          "absolute_error": 6.3
+        },
+        {
+          "game": "DEN@OKC",
+          "date": "2026-10-22",
+          "actual": 88,
+          "point": 112.3,
+          "absolute_error": 24.3
+        }
+      ]
+    },
+    "last_half_repeat_mae": 12.2
+  },
+  "audited_holdout_results_not_for_selection": [
+    {
+      "id": "possession_ridge",
+      "lambda": 20,
+      "validation_MAE": 8.909555,
+      "test_MAE": 11.2095
+    },
+    {
+      "id": "possession_ridge",
+      "lambda": 100,
+      "validation_MAE": 9.041123,
+      "test_MAE": 11.324269
+    },
+    {
+      "id": "score_ridge",
+      "lambda": 100,
+      "validation_MAE": 9.067111,
+      "test_MAE": 11.284128
+    },
+    {
+      "id": "historical_prior",
+      "lambda": 0,
+      "validation_MAE": 9.105263,
+      "test_MAE": 11.396
+    },
+    {
+      "id": "steal_response_ridge",
+      "lambda": 100,
+      "validation_MAE": 9.141801,
+      "test_MAE": 11.281242
+    },
+    {
+      "id": "score_ridge",
+      "lambda": 20,
+      "validation_MAE": 9.168577,
+      "test_MAE": 11.126118
+    },
+    {
+      "id": "blend_0.25",
+      "lambda": 0,
+      "validation_MAE": 9.174641,
+      "test_MAE": 11.039
+    },
+    {
+      "id": "score_pressure_ridge",
+      "lambda": 100,
+      "validation_MAE": 9.463647,
+      "test_MAE": 11.339842
+    },
+    {
+      "id": "steal_response_ridge",
+      "lambda": 20,
+      "validation_MAE": 9.540326,
+      "test_MAE": 11.38488
+    },
+    {
+      "id": "blend_0.5",
+      "lambda": 0,
+      "validation_MAE": 9.574163,
+      "test_MAE": 10.93
+    },
+    {
+      "id": "turnover_ridge",
+      "lambda": 100,
+      "validation_MAE": 9.60282,
+      "test_MAE": 11.484606
+    },
+    {
+      "id": "full_ridge",
+      "lambda": 100,
+      "validation_MAE": 9.604304,
+      "test_MAE": 11.397418
+    },
+    {
+      "id": "pace_pressure_ridge",
+      "lambda": 100,
+      "validation_MAE": 9.670918,
+      "test_MAE": 11.483828
+    },
+    {
+      "id": "score_pressure_ridge",
+      "lambda": 20,
+      "validation_MAE": 10.045682,
+      "test_MAE": 11.670192
+    },
+    {
+      "id": "turnover_ridge",
+      "lambda": 20,
+      "validation_MAE": 10.218943,
+      "test_MAE": 11.655388
+    },
+    {
+      "id": "blend_0.75",
+      "lambda": 0,
+      "validation_MAE": 10.394737,
+      "test_MAE": 11.471
+    },
+    {
+      "id": "full_ridge",
+      "lambda": 20,
+      "validation_MAE": 10.454429,
+      "test_MAE": 11.805531
+    },
+    {
+      "id": "pace_pressure_ridge",
+      "lambda": 20,
+      "validation_MAE": 10.768273,
+      "test_MAE": 11.924429
+    },
+    {
+      "id": "blend_1",
+      "lambda": 0,
+      "validation_MAE": 11.727273,
+      "test_MAE": 12.2
+    }
+  ],
+  "limitations": [
+    "One calendar January day per historical train/val year (not league-wide)",
+    "Different October season phase in 2026 test, causes train serve distribution changes",
+    "All sourced postgame, not independently witnessed live halftimes",
+    "Only four 2026 calendar test dates; game-level uncertainty clustered",
+    "Model chosen from one 2025 validation date; possible training/validation noise",
+    "No bookmaker odds and no event-time five-player lineups",
+    "No forecast promotion or action"
+  ],
+  "approved_for_live": false
+}
