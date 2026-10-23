@@ -90,9 +90,9 @@ def freeze(schedule,history,now):
         t=clock_utc(e["kickoff_utc"])
         lead=(t-now).total_seconds()
         if lead<=MIN_LEAD_SECONDS or e["status"]!="pre":
-            skipped.append({...e,"reason":"NOT_PRE_KICKOFF_BUFFERED_OR_STATUS_PRE","lead_seconds_at_freeze":lead})
+            skipped.append({**e,"reason":"NOT_PRE_KICKOFF_BUFFERED_OR_STATUS_PRE","lead_seconds_at_freeze":lead})
         else:
-            allowed.append({...e,"lead_seconds_at_freeze":lead,
+            allowed.append({**e,"lead_seconds_at_freeze":lead,
               "candidates":[candidates[e["away"]],candidates[e["home"]]]})
     reject(allowed,"NO_FUTURE_GAMES_AVAILABLE_TO_FREEZE")
     return {"all_week7_games":len(events),"eligible_future_games":allowed,
