@@ -1,0 +1,314 @@
+{
+  "schema": "atlas.nba.gamesense.crossseason_55game_quickscore_replication.v1",
+  "archived_at": "2026-10-23",
+  "provenance": [
+    {
+      "path": "docs/research/ATLAS_NBA_JAN15_2023_2024_2026_FULL28_PBP_AND_TURNOVER_QUICKSCORE_V2.json",
+      "blob_sha": "4c7b851c74a610c2693663148990904da34e1501"
+    },
+    {
+      "path": "docs/research/ATLAS_NBA_20250115_11GAME_TURNOVER_QUICKSCORE_REPLICATION_V1.json",
+      "blob_sha": "4abd65860e22c27a95613d4b679d65390556f0c9"
+    },
+    {
+      "path": "docs/research/ATLAS_NBA_16GAME_TURNOVER_SCORE_ADJACENCY_20261023_V1.json",
+      "blob_sha": "cbef2dcffa79bd68acd055c5c18bc616ab8b92ca"
+    }
+  ],
+  "method": "At each steal-marked or unmarked Turnover by, same-quarter first next opponent scoring event within 15 elapsed GAME CLOCK seconds, stop at opposite turnover or own side score. FT stoppage allowed; no official points-off-turnovers or causal owner attribution.",
+  "new_28_reconciled": true,
+  "prior_2025": true,
+  "prior_oct": true,
+  "eligible_games": 55,
+  "grouped_calendar_dates": 7,
+  "aggregate": {
+    "games": 55,
+    "steal_n": 872,
+    "steal_quick15": 476,
+    "steal_rate": 0.5458715596330275,
+    "unmarked_n": 708,
+    "unmarked_quick15": 208,
+    "unmarked_rate": 0.2937853107344633,
+    "gap": 0.2520862488985642
+  },
+  "by_date": [
+    {
+      "date": "2023-01-15",
+      "games": 8,
+      "steal_n": 91,
+      "steal_quick15": 56,
+      "steal_rate": 0.6153846153846154,
+      "unmarked_n": 107,
+      "unmarked_quick15": 33,
+      "unmarked_rate": 0.308411214953271,
+      "gap": 0.3069734004313444
+    },
+    {
+      "date": "2024-01-15",
+      "games": 11,
+      "steal_n": 153,
+      "steal_quick15": 81,
+      "steal_rate": 0.5294117647058824,
+      "unmarked_n": 133,
+      "unmarked_quick15": 40,
+      "unmarked_rate": 0.3007518796992481,
+      "gap": 0.22865988500663426
+    },
+    {
+      "date": "2025-01-15",
+      "games": 11,
+      "steal_n": 174,
+      "steal_quick15": 102,
+      "steal_rate": 0.5862068965517241,
+      "unmarked_n": 128,
+      "unmarked_quick15": 29,
+      "unmarked_rate": 0.2265625,
+      "gap": 0.3596443965517241
+    },
+    {
+      "date": "2026-01-15",
+      "games": 9,
+      "steal_n": 148,
+      "steal_quick15": 74,
+      "steal_rate": 0.5,
+      "unmarked_n": 106,
+      "unmarked_quick15": 34,
+      "unmarked_rate": 0.32075471698113206,
+      "gap": 0.17924528301886794
+    },
+    {
+      "date": "2026-10-20",
+      "games": 3,
+      "steal_n": 45,
+      "steal_quick15": 24,
+      "steal_rate": 0.5333333333333333,
+      "unmarked_n": 41,
+      "unmarked_quick15": 15,
+      "unmarked_rate": 0.36585365853658536,
+      "gap": 0.16747967479674797
+    },
+    {
+      "date": "2026-10-21",
+      "games": 11,
+      "steal_n": 222,
+      "steal_quick15": 120,
+      "steal_rate": 0.5405405405405406,
+      "unmarked_n": 160,
+      "unmarked_quick15": 51,
+      "unmarked_rate": 0.31875,
+      "gap": 0.2217905405405406
+    },
+    {
+      "date": "2026-10-22",
+      "games": 2,
+      "steal_n": 39,
+      "steal_quick15": 19,
+      "steal_rate": 0.48717948717948717,
+      "unmarked_n": 33,
+      "unmarked_quick15": 6,
+      "unmarked_rate": 0.18181818181818182,
+      "gap": 0.30536130536130535
+    }
+  ],
+  "by_year": [
+    {
+      "year": "2023",
+      "games": 8,
+      "steal_n": 91,
+      "steal_quick15": 56,
+      "steal_rate": 0.6153846153846154,
+      "unmarked_n": 107,
+      "unmarked_quick15": 33,
+      "unmarked_rate": 0.308411214953271,
+      "gap": 0.3069734004313444
+    },
+    {
+      "year": "2024",
+      "games": 11,
+      "steal_n": 153,
+      "steal_quick15": 81,
+      "steal_rate": 0.5294117647058824,
+      "unmarked_n": 133,
+      "unmarked_quick15": 40,
+      "unmarked_rate": 0.3007518796992481,
+      "gap": 0.22865988500663426
+    },
+    {
+      "year": "2025",
+      "games": 11,
+      "steal_n": 174,
+      "steal_quick15": 102,
+      "steal_rate": 0.5862068965517241,
+      "unmarked_n": 128,
+      "unmarked_quick15": 29,
+      "unmarked_rate": 0.2265625,
+      "gap": 0.3596443965517241
+    },
+    {
+      "year": "2026",
+      "games": 25,
+      "steal_n": 454,
+      "steal_quick15": 237,
+      "steal_rate": 0.5220264317180616,
+      "unmarked_n": 340,
+      "unmarked_quick15": 106,
+      "unmarked_rate": 0.31176470588235294,
+      "gap": 0.21026172583570868
+    }
+  ],
+  "game_signs": {
+    "positive": 49,
+    "negative": 6,
+    "zero": 0,
+    "undefined": 0,
+    "negative_games": [
+      {
+        "game": "Miami@Brooklyn",
+        "date": "2024-01-15",
+        "source": "new28",
+        "s": 15,
+        "u": 4,
+        "sh": 3,
+        "uh": 2,
+        "gap": -0.3
+      },
+      {
+        "game": "New Orleans@Dallas",
+        "date": "2024-01-15",
+        "source": "new28",
+        "s": 13,
+        "u": 9,
+        "sh": 7,
+        "uh": 5,
+        "gap": -0.017094017094017144
+      },
+      {
+        "game": "Phoenix@Detroit",
+        "date": "2026-01-15",
+        "source": "new28",
+        "s": 24,
+        "u": 7,
+        "sh": 8,
+        "uh": 4,
+        "gap": -0.23809523809523808
+      },
+      {
+        "game": "New York@Golden State",
+        "date": "2026-01-15",
+        "source": "new28",
+        "s": 10,
+        "u": 14,
+        "sh": 4,
+        "uh": 6,
+        "gap": -0.028571428571428525
+      },
+      {
+        "game": "Oklahoma City@Houston",
+        "date": "2026-01-15",
+        "source": "new28",
+        "s": 19,
+        "u": 9,
+        "sh": 7,
+        "uh": 4,
+        "gap": -0.07602339181286549
+      },
+      {
+        "game": "OKC@SAS",
+        "date": "2026-10-20",
+        "source": "existingOct2026",
+        "s": 14,
+        "u": 14,
+        "sh": 6,
+        "uh": 7,
+        "gap": -0.07142857142857145
+      }
+    ]
+  },
+  "leave_one_date_out": [
+    {
+      "excluded_date": "2023-01-15",
+      "games": 47,
+      "steal_n": 781,
+      "steal_quick15": 420,
+      "steal_rate": 0.5377720870678617,
+      "unmarked_n": 601,
+      "unmarked_quick15": 175,
+      "unmarked_rate": 0.2911813643926789,
+      "gap": 0.24659072267518284
+    },
+    {
+      "excluded_date": "2024-01-15",
+      "games": 44,
+      "steal_n": 719,
+      "steal_quick15": 395,
+      "steal_rate": 0.5493741307371349,
+      "unmarked_n": 575,
+      "unmarked_quick15": 168,
+      "unmarked_rate": 0.2921739130434783,
+      "gap": 0.25720021769365664
+    },
+    {
+      "excluded_date": "2025-01-15",
+      "games": 44,
+      "steal_n": 698,
+      "steal_quick15": 374,
+      "steal_rate": 0.5358166189111748,
+      "unmarked_n": 580,
+      "unmarked_quick15": 179,
+      "unmarked_rate": 0.3086206896551724,
+      "gap": 0.2271959292560024
+    },
+    {
+      "excluded_date": "2026-01-15",
+      "games": 46,
+      "steal_n": 724,
+      "steal_quick15": 402,
+      "steal_rate": 0.5552486187845304,
+      "unmarked_n": 602,
+      "unmarked_quick15": 174,
+      "unmarked_rate": 0.28903654485049834,
+      "gap": 0.266212073934032
+    },
+    {
+      "excluded_date": "2026-10-20",
+      "games": 52,
+      "steal_n": 827,
+      "steal_quick15": 452,
+      "steal_rate": 0.5465538089480049,
+      "unmarked_n": 667,
+      "unmarked_quick15": 193,
+      "unmarked_rate": 0.2893553223388306,
+      "gap": 0.25719848660917427
+    },
+    {
+      "excluded_date": "2026-10-21",
+      "games": 44,
+      "steal_n": 650,
+      "steal_quick15": 356,
+      "steal_rate": 0.5476923076923077,
+      "unmarked_n": 548,
+      "unmarked_quick15": 157,
+      "unmarked_rate": 0.2864963503649635,
+      "gap": 0.2611959573273442
+    },
+    {
+      "excluded_date": "2026-10-22",
+      "games": 53,
+      "steal_n": 833,
+      "steal_quick15": 457,
+      "steal_rate": 0.5486194477791116,
+      "unmarked_n": 675,
+      "unmarked_quick15": 202,
+      "unmarked_rate": 0.2992592592592593,
+      "gap": 0.24936018851985237
+    }
+  ],
+  "guardrails": [
+    "All event data postgame rendered from same Basketball-Reference source family, no independent provider crosscheck",
+    "One calendar day per January year plus 3 Oct2026 dates, so not a season-general sample",
+    "Ordinal game rows are not statistically independent from one another and season/era shifts",
+    "No defender tracking, true possession ownership or official points off turnovers",
+    "No live prediction, market price, EV or deployment rights"
+  ],
+  "production_activation": false
+}
