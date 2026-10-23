@@ -1,0 +1,259 @@
+{
+  "schema": "atlas.nba.gamesense.historical_complete_day.v1",
+  "selection": "Complete Basketball-Reference Jan 15 2025 daily NBA list — every eleven listed matchup in index order, not two sampled games",
+  "index_url": "https://www.basketball-reference.com/boxscores/?month=1&day=15&year=2025",
+  "date": "2025-01-15",
+  "games_count": 11,
+  "ot_games": 1,
+  "team_period_final_checks": 22,
+  "postgame_source": true,
+  "original_html_bytes_preserved": false,
+  "provider_independence": false,
+  "game_records": [
+    {
+      "date": "2025-01-15",
+      "away": "Atlanta",
+      "home": "Chicago",
+      "home_code": "CHI",
+      "away_final": 110,
+      "home_final": 94,
+      "away_periods": [
+        27,
+        34,
+        25,
+        24
+      ],
+      "home_periods": [
+        25,
+        22,
+        31,
+        16
+      ],
+      "period_count": 4,
+      "playbyplay_url": "https://www.basketball-reference.com/boxscores/pbp/202501150CHI.html"
+    },
+    {
+      "date": "2025-01-15",
+      "away": "Houston",
+      "home": "Denver",
+      "home_code": "DEN",
+      "away_final": 128,
+      "home_final": 108,
+      "away_periods": [
+        28,
+        41,
+        33,
+        26
+      ],
+      "home_periods": [
+        23,
+        25,
+        33,
+        27
+      ],
+      "period_count": 4,
+      "playbyplay_url": "https://www.basketball-reference.com/boxscores/pbp/202501150DEN.html"
+    },
+    {
+      "date": "2025-01-15",
+      "away": "Brooklyn",
+      "home": "LA Clippers",
+      "home_code": "LAC",
+      "away_final": 67,
+      "home_final": 126,
+      "away_periods": [
+        21,
+        14,
+        16,
+        16
+      ],
+      "home_periods": [
+        21,
+        37,
+        44,
+        24
+      ],
+      "period_count": 4,
+      "playbyplay_url": "https://www.basketball-reference.com/boxscores/pbp/202501150LAC.html"
+    },
+    {
+      "date": "2025-01-15",
+      "away": "Miami",
+      "home": "LA Lakers",
+      "home_code": "LAL",
+      "away_final": 108,
+      "home_final": 117,
+      "away_periods": [
+        38,
+        28,
+        19,
+        23
+      ],
+      "home_periods": [
+        34,
+        20,
+        29,
+        34
+      ],
+      "period_count": 4,
+      "playbyplay_url": "https://www.basketball-reference.com/boxscores/pbp/202501150LAL.html"
+    },
+    {
+      "date": "2025-01-15",
+      "away": "Orlando",
+      "home": "Milwaukee",
+      "home_code": "MIL",
+      "away_final": 93,
+      "home_final": 122,
+      "away_periods": [
+        16,
+        25,
+        27,
+        25
+      ],
+      "home_periods": [
+        34,
+        28,
+        30,
+        30
+      ],
+      "period_count": 4,
+      "playbyplay_url": "https://www.basketball-reference.com/boxscores/pbp/202501150MIL.html"
+    },
+    {
+      "date": "2025-01-15",
+      "away": "Golden State",
+      "home": "Minnesota",
+      "home_code": "MIN",
+      "away_final": 116,
+      "home_final": 115,
+      "away_periods": [
+        34,
+        21,
+        32,
+        29
+      ],
+      "home_periods": [
+        12,
+        30,
+        36,
+        37
+      ],
+      "period_count": 4,
+      "playbyplay_url": "https://www.basketball-reference.com/boxscores/pbp/202501150MIN.html"
+    },
+    {
+      "date": "2025-01-15",
+      "away": "Dallas",
+      "home": "New Orleans",
+      "home_code": "NOP",
+      "away_final": 116,
+      "home_final": 119,
+      "away_periods": [
+        27,
+        34,
+        30,
+        25
+      ],
+      "home_periods": [
+        33,
+        30,
+        24,
+        32
+      ],
+      "period_count": 4,
+      "playbyplay_url": "https://www.basketball-reference.com/boxscores/pbp/202501150NOP.html"
+    },
+    {
+      "date": "2025-01-15",
+      "away": "New York",
+      "home": "Philadelphia",
+      "home_code": "PHI",
+      "away_final": 125,
+      "home_final": 119,
+      "away_periods": [
+        30,
+        30,
+        25,
+        24,
+        16
+      ],
+      "home_periods": [
+        21,
+        26,
+        38,
+        24,
+        10
+      ],
+      "period_count": 5,
+      "playbyplay_url": "https://www.basketball-reference.com/boxscores/pbp/202501150PHI.html"
+    },
+    {
+      "date": "2025-01-15",
+      "away": "Memphis",
+      "home": "San Antonio",
+      "home_code": "SAS",
+      "away_final": 129,
+      "home_final": 115,
+      "away_periods": [
+        28,
+        23,
+        43,
+        35
+      ],
+      "home_periods": [
+        30,
+        33,
+        25,
+        27
+      ],
+      "period_count": 4,
+      "playbyplay_url": "https://www.basketball-reference.com/boxscores/pbp/202501150SAS.html"
+    },
+    {
+      "date": "2025-01-15",
+      "away": "Boston",
+      "home": "Toronto",
+      "home_code": "TOR",
+      "away_final": 97,
+      "home_final": 110,
+      "away_periods": [
+        29,
+        24,
+        29,
+        15
+      ],
+      "home_periods": [
+        25,
+        30,
+        33,
+        22
+      ],
+      "period_count": 4,
+      "playbyplay_url": "https://www.basketball-reference.com/boxscores/pbp/202501150TOR.html"
+    },
+    {
+      "date": "2025-01-15",
+      "away": "Charlotte",
+      "home": "Utah",
+      "home_code": "UTA",
+      "away_final": 117,
+      "home_final": 112,
+      "away_periods": [
+        26,
+        29,
+        25,
+        37
+      ],
+      "home_periods": [
+        33,
+        29,
+        25,
+        25
+      ],
+      "period_count": 4,
+      "playbyplay_url": "https://www.basketball-reference.com/boxscores/pbp/202501150UTA.html"
+    }
+  ],
+  "betting_authority": false
+}
