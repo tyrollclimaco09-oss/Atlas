@@ -25,5 +25,6 @@ jobs:
             atlas-nba-live-diagnostic.json
             atlas-nba-live-q3-freeze.json
             atlas-nba-q1-q4-preoutcome-shadow.json
+            atlas-nba-q1-q4-final-settlement.json
           retention-days: 90
           if-no-files-found: ignore
