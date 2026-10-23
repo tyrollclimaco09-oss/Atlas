@@ -1,6 +1,6 @@
 {
   "schema": "atlas.engineering.handoff.v1",
-  "checkpoint_id": "ATLAS-20261022-NBA-Q3-CAPTURE-GATE-16",
+  "checkpoint_id": "ATLAS-20261022-NBA-REAL-PREOUTCOME-SHADOW-17",
   "as_of_date": "2026-10-22",
   "repository": "tyrollclimaco09-oss/Atlas",
   "source_branch": "research/odds-api-probe-2026-10-22",
@@ -300,7 +300,59 @@
         "betting_authority": false,
         "workflow_path": ".github/workflows/atlas-nba-live-q3-freeze.yml",
         "audit_path": "docs/research/ATLAS_NBA_LIVE_Q3_CAPTURE_GATE_20261022.md",
-        "next": "TEST_OPERATOR_DISPATCH_ON_RESEARCH_BRANCH;ATTEMPT_Q3_ZERO_LIVE_FUTURE_CAPTURE_IF_ACTUALLY_REACHABLE"
+        "next": "TEST_OPERATOR_DISPATCH_ON_RESEARCH_BRANCH;ATTEMPT_Q3_ZERO_LIVE_FUTURE_CAPTURE_IF_ACTUALLY_REACHABLE",
+        "period3_end_marker_check_added": true,
+        "enhanced_marker_gate_run": 39890603448,
+        "enhanced_marker_tests_passed": 8
+      },
+      "early_q1_to_q4_shadow_forecast": {
+        "state": "GENUINE_SOURCE_PRE_Q4_UNTRAINED_Q1_REFERENCE_UNSETTLED",
+        "game_id": "0022600007",
+        "event_code": "20261022/DENOKC",
+        "home": "OKC",
+        "away": "DEN",
+        "frozen_at_utc": "2026-10-23T02:42:35.059Z",
+        "source_observation_started_utc": "2026-10-23T02:42:33.952Z",
+        "game_state_before": "Q2_PT03M52.00S",
+        "game_state_after": "Q2_PT03M52.00S",
+        "external_independent_signature": false,
+        "freeze_original_github_run": 39891028392,
+        "first_operator_preflight_run": 39890796152,
+        "artifact_id": 12474856924,
+        "original_artifact_file_sha256": "17b0e41790953c386669316b13956681c2c64cac3d8da747541a0114bab4702c",
+        "feature_sha256": "bca69729f4a004e8f1f8c98c0432e85fd65cd29d2933f8b7412c6e01bbb9a4c6",
+        "selected_player_ids": [
+          "203999",
+          "1627750",
+          "1631114",
+          "1628392"
+        ],
+        "selected_q1_attempts": [
+          8,
+          6,
+          5,
+          4
+        ],
+        "q1_selected_total": 23,
+        "q4_total_point_reference": 23,
+        "target": "COMBINED_Q4_FIELD_GOAL_ATTEMPTS_OF_THE_SAME_FOUR_FROZEN_PLAYERS_EXCLUDE_OT",
+        "game_final_officially_verified": false,
+        "actual_q4_label_observed": false,
+        "prediction_error_computed": false,
+        "operator_postgame_settlement_performed": false,
+        "original_prospective_packet_immutable": true,
+        "q3_complete_snapshot_claimed": false,
+        "historical_v3_model_validated": false,
+        "nba_player_minutes_verified": false,
+        "betting_edge_or_price_evaluated": false,
+        "production_authority": false,
+        "calibrated_model": false,
+        "manual_wagers_authorized": false,
+        "forecast_file": "docs/prospective/ATLAS_NBA_DENOKC_Q1_Q4_SHADOW_FREEZE_20261022_V1.json",
+        "audit_file": "docs/research/ATLAS_20261022_NBA_FIRST_PREQ4_PROSPECTIVE_SHADOW_17.md",
+        "archive_verification_run": 39891308287,
+        "offline_settlement_contract_run": 39891519674,
+        "later_operator_settlement_route_run": 39891647897
       }
     },
     {
@@ -618,7 +670,13 @@
       "docs/research/ATLAS_NBA_LIVE_Q3_CAPTURE_GATE_20261022.md",
       "scripts/proof/nba-live-q3-freeze.mjs",
       "scripts/proof/nba-live-q3-freeze.test.mjs",
-      ".github/workflows/atlas-nba-live-q3-freeze.yml"
+      ".github/workflows/atlas-nba-live-q3-freeze.yml",
+      "docs/research/ATLAS_20261022_NBA_FIRST_PREQ4_PROSPECTIVE_SHADOW_17.md",
+      "docs/prospective/ATLAS_NBA_DENOKC_Q1_Q4_SHADOW_FREEZE_20261022_V1.json",
+      "scripts/proof/nba-live-q1-to-q4.mjs",
+      "scripts/proof/nba-q1-q4-final-settlement.mjs",
+      "scripts/proof/nba-q1-frozen-receipt.test.mjs",
+      ".github/workflows/atlas-nba-q3-one-shot-operator.yml"
     ],
     "immutable_git_runs": [
       39834900969,
@@ -626,7 +684,7 @@
       39837577620
     ],
     "recovered_asset_registry": "docs/continuity/ATLAS_RECOVERED_ASSET_REGISTRY_2026-10-22.json",
-    "last_engineering_pass_git_sha": "03c122ec2a91541f08ca1d61367b6271b9ddc267",
+    "last_engineering_pass_git_sha": "14dabc03ae938c186ebaccf72f9492d68acc265f",
     "additional_github_runs": [
       39848546540,
       39848787129,
@@ -657,7 +715,14 @@
       39879432700,
       39879497749,
       39879769087,
-      39880473176
+      39880473176,
+      39890452076,
+      39890603448,
+      39890796152,
+      39891028392,
+      39891308287,
+      39891519674,
+      39891647897
     ],
     "dual_source_custody": {
       "state": "SHADOW_UNATTESTED_RESEARCH_ONLY",
@@ -687,7 +752,8 @@
     "READ_TRIPLE_TIMESKIP_07_09_AND_VERIFY_CUSTODY_RUN_THEN_RESUME_INDEPENDENT_FORECAST_GATES",
     "READ_TIMESKIP_10_14_AND_RESPECT_NEGATIVE_NFL_BASELINE_AND_NON_EQUVALENT_V3_COMPARISON",
     "READ_UNSETTLED_W7_V2_LEDGER_AND_NEVER_REFORECAST_AFTER_RESULTS_OR_TREAT_PROXY_AS_CONFIRMED_STARTER",
-    "NBA_PASS16_GATE_PASSED_5_TESTS_BUT_NO_TRUE_LIVE_Q3_FREEZE;DO_NOT_BACKDATE_OR_CLAIM_MANUAL_DISPATCH_VERIFIED"
+    "NBA_PASS16_GATE_PASSED_5_TESTS_BUT_NO_TRUE_LIVE_Q3_FREEZE;DO_NOT_BACKDATE_OR_CLAIM_MANUAL_DISPATCH_VERIFIED",
+    "READ_CHECKPOINT_17_AND_PRESERVE_EXACT_Q1_Q4_FREEZE_BYTES;OFFICIAL_FINAL_SETTLE_AFTER_GAME_ONLY"
   ],
   "known_gaps": [
     "ORIGINAL_57_GAME_V3_ARCHIVE_RAW_BYTES_UNAVAILABLE_VIA_CURRENT_FILES_ACCESS",
@@ -718,6 +784,9 @@
     "NBA_ACTUAL_Q3_PRE_OUTCOME_FREEZE_NOT_YET_ATTESTED",
     "NBA_Q3_END_CLOCK_LIVE_PACKET_NOT_CAPTURED",
     "NBA_MANUAL_DISPATCH_ON_NONDEFAULT_RESEARCH_BRANCH_UNVERIFIED",
-    "NBA_Q3_PUBLIC_SOURCE_FRESHNESS_AND_RIGHTS_UNVERIFIED"
+    "NBA_Q3_PUBLIC_SOURCE_FRESHNESS_AND_RIGHTS_UNVERIFIED",
+    "NBA_Q1_TO_Q4_REAL_PREDICTION_NOW_FROZEN_BUT_NOT_SETTLED",
+    "NBA_Q3_COMPLETE_REAL_PREDICTION_STILL_NOT_CAPTURED",
+    "NBA_Q1_TO_Q4_BASELINE_NOT_CALIBRATED_OR_PRICE_EVALUATED"
   ]
 }

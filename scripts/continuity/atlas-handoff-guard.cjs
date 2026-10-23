@@ -227,6 +227,32 @@ function validate(h,root=ROOT){
    nbaLive.q4_outcome_settled===false&&
    nbaLive.model_validated===false&&nbaLive.betting_authority===false,
    'NBA_TESTED_GATE_NOT_REAL_LIVE_CAPTURE');
+ const early=nba.early_q1_to_q4_shadow_forecast;
+ assert(early?.state==='GENUINE_SOURCE_PRE_Q4_UNTRAINED_Q1_REFERENCE_UNSETTLED'&&
+  early.game_id==='0022600007'&&early.freeze_original_github_run===39891028392&&
+  early.original_artifact_file_sha256==='17b0e41790953c386669316b13956681c2c64cac3d8da747541a0114bab4702c'&&
+  early.feature_sha256==='bca69729f4a004e8f1f8c98c0432e85fd65cd29d2933f8b7412c6e01bbb9a4c6'&&
+  JSON.stringify(early.selected_player_ids)===JSON.stringify(['203999','1627750','1631114','1628392'])&&
+  JSON.stringify(early.selected_q1_attempts)===JSON.stringify([8,6,5,4])&&
+  early.q1_selected_total===23&&early.q4_total_point_reference===23&&
+  early.game_state_before==='Q2_PT03M52.00S'&&early.game_state_after==='Q2_PT03M52.00S'&&
+  early.external_independent_signature===false&&
+  early.game_final_officially_verified===false&&early.actual_q4_label_observed===false&&
+  early.prediction_error_computed===false&&
+  early.operator_postgame_settlement_performed===false&&
+  early.original_prospective_packet_immutable===true&&
+  early.q3_complete_snapshot_claimed===false&&
+  early.betting_edge_or_price_evaluated===false&&
+  early.production_authority===false&&early.calibrated_model===false&&
+  early.manual_wagers_authorized===false,'NBA_FIRST_LIVE_FORECAST_PREMATURE_PROMOTION');
+ assert(nba.live_q3_snapshot_capability?.captured_feature_packet===false&&
+  nba.live_q3_snapshot_capability.period3_end_marker_check_added===true&&
+  nba.live_q3_snapshot_capability.enhanced_marker_gate_run===39890603448&&
+  nba.live_q3_snapshot_capability.enhanced_marker_tests_passed===8,
+  'NBA_Q3_CAPTURE_FALSE_PROMOTION');
+ const freezeBytes=fs.readFileSync(path.resolve(root,early.forecast_file));
+ assert(crypto.createHash('sha256').update(freezeBytes).digest('hex')===
+  early.original_artifact_file_sha256,'NBA_FROZEN_BYTES_MISMATCH');
  const evidence=h.evidence;
  const registry=JSON.parse(fs.readFileSync(path.join(root,'docs/continuity/ATLAS_RECOVERED_ASSET_REGISTRY_2026-10-22.json'),'utf8'));
  assert(registry.schema==='atlas.recovered-artifact-registry.v1'&&

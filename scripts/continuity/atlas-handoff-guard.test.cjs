@@ -137,3 +137,20 @@ test('NBA workflow declaration is not proof manual dispatch is operational',()=>
  const h=clone(load());h.lanes[0].live_q3_snapshot_capability.manual_dispatch_trigger_verified=true;
  assert.throws(()=>validate(h),/NBA_TESTED_GATE_NOT_REAL_LIVE_CAPTURE/);
 });
+
+test('genuine NBA Q1 prospective evidence cannot masquerade as end-Q3 freeze',()=>{
+ const h=clone(load());h.lanes[0].early_q1_to_q4_shadow_forecast.q3_complete_snapshot_claimed=true;
+ assert.throws(()=>validate(h),/NBA_FIRST_LIVE_FORECAST_PREMATURE_PROMOTION/);
+});
+test('unsettled Q4 is not allowed to acquire a made-up official label',()=>{
+ const h=clone(load());h.lanes[0].early_q1_to_q4_shadow_forecast.actual_q4_label_observed=true;
+ assert.throws(()=>validate(h),/NBA_FIRST_LIVE_FORECAST_PREMATURE_PROMOTION/);
+});
+test('a genuine forecast carries zero production and betting authority',()=>{
+ const h=clone(load());h.lanes[0].early_q1_to_q4_shadow_forecast.manual_wagers_authorized=true;
+ assert.throws(()=>validate(h),/NBA_FIRST_LIVE_FORECAST_PREMATURE_PROMOTION/);
+});
+test('exact Q1 selected players and 23-attempt reference cannot be silently changed',()=>{
+ const h=clone(load());h.lanes[0].early_q1_to_q4_shadow_forecast.q4_total_point_reference=22;
+ assert.throws(()=>validate(h),/NBA_FIRST_LIVE_FORECAST_PREMATURE_PROMOTION/);
+});
