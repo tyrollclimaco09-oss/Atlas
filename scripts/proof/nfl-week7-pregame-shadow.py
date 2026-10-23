@@ -9,6 +9,8 @@ URL_PBP="https://github.com/nflverse/nflverse-data/releases/download/pbp/play_by
 URL_SCHED="https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?seasontype=2&week=7&dates=2026"
 SCOPE_WEEK=7
 MIN_LEAD_SECONDS=1800
+# ESPN / nflverse provider code mismatch. Do NOT create a "no historical QB" false negative.
+ESPN_TO_NFLVERSE={"LAR":"LA"}
 MAX_BYTES={URL_PBP:9_000_000,URL_SCHED:2_500_000}
 def reject(ok,reason):
     if not ok:raise ValueError(reason)
@@ -63,24 +65,31 @@ def history_from_pbp(rows):
           "game_id":game,"pass_attempts":n})
     return byteam
 def select_team(team,history):
-    games=history.get(team,[])
+    source_code=ESPN_TO_NFLVERSE.get(team,team)
+    games=history.get(source_code,[])
     reject(all(x["week"]<7 for x in games),"FUTURE_LEAKED_HISTORY")
     recent=max((x["week"] for x in games),default=None)
-    if recent is None:return {"team":team,"status":"NO_PAST_QB_ATTEMPT_DATA","forecast":None}
+    base={"team":team,"nflverse_history_team_code":source_code,
+          "starter_verified":False,"player_roster_current_verified":False,
+          "zero_week7_attempts_retained_after_outcome":True,
+          "forecast_rule":"MEAN_LAST_3_OBSERVED_PAST_GAMES"}
+    if recent is None:return {**base,"status":"NO_PAST_QB_ATTEMPT_DATA","forecast":None}
     latest=[x for x in games if x["week"]==recent]
-    # Tie break predeclared. This is a proxy based on last observed attempts, NOT a confirmed starter.
+    # Historical-proxy selection only, never infer actual starter.
     picked=sorted(latest,key=lambda x:(-x["pass_attempts"],x["player_id"]))[0]
     prior=sorted([x for x in games if x["player_id"]==picked["player_id"] and x["week"]<7],
                   key=lambda x:(x["week"],x["game_id"]))
     recent3=prior[-3:]
-    last3=mean(x["pass_attempts"] for x in recent3)
-    return {"team":team,"status":"HISTORICAL_LAST_APPEARANCE_QB_PROXY_NOT_STARTER_VERIFIED",
-      "player_id":picked["player_id"],"player_name":picked["player_name"],
-      "last_past_week":recent,"prior_player_games":len(prior),
-      "past_game_weeks":[x["week"] for x in recent3],
-      "forecast":last3,"forecast_rule":"MEAN_LAST_3_OBSERVED_PAST_GAMES",
-      "selected_from_future_week7_play":False,"starter_verified":False,
-      "zero_week7_attempts_retained_after_outcome":True}
+    info={**base,"player_id":picked["player_id"],"player_name":picked.get("player_name"),
+          "last_past_week":recent,"prior_player_games":len(prior),
+          "past_game_weeks":[x["week"] for x in recent3],
+          "selected_from_future_week7_play":False}
+    if len(prior)<2:
+        return {**info,"status":"INSUFFICIENT_TWO_PRIOR_GAMES","forecast":None}
+    if picked["pass_attempts"]<10 or 7-recent>2:
+        return {**info,"status":"STALE_OR_LOW_VOLUME_LAST_APPEARANCE","forecast":None}
+    return {**info,"status":"HISTORICAL_LAST_APPEARANCE_QB_PROXY_NOT_STARTER_VERIFIED",
+      "forecast":mean(x["pass_attempts"] for x in recent3)}
 def freeze(schedule,history,now):
     events=get_games(schedule)
     all_teams=sorted(set(x for e in events for x in (e["home"],e["away"])))
@@ -105,8 +114,11 @@ def selftest():
     sample={"events":[dict(e,id=str(100+i),competitions=[{"competitors":[
       {"homeAway":"home","team":{"abbreviation":"H"+str(i)}},
       {"homeAway":"away","team":{"abbreviation":"A"+str(i)}}]}]) for i in range(14)]}
-    hist={"H0":[{"player_id":"qb","player_name":"QB","week":6,"game_id":"past","pass_attempts":35}]}
-    before=select_team("H0",hist);reject(before["forecast"]==35,"NO_PRIOR_BASELINE")
+    hist={"H0":[{"player_id":"qb","player_name":"QB","week":5,"game_id":"past5","pass_attempts":29},
+       {"player_id":"qb","player_name":"QB","week":6,"game_id":"past6","pass_attempts":35}]}
+    before=select_team("H0",hist);reject(before["forecast"]==32,"PRIOR2_BASELINE_BROKEN")
+    reject(select_team("LAR",{"LA":hist["H0"]})["forecast"]==32,"LAR_TO_LA_ALIAS_FAILED")
+    reject(select_team("H0",{"H0":[hist["H0"][1]]})["forecast"] is None,"ONE_GAME_NOT_BLOCKED")
     got=freeze(sample,hist,clock_utc("2026-10-22T23:59:00Z"))
     reject(got["all_week7_games"]==14 and len(got["eligible_future_games"])==14,"CENSUS_INCOMPLETE")
     reject(select_team("A0",hist)["forecast"] is None,"MISSING_TEAM_NOT_RETAINED")
@@ -136,7 +148,12 @@ def main():
     schedule=json.loads(schedule_bytes)
     result=freeze(schedule,history_from_pbp(rows),started)
     observed=datetime.now(timezone.utc)
-    report={"schema":"atlas.nfl.w7.earliest_pre_kickoff_priceblind_shadow.v1",
+    # Version 1 was a diagnostic and is immutable in the historical commit/Actions run.
+    # This is a new independently timed versioned freeze, never an edit to v1.
+    report={"schema":"atlas.nfl.w7.earliest_pre_kickoff_priceblind_shadow.v2",
+      "supersedes_diagnostic_workflow_run":"39879497749",
+      "source_alias_map":ESPN_TO_NFLVERSE,
+      "min_prior_player_games_to_emit_estimate":2,
       "research_only":True,"packet_created_utc":observed.isoformat(),
       "source_observation_started_utc":started.isoformat(),
       "github_runner_id":os.getenv("GITHUB_RUN_ID"),"github_head_sha":os.getenv("GITHUB_SHA"),
@@ -144,6 +161,8 @@ def main():
       "source_urls":[URL_PBP,URL_SCHED],"past_weeks_allowed":[1,2,3,4,5,6],
       "schedule_reconciliation":result,
       "player_selection":"PREVIOUS_APPEARANCE_HIGHEST_PASS_ATTEMPTS_PROXY_PER_TEAM",
+      "insufficient_history_forecast":None,
+      "historical_source_not_live_starter_proof":True,
       "injuries_and_starting_status_verified":False,"player_roster_current_verified":False,
       "real_observation_pre_kickoff_for_included_games":True,
       "externally_cryptographically_signed_freeze":False,
@@ -151,17 +170,23 @@ def main():
       "calibrator_eligible":False,"production_authority":False,
       "automatic_wagers":False,"paid_odds_credits":0,
       "outcomes_absent_at_freeze":True}
+    # If alias resolution silently fails, do not assert coverage.
+    for e in result["eligible_future_games"]:
+        for p in e["candidates"]:
+            if p["team"]=="LAR":
+                reject(p["nflverse_history_team_code"]=="LA","LAR_ALIAS_INCOMPLETE")
     reject(all(clock_utc(e["kickoff_utc"])>observed+timedelta(seconds=MIN_LEAD_SECONDS)
       for e in result["eligible_future_games"]),"BUFFER_LOST_DURING_SNAPSHOT")
     with open("atlas-nfl-week7-prospective-shadow.json","w",encoding="utf-8") as f:
         json.dump(report,f,sort_keys=True,indent=2);f.write("\n")
-    print("ATLAS_NFL_W7_PROSPECTIVE "+json.dumps({"created":observed.isoformat(),
+    print("ATLAS_NFL_W7_PROSPECTIVE_V2 "+json.dumps({"created":observed.isoformat(),
        "games_scheduled":result["all_week7_games"],
        "games_pregame":len(result["eligible_future_games"]),
        "games_rejected":[{"id":x["event_id"],"reason":x["reason"]} for x in result["excluded_games"]],
        "candidates":[{"game_id":e["event_id"],"kickoff":e["kickoff_utc"],"away":e["away"],"home":e["home"],
          "qb_proxies":[{"team":p["team"],"name":p.get("player_name"),"id":p.get("player_id"),
-           "estimate":p.get("forecast"),"prior_games":p.get("prior_player_games")} for p in e["candidates"]]}
+           "estimate":p.get("forecast"),"prior_games":p.get("prior_player_games"),"source_team":p.get("nflverse_history_team_code"),
+           "status":p.get("status")} for p in e["candidates"]]}
           for e in result["eligible_future_games"]],
        "source_hashes":[pbp_hash,sc_hash],"github_run":os.getenv("GITHUB_RUN_ID"),
        "pre_kickoff":True,"starter_identity_verified":False,
