@@ -1,6 +1,6 @@
 {
   "schema": "atlas.engineering.handoff.v1",
-  "checkpoint_id": "ATLAS-20261022-NBA-REAL-PREOUTCOME-SHADOW-17",
+  "checkpoint_id": "ATLAS-20261022-NBA-Q1-ROSTER-CORROBORATION-18",
   "as_of_date": "2026-10-22",
   "repository": "tyrollclimaco09-oss/Atlas",
   "source_branch": "research/odds-api-probe-2026-10-22",
@@ -352,7 +352,51 @@
         "audit_file": "docs/research/ATLAS_20261022_NBA_FIRST_PREQ4_PROSPECTIVE_SHADOW_17.md",
         "archive_verification_run": 39891308287,
         "offline_settlement_contract_run": 39891519674,
-        "later_operator_settlement_route_run": 39891647897
+        "later_operator_settlement_route_run": 39891647897,
+        "later_same_provider_player_identity": {
+          "status": "FOUR_FROZEN_NBA_IDS_MATCH_LIVE_NBA_BOXSCORE_SAME_PROVIDER",
+          "github_run_id": 39892113527,
+          "observed_at_utc": "2026-10-23T02:54:29.678Z",
+          "live_box_sha256": "c2898cc305173460f6ef4710728873befb131b9d935f474678bdac696882fe50",
+          "original_frozen_json_sha256": "17b0e41790953c386669316b13956681c2c64cac3d8da747541a0114bab4702c",
+          "ids": [
+            "203999",
+            "1627750",
+            "1631114",
+            "1628392"
+          ],
+          "names": [
+            "Nikola Jokić",
+            "Jamal Murray",
+            "Jalen Williams",
+            "Isaiah Hartenstein"
+          ],
+          "teams": [
+            "DEN",
+            "DEN",
+            "OKC",
+            "OKC"
+          ],
+          "frozen_q1_fga": [
+            8,
+            6,
+            5,
+            4
+          ],
+          "later_live_box_fga": [
+            12,
+            9,
+            7,
+            5
+          ],
+          "same_nba_provider_not_independent_crossprovider": true,
+          "past_roster_verified_at_original_freeze": false,
+          "current_minutes_verified": false,
+          "actual_q4_outcome_known": false,
+          "official_final_settlement_performed": false,
+          "forecast_file_unmodified": true,
+          "source_report": "docs/research/ATLAS_20261022_NBA_Q1_FROZEN_ROSTER_CROSSCHECK_18.md"
+        }
       }
     },
     {
@@ -676,7 +720,9 @@
       "scripts/proof/nba-live-q1-to-q4.mjs",
       "scripts/proof/nba-q1-q4-final-settlement.mjs",
       "scripts/proof/nba-q1-frozen-receipt.test.mjs",
-      ".github/workflows/atlas-nba-q3-one-shot-operator.yml"
+      ".github/workflows/atlas-nba-q3-one-shot-operator.yml",
+      "docs/research/ATLAS_20261022_NBA_Q1_FROZEN_ROSTER_CROSSCHECK_18.md",
+      "scripts/proof/nba-q1-frozen-player-identity.mjs"
     ],
     "immutable_git_runs": [
       39834900969,
@@ -684,7 +730,7 @@
       39837577620
     ],
     "recovered_asset_registry": "docs/continuity/ATLAS_RECOVERED_ASSET_REGISTRY_2026-10-22.json",
-    "last_engineering_pass_git_sha": "14dabc03ae938c186ebaccf72f9492d68acc265f",
+    "last_engineering_pass_git_sha": "58aec0255528afaccbac1f19a8174a394eea05a2",
     "additional_github_runs": [
       39848546540,
       39848787129,
@@ -722,7 +768,8 @@
       39891028392,
       39891308287,
       39891519674,
-      39891647897
+      39891647897,
+      39892113527
     ],
     "dual_source_custody": {
       "state": "SHADOW_UNATTESTED_RESEARCH_ONLY",
@@ -753,7 +800,8 @@
     "READ_TIMESKIP_10_14_AND_RESPECT_NEGATIVE_NFL_BASELINE_AND_NON_EQUVALENT_V3_COMPARISON",
     "READ_UNSETTLED_W7_V2_LEDGER_AND_NEVER_REFORECAST_AFTER_RESULTS_OR_TREAT_PROXY_AS_CONFIRMED_STARTER",
     "NBA_PASS16_GATE_PASSED_5_TESTS_BUT_NO_TRUE_LIVE_Q3_FREEZE;DO_NOT_BACKDATE_OR_CLAIM_MANUAL_DISPATCH_VERIFIED",
-    "READ_CHECKPOINT_17_AND_PRESERVE_EXACT_Q1_Q4_FREEZE_BYTES;OFFICIAL_FINAL_SETTLE_AFTER_GAME_ONLY"
+    "READ_CHECKPOINT_17_AND_PRESERVE_EXACT_Q1_Q4_FREEZE_BYTES;OFFICIAL_FINAL_SETTLE_AFTER_GAME_ONLY",
+    "SAME_PROVIDER_ROSTER_CHECK_IS_AFTER_FREEZE_NOT_ATTESTATION_AT_PREDICTION_TIME;DO_NOT_UPDATE_ORIGINAL_Q1_PACKET"
   ],
   "known_gaps": [
     "ORIGINAL_57_GAME_V3_ARCHIVE_RAW_BYTES_UNAVAILABLE_VIA_CURRENT_FILES_ACCESS",

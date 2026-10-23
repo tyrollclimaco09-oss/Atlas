@@ -154,3 +154,14 @@ test('exact Q1 selected players and 23-attempt reference cannot be silently chan
  const h=clone(load());h.lanes[0].early_q1_to_q4_shadow_forecast.q4_total_point_reference=22;
  assert.throws(()=>validate(h),/NBA_FIRST_LIVE_FORECAST_PREMATURE_PROMOTION/);
 });
+
+test('post-freeze NBA roster read cannot be backdated as identity verified at Q1 prediction',()=>{
+ const h=clone(load());
+ h.lanes[0].early_q1_to_q4_shadow_forecast.later_same_provider_player_identity.past_roster_verified_at_original_freeze=true;
+ assert.throws(()=>validate(h),/NBA_SAME_PROVIDER_ROSTER_FALSE_CERTIFICATION/);
+});
+test('same-provider box-score roster check cannot become an official Q4 settlement',()=>{
+ const h=clone(load());
+ h.lanes[0].early_q1_to_q4_shadow_forecast.later_same_provider_player_identity.official_final_settlement_performed=true;
+ assert.throws(()=>validate(h),/NBA_SAME_PROVIDER_ROSTER_FALSE_CERTIFICATION/);
+});

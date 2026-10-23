@@ -253,6 +253,19 @@ function validate(h,root=ROOT){
  const freezeBytes=fs.readFileSync(path.resolve(root,early.forecast_file));
  assert(crypto.createHash('sha256').update(freezeBytes).digest('hex')===
   early.original_artifact_file_sha256,'NBA_FROZEN_BYTES_MISMATCH');
+ const roster=early.later_same_provider_player_identity;
+ assert(roster?.status==='FOUR_FROZEN_NBA_IDS_MATCH_LIVE_NBA_BOXSCORE_SAME_PROVIDER'&&
+  roster.github_run_id===39892113527&&
+  JSON.stringify(roster.ids)===JSON.stringify(['203999','1627750','1631114','1628392'])&&
+  JSON.stringify(roster.frozen_q1_fga)===JSON.stringify([8,6,5,4])&&
+  JSON.stringify(roster.later_live_box_fga)===JSON.stringify([12,9,7,5])&&
+  roster.same_nba_provider_not_independent_crossprovider===true&&
+  roster.past_roster_verified_at_original_freeze===false&&
+  roster.current_minutes_verified===false&&
+  roster.actual_q4_outcome_known===false&&
+  roster.official_final_settlement_performed===false&&
+  roster.forecast_file_unmodified===true,
+  'NBA_SAME_PROVIDER_ROSTER_FALSE_CERTIFICATION');
  const evidence=h.evidence;
  const registry=JSON.parse(fs.readFileSync(path.join(root,'docs/continuity/ATLAS_RECOVERED_ASSET_REGISTRY_2026-10-22.json'),'utf8'));
  assert(registry.schema==='atlas.recovered-artifact-registry.v1'&&
