@@ -159,6 +159,42 @@ function validate(h,root=ROOT){
   custody.nfl_packet_sha256==='8fcd084a77af61aa7d5ef8484c4086d4c76594010668ef5edb354f629e8f2250'&&
   custody.calibrator_eligible===false&&custody.production_authority===false&&
   custody.real_time_freeze_verified===false,'SHADOW_CUSTODY_UNEARNED_PROMOTION');
+ const fw=nba.q3_feature_firewall,c14=nba.october_date_census,z=nba.q4_zero_shot_diagnostic;
+ assert(fw?.status==='STRICT_PRE_Q4_INPUT_ISOLATION_VERIFIED_RETROSPECTIVELY'&&
+   fw.offline_tests_passed===5&&fw.future_event_rejected===true&&
+   fw.q4_label_in_separate_function===true&&
+   fw.feature_hash_unchanged_when_q4_outcome_mutates===true&&
+   fw.external_live_q3_timestamp_verified===false&&
+   fw.original_v3_replay_verified===false,'Q3_FIREWALL_FALSE_RELEASE');
+ assert(c14?.games_scheduled===14&&c14.games_accepted===14&&c14.rejections===0&&
+   c14.selected_players===56&&c14.zero_q4_shooters===10&&
+   Math.abs(c14.rate_baseline_mae-5.452380952380952)<1e-10&&
+   c14.original_v3_comparator_equivalent===false&&c14.v3_57_row_level_replay_verified===false&&
+   c14.pre_q4_external_freeze_verified===false&&c14.new_model_validated===false,
+   'NBA_V3_FALSE_COMPARABILITY');
+ assert(z?.zero_q4_fga===10&&z.zero_shooters_with_other_q4_direct_actor_event===6&&
+   z.zero_shooters_without_q4_direct_actor_event===4&&
+   z.phoenix_portland_selected_zero_q4_fga===4&&
+   z.phoenix_portland_zero_fga_with_other_q4_actor_event===3&&
+   z.q4_actual_minutes_verified===false&&z.benching_cause_verified===false,
+   'NBA_BENCHING_INVENTION');
+ const qb=nfl.qb_prior_week_retrospective;
+ assert(qb?.weeks?.length===6&&qb.qb_game_rows===214&&qb.paired_predictions===85&&
+   qb.game_clusters===45&&
+   Math.abs(qb.last3_mae-8.672549019607843)<1e-10&&
+   Math.abs(qb.league_reference_mae-7.516757103540519)<1e-10&&
+   qb.exploratory_ci95[0]<0&&qb.exploratory_ci95[1]>0&&
+   qb.uses_only_prior_weeks_for_prediction_features===true&&
+   qb.selection_conditions_on_current_week_pass_attempt_rows===true&&
+   qb.all_pregame_candidate_qbs_included===false&&
+   qb.verified_pregame_timestamp_freeze===false&&
+   qb.model_promoted===false&&qb.odds_and_positive_ev_verified===false,
+   'QB_BASELINE_FALSE_PROMOTION');
+ const live=b.massive_pass_refresh;
+ assert(live?.read_only===true&&live.admissible_outcomes===0&&live.validated_models===0&&
+   live.operational_mode==='MANUAL_ONLY'&&live.configured_feeds===0&&
+   live.vercel_to_supabase_authenticated_parity_verified===false&&
+   live.canonical_betting_execution_approved===false,'BACKEND_RELEASE_NOT_EARNED');
  const evidence=h.evidence;
  const registry=JSON.parse(fs.readFileSync(path.join(root,'docs/continuity/ATLAS_RECOVERED_ASSET_REGISTRY_2026-10-22.json'),'utf8'));
  assert(registry.schema==='atlas.recovered-artifact-registry.v1'&&

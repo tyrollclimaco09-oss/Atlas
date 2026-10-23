@@ -90,3 +90,28 @@ test('zero causal outcomes and shadow artifacts prevent automatic model promotio
  const x=clone(load());x.evidence.dual_source_custody.real_time_freeze_verified=true;
  assert.throws(()=>validate(x),/SHADOW_CUSTODY_UNEARNED_PROMOTION/);
 });
+
+test('a pure Q3 feature firewall never implies a real external Q3 freeze',()=>{
+ const h=clone(load());h.lanes[0].q3_feature_firewall.external_live_q3_timestamp_verified=true;
+ assert.throws(()=>validate(h),/Q3_FIREWALL_FALSE_RELEASE/);
+});
+test('NBA rate MAE is not permitted to be labeled a win over historical trained V3 baseline',()=>{
+ const h=clone(load());h.lanes[0].october_date_census.original_v3_comparator_equivalent=true;
+ assert.throws(()=>validate(h),/NBA_V3_FALSE_COMPARABILITY/);
+});
+test('NBA zero Q4 field-goal attempts do not prove benching',()=>{
+ const h=clone(load());h.lanes[0].q4_zero_shot_diagnostic.benching_cause_verified=true;
+ assert.throws(()=>validate(h),/NBA_BENCHING_INVENTION/);
+});
+test('QB future-week appearance survivorship cannot become pregame eligible candidate census',()=>{
+ const h=clone(load());h.lanes[1].qb_prior_week_retrospective.all_pregame_candidate_qbs_included=true;
+ assert.throws(()=>validate(h),/QB_BASELINE_FALSE_PROMOTION/);
+});
+test('last-three historical QB rule has not earned a model upgrade',()=>{
+ const h=clone(load());h.lanes[1].qb_prior_week_retrospective.model_promoted=true;
+ assert.throws(()=>validate(h),/QB_BASELINE_FALSE_PROMOTION/);
+});
+test('new shadow research does not repair absent Supabase calibration',()=>{
+ const h=clone(load());h.backend.massive_pass_refresh.admissible_outcomes=1;
+ assert.throws(()=>validate(h),/BACKEND_RELEASE_NOT_EARNED/);
+});

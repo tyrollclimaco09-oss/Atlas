@@ -1,6 +1,6 @@
 {
   "schema": "atlas.engineering.handoff.v1",
-  "checkpoint_id": "ATLAS-20261022-TRIPLE-TIMESKIP-07-09",
+  "checkpoint_id": "ATLAS-20261022-MASSIVE-TIMESKIP-10-14",
   "as_of_date": "2026-10-22",
   "repository": "tyrollclimaco09-oss/Atlas",
   "source_branch": "research/odds-api-probe-2026-10-22",
@@ -221,6 +221,61 @@
         "gsw_lal_q4_low_volume_cause_verified": false,
         "model_validation": false,
         "documentation": "docs/research/ATLAS_20261022_TRIPLE_TIMESKIP_07_09.md"
+      },
+      "q3_feature_firewall": {
+        "status": "STRICT_PRE_Q4_INPUT_ISOLATION_VERIFIED_RETROSPECTIVELY",
+        "github_run": 39875747455,
+        "offline_tests_passed": 5,
+        "q3_player_selection_only_from_periods": [
+          1,
+          2,
+          3
+        ],
+        "q4_label_in_separate_function": true,
+        "future_event_rejected": true,
+        "feature_hash_unchanged_when_q4_outcome_mutates": true,
+        "external_live_q3_timestamp_verified": false,
+        "three_game_historical_values_reconciled": true,
+        "source_rights_verified": false,
+        "original_v3_replay_verified": false,
+        "documentation": "docs/research/ATLAS_20261022_MASSIVE_TIMESKIP_10_14.md"
+      },
+      "october_date_census": {
+        "status": "14_OF_14_DATE_SELECTED_NBA_GAME_Q4_RATE_BASELINE_RETRO_ONLY",
+        "github_run": 39876106760,
+        "dates": [
+          "20261020",
+          "20261021"
+        ],
+        "games_scheduled": 14,
+        "games_accepted": 14,
+        "rejections": 0,
+        "rate_baseline_mae": 5.452380952380952,
+        "median_absolute_error": 3.5,
+        "worst_absolute_error": 17.666666666666668,
+        "zero_q4_shooters": 10,
+        "selected_players": 56,
+        "original_v3_comparator_equivalent": false,
+        "old_v3_reported_weighted_mean_mae": 7.062,
+        "old_v3_reported_saturating_ridge_mae": 6.456,
+        "v3_57_row_level_replay_verified": false,
+        "pre_q4_external_freeze_verified": false,
+        "new_model_validated": false,
+        "fixed_census_not_outcome_filtered": true,
+        "documentation": "docs/research/ATLAS_20261022_MASSIVE_TIMESKIP_10_14.md"
+      },
+      "q4_zero_shot_diagnostic": {
+        "status": "ZERO_FGA_NOT_CAUSALLY_EQUAL_TO_BENCHED",
+        "github_run": 39876565802,
+        "selected_shooters": 56,
+        "zero_q4_fga": 10,
+        "zero_shooters_with_other_q4_direct_actor_event": 6,
+        "zero_shooters_without_q4_direct_actor_event": 4,
+        "phoenix_portland_selected_zero_q4_fga": 4,
+        "phoenix_portland_zero_fga_with_other_q4_actor_event": 3,
+        "q4_actual_minutes_verified": false,
+        "benching_cause_verified": false,
+        "documentation": "docs/research/ATLAS_20261022_MASSIVE_TIMESKIP_10_14.md"
       }
     },
     {
@@ -403,6 +458,39 @@
         "full_play_coverage_verified": false,
         "pregame_player_model_validated": false,
         "documentation": "docs/research/ATLAS_20261022_TRIPLE_TIMESKIP_07_09.md"
+      },
+      "qb_prior_week_retrospective": {
+        "status": "HISTORICAL_LAST3_NOT_PROMOTED_VS_LEAGUE_REFERENCE",
+        "first_run": 39875525098,
+        "uncertainty_run": 39876250375,
+        "nflverse_sha256": "a6ddee607edda2d530bc65fd869c0eb2f8019ea0d962b020e039dae52c840399",
+        "weeks": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "qb_game_rows": 214,
+        "paired_predictions": 85,
+        "game_clusters": 45,
+        "last3_mae": 8.672549019607843,
+        "league_reference_mae": 7.516757103540519,
+        "last3_minus_reference_mae": 1.1557919160673231,
+        "last3_better_count": 32,
+        "game_cluster_bootstrap_draws": 2500,
+        "exploratory_ci95": [
+          -0.20548976559687263,
+          2.510067204846321
+        ],
+        "uses_only_prior_weeks_for_prediction_features": true,
+        "selection_conditions_on_current_week_pass_attempt_rows": true,
+        "all_pregame_candidate_qbs_included": false,
+        "verified_pregame_timestamp_freeze": false,
+        "odds_and_positive_ev_verified": false,
+        "model_promoted": false,
+        "documentation": "docs/research/ATLAS_20261022_MASSIVE_TIMESKIP_10_14.md"
       }
     }
   ],
@@ -428,6 +516,18 @@
       "query_read_only": true,
       "authenticated_vercel_to_supabase_verified": false,
       "external_production_health_asserted": false
+    },
+    "massive_pass_refresh": {
+      "read_only": true,
+      "calibration_stage": "WAIT_FIRST_CAUSAL_OUTCOME",
+      "admissible_outcomes": 0,
+      "validated_models": 0,
+      "verified_datasets": 3,
+      "operational_mode": "MANUAL_ONLY",
+      "configured_feeds": 0,
+      "vercel_to_supabase_authenticated_parity_verified": false,
+      "canonical_betting_execution_approved": false,
+      "documentation": "docs/research/ATLAS_20261022_MASSIVE_TIMESKIP_10_14.md"
     }
   },
   "evidence": {
@@ -453,7 +553,8 @@
       "docs/prospective/ATLAS_NFL_20261022_WEEK6_NFLVERSE_PBP_CROSSCHECK_05.md",
       "docs/prospective/ATLAS_NBA_20261022_THREE_GAME_FGA_INTEGRITY_06.md",
       "docs/prospective/ATLAS_NFL_20261022_WEEK6_CLOCK_CORRESPONDENCE_06.md",
-      "docs/research/ATLAS_20261022_TRIPLE_TIMESKIP_07_09.md"
+      "docs/research/ATLAS_20261022_TRIPLE_TIMESKIP_07_09.md",
+      "docs/research/ATLAS_20261022_MASSIVE_TIMESKIP_10_14.md"
     ],
     "immutable_git_runs": [
       39834900969,
@@ -461,7 +562,7 @@
       39837577620
     ],
     "recovered_asset_registry": "docs/continuity/ATLAS_RECOVERED_ASSET_REGISTRY_2026-10-22.json",
-    "last_engineering_pass_git_sha": "d7008785aa533bd6f78504d0d7e54041c55451f6",
+    "last_engineering_pass_git_sha": "c2aebb6e10915f50a776e97ad59e299d3177ca56",
     "additional_github_runs": [
       39848546540,
       39848787129,
@@ -482,7 +583,12 @@
       39863207585,
       39864872638,
       39864788837,
-      39865337273
+      39865337273,
+      39875747455,
+      39876106760,
+      39876565802,
+      39875525098,
+      39876250375
     ],
     "dual_source_custody": {
       "state": "SHADOW_UNATTESTED_RESEARCH_ONLY",
@@ -509,7 +615,8 @@
     "READ_THE_TWO_FORENSIC_04_AUDITS_AND_REPLAY_SOURCE_QUALITY_TESTS_BEFORE_MODEL_WORK",
     "START_FROM_CHECKPOINT_05_FGA_EVENT_WITNESSES_AND_HOU_JAX_OPPONENT_CORRECTION",
     "READ_TIMESKIP_06_NBA_AND_NFL_AUDITS;DO_NOT_MISINTERPRET_3_GAME_SOURCE_PASS_OR_116_CLOCK_MATCHES",
-    "READ_TRIPLE_TIMESKIP_07_09_AND_VERIFY_CUSTODY_RUN_THEN_RESUME_INDEPENDENT_FORECAST_GATES"
+    "READ_TRIPLE_TIMESKIP_07_09_AND_VERIFY_CUSTODY_RUN_THEN_RESUME_INDEPENDENT_FORECAST_GATES",
+    "READ_TIMESKIP_10_14_AND_RESPECT_NEGATIVE_NFL_BASELINE_AND_NON_EQUVALENT_V3_COMPARISON"
   ],
   "known_gaps": [
     "ORIGINAL_57_GAME_V3_ARCHIVE_RAW_BYTES_UNAVAILABLE_VIA_CURRENT_FILES_ACCESS",
@@ -530,6 +637,10 @@
     "Q3_NBA_RETROSPECTIVE_FEATURE_EXTRACTION_NOT_PROSPECTIVELY_FROZEN",
     "NFL_PLAYER_SOURCE_NAME_VOLUME_MATCH_NOT_DIRECT_CROSS_PROVIDER_ID_PARITY",
     "CANONICAL_SETTLED_ATLAS_CALIBRATION_STILL_ZERO",
-    "VERCEL_TO_SUPABASE_AUTHORIZED_RUNTIME_PARITY_UNKNOWN"
+    "VERCEL_TO_SUPABASE_AUTHORIZED_RUNTIME_PARITY_UNKNOWN",
+    "NFL_85_GAME_BACKTEST_CONDITIONS_ON_CURRENT_WEEK_PASSER_OBSERVATION",
+    "NBA_14_GAME_SOURCE_CENSUS_BASELINE_NOT_SAME_AS_OLD_TRAINED_V3_BASELINE",
+    "ZERO_Q4_FGA_DOES_NOT_PROVE_BENCHED",
+    "NBA_Q3_TIMESTAMP_NOT_EXTERNAL_ATTESTED"
   ]
 }

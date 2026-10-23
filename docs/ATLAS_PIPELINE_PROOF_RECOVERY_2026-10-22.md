@@ -122,3 +122,7 @@ These new findings are pinned in `docs/continuity/ATLAS_CURRENT_HANDOFF.json` wi
 ## Triple Timeskip 07–09 — NBA Q3 feature, NFL actor and custody
 
 [Read the durable three-pass report](research/ATLAS_20261022_TRIPLE_TIMESKIP_07_09.md). NBA new three-game retrospective (4 Q1–Q3 selected players, Q4 target, naïve historical MAE **7.444**), not V3 replay, no genuine external Q3 freeze. NFL HOU@JAX W6 player actors `C.Stroud 34` / `W.Marks 15` matched ESPN's named volumes but no cross-provider player-ID proof. Integrated GitHub CI [39865337273](https://github.com/tyrollclimaco09-oss/Atlas/actions/runs/39865337273) kept two independent research packets hash-linked and SHADOW. Fresh read-only Supabase state still 0 admitted causal outcomes, 0 validated models, MANUAL_ONLY, 0 configured feeds. Production remains HOLD.
+
+## Major Timeskip 10–14 negative controls
+
+The [permanent five-pass report](research/ATLAS_20261022_MASSIVE_TIMESKIP_10_14.md) records NBA Q3-only chronology firewall, 14/14 date-defined NBA Q4 rate benchmark (MAE 5.452, not comparable with original V3's differently trained 7.062), Q4 actor evidence disputing blanket benching, and NFL 85-observation chronological QB benchmark where last-three **FAILED TO BEAT** a simpler prior-week league reference (MAE 8.673 vs 7.517, paired CI crosses 0). Supabase still 0 causal outcomes / 0 model validations / MANUAL_ONLY. No release promotion, paid odds calls, or wagers.
