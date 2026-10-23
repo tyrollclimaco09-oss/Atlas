@@ -2,8 +2,8 @@
   "schema": "atlas.nba.operator_q3_control.v1",
   "event_id": "0022600007",
   "event_code": "20261022/DENOKC",
-  "mode": "preflight",
-  "intent": "VALIDATE_SINGLE_INVOCATION_PATH_WITHOUT_FREEZE",
+  "mode": "q1_capture",
+  "intent": "CAPTURE_Q1_ONLY_FOR_FUTURE_Q4_BEFORE_Q4",
   "never_poll": true,
   "production_authority": false,
   "odds_calls": 0

@@ -18,3 +18,9 @@ test('mode, identity, and ability to poll or wager are fixed',()=>{
   assert.throws(()=>validate({...c,...change}));
  }
 });
+
+test('early Q1-only capture is a distinct explicitly authorized research outcome',()=>{
+ const x={...c,mode:'q1_capture',intent:'CAPTURE_Q1_ONLY_FOR_FUTURE_Q4_BEFORE_Q4'};
+ assert.equal(validate(x),'q1_capture');
+ assert.throws(()=>validate({...x,intent:'CAPTURE_ONLY_IF_STRICT_LIVE_Q3_CLOCK_ZERO'}),/INVALID_Q1_CAPTURE_INTENT/);
+});

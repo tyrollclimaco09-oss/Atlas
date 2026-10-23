@@ -15,7 +15,7 @@ jobs:
         with: {persist-credentials: false}
       - uses: actions/setup-node@v4
         with: {node-version: '22'}
-      - run: node --test scripts/proof/nba-q3-operator-one-shot.test.mjs scripts/proof/nba-live-q3-freeze.test.mjs
+      - run: node --test scripts/proof/nba-q3-operator-one-shot.test.mjs scripts/proof/nba-live-q3-freeze.test.mjs scripts/proof/nba-live-q1-to-q4.test.mjs
       - run: node scripts/proof/nba-q3-operator-one-shot.mjs
       - uses: actions/upload-artifact@v4
         if: always()
@@ -24,5 +24,6 @@ jobs:
           path: |
             atlas-nba-live-diagnostic.json
             atlas-nba-live-q3-freeze.json
+            atlas-nba-q1-q4-preoutcome-shadow.json
           retention-days: 90
           if-no-files-found: ignore
