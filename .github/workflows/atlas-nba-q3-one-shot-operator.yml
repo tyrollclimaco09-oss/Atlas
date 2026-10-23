@@ -1,0 +1,28 @@
+name: ATLAS NBA research-branch one-shot operator — preflight or strict live capture
+on:
+  push:
+    branches: [research/odds-api-probe-2026-10-22]
+    paths:
+      - docs/prospective/ATLAS_NBA_Q3_OPERATOR_CONTROL_20261022.json
+permissions: {contents: read}
+jobs:
+  operator-single-attempt:
+    if: contains(github.event.head_commit.message, '[ATLAS_NBA_Q3_OPERATOR_TRIGGER]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - run: node --test scripts/proof/nba-q3-operator-one-shot.test.mjs scripts/proof/nba-live-q3-freeze.test.mjs
+      - run: node scripts/proof/nba-q3-operator-one-shot.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: atlas-nba-q3-one-shot-operator-evidence
+          path: |
+            atlas-nba-live-diagnostic.json
+            atlas-nba-live-q3-freeze.json
+          retention-days: 90
+          if-no-files-found: ignore
