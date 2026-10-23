@@ -1,0 +1,32 @@
+name: ATLAS NBA live Q3 manual freeze guard — no auto-poll
+on:
+  push:
+    branches: [research/odds-api-probe-2026-10-22]
+    paths:
+      - scripts/proof/nba-live-q3-freeze.mjs
+      - scripts/proof/nba-live-q3-freeze.test.mjs
+      - .github/workflows/atlas-nba-live-q3-freeze.yml
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  nba-precise-q3-shadow:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - name: Static identity, clock, source and isolation tests
+        run: node --test scripts/proof/nba-live-q3-freeze.test.mjs
+      - name: Attempt exact end-of-Q3 capture only on manual dispatch
+        if: github.event_name == 'workflow_dispatch'
+        run: node scripts/proof/nba-live-q3-freeze.mjs
+      - name: Preserve only genuinely accepted source snapshot
+        if: github.event_name == 'workflow_dispatch' && success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: atlas-nba-end-q3-frozen-shadow
+          path: atlas-nba-live-q3-freeze.json
+          retention-days: 90
+          if-no-files-found: error
