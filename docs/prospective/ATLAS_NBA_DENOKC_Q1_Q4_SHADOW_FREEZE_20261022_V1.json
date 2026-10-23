@@ -1,0 +1,72 @@
+{
+  "schema": "atlas.nba.live_q1_to_q4.priceblind.untrained.v1",
+  "game_id": "0022600007",
+  "game_code": "20261022/DENOKC",
+  "selected_by": "TOP_TWO_Q1_FGA_PER_TEAM_NUMERIC_PLAYER_ID_TIEBREAK",
+  "selected_players": [
+    {
+      "player_id": "203999",
+      "team": "DEN",
+      "q1_fga": 8
+    },
+    {
+      "player_id": "1627750",
+      "team": "DEN",
+      "q1_fga": 6
+    },
+    {
+      "player_id": "1631114",
+      "team": "OKC",
+      "q1_fga": 5
+    },
+    {
+      "player_id": "1628392",
+      "team": "OKC",
+      "q1_fga": 4
+    }
+  ],
+  "q1_total_selected_fga": 23,
+  "q4_fga_point_reference": 23,
+  "intended_target": "SUM_Q4_FGA_OF_SAME_FOUR_Q1_SELECTED_PLAYERS_EXCLUDE_OVERTIME",
+  "input_observed_during": {
+    "before": {
+      "period": 2,
+      "clock": "PT03M52.00S"
+    },
+    "after": {
+      "period": 2,
+      "clock": "PT03M52.00S"
+    }
+  },
+  "no_q4_events_seen": true,
+  "source_q1_period_end_confirmed": true,
+  "current_game_roster_independently_verified": false,
+  "external_timestamp_signature": false,
+  "probability_or_ev_established": false,
+  "model_validated": false,
+  "production_authority": false,
+  "calibrator_eligible": false,
+  "betting_authority": false,
+  "feature_sha256": "bca69729f4a004e8f1f8c98c0432e85fd65cd29d2933f8b7412c6e01bbb9a4c6",
+  "created_at_utc": "2026-10-23T02:42:35.059Z",
+  "observation_started_at_utc": "2026-10-23T02:42:33.952Z",
+  "github_run_id": "39891028392",
+  "github_source_sha": "a4963e1f9a3f0501694cfd347c21d4f437087256",
+  "observed_source_hashes": {
+    "schedule": "b2101d951e345747ee78969551c0babb72a4284f7c3743d33094bd57bc180618",
+    "before": "78d31f5cffdc9bab76003df11e1d18bf032e35cabd07523f2b59110682bdfd68",
+    "pbp": "582ecbf66ddedc18076c67212aed079dea78f1f4c2d8afeae128d2d0721a45a0",
+    "after": "78d31f5cffdc9bab76003df11e1d18bf032e35cabd07523f2b59110682bdfd68"
+  },
+  "source_read_time": {
+    "schedule": "2026-10-23T02:42:34.960Z",
+    "before": "2026-10-23T02:42:34.990Z",
+    "pbp": "2026-10-23T02:42:35.029Z",
+    "after": "2026-10-23T02:42:35.058Z"
+  },
+  "q4_outcomes_recorded_in_packet": false,
+  "official_settlement_done": false,
+  "frozen_from_only_Q1_shots": true,
+  "strict_q3_complete_forecast": false,
+  "odds_calls": 0
+}
