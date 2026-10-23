@@ -1,0 +1,779 @@
+{
+  "schema": "atlas.nba.opening_sixteen.score_regime_retrospective.v1",
+  "classification": "REVIEW_ONLY_RETROSPECTIVE",
+  "score_sources": [
+    "https://www.basketball-reference.com/boxscores/index.fcgi",
+    "https://www.basketball-reference.com/boxscores/",
+    "https://www.landofbasketball.com/box_scores/2026/1022CLEPHI.htm",
+    "https://www.landofbasketball.com/box_scores/2026/1022DENOKC.htm"
+  ],
+  "date_counts": {
+    "2026-10-20": 3,
+    "2026-10-21": 11,
+    "2026-10-22": 2
+  },
+  "count": 16,
+  "halftime_leader_reversals": 6,
+  "h2_lower_total_games": 10,
+  "flips_with_lower_h2": 4,
+  "combined_total_points": 3601,
+  "model_validated": false,
+  "independent_asof_witness": false,
+  "full_PBP_ingestion": false,
+  "odds_verified": false,
+  "production_authority": false,
+  "games": [
+    {
+      "date": "2026-10-20",
+      "away": "BOS",
+      "home": "DET",
+      "quarters": {
+        "away": [
+          28,
+          30,
+          30,
+          25
+        ],
+        "home": [
+          27,
+          18,
+          37,
+          39
+        ]
+      },
+      "final": {
+        "away": 113,
+        "home": 121,
+        "winner": "DET"
+      },
+      "halftime": {
+        "away": 58,
+        "home": 45,
+        "leader": "BOS",
+        "margin": 13
+      },
+      "second_half": {
+        "away": 55,
+        "home": 76
+      },
+      "combined_half_points": {
+        "first": 103,
+        "second": 131,
+        "change": 28
+      },
+      "lead_reversed": true,
+      "absolute_half_specific_margin_change": 34,
+      "observation": "Boston led 13 at halftime; Detroit won H2 76–55. NBA reports a 23–0 run and Javonte Green scoring 19 after not playing H1.",
+      "next_question": "Test Detroit bench substitutions, transition, 3PA, offensive rebounds and Boston pressure events; Ausar-specific guarding unproven.",
+      "full_pbp_verified": false,
+      "player_lineups_verified": false,
+      "defender_assignments_verified": false,
+      "market_price_verified": false
+    },
+    {
+      "date": "2026-10-20",
+      "away": "PHI",
+      "home": "NYK",
+      "quarters": {
+        "away": [
+          23,
+          31,
+          29,
+          23
+        ],
+        "home": [
+          25,
+          33,
+          18,
+          24
+        ]
+      },
+      "final": {
+        "away": 106,
+        "home": 100,
+        "winner": "PHI"
+      },
+      "halftime": {
+        "away": 54,
+        "home": 58,
+        "leader": "NYK",
+        "margin": 4
+      },
+      "second_half": {
+        "away": 52,
+        "home": 42
+      },
+      "combined_half_points": {
+        "first": 112,
+        "second": 94,
+        "change": -18
+      },
+      "lead_reversed": true,
+      "absolute_half_specific_margin_change": 14,
+      "observation": "New York led four at half; Philly's Q3 29–18 changed the lead; combined H2 points were 18 fewer.",
+      "next_question": "Audit NYK Q3 shot-volume versus conversion and possession flow.",
+      "full_pbp_verified": false,
+      "player_lineups_verified": false,
+      "defender_assignments_verified": false,
+      "market_price_verified": false
+    },
+    {
+      "date": "2026-10-20",
+      "away": "OKC",
+      "home": "SAS",
+      "quarters": {
+        "away": [
+          34,
+          31,
+          28,
+          23
+        ],
+        "home": [
+          28,
+          16,
+          36,
+          24
+        ]
+      },
+      "final": {
+        "away": 116,
+        "home": 104,
+        "winner": "OKC"
+      },
+      "halftime": {
+        "away": 65,
+        "home": 44,
+        "leader": "OKC",
+        "margin": 21
+      },
+      "second_half": {
+        "away": 51,
+        "home": 60
+      },
+      "combined_half_points": {
+        "first": 109,
+        "second": 111,
+        "change": 2
+      },
+      "lead_reversed": false,
+      "absolute_half_specific_margin_change": 30,
+      "observation": "OKC led 21 at half. San Antonio won H2 by nine but failed to come back.",
+      "next_question": "Negative control for falsely interpreting H2 improvement as a comeback.",
+      "full_pbp_verified": false,
+      "player_lineups_verified": false,
+      "defender_assignments_verified": false,
+      "market_price_verified": false
+    },
+    {
+      "date": "2026-10-21",
+      "away": "ATL",
+      "home": "ORL",
+      "quarters": {
+        "away": [
+          28,
+          44,
+          27,
+          33
+        ],
+        "home": [
+          33,
+          29,
+          38,
+          25
+        ]
+      },
+      "final": {
+        "away": 132,
+        "home": 125,
+        "winner": "ATL"
+      },
+      "halftime": {
+        "away": 72,
+        "home": 62,
+        "leader": "ATL",
+        "margin": 10
+      },
+      "second_half": {
+        "away": 60,
+        "home": 63
+      },
+      "combined_half_points": {
+        "first": 134,
+        "second": 123,
+        "change": -11
+      },
+      "lead_reversed": false,
+      "absolute_half_specific_margin_change": 13,
+      "observation": "Atlanta's Q2 44 created a halftime lead; Orlando won H2 63–60 but still lost.",
+      "next_question": "Identify Q2 ATL spike and Q3 ORL response via FGA, FT, TO.",
+      "full_pbp_verified": false,
+      "player_lineups_verified": false,
+      "defender_assignments_verified": false,
+      "market_price_verified": false
+    },
+    {
+      "date": "2026-10-21",
+      "away": "MIL",
+      "home": "WAS",
+      "quarters": {
+        "away": [
+          23,
+          33,
+          37,
+          23
+        ],
+        "home": [
+          25,
+          26,
+          39,
+          38
+        ]
+      },
+      "final": {
+        "away": 116,
+        "home": 128,
+        "winner": "WAS"
+      },
+      "halftime": {
+        "away": 56,
+        "home": 51,
+        "leader": "MIL",
+        "margin": 5
+      },
+      "second_half": {
+        "away": 60,
+        "home": 77
+      },
+      "combined_half_points": {
+        "first": 107,
+        "second": 137,
+        "change": 30
+      },
+      "lead_reversed": true,
+      "absolute_half_specific_margin_change": 22,
+      "observation": "MIL +5 at half and +3 after Q3; Washington closed 38–23 in Q4. Reported 21–2 run.",
+      "next_question": "Unlike CLE-PHI, H2 combined scoring increased 30. Test run's pressure, fouls and lineup context.",
+      "full_pbp_verified": false,
+      "player_lineups_verified": false,
+      "defender_assignments_verified": false,
+      "market_price_verified": false
+    },
+    {
+      "date": "2026-10-21",
+      "away": "MIN",
+      "home": "MIA",
+      "quarters": {
+        "away": [
+          34,
+          35,
+          30,
+          32
+        ],
+        "home": [
+          32,
+          27,
+          22,
+          25
+        ]
+      },
+      "final": {
+        "away": 131,
+        "home": 106,
+        "winner": "MIN"
+      },
+      "halftime": {
+        "away": 69,
+        "home": 59,
+        "leader": "MIN",
+        "margin": 10
+      },
+      "second_half": {
+        "away": 62,
+        "home": 47
+      },
+      "combined_half_points": {
+        "first": 128,
+        "second": 109,
+        "change": -19
+      },
+      "lead_reversed": false,
+      "absolute_half_specific_margin_change": 5,
+      "observation": "Minnesota controlled both halves and extended a +10 half lead to +25.",
+      "next_question": "Check Miami H2 loss of chances/efficiency and substitutions.",
+      "full_pbp_verified": false,
+      "player_lineups_verified": false,
+      "defender_assignments_verified": false,
+      "market_price_verified": false
+    },
+    {
+      "date": "2026-10-21",
+      "away": "CHA",
+      "home": "BKN",
+      "quarters": {
+        "away": [
+          27,
+          27,
+          32,
+          24
+        ],
+        "home": [
+          23,
+          25,
+          33,
+          22
+        ]
+      },
+      "final": {
+        "away": 110,
+        "home": 103,
+        "winner": "CHA"
+      },
+      "halftime": {
+        "away": 54,
+        "home": 48,
+        "leader": "CHA",
+        "margin": 6
+      },
+      "second_half": {
+        "away": 56,
+        "home": 55
+      },
+      "combined_half_points": {
+        "first": 102,
+        "second": 111,
+        "change": 9
+      },
+      "lead_reversed": false,
+      "absolute_half_specific_margin_change": 5,
+      "observation": "CHA +6 at half, +7 final; H2 almost even at 56–55.",
+      "next_question": "Stable-lead negative control against exaggerated narrative change.",
+      "full_pbp_verified": false,
+      "player_lineups_verified": false,
+      "defender_assignments_verified": false,
+      "market_price_verified": false
+    },
+    {
+      "date": "2026-10-21",
+      "away": "CHI",
+      "home": "TOR",
+      "quarters": {
+        "away": [
+          23,
+          21,
+          27,
+          21
+        ],
+        "home": [
+          43,
+          26,
+          34,
+          32
+        ]
+      },
+      "final": {
+        "away": 92,
+        "home": 135,
+        "winner": "TOR"
+      },
+      "halftime": {
+        "away": 44,
+        "home": 69,
+        "leader": "TOR",
+        "margin": 25
+      },
+      "second_half": {
+        "away": 48,
+        "home": 66
+      },
+      "combined_half_points": {
+        "first": 113,
+        "second": 114,
+        "change": 1
+      },
+      "lead_reversed": false,
+      "absolute_half_specific_margin_change": 7,
+      "observation": "Toronto exploded 43–23 in Q1 and never surrendered control.",
+      "next_question": "Test early lead's effect on future rotations and player minutes.",
+      "full_pbp_verified": false,
+      "player_lineups_verified": false,
+      "defender_assignments_verified": false,
+      "market_price_verified": false
+    },
+    {
+      "date": "2026-10-21",
+      "away": "UTA",
+      "home": "MEM",
+      "quarters": {
+        "away": [
+          31,
+          20,
+          28,
+          24
+        ],
+        "home": [
+          29,
+          35,
+          34,
+          25
+        ]
+      },
+      "final": {
+        "away": 103,
+        "home": 123,
+        "winner": "MEM"
+      },
+      "halftime": {
+        "away": 51,
+        "home": 64,
+        "leader": "MEM",
+        "margin": 13
+      },
+      "second_half": {
+        "away": 52,
+        "home": 59
+      },
+      "combined_half_points": {
+        "first": 115,
+        "second": 111,
+        "change": -4
+      },
+      "lead_reversed": false,
+      "absolute_half_specific_margin_change": 6,
+      "observation": "UTA led Q1; Memphis won Q2 35–20 and built a +13 half lead.",
+      "next_question": "Find Q2 turnover/shot/paint pressure shifts.",
+      "full_pbp_verified": false,
+      "player_lineups_verified": false,
+      "defender_assignments_verified": false,
+      "market_price_verified": false
+    },
+    {
+      "date": "2026-10-21",
+      "away": "IND",
+      "home": "NOP",
+      "quarters": {
+        "away": [
+          38,
+          18,
+          30,
+          37
+        ],
+        "home": [
+          31,
+          35,
+          26,
+          28
+        ]
+      },
+      "final": {
+        "away": 123,
+        "home": 120,
+        "winner": "IND"
+      },
+      "halftime": {
+        "away": 56,
+        "home": 66,
+        "leader": "NOP",
+        "margin": 10
+      },
+      "second_half": {
+        "away": 67,
+        "home": 54
+      },
+      "combined_half_points": {
+        "first": 122,
+        "second": 121,
+        "change": -1
+      },
+      "lead_reversed": true,
+      "absolute_half_specific_margin_change": 23,
+      "observation": "NOP led 10 at half; Indiana won H2 67–54 and game by three with nearly equal half scoring totals.",
+      "next_question": "Pace-neutral redistribution / late foul pressure case.",
+      "full_pbp_verified": false,
+      "player_lineups_verified": false,
+      "defender_assignments_verified": false,
+      "market_price_verified": false
+    },
+    {
+      "date": "2026-10-21",
+      "away": "DAL",
+      "home": "HOU",
+      "quarters": {
+        "away": [
+          26,
+          12,
+          38,
+          34
+        ],
+        "home": [
+          32,
+          38,
+          30,
+          28
+        ]
+      },
+      "final": {
+        "away": 110,
+        "home": 128,
+        "winner": "HOU"
+      },
+      "halftime": {
+        "away": 38,
+        "home": 70,
+        "leader": "HOU",
+        "margin": 32
+      },
+      "second_half": {
+        "away": 72,
+        "home": 58
+      },
+      "combined_half_points": {
+        "first": 108,
+        "second": 130,
+        "change": 22
+      },
+      "lead_reversed": false,
+      "absolute_half_specific_margin_change": 46,
+      "observation": "DAL scored only 12 in Q2, trailed by 32 at halftime, then won H2 by 14 and still lost.",
+      "next_question": "Large half swing WITHOUT a winner flip; major comeback classifier negative control.",
+      "full_pbp_verified": false,
+      "player_lineups_verified": false,
+      "defender_assignments_verified": false,
+      "market_price_verified": false
+    },
+    {
+      "date": "2026-10-21",
+      "away": "GSW",
+      "home": "LAL",
+      "quarters": {
+        "away": [
+          33,
+          19,
+          16,
+          37
+        ],
+        "home": [
+          34,
+          32,
+          36,
+          25
+        ]
+      },
+      "final": {
+        "away": 105,
+        "home": 127,
+        "winner": "LAL"
+      },
+      "halftime": {
+        "away": 52,
+        "home": 66,
+        "leader": "LAL",
+        "margin": 14
+      },
+      "second_half": {
+        "away": 53,
+        "home": 61
+      },
+      "combined_half_points": {
+        "first": 118,
+        "second": 114,
+        "change": -4
+      },
+      "lead_reversed": false,
+      "absolute_half_specific_margin_change": 6,
+      "observation": "Lakers had +34 entering Q4; Warriors won Q4 37–25 but lost by 22.",
+      "next_question": "Check garbage-time lineups before interpreting fourth-quarter volume.",
+      "full_pbp_verified": false,
+      "player_lineups_verified": false,
+      "defender_assignments_verified": false,
+      "market_price_verified": false
+    },
+    {
+      "date": "2026-10-21",
+      "away": "PHX",
+      "home": "POR",
+      "quarters": {
+        "away": [
+          12,
+          27,
+          27,
+          17
+        ],
+        "home": [
+          43,
+          29,
+          35,
+          17
+        ]
+      },
+      "final": {
+        "away": 83,
+        "home": 124,
+        "winner": "POR"
+      },
+      "halftime": {
+        "away": 39,
+        "home": 72,
+        "leader": "POR",
+        "margin": 33
+      },
+      "second_half": {
+        "away": 44,
+        "home": 52
+      },
+      "combined_half_points": {
+        "first": 111,
+        "second": 96,
+        "change": -15
+      },
+      "lead_reversed": false,
+      "absolute_half_specific_margin_change": 25,
+      "observation": "Portland won Q1 43–12; Q4 ended 17–17 despite large gap.",
+      "next_question": "Check early pressure and later shot opportunities; zero shots alone cannot prove benching.",
+      "full_pbp_verified": false,
+      "player_lineups_verified": false,
+      "defender_assignments_verified": false,
+      "market_price_verified": false
+    },
+    {
+      "date": "2026-10-21",
+      "away": "SAC",
+      "home": "LAC",
+      "quarters": {
+        "away": [
+          29,
+          25,
+          16,
+          26
+        ],
+        "home": [
+          41,
+          20,
+          32,
+          28
+        ]
+      },
+      "final": {
+        "away": 96,
+        "home": 121,
+        "winner": "LAC"
+      },
+      "halftime": {
+        "away": 54,
+        "home": 61,
+        "leader": "LAC",
+        "margin": 7
+      },
+      "second_half": {
+        "away": 42,
+        "home": 60
+      },
+      "combined_half_points": {
+        "first": 115,
+        "second": 102,
+        "change": -13
+      },
+      "lead_reversed": false,
+      "absolute_half_specific_margin_change": 11,
+      "observation": "LAC +7 half; Sacramento only 16 in Q3 as lead widened.",
+      "next_question": "Test Q3 shot quality vs possessions, no automatic defender credit.",
+      "full_pbp_verified": false,
+      "player_lineups_verified": false,
+      "defender_assignments_verified": false,
+      "market_price_verified": false
+    },
+    {
+      "date": "2026-10-22",
+      "away": "CLE",
+      "home": "PHI",
+      "quarters": {
+        "away": [
+          35,
+          34,
+          21,
+          16
+        ],
+        "home": [
+          18,
+          27,
+          37,
+          32
+        ]
+      },
+      "final": {
+        "away": 106,
+        "home": 114,
+        "winner": "PHI"
+      },
+      "halftime": {
+        "away": 69,
+        "home": 45,
+        "leader": "CLE",
+        "margin": 24
+      },
+      "second_half": {
+        "away": 37,
+        "home": 69
+      },
+      "combined_half_points": {
+        "first": 114,
+        "second": 106,
+        "change": -8
+      },
+      "lead_reversed": true,
+      "absolute_half_specific_margin_change": 56,
+      "observation": "CLE led 24 at half, lost by eight. PHI +32 H2; H2 combined points fell eight.",
+      "next_question": "Existing scoring-channel audit: separate FG/FT changes and conflicting published TO counts (14/15 H1,16/17 final).",
+      "full_pbp_verified": false,
+      "player_lineups_verified": false,
+      "defender_assignments_verified": false,
+      "market_price_verified": false
+    },
+    {
+      "date": "2026-10-22",
+      "away": "DEN",
+      "home": "OKC",
+      "quarters": {
+        "away": [
+          27,
+          21,
+          16,
+          20
+        ],
+        "home": [
+          24,
+          20,
+          26,
+          26
+        ]
+      },
+      "final": {
+        "away": 84,
+        "home": 96,
+        "winner": "OKC"
+      },
+      "halftime": {
+        "away": 48,
+        "home": 44,
+        "leader": "DEN",
+        "margin": 4
+      },
+      "second_half": {
+        "away": 36,
+        "home": 52
+      },
+      "combined_half_points": {
+        "first": 92,
+        "second": 88,
+        "change": -4
+      },
+      "lead_reversed": true,
+      "absolute_half_specific_margin_change": 20,
+      "observation": "Denver led four at halftime but scored only 36 in H2. Earlier frozen four-shooter Q4 reference 23 settled 9.",
+      "next_question": "Reuters reports 13 Denver H2 turnovers and 19 points off turnovers; test possession and injury/lineup chronology.",
+      "full_pbp_verified": false,
+      "player_lineups_verified": false,
+      "defender_assignments_verified": false,
+      "market_price_verified": false
+    }
+  ]
+}
