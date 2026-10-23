@@ -1,0 +1,26 @@
+name: ATLAS NFL week7 prospective priceblind QB shadow freeze
+on:
+  push:
+    branches: [research/odds-api-probe-2026-10-22]
+    paths:
+      - scripts/proof/nfl-week7-pregame-shadow.py
+      - .github/workflows/atlas-nfl-week7-prospective.yml
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  prospective-priceblind-freeze:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python3 scripts/proof/nfl-week7-pregame-shadow.py --self-test
+      - run: python3 scripts/proof/nfl-week7-pregame-shadow.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: atlas-nfl-week7-unsettled-pregame-research
+          path: atlas-nfl-week7-prospective-shadow.json
+          retention-days: 90
+          if-no-files-found: error
