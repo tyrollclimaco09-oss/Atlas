@@ -1,0 +1,171 @@
+{
+  "schema": "atlas.gamesense.five_pass_integrity.timeskip.v1",
+  "date": "2026-10-23",
+  "pass_count": 5,
+  "scope": "Existing source-backed 27-game pressure signal and earlier-date forecast prior. No new official source data or live forecast admitted.",
+  "input_blobs": [
+    {
+      "path": "docs/research/ATLAS_NBA_16GAME_TURNOVER_SCORE_ADJACENCY_20261023_V1.json",
+      "blob_sha": "cbef2dcffa79bd68acd055c5c18bc616ab8b92ca"
+    },
+    {
+      "path": "docs/research/ATLAS_NBA_20250115_11GAME_TURNOVER_QUICKSCORE_REPLICATION_V1.json",
+      "blob_sha": "4abd65860e22c27a95613d4b679d65390556f0c9"
+    }
+  ],
+  "passes": [
+    {
+      "number": 1,
+      "title": "Cross-season and within-game replication",
+      "result": {
+        "games": 27,
+        "positive_gap_games": 26,
+        "negative_gap_games": 1,
+        "overall": {
+          "s": 480,
+          "u": 362,
+          "sh": 265,
+          "uh": 101,
+          "gap": 0.2730778084714549
+        },
+        "by_calendar_date": [
+          {
+            "date": "2026-10-20",
+            "s": 45,
+            "u": 41,
+            "sh": 24,
+            "uh": 15,
+            "gap": 0.16747967479674797
+          },
+          {
+            "date": "2026-10-21",
+            "s": 222,
+            "u": 160,
+            "sh": 120,
+            "uh": 51,
+            "gap": 0.2217905405405406
+          },
+          {
+            "date": "2026-10-22",
+            "s": 39,
+            "u": 33,
+            "sh": 19,
+            "uh": 6,
+            "gap": 0.30536130536130535
+          },
+          {
+            "date": "2025-01-15",
+            "s": 174,
+            "u": 128,
+            "sh": 102,
+            "uh": 29,
+            "gap": 0.3596443965517241
+          }
+        ]
+      },
+      "interpretation": "Descriptive conditional association only; game-sign p-values would be invalid as independent evidence due shared dates and site/measurement."
+    },
+    {
+      "number": 2,
+      "title": "Leave-one-date-out robustness",
+      "result": [
+        {
+          "removed": "2026-10-20",
+          "remaining": {
+            "s": 435,
+            "u": 321,
+            "sh": 241,
+            "uh": 86,
+            "gap": 0.2861102159200774
+          }
+        },
+        {
+          "removed": "2026-10-21",
+          "remaining": {
+            "s": 258,
+            "u": 202,
+            "sh": 145,
+            "uh": 50,
+            "gap": 0.31449075140072147
+          }
+        },
+        {
+          "removed": "2026-10-22",
+          "remaining": {
+            "s": 441,
+            "u": 329,
+            "sh": 246,
+            "uh": 95,
+            "gap": 0.26906932985960336
+          }
+        },
+        {
+          "removed": "2025-01-15",
+          "remaining": {
+            "s": 306,
+            "u": 234,
+            "sh": 163,
+            "uh": 72,
+            "gap": 0.2249874308697838
+          }
+        }
+      ],
+      "interpretation": "All four leave-one-calendar-date-out pooled rate gaps remain positive. Only four dates, one in January 2025, so not independent full-season validation."
+    },
+    {
+      "number": 3,
+      "title": "Adversarial boundary-case and source-integrity audit",
+      "result": {
+        "negative_gap_games": [
+          {
+            "game": "OKC@SAS",
+            "date": "2026-10-20",
+            "gap": -0.07142857142857145
+          }
+        ],
+        "near_zero_games": [
+          {
+            "game": "MIL@WAS",
+            "date": "2026-10-21",
+            "gap": 0.004807692307692291
+          }
+        ],
+        "source_issues": [
+          "No steal marked is not dead ball",
+          "Game-clock 15 seconds can include stopped-clock FT",
+          "Event-adjacent opponent score not official points-off-turnovers",
+          "Same BRef provider on both cohorts",
+          "Scoring outcome after turnover must never be fed into earlier as-of model",
+          "No defender identity or five-man lineups"
+        ]
+      },
+      "interpretation": "Retain losing games and near-zero game rather than silently filter."
+    },
+    {
+      "number": 4,
+      "title": "Forecast-incrementality veto",
+      "result": {
+        "historical_prior_2026_H2_MAE": 10.340909090909093,
+        "coarse_pressure_2026_H2_MAE": 10.869924441490472,
+        "training_selected": "prior_only",
+        "selected_train_LOO_MAE": 9.672727272727272
+      },
+      "interpretation": "Do not promote pressure features: sample single 2025 training day; no evidence of out-of-sample incremental forecasting skill."
+    },
+    {
+      "number": 5,
+      "title": "Node allocations and next release criteria",
+      "result": {
+        "scout": "Source exact event ordering, original bytes and timestamps; add past-only steal-type + prior quick-score features, avoid post-cutoff data",
+        "filter": "Independent box/period/turnover and eventually possession parity; preserve rejects",
+        "oracle": "Train on multiple earlier full dates; future witnessed H1 and Q3 freezes; compare historical prior and latest-rate",
+        "edge_thief": "Guard leakage, noncausal interpretation, false dead-ball and defender claims",
+        "calibrator": "Date-cluster MAE, uncertainty intervals, game-balanced and calibration checks",
+        "pricing": "Only after predictive skill: exact DraftKings available price and de-vig; Human Final Gate required"
+      },
+      "status": "RESEARCH_ONLY_NOT_PRODUCTION"
+    }
+  ],
+  "no_live_bets": true,
+  "arc_iii_signoffs": 0
+}
