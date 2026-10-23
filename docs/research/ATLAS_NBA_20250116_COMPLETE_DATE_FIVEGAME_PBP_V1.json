@@ -1,0 +1,881 @@
+{
+  "schema": "atlas.nba.gamesense.full_2025_01_16_date_pbp.v1",
+  "date": "2025-01-16",
+  "as_retrieved": "2026-10-23",
+  "selection": "ALL 5 NBA games 2025 Jan16 from public Basketball Reference daily index cross corroborated NBA.com 5 games; game scores hardcoded from retrieved per-period box; reject any game whose postgame PBP made FG/FT do not reconcile official day summary.",
+  "index_source": "https://www.basketball-reference.com/boxscores/index.cgi?day=16&month=1&year=2025",
+  "nba_schedule": "https://www.nba.com/games?date=2025-01-16",
+  "count": 5,
+  "accepted": 4,
+  "rejected": 1,
+  "rejections": [
+    {
+      "game": "PHX@WAS",
+      "error": "Q_SCORE_FAIL:3:{\"a\":33,\"h\":28,\"aExp\":35,\"hExp\":28,\"cumulative\":{\"away\":104,\"home\":83}}"
+    }
+  ],
+  "team_period_point_checks": 32,
+  "period_cumulative_score_checks": 16,
+  "records": [
+    {
+      "away": "IND",
+      "home": "DET",
+      "scoresAway": [
+        29,
+        40,
+        23,
+        19
+      ],
+      "scoresHome": [
+        26,
+        30,
+        25,
+        19
+      ],
+      "date": "2025-01-16",
+      "game": "IND@DET",
+      "source_url": "https://www.basketball-reference.com/boxscores/pbp/202501160DET.html",
+      "event_rows": 476,
+      "half": {
+        "away": {
+          "H1": {
+            "FGA": 48,
+            "FGM": 25,
+            "threePA": 16,
+            "threePM": 8,
+            "FTA": 12,
+            "FTM": 11,
+            "specialFTA": 2,
+            "TO": 4,
+            "ORB": 5,
+            "DRB": 17,
+            "substitutions": 14
+          },
+          "H2": {
+            "FGA": 41,
+            "FGM": 16,
+            "threePA": 14,
+            "threePM": 5,
+            "FTA": 10,
+            "FTM": 5,
+            "specialFTA": 0,
+            "TO": 6,
+            "ORB": 6,
+            "DRB": 22,
+            "substitutions": 9
+          }
+        },
+        "home": {
+          "H1": {
+            "FGA": 43,
+            "FGM": 19,
+            "threePA": 19,
+            "threePM": 7,
+            "FTA": 12,
+            "FTM": 11,
+            "specialFTA": 4,
+            "TO": 13,
+            "ORB": 8,
+            "DRB": 19,
+            "substitutions": 10
+          },
+          "H2": {
+            "FGA": 48,
+            "FGM": 17,
+            "threePA": 17,
+            "threePM": 2,
+            "FTA": 10,
+            "FTM": 8,
+            "specialFTA": 0,
+            "TO": 6,
+            "ORB": 11,
+            "DRB": 24,
+            "substitutions": 13
+          }
+        }
+      },
+      "per_period": {
+        "1": {
+          "away": {
+            "FGA": 25,
+            "FGM": 12,
+            "threePA": 10,
+            "threePM": 5,
+            "FTA": 0,
+            "FTM": 0,
+            "specialFTA": 0,
+            "TO": 3,
+            "ORB": 1,
+            "DRB": 10,
+            "substitutions": 7
+          },
+          "home": {
+            "FGA": 23,
+            "FGM": 9,
+            "threePA": 8,
+            "threePM": 3,
+            "FTA": 5,
+            "FTM": 5,
+            "specialFTA": 3,
+            "TO": 7,
+            "ORB": 4,
+            "DRB": 12,
+            "substitutions": 5
+          },
+          "score": {
+            "away": 29,
+            "home": 26
+          },
+          "end": true
+        },
+        "2": {
+          "away": {
+            "FGA": 23,
+            "FGM": 13,
+            "threePA": 6,
+            "threePM": 3,
+            "FTA": 12,
+            "FTM": 11,
+            "specialFTA": 2,
+            "TO": 1,
+            "ORB": 4,
+            "DRB": 7,
+            "substitutions": 7
+          },
+          "home": {
+            "FGA": 20,
+            "FGM": 10,
+            "threePA": 11,
+            "threePM": 4,
+            "FTA": 7,
+            "FTM": 6,
+            "specialFTA": 1,
+            "TO": 6,
+            "ORB": 4,
+            "DRB": 7,
+            "substitutions": 5
+          },
+          "score": {
+            "away": 69,
+            "home": 56
+          },
+          "end": true
+        },
+        "3": {
+          "away": {
+            "FGA": 21,
+            "FGM": 9,
+            "threePA": 10,
+            "threePM": 4,
+            "FTA": 2,
+            "FTM": 1,
+            "specialFTA": 0,
+            "TO": 2,
+            "ORB": 3,
+            "DRB": 9,
+            "substitutions": 5
+          },
+          "home": {
+            "FGA": 25,
+            "FGM": 10,
+            "threePA": 8,
+            "threePM": 1,
+            "FTA": 6,
+            "FTM": 4,
+            "specialFTA": 0,
+            "TO": 2,
+            "ORB": 8,
+            "DRB": 10,
+            "substitutions": 6
+          },
+          "score": {
+            "away": 92,
+            "home": 81
+          },
+          "end": true
+        },
+        "4": {
+          "away": {
+            "FGA": 20,
+            "FGM": 7,
+            "threePA": 4,
+            "threePM": 1,
+            "FTA": 8,
+            "FTM": 4,
+            "specialFTA": 0,
+            "TO": 4,
+            "ORB": 3,
+            "DRB": 13,
+            "substitutions": 4
+          },
+          "home": {
+            "FGA": 23,
+            "FGM": 7,
+            "threePA": 9,
+            "threePM": 1,
+            "FTA": 4,
+            "FTM": 4,
+            "specialFTA": 0,
+            "TO": 4,
+            "ORB": 3,
+            "DRB": 14,
+            "substitutions": 7
+          },
+          "score": {
+            "away": 111,
+            "home": 100
+          },
+          "end": true
+        }
+      },
+      "score_reconciled": true
+    },
+    {
+      "away": "CLE",
+      "home": "OKC",
+      "scoresAway": [
+        14,
+        35,
+        32,
+        33
+      ],
+      "scoresHome": [
+        32,
+        43,
+        44,
+        15
+      ],
+      "date": "2025-01-16",
+      "game": "CLE@OKC",
+      "source_url": "https://www.basketball-reference.com/boxscores/pbp/202501160OKC.html",
+      "event_rows": 452,
+      "half": {
+        "away": {
+          "H1": {
+            "FGA": 42,
+            "FGM": 18,
+            "threePA": 20,
+            "threePM": 6,
+            "FTA": 7,
+            "FTM": 7,
+            "specialFTA": 2,
+            "TO": 13,
+            "ORB": 7,
+            "DRB": 16,
+            "substitutions": 13
+          },
+          "H2": {
+            "FGA": 48,
+            "FGM": 24,
+            "threePA": 22,
+            "threePM": 7,
+            "FTA": 14,
+            "FTM": 10,
+            "specialFTA": 0,
+            "TO": 8,
+            "ORB": 9,
+            "DRB": 26,
+            "substitutions": 6
+          }
+        },
+        "home": {
+          "H1": {
+            "FGA": 46,
+            "FGM": 28,
+            "threePA": 19,
+            "threePM": 11,
+            "FTA": 8,
+            "FTM": 8,
+            "specialFTA": 1,
+            "TO": 4,
+            "ORB": 2,
+            "DRB": 17,
+            "substitutions": 10
+          },
+          "H2": {
+            "FGA": 59,
+            "FGM": 25,
+            "threePA": 34,
+            "threePM": 7,
+            "FTA": 3,
+            "FTM": 2,
+            "specialFTA": 0,
+            "TO": 3,
+            "ORB": 9,
+            "DRB": 19,
+            "substitutions": 6
+          }
+        }
+      },
+      "per_period": {
+        "1": {
+          "away": {
+            "FGA": 23,
+            "FGM": 6,
+            "threePA": 11,
+            "threePM": 2,
+            "FTA": 0,
+            "FTM": 0,
+            "specialFTA": 0,
+            "TO": 7,
+            "ORB": 5,
+            "DRB": 9,
+            "substitutions": 5
+          },
+          "home": {
+            "FGA": 23,
+            "FGM": 12,
+            "threePA": 10,
+            "threePM": 6,
+            "FTA": 2,
+            "FTM": 2,
+            "specialFTA": 0,
+            "TO": 3,
+            "ORB": 2,
+            "DRB": 12,
+            "substitutions": 4
+          },
+          "score": {
+            "away": 14,
+            "home": 32
+          },
+          "end": true
+        },
+        "2": {
+          "away": {
+            "FGA": 19,
+            "FGM": 12,
+            "threePA": 9,
+            "threePM": 4,
+            "FTA": 7,
+            "FTM": 7,
+            "specialFTA": 2,
+            "TO": 6,
+            "ORB": 2,
+            "DRB": 7,
+            "substitutions": 8
+          },
+          "home": {
+            "FGA": 23,
+            "FGM": 16,
+            "threePA": 9,
+            "threePM": 5,
+            "FTA": 6,
+            "FTM": 6,
+            "specialFTA": 1,
+            "TO": 1,
+            "ORB": 0,
+            "DRB": 5,
+            "substitutions": 6
+          },
+          "score": {
+            "away": 49,
+            "home": 75
+          },
+          "end": true
+        },
+        "3": {
+          "away": {
+            "FGA": 21,
+            "FGM": 11,
+            "threePA": 6,
+            "threePM": 1,
+            "FTA": 13,
+            "FTM": 9,
+            "specialFTA": 0,
+            "TO": 4,
+            "ORB": 2,
+            "DRB": 10,
+            "substitutions": 5
+          },
+          "home": {
+            "FGA": 32,
+            "FGM": 19,
+            "threePA": 16,
+            "threePM": 5,
+            "FTA": 1,
+            "FTM": 1,
+            "specialFTA": 0,
+            "TO": 1,
+            "ORB": 3,
+            "DRB": 12,
+            "substitutions": 3
+          },
+          "score": {
+            "away": 81,
+            "home": 119
+          },
+          "end": true
+        },
+        "4": {
+          "away": {
+            "FGA": 27,
+            "FGM": 13,
+            "threePA": 16,
+            "threePM": 6,
+            "FTA": 1,
+            "FTM": 1,
+            "specialFTA": 0,
+            "TO": 4,
+            "ORB": 7,
+            "DRB": 16,
+            "substitutions": 1
+          },
+          "home": {
+            "FGA": 27,
+            "FGM": 6,
+            "threePA": 18,
+            "threePM": 2,
+            "FTA": 2,
+            "FTM": 1,
+            "specialFTA": 0,
+            "TO": 2,
+            "ORB": 6,
+            "DRB": 7,
+            "substitutions": 3
+          },
+          "score": {
+            "away": 114,
+            "home": 134
+          },
+          "end": true
+        }
+      },
+      "score_reconciled": true
+    },
+    {
+      "away": "LAC",
+      "home": "POR",
+      "scoresAway": [
+        32,
+        20,
+        34,
+        32
+      ],
+      "scoresHome": [
+        22,
+        16,
+        28,
+        23
+      ],
+      "date": "2025-01-16",
+      "game": "LAC@POR",
+      "source_url": "https://www.basketball-reference.com/boxscores/pbp/202501160POR.html",
+      "event_rows": 443,
+      "half": {
+        "away": {
+          "H1": {
+            "FGA": 35,
+            "FGM": 19,
+            "threePA": 11,
+            "threePM": 4,
+            "FTA": 13,
+            "FTM": 10,
+            "specialFTA": 0,
+            "TO": 11,
+            "ORB": 4,
+            "DRB": 25,
+            "substitutions": 13
+          },
+          "H2": {
+            "FGA": 43,
+            "FGM": 25,
+            "threePA": 12,
+            "threePM": 6,
+            "FTA": 14,
+            "FTM": 10,
+            "specialFTA": 0,
+            "TO": 7,
+            "ORB": 11,
+            "DRB": 18,
+            "substitutions": 11
+          }
+        },
+        "home": {
+          "H1": {
+            "FGA": 48,
+            "FGM": 16,
+            "threePA": 15,
+            "threePM": 3,
+            "FTA": 3,
+            "FTM": 3,
+            "specialFTA": 0,
+            "TO": 7,
+            "ORB": 7,
+            "DRB": 15,
+            "substitutions": 11
+          },
+          "H2": {
+            "FGA": 43,
+            "FGM": 18,
+            "threePA": 19,
+            "threePM": 6,
+            "FTA": 10,
+            "FTM": 9,
+            "specialFTA": 0,
+            "TO": 9,
+            "ORB": 8,
+            "DRB": 11,
+            "substitutions": 13
+          }
+        }
+      },
+      "per_period": {
+        "1": {
+          "away": {
+            "FGA": 18,
+            "FGM": 12,
+            "threePA": 7,
+            "threePM": 3,
+            "FTA": 7,
+            "FTM": 5,
+            "specialFTA": 0,
+            "TO": 3,
+            "ORB": 1,
+            "DRB": 13,
+            "substitutions": 5
+          },
+          "home": {
+            "FGA": 27,
+            "FGM": 10,
+            "threePA": 4,
+            "threePM": 1,
+            "FTA": 1,
+            "FTM": 1,
+            "specialFTA": 0,
+            "TO": 1,
+            "ORB": 4,
+            "DRB": 7,
+            "substitutions": 5
+          },
+          "score": {
+            "away": 32,
+            "home": 22
+          },
+          "end": true
+        },
+        "2": {
+          "away": {
+            "FGA": 17,
+            "FGM": 7,
+            "threePA": 4,
+            "threePM": 1,
+            "FTA": 6,
+            "FTM": 5,
+            "specialFTA": 0,
+            "TO": 8,
+            "ORB": 3,
+            "DRB": 12,
+            "substitutions": 8
+          },
+          "home": {
+            "FGA": 21,
+            "FGM": 6,
+            "threePA": 11,
+            "threePM": 2,
+            "FTA": 2,
+            "FTM": 2,
+            "specialFTA": 0,
+            "TO": 6,
+            "ORB": 3,
+            "DRB": 8,
+            "substitutions": 6
+          },
+          "score": {
+            "away": 52,
+            "home": 38
+          },
+          "end": true
+        },
+        "3": {
+          "away": {
+            "FGA": 21,
+            "FGM": 13,
+            "threePA": 4,
+            "threePM": 2,
+            "FTA": 10,
+            "FTM": 6,
+            "specialFTA": 0,
+            "TO": 5,
+            "ORB": 7,
+            "DRB": 10,
+            "substitutions": 4
+          },
+          "home": {
+            "FGA": 24,
+            "FGM": 10,
+            "threePA": 9,
+            "threePM": 3,
+            "FTA": 6,
+            "FTM": 5,
+            "specialFTA": 0,
+            "TO": 4,
+            "ORB": 5,
+            "DRB": 5,
+            "substitutions": 5
+          },
+          "score": {
+            "away": 86,
+            "home": 66
+          },
+          "end": true
+        },
+        "4": {
+          "away": {
+            "FGA": 22,
+            "FGM": 12,
+            "threePA": 8,
+            "threePM": 4,
+            "FTA": 4,
+            "FTM": 4,
+            "specialFTA": 0,
+            "TO": 2,
+            "ORB": 4,
+            "DRB": 8,
+            "substitutions": 7
+          },
+          "home": {
+            "FGA": 19,
+            "FGM": 8,
+            "threePA": 10,
+            "threePM": 3,
+            "FTA": 4,
+            "FTM": 4,
+            "specialFTA": 0,
+            "TO": 5,
+            "ORB": 3,
+            "DRB": 6,
+            "substitutions": 8
+          },
+          "score": {
+            "away": 118,
+            "home": 89
+          },
+          "end": true
+        }
+      },
+      "score_reconciled": true
+    },
+    {
+      "away": "HOU",
+      "home": "SAC",
+      "scoresAway": [
+        25,
+        27,
+        33,
+        42
+      ],
+      "scoresHome": [
+        26,
+        35,
+        29,
+        42
+      ],
+      "date": "2025-01-16",
+      "game": "HOU@SAC",
+      "source_url": "https://www.basketball-reference.com/boxscores/pbp/202501160SAC.html",
+      "event_rows": 462,
+      "half": {
+        "away": {
+          "H1": {
+            "FGA": 45,
+            "FGM": 21,
+            "threePA": 14,
+            "threePM": 5,
+            "FTA": 8,
+            "FTM": 5,
+            "specialFTA": 0,
+            "TO": 5,
+            "ORB": 6,
+            "DRB": 17,
+            "substitutions": 11
+          },
+          "H2": {
+            "FGA": 48,
+            "FGM": 28,
+            "threePA": 19,
+            "threePM": 7,
+            "FTA": 16,
+            "FTM": 12,
+            "specialFTA": 0,
+            "TO": 9,
+            "ORB": 12,
+            "DRB": 17,
+            "substitutions": 10
+          }
+        },
+        "home": {
+          "H1": {
+            "FGA": 48,
+            "FGM": 26,
+            "threePA": 19,
+            "threePM": 8,
+            "FTA": 2,
+            "FTM": 1,
+            "specialFTA": 0,
+            "TO": 6,
+            "ORB": 6,
+            "DRB": 21,
+            "substitutions": 10
+          },
+          "H2": {
+            "FGA": 50,
+            "FGM": 23,
+            "threePA": 14,
+            "threePM": 6,
+            "FTA": 20,
+            "FTM": 19,
+            "specialFTA": 0,
+            "TO": 6,
+            "ORB": 11,
+            "DRB": 12,
+            "substitutions": 9
+          }
+        }
+      },
+      "per_period": {
+        "1": {
+          "away": {
+            "FGA": 25,
+            "FGM": 10,
+            "threePA": 7,
+            "threePM": 2,
+            "FTA": 3,
+            "FTM": 3,
+            "specialFTA": 0,
+            "TO": 2,
+            "ORB": 4,
+            "DRB": 8,
+            "substitutions": 4
+          },
+          "home": {
+            "FGA": 22,
+            "FGM": 11,
+            "threePA": 11,
+            "threePM": 4,
+            "FTA": 0,
+            "FTM": 0,
+            "specialFTA": 0,
+            "TO": 4,
+            "ORB": 3,
+            "DRB": 11,
+            "substitutions": 5
+          },
+          "score": {
+            "away": 25,
+            "home": 26
+          },
+          "end": true
+        },
+        "2": {
+          "away": {
+            "FGA": 20,
+            "FGM": 11,
+            "threePA": 7,
+            "threePM": 3,
+            "FTA": 5,
+            "FTM": 2,
+            "specialFTA": 0,
+            "TO": 3,
+            "ORB": 2,
+            "DRB": 9,
+            "substitutions": 7
+          },
+          "home": {
+            "FGA": 26,
+            "FGM": 15,
+            "threePA": 8,
+            "threePM": 4,
+            "FTA": 2,
+            "FTM": 1,
+            "specialFTA": 0,
+            "TO": 2,
+            "ORB": 3,
+            "DRB": 10,
+            "substitutions": 5
+          },
+          "score": {
+            "away": 52,
+            "home": 61
+          },
+          "end": true
+        },
+        "3": {
+          "away": {
+            "FGA": 29,
+            "FGM": 14,
+            "threePA": 8,
+            "threePM": 1,
+            "FTA": 6,
+            "FTM": 4,
+            "specialFTA": 0,
+            "TO": 3,
+            "ORB": 9,
+            "DRB": 12,
+            "substitutions": 4
+          },
+          "home": {
+            "FGA": 25,
+            "FGM": 10,
+            "threePA": 9,
+            "threePM": 3,
+            "FTA": 7,
+            "FTM": 6,
+            "specialFTA": 0,
+            "TO": 2,
+            "ORB": 4,
+            "DRB": 8,
+            "substitutions": 6
+          },
+          "score": {
+            "away": 85,
+            "home": 90
+          },
+          "end": true
+        },
+        "4": {
+          "away": {
+            "FGA": 19,
+            "FGM": 14,
+            "threePA": 11,
+            "threePM": 6,
+            "FTA": 10,
+            "FTM": 8,
+            "specialFTA": 0,
+            "TO": 6,
+            "ORB": 3,
+            "DRB": 5,
+            "substitutions": 6
+          },
+          "home": {
+            "FGA": 25,
+            "FGM": 13,
+            "threePA": 5,
+            "threePM": 3,
+            "FTA": 13,
+            "FTM": 13,
+            "specialFTA": 0,
+            "TO": 4,
+            "ORB": 7,
+            "DRB": 4,
+            "substitutions": 3
+          },
+          "score": {
+            "away": 127,
+            "home": 132
+          },
+          "end": true
+        }
+      },
+      "score_reconciled": true
+    }
+  ],
+  "limits": [
+    "External postgame Basketball-Reference rendered PBP; raw provider HTTP source bytes not archived",
+    "Game scores and count separately corroborated by NBA.com schedule, but NBA CDN PBP/box source data not independently paired",
+    "Quarter possession owner and five-player actual lineup not derived",
+    "No post-result historical prior may be advertised as prior real-time bet",
+    "No model/EV or production authority"
+  ],
+  "production_authority": false
+}
