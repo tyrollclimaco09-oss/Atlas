@@ -1,0 +1,685 @@
+{
+  "schema": "atlas.nba.game_sense.date_denominator_2023_2024_2026_15jan.v1",
+  "purpose": "All listed games on full Jan15 date of 2023,2024,2026, to extend previous Jan15 2025 complete 11, regardless of tipoff, not cherry-picked",
+  "source": "Basketball-Reference historical date index postgame markdown",
+  "denominators": [
+    {
+      "year": 2023,
+      "index_listed_games": 8,
+      "parsed_games": 8,
+      "index_url": "https://www.basketball-reference.com/boxscores/?month=1&day=15&year=2023"
+    },
+    {
+      "year": 2024,
+      "index_listed_games": 11,
+      "parsed_games": 11,
+      "index_url": "https://www.basketball-reference.com/boxscores/?month=1&day=15&year=2024"
+    },
+    {
+      "year": 2026,
+      "index_listed_games": 9,
+      "parsed_games": 9,
+      "index_url": "https://www.basketball-reference.com/boxscores/?month=1&day=15&year=2026"
+    }
+  ],
+  "requested": 28,
+  "accepted": 28,
+  "rejected": [],
+  "score_period_final_validated": 56,
+  "ot_games": 1,
+  "games": [
+    {
+      "date": "2023-01-15",
+      "year": 2023,
+      "away": "Oklahoma City",
+      "home": "Brooklyn",
+      "home_code": "BRK",
+      "away_points": 112,
+      "home_points": 102,
+      "away_periods": [
+        28,
+        20,
+        27,
+        37
+      ],
+      "home_periods": [
+        24,
+        26,
+        30,
+        22
+      ],
+      "periods": 4,
+      "source_url": "https://www.basketball-reference.com/boxscores/pbp/202301150BRK.html"
+    },
+    {
+      "date": "2023-01-15",
+      "year": 2023,
+      "away": "Golden State",
+      "home": "Chicago",
+      "home_code": "CHI",
+      "away_points": 118,
+      "home_points": 132,
+      "away_periods": [
+        20,
+        42,
+        24,
+        32
+      ],
+      "home_periods": [
+        35,
+        24,
+        33,
+        40
+      ],
+      "periods": 4,
+      "source_url": "https://www.basketball-reference.com/boxscores/pbp/202301150CHI.html"
+    },
+    {
+      "date": "2023-01-15",
+      "year": 2023,
+      "away": "Orlando",
+      "home": "Denver",
+      "home_code": "DEN",
+      "away_points": 116,
+      "home_points": 119,
+      "away_periods": [
+        25,
+        29,
+        34,
+        28
+      ],
+      "home_periods": [
+        31,
+        38,
+        25,
+        25
+      ],
+      "periods": 4,
+      "source_url": "https://www.basketball-reference.com/boxscores/pbp/202301150DEN.html"
+    },
+    {
+      "date": "2023-01-15",
+      "year": 2023,
+      "away": "New York",
+      "home": "Detroit",
+      "home_code": "DET",
+      "away_points": 117,
+      "home_points": 104,
+      "away_periods": [
+        39,
+        23,
+        28,
+        27
+      ],
+      "home_periods": [
+        22,
+        33,
+        25,
+        24
+      ],
+      "periods": 4,
+      "source_url": "https://www.basketball-reference.com/boxscores/pbp/202301150DET.html"
+    },
+    {
+      "date": "2023-01-15",
+      "year": 2023,
+      "away": "Houston",
+      "home": "LA Clippers",
+      "home_code": "LAC",
+      "away_points": 100,
+      "home_points": 121,
+      "away_periods": [
+        30,
+        33,
+        27,
+        10
+      ],
+      "home_periods": [
+        31,
+        31,
+        29,
+        30
+      ],
+      "periods": 4,
+      "source_url": "https://www.basketball-reference.com/boxscores/pbp/202301150LAC.html"
+    },
+    {
+      "date": "2023-01-15",
+      "year": 2023,
+      "away": "Philadelphia",
+      "home": "LA Lakers",
+      "home_code": "LAL",
+      "away_points": 113,
+      "home_points": 112,
+      "away_periods": [
+        33,
+        24,
+        29,
+        27
+      ],
+      "home_periods": [
+        32,
+        26,
+        25,
+        29
+      ],
+      "periods": 4,
+      "source_url": "https://www.basketball-reference.com/boxscores/pbp/202301150LAL.html"
+    },
+    {
+      "date": "2023-01-15",
+      "year": 2023,
+      "away": "Dallas",
+      "home": "Portland",
+      "home_code": "POR",
+      "away_points": 123,
+      "home_points": 140,
+      "away_periods": [
+        31,
+        23,
+        41,
+        28
+      ],
+      "home_periods": [
+        33,
+        28,
+        37,
+        42
+      ],
+      "periods": 4,
+      "source_url": "https://www.basketball-reference.com/boxscores/pbp/202301150POR.html"
+    },
+    {
+      "date": "2023-01-15",
+      "year": 2023,
+      "away": "Sacramento",
+      "home": "San Antonio",
+      "home_code": "SAS",
+      "away_points": 132,
+      "home_points": 119,
+      "away_periods": [
+        33,
+        30,
+        39,
+        30
+      ],
+      "home_periods": [
+        32,
+        32,
+        26,
+        29
+      ],
+      "periods": 4,
+      "source_url": "https://www.basketball-reference.com/boxscores/pbp/202301150SAS.html"
+    },
+    {
+      "date": "2024-01-15",
+      "year": 2024,
+      "away": "San Antonio",
+      "home": "Atlanta",
+      "home_code": "ATL",
+      "away_points": 99,
+      "home_points": 109,
+      "away_periods": [
+        16,
+        18,
+        33,
+        32
+      ],
+      "home_periods": [
+        35,
+        34,
+        18,
+        22
+      ],
+      "periods": 4,
+      "source_url": "https://www.basketball-reference.com/boxscores/pbp/202401150ATL.html"
+    },
+    {
+      "date": "2024-01-15",
+      "year": 2024,
+      "away": "Miami",
+      "home": "Brooklyn",
+      "home_code": "BRK",
+      "away_points": 96,
+      "home_points": 95,
+      "away_periods": [
+        16,
+        15,
+        37,
+        20,
+        8
+      ],
+      "home_periods": [
+        22,
+        23,
+        24,
+        19,
+        7
+      ],
+      "periods": 5,
+      "source_url": "https://www.basketball-reference.com/boxscores/pbp/202401150BRK.html"
+    },
+    {
+      "date": "2024-01-15",
+      "year": 2024,
+      "away": "Chicago",
+      "home": "Cleveland",
+      "home_code": "CLE",
+      "away_points": 91,
+      "home_points": 109,
+      "away_periods": [
+        21,
+        25,
+        31,
+        14
+      ],
+      "home_periods": [
+        40,
+        20,
+        20,
+        29
+      ],
+      "periods": 4,
+      "source_url": "https://www.basketball-reference.com/boxscores/pbp/202401150CLE.html"
+    },
+    {
+      "date": "2024-01-15",
+      "year": 2024,
+      "away": "New Orleans",
+      "home": "Dallas",
+      "home_code": "DAL",
+      "away_points": 120,
+      "home_points": 125,
+      "away_periods": [
+        17,
+        42,
+        40,
+        21
+      ],
+      "home_periods": [
+        33,
+        26,
+        33,
+        33
+      ],
+      "periods": 4,
+      "source_url": "https://www.basketball-reference.com/boxscores/pbp/202401150DAL.html"
+    },
+    {
+      "date": "2024-01-15",
+      "year": 2024,
+      "away": "Oklahoma City",
+      "home": "LA Lakers",
+      "home_code": "LAL",
+      "away_points": 105,
+      "home_points": 112,
+      "away_periods": [
+        26,
+        24,
+        26,
+        29
+      ],
+      "home_periods": [
+        27,
+        23,
+        34,
+        28
+      ],
+      "periods": 4,
+      "source_url": "https://www.basketball-reference.com/boxscores/pbp/202401150LAL.html"
+    },
+    {
+      "date": "2024-01-15",
+      "year": 2024,
+      "away": "Golden State",
+      "home": "Memphis",
+      "home_code": "MEM",
+      "away_points": 107,
+      "home_points": 116,
+      "away_periods": [
+        29,
+        27,
+        30,
+        21
+      ],
+      "home_periods": [
+        23,
+        31,
+        31,
+        31
+      ],
+      "periods": 4,
+      "source_url": "https://www.basketball-reference.com/boxscores/pbp/202401150MEM.html"
+    },
+    {
+      "date": "2024-01-15",
+      "year": 2024,
+      "away": "Orlando",
+      "home": "New York",
+      "home_code": "NYK",
+      "away_points": 98,
+      "home_points": 94,
+      "away_periods": [
+        24,
+        26,
+        23,
+        25
+      ],
+      "home_periods": [
+        24,
+        28,
+        26,
+        16
+      ],
+      "periods": 4,
+      "source_url": "https://www.basketball-reference.com/boxscores/pbp/202401150NYK.html"
+    },
+    {
+      "date": "2024-01-15",
+      "year": 2024,
+      "away": "Houston",
+      "home": "Philadelphia",
+      "home_code": "PHI",
+      "away_points": 115,
+      "home_points": 124,
+      "away_periods": [
+        19,
+        28,
+        30,
+        38
+      ],
+      "home_periods": [
+        33,
+        33,
+        32,
+        26
+      ],
+      "periods": 4,
+      "source_url": "https://www.basketball-reference.com/boxscores/pbp/202401150PHI.html"
+    },
+    {
+      "date": "2024-01-15",
+      "year": 2024,
+      "away": "Boston",
+      "home": "Toronto",
+      "home_code": "TOR",
+      "away_points": 105,
+      "home_points": 96,
+      "away_periods": [
+        29,
+        32,
+        23,
+        21
+      ],
+      "home_periods": [
+        25,
+        30,
+        20,
+        21
+      ],
+      "periods": 4,
+      "source_url": "https://www.basketball-reference.com/boxscores/pbp/202401150TOR.html"
+    },
+    {
+      "date": "2024-01-15",
+      "year": 2024,
+      "away": "Indiana",
+      "home": "Utah",
+      "home_code": "UTA",
+      "away_points": 105,
+      "home_points": 132,
+      "away_periods": [
+        26,
+        24,
+        29,
+        26
+      ],
+      "home_periods": [
+        33,
+        31,
+        41,
+        27
+      ],
+      "periods": 4,
+      "source_url": "https://www.basketball-reference.com/boxscores/pbp/202401150UTA.html"
+    },
+    {
+      "date": "2024-01-15",
+      "year": 2024,
+      "away": "Detroit",
+      "home": "Washington",
+      "home_code": "WAS",
+      "away_points": 129,
+      "home_points": 117,
+      "away_periods": [
+        29,
+        34,
+        31,
+        35
+      ],
+      "home_periods": [
+        22,
+        40,
+        25,
+        30
+      ],
+      "periods": 4,
+      "source_url": "https://www.basketball-reference.com/boxscores/pbp/202401150WAS.html"
+    },
+    {
+      "date": "2026-01-15",
+      "year": 2026,
+      "away": "Utah",
+      "home": "Dallas",
+      "home_code": "DAL",
+      "away_points": 122,
+      "home_points": 144,
+      "away_periods": [
+        24,
+        26,
+        29,
+        43
+      ],
+      "home_periods": [
+        35,
+        35,
+        42,
+        32
+      ],
+      "periods": 4,
+      "source_url": "https://www.basketball-reference.com/boxscores/pbp/202601150DAL.html"
+    },
+    {
+      "date": "2026-01-15",
+      "year": 2026,
+      "away": "Phoenix",
+      "home": "Detroit",
+      "home_code": "DET",
+      "away_points": 105,
+      "home_points": 108,
+      "away_periods": [
+        32,
+        31,
+        27,
+        15
+      ],
+      "home_periods": [
+        23,
+        33,
+        33,
+        19
+      ],
+      "periods": 4,
+      "source_url": "https://www.basketball-reference.com/boxscores/pbp/202601150DET.html"
+    },
+    {
+      "date": "2026-01-15",
+      "year": 2026,
+      "away": "New York",
+      "home": "Golden State",
+      "home_code": "GSW",
+      "away_points": 113,
+      "home_points": 126,
+      "away_periods": [
+        35,
+        24,
+        28,
+        26
+      ],
+      "home_periods": [
+        30,
+        32,
+        37,
+        27
+      ],
+      "periods": 4,
+      "source_url": "https://www.basketball-reference.com/boxscores/pbp/202601150GSW.html"
+    },
+    {
+      "date": "2026-01-15",
+      "year": 2026,
+      "away": "Oklahoma City",
+      "home": "Houston",
+      "home_code": "HOU",
+      "away_points": 111,
+      "home_points": 91,
+      "away_periods": [
+        21,
+        34,
+        22,
+        34
+      ],
+      "home_periods": [
+        19,
+        29,
+        27,
+        16
+      ],
+      "periods": 4,
+      "source_url": "https://www.basketball-reference.com/boxscores/pbp/202601150HOU.html"
+    },
+    {
+      "date": "2026-01-15",
+      "year": 2026,
+      "away": "Charlotte",
+      "home": "LA Lakers",
+      "home_code": "LAL",
+      "away_points": 135,
+      "home_points": 117,
+      "away_periods": [
+        30,
+        34,
+        40,
+        31
+      ],
+      "home_periods": [
+        39,
+        16,
+        38,
+        24
+      ],
+      "periods": 4,
+      "source_url": "https://www.basketball-reference.com/boxscores/pbp/202601150LAL.html"
+    },
+    {
+      "date": "2026-01-15",
+      "year": 2026,
+      "away": "Boston",
+      "home": "Miami",
+      "home_code": "MIA",
+      "away_points": 119,
+      "home_points": 114,
+      "away_periods": [
+        25,
+        29,
+        29,
+        36
+      ],
+      "home_periods": [
+        36,
+        28,
+        29,
+        21
+      ],
+      "periods": 4,
+      "source_url": "https://www.basketball-reference.com/boxscores/pbp/202601150MIA.html"
+    },
+    {
+      "date": "2026-01-15",
+      "year": 2026,
+      "away": "Memphis",
+      "home": "Orlando",
+      "home_code": "ORL",
+      "away_points": 111,
+      "home_points": 118,
+      "away_periods": [
+        39,
+        28,
+        12,
+        32
+      ],
+      "home_periods": [
+        23,
+        35,
+        26,
+        34
+      ],
+      "periods": 4,
+      "source_url": "https://www.basketball-reference.com/boxscores/pbp/202601150ORL.html"
+    },
+    {
+      "date": "2026-01-15",
+      "year": 2026,
+      "away": "Atlanta",
+      "home": "Portland",
+      "home_code": "POR",
+      "away_points": 101,
+      "home_points": 117,
+      "away_periods": [
+        25,
+        31,
+        31,
+        14
+      ],
+      "home_periods": [
+        33,
+        21,
+        34,
+        29
+      ],
+      "periods": 4,
+      "source_url": "https://www.basketball-reference.com/boxscores/pbp/202601150POR.html"
+    },
+    {
+      "date": "2026-01-15",
+      "year": 2026,
+      "away": "Milwaukee",
+      "home": "San Antonio",
+      "home_code": "SAS",
+      "away_points": 101,
+      "home_points": 119,
+      "away_periods": [
+        27,
+        26,
+        16,
+        32
+      ],
+      "home_periods": [
+        31,
+        35,
+        40,
+        13
+      ],
+      "periods": 4,
+      "source_url": "https://www.basketball-reference.com/boxscores/pbp/202601150SAS.html"
+    }
+  ],
+  "limits": [
+    "Postgame source, not as-of witnessed",
+    "BRef PBP pages still must be independently fetched and reconciled",
+    "NBA official CDN source and original bytes not in custody",
+    "One calendar date per year is a biased training universe"
+  ],
+  "production_authority": false
+}
