@@ -1,0 +1,25 @@
+name: ATLAS NBA bounded single-time live source schema diagnostic
+on:
+  push:
+    branches: [research/odds-api-probe-2026-10-22]
+    paths:
+      - scripts/proof/nba-live-source-diagnostic.mjs
+      - .github/workflows/atlas-nba-live-diagnostic.yml
+permissions: {contents: read}
+jobs:
+  nba-source-diagnostic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - run: node scripts/proof/nba-live-source-diagnostic.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: atlas-nba-bounded-source-diagnostic
+          path: atlas-nba-live-diagnostic.json
+          retention-days: 7
+          if-no-files-found: ignore
