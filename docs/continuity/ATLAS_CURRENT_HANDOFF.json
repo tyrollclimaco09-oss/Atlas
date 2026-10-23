@@ -1,6 +1,6 @@
 {
   "schema": "atlas.engineering.handoff.v1",
-  "checkpoint_id": "ATLAS-20261022-MASSIVE-TIMESKIP-10-14",
+  "checkpoint_id": "ATLAS-20261022-W7-PREGAME-RESEARCH-FREEZE-15",
   "as_of_date": "2026-10-22",
   "repository": "tyrollclimaco09-oss/Atlas",
   "source_branch": "research/odds-api-probe-2026-10-22",
@@ -491,6 +491,39 @@
         "odds_and_positive_ev_verified": false,
         "model_promoted": false,
         "documentation": "docs/research/ATLAS_20261022_MASSIVE_TIMESKIP_10_14.md"
+      },
+      "week7_pregame_shadow_freeze": {
+        "status": "CI_RECORDED_PREGAME_UNSETTLED_RESEARCH_V2",
+        "official_schedule_game_count": 14,
+        "future_games_included": 13,
+        "already_started_or_insufficient_buffer_excluded": 1,
+        "forecast_player_slots": 26,
+        "numeric_forecast_slots": 25,
+        "explicit_null_abstentions": 1,
+        "source_alias": "ESPN_LAR_MAPS_TO_NFLVERSE_LA",
+        "one_prior_game_forecast_blocked": true,
+        "source_past_weeks_only": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "min_kickoff_buffer_seconds": 1800,
+        "created_at_utc": "2026-10-23T00:43:13.968953+00:00",
+        "ci_run": 39879769087,
+        "initial_unrepaired_v1_diagnostic_ci_run": 39879497749,
+        "official_week7_schedule_sha256": "75df30e8d6b7bf1f6087b71979b9338b71c39d786db83515799d99630ca0f49f",
+        "nflverse_pbp_sha256": "a6ddee607edda2d530bc65fd869c0eb2f8019ea0d962b020e039dae52c840399",
+        "ledger": "docs/prospective/ATLAS_NFL_W7_PREGAME_SHADOW_20261022_V2.json",
+        "all_week7_official_outcomes_settled": false,
+        "any_starting_qb_verified": false,
+        "external_independent_timestamp_signature": false,
+        "prospective_evaluation_completed": false,
+        "production_authority": false,
+        "bettor_executable_bet": false,
+        "next": "SETTLE_13_GAMES_AGAINST_IMMUTABLE_V2_AFTER_FINALS;NBA_FIRST_TRUE_Q3_FREEZE"
       }
     }
   ],
@@ -554,7 +587,9 @@
       "docs/prospective/ATLAS_NBA_20261022_THREE_GAME_FGA_INTEGRITY_06.md",
       "docs/prospective/ATLAS_NFL_20261022_WEEK6_CLOCK_CORRESPONDENCE_06.md",
       "docs/research/ATLAS_20261022_TRIPLE_TIMESKIP_07_09.md",
-      "docs/research/ATLAS_20261022_MASSIVE_TIMESKIP_10_14.md"
+      "docs/research/ATLAS_20261022_MASSIVE_TIMESKIP_10_14.md",
+      "docs/prospective/ATLAS_NFL_W7_PREGAME_SHADOW_20261022_V2.json",
+      "docs/research/ATLAS_20261022_PREGAME_RESEARCH_FREEZE_15.md"
     ],
     "immutable_git_runs": [
       39834900969,
@@ -562,7 +597,7 @@
       39837577620
     ],
     "recovered_asset_registry": "docs/continuity/ATLAS_RECOVERED_ASSET_REGISTRY_2026-10-22.json",
-    "last_engineering_pass_git_sha": "c2aebb6e10915f50a776e97ad59e299d3177ca56",
+    "last_engineering_pass_git_sha": "d3f50e8e2ae88c5431fe9bac4d92bc7229d3d405",
     "additional_github_runs": [
       39848546540,
       39848787129,
@@ -588,7 +623,11 @@
       39876106760,
       39876565802,
       39875525098,
-      39876250375
+      39876250375,
+      39879298512,
+      39879432700,
+      39879497749,
+      39879769087
     ],
     "dual_source_custody": {
       "state": "SHADOW_UNATTESTED_RESEARCH_ONLY",
@@ -616,7 +655,8 @@
     "START_FROM_CHECKPOINT_05_FGA_EVENT_WITNESSES_AND_HOU_JAX_OPPONENT_CORRECTION",
     "READ_TIMESKIP_06_NBA_AND_NFL_AUDITS;DO_NOT_MISINTERPRET_3_GAME_SOURCE_PASS_OR_116_CLOCK_MATCHES",
     "READ_TRIPLE_TIMESKIP_07_09_AND_VERIFY_CUSTODY_RUN_THEN_RESUME_INDEPENDENT_FORECAST_GATES",
-    "READ_TIMESKIP_10_14_AND_RESPECT_NEGATIVE_NFL_BASELINE_AND_NON_EQUVALENT_V3_COMPARISON"
+    "READ_TIMESKIP_10_14_AND_RESPECT_NEGATIVE_NFL_BASELINE_AND_NON_EQUVALENT_V3_COMPARISON",
+    "READ_UNSETTLED_W7_V2_LEDGER_AND_NEVER_REFORECAST_AFTER_RESULTS_OR_TREAT_PROXY_AS_CONFIRMED_STARTER"
   ],
   "known_gaps": [
     "ORIGINAL_57_GAME_V3_ARCHIVE_RAW_BYTES_UNAVAILABLE_VIA_CURRENT_FILES_ACCESS",
@@ -641,6 +681,9 @@
     "NFL_85_GAME_BACKTEST_CONDITIONS_ON_CURRENT_WEEK_PASSER_OBSERVATION",
     "NBA_14_GAME_SOURCE_CENSUS_BASELINE_NOT_SAME_AS_OLD_TRAINED_V3_BASELINE",
     "ZERO_Q4_FGA_DOES_NOT_PROVE_BENCHED",
-    "NBA_Q3_TIMESTAMP_NOT_EXTERNAL_ATTESTED"
+    "NBA_Q3_TIMESTAMP_NOT_EXTERNAL_ATTESTED",
+    "W7_PREGAME_V2_STARTING_QB_NOT_INDEPENDENTLY_VALIDATED",
+    "W7_PREGAME_V2_OUTCOMES_NOT_SETTLED",
+    "NBA_ACTUAL_Q3_PRE_OUTCOME_FREEZE_NOT_YET_ATTESTED"
   ]
 }

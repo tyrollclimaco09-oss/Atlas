@@ -115,3 +115,16 @@ test('new shadow research does not repair absent Supabase calibration',()=>{
  const h=clone(load());h.backend.massive_pass_refresh.admissible_outcomes=1;
  assert.throws(()=>validate(h),/BACKEND_RELEASE_NOT_EARNED/);
 });
+
+test('real future-game shadow packet cannot become settled before official Week7 outcomes',()=>{
+ const h=clone(load());h.lanes[1].week7_pregame_shadow_freeze.all_week7_official_outcomes_settled=true;
+ assert.throws(()=>validate(h),/W7_PREGAME_PACKET_FALSE_PROMOTION/);
+});
+test('source QB history proxy cannot be promoted as a confirmed starter',()=>{
+ const h=clone(load());h.lanes[1].week7_pregame_shadow_freeze.any_starting_qb_verified=true;
+ assert.throws(()=>validate(h),/W7_PREGAME_PACKET_FALSE_PROMOTION/);
+});
+test('one explicit abstention and historical LAR source normalization are checkpoint invariants',()=>{
+ const h=clone(load());h.lanes[1].week7_pregame_shadow_freeze.explicit_null_abstentions=0;
+ assert.throws(()=>validate(h),/W7_PREGAME_PACKET_FALSE_PROMOTION/);
+});

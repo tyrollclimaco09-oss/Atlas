@@ -195,6 +195,24 @@ function validate(h,root=ROOT){
    live.operational_mode==='MANUAL_ONLY'&&live.configured_feeds===0&&
    live.vercel_to_supabase_authenticated_parity_verified===false&&
    live.canonical_betting_execution_approved===false,'BACKEND_RELEASE_NOT_EARNED');
+ const wk7=nfl.week7_pregame_shadow_freeze;
+ assert(wk7?.status==='CI_RECORDED_PREGAME_UNSETTLED_RESEARCH_V2'&&
+  wk7.official_schedule_game_count===14&&wk7.future_games_included===13&&
+  wk7.already_started_or_insufficient_buffer_excluded===1&&
+  wk7.forecast_player_slots===26&&wk7.numeric_forecast_slots===25&&
+  wk7.explicit_null_abstentions===1&&
+  wk7.source_alias==='ESPN_LAR_MAPS_TO_NFLVERSE_LA'&&
+  wk7.one_prior_game_forecast_blocked===true&&
+  JSON.stringify(wk7.source_past_weeks_only)===JSON.stringify([1,2,3,4,5,6])&&
+  wk7.min_kickoff_buffer_seconds===1800&&
+  wk7.ci_run===39879769087&&
+  wk7.ledger==='docs/prospective/ATLAS_NFL_W7_PREGAME_SHADOW_20261022_V2.json'&&
+  wk7.all_week7_official_outcomes_settled===false&&
+  wk7.any_starting_qb_verified===false&&
+  wk7.external_independent_timestamp_signature===false&&
+  wk7.prospective_evaluation_completed===false&&
+  wk7.production_authority===false&&wk7.bettor_executable_bet===false,
+  'W7_PREGAME_PACKET_FALSE_PROMOTION');
  const evidence=h.evidence;
  const registry=JSON.parse(fs.readFileSync(path.join(root,'docs/continuity/ATLAS_RECOVERED_ASSET_REGISTRY_2026-10-22.json'),'utf8'));
  assert(registry.schema==='atlas.recovered-artifact-registry.v1'&&
