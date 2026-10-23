@@ -1,0 +1,1149 @@
+{
+  "schema": "atlas.nba.gamesense.2025_01_16_full_date_pbp_v2",
+  "date": "2025-01-16",
+  "source_index": "https://www.basketball-reference.com/boxscores/index.cgi?day=16&month=1&year=2025",
+  "nba_crosscheck": "https://www.nba.com/games?date=2025-01-16",
+  "first_version_git_blob": "c1fccbac6eb2dbcf963ce66dd0b566df7b6e3328",
+  "v1_failure": "PHX@WAS Q3 initial parser missed 2 'clear path free throw' points from K. Durant at 11:37.0. First version preserved with 4 pass and one reject.",
+  "method": "Rerun all five retrospective BRef complete-date PBP pages with free throw labels regular, technical, flagrant AND clear path. Only accept when each period scored FG + 3PM + made FT = independently recorded quarter points and cumulative source score at quarter end.",
+  "attempted": 5,
+  "accepted": 5,
+  "rejected": 0,
+  "rejections": [],
+  "team_period_point_checks": 40,
+  "period_cumulative_checks": 20,
+  "records": [
+    {
+      "away": "IND",
+      "home": "DET",
+      "scoresAway": [
+        29,
+        40,
+        23,
+        19
+      ],
+      "scoresHome": [
+        26,
+        30,
+        25,
+        19
+      ],
+      "game": "IND@DET",
+      "date": "2025-01-16",
+      "url": "https://www.basketball-reference.com/boxscores/pbp/202501160DET.html",
+      "rows": 476,
+      "quarters": {
+        "1": {
+          "away": {
+            "FGA": 25,
+            "FGM": 12,
+            "threePA": 10,
+            "threePM": 5,
+            "FTA": 0,
+            "FTM": 0,
+            "specialFTA": 0,
+            "clear_path_FTA": 0,
+            "TO": 3,
+            "ORB": 1,
+            "DRB": 10,
+            "subs": 7
+          },
+          "home": {
+            "FGA": 23,
+            "FGM": 9,
+            "threePA": 8,
+            "threePM": 3,
+            "FTA": 5,
+            "FTM": 5,
+            "specialFTA": 3,
+            "clear_path_FTA": 0,
+            "TO": 7,
+            "ORB": 4,
+            "DRB": 12,
+            "subs": 5
+          },
+          "last": {
+            "away": 29,
+            "home": 26
+          },
+          "ended": true
+        },
+        "2": {
+          "away": {
+            "FGA": 23,
+            "FGM": 13,
+            "threePA": 6,
+            "threePM": 3,
+            "FTA": 12,
+            "FTM": 11,
+            "specialFTA": 2,
+            "clear_path_FTA": 0,
+            "TO": 1,
+            "ORB": 4,
+            "DRB": 7,
+            "subs": 7
+          },
+          "home": {
+            "FGA": 20,
+            "FGM": 10,
+            "threePA": 11,
+            "threePM": 4,
+            "FTA": 7,
+            "FTM": 6,
+            "specialFTA": 1,
+            "clear_path_FTA": 0,
+            "TO": 6,
+            "ORB": 4,
+            "DRB": 7,
+            "subs": 5
+          },
+          "last": {
+            "away": 69,
+            "home": 56
+          },
+          "ended": true
+        },
+        "3": {
+          "away": {
+            "FGA": 21,
+            "FGM": 9,
+            "threePA": 10,
+            "threePM": 4,
+            "FTA": 2,
+            "FTM": 1,
+            "specialFTA": 0,
+            "clear_path_FTA": 0,
+            "TO": 2,
+            "ORB": 3,
+            "DRB": 9,
+            "subs": 5
+          },
+          "home": {
+            "FGA": 25,
+            "FGM": 10,
+            "threePA": 8,
+            "threePM": 1,
+            "FTA": 6,
+            "FTM": 4,
+            "specialFTA": 0,
+            "clear_path_FTA": 0,
+            "TO": 2,
+            "ORB": 8,
+            "DRB": 10,
+            "subs": 6
+          },
+          "last": {
+            "away": 92,
+            "home": 81
+          },
+          "ended": true
+        },
+        "4": {
+          "away": {
+            "FGA": 20,
+            "FGM": 7,
+            "threePA": 4,
+            "threePM": 1,
+            "FTA": 8,
+            "FTM": 4,
+            "specialFTA": 0,
+            "clear_path_FTA": 0,
+            "TO": 4,
+            "ORB": 3,
+            "DRB": 13,
+            "subs": 4
+          },
+          "home": {
+            "FGA": 23,
+            "FGM": 7,
+            "threePA": 9,
+            "threePM": 1,
+            "FTA": 4,
+            "FTM": 4,
+            "specialFTA": 0,
+            "clear_path_FTA": 0,
+            "TO": 4,
+            "ORB": 3,
+            "DRB": 14,
+            "subs": 7
+          },
+          "last": {
+            "away": 111,
+            "home": 100
+          },
+          "ended": true
+        }
+      },
+      "half": {
+        "away": {
+          "H1": {
+            "FGA": 48,
+            "FGM": 25,
+            "threePA": 16,
+            "threePM": 8,
+            "FTA": 12,
+            "FTM": 11,
+            "specialFTA": 2,
+            "clear_path_FTA": 0,
+            "TO": 4,
+            "ORB": 5,
+            "DRB": 17,
+            "subs": 14
+          },
+          "H2": {
+            "FGA": 41,
+            "FGM": 16,
+            "threePA": 14,
+            "threePM": 5,
+            "FTA": 10,
+            "FTM": 5,
+            "specialFTA": 0,
+            "clear_path_FTA": 0,
+            "TO": 6,
+            "ORB": 6,
+            "DRB": 22,
+            "subs": 9
+          }
+        },
+        "home": {
+          "H1": {
+            "FGA": 43,
+            "FGM": 19,
+            "threePA": 19,
+            "threePM": 7,
+            "FTA": 12,
+            "FTM": 11,
+            "specialFTA": 4,
+            "clear_path_FTA": 0,
+            "TO": 13,
+            "ORB": 8,
+            "DRB": 19,
+            "subs": 10
+          },
+          "H2": {
+            "FGA": 48,
+            "FGM": 17,
+            "threePA": 17,
+            "threePM": 2,
+            "FTA": 10,
+            "FTM": 8,
+            "specialFTA": 0,
+            "clear_path_FTA": 0,
+            "TO": 6,
+            "ORB": 11,
+            "DRB": 24,
+            "subs": 13
+          }
+        }
+      },
+      "reconciled": true
+    },
+    {
+      "away": "CLE",
+      "home": "OKC",
+      "scoresAway": [
+        14,
+        35,
+        32,
+        33
+      ],
+      "scoresHome": [
+        32,
+        43,
+        44,
+        15
+      ],
+      "game": "CLE@OKC",
+      "date": "2025-01-16",
+      "url": "https://www.basketball-reference.com/boxscores/pbp/202501160OKC.html",
+      "rows": 452,
+      "quarters": {
+        "1": {
+          "away": {
+            "FGA": 23,
+            "FGM": 6,
+            "threePA": 11,
+            "threePM": 2,
+            "FTA": 0,
+            "FTM": 0,
+            "specialFTA": 0,
+            "clear_path_FTA": 0,
+            "TO": 7,
+            "ORB": 5,
+            "DRB": 9,
+            "subs": 5
+          },
+          "home": {
+            "FGA": 23,
+            "FGM": 12,
+            "threePA": 10,
+            "threePM": 6,
+            "FTA": 2,
+            "FTM": 2,
+            "specialFTA": 0,
+            "clear_path_FTA": 0,
+            "TO": 3,
+            "ORB": 2,
+            "DRB": 12,
+            "subs": 4
+          },
+          "last": {
+            "away": 14,
+            "home": 32
+          },
+          "ended": true
+        },
+        "2": {
+          "away": {
+            "FGA": 19,
+            "FGM": 12,
+            "threePA": 9,
+            "threePM": 4,
+            "FTA": 7,
+            "FTM": 7,
+            "specialFTA": 2,
+            "clear_path_FTA": 0,
+            "TO": 6,
+            "ORB": 2,
+            "DRB": 7,
+            "subs": 8
+          },
+          "home": {
+            "FGA": 23,
+            "FGM": 16,
+            "threePA": 9,
+            "threePM": 5,
+            "FTA": 6,
+            "FTM": 6,
+            "specialFTA": 1,
+            "clear_path_FTA": 0,
+            "TO": 1,
+            "ORB": 0,
+            "DRB": 5,
+            "subs": 6
+          },
+          "last": {
+            "away": 49,
+            "home": 75
+          },
+          "ended": true
+        },
+        "3": {
+          "away": {
+            "FGA": 21,
+            "FGM": 11,
+            "threePA": 6,
+            "threePM": 1,
+            "FTA": 13,
+            "FTM": 9,
+            "specialFTA": 0,
+            "clear_path_FTA": 0,
+            "TO": 4,
+            "ORB": 2,
+            "DRB": 10,
+            "subs": 5
+          },
+          "home": {
+            "FGA": 32,
+            "FGM": 19,
+            "threePA": 16,
+            "threePM": 5,
+            "FTA": 1,
+            "FTM": 1,
+            "specialFTA": 0,
+            "clear_path_FTA": 0,
+            "TO": 1,
+            "ORB": 3,
+            "DRB": 12,
+            "subs": 3
+          },
+          "last": {
+            "away": 81,
+            "home": 119
+          },
+          "ended": true
+        },
+        "4": {
+          "away": {
+            "FGA": 27,
+            "FGM": 13,
+            "threePA": 16,
+            "threePM": 6,
+            "FTA": 1,
+            "FTM": 1,
+            "specialFTA": 0,
+            "clear_path_FTA": 0,
+            "TO": 4,
+            "ORB": 7,
+            "DRB": 16,
+            "subs": 1
+          },
+          "home": {
+            "FGA": 27,
+            "FGM": 6,
+            "threePA": 18,
+            "threePM": 2,
+            "FTA": 2,
+            "FTM": 1,
+            "specialFTA": 0,
+            "clear_path_FTA": 0,
+            "TO": 2,
+            "ORB": 6,
+            "DRB": 7,
+            "subs": 3
+          },
+          "last": {
+            "away": 114,
+            "home": 134
+          },
+          "ended": true
+        }
+      },
+      "half": {
+        "away": {
+          "H1": {
+            "FGA": 42,
+            "FGM": 18,
+            "threePA": 20,
+            "threePM": 6,
+            "FTA": 7,
+            "FTM": 7,
+            "specialFTA": 2,
+            "clear_path_FTA": 0,
+            "TO": 13,
+            "ORB": 7,
+            "DRB": 16,
+            "subs": 13
+          },
+          "H2": {
+            "FGA": 48,
+            "FGM": 24,
+            "threePA": 22,
+            "threePM": 7,
+            "FTA": 14,
+            "FTM": 10,
+            "specialFTA": 0,
+            "clear_path_FTA": 0,
+            "TO": 8,
+            "ORB": 9,
+            "DRB": 26,
+            "subs": 6
+          }
+        },
+        "home": {
+          "H1": {
+            "FGA": 46,
+            "FGM": 28,
+            "threePA": 19,
+            "threePM": 11,
+            "FTA": 8,
+            "FTM": 8,
+            "specialFTA": 1,
+            "clear_path_FTA": 0,
+            "TO": 4,
+            "ORB": 2,
+            "DRB": 17,
+            "subs": 10
+          },
+          "H2": {
+            "FGA": 59,
+            "FGM": 25,
+            "threePA": 34,
+            "threePM": 7,
+            "FTA": 3,
+            "FTM": 2,
+            "specialFTA": 0,
+            "clear_path_FTA": 0,
+            "TO": 3,
+            "ORB": 9,
+            "DRB": 19,
+            "subs": 6
+          }
+        }
+      },
+      "reconciled": true
+    },
+    {
+      "away": "LAC",
+      "home": "POR",
+      "scoresAway": [
+        32,
+        20,
+        34,
+        32
+      ],
+      "scoresHome": [
+        22,
+        16,
+        28,
+        23
+      ],
+      "game": "LAC@POR",
+      "date": "2025-01-16",
+      "url": "https://www.basketball-reference.com/boxscores/pbp/202501160POR.html",
+      "rows": 443,
+      "quarters": {
+        "1": {
+          "away": {
+            "FGA": 18,
+            "FGM": 12,
+            "threePA": 7,
+            "threePM": 3,
+            "FTA": 7,
+            "FTM": 5,
+            "specialFTA": 0,
+            "clear_path_FTA": 0,
+            "TO": 3,
+            "ORB": 1,
+            "DRB": 13,
+            "subs": 5
+          },
+          "home": {
+            "FGA": 27,
+            "FGM": 10,
+            "threePA": 4,
+            "threePM": 1,
+            "FTA": 1,
+            "FTM": 1,
+            "specialFTA": 0,
+            "clear_path_FTA": 0,
+            "TO": 1,
+            "ORB": 4,
+            "DRB": 7,
+            "subs": 5
+          },
+          "last": {
+            "away": 32,
+            "home": 22
+          },
+          "ended": true
+        },
+        "2": {
+          "away": {
+            "FGA": 17,
+            "FGM": 7,
+            "threePA": 4,
+            "threePM": 1,
+            "FTA": 6,
+            "FTM": 5,
+            "specialFTA": 0,
+            "clear_path_FTA": 0,
+            "TO": 8,
+            "ORB": 3,
+            "DRB": 12,
+            "subs": 8
+          },
+          "home": {
+            "FGA": 21,
+            "FGM": 6,
+            "threePA": 11,
+            "threePM": 2,
+            "FTA": 2,
+            "FTM": 2,
+            "specialFTA": 0,
+            "clear_path_FTA": 0,
+            "TO": 6,
+            "ORB": 3,
+            "DRB": 8,
+            "subs": 6
+          },
+          "last": {
+            "away": 52,
+            "home": 38
+          },
+          "ended": true
+        },
+        "3": {
+          "away": {
+            "FGA": 21,
+            "FGM": 13,
+            "threePA": 4,
+            "threePM": 2,
+            "FTA": 10,
+            "FTM": 6,
+            "specialFTA": 0,
+            "clear_path_FTA": 0,
+            "TO": 5,
+            "ORB": 7,
+            "DRB": 10,
+            "subs": 4
+          },
+          "home": {
+            "FGA": 24,
+            "FGM": 10,
+            "threePA": 9,
+            "threePM": 3,
+            "FTA": 6,
+            "FTM": 5,
+            "specialFTA": 0,
+            "clear_path_FTA": 0,
+            "TO": 4,
+            "ORB": 5,
+            "DRB": 5,
+            "subs": 5
+          },
+          "last": {
+            "away": 86,
+            "home": 66
+          },
+          "ended": true
+        },
+        "4": {
+          "away": {
+            "FGA": 22,
+            "FGM": 12,
+            "threePA": 8,
+            "threePM": 4,
+            "FTA": 4,
+            "FTM": 4,
+            "specialFTA": 0,
+            "clear_path_FTA": 0,
+            "TO": 2,
+            "ORB": 4,
+            "DRB": 8,
+            "subs": 7
+          },
+          "home": {
+            "FGA": 19,
+            "FGM": 8,
+            "threePA": 10,
+            "threePM": 3,
+            "FTA": 4,
+            "FTM": 4,
+            "specialFTA": 0,
+            "clear_path_FTA": 0,
+            "TO": 5,
+            "ORB": 3,
+            "DRB": 6,
+            "subs": 8
+          },
+          "last": {
+            "away": 118,
+            "home": 89
+          },
+          "ended": true
+        }
+      },
+      "half": {
+        "away": {
+          "H1": {
+            "FGA": 35,
+            "FGM": 19,
+            "threePA": 11,
+            "threePM": 4,
+            "FTA": 13,
+            "FTM": 10,
+            "specialFTA": 0,
+            "clear_path_FTA": 0,
+            "TO": 11,
+            "ORB": 4,
+            "DRB": 25,
+            "subs": 13
+          },
+          "H2": {
+            "FGA": 43,
+            "FGM": 25,
+            "threePA": 12,
+            "threePM": 6,
+            "FTA": 14,
+            "FTM": 10,
+            "specialFTA": 0,
+            "clear_path_FTA": 0,
+            "TO": 7,
+            "ORB": 11,
+            "DRB": 18,
+            "subs": 11
+          }
+        },
+        "home": {
+          "H1": {
+            "FGA": 48,
+            "FGM": 16,
+            "threePA": 15,
+            "threePM": 3,
+            "FTA": 3,
+            "FTM": 3,
+            "specialFTA": 0,
+            "clear_path_FTA": 0,
+            "TO": 7,
+            "ORB": 7,
+            "DRB": 15,
+            "subs": 11
+          },
+          "H2": {
+            "FGA": 43,
+            "FGM": 18,
+            "threePA": 19,
+            "threePM": 6,
+            "FTA": 10,
+            "FTM": 9,
+            "specialFTA": 0,
+            "clear_path_FTA": 0,
+            "TO": 9,
+            "ORB": 8,
+            "DRB": 11,
+            "subs": 13
+          }
+        }
+      },
+      "reconciled": true
+    },
+    {
+      "away": "HOU",
+      "home": "SAC",
+      "scoresAway": [
+        25,
+        27,
+        33,
+        42
+      ],
+      "scoresHome": [
+        26,
+        35,
+        29,
+        42
+      ],
+      "game": "HOU@SAC",
+      "date": "2025-01-16",
+      "url": "https://www.basketball-reference.com/boxscores/pbp/202501160SAC.html",
+      "rows": 462,
+      "quarters": {
+        "1": {
+          "away": {
+            "FGA": 25,
+            "FGM": 10,
+            "threePA": 7,
+            "threePM": 2,
+            "FTA": 3,
+            "FTM": 3,
+            "specialFTA": 0,
+            "clear_path_FTA": 0,
+            "TO": 2,
+            "ORB": 4,
+            "DRB": 8,
+            "subs": 4
+          },
+          "home": {
+            "FGA": 22,
+            "FGM": 11,
+            "threePA": 11,
+            "threePM": 4,
+            "FTA": 0,
+            "FTM": 0,
+            "specialFTA": 0,
+            "clear_path_FTA": 0,
+            "TO": 4,
+            "ORB": 3,
+            "DRB": 11,
+            "subs": 5
+          },
+          "last": {
+            "away": 25,
+            "home": 26
+          },
+          "ended": true
+        },
+        "2": {
+          "away": {
+            "FGA": 20,
+            "FGM": 11,
+            "threePA": 7,
+            "threePM": 3,
+            "FTA": 5,
+            "FTM": 2,
+            "specialFTA": 0,
+            "clear_path_FTA": 0,
+            "TO": 3,
+            "ORB": 2,
+            "DRB": 9,
+            "subs": 7
+          },
+          "home": {
+            "FGA": 26,
+            "FGM": 15,
+            "threePA": 8,
+            "threePM": 4,
+            "FTA": 2,
+            "FTM": 1,
+            "specialFTA": 0,
+            "clear_path_FTA": 0,
+            "TO": 2,
+            "ORB": 3,
+            "DRB": 10,
+            "subs": 5
+          },
+          "last": {
+            "away": 52,
+            "home": 61
+          },
+          "ended": true
+        },
+        "3": {
+          "away": {
+            "FGA": 29,
+            "FGM": 14,
+            "threePA": 8,
+            "threePM": 1,
+            "FTA": 6,
+            "FTM": 4,
+            "specialFTA": 0,
+            "clear_path_FTA": 0,
+            "TO": 3,
+            "ORB": 9,
+            "DRB": 12,
+            "subs": 4
+          },
+          "home": {
+            "FGA": 25,
+            "FGM": 10,
+            "threePA": 9,
+            "threePM": 3,
+            "FTA": 7,
+            "FTM": 6,
+            "specialFTA": 0,
+            "clear_path_FTA": 0,
+            "TO": 2,
+            "ORB": 4,
+            "DRB": 8,
+            "subs": 6
+          },
+          "last": {
+            "away": 85,
+            "home": 90
+          },
+          "ended": true
+        },
+        "4": {
+          "away": {
+            "FGA": 19,
+            "FGM": 14,
+            "threePA": 11,
+            "threePM": 6,
+            "FTA": 10,
+            "FTM": 8,
+            "specialFTA": 0,
+            "clear_path_FTA": 0,
+            "TO": 6,
+            "ORB": 3,
+            "DRB": 5,
+            "subs": 6
+          },
+          "home": {
+            "FGA": 25,
+            "FGM": 13,
+            "threePA": 5,
+            "threePM": 3,
+            "FTA": 13,
+            "FTM": 13,
+            "specialFTA": 0,
+            "clear_path_FTA": 0,
+            "TO": 4,
+            "ORB": 7,
+            "DRB": 4,
+            "subs": 3
+          },
+          "last": {
+            "away": 127,
+            "home": 132
+          },
+          "ended": true
+        }
+      },
+      "half": {
+        "away": {
+          "H1": {
+            "FGA": 45,
+            "FGM": 21,
+            "threePA": 14,
+            "threePM": 5,
+            "FTA": 8,
+            "FTM": 5,
+            "specialFTA": 0,
+            "clear_path_FTA": 0,
+            "TO": 5,
+            "ORB": 6,
+            "DRB": 17,
+            "subs": 11
+          },
+          "H2": {
+            "FGA": 48,
+            "FGM": 28,
+            "threePA": 19,
+            "threePM": 7,
+            "FTA": 16,
+            "FTM": 12,
+            "specialFTA": 0,
+            "clear_path_FTA": 0,
+            "TO": 9,
+            "ORB": 12,
+            "DRB": 17,
+            "subs": 10
+          }
+        },
+        "home": {
+          "H1": {
+            "FGA": 48,
+            "FGM": 26,
+            "threePA": 19,
+            "threePM": 8,
+            "FTA": 2,
+            "FTM": 1,
+            "specialFTA": 0,
+            "clear_path_FTA": 0,
+            "TO": 6,
+            "ORB": 6,
+            "DRB": 21,
+            "subs": 10
+          },
+          "H2": {
+            "FGA": 50,
+            "FGM": 23,
+            "threePA": 14,
+            "threePM": 6,
+            "FTA": 20,
+            "FTM": 19,
+            "specialFTA": 0,
+            "clear_path_FTA": 0,
+            "TO": 6,
+            "ORB": 11,
+            "DRB": 12,
+            "subs": 9
+          }
+        }
+      },
+      "reconciled": true
+    },
+    {
+      "away": "PHX",
+      "home": "WAS",
+      "scoresAway": [
+        34,
+        35,
+        35,
+        26
+      ],
+      "scoresHome": [
+        21,
+        34,
+        28,
+        40
+      ],
+      "game": "PHX@WAS",
+      "date": "2025-01-16",
+      "url": "https://www.basketball-reference.com/boxscores/pbp/202501160WAS.html",
+      "rows": 491,
+      "quarters": {
+        "1": {
+          "away": {
+            "FGA": 21,
+            "FGM": 13,
+            "threePA": 7,
+            "threePM": 4,
+            "FTA": 7,
+            "FTM": 4,
+            "specialFTA": 0,
+            "clear_path_FTA": 0,
+            "TO": 2,
+            "ORB": 3,
+            "DRB": 13,
+            "subs": 5
+          },
+          "home": {
+            "FGA": 23,
+            "FGM": 8,
+            "threePA": 12,
+            "threePM": 3,
+            "FTA": 4,
+            "FTM": 2,
+            "specialFTA": 0,
+            "clear_path_FTA": 0,
+            "TO": 2,
+            "ORB": 4,
+            "DRB": 8,
+            "subs": 5
+          },
+          "last": {
+            "away": 34,
+            "home": 21
+          },
+          "ended": true
+        },
+        "2": {
+          "away": {
+            "FGA": 22,
+            "FGM": 14,
+            "threePA": 9,
+            "threePM": 5,
+            "FTA": 2,
+            "FTM": 2,
+            "specialFTA": 0,
+            "clear_path_FTA": 0,
+            "TO": 7,
+            "ORB": 3,
+            "DRB": 7,
+            "subs": 7
+          },
+          "home": {
+            "FGA": 21,
+            "FGM": 13,
+            "threePA": 9,
+            "threePM": 3,
+            "FTA": 5,
+            "FTM": 5,
+            "specialFTA": 0,
+            "clear_path_FTA": 0,
+            "TO": 5,
+            "ORB": 1,
+            "DRB": 5,
+            "subs": 6
+          },
+          "last": {
+            "away": 69,
+            "home": 55
+          },
+          "ended": true
+        },
+        "3": {
+          "away": {
+            "FGA": 23,
+            "FGM": 11,
+            "threePA": 8,
+            "threePM": 4,
+            "FTA": 10,
+            "FTM": 9,
+            "specialFTA": 2,
+            "clear_path_FTA": 2,
+            "TO": 2,
+            "ORB": 4,
+            "DRB": 12,
+            "subs": 7
+          },
+          "home": {
+            "FGA": 21,
+            "FGM": 10,
+            "threePA": 9,
+            "threePM": 2,
+            "FTA": 11,
+            "FTM": 6,
+            "specialFTA": 0,
+            "clear_path_FTA": 0,
+            "TO": 2,
+            "ORB": 4,
+            "DRB": 9,
+            "subs": 5
+          },
+          "last": {
+            "away": 104,
+            "home": 83
+          },
+          "ended": true
+        },
+        "4": {
+          "away": {
+            "FGA": 19,
+            "FGM": 6,
+            "threePA": 9,
+            "threePM": 3,
+            "FTA": 12,
+            "FTM": 11,
+            "specialFTA": 0,
+            "clear_path_FTA": 0,
+            "TO": 5,
+            "ORB": 3,
+            "DRB": 7,
+            "subs": 16
+          },
+          "home": {
+            "FGA": 27,
+            "FGM": 15,
+            "threePA": 11,
+            "threePM": 5,
+            "FTA": 7,
+            "FTM": 5,
+            "specialFTA": 0,
+            "clear_path_FTA": 0,
+            "TO": 4,
+            "ORB": 7,
+            "DRB": 11,
+            "subs": 7
+          },
+          "last": {
+            "away": 130,
+            "home": 123
+          },
+          "ended": true
+        }
+      },
+      "half": {
+        "away": {
+          "H1": {
+            "FGA": 43,
+            "FGM": 27,
+            "threePA": 16,
+            "threePM": 9,
+            "FTA": 9,
+            "FTM": 6,
+            "specialFTA": 0,
+            "clear_path_FTA": 0,
+            "TO": 9,
+            "ORB": 6,
+            "DRB": 20,
+            "subs": 12
+          },
+          "H2": {
+            "FGA": 42,
+            "FGM": 17,
+            "threePA": 17,
+            "threePM": 7,
+            "FTA": 22,
+            "FTM": 20,
+            "specialFTA": 2,
+            "clear_path_FTA": 2,
+            "TO": 7,
+            "ORB": 7,
+            "DRB": 19,
+            "subs": 23
+          }
+        },
+        "home": {
+          "H1": {
+            "FGA": 44,
+            "FGM": 21,
+            "threePA": 21,
+            "threePM": 6,
+            "FTA": 9,
+            "FTM": 7,
+            "specialFTA": 0,
+            "clear_path_FTA": 0,
+            "TO": 7,
+            "ORB": 5,
+            "DRB": 13,
+            "subs": 11
+          },
+          "H2": {
+            "FGA": 48,
+            "FGM": 25,
+            "threePA": 20,
+            "threePM": 7,
+            "FTA": 18,
+            "FTM": 11,
+            "specialFTA": 0,
+            "clear_path_FTA": 0,
+            "TO": 6,
+            "ORB": 11,
+            "DRB": 20,
+            "subs": 12
+          }
+        }
+      },
+      "reconciled": true
+    }
+  ],
+  "limits": [
+    "Retrospective BRef rendered source, no signed raw bytes",
+    "NBA.com source independently confirms 5 games/scores but not every event",
+    "Other rare FT classes remain possible in future, so fail-closed on scoring identities",
+    "No true possession or lineup/guard assignment",
+    "No production model or EV"
+  ]
+}
