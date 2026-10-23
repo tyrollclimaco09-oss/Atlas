@@ -111,7 +111,9 @@ def selftest():
     reject(got["all_week7_games"]==14 and len(got["eligible_future_games"])==14,"CENSUS_INCOMPLETE")
     reject(select_team("A0",hist)["forecast"] is None,"MISSING_TEAM_NOT_RETAINED")
     mutant={"H0":hist["H0"]+[{"player_id":"new","week":7,"game_id":"future","pass_attempts":1000}]}
-    reject(select_team("H0",mutant)["forecast"]==before["forecast"],"FUTURE_LABEL_AFFECTED_FEATURE")
+    try:select_team("H0",mutant)
+    except ValueError as exc:reject("FUTURE_LEAKED_HISTORY" in str(exc),"FUTURE_LEAK_NOT_REJECTED")
+    else:raise AssertionError("WEEK7_LABEL_ALLOWED_IN_FEATURE_HISTORY")
     try:freeze(sample,hist,clock_utc("2026-10-25T17:05:00Z"))
     except ValueError as exc:reject("NO_FUTURE_GAMES" in str(exc),"TIME_GUARD_MISMATCH")
     else:raise AssertionError("POST_KICKOFF_FREEZE_ACCEPTED")
