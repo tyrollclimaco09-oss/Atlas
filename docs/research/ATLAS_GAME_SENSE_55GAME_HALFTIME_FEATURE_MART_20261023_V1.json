@@ -1,0 +1,1047 @@
+{
+  "schema": "atlas.nba.gamesense.firsthalf_features_55game_asof_candidate_v1",
+  "archive_at": "2026-10-23",
+  "source_paths": [
+    {
+      "path": "docs/research/ATLAS_NBA_JAN15_2023_2024_2026_FULL28_PBP_AND_TURNOVER_QUICKSCORE_V2.json",
+      "sha": "4c7b851c74a610c2693663148990904da34e1501"
+    },
+    {
+      "path": "docs/research/ATLAS_NBA_20250115_FULL_DATE_11GAME_PBP_RECONCILIATION_V1.json",
+      "sha": "4b75ff1c4836373318d120c0031af72d50db3e73"
+    },
+    {
+      "path": "docs/research/ATLAS_NBA_20250115_11GAME_TURNOVER_QUICKSCORE_REPLICATION_V1.json",
+      "sha": "4abd65860e22c27a95613d4b679d65390556f0c9"
+    },
+    {
+      "path": "docs/research/ATLAS_NBA_OPENING16_PBP_PERIOD_EVENTS_20261023_V2.json",
+      "sha": "ee83617990f03b1c9a2ae2608db4431693c16973"
+    },
+    {
+      "path": "docs/research/ATLAS_NBA_16GAME_TURNOVER_SCORE_ADJACENCY_20261023_V1.json",
+      "sha": "cbef2dcffa79bd68acd055c5c18bc616ab8b92ca"
+    }
+  ],
+  "selection": "2023+2024 Jan15 full dates (19) training, 2025 Jan15 (11) validation, 2026 Jan15 + Oct20-22 (25) test",
+  "records": [
+    {
+      "game": "Oklahoma City@Brooklyn",
+      "date": "2023-01-15",
+      "year": 2023,
+      "h1": 98,
+      "h2": 116,
+      "features": {
+        "h1_points": 98,
+        "estimate_poss": 48.64,
+        "turnovers": 14,
+        "free_throws": 12,
+        "steals": 7,
+        "steal_fraction": 0.5,
+        "quick_score_n": 5,
+        "steal_quick_rate": 0.42857142857142855,
+        "unmarked_quick_rate": 0.2857142857142857
+      }
+    },
+    {
+      "game": "Golden State@Chicago",
+      "date": "2023-01-15",
+      "year": 2023,
+      "h1": 121,
+      "h2": 129,
+      "features": {
+        "h1_points": 121,
+        "estimate_poss": 53.68,
+        "turnovers": 18,
+        "free_throws": 19,
+        "steals": 12,
+        "steal_fraction": 0.6666666666666666,
+        "quick_score_n": 8,
+        "steal_quick_rate": 0.5833333333333334,
+        "unmarked_quick_rate": 0.16666666666666666
+      }
+    },
+    {
+      "game": "Orlando@Denver",
+      "date": "2023-01-15",
+      "year": 2023,
+      "h1": 123,
+      "h2": 112,
+      "features": {
+        "h1_points": 123,
+        "estimate_poss": 48.66,
+        "turnovers": 17,
+        "free_throws": 28,
+        "steals": 10,
+        "steal_fraction": 0.5882352941176471,
+        "quick_score_n": 8,
+        "steal_quick_rate": 0.5,
+        "unmarked_quick_rate": 0.42857142857142855
+      }
+    },
+    {
+      "game": "New York@Detroit",
+      "date": "2023-01-15",
+      "year": 2023,
+      "h1": 117,
+      "h2": 104,
+      "features": {
+        "h1_points": 117,
+        "estimate_poss": 47.12,
+        "turnovers": 10,
+        "free_throws": 21,
+        "steals": 5,
+        "steal_fraction": 0.5,
+        "quick_score_n": 5,
+        "steal_quick_rate": 0.4,
+        "unmarked_quick_rate": 0.6
+      }
+    },
+    {
+      "game": "Houston@LA Clippers",
+      "date": "2023-01-15",
+      "year": 2023,
+      "h1": 125,
+      "h2": 96,
+      "features": {
+        "h1_points": 125,
+        "estimate_poss": 50.96,
+        "turnovers": 15,
+        "free_throws": 18,
+        "steals": 6,
+        "steal_fraction": 0.4,
+        "quick_score_n": 5,
+        "steal_quick_rate": 0.5,
+        "unmarked_quick_rate": 0.2222222222222222
+      }
+    },
+    {
+      "game": "Philadelphia@LA Lakers",
+      "date": "2023-01-15",
+      "year": 2023,
+      "h1": 115,
+      "h2": 110,
+      "features": {
+        "h1_points": 115,
+        "estimate_poss": 51.02,
+        "turnovers": 10,
+        "free_throws": 16,
+        "steals": 5,
+        "steal_fraction": 0.5,
+        "quick_score_n": 3,
+        "steal_quick_rate": 0.2,
+        "unmarked_quick_rate": 0.4
+      }
+    },
+    {
+      "game": "Dallas@Portland",
+      "date": "2023-01-15",
+      "year": 2023,
+      "h1": 115,
+      "h2": 148,
+      "features": {
+        "h1_points": 115,
+        "estimate_poss": 44.44,
+        "turnovers": 9,
+        "free_throws": 27,
+        "steals": 3,
+        "steal_fraction": 0.3333333333333333,
+        "quick_score_n": 5,
+        "steal_quick_rate": 1,
+        "unmarked_quick_rate": 0.3333333333333333
+      }
+    },
+    {
+      "game": "Sacramento@San Antonio",
+      "date": "2023-01-15",
+      "year": 2023,
+      "h1": 127,
+      "h2": 124,
+      "features": {
+        "h1_points": 127,
+        "estimate_poss": 48.34,
+        "turnovers": 6,
+        "free_throws": 22,
+        "steals": 2,
+        "steal_fraction": 0.3333333333333333,
+        "quick_score_n": 2,
+        "steal_quick_rate": 0.5,
+        "unmarked_quick_rate": 0.25
+      }
+    },
+    {
+      "game": "San Antonio@Atlanta",
+      "date": "2024-01-15",
+      "year": 2024,
+      "h1": 103,
+      "h2": 105,
+      "features": {
+        "h1_points": 103,
+        "estimate_poss": 53.36,
+        "turnovers": 17,
+        "free_throws": 13,
+        "steals": 11,
+        "steal_fraction": 0.6470588235294118,
+        "quick_score_n": 7,
+        "steal_quick_rate": 0.45454545454545453,
+        "unmarked_quick_rate": 0.3333333333333333
+      }
+    },
+    {
+      "game": "Miami@Brooklyn",
+      "date": "2024-01-15",
+      "year": 2024,
+      "h1": 76,
+      "h2": 100,
+      "features": {
+        "h1_points": 76,
+        "estimate_poss": 46.8,
+        "turnovers": 9,
+        "free_throws": 15,
+        "steals": 7,
+        "steal_fraction": 0.7777777777777778,
+        "quick_score_n": 3,
+        "steal_quick_rate": 0.2857142857142857,
+        "unmarked_quick_rate": 0.5
+      }
+    },
+    {
+      "game": "Chicago@Cleveland",
+      "date": "2024-01-15",
+      "year": 2024,
+      "h1": 106,
+      "h2": 94,
+      "features": {
+        "h1_points": 106,
+        "estimate_poss": 49.54,
+        "turnovers": 13,
+        "free_throws": 7,
+        "steals": 6,
+        "steal_fraction": 0.46153846153846156,
+        "quick_score_n": 3,
+        "steal_quick_rate": 0.16666666666666666,
+        "unmarked_quick_rate": 0.2857142857142857
+      }
+    },
+    {
+      "game": "New Orleans@Dallas",
+      "date": "2024-01-15",
+      "year": 2024,
+      "h1": 118,
+      "h2": 127,
+      "features": {
+        "h1_points": 118,
+        "estimate_poss": 46.36,
+        "turnovers": 14,
+        "free_throws": 38,
+        "steals": 9,
+        "steal_fraction": 0.6428571428571429,
+        "quick_score_n": 9,
+        "steal_quick_rate": 0.5555555555555556,
+        "unmarked_quick_rate": 0.8
+      }
+    },
+    {
+      "game": "Oklahoma City@LA Lakers",
+      "date": "2024-01-15",
+      "year": 2024,
+      "h1": 100,
+      "h2": 117,
+      "features": {
+        "h1_points": 100,
+        "estimate_poss": 45.86,
+        "turnovers": 7,
+        "free_throws": 13,
+        "steals": 5,
+        "steal_fraction": 0.7142857142857143,
+        "quick_score_n": 1,
+        "steal_quick_rate": 0.2,
+        "unmarked_quick_rate": 0
+      }
+    },
+    {
+      "game": "Golden State@Memphis",
+      "date": "2024-01-15",
+      "year": 2024,
+      "h1": 110,
+      "h2": 113,
+      "features": {
+        "h1_points": 110,
+        "estimate_poss": 47.18,
+        "turnovers": 14,
+        "free_throws": 19,
+        "steals": 8,
+        "steal_fraction": 0.5714285714285714,
+        "quick_score_n": 7,
+        "steal_quick_rate": 0.625,
+        "unmarked_quick_rate": 0.3333333333333333
+      }
+    },
+    {
+      "game": "Orlando@New York",
+      "date": "2024-01-15",
+      "year": 2024,
+      "h1": 102,
+      "h2": 90,
+      "features": {
+        "h1_points": 102,
+        "estimate_poss": 41.06,
+        "turnovers": 6,
+        "free_throws": 23,
+        "steals": 1,
+        "steal_fraction": 0.16666666666666666,
+        "quick_score_n": 1,
+        "steal_quick_rate": 1,
+        "unmarked_quick_rate": 0
+      }
+    },
+    {
+      "game": "Houston@Philadelphia",
+      "date": "2024-01-15",
+      "year": 2024,
+      "h1": 113,
+      "h2": 126,
+      "features": {
+        "h1_points": 113,
+        "estimate_poss": 47.94,
+        "turnovers": 14,
+        "free_throws": 27,
+        "steals": 9,
+        "steal_fraction": 0.6428571428571429,
+        "quick_score_n": 7,
+        "steal_quick_rate": 0.6666666666666666,
+        "unmarked_quick_rate": 0.2
+      }
+    },
+    {
+      "game": "Boston@Toronto",
+      "date": "2024-01-15",
+      "year": 2024,
+      "h1": 116,
+      "h2": 85,
+      "features": {
+        "h1_points": 116,
+        "estimate_poss": 49.62,
+        "turnovers": 8,
+        "free_throws": 21,
+        "steals": 3,
+        "steal_fraction": 0.375,
+        "quick_score_n": 4,
+        "steal_quick_rate": 1,
+        "unmarked_quick_rate": 0.2
+      }
+    },
+    {
+      "game": "Indiana@Utah",
+      "date": "2024-01-15",
+      "year": 2024,
+      "h1": 114,
+      "h2": 123,
+      "features": {
+        "h1_points": 114,
+        "estimate_poss": 46.72,
+        "turnovers": 14,
+        "free_throws": 26,
+        "steals": 6,
+        "steal_fraction": 0.42857142857142855,
+        "quick_score_n": 4,
+        "steal_quick_rate": 0.5,
+        "unmarked_quick_rate": 0.125
+      }
+    },
+    {
+      "game": "Detroit@Washington",
+      "date": "2024-01-15",
+      "year": 2024,
+      "h1": 125,
+      "h2": 121,
+      "features": {
+        "h1_points": 125,
+        "estimate_poss": 51.02,
+        "turnovers": 12,
+        "free_throws": 16,
+        "steals": 7,
+        "steal_fraction": 0.5833333333333334,
+        "quick_score_n": 6,
+        "steal_quick_rate": 0.5714285714285714,
+        "unmarked_quick_rate": 0.4
+      }
+    },
+    {
+      "game": "Utah@Dallas",
+      "date": "2026-01-15",
+      "year": 2026,
+      "h1": 120,
+      "h2": 146,
+      "features": {
+        "h1_points": 120,
+        "estimate_poss": 51.22,
+        "turnovers": 14,
+        "free_throws": 26,
+        "steals": 12,
+        "steal_fraction": 0.8571428571428571,
+        "quick_score_n": 8,
+        "steal_quick_rate": 0.5,
+        "unmarked_quick_rate": 1
+      }
+    },
+    {
+      "game": "Phoenix@Detroit",
+      "date": "2026-01-15",
+      "year": 2026,
+      "h1": 119,
+      "h2": 94,
+      "features": {
+        "h1_points": 119,
+        "estimate_poss": 50.64,
+        "turnovers": 21,
+        "free_throws": 37,
+        "steals": 16,
+        "steal_fraction": 0.7619047619047619,
+        "quick_score_n": 7,
+        "steal_quick_rate": 0.1875,
+        "unmarked_quick_rate": 0.8
+      }
+    },
+    {
+      "game": "New York@Golden State",
+      "date": "2026-01-15",
+      "year": 2026,
+      "h1": 121,
+      "h2": 118,
+      "features": {
+        "h1_points": 121,
+        "estimate_poss": 41.96,
+        "turnovers": 14,
+        "free_throws": 18,
+        "steals": 6,
+        "steal_fraction": 0.42857142857142855,
+        "quick_score_n": 5,
+        "steal_quick_rate": 0.3333333333333333,
+        "unmarked_quick_rate": 0.375
+      }
+    },
+    {
+      "game": "Oklahoma City@Houston",
+      "date": "2026-01-15",
+      "year": 2026,
+      "h1": 103,
+      "h2": 99,
+      "features": {
+        "h1_points": 103,
+        "estimate_poss": 50.02,
+        "turnovers": 17,
+        "free_throws": 16,
+        "steals": 12,
+        "steal_fraction": 0.7058823529411765,
+        "quick_score_n": 8,
+        "steal_quick_rate": 0.4166666666666667,
+        "unmarked_quick_rate": 0.6
+      }
+    },
+    {
+      "game": "Charlotte@LA Lakers",
+      "date": "2026-01-15",
+      "year": 2026,
+      "h1": 119,
+      "h2": 133,
+      "features": {
+        "h1_points": 119,
+        "estimate_poss": 46.3,
+        "turnovers": 10,
+        "free_throws": 15,
+        "steals": 3,
+        "steal_fraction": 0.3,
+        "quick_score_n": 3,
+        "steal_quick_rate": 1,
+        "unmarked_quick_rate": 0
+      }
+    },
+    {
+      "game": "Boston@Miami",
+      "date": "2026-01-15",
+      "year": 2026,
+      "h1": 118,
+      "h2": 115,
+      "features": {
+        "h1_points": 118,
+        "estimate_poss": 42.9,
+        "turnovers": 12,
+        "free_throws": 20,
+        "steals": 6,
+        "steal_fraction": 0.5,
+        "quick_score_n": 5,
+        "steal_quick_rate": 0.5,
+        "unmarked_quick_rate": 0.3333333333333333
+      }
+    },
+    {
+      "game": "Memphis@Orlando",
+      "date": "2026-01-15",
+      "year": 2026,
+      "h1": 125,
+      "h2": 104,
+      "features": {
+        "h1_points": 125,
+        "estimate_poss": 49.64,
+        "turnovers": 18,
+        "free_throws": 12,
+        "steals": 9,
+        "steal_fraction": 0.5,
+        "quick_score_n": 9,
+        "steal_quick_rate": 0.5555555555555556,
+        "unmarked_quick_rate": 0.4444444444444444
+      }
+    },
+    {
+      "game": "Atlanta@Portland",
+      "date": "2026-01-15",
+      "year": 2026,
+      "h1": 110,
+      "h2": 108,
+      "features": {
+        "h1_points": 110,
+        "estimate_poss": 49.1,
+        "turnovers": 20,
+        "free_throws": 30,
+        "steals": 12,
+        "steal_fraction": 0.6,
+        "quick_score_n": 8,
+        "steal_quick_rate": 0.4166666666666667,
+        "unmarked_quick_rate": 0.375
+      }
+    },
+    {
+      "game": "Milwaukee@San Antonio",
+      "date": "2026-01-15",
+      "year": 2026,
+      "h1": 119,
+      "h2": 101,
+      "features": {
+        "h1_points": 119,
+        "estimate_poss": 44.76,
+        "turnovers": 13,
+        "free_throws": 33,
+        "steals": 5,
+        "steal_fraction": 0.38461538461538464,
+        "quick_score_n": 4,
+        "steal_quick_rate": 0.6,
+        "unmarked_quick_rate": 0.125
+      }
+    },
+    {
+      "game": "Atlanta@Chicago",
+      "date": "2025-01-15",
+      "year": 2025,
+      "h1": 108,
+      "h2": 96,
+      "features": {
+        "h1_points": 108,
+        "estimate_poss": 54.3,
+        "turnovers": 16,
+        "free_throws": 15,
+        "steals": 10,
+        "steal_fraction": 0.625,
+        "quick_score_n": 7,
+        "steal_quick_rate": 0.6,
+        "unmarked_quick_rate": 0.16666666666666666
+      }
+    },
+    {
+      "game": "Houston@Denver",
+      "date": "2025-01-15",
+      "year": 2025,
+      "h1": 117,
+      "h2": 119,
+      "features": {
+        "h1_points": 117,
+        "estimate_poss": 44.9,
+        "turnovers": 17,
+        "free_throws": 20,
+        "steals": 9,
+        "steal_fraction": 0.5294117647058824,
+        "quick_score_n": 7,
+        "steal_quick_rate": 0.5555555555555556,
+        "unmarked_quick_rate": 0.25
+      }
+    },
+    {
+      "game": "Brooklyn@LA Clippers",
+      "date": "2025-01-15",
+      "year": 2025,
+      "h1": 93,
+      "h2": 100,
+      "features": {
+        "h1_points": 93,
+        "estimate_poss": 46.5,
+        "turnovers": 18,
+        "free_throws": 25,
+        "steals": 10,
+        "steal_fraction": 0.5555555555555556,
+        "quick_score_n": 8,
+        "steal_quick_rate": 0.6,
+        "unmarked_quick_rate": 0.25
+      }
+    },
+    {
+      "game": "Miami@LA Lakers",
+      "date": "2025-01-15",
+      "year": 2025,
+      "h1": 120,
+      "h2": 105,
+      "features": {
+        "h1_points": 120,
+        "estimate_poss": 48.06,
+        "turnovers": 14,
+        "free_throws": 23,
+        "steals": 9,
+        "steal_fraction": 0.6428571428571429,
+        "quick_score_n": 7,
+        "steal_quick_rate": 0.6666666666666666,
+        "unmarked_quick_rate": 0.2
+      }
+    },
+    {
+      "game": "Orlando@Milwaukee",
+      "date": "2025-01-15",
+      "year": 2025,
+      "h1": 103,
+      "h2": 112,
+      "features": {
+        "h1_points": 103,
+        "estimate_poss": 52.56,
+        "turnovers": 18,
+        "free_throws": 23,
+        "steals": 10,
+        "steal_fraction": 0.5555555555555556,
+        "quick_score_n": 8,
+        "steal_quick_rate": 0.6,
+        "unmarked_quick_rate": 0.25
+      }
+    },
+    {
+      "game": "Golden State@Minnesota",
+      "date": "2025-01-15",
+      "year": 2025,
+      "h1": 97,
+      "h2": 134,
+      "features": {
+        "h1_points": 97,
+        "estimate_poss": 44.82,
+        "turnovers": 16,
+        "free_throws": 6,
+        "steals": 10,
+        "steal_fraction": 0.625,
+        "quick_score_n": 6,
+        "steal_quick_rate": 0.6,
+        "unmarked_quick_rate": 0
+      }
+    },
+    {
+      "game": "Dallas@New Orleans",
+      "date": "2025-01-15",
+      "year": 2025,
+      "h1": 124,
+      "h2": 111,
+      "features": {
+        "h1_points": 124,
+        "estimate_poss": 53.6,
+        "turnovers": 17,
+        "free_throws": 30,
+        "steals": 13,
+        "steal_fraction": 0.7647058823529411,
+        "quick_score_n": 9,
+        "steal_quick_rate": 0.6153846153846154,
+        "unmarked_quick_rate": 0.25
+      }
+    },
+    {
+      "game": "New York@Philadelphia",
+      "date": "2025-01-15",
+      "year": 2025,
+      "h1": 107,
+      "h2": 111,
+      "features": {
+        "h1_points": 107,
+        "estimate_poss": 42.4,
+        "turnovers": 9,
+        "free_throws": 20,
+        "steals": 6,
+        "steal_fraction": 0.6666666666666666,
+        "quick_score_n": 3,
+        "steal_quick_rate": 0.5,
+        "unmarked_quick_rate": 0
+      }
+    },
+    {
+      "game": "Memphis@San Antonio",
+      "date": "2025-01-15",
+      "year": 2025,
+      "h1": 114,
+      "h2": 130,
+      "features": {
+        "h1_points": 114,
+        "estimate_poss": 50.28,
+        "turnovers": 12,
+        "free_throws": 24,
+        "steals": 8,
+        "steal_fraction": 0.6666666666666666,
+        "quick_score_n": 7,
+        "steal_quick_rate": 0.75,
+        "unmarked_quick_rate": 0.25
+      }
+    },
+    {
+      "game": "Boston@Toronto",
+      "date": "2025-01-15",
+      "year": 2025,
+      "h1": 108,
+      "h2": 99,
+      "features": {
+        "h1_points": 108,
+        "estimate_poss": 48.58,
+        "turnovers": 12,
+        "free_throws": 14,
+        "steals": 8,
+        "steal_fraction": 0.6666666666666666,
+        "quick_score_n": 4,
+        "steal_quick_rate": 0.5,
+        "unmarked_quick_rate": 0
+      }
+    },
+    {
+      "game": "Charlotte@Utah",
+      "date": "2025-01-15",
+      "year": 2025,
+      "h1": 117,
+      "h2": 112,
+      "features": {
+        "h1_points": 117,
+        "estimate_poss": 53.36,
+        "turnovers": 17,
+        "free_throws": 13,
+        "steals": 6,
+        "steal_fraction": 0.35294117647058826,
+        "quick_score_n": 7,
+        "steal_quick_rate": 0.3333333333333333,
+        "unmarked_quick_rate": 0.45454545454545453
+      }
+    },
+    {
+      "game": "BOS@DET",
+      "date": "2026-10-20",
+      "year": 2026,
+      "h1": 103,
+      "h2": 131,
+      "features": {
+        "h1_points": 103,
+        "estimate_poss": 47.68,
+        "turnovers": 18,
+        "free_throws": 19,
+        "steals": 11,
+        "steal_fraction": 0.6111111111111112,
+        "quick_score_n": 6,
+        "steal_quick_rate": 0.36363636363636365,
+        "unmarked_quick_rate": 0.2857142857142857
+      }
+    },
+    {
+      "game": "PHI@NYK",
+      "date": "2026-10-20",
+      "year": 2026,
+      "h1": 112,
+      "h2": 94,
+      "features": {
+        "h1_points": 112,
+        "estimate_poss": 50.14,
+        "turnovers": 17,
+        "free_throws": 37,
+        "steals": 9,
+        "steal_fraction": 0.5294117647058824,
+        "quick_score_n": 9,
+        "steal_quick_rate": 0.6666666666666666,
+        "unmarked_quick_rate": 0.375
+      }
+    },
+    {
+      "game": "OKC@SAS",
+      "date": "2026-10-20",
+      "year": 2026,
+      "h1": 109,
+      "h2": 111,
+      "features": {
+        "h1_points": 109,
+        "estimate_poss": 51.12,
+        "turnovers": 14,
+        "free_throws": 21,
+        "steals": 7,
+        "steal_fraction": 0.5,
+        "quick_score_n": 3,
+        "steal_quick_rate": 0.14285714285714285,
+        "unmarked_quick_rate": 0.2857142857142857
+      }
+    },
+    {
+      "game": "ATL@ORL",
+      "date": "2026-10-21",
+      "year": 2026,
+      "h1": 134,
+      "h2": 123,
+      "features": {
+        "h1_points": 134,
+        "estimate_poss": 52.86,
+        "turnovers": 21,
+        "free_throws": 38,
+        "steals": 11,
+        "steal_fraction": 0.5238095238095238,
+        "quick_score_n": 10,
+        "steal_quick_rate": 0.5454545454545454,
+        "unmarked_quick_rate": 0.4
+      }
+    },
+    {
+      "game": "MIL@WAS",
+      "date": "2026-10-21",
+      "year": 2026,
+      "h1": 107,
+      "h2": 137,
+      "features": {
+        "h1_points": 107,
+        "estimate_poss": 50.72,
+        "turnovers": 16,
+        "free_throws": 26,
+        "steals": 8,
+        "steal_fraction": 0.5,
+        "quick_score_n": 6,
+        "steal_quick_rate": 0.375,
+        "unmarked_quick_rate": 0.375
+      }
+    },
+    {
+      "game": "MIN@MIA",
+      "date": "2026-10-21",
+      "year": 2026,
+      "h1": 128,
+      "h2": 109,
+      "features": {
+        "h1_points": 128,
+        "estimate_poss": 54.14,
+        "turnovers": 20,
+        "free_throws": 12,
+        "steals": 11,
+        "steal_fraction": 0.55,
+        "quick_score_n": 8,
+        "steal_quick_rate": 0.36363636363636365,
+        "unmarked_quick_rate": 0.4444444444444444
+      }
+    },
+    {
+      "game": "CHA@BKN",
+      "date": "2026-10-21",
+      "year": 2026,
+      "h1": 102,
+      "h2": 111,
+      "features": {
+        "h1_points": 102,
+        "estimate_poss": 46.58,
+        "turnovers": 18,
+        "free_throws": 14,
+        "steals": 4,
+        "steal_fraction": 0.2222222222222222,
+        "quick_score_n": 6,
+        "steal_quick_rate": 0.5,
+        "unmarked_quick_rate": 0.2857142857142857
+      }
+    },
+    {
+      "game": "CHI@TOR",
+      "date": "2026-10-21",
+      "year": 2026,
+      "h1": 113,
+      "h2": 114,
+      "features": {
+        "h1_points": 113,
+        "estimate_poss": 51.519999999999996,
+        "turnovers": 13,
+        "free_throws": 41,
+        "steals": 8,
+        "steal_fraction": 0.6153846153846154,
+        "quick_score_n": 6,
+        "steal_quick_rate": 0.625,
+        "unmarked_quick_rate": 0.2
+      }
+    },
+    {
+      "game": "UTA@MEM",
+      "date": "2026-10-21",
+      "year": 2026,
+      "h1": 115,
+      "h2": 111,
+      "features": {
+        "h1_points": 115,
+        "estimate_poss": 51.88,
+        "turnovers": 15,
+        "free_throws": 29,
+        "steals": 9,
+        "steal_fraction": 0.6,
+        "quick_score_n": 7,
+        "steal_quick_rate": 0.6666666666666666,
+        "unmarked_quick_rate": 0.16666666666666666
+      }
+    },
+    {
+      "game": "IND@NOP",
+      "date": "2026-10-21",
+      "year": 2026,
+      "h1": 122,
+      "h2": 121,
+      "features": {
+        "h1_points": 122,
+        "estimate_poss": 52.04,
+        "turnovers": 17,
+        "free_throws": 32,
+        "steals": 12,
+        "steal_fraction": 0.7058823529411765,
+        "quick_score_n": 8,
+        "steal_quick_rate": 0.5833333333333334,
+        "unmarked_quick_rate": 0.2
+      }
+    },
+    {
+      "game": "DAL@HOU",
+      "date": "2026-10-21",
+      "year": 2026,
+      "h1": 108,
+      "h2": 130,
+      "features": {
+        "h1_points": 108,
+        "estimate_poss": 46.44,
+        "turnovers": 20,
+        "free_throws": 27,
+        "steals": 12,
+        "steal_fraction": 0.6,
+        "quick_score_n": 8,
+        "steal_quick_rate": 0.5,
+        "unmarked_quick_rate": 0.25
+      }
+    },
+    {
+      "game": "GSW@LAL",
+      "date": "2026-10-21",
+      "year": 2026,
+      "h1": 118,
+      "h2": 114,
+      "features": {
+        "h1_points": 118,
+        "estimate_poss": 47.84,
+        "turnovers": 15,
+        "free_throws": 22,
+        "steals": 11,
+        "steal_fraction": 0.7333333333333333,
+        "quick_score_n": 8,
+        "steal_quick_rate": 0.6363636363636364,
+        "unmarked_quick_rate": 0.25
+      }
+    },
+    {
+      "game": "PHX@POR",
+      "date": "2026-10-21",
+      "year": 2026,
+      "h1": 111,
+      "h2": 96,
+      "features": {
+        "h1_points": 111,
+        "estimate_poss": 46.66,
+        "turnovers": 17,
+        "free_throws": 28,
+        "steals": 13,
+        "steal_fraction": 0.7647058823529411,
+        "quick_score_n": 6,
+        "steal_quick_rate": 0.38461538461538464,
+        "unmarked_quick_rate": 0.25
+      }
+    },
+    {
+      "game": "SAC@LAC",
+      "date": "2026-10-21",
+      "year": 2026,
+      "h1": 115,
+      "h2": 102,
+      "features": {
+        "h1_points": 115,
+        "estimate_poss": 47.92,
+        "turnovers": 17,
+        "free_throws": 36,
+        "steals": 11,
+        "steal_fraction": 0.6470588235294118,
+        "quick_score_n": 9,
+        "steal_quick_rate": 0.5454545454545454,
+        "unmarked_quick_rate": 0.5
+      }
+    },
+    {
+      "game": "CLE@PHI",
+      "date": "2026-10-22",
+      "year": 2026,
+      "h1": 114,
+      "h2": 106,
+      "features": {
+        "h1_points": 114,
+        "estimate_poss": 53,
+        "turnovers": 21,
+        "free_throws": 25,
+        "steals": 12,
+        "steal_fraction": 0.5714285714285714,
+        "quick_score_n": 9,
+        "steal_quick_rate": 0.5833333333333334,
+        "unmarked_quick_rate": 0.2222222222222222
+      }
+    },
+    {
+      "game": "DEN@OKC",
+      "date": "2026-10-22",
+      "year": 2026,
+      "h1": 92,
+      "h2": 88,
+      "features": {
+        "h1_points": 92,
+        "estimate_poss": 45.84,
+        "turnovers": 15,
+        "free_throws": 22,
+        "steals": 6,
+        "steal_fraction": 0.4,
+        "quick_score_n": 2,
+        "steal_quick_rate": 0.16666666666666666,
+        "unmarked_quick_rate": 0.1111111111111111
+      }
+    }
+  ],
+  "byYear": [
+    {
+      "year": 2023,
+      "count": 8
+    },
+    {
+      "year": 2024,
+      "count": 11
+    },
+    {
+      "year": 2025,
+      "count": 11
+    },
+    {
+      "year": 2026,
+      "count": 25
+    }
+  ],
+  "feature_definition": "h1_points, estimated possession FGA-ORB+TO+.44FTA averaged per team, H1 turnover, FT attempts, H1 steal-flag rate and past-only opponent score within 15 game clock seconds for first-half turnovers; H2 points target separated. Derived retrospectively, NOT independently captured halftime",
+  "labels": "Regulation second-half combined scores Q3+Q4",
+  "limitations": [
+    "All postgame Basketball-Reference site family",
+    "No actual possession custody/lineup",
+    "Not truly future witnessed",
+    "Estimated poss isn't true possession",
+    "Date selection one fixed day each year"
+  ],
+  "activation": false
+}
