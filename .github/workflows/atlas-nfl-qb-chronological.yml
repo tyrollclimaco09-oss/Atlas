@@ -1,0 +1,29 @@
+name: ATLAS NFL price-blind leave-future-out QB workload research
+on:
+  push:
+    branches: [research/odds-api-probe-2026-10-22]
+    paths:
+      - scripts/proof/nfl-qb-prior-week-baseline.py
+      - .github/workflows/atlas-nfl-qb-chronological.yml
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  nfl-chronological-baseline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - name: Ensure target week never enters prior-week features
+        run: python3 scripts/proof/nfl-qb-prior-week-baseline.py --self-test
+      - name: Evaluate prior-week only QB volume baseline against season PBP
+        run: python3 scripts/proof/nfl-qb-prior-week-baseline.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: atlas-nfl-priceblind-qb-baseline
+          path: atlas-nfl-chronological-qb-baseline.json
+          retention-days: 7
+          if-no-files-found: ignore
