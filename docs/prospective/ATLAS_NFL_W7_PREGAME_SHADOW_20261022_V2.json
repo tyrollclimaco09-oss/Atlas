@@ -1,0 +1,380 @@
+{
+  "schema": "atlas.nfl.w7.pregame-operator-ledger-shadow.v2",
+  "claim": "GITHUB_ACTIONS_CI_TIME_PRE_KICKOFF_UNVERIFIED_STARTER_PROXIES",
+  "initial_diagnostic_run": "39879497749",
+  "verified_revision_run": "39879769087",
+  "freeze_created_at_utc": "2026-10-23T00:43:13.968953+00:00",
+  "github_ci_log_line": "ATLAS_NFL_W7_PROSPECTIVE_V2",
+  "model": "MEAN_LAST_3_OBSERVED_PRIOR_WEEKS_QB_ATTEMPTS",
+  "source_hashes": {
+    "nflverse_gz_sha256": "a6ddee607edda2d530bc65fd869c0eb2f8019ea0d962b020e039dae52c840399",
+    "espn_week7_schedule_sha256": "75df30e8d6b7bf1f6087b71979b9338b71c39d786db83515799d99630ca0f49f"
+  },
+  "games_in_week": 14,
+  "pre_kickoff_games": 13,
+  "excluded_games": [
+    {
+      "id": "401873010",
+      "reason": "NOT_PRE_KICKOFF_BUFFERED_OR_STATUS_PRE"
+    }
+  ],
+  "player_slots": 26,
+  "non_null_forecasts": 25,
+  "null_or_insufficient_history_slots": 1,
+  "teams_with_mapped_source_alias": [
+    {
+      "team": "LAR",
+      "source_team": "LA"
+    }
+  ],
+  "predictions": [
+    {
+      "away": "PIT",
+      "game_id": "401873011",
+      "home": "NO",
+      "kickoff": "2026-10-25T13:30:00+00:00",
+      "qb_proxies": [
+        {
+          "estimate": 44,
+          "id": "00-0023459",
+          "name": "A.Rodgers",
+          "prior_games": 6,
+          "source_team": "PIT",
+          "status": "HISTORICAL_LAST_APPEARANCE_QB_PROXY_NOT_STARTER_VERIFIED",
+          "team": "PIT"
+        },
+        {
+          "estimate": 35.333333333333336,
+          "id": "00-0040743",
+          "name": "T.Shough",
+          "prior_games": 6,
+          "source_team": "NO",
+          "status": "HISTORICAL_LAST_APPEARANCE_QB_PROXY_NOT_STARTER_VERIFIED",
+          "team": "NO"
+        }
+      ]
+    },
+    {
+      "away": "CIN",
+      "game_id": "401873012",
+      "home": "BAL",
+      "kickoff": "2026-10-25T17:00:00+00:00",
+      "qb_proxies": [
+        {
+          "estimate": 42,
+          "id": "00-0036442",
+          "name": "J.Burrow",
+          "prior_games": 5,
+          "source_team": "CIN",
+          "status": "HISTORICAL_LAST_APPEARANCE_QB_PROXY_NOT_STARTER_VERIFIED",
+          "team": "CIN"
+        },
+        {
+          "estimate": 26.333333333333332,
+          "id": "00-0035993",
+          "name": "T.Huntley",
+          "prior_games": 3,
+          "source_team": "BAL",
+          "status": "HISTORICAL_LAST_APPEARANCE_QB_PROXY_NOT_STARTER_VERIFIED",
+          "team": "BAL"
+        }
+      ]
+    },
+    {
+      "away": "CLE",
+      "game_id": "401873013",
+      "home": "TEN",
+      "kickoff": "2026-10-25T17:00:00+00:00",
+      "qb_proxies": [
+        {
+          "estimate": 35.666666666666664,
+          "id": "00-0033537",
+          "name": "D.Watson",
+          "prior_games": 6,
+          "source_team": "CLE",
+          "status": "HISTORICAL_LAST_APPEARANCE_QB_PROXY_NOT_STARTER_VERIFIED",
+          "team": "CLE"
+        },
+        {
+          "estimate": 31.666666666666668,
+          "id": "00-0040676",
+          "name": "C.Ward",
+          "prior_games": 6,
+          "source_team": "TEN",
+          "status": "HISTORICAL_LAST_APPEARANCE_QB_PROXY_NOT_STARTER_VERIFIED",
+          "team": "TEN"
+        }
+      ]
+    },
+    {
+      "away": "IND",
+      "game_id": "401873014",
+      "home": "MIN",
+      "kickoff": "2026-10-25T17:00:00+00:00",
+      "qb_proxies": [
+        {
+          "estimate": 43,
+          "id": "00-0035710",
+          "name": "D.Jones",
+          "prior_games": 6,
+          "source_team": "IND",
+          "status": "HISTORICAL_LAST_APPEARANCE_QB_PROXY_NOT_STARTER_VERIFIED",
+          "team": "IND"
+        },
+        {
+          "estimate": 35,
+          "id": "00-0035228",
+          "name": "K.Murray",
+          "prior_games": 4,
+          "source_team": "MIN",
+          "status": "HISTORICAL_LAST_APPEARANCE_QB_PROXY_NOT_STARTER_VERIFIED",
+          "team": "MIN"
+        }
+      ]
+    },
+    {
+      "away": "MIA",
+      "game_id": "401873015",
+      "home": "NYJ",
+      "kickoff": "2026-10-25T17:00:00+00:00",
+      "qb_proxies": [
+        {
+          "estimate": 28.666666666666668,
+          "id": "00-0038128",
+          "name": "M.Willis",
+          "prior_games": 5,
+          "source_team": "MIA",
+          "status": "HISTORICAL_LAST_APPEARANCE_QB_PROXY_NOT_STARTER_VERIFIED",
+          "team": "MIA"
+        },
+        {
+          "estimate": 28.333333333333332,
+          "id": "00-0030565",
+          "name": "G.Smith",
+          "prior_games": 6,
+          "source_team": "NYJ",
+          "status": "HISTORICAL_LAST_APPEARANCE_QB_PROXY_NOT_STARTER_VERIFIED",
+          "team": "NYJ"
+        }
+      ]
+    },
+    {
+      "away": "NYG",
+      "game_id": "401873016",
+      "home": "HOU",
+      "kickoff": "2026-10-25T17:00:00+00:00",
+      "qb_proxies": [
+        {
+          "estimate": 40,
+          "id": "00-0031503",
+          "name": "J.Winston",
+          "prior_games": 5,
+          "source_team": "NYG",
+          "status": "HISTORICAL_LAST_APPEARANCE_QB_PROXY_NOT_STARTER_VERIFIED",
+          "team": "NYG"
+        },
+        {
+          "estimate": 34.333333333333336,
+          "id": "00-0039163",
+          "name": "C.Stroud",
+          "prior_games": 6,
+          "source_team": "HOU",
+          "status": "HISTORICAL_LAST_APPEARANCE_QB_PROXY_NOT_STARTER_VERIFIED",
+          "team": "HOU"
+        }
+      ]
+    },
+    {
+      "away": "SF",
+      "game_id": "401873017",
+      "home": "ATL",
+      "kickoff": "2026-10-25T17:00:00+00:00",
+      "qb_proxies": [
+        {
+          "estimate": 31.333333333333332,
+          "id": "00-0037834",
+          "name": "B.Purdy",
+          "prior_games": 6,
+          "source_team": "SF",
+          "status": "HISTORICAL_LAST_APPEARANCE_QB_PROXY_NOT_STARTER_VERIFIED",
+          "team": "SF"
+        },
+        {
+          "estimate": 32,
+          "id": "00-0039917",
+          "name": "M.Penix",
+          "prior_games": 4,
+          "source_team": "ATL",
+          "status": "HISTORICAL_LAST_APPEARANCE_QB_PROXY_NOT_STARTER_VERIFIED",
+          "team": "ATL"
+        }
+      ]
+    },
+    {
+      "away": "TB",
+      "game_id": "401873018",
+      "home": "CAR",
+      "kickoff": "2026-10-25T17:00:00+00:00",
+      "qb_proxies": [
+        {
+          "estimate": 34.666666666666664,
+          "id": "00-0041251",
+          "name": "J.Daniels",
+          "prior_games": 4,
+          "source_team": "TB",
+          "status": "HISTORICAL_LAST_APPEARANCE_QB_PROXY_NOT_STARTER_VERIFIED",
+          "team": "TB"
+        },
+        {
+          "estimate": 45.666666666666664,
+          "id": "00-0039150",
+          "name": "B.Young",
+          "prior_games": 5,
+          "source_team": "CAR",
+          "status": "HISTORICAL_LAST_APPEARANCE_QB_PROXY_NOT_STARTER_VERIFIED",
+          "team": "CAR"
+        }
+      ]
+    },
+    {
+      "away": "DEN",
+      "game_id": "401873019",
+      "home": "ARI",
+      "kickoff": "2026-10-25T20:05:00+00:00",
+      "qb_proxies": [
+        {
+          "estimate": 33,
+          "id": "00-0039732",
+          "name": "B.Nix",
+          "prior_games": 6,
+          "source_team": "DEN",
+          "status": "HISTORICAL_LAST_APPEARANCE_QB_PROXY_NOT_STARTER_VERIFIED",
+          "team": "DEN"
+        },
+        {
+          "estimate": 41.333333333333336,
+          "id": "00-0033119",
+          "name": "J.Brissett",
+          "prior_games": 6,
+          "source_team": "ARI",
+          "status": "HISTORICAL_LAST_APPEARANCE_QB_PROXY_NOT_STARTER_VERIFIED",
+          "team": "ARI"
+        }
+      ]
+    },
+    {
+      "away": "GB",
+      "game_id": "401873020",
+      "home": "DET",
+      "kickoff": "2026-10-25T20:25:00+00:00",
+      "qb_proxies": [
+        {
+          "estimate": 36,
+          "id": "00-0036264",
+          "name": "J.Love",
+          "prior_games": 6,
+          "source_team": "GB",
+          "status": "HISTORICAL_LAST_APPEARANCE_QB_PROXY_NOT_STARTER_VERIFIED",
+          "team": "GB"
+        },
+        {
+          "estimate": 40,
+          "id": "00-0033106",
+          "name": "J.Goff",
+          "prior_games": 5,
+          "source_team": "DET",
+          "status": "HISTORICAL_LAST_APPEARANCE_QB_PROXY_NOT_STARTER_VERIFIED",
+          "team": "DET"
+        }
+      ]
+    },
+    {
+      "away": "LAR",
+      "game_id": "401873021",
+      "home": "LV",
+      "kickoff": "2026-10-25T20:25:00+00:00",
+      "qb_proxies": [
+        {
+          "estimate": 48.333333333333336,
+          "id": "00-0026498",
+          "name": "M.Stafford",
+          "prior_games": 6,
+          "source_team": "LA",
+          "status": "HISTORICAL_LAST_APPEARANCE_QB_PROXY_NOT_STARTER_VERIFIED",
+          "team": "LAR"
+        },
+        {
+          "estimate": 41.666666666666664,
+          "id": "00-0029604",
+          "name": "K.Cousins",
+          "prior_games": 6,
+          "source_team": "LV",
+          "status": "HISTORICAL_LAST_APPEARANCE_QB_PROXY_NOT_STARTER_VERIFIED",
+          "team": "LV"
+        }
+      ]
+    },
+    {
+      "away": "KC",
+      "game_id": "401873022",
+      "home": "SEA",
+      "kickoff": "2026-10-26T00:20:00+00:00",
+      "qb_proxies": [
+        {
+          "estimate": 29,
+          "id": "00-0033873",
+          "name": "P.Mahomes",
+          "prior_games": 5,
+          "source_team": "KC",
+          "status": "HISTORICAL_LAST_APPEARANCE_QB_PROXY_NOT_STARTER_VERIFIED",
+          "team": "KC"
+        },
+        {
+          "estimate": 38.666666666666664,
+          "id": "00-0034869",
+          "name": "S.Darnold",
+          "prior_games": 5,
+          "source_team": "SEA",
+          "status": "HISTORICAL_LAST_APPEARANCE_QB_PROXY_NOT_STARTER_VERIFIED",
+          "team": "SEA"
+        }
+      ]
+    },
+    {
+      "away": "DAL",
+      "game_id": "401873009",
+      "home": "PHI",
+      "kickoff": "2026-10-27T00:15:00+00:00",
+      "qb_proxies": [
+        {
+          "estimate": 49,
+          "id": "00-0033077",
+          "name": "D.Prescott",
+          "prior_games": 6,
+          "source_team": "DAL",
+          "status": "HISTORICAL_LAST_APPEARANCE_QB_PROXY_NOT_STARTER_VERIFIED",
+          "team": "DAL"
+        },
+        {
+          "estimate": null,
+          "id": "00-0038400",
+          "name": "T.McKee",
+          "prior_games": 1,
+          "source_team": "PHI",
+          "status": "INSUFFICIENT_TWO_PRIOR_GAMES",
+          "team": "PHI"
+        }
+      ]
+    }
+  ],
+  "external_independent_signature": false,
+  "official_starting_qbs_verified": false,
+  "individual_current_week_roster_verified": false,
+  "matchups_book_prices_checked": false,
+  "actual_game_settlements_in_packet": false,
+  "model_validation": false,
+  "calibrator_eligible": false,
+  "official_game_outcomes_missing_at_freeze": true,
+  "product_release_authority": false,
+  "bet_execution_authority": false
+}
