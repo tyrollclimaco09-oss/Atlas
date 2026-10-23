@@ -1,0 +1,717 @@
+{
+  "schema": "atlas.slates.source_bounded.pregame_preflight_v1",
+  "packet_id": "ATLAS-SLATE-PREFLIGHT-20261023-2131Z",
+  "freeze_type": "REAL_PROVIDER_READBACK_PRE_EVENT_SOURCE_RESEARCH_ONLY",
+  "source_collection_utc": "2026-10-23T21:32:39.9730297Z",
+  "local_zone": "America/Chicago",
+  "research_branch": "research/odds-api-probe-2026-10-22",
+  "review_branch": "review/pass0-slate-regression-2026-10-16",
+  "review_head_at_preflight": "207fe5df3a855f5c5d39db271ef38ed8575c474c",
+  "baseline_ci": {
+    "run_id": 40025931096,
+    "completed": true,
+    "conclusion": "success",
+    "jobs": 5
+  },
+  "frozen_checkpoint_sha": "a4d0b9bce0ca24c7aeb4b93c3aacbf133a5f2789",
+  "providers": {
+    "nba_nfl_matchups": "Connected DraftKings sports statistics app - competition listings, NOT DraftKings Sportsbook betslip/line or account execution",
+    "nba_official_schedule_url": "https://www.nba.com/games",
+    "nfl_official_schedule_url": "https://www.nfl.com/schedules/2026/by-week/week-7",
+    "nba_official_injury_url": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-10-23_05_15PM.pdf",
+    "nba_injury_pdf_timestamp": "2026-10-23T17:15:00-04:00",
+    "nfl_official_injury_url": "https://www.nfl.com/injuries/league/2026/REG7",
+    "nfl_report_last_document_time": "UNVERIFIED (live page; DNP/limited are practice entries, game-status blank for most Sunday entries)"
+  },
+  "milestones": [
+    {
+      "id": 1,
+      "name": "Continuity readback",
+      "conclusion": "MATCH",
+      "evidence": "Connected GitHub review HEAD and exact frozen Oct18 file match latest ledger; 5/5 previous CI success"
+    },
+    {
+      "id": 2,
+      "name": "Slate denominator and cutoff",
+      "conclusion": "PASS_FOR_DISCOVERY",
+      "evidence": "NBA 12 listed, at freeze 1 in progress, 11 upcoming; NFL 13 future Sunday-Monday, Thu completed"
+    },
+    {
+      "id": 3,
+      "name": "Official status/roster information",
+      "conclusion": "PARTIAL",
+      "evidence": "Full source-linked official NBA 5:15 ET injury report read; statuses not starting lineups, latest swaps require refresh; NFL Sunday practice participation no final inactive packet"
+    },
+    {
+      "id": 4,
+      "name": "Forecast/price authority",
+      "conclusion": "BLOCKED",
+      "evidence": "Historic model descriptive MAE 11.2095 on just 25 postgame 2026 games; no probabilistic price, true on-court minutes/possessions, current DK executable live quote"
+    },
+    {
+      "id": 5,
+      "name": "SENTINEL and HUMAN FINAL GATE",
+      "conclusion": "WATCH_ONLY",
+      "evidence": "0 ticket approvals, 0 stakes, 0 bets, 0 independent +EV claims; checks before any bet"
+    }
+  ],
+  "nba": {
+    "scheduled_games": 12,
+    "pregame_count": 11,
+    "not_pregame_count": 1,
+    "games": [
+      {
+        "league": "NBA",
+        "id": 1025824,
+        "matchup": "CHI@MIL",
+        "scheduled_utc": "2026-10-23T20:00:00Z",
+        "provider_status": "Live",
+        "operational_lane": "NOT_PREGAME",
+        "injury_examples_as_reported": [
+          [
+            "CHI",
+            "Nic Claxton",
+            "Out"
+          ]
+        ],
+        "game_status_recheck_required": true,
+        "starting_lineups_verified": false,
+        "player_counting_opportunity_verified": false,
+        "market_quotes": [],
+        "model_outputs": [],
+        "eligible_to_propose_wager": false,
+        "review_type": "NORMAL_SCHEDULE_SCOUT"
+      },
+      {
+        "league": "NBA",
+        "id": 1025818,
+        "matchup": "NYK@BOS",
+        "scheduled_utc": "2026-10-23T23:00:00Z",
+        "provider_status": "Upcoming",
+        "operational_lane": "PREGAME_SCOUT_ONLY",
+        "injury_examples_as_reported": [
+          [
+            "BOS",
+            "Devin Carter",
+            "Out"
+          ]
+        ],
+        "game_status_recheck_required": true,
+        "starting_lineups_verified": false,
+        "player_counting_opportunity_verified": false,
+        "market_quotes": [],
+        "model_outputs": [],
+        "eligible_to_propose_wager": false,
+        "review_type": "NORMAL_SCHEDULE_SCOUT"
+      },
+      {
+        "league": "NBA",
+        "id": 1025819,
+        "matchup": "ATL@CHA",
+        "scheduled_utc": "2026-10-23T23:00:00Z",
+        "provider_status": "Upcoming",
+        "operational_lane": "PREGAME_SCOUT_ONLY",
+        "injury_examples_as_reported": [
+          [
+            "CHA",
+            "Kon Knueppel",
+            "Out"
+          ],
+          [
+            "CHA",
+            "Coby White",
+            "Out"
+          ],
+          [
+            "CHA",
+            "Grant Williams",
+            "Out"
+          ],
+          [
+            "ATL",
+            "Mouhamed Gueye",
+            "Out"
+          ]
+        ],
+        "game_status_recheck_required": true,
+        "starting_lineups_verified": false,
+        "player_counting_opportunity_verified": false,
+        "market_quotes": [],
+        "model_outputs": [],
+        "eligible_to_propose_wager": false,
+        "review_type": "HIGH_STATUS_VOLATILITY"
+      },
+      {
+        "league": "NBA",
+        "id": 1025820,
+        "matchup": "DAL@IND",
+        "scheduled_utc": "2026-10-23T23:00:00Z",
+        "provider_status": "Upcoming",
+        "operational_lane": "PREGAME_SCOUT_ONLY",
+        "injury_examples_as_reported": [
+          [
+            "DAL",
+            "Dereck Lively II",
+            "Out"
+          ],
+          [
+            "DAL",
+            "Santi Aldama",
+            "Out"
+          ],
+          [
+            "IND",
+            "T.J. McConnell",
+            "Out"
+          ],
+          [
+            "IND",
+            "Aaron Nesmith",
+            "Questionable"
+          ],
+          [
+            "IND",
+            "Ben Sheppard",
+            "Questionable"
+          ]
+        ],
+        "game_status_recheck_required": true,
+        "starting_lineups_verified": false,
+        "player_counting_opportunity_verified": false,
+        "market_quotes": [],
+        "model_outputs": [],
+        "eligible_to_propose_wager": false,
+        "review_type": "HIGH_STATUS_VOLATILITY"
+      },
+      {
+        "league": "NBA",
+        "id": 1025821,
+        "matchup": "TOR@WAS",
+        "scheduled_utc": "2026-10-23T23:00:00Z",
+        "provider_status": "Upcoming",
+        "operational_lane": "PREGAME_SCOUT_ONLY",
+        "injury_examples_as_reported": [
+          [
+            "WAS",
+            "AJ Dybantsa",
+            "Out"
+          ],
+          [
+            "WAS",
+            "Tristan Vukcevic",
+            "Out"
+          ]
+        ],
+        "game_status_recheck_required": true,
+        "starting_lineups_verified": false,
+        "player_counting_opportunity_verified": false,
+        "market_quotes": [],
+        "model_outputs": [],
+        "eligible_to_propose_wager": false,
+        "review_type": "NORMAL_SCHEDULE_SCOUT"
+      },
+      {
+        "league": "NBA",
+        "id": 1025822,
+        "matchup": "MIN@ORL",
+        "scheduled_utc": "2026-10-23T23:00:00Z",
+        "provider_status": "Upcoming",
+        "operational_lane": "PREGAME_SCOUT_ONLY",
+        "injury_examples_as_reported": [
+          [
+            "MIN",
+            "Donte DiVincenzo",
+            "Out"
+          ],
+          [
+            "ORL",
+            "Anthony Black",
+            "Out"
+          ],
+          [
+            "ORL",
+            "Jonathan Isaac",
+            "Out"
+          ]
+        ],
+        "game_status_recheck_required": true,
+        "starting_lineups_verified": false,
+        "player_counting_opportunity_verified": false,
+        "market_quotes": [],
+        "model_outputs": [],
+        "eligible_to_propose_wager": false,
+        "review_type": "NORMAL_SCHEDULE_SCOUT"
+      },
+      {
+        "league": "NBA",
+        "id": 1025823,
+        "matchup": "DET@MIA",
+        "scheduled_utc": "2026-10-24T00:00:00Z",
+        "provider_status": "Upcoming",
+        "operational_lane": "PREGAME_SCOUT_ONLY",
+        "injury_examples_as_reported": [
+          [
+            "DET",
+            "Taurean Prince",
+            "Available"
+          ],
+          [
+            "MIA",
+            "Dru Smith",
+            "Available"
+          ]
+        ],
+        "game_status_recheck_required": true,
+        "starting_lineups_verified": false,
+        "player_counting_opportunity_verified": false,
+        "market_quotes": [],
+        "model_outputs": [],
+        "eligible_to_propose_wager": false,
+        "review_type": "NORMAL_SCHEDULE_SCOUT"
+      },
+      {
+        "league": "NBA",
+        "id": 1025825,
+        "matchup": "HOU@SAS",
+        "scheduled_utc": "2026-10-24T01:30:00Z",
+        "provider_status": "Upcoming",
+        "operational_lane": "PREGAME_SCOUT_ONLY",
+        "injury_examples_as_reported": [
+          [
+            "HOU",
+            "Steven Adams",
+            "Questionable"
+          ],
+          [
+            "HOU",
+            "Reed Sheppard",
+            "Questionable"
+          ],
+          [
+            "SAS",
+            "De'Aaron Fox",
+            "Questionable"
+          ],
+          [
+            "SAS",
+            "Keldon Johnson",
+            "Questionable"
+          ],
+          [
+            "SAS",
+            "Tobias Harris",
+            "Out"
+          ]
+        ],
+        "game_status_recheck_required": true,
+        "starting_lineups_verified": false,
+        "player_counting_opportunity_verified": false,
+        "market_quotes": [],
+        "model_outputs": [],
+        "eligible_to_propose_wager": false,
+        "review_type": "HIGH_STATUS_VOLATILITY"
+      },
+      {
+        "league": "NBA",
+        "id": 1025826,
+        "matchup": "NOP@UTA",
+        "scheduled_utc": "2026-10-24T01:30:00Z",
+        "provider_status": "Upcoming",
+        "operational_lane": "PREGAME_SCOUT_ONLY",
+        "injury_examples_as_reported": [
+          [
+            "UTA",
+            "Jusuf Nurkic",
+            "Out"
+          ]
+        ],
+        "game_status_recheck_required": true,
+        "starting_lineups_verified": false,
+        "player_counting_opportunity_verified": false,
+        "market_quotes": [],
+        "model_outputs": [],
+        "eligible_to_propose_wager": false,
+        "review_type": "NORMAL_SCHEDULE_SCOUT"
+      },
+      {
+        "league": "NBA",
+        "id": 1025827,
+        "matchup": "MEM@GSW",
+        "scheduled_utc": "2026-10-24T02:00:00Z",
+        "provider_status": "Upcoming",
+        "operational_lane": "PREGAME_SCOUT_ONLY",
+        "injury_examples_as_reported": [
+          [
+            "MEM",
+            "Cedric Coward",
+            "Doubtful"
+          ],
+          [
+            "MEM",
+            "Isaiah Stewart",
+            "Questionable"
+          ],
+          [
+            "GSW",
+            "Jimmy Butler III",
+            "Out"
+          ],
+          [
+            "GSW",
+            "Moses Moody",
+            "Out"
+          ],
+          [
+            "GSW",
+            "Kristaps Porzingis",
+            "Out"
+          ],
+          [
+            "GSW",
+            "Brandin Podziemski",
+            "Probable"
+          ]
+        ],
+        "game_status_recheck_required": true,
+        "starting_lineups_verified": false,
+        "player_counting_opportunity_verified": false,
+        "market_quotes": [],
+        "model_outputs": [],
+        "eligible_to_propose_wager": false,
+        "review_type": "HIGH_STATUS_VOLATILITY"
+      },
+      {
+        "league": "NBA",
+        "id": 1025828,
+        "matchup": "LAC@LAL",
+        "scheduled_utc": "2026-10-24T02:00:00Z",
+        "provider_status": "Upcoming",
+        "operational_lane": "PREGAME_SCOUT_ONLY",
+        "injury_examples_as_reported": [
+          [
+            "LAC",
+            "Bradley Beal",
+            "Out"
+          ],
+          [
+            "LAC",
+            "Brandon Ingram",
+            "Out"
+          ],
+          [
+            "LAL",
+            "Jake LaRavia",
+            "Out"
+          ],
+          [
+            "LAL",
+            "Walker Kessler",
+            "Available"
+          ]
+        ],
+        "game_status_recheck_required": true,
+        "starting_lineups_verified": false,
+        "player_counting_opportunity_verified": false,
+        "market_quotes": [],
+        "model_outputs": [],
+        "eligible_to_propose_wager": false,
+        "review_type": "HIGH_STATUS_VOLATILITY"
+      },
+      {
+        "league": "NBA",
+        "id": 1025829,
+        "matchup": "POR@SAC",
+        "scheduled_utc": "2026-10-24T02:00:00Z",
+        "provider_status": "Upcoming",
+        "operational_lane": "PREGAME_SCOUT_ONLY",
+        "injury_examples_as_reported": [
+          [
+            "POR",
+            "Shaedon Sharpe",
+            "Out"
+          ],
+          [
+            "SAC",
+            "Maxime Raynaud",
+            "Out"
+          ],
+          [
+            "SAC",
+            "Ben Simmons",
+            "Out"
+          ],
+          [
+            "SAC",
+            "Malik Monk",
+            "Available"
+          ]
+        ],
+        "game_status_recheck_required": true,
+        "starting_lineups_verified": false,
+        "player_counting_opportunity_verified": false,
+        "market_quotes": [],
+        "model_outputs": [],
+        "eligible_to_propose_wager": false,
+        "review_type": "NORMAL_SCHEDULE_SCOUT"
+      }
+    ]
+  },
+  "nfl": {
+    "future_games": 13,
+    "completed_thursday_game": "NE@CHI 2026-10-22 final (not in upcoming connector fetch)",
+    "games": [
+      {
+        "league": "NFL",
+        "id": 973731,
+        "matchup": "PIT@NO",
+        "scheduled_utc": "2026-10-25T13:30:00Z",
+        "provider_status": "Upcoming",
+        "operational_lane": "PREGAME_SCOUT_ONLY",
+        "injury_examples_as_reported": [],
+        "game_status_recheck_required": true,
+        "starting_lineups_verified": false,
+        "player_counting_opportunity_verified": false,
+        "market_quotes": [],
+        "model_outputs": [],
+        "eligible_to_propose_wager": false,
+        "review_type": "NORMAL_SCHEDULE_SCOUT"
+      },
+      {
+        "league": "NFL",
+        "id": 974248,
+        "matchup": "SF@ATL",
+        "scheduled_utc": "2026-10-25T17:00:00Z",
+        "provider_status": "Upcoming",
+        "operational_lane": "PREGAME_SCOUT_ONLY",
+        "injury_examples_as_reported": [],
+        "game_status_recheck_required": true,
+        "starting_lineups_verified": false,
+        "player_counting_opportunity_verified": false,
+        "market_quotes": [],
+        "model_outputs": [],
+        "eligible_to_propose_wager": false,
+        "review_type": "NORMAL_SCHEDULE_SCOUT"
+      },
+      {
+        "league": "NFL",
+        "id": 974245,
+        "matchup": "NYG@HOU",
+        "scheduled_utc": "2026-10-25T17:00:00Z",
+        "provider_status": "Upcoming",
+        "operational_lane": "PREGAME_SCOUT_ONLY",
+        "injury_examples_as_reported": [],
+        "game_status_recheck_required": true,
+        "starting_lineups_verified": false,
+        "player_counting_opportunity_verified": false,
+        "market_quotes": [],
+        "model_outputs": [],
+        "eligible_to_propose_wager": false,
+        "review_type": "NORMAL_SCHEDULE_SCOUT"
+      },
+      {
+        "league": "NFL",
+        "id": 974247,
+        "matchup": "CLE@TEN",
+        "scheduled_utc": "2026-10-25T17:00:00Z",
+        "provider_status": "Upcoming",
+        "operational_lane": "PREGAME_SCOUT_ONLY",
+        "injury_examples_as_reported": [],
+        "game_status_recheck_required": true,
+        "starting_lineups_verified": false,
+        "player_counting_opportunity_verified": false,
+        "market_quotes": [],
+        "model_outputs": [],
+        "eligible_to_propose_wager": false,
+        "review_type": "NORMAL_SCHEDULE_SCOUT"
+      },
+      {
+        "league": "NFL",
+        "id": 974246,
+        "matchup": "IND@MIN",
+        "scheduled_utc": "2026-10-25T17:00:00Z",
+        "provider_status": "Upcoming",
+        "operational_lane": "PREGAME_SCOUT_ONLY",
+        "injury_examples_as_reported": [],
+        "game_status_recheck_required": true,
+        "starting_lineups_verified": false,
+        "player_counting_opportunity_verified": false,
+        "market_quotes": [],
+        "model_outputs": [],
+        "eligible_to_propose_wager": false,
+        "review_type": "NORMAL_SCHEDULE_SCOUT"
+      },
+      {
+        "league": "NFL",
+        "id": 974251,
+        "matchup": "MIA@NYJ",
+        "scheduled_utc": "2026-10-25T17:00:00Z",
+        "provider_status": "Upcoming",
+        "operational_lane": "PREGAME_SCOUT_ONLY",
+        "injury_examples_as_reported": [],
+        "game_status_recheck_required": true,
+        "starting_lineups_verified": false,
+        "player_counting_opportunity_verified": false,
+        "market_quotes": [],
+        "model_outputs": [],
+        "eligible_to_propose_wager": false,
+        "review_type": "NORMAL_SCHEDULE_SCOUT"
+      },
+      {
+        "league": "NFL",
+        "id": 974250,
+        "matchup": "TB@CAR",
+        "scheduled_utc": "2026-10-25T17:00:00Z",
+        "provider_status": "Upcoming",
+        "operational_lane": "PREGAME_SCOUT_ONLY",
+        "injury_examples_as_reported": [],
+        "game_status_recheck_required": true,
+        "starting_lineups_verified": false,
+        "player_counting_opportunity_verified": false,
+        "market_quotes": [],
+        "model_outputs": [],
+        "eligible_to_propose_wager": false,
+        "review_type": "NORMAL_SCHEDULE_SCOUT"
+      },
+      {
+        "league": "NFL",
+        "id": 974249,
+        "matchup": "CIN@BAL",
+        "scheduled_utc": "2026-10-25T17:00:00Z",
+        "provider_status": "Upcoming",
+        "operational_lane": "PREGAME_SCOUT_ONLY",
+        "injury_examples_as_reported": [],
+        "game_status_recheck_required": true,
+        "starting_lineups_verified": false,
+        "player_counting_opportunity_verified": false,
+        "market_quotes": [],
+        "model_outputs": [],
+        "eligible_to_propose_wager": false,
+        "review_type": "NORMAL_SCHEDULE_SCOUT"
+      },
+      {
+        "league": "NFL",
+        "id": 974252,
+        "matchup": "DEN@ARI",
+        "scheduled_utc": "2026-10-25T20:05:00Z",
+        "provider_status": "Upcoming",
+        "operational_lane": "PREGAME_SCOUT_ONLY",
+        "injury_examples_as_reported": [],
+        "game_status_recheck_required": true,
+        "starting_lineups_verified": false,
+        "player_counting_opportunity_verified": false,
+        "market_quotes": [],
+        "model_outputs": [],
+        "eligible_to_propose_wager": false,
+        "review_type": "NORMAL_SCHEDULE_SCOUT"
+      },
+      {
+        "league": "NFL",
+        "id": 974254,
+        "matchup": "GB@DET",
+        "scheduled_utc": "2026-10-25T20:25:00Z",
+        "provider_status": "Upcoming",
+        "operational_lane": "PREGAME_SCOUT_ONLY",
+        "injury_examples_as_reported": [],
+        "game_status_recheck_required": true,
+        "starting_lineups_verified": false,
+        "player_counting_opportunity_verified": false,
+        "market_quotes": [],
+        "model_outputs": [],
+        "eligible_to_propose_wager": false,
+        "review_type": "NORMAL_SCHEDULE_SCOUT"
+      },
+      {
+        "league": "NFL",
+        "id": 974253,
+        "matchup": "LAR@LV",
+        "scheduled_utc": "2026-10-25T20:25:00Z",
+        "provider_status": "Upcoming",
+        "operational_lane": "PREGAME_SCOUT_ONLY",
+        "injury_examples_as_reported": [],
+        "game_status_recheck_required": true,
+        "starting_lineups_verified": false,
+        "player_counting_opportunity_verified": false,
+        "market_quotes": [],
+        "model_outputs": [],
+        "eligible_to_propose_wager": false,
+        "review_type": "NORMAL_SCHEDULE_SCOUT"
+      },
+      {
+        "league": "NFL",
+        "id": 974255,
+        "matchup": "KC@SEA",
+        "scheduled_utc": "2026-10-26T00:20:00Z",
+        "provider_status": "Upcoming",
+        "operational_lane": "PREGAME_SCOUT_ONLY",
+        "injury_examples_as_reported": [],
+        "game_status_recheck_required": true,
+        "starting_lineups_verified": false,
+        "player_counting_opportunity_verified": false,
+        "market_quotes": [],
+        "model_outputs": [],
+        "eligible_to_propose_wager": false,
+        "review_type": "NORMAL_SCHEDULE_SCOUT"
+      },
+      {
+        "league": "NFL",
+        "id": 974256,
+        "matchup": "DAL@PHI",
+        "scheduled_utc": "2026-10-27T00:15:00Z",
+        "provider_status": "Upcoming",
+        "operational_lane": "PREGAME_SCOUT_ONLY",
+        "injury_examples_as_reported": [],
+        "game_status_recheck_required": true,
+        "starting_lineups_verified": false,
+        "player_counting_opportunity_verified": false,
+        "market_quotes": [],
+        "model_outputs": [],
+        "eligible_to_propose_wager": false,
+        "review_type": "NORMAL_SCHEDULE_SCOUT"
+      }
+    ]
+  },
+  "model_custody": {
+    "game_sense": "SHADOW_HOLD",
+    "historical_2026_H2_MAE_selected": 11.2095,
+    "historical_prior": 11.396,
+    "test_games": 25,
+    "test_date_clusters": 4,
+    "probabilities_calibrated": false,
+    "real_live_pre_event_backtest": false
+  },
+  "pricing": {
+    "dk_stats_connector_supports_game_scores": true,
+    "dk_stats_connector_supports_executable_sportsbook_quotes": false,
+    "book_quote_at_time": null,
+    "player_prop_model_probability": null,
+    "independent_price_envelope": null,
+    "verified_ev": null,
+    "market_rule_verification": false
+  },
+  "release_policy": {
+    "allowed_actions": [
+      "SCOUT",
+      "VERIFY",
+      "INVESTIGATE",
+      "WATCH",
+      "PASS"
+    ],
+    "disallowed_actions": [
+      "AUTHENTIC_BET_APPROVAL",
+      "AUTOMATIC_STAKING",
+      "MARK_PROFITABLE",
+      "MINT_UNKNOWN_ODDS",
+      "ACTIVATE_SHADOW_GAME_SENSE"
+    ],
+    "lineup_refresh_required": true,
+    "price_refresh_required": true,
+    "human_signature_required": true
+  },
+  "notes": [
+    "Official NBA injury report snapshot 5:15 ET observed via NBA site, next revision can supersede it",
+    "The few injury names attached to each game are flags/examples, not full injury list or proof of roster availability",
+    "NFL full game-day active/inactive statuses not known Friday",
+    "Data may become stale after freeze; no live asynchronous monitoring enabled",
+    "This packet freezes schedule/source observations and constraints, NOT a valid quantitative betting forecast or confirmed odds"
+  ]
+}
