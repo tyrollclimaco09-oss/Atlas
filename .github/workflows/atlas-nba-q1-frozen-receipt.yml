@@ -1,0 +1,19 @@
+name: ATLAS NBA permanently archived first pre-Q4 forecast — integrity proof
+on:
+  push:
+    branches: [research/odds-api-probe-2026-10-22]
+    paths:
+      - docs/prospective/ATLAS_NBA_DENOKC_Q1_Q4_SHADOW_FREEZE_20261022_V1.json
+      - scripts/proof/nba-q1-frozen-receipt.test.mjs
+      - .github/workflows/atlas-nba-q1-frozen-receipt.yml
+permissions: {contents: read}
+jobs:
+  preserve-pre-outcome-truth:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - run: node --test scripts/proof/nba-q1-frozen-receipt.test.mjs
