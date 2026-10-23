@@ -1,0 +1,19 @@
+name: ATLAS NBA first Q1-to-Q4 freeze settlement — offline contracts only
+on:
+  push:
+    branches: [research/odds-api-probe-2026-10-22]
+    paths:
+      - scripts/proof/nba-q1-q4-final-settlement.mjs
+      - scripts/proof/nba-q1-q4-final-settlement.test.mjs
+      - .github/workflows/atlas-nba-q1-q4-final-settlement.yml
+permissions: {contents: read}
+jobs:
+  no-premature-settlement:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - run: node --test scripts/proof/nba-q1-q4-final-settlement.test.mjs
