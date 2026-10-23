@@ -1,0 +1,951 @@
+{
+  "schema": "atlas.nba.gamesense.opening_night_2022_2025_pbp8_v1",
+  "date_retrieved": "2026-10-23",
+  "method": "Predeclared opening doubleheader each season 2022-23,2023-24,2024-25,2025-26. Parse Basketball-Reference postgame per-event play-by-play; reconcile every period cumulative scoreboard with FG+3PM+FTM scoring, including technical/flagrant free throws. Include OT separately rather than make regulation final equals full final.",
+  "selection_policy": "Both opening-night doubleheader games in every one of four completed seasons. Not a random league-wide season sample.",
+  "intended_games": [
+    {
+      "season": "2022-23",
+      "id": "202210180BOS",
+      "away": "PHI",
+      "home": "BOS",
+      "date": "2022-10-18"
+    },
+    {
+      "season": "2022-23",
+      "id": "202210180GSW",
+      "away": "LAL",
+      "home": "GSW",
+      "date": "2022-10-18"
+    },
+    {
+      "season": "2023-24",
+      "id": "202310240DEN",
+      "away": "LAL",
+      "home": "DEN",
+      "date": "2023-10-24"
+    },
+    {
+      "season": "2023-24",
+      "id": "202310240GSW",
+      "away": "PHX",
+      "home": "GSW",
+      "date": "2023-10-24"
+    },
+    {
+      "season": "2024-25",
+      "id": "202410220BOS",
+      "away": "NYK",
+      "home": "BOS",
+      "date": "2024-10-22"
+    },
+    {
+      "season": "2024-25",
+      "id": "202410220LAL",
+      "away": "MIN",
+      "home": "LAL",
+      "date": "2024-10-22"
+    },
+    {
+      "season": "2025-26",
+      "id": "202510210OKC",
+      "away": "HOU",
+      "home": "OKC",
+      "date": "2025-10-21"
+    },
+    {
+      "season": "2025-26",
+      "id": "202510210LAL",
+      "away": "GSW",
+      "home": "LAL",
+      "date": "2025-10-21"
+    }
+  ],
+  "stats": {
+    "intended": 8,
+    "accepted": 8,
+    "rejected": 0,
+    "periods": 34,
+    "point_and_score_checks": 102,
+    "overtime_games": 1,
+    "regulation_nonOT_games": 7,
+    "half_leader_wins_regulation": 6,
+    "half_leader_fails_regulation": 0
+  },
+  "rejections": [],
+  "records": [
+    {
+      "season": "2022-23",
+      "id": "202210180BOS",
+      "away": "PHI",
+      "home": "BOS",
+      "date": "2022-10-18",
+      "url": "https://www.basketball-reference.com/boxscores/pbp/202210180BOS.html",
+      "parsed_rows": 445,
+      "period_count": 4,
+      "overtime_count": 0,
+      "points_and_cumulative_score_checks": 12,
+      "halftime_score": {
+        "away": 63,
+        "home": 63
+      },
+      "second_half_score": {
+        "away": 54,
+        "home": 63
+      },
+      "regulation": {
+        "away": 117,
+        "home": 126,
+        "winner": "BOS"
+      },
+      "final": {
+        "away": 117,
+        "home": 126,
+        "winner": "BOS"
+      },
+      "halftime_leader": "TIED",
+      "halftime_leader_won_regulation": null,
+      "half_combined": {
+        "first": 126,
+        "second": 117
+      },
+      "half_estimated_possessions": {
+        "first": 45.76,
+        "second": 48.56
+      },
+      "halves": {
+        "H1": {
+          "away": {
+            "FGA": 40,
+            "FGM": 20,
+            "3PA": 20,
+            "3PM": 9,
+            "FTA": 17,
+            "FTM": 14,
+            "technical_fta": 0,
+            "flagrant_fta": 3,
+            "TOV": 7,
+            "OREB": 8,
+            "DREB": 13,
+            "substitutions": 10
+          },
+          "home": {
+            "FGA": 42,
+            "FGM": 23,
+            "3PA": 15,
+            "3PM": 4,
+            "FTA": 16,
+            "FTM": 13,
+            "technical_fta": 0,
+            "flagrant_fta": 0,
+            "TOV": 5,
+            "OREB": 9,
+            "DREB": 15,
+            "substitutions": 15
+          }
+        },
+        "H2": {
+          "away": {
+            "FGA": 40,
+            "FGM": 20,
+            "3PA": 14,
+            "3PM": 4,
+            "FTA": 11,
+            "FTM": 10,
+            "technical_fta": 2,
+            "flagrant_fta": 0,
+            "TOV": 7,
+            "OREB": 2,
+            "DREB": 16,
+            "substitutions": 9
+          },
+          "home": {
+            "FGA": 40,
+            "FGM": 23,
+            "3PA": 20,
+            "3PM": 8,
+            "FTA": 12,
+            "FTM": 9,
+            "technical_fta": 0,
+            "flagrant_fta": 0,
+            "TOV": 6,
+            "OREB": 4,
+            "DREB": 19,
+            "substitutions": 10
+          }
+        }
+      },
+      "overtime_periods": [],
+      "raw_source_sha256": null,
+      "certified_official_nba_cdn_crosscheck": false,
+      "defender_matchup_assignment_verified": false
+    },
+    {
+      "season": "2022-23",
+      "id": "202210180GSW",
+      "away": "LAL",
+      "home": "GSW",
+      "date": "2022-10-18",
+      "url": "https://www.basketball-reference.com/boxscores/pbp/202210180GSW.html",
+      "parsed_rows": 524,
+      "period_count": 4,
+      "overtime_count": 0,
+      "points_and_cumulative_score_checks": 12,
+      "halftime_score": {
+        "away": 52,
+        "home": 59
+      },
+      "second_half_score": {
+        "away": 57,
+        "home": 64
+      },
+      "regulation": {
+        "away": 109,
+        "home": 123,
+        "winner": "GSW"
+      },
+      "final": {
+        "away": 109,
+        "home": 123,
+        "winner": "GSW"
+      },
+      "halftime_leader": "GSW",
+      "halftime_leader_won_regulation": true,
+      "half_combined": {
+        "first": 111,
+        "second": 121
+      },
+      "half_estimated_possessions": {
+        "first": 56.32,
+        "second": 52.74
+      },
+      "halves": {
+        "H1": {
+          "away": {
+            "FGA": 51,
+            "FGM": 20,
+            "3PA": 21,
+            "3PM": 3,
+            "FTA": 13,
+            "FTM": 9,
+            "technical_fta": 0,
+            "flagrant_fta": 0,
+            "TOV": 11,
+            "OREB": 10,
+            "DREB": 24,
+            "substitutions": 15
+          },
+          "home": {
+            "FGA": 50,
+            "FGM": 21,
+            "3PA": 20,
+            "3PM": 5,
+            "FTA": 18,
+            "FTM": 12,
+            "technical_fta": 0,
+            "flagrant_fta": 0,
+            "TOV": 8,
+            "OREB": 11,
+            "DREB": 25,
+            "substitutions": 14
+          }
+        },
+        "H2": {
+          "away": {
+            "FGA": 43,
+            "FGM": 20,
+            "3PA": 19,
+            "3PM": 7,
+            "FTA": 12,
+            "FTM": 10,
+            "technical_fta": 0,
+            "flagrant_fta": 0,
+            "TOV": 11,
+            "OREB": 7,
+            "DREB": 17,
+            "substitutions": 18
+          },
+          "home": {
+            "FGA": 49,
+            "FGM": 24,
+            "3PA": 25,
+            "3PM": 11,
+            "FTA": 5,
+            "FTM": 5,
+            "technical_fta": 0,
+            "flagrant_fta": 0,
+            "TOV": 10,
+            "OREB": 8,
+            "DREB": 18,
+            "substitutions": 12
+          }
+        }
+      },
+      "overtime_periods": [],
+      "raw_source_sha256": null,
+      "certified_official_nba_cdn_crosscheck": false,
+      "defender_matchup_assignment_verified": false
+    },
+    {
+      "season": "2023-24",
+      "id": "202310240DEN",
+      "away": "LAL",
+      "home": "DEN",
+      "date": "2023-10-24",
+      "url": "https://www.basketball-reference.com/boxscores/pbp/202310240DEN.html",
+      "parsed_rows": 447,
+      "period_count": 4,
+      "overtime_count": 0,
+      "points_and_cumulative_score_checks": 12,
+      "halftime_score": {
+        "away": 54,
+        "home": 63
+      },
+      "second_half_score": {
+        "away": 53,
+        "home": 56
+      },
+      "regulation": {
+        "away": 107,
+        "home": 119,
+        "winner": "DEN"
+      },
+      "final": {
+        "away": 107,
+        "home": 119,
+        "winner": "DEN"
+      },
+      "halftime_leader": "DEN",
+      "halftime_leader_won_regulation": true,
+      "half_combined": {
+        "first": 117,
+        "second": 109
+      },
+      "half_estimated_possessions": {
+        "first": 49.24,
+        "second": 43.3
+      },
+      "halves": {
+        "H1": {
+          "away": {
+            "FGA": 49,
+            "FGM": 22,
+            "3PA": 13,
+            "3PM": 4,
+            "FTA": 6,
+            "FTM": 6,
+            "technical_fta": 0,
+            "flagrant_fta": 0,
+            "TOV": 5,
+            "OREB": 8,
+            "DREB": 19,
+            "substitutions": 13
+          },
+          "home": {
+            "FGA": 48,
+            "FGM": 24,
+            "3PA": 17,
+            "3PM": 7,
+            "FTA": 11,
+            "FTM": 8,
+            "technical_fta": 0,
+            "flagrant_fta": 0,
+            "TOV": 5,
+            "OREB": 8,
+            "DREB": 19,
+            "substitutions": 11
+          }
+        },
+        "H2": {
+          "away": {
+            "FGA": 41,
+            "FGM": 19,
+            "3PA": 16,
+            "3PM": 6,
+            "FTA": 14,
+            "FTM": 9,
+            "technical_fta": 1,
+            "flagrant_fta": 0,
+            "TOV": 7,
+            "OREB": 12,
+            "DREB": 13,
+            "substitutions": 16
+          },
+          "home": {
+            "FGA": 43,
+            "FGM": 24,
+            "3PA": 17,
+            "3PM": 7,
+            "FTA": 1,
+            "FTM": 1,
+            "technical_fta": 0,
+            "flagrant_fta": 0,
+            "TOV": 7,
+            "OREB": 6,
+            "DREB": 15,
+            "substitutions": 15
+          }
+        }
+      },
+      "overtime_periods": [],
+      "raw_source_sha256": null,
+      "certified_official_nba_cdn_crosscheck": false,
+      "defender_matchup_assignment_verified": false
+    },
+    {
+      "season": "2023-24",
+      "id": "202310240GSW",
+      "away": "PHX",
+      "home": "GSW",
+      "date": "2023-10-24",
+      "url": "https://www.basketball-reference.com/boxscores/pbp/202310240GSW.html",
+      "parsed_rows": 523,
+      "period_count": 4,
+      "overtime_count": 0,
+      "points_and_cumulative_score_checks": 12,
+      "halftime_score": {
+        "away": 61,
+        "home": 46
+      },
+      "second_half_score": {
+        "away": 47,
+        "home": 58
+      },
+      "regulation": {
+        "away": 108,
+        "home": 104,
+        "winner": "PHX"
+      },
+      "final": {
+        "away": 108,
+        "home": 104,
+        "winner": "PHX"
+      },
+      "halftime_leader": "PHX",
+      "halftime_leader_won_regulation": true,
+      "half_combined": {
+        "first": 107,
+        "second": 105
+      },
+      "half_estimated_possessions": {
+        "first": 49.62,
+        "second": 46.78
+      },
+      "halves": {
+        "H1": {
+          "away": {
+            "FGA": 45,
+            "FGM": 22,
+            "3PA": 15,
+            "3PM": 5,
+            "FTA": 15,
+            "FTM": 12,
+            "technical_fta": 0,
+            "flagrant_fta": 0,
+            "TOV": 9,
+            "OREB": 11,
+            "DREB": 27,
+            "substitutions": 13
+          },
+          "home": {
+            "FGA": 58,
+            "FGM": 18,
+            "3PA": 23,
+            "3PM": 6,
+            "FTA": 6,
+            "FTM": 4,
+            "technical_fta": 0,
+            "flagrant_fta": 0,
+            "TOV": 4,
+            "OREB": 15,
+            "DREB": 15,
+            "substitutions": 14
+          }
+        },
+        "H2": {
+          "away": {
+            "FGA": 50,
+            "FGM": 20,
+            "3PA": 18,
+            "3PM": 6,
+            "FTA": 2,
+            "FTM": 1,
+            "technical_fta": 0,
+            "flagrant_fta": 0,
+            "TOV": 10,
+            "OREB": 14,
+            "DREB": 16,
+            "substitutions": 12
+          },
+          "home": {
+            "FGA": 43,
+            "FGM": 18,
+            "3PA": 20,
+            "3PM": 4,
+            "FTA": 22,
+            "FTM": 18,
+            "technical_fta": 0,
+            "flagrant_fta": 0,
+            "TOV": 7,
+            "OREB": 13,
+            "DREB": 17,
+            "substitutions": 16
+          }
+        }
+      },
+      "overtime_periods": [],
+      "raw_source_sha256": null,
+      "certified_official_nba_cdn_crosscheck": false,
+      "defender_matchup_assignment_verified": false
+    },
+    {
+      "season": "2024-25",
+      "id": "202410220BOS",
+      "away": "NYK",
+      "home": "BOS",
+      "date": "2024-10-22",
+      "url": "https://www.basketball-reference.com/boxscores/pbp/202410220BOS.html",
+      "parsed_rows": 387,
+      "period_count": 4,
+      "overtime_count": 0,
+      "points_and_cumulative_score_checks": 12,
+      "halftime_score": {
+        "away": 55,
+        "home": 74
+      },
+      "second_half_score": {
+        "away": 54,
+        "home": 58
+      },
+      "regulation": {
+        "away": 109,
+        "home": 132,
+        "winner": "BOS"
+      },
+      "final": {
+        "away": 109,
+        "home": 132,
+        "winner": "BOS"
+      },
+      "halftime_leader": "BOS",
+      "halftime_leader_won_regulation": true,
+      "half_combined": {
+        "first": 129,
+        "second": 112
+      },
+      "half_estimated_possessions": {
+        "first": 45.08,
+        "second": 43.2
+      },
+      "halves": {
+        "H1": {
+          "away": {
+            "FGA": 38,
+            "FGM": 22,
+            "3PA": 14,
+            "3PM": 4,
+            "FTA": 10,
+            "FTM": 7,
+            "technical_fta": 0,
+            "flagrant_fta": 0,
+            "TOV": 6,
+            "OREB": 2,
+            "DREB": 14,
+            "substitutions": 12
+          },
+          "home": {
+            "FGA": 49,
+            "FGM": 27,
+            "3PA": 32,
+            "3PM": 17,
+            "FTA": 4,
+            "FTM": 3,
+            "technical_fta": 0,
+            "flagrant_fta": 0,
+            "TOV": 2,
+            "OREB": 9,
+            "DREB": 17,
+            "substitutions": 10
+          }
+        },
+        "H2": {
+          "away": {
+            "FGA": 40,
+            "FGM": 21,
+            "3PA": 16,
+            "3PM": 7,
+            "FTA": 6,
+            "FTM": 5,
+            "technical_fta": 1,
+            "flagrant_fta": 0,
+            "TOV": 6,
+            "OREB": 6,
+            "DREB": 19,
+            "substitutions": 8
+          },
+          "home": {
+            "FGA": 46,
+            "FGM": 21,
+            "3PA": 29,
+            "3PM": 12,
+            "FTA": 4,
+            "FTM": 4,
+            "technical_fta": 0,
+            "flagrant_fta": 0,
+            "TOV": 2,
+            "OREB": 6,
+            "DREB": 14,
+            "substitutions": 9
+          }
+        }
+      },
+      "overtime_periods": [],
+      "raw_source_sha256": null,
+      "certified_official_nba_cdn_crosscheck": false,
+      "defender_matchup_assignment_verified": false
+    },
+    {
+      "season": "2024-25",
+      "id": "202410220LAL",
+      "away": "MIN",
+      "home": "LAL",
+      "date": "2024-10-22",
+      "url": "https://www.basketball-reference.com/boxscores/pbp/202410220LAL.html",
+      "parsed_rows": 478,
+      "period_count": 4,
+      "overtime_count": 0,
+      "points_and_cumulative_score_checks": 12,
+      "halftime_score": {
+        "away": 42,
+        "home": 55
+      },
+      "second_half_score": {
+        "away": 61,
+        "home": 55
+      },
+      "regulation": {
+        "away": 103,
+        "home": 110,
+        "winner": "LAL"
+      },
+      "final": {
+        "away": 103,
+        "home": 110,
+        "winner": "LAL"
+      },
+      "halftime_leader": "LAL",
+      "halftime_leader_won_regulation": true,
+      "half_combined": {
+        "first": 97,
+        "second": 116
+      },
+      "half_estimated_possessions": {
+        "first": 45.02,
+        "second": 45.42
+      },
+      "halves": {
+        "H1": {
+          "away": {
+            "FGA": 39,
+            "FGM": 16,
+            "3PA": 20,
+            "3PM": 7,
+            "FTA": 7,
+            "FTM": 3,
+            "technical_fta": 0,
+            "flagrant_fta": 0,
+            "TOV": 11,
+            "OREB": 9,
+            "DREB": 18,
+            "substitutions": 10
+          },
+          "home": {
+            "FGA": 53,
+            "FGM": 22,
+            "3PA": 19,
+            "3PM": 3,
+            "FTA": 9,
+            "FTM": 8,
+            "technical_fta": 0,
+            "flagrant_fta": 0,
+            "TOV": 3,
+            "OREB": 14,
+            "DREB": 18,
+            "substitutions": 12
+          }
+        },
+        "H2": {
+          "away": {
+            "FGA": 46,
+            "FGM": 19,
+            "3PA": 21,
+            "3PM": 6,
+            "FTA": 20,
+            "FTM": 17,
+            "technical_fta": 0,
+            "flagrant_fta": 0,
+            "TOV": 5,
+            "OREB": 14,
+            "DREB": 17,
+            "substitutions": 10
+          },
+          "home": {
+            "FGA": 42,
+            "FGM": 20,
+            "3PA": 11,
+            "3PM": 2,
+            "FTA": 16,
+            "FTM": 13,
+            "technical_fta": 0,
+            "flagrant_fta": 0,
+            "TOV": 4,
+            "OREB": 8,
+            "DREB": 16,
+            "substitutions": 10
+          }
+        }
+      },
+      "overtime_periods": [],
+      "raw_source_sha256": null,
+      "certified_official_nba_cdn_crosscheck": false,
+      "defender_matchup_assignment_verified": false
+    },
+    {
+      "season": "2025-26",
+      "id": "202510210OKC",
+      "away": "HOU",
+      "home": "OKC",
+      "date": "2025-10-21",
+      "url": "https://www.basketball-reference.com/boxscores/pbp/202510210OKC.html",
+      "parsed_rows": 583,
+      "period_count": 6,
+      "overtime_count": 2,
+      "points_and_cumulative_score_checks": 18,
+      "halftime_score": {
+        "away": 57,
+        "home": 51
+      },
+      "second_half_score": {
+        "away": 47,
+        "home": 53
+      },
+      "regulation": {
+        "away": 104,
+        "home": 104,
+        "winner": "TIED"
+      },
+      "final": {
+        "away": 124,
+        "home": 125,
+        "winner": "OKC"
+      },
+      "halftime_leader": "HOU",
+      "halftime_leader_won_regulation": null,
+      "half_combined": {
+        "first": 108,
+        "second": 100
+      },
+      "half_estimated_possessions": {
+        "first": 46.68,
+        "second": 43.4
+      },
+      "halves": {
+        "H1": {
+          "away": {
+            "FGA": 43,
+            "FGM": 20,
+            "3PA": 19,
+            "3PM": 7,
+            "FTA": 10,
+            "FTM": 10,
+            "technical_fta": 0,
+            "flagrant_fta": 0,
+            "TOV": 10,
+            "OREB": 12,
+            "DREB": 18,
+            "substitutions": 15
+          },
+          "home": {
+            "FGA": 43,
+            "FGM": 19,
+            "3PA": 20,
+            "3PM": 5,
+            "FTA": 9,
+            "FTM": 8,
+            "technical_fta": 0,
+            "flagrant_fta": 0,
+            "TOV": 8,
+            "OREB": 7,
+            "DREB": 12,
+            "substitutions": 13
+          }
+        },
+        "H2": {
+          "away": {
+            "FGA": 39,
+            "FGM": 17,
+            "3PA": 16,
+            "3PM": 3,
+            "FTA": 12,
+            "FTM": 10,
+            "technical_fta": 0,
+            "flagrant_fta": 0,
+            "TOV": 10,
+            "OREB": 11,
+            "DREB": 17,
+            "substitutions": 14
+          },
+          "home": {
+            "FGA": 43,
+            "FGM": 21,
+            "3PA": 21,
+            "3PM": 4,
+            "FTA": 8,
+            "FTM": 7,
+            "technical_fta": 0,
+            "flagrant_fta": 0,
+            "TOV": 3,
+            "OREB": 6,
+            "DREB": 13,
+            "substitutions": 13
+          }
+        }
+      },
+      "overtime_periods": [
+        {
+          "index": 5,
+          "points": {
+            "away": 11,
+            "home": 11
+          }
+        },
+        {
+          "index": 6,
+          "points": {
+            "away": 9,
+            "home": 10
+          }
+        }
+      ],
+      "raw_source_sha256": null,
+      "certified_official_nba_cdn_crosscheck": false,
+      "defender_matchup_assignment_verified": false
+    },
+    {
+      "season": "2025-26",
+      "id": "202510210LAL",
+      "away": "GSW",
+      "home": "LAL",
+      "date": "2025-10-21",
+      "url": "https://www.basketball-reference.com/boxscores/pbp/202510210LAL.html",
+      "parsed_rows": 471,
+      "period_count": 4,
+      "overtime_count": 0,
+      "points_and_cumulative_score_checks": 12,
+      "halftime_score": {
+        "away": 55,
+        "home": 54
+      },
+      "second_half_score": {
+        "away": 64,
+        "home": 55
+      },
+      "regulation": {
+        "away": 119,
+        "home": 109,
+        "winner": "GSW"
+      },
+      "final": {
+        "away": 119,
+        "home": 109,
+        "winner": "GSW"
+      },
+      "halftime_leader": "GSW",
+      "halftime_leader_won_regulation": true,
+      "half_combined": {
+        "first": 109,
+        "second": 119
+      },
+      "half_estimated_possessions": {
+        "first": 52.48,
+        "second": 45.06
+      },
+      "halves": {
+        "H1": {
+          "away": {
+            "FGA": 40,
+            "FGM": 16,
+            "3PA": 18,
+            "3PM": 7,
+            "FTA": 18,
+            "FTM": 16,
+            "technical_fta": 1,
+            "flagrant_fta": 2,
+            "TOV": 13,
+            "OREB": 6,
+            "DREB": 15,
+            "substitutions": 19
+          },
+          "home": {
+            "FGA": 36,
+            "FGM": 20,
+            "3PA": 17,
+            "3PM": 5,
+            "FTA": 16,
+            "FTM": 9,
+            "technical_fta": 1,
+            "flagrant_fta": 0,
+            "TOV": 15,
+            "OREB": 8,
+            "DREB": 20,
+            "substitutions": 12
+          }
+        },
+        "H2": {
+          "away": {
+            "FGA": 38,
+            "FGM": 22,
+            "3PA": 22,
+            "3PM": 10,
+            "FTA": 11,
+            "FTM": 10,
+            "technical_fta": 0,
+            "flagrant_fta": 0,
+            "TOV": 6,
+            "OREB": 3,
+            "DREB": 17,
+            "substitutions": 14
+          },
+          "home": {
+            "FGA": 41,
+            "FGM": 22,
+            "3PA": 15,
+            "3PM": 3,
+            "FTA": 12,
+            "FTM": 8,
+            "technical_fta": 0,
+            "flagrant_fta": 0,
+            "TOV": 5,
+            "OREB": 7,
+            "DREB": 14,
+            "substitutions": 10
+          }
+        }
+      },
+      "overtime_periods": [],
+      "raw_source_sha256": null,
+      "certified_official_nba_cdn_crosscheck": false,
+      "defender_matchup_assignment_verified": false
+    }
+  ],
+  "limitations": [
+    "Retrospective fetched HTML converted to markdown, not cryptographically frozen original bytes",
+    "No season-wide historical archive download or game completeness yet",
+    "Small selection n=8 and preselected TV opening games, no representative comeback rates",
+    "One double-overtime game; never compare its full final to regulation only",
+    "Possession estimator FGA-OREB+TOV+0.44FTA is approximate, not possession-level state",
+    "No actual defender tracking or cross-source independent NBA CDN player parity",
+    "Zero prospective win or total forecasts and zero sportsbook EV"
+  ],
+  "production_authority": false
+}
