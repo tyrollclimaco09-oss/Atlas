@@ -1,0 +1,811 @@
+{
+  "schema": "atlas.nba.gamesense.complete_date_2025_01_15_pbp_v1",
+  "source_index_blob": "a7ab4b3d5646899f91c23a1184ba09da3c464543",
+  "method": "All eleven game-specific Basketball-Reference PBP pages fetched as postgame markdown, shot/FTA/TO/ORB etc counted, per-period points and cumulative scores exactly reconciled with earlier January 15 index.",
+  "coverage": {
+    "requested": 11,
+    "accepted": 11,
+    "rejected": 0,
+    "quarters_reconciled": 45,
+    "team_period_points_checks": 90
+  },
+  "accepted_games": [
+    {
+      "game": "Atlanta@Chicago",
+      "home_code": "CHI",
+      "url": "https://www.basketball-reference.com/boxscores/pbp/202501150CHI.html",
+      "source_event_rows": 476,
+      "periods": 4,
+      "quarter_scores_verified": 4,
+      "team_period_points_verified": 8,
+      "halves": {
+        "away": {
+          "H1": {
+            "FGA": 54,
+            "FGM": 23,
+            "TPA": 19,
+            "TPM": 5,
+            "FTA": 12,
+            "FTM": 10,
+            "special_FTA": 0,
+            "TO": 3,
+            "ORB": 7,
+            "DRB": 18,
+            "substitution_notices": 16
+          },
+          "H2": {
+            "FGA": 46,
+            "FGM": 18,
+            "TPA": 24,
+            "TPM": 8,
+            "FTA": 10,
+            "FTM": 5,
+            "special_FTA": 0,
+            "TO": 8,
+            "ORB": 12,
+            "DRB": 21,
+            "substitution_notices": 10
+          }
+        },
+        "home": {
+          "H1": {
+            "FGA": 47,
+            "FGM": 21,
+            "TPA": 15,
+            "TPM": 2,
+            "FTA": 3,
+            "FTM": 3,
+            "special_FTA": 0,
+            "TO": 13,
+            "ORB": 8,
+            "DRB": 26,
+            "substitution_notices": 15
+          },
+          "H2": {
+            "FGA": 41,
+            "FGM": 18,
+            "TPA": 12,
+            "TPM": 4,
+            "FTA": 7,
+            "FTM": 7,
+            "special_FTA": 0,
+            "TO": 7,
+            "ORB": 2,
+            "DRB": 21,
+            "substitution_notices": 17
+          }
+        }
+      },
+      "OT": [],
+      "source_bytes_sha256": null,
+      "nba_cdn_parity_verified": false,
+      "actual_lineup_possessions_verified": false
+    },
+    {
+      "game": "Houston@Denver",
+      "home_code": "DEN",
+      "url": "https://www.basketball-reference.com/boxscores/pbp/202501150DEN.html",
+      "source_event_rows": 422,
+      "periods": 4,
+      "quarter_scores_verified": 4,
+      "team_period_points_verified": 8,
+      "halves": {
+        "away": {
+          "H1": {
+            "FGA": 47,
+            "FGM": 25,
+            "TPA": 19,
+            "TPM": 10,
+            "FTA": 11,
+            "FTM": 9,
+            "special_FTA": 0,
+            "TO": 5,
+            "ORB": 10,
+            "DRB": 13,
+            "substitution_notices": 12
+          },
+          "H2": {
+            "FGA": 47,
+            "FGM": 24,
+            "TPA": 19,
+            "TPM": 7,
+            "FTA": 6,
+            "FTM": 4,
+            "special_FTA": 0,
+            "TO": 6,
+            "ORB": 12,
+            "DRB": 14,
+            "substitution_notices": 9
+          }
+        },
+        "home": {
+          "H1": {
+            "FGA": 36,
+            "FGM": 19,
+            "TPA": 12,
+            "TPM": 6,
+            "FTA": 9,
+            "FTM": 4,
+            "special_FTA": 0,
+            "TO": 12,
+            "ORB": 9,
+            "DRB": 14,
+            "substitution_notices": 10
+          },
+          "H2": {
+            "FGA": 39,
+            "FGM": 21,
+            "TPA": 17,
+            "TPM": 8,
+            "FTA": 12,
+            "FTM": 10,
+            "special_FTA": 0,
+            "TO": 8,
+            "ORB": 6,
+            "DRB": 13,
+            "substitution_notices": 8
+          }
+        }
+      },
+      "OT": [],
+      "source_bytes_sha256": null,
+      "nba_cdn_parity_verified": false,
+      "actual_lineup_possessions_verified": false
+    },
+    {
+      "game": "Brooklyn@LA Clippers",
+      "home_code": "LAC",
+      "url": "https://www.basketball-reference.com/boxscores/pbp/202501150LAC.html",
+      "source_event_rows": 463,
+      "periods": 4,
+      "quarter_scores_verified": 4,
+      "team_period_points_verified": 8,
+      "halves": {
+        "away": {
+          "H1": {
+            "FGA": 41,
+            "FGM": 13,
+            "TPA": 10,
+            "TPM": 2,
+            "FTA": 11,
+            "FTM": 7,
+            "special_FTA": 0,
+            "TO": 12,
+            "ORB": 12,
+            "DRB": 16,
+            "substitution_notices": 11
+          },
+          "H2": {
+            "FGA": 42,
+            "FGM": 12,
+            "TPA": 18,
+            "TPM": 3,
+            "FTA": 11,
+            "FTM": 5,
+            "special_FTA": 2,
+            "TO": 10,
+            "ORB": 12,
+            "DRB": 11,
+            "substitution_notices": 10
+          }
+        },
+        "home": {
+          "H1": {
+            "FGA": 43,
+            "FGM": 20,
+            "TPA": 15,
+            "TPM": 5,
+            "FTA": 14,
+            "FTM": 13,
+            "special_FTA": 2,
+            "TO": 6,
+            "ORB": 8,
+            "DRB": 20,
+            "substitution_notices": 9
+          },
+          "H2": {
+            "FGA": 36,
+            "FGM": 23,
+            "TPA": 17,
+            "TPM": 7,
+            "FTA": 16,
+            "FTM": 15,
+            "special_FTA": 5,
+            "TO": 10,
+            "ORB": 3,
+            "DRB": 24,
+            "substitution_notices": 8
+          }
+        }
+      },
+      "OT": [],
+      "source_bytes_sha256": null,
+      "nba_cdn_parity_verified": false,
+      "actual_lineup_possessions_verified": false
+    },
+    {
+      "game": "Miami@LA Lakers",
+      "home_code": "LAL",
+      "url": "https://www.basketball-reference.com/boxscores/pbp/202501150LAL.html",
+      "source_event_rows": 390,
+      "periods": 4,
+      "quarter_scores_verified": 4,
+      "team_period_points_verified": 8,
+      "halves": {
+        "away": {
+          "H1": {
+            "FGA": 36,
+            "FGM": 21,
+            "TPA": 18,
+            "TPM": 10,
+            "FTA": 15,
+            "FTM": 14,
+            "special_FTA": 0,
+            "TO": 9,
+            "ORB": 3,
+            "DRB": 20,
+            "substitution_notices": 10
+          },
+          "H2": {
+            "FGA": 37,
+            "FGM": 18,
+            "TPA": 18,
+            "TPM": 6,
+            "FTA": 0,
+            "FTM": 0,
+            "special_FTA": 0,
+            "TO": 11,
+            "ORB": 3,
+            "DRB": 15,
+            "substitution_notices": 8
+          }
+        },
+        "home": {
+          "H1": {
+            "FGA": 48,
+            "FGM": 22,
+            "TPA": 16,
+            "TPM": 5,
+            "FTA": 8,
+            "FTM": 5,
+            "special_FTA": 0,
+            "TO": 5,
+            "ORB": 9,
+            "DRB": 13,
+            "substitution_notices": 11
+          },
+          "H2": {
+            "FGA": 42,
+            "FGM": 25,
+            "TPA": 18,
+            "TPM": 8,
+            "FTA": 6,
+            "FTM": 5,
+            "special_FTA": 0,
+            "TO": 2,
+            "ORB": 3,
+            "DRB": 16,
+            "substitution_notices": 9
+          }
+        }
+      },
+      "OT": [],
+      "source_bytes_sha256": null,
+      "nba_cdn_parity_verified": false,
+      "actual_lineup_possessions_verified": false
+    },
+    {
+      "game": "Orlando@Milwaukee",
+      "home_code": "MIL",
+      "url": "https://www.basketball-reference.com/boxscores/pbp/202501150MIL.html",
+      "source_event_rows": 470,
+      "periods": 4,
+      "quarter_scores_verified": 4,
+      "team_period_points_verified": 8,
+      "halves": {
+        "away": {
+          "H1": {
+            "FGA": 48,
+            "FGM": 15,
+            "TPA": 23,
+            "TPM": 4,
+            "FTA": 9,
+            "FTM": 7,
+            "special_FTA": 0,
+            "TO": 8,
+            "ORB": 7,
+            "DRB": 15,
+            "substitution_notices": 12
+          },
+          "H2": {
+            "FGA": 47,
+            "FGM": 18,
+            "TPA": 23,
+            "TPM": 8,
+            "FTA": 12,
+            "FTM": 8,
+            "special_FTA": 0,
+            "TO": 5,
+            "ORB": 9,
+            "DRB": 10,
+            "substitution_notices": 10
+          }
+        },
+        "home": {
+          "H1": {
+            "FGA": 40,
+            "FGM": 24,
+            "TPA": 6,
+            "TPM": 3,
+            "FTA": 14,
+            "FTM": 11,
+            "special_FTA": 0,
+            "TO": 10,
+            "ORB": 4,
+            "DRB": 28,
+            "substitution_notices": 11
+          },
+          "H2": {
+            "FGA": 32,
+            "FGM": 21,
+            "TPA": 6,
+            "TPM": 4,
+            "FTA": 21,
+            "FTM": 14,
+            "special_FTA": 0,
+            "TO": 11,
+            "ORB": 8,
+            "DRB": 24,
+            "substitution_notices": 11
+          }
+        }
+      },
+      "OT": [],
+      "source_bytes_sha256": null,
+      "nba_cdn_parity_verified": false,
+      "actual_lineup_possessions_verified": false
+    },
+    {
+      "game": "Golden State@Minnesota",
+      "home_code": "MIN",
+      "url": "https://www.basketball-reference.com/boxscores/pbp/202501150MIN.html",
+      "source_event_rows": 468,
+      "periods": 4,
+      "quarter_scores_verified": 4,
+      "team_period_points_verified": 8,
+      "halves": {
+        "away": {
+          "H1": {
+            "FGA": 44,
+            "FGM": 21,
+            "TPA": 21,
+            "TPM": 11,
+            "FTA": 2,
+            "FTM": 2,
+            "special_FTA": 0,
+            "TO": 9,
+            "ORB": 9,
+            "DRB": 21,
+            "substitution_notices": 17
+          },
+          "H2": {
+            "FGA": 38,
+            "FGM": 19,
+            "TPA": 15,
+            "TPM": 7,
+            "FTA": 19,
+            "FTM": 16,
+            "special_FTA": 0,
+            "TO": 4,
+            "ORB": 9,
+            "DRB": 14,
+            "substitution_notices": 23
+          }
+        },
+        "home": {
+          "H1": {
+            "FGA": 43,
+            "FGM": 16,
+            "TPA": 20,
+            "TPM": 7,
+            "FTA": 4,
+            "FTM": 3,
+            "special_FTA": 0,
+            "TO": 7,
+            "ORB": 7,
+            "DRB": 14,
+            "substitution_notices": 9
+          },
+          "H2": {
+            "FGA": 43,
+            "FGM": 22,
+            "TPA": 17,
+            "TPM": 10,
+            "FTA": 25,
+            "FTM": 19,
+            "special_FTA": 0,
+            "TO": 2,
+            "ORB": 13,
+            "DRB": 13,
+            "substitution_notices": 9
+          }
+        }
+      },
+      "OT": [],
+      "source_bytes_sha256": null,
+      "nba_cdn_parity_verified": false,
+      "actual_lineup_possessions_verified": false
+    },
+    {
+      "game": "Dallas@New Orleans",
+      "home_code": "NOP",
+      "url": "https://www.basketball-reference.com/boxscores/pbp/202501150NOP.html",
+      "source_event_rows": 492,
+      "periods": 4,
+      "quarter_scores_verified": 4,
+      "team_period_points_verified": 8,
+      "halves": {
+        "away": {
+          "H1": {
+            "FGA": 47,
+            "FGM": 22,
+            "TPA": 17,
+            "TPM": 6,
+            "FTA": 17,
+            "FTM": 11,
+            "special_FTA": 0,
+            "TO": 11,
+            "ORB": 14,
+            "DRB": 23,
+            "substitution_notices": 13
+          },
+          "H2": {
+            "FGA": 43,
+            "FGM": 21,
+            "TPA": 18,
+            "TPM": 6,
+            "FTA": 8,
+            "FTM": 7,
+            "special_FTA": 0,
+            "TO": 6,
+            "ORB": 6,
+            "DRB": 17,
+            "substitution_notices": 20
+          }
+        },
+        "home": {
+          "H1": {
+            "FGA": 52,
+            "FGM": 22,
+            "TPA": 24,
+            "TPM": 7,
+            "FTA": 13,
+            "FTM": 12,
+            "special_FTA": 0,
+            "TO": 6,
+            "ORB": 8,
+            "DRB": 17,
+            "substitution_notices": 12
+          },
+          "H2": {
+            "FGA": 45,
+            "FGM": 21,
+            "TPA": 15,
+            "TPM": 6,
+            "FTA": 11,
+            "FTM": 8,
+            "special_FTA": 0,
+            "TO": 4,
+            "ORB": 10,
+            "DRB": 17,
+            "substitution_notices": 13
+          }
+        }
+      },
+      "OT": [],
+      "source_bytes_sha256": null,
+      "nba_cdn_parity_verified": false,
+      "actual_lineup_possessions_verified": false
+    },
+    {
+      "game": "New York@Philadelphia",
+      "home_code": "PHI",
+      "url": "https://www.basketball-reference.com/boxscores/pbp/202501150PHI.html",
+      "source_event_rows": 438,
+      "periods": 5,
+      "quarter_scores_verified": 5,
+      "team_period_points_verified": 10,
+      "halves": {
+        "away": {
+          "H1": {
+            "FGA": 38,
+            "FGM": 21,
+            "TPA": 19,
+            "TPM": 10,
+            "FTA": 11,
+            "FTM": 8,
+            "special_FTA": 0,
+            "TO": 5,
+            "ORB": 6,
+            "DRB": 17,
+            "substitution_notices": 8
+          },
+          "H2": {
+            "FGA": 43,
+            "FGM": 20,
+            "TPA": 17,
+            "TPM": 5,
+            "FTA": 8,
+            "FTM": 4,
+            "special_FTA": 0,
+            "TO": 8,
+            "ORB": 16,
+            "DRB": 11,
+            "substitution_notices": 8
+          }
+        },
+        "home": {
+          "H1": {
+            "FGA": 43,
+            "FGM": 18,
+            "TPA": 15,
+            "TPM": 2,
+            "FTA": 9,
+            "FTM": 9,
+            "special_FTA": 0,
+            "TO": 4,
+            "ORB": 8,
+            "DRB": 14,
+            "substitution_notices": 12
+          },
+          "H2": {
+            "FGA": 41,
+            "FGM": 24,
+            "TPA": 16,
+            "TPM": 9,
+            "FTA": 5,
+            "FTM": 5,
+            "special_FTA": 0,
+            "TO": 6,
+            "ORB": 6,
+            "DRB": 11,
+            "substitution_notices": 6
+          }
+        }
+      },
+      "OT": [
+        {
+          "away_points": 16,
+          "home_points": 10
+        }
+      ],
+      "source_bytes_sha256": null,
+      "nba_cdn_parity_verified": false,
+      "actual_lineup_possessions_verified": false
+    },
+    {
+      "game": "Memphis@San Antonio",
+      "home_code": "SAS",
+      "url": "https://www.basketball-reference.com/boxscores/pbp/202501150SAS.html",
+      "source_event_rows": 482,
+      "periods": 4,
+      "quarter_scores_verified": 4,
+      "team_period_points_verified": 8,
+      "halves": {
+        "away": {
+          "H1": {
+            "FGA": 53,
+            "FGM": 21,
+            "TPA": 16,
+            "TPM": 5,
+            "FTA": 6,
+            "FTM": 4,
+            "special_FTA": 0,
+            "TO": 6,
+            "ORB": 11,
+            "DRB": 21,
+            "substitution_notices": 18
+          },
+          "H2": {
+            "FGA": 50,
+            "FGM": 30,
+            "TPA": 22,
+            "TPM": 11,
+            "FTA": 11,
+            "FTM": 7,
+            "special_FTA": 0,
+            "TO": 2,
+            "ORB": 8,
+            "DRB": 21,
+            "substitution_notices": 16
+          }
+        },
+        "home": {
+          "H1": {
+            "FGA": 44,
+            "FGM": 19,
+            "TPA": 25,
+            "TPM": 11,
+            "FTA": 18,
+            "FTM": 14,
+            "special_FTA": 1,
+            "TO": 6,
+            "ORB": 8,
+            "DRB": 23,
+            "substitution_notices": 13
+          },
+          "H2": {
+            "FGA": 45,
+            "FGM": 21,
+            "TPA": 18,
+            "TPM": 5,
+            "FTA": 9,
+            "FTM": 5,
+            "special_FTA": 0,
+            "TO": 5,
+            "ORB": 7,
+            "DRB": 16,
+            "substitution_notices": 8
+          }
+        }
+      },
+      "OT": [],
+      "source_bytes_sha256": null,
+      "nba_cdn_parity_verified": false,
+      "actual_lineup_possessions_verified": false
+    },
+    {
+      "game": "Boston@Toronto",
+      "home_code": "TOR",
+      "url": "https://www.basketball-reference.com/boxscores/pbp/202501150TOR.html",
+      "source_event_rows": 450,
+      "periods": 4,
+      "quarter_scores_verified": 4,
+      "team_period_points_verified": 8,
+      "halves": {
+        "away": {
+          "H1": {
+            "FGA": 47,
+            "FGM": 19,
+            "TPA": 25,
+            "TPM": 10,
+            "FTA": 6,
+            "FTM": 5,
+            "special_FTA": 1,
+            "TO": 7,
+            "ORB": 7,
+            "DRB": 21,
+            "substitution_notices": 10
+          },
+          "H2": {
+            "FGA": 44,
+            "FGM": 17,
+            "TPA": 21,
+            "TPM": 6,
+            "FTA": 12,
+            "FTM": 4,
+            "special_FTA": 0,
+            "TO": 2,
+            "ORB": 14,
+            "DRB": 11,
+            "substitution_notices": 11
+          }
+        },
+        "home": {
+          "H1": {
+            "FGA": 45,
+            "FGM": 21,
+            "TPA": 22,
+            "TPM": 8,
+            "FTA": 8,
+            "FTM": 5,
+            "special_FTA": 0,
+            "TO": 5,
+            "ORB": 6,
+            "DRB": 22,
+            "substitution_notices": 15
+          },
+          "H2": {
+            "FGA": 44,
+            "FGM": 24,
+            "TPA": 12,
+            "TPM": 3,
+            "FTA": 7,
+            "FTM": 4,
+            "special_FTA": 0,
+            "TO": 6,
+            "ORB": 12,
+            "DRB": 21,
+            "substitution_notices": 10
+          }
+        }
+      },
+      "OT": [],
+      "source_bytes_sha256": null,
+      "nba_cdn_parity_verified": false,
+      "actual_lineup_possessions_verified": false
+    },
+    {
+      "game": "Charlotte@Utah",
+      "home_code": "UTA",
+      "url": "https://www.basketball-reference.com/boxscores/pbp/202501150UTA.html",
+      "source_event_rows": 457,
+      "periods": 4,
+      "quarter_scores_verified": 4,
+      "team_period_points_verified": 8,
+      "halves": {
+        "away": {
+          "H1": {
+            "FGA": 46,
+            "FGM": 22,
+            "TPA": 23,
+            "TPM": 7,
+            "FTA": 4,
+            "FTM": 4,
+            "special_FTA": 0,
+            "TO": 11,
+            "ORB": 5,
+            "DRB": 22,
+            "substitution_notices": 14
+          },
+          "H2": {
+            "FGA": 39,
+            "FGM": 23,
+            "TPA": 16,
+            "TPM": 5,
+            "FTA": 17,
+            "FTM": 11,
+            "special_FTA": 1,
+            "TO": 7,
+            "ORB": 11,
+            "DRB": 19,
+            "substitution_notices": 10
+          }
+        },
+        "home": {
+          "H1": {
+            "FGA": 52,
+            "FGM": 25,
+            "TPA": 22,
+            "TPM": 7,
+            "FTA": 9,
+            "FTM": 5,
+            "special_FTA": 1,
+            "TO": 6,
+            "ORB": 9,
+            "DRB": 19,
+            "substitution_notices": 11
+          },
+          "H2": {
+            "FGA": 41,
+            "FGM": 18,
+            "TPA": 21,
+            "TPM": 9,
+            "FTA": 8,
+            "FTM": 5,
+            "special_FTA": 0,
+            "TO": 6,
+            "ORB": 7,
+            "DRB": 11,
+            "substitution_notices": 13
+          }
+        }
+      },
+      "OT": [],
+      "source_bytes_sha256": null,
+      "nba_cdn_parity_verified": false,
+      "actual_lineup_possessions_verified": false
+    }
+  ],
+  "rejections": [],
+  "limits": [
+    "PBP markdown derived by external reader, original raw bytes/HTTP headers not preserved",
+    "No independent nba-cdn box/parity proof",
+    "FGA-ORB+TO+.44 FTA is an estimate not possession boundary replay",
+    "No 5-on-5 lineup or defended shooter assignments proved",
+    "Overtime events separated from regulation H2",
+    "One full historical date not representative of whole history",
+    "No live odds, calibrated forecast or profit"
+  ],
+  "production_authority": false
+}
