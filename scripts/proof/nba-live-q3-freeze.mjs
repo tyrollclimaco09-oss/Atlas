@@ -48,6 +48,11 @@ export function snapshotLive(game,boardBefore,playbyplay,boardAfter){
  fail(Array.isArray(pbp.actions),'PBP_ACTIONS_UNKNOWN');
  fail(pbp.actions.every(a=>Number.isInteger(a.period)&&a.period>=1&&a.period<=3),
    'PBP_CONTAINS_FUTURE_OR_INVALID_PERIOD');
+ // A clock showing zero is not sufficient if the provider's PBP has not
+ // actually recorded completion of the third period.
+ const q3End=pbp.actions.filter(a=>a.period===3&&
+   a.actionType==='period'&&a.subType==='end'&&seconds(a.clock)===0);
+ fail(q3End.length===1,'PBP_Q3_OFFICIAL_PERIOD_END_MARKER_MISSING_OR_DUPLICATE');
  const feature=preQ4Feature(game,pbp.actions);
  q3Boundary(boardAfter,game);
  const canonical={...feature,
@@ -94,6 +99,7 @@ async function main(){
   q4_naive_rate_estimate:result.naive_q4_rate_estimate,
   feature_sha256:result.feature_sha256,
   game_state_at_both_checks:'Q3_CLOCK_ZERO_NO_Q4',
+  period3_end_marker_required_and_observed:true,
   model_class:'FIXED_UNTRAINED_Q1_Q3_RATE_BASELINE',
   player_minutes_verified:false,
   source_license_reviewed:false,

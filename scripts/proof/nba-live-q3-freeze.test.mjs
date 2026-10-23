@@ -11,6 +11,8 @@ function pbp(){
  for(const [i,player,team] of [[0,1,'DEN'],[1,2,'DEN'],[2,3,'OKC'],[3,4,'OKC'],
  [40,1,'DEN'],[41,2,'DEN'],[42,3,'OKC'],[43,4,'OKC']])
   actions[i]={actionNumber:i+1,period:i<40?1:2,isFieldGoal:1,personId:player,teamTricode:team};
+ actions[119]={actionNumber:120,period:3,clock:'PT00M00.00S',
+  actionType:'period',subType:'end',isFieldGoal:0};
  return {game:{gameId:TARGET.gameId,actions}};
 }
 test('schedule game identity is exact and DEN at OKC, not guessed from current scores',()=>{
@@ -37,4 +39,21 @@ test('future Q4 events cannot enter a pre-Q4 live snapshot',()=>{
 test('an unverifiable Q3 shooter fails before an official forecast is issued',()=>{
  const x=pbp();x.game.actions[0].teamTricode='XXX';
  assert.throws(()=>snapshotLive(TARGET,board(),x,board()),/UNKNOWN_SOURCE_SHOT_TEAM/);
+});
+
+test('a Q3 zero scoreboard without the live source period-end marker is NOT a freeze',()=>{
+ const x=pbp();x.game.actions[119].subType='start';
+ assert.throws(()=>snapshotLive(TARGET,board(),x,board()),
+  /PBP_Q3_OFFICIAL_PERIOD_END_MARKER/);
+});
+test('two Q3 official end markers indicate inconsistent PBP and are rejected',()=>{
+ const x=pbp();x.game.actions[118]={actionNumber:119,period:3,
+  clock:'PT00M00.00S',actionType:'period',subType:'end',isFieldGoal:0};
+ assert.throws(()=>snapshotLive(TARGET,board(),x,board()),
+  /PBP_Q3_OFFICIAL_PERIOD_END_MARKER/);
+});
+test('a Q3 period-end event at a nonzero clock does not complete the quarter',()=>{
+ const x=pbp();x.game.actions[119].clock='PT00M04.00S';
+ assert.throws(()=>snapshotLive(TARGET,board(),x,board()),
+  /PBP_Q3_OFFICIAL_PERIOD_END_MARKER/);
 });
