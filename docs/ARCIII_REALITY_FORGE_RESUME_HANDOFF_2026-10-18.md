@@ -76,36 +76,3 @@ Pre-checkpoint reviewed head: `f5a7bd215fb35974f18f0bfe1619bf88c29b53b5`.
 **`Resume ATLAS Arc III — Pass 1/15: Master Reconciliation, from the October 18 checkpoint. Floot stays parked. Do not mistake Command Center/GitHub Phase 0–11 or Arc II research passes for Arc III closures. Verify original pass artifacts and acceptance criteria; build a bounded pass-by-pass evidence matrix (DONE / PARTIAL / UNVERIFIED / BLOCKED). Reuse established SCOUT, GS-01, OI-01, HM-01, R-01 and Final Gate; do not duplicate modules or silently integrate review-only prototypes. Finish with a clear next-pass handoff, no unearned production promotion.`**
 
 Preserve the handoff as a checkpoint, not a scheduled job or permission to continue now.
-
-
-## 6. October 22 continuity delta — MasterSave after every substantive pass
-
-**Recorded:** October 22, 2026, America/Chicago. **Change authority:** operator-requested research continuity update; not new Arc III sign-off or operational state. Older October 18 frozen checkpoint text above remains historical and must not be rewritten as today's status.
-
-### Standing operator rule: MasterSave is the final step of every substantive pass
-
-After each completed ATLAS research, model, slate, audit, engineering or retrospective pass, **in the same active session**:
-1. **RECONCILE before claiming progress:** reread the prior pinned handoff/roadmap and relevant immutable artifacts; record discoveries, falsifications, decisions, rejected approaches, assumptions, changed source/commit/test evidence. Do not equate synthetic tests with live skill.
-2. **APPEND the roadmap delta:** preserve the existing arc lineage and 15-pass mapping. For each affected arc/pass classify DONE, PARTIAL, UNVERIFIED or BLOCKED with evidence and acceptance criteria; distinguish exploratory research overlays from formal closures. Retain pending work, negative results, alternative markets/expressions and parked initiatives rather than overwriting them.
-3. **FREEZE a handoff:** state what changed, what did *not* change, precise last verified point, remaining blockers, immediate next proof step, resumable instruction, and sources/commit SHAs/hash receipts. Never silently revise point-in-time forecasts.
-4. **PERSIST then READ BACK:** GitHub review-branch checkpoint is versioned authority for code/documentation; Create State populated model is semantic index and session-handoff convenience; Notion existing Codex is human-readable pointer; Google Drive is recovery copy. Only claim each provider MATCH on successful fresh readback. Failure -> UNKNOWN/PARTIAL. Avoid duplicate documents, new brain, silent production writes.
-5. **STOP LINE:** no bets, automatic schedules, Supabase mutations, CI reruns, deployments, release approvals, app integrations or Arc III sign-off solely because a MasterSave ran. Human Final Gate unchanged. Routine occurs during an invoked pass, not autonomously after the chat closes.
-
-**Handoff minimum fields:** timestamp/timezone; arc/pass and prior checkpoint; evidence tier (user report / source-backed retrospective / externally witnessed prospective / synthetic); source snapshots, sample denominators, methods/baselines; positive and negative findings; touched files and CI status if inspected; unresolved counterexamples and next experiment; authority/approvals; pointers to Drive/Notion/Create State only if read back.
-
-### Arc III roadmap overlays — remain 0/15 formally closed
-
-| Arc III focus | October 22 incremental evidence | Gate / next action |
-| --- | --- | --- |
-| 01 Reconciliation | This MasterSave ties original 15-pass Arc III plan to later NBA/NFL research; prior GitHub engineering pass numbers remain distinct | Verify original acceptance criteria and authoritative 18-gate registry; formal closure BLOCKED |
-| 02 Real Data; 03 Game Sense | NBA V3 analysis of 57 retrospective NBA games (43 Apr 8/9/10/12 + 14 Oct 20/21) with event chronology. User reports NBA feed diagnostic Oct 22 game 0022600007 (Denver at Oklahoma City): 233 Q2 records, one end-period event | Provider source and receipt for tonight's claimed live feed not independently retrieved here; genuine end-Q3 gate unverified |
-| 04 Independent Forecasts | V3 retrospective Oct 20–21 MAE 7.062 baseline vs 6.456 April-selected ridge (8.58% less); n=14, uncertainty spans zero; at Q3 lead >=20 improvement absent | No predictive skill or sportsbook EV proven. User reports Oct 22 9:42 PM CDT Q2-time shadow forecast of **23 combined Q4 FGA** using four selected players' Q1 rate; original four IDs, freeze hash and official Q4 outcome not independently read back; never grade/revise until exact frozen packet is retrieved |
-| 11 Forensics / CALIBRATOR | Negative blowout subgroup preserved; sample and model-selection caution recorded | Grade same fixed identities/target and unchanged baseline on actual official final and correction lineage, never retrospectively relabel |
-| 12 Reality Bridge; 14 Gravity Chamber | Q2 diagnostic and proposed end-period+clock guard are useful candidate safeguards; assistant-reported synthetic gate tests are not independent operational evidence | Need external receipt and timeline for Q2 freeze; independently witnessed genuine end-of-Q3 freeze is separate experiment; official outcome join, replay and timestamp checks missing |
-| NFL research overlay (02/03/04/12) | 2026 nflverse asset located historically but not ingested in V3; last-three QB baseline underperformed league reference in prior experiments; Week 7 prospective freeze reported earlier, outcomes ungraded here | Retrieve immutable all-league 2026 PBP bytes, source hashes, frozen Week 7 artifacts and official later results; avoid textual proxy statistics |
-
-**Evidence classification:** October 22 Q2 live diagnostic, early Q4 23-attempt freeze, and 10/10 synthetic gate pass are **user/assistant-reported**, not independently authenticated by October 22 GitHub repository readback. V3 historical result is repository-backed, review-only. No bet, pricing edge, or validated prospectively calibrated model.
-
-**Next exact resumption:** First reconcile the October 22 early forecast's four identities, original receipt hash/time and official Q4 combined FGA, then attempt separate official end-Q3 freeze with game-id, event-marker, clock and no-future-data checks; in parallel keep NFL source-ingest and Week 7 grading work moving. Compare prediction and baseline error under preregistered eligibility, preserve abstentions/negative results. Maintain broad existing pipeline and all fifteen Arc III workstreams. **Do not declare Arc III pass 1 completed without formal source-backed sign-off.**
-
-**Standing quick command:** "ATLAS MasterSave" = reconcile + append arc roadmap + durable save + readback + status/next precise step, even when chat is not ending. "Continue ATLAS" = restore newest verified checkpoint before further passes.
