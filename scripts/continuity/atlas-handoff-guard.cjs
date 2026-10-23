@@ -213,6 +213,20 @@ function validate(h,root=ROOT){
   wk7.prospective_evaluation_completed===false&&
   wk7.production_authority===false&&wk7.bettor_executable_bet===false,
   'W7_PREGAME_PACKET_FALSE_PROMOTION');
+ const nbaLive=nba.live_q3_snapshot_capability;
+ assert(nbaLive?.status==='OFFLINE_GATE_TESTED_NO_LIVE_Q3_FREEZE'&&
+   nbaLive.github_offline_ci_run===39880473176&&nbaLive.offline_gate_tests_passed===5&&
+   nbaLive.scheduled_game_id==='0022600007'&&nbaLive.home==='OKC'&&nbaLive.away==='DEN'&&
+   nbaLive.scoreboard_q3_zero_required===true&&
+   nbaLive.scoreboard_before_and_after_required===true&&
+   nbaLive.reject_q4_events===true&&
+   nbaLive.manual_dispatch_trigger_verified===false&&
+   nbaLive.live_game_source_read_performed===false&&
+   nbaLive.captured_feature_packet===false&&
+   nbaLive.actual_pre_q4_external_evidence===false&&
+   nbaLive.q4_outcome_settled===false&&
+   nbaLive.model_validated===false&&nbaLive.betting_authority===false,
+   'NBA_TESTED_GATE_NOT_REAL_LIVE_CAPTURE');
  const evidence=h.evidence;
  const registry=JSON.parse(fs.readFileSync(path.join(root,'docs/continuity/ATLAS_RECOVERED_ASSET_REGISTRY_2026-10-22.json'),'utf8'));
  assert(registry.schema==='atlas.recovered-artifact-registry.v1'&&

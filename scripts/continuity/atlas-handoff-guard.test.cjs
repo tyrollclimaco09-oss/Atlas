@@ -128,3 +128,12 @@ test('one explicit abstention and historical LAR source normalization are checkp
  const h=clone(load());h.lanes[1].week7_pregame_shadow_freeze.explicit_null_abstentions=0;
  assert.throws(()=>validate(h),/W7_PREGAME_PACKET_FALSE_PROMOTION/);
 });
+
+test('NBA tested Q3 capture guard cannot stand in for an actual observed freeze',()=>{
+ const h=clone(load());h.lanes[0].live_q3_snapshot_capability.captured_feature_packet=true;
+ assert.throws(()=>validate(h),/NBA_TESTED_GATE_NOT_REAL_LIVE_CAPTURE/);
+});
+test('NBA workflow declaration is not proof manual dispatch is operational',()=>{
+ const h=clone(load());h.lanes[0].live_q3_snapshot_capability.manual_dispatch_trigger_verified=true;
+ assert.throws(()=>validate(h),/NBA_TESTED_GATE_NOT_REAL_LIVE_CAPTURE/);
+});

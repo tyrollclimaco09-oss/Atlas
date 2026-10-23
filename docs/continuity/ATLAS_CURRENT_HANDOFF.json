@@ -1,6 +1,6 @@
 {
   "schema": "atlas.engineering.handoff.v1",
-  "checkpoint_id": "ATLAS-20261022-W7-PREGAME-RESEARCH-FREEZE-15",
+  "checkpoint_id": "ATLAS-20261022-NBA-Q3-CAPTURE-GATE-16",
   "as_of_date": "2026-10-22",
   "repository": "tyrollclimaco09-oss/Atlas",
   "source_branch": "research/odds-api-probe-2026-10-22",
@@ -276,6 +276,31 @@
         "q4_actual_minutes_verified": false,
         "benching_cause_verified": false,
         "documentation": "docs/research/ATLAS_20261022_MASSIVE_TIMESKIP_10_14.md"
+      },
+      "live_q3_snapshot_capability": {
+        "status": "OFFLINE_GATE_TESTED_NO_LIVE_Q3_FREEZE",
+        "github_offline_ci_run": 39880473176,
+        "offline_gate_tests_passed": 5,
+        "game_date": "2026-10-22",
+        "scheduled_game_id": "0022600007",
+        "scheduled_code": "20261022/DENOKC",
+        "home": "OKC",
+        "away": "DEN",
+        "scheduled_tipoff_local": "2026-10-22T20:30:00-05:00",
+        "target_game_id_source_verify_at_runtime": true,
+        "scoreboard_q3_zero_required": true,
+        "scoreboard_before_and_after_required": true,
+        "reject_q4_events": true,
+        "manual_dispatch_trigger_verified": false,
+        "live_game_source_read_performed": false,
+        "captured_feature_packet": false,
+        "actual_pre_q4_external_evidence": false,
+        "q4_outcome_settled": false,
+        "model_validated": false,
+        "betting_authority": false,
+        "workflow_path": ".github/workflows/atlas-nba-live-q3-freeze.yml",
+        "audit_path": "docs/research/ATLAS_NBA_LIVE_Q3_CAPTURE_GATE_20261022.md",
+        "next": "TEST_OPERATOR_DISPATCH_ON_RESEARCH_BRANCH;ATTEMPT_Q3_ZERO_LIVE_FUTURE_CAPTURE_IF_ACTUALLY_REACHABLE"
       }
     },
     {
@@ -589,7 +614,11 @@
       "docs/research/ATLAS_20261022_TRIPLE_TIMESKIP_07_09.md",
       "docs/research/ATLAS_20261022_MASSIVE_TIMESKIP_10_14.md",
       "docs/prospective/ATLAS_NFL_W7_PREGAME_SHADOW_20261022_V2.json",
-      "docs/research/ATLAS_20261022_PREGAME_RESEARCH_FREEZE_15.md"
+      "docs/research/ATLAS_20261022_PREGAME_RESEARCH_FREEZE_15.md",
+      "docs/research/ATLAS_NBA_LIVE_Q3_CAPTURE_GATE_20261022.md",
+      "scripts/proof/nba-live-q3-freeze.mjs",
+      "scripts/proof/nba-live-q3-freeze.test.mjs",
+      ".github/workflows/atlas-nba-live-q3-freeze.yml"
     ],
     "immutable_git_runs": [
       39834900969,
@@ -597,7 +626,7 @@
       39837577620
     ],
     "recovered_asset_registry": "docs/continuity/ATLAS_RECOVERED_ASSET_REGISTRY_2026-10-22.json",
-    "last_engineering_pass_git_sha": "d3f50e8e2ae88c5431fe9bac4d92bc7229d3d405",
+    "last_engineering_pass_git_sha": "03c122ec2a91541f08ca1d61367b6271b9ddc267",
     "additional_github_runs": [
       39848546540,
       39848787129,
@@ -627,7 +656,8 @@
       39879298512,
       39879432700,
       39879497749,
-      39879769087
+      39879769087,
+      39880473176
     ],
     "dual_source_custody": {
       "state": "SHADOW_UNATTESTED_RESEARCH_ONLY",
@@ -656,7 +686,8 @@
     "READ_TIMESKIP_06_NBA_AND_NFL_AUDITS;DO_NOT_MISINTERPRET_3_GAME_SOURCE_PASS_OR_116_CLOCK_MATCHES",
     "READ_TRIPLE_TIMESKIP_07_09_AND_VERIFY_CUSTODY_RUN_THEN_RESUME_INDEPENDENT_FORECAST_GATES",
     "READ_TIMESKIP_10_14_AND_RESPECT_NEGATIVE_NFL_BASELINE_AND_NON_EQUVALENT_V3_COMPARISON",
-    "READ_UNSETTLED_W7_V2_LEDGER_AND_NEVER_REFORECAST_AFTER_RESULTS_OR_TREAT_PROXY_AS_CONFIRMED_STARTER"
+    "READ_UNSETTLED_W7_V2_LEDGER_AND_NEVER_REFORECAST_AFTER_RESULTS_OR_TREAT_PROXY_AS_CONFIRMED_STARTER",
+    "NBA_PASS16_GATE_PASSED_5_TESTS_BUT_NO_TRUE_LIVE_Q3_FREEZE;DO_NOT_BACKDATE_OR_CLAIM_MANUAL_DISPATCH_VERIFIED"
   ],
   "known_gaps": [
     "ORIGINAL_57_GAME_V3_ARCHIVE_RAW_BYTES_UNAVAILABLE_VIA_CURRENT_FILES_ACCESS",
@@ -684,6 +715,9 @@
     "NBA_Q3_TIMESTAMP_NOT_EXTERNAL_ATTESTED",
     "W7_PREGAME_V2_STARTING_QB_NOT_INDEPENDENTLY_VALIDATED",
     "W7_PREGAME_V2_OUTCOMES_NOT_SETTLED",
-    "NBA_ACTUAL_Q3_PRE_OUTCOME_FREEZE_NOT_YET_ATTESTED"
+    "NBA_ACTUAL_Q3_PRE_OUTCOME_FREEZE_NOT_YET_ATTESTED",
+    "NBA_Q3_END_CLOCK_LIVE_PACKET_NOT_CAPTURED",
+    "NBA_MANUAL_DISPATCH_ON_NONDEFAULT_RESEARCH_BRANCH_UNVERIFIED",
+    "NBA_Q3_PUBLIC_SOURCE_FRESHNESS_AND_RIGHTS_UNVERIFIED"
   ]
 }
