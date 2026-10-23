@@ -1,0 +1,2138 @@
+{
+  "schema": "atlas.nba.gamesense.opening16.pbp_bref_period_source_v1",
+  "created_date": "2026-10-23",
+  "method": "Retrospective 16 NBA opening games retrieved Basketball-Reference period play-by-play pages using connected webpage-extract service. Parse native markdown event rows and count shots, FT, turnover, rebound, substitution and foul action strings by team and quarter; strict period-end scoreboard and points = 2*FGM + 3PM + FTM matching archived game-quarter scores. Source page mutable; not an independently timestamped prospective snapshot. No third-party raw play text archived.",
+  "original_score_archive_sha": "c8e0d2ee1610e4c9f45d40464d85b6d511ccef5e",
+  "coverage": {
+    "n_requested": 16,
+    "n_accepted": 9,
+    "n_rejected": 7,
+    "total_quarters_reconciled": 36,
+    "total_team_quarter_scoring_ident_reconciled": 72
+  },
+  "excluded": [
+    {
+      "game": "OKC@SAS",
+      "date": "2026-10-20",
+      "source": "https://www.basketball-reference.com/boxscores/pbp/202610200SAS.html",
+      "reason": "FAIL_PERIOD_SCORE_OR_POINTS:2:{\"marker\":true,\"last\":{\"away\":65,\"home\":44},\"awayFromActions\":29,\"homeFromActions\":14,\"expectedAway\":65,\"expectedHome\":44}"
+    },
+    {
+      "game": "MIN@MIA",
+      "date": "2026-10-21",
+      "source": "https://www.basketball-reference.com/boxscores/pbp/202610210MIA.html",
+      "reason": "FAIL_PERIOD_SCORE_OR_POINTS:4:{\"marker\":true,\"last\":{\"away\":131,\"home\":106},\"awayFromActions\":29,\"homeFromActions\":24,\"expectedAway\":131,\"expectedHome\":106}"
+    },
+    {
+      "game": "CHI@TOR",
+      "date": "2026-10-21",
+      "source": "https://www.basketball-reference.com/boxscores/pbp/202610210TOR.html",
+      "reason": "FAIL_PERIOD_SCORE_OR_POINTS:4:{\"marker\":true,\"last\":{\"away\":92,\"home\":135},\"awayFromActions\":21,\"homeFromActions\":31,\"expectedAway\":92,\"expectedHome\":135}"
+    },
+    {
+      "game": "IND@NOP",
+      "date": "2026-10-21",
+      "source": "https://www.basketball-reference.com/boxscores/pbp/202610210NOP.html",
+      "reason": "FAIL_PERIOD_SCORE_OR_POINTS:4:{\"marker\":true,\"last\":{\"away\":123,\"home\":120},\"awayFromActions\":37,\"homeFromActions\":27,\"expectedAway\":123,\"expectedHome\":120}"
+    },
+    {
+      "game": "DAL@HOU",
+      "date": "2026-10-21",
+      "source": "https://www.basketball-reference.com/boxscores/pbp/202610210HOU.html",
+      "reason": "FAIL_PERIOD_SCORE_OR_POINTS:4:{\"marker\":true,\"last\":{\"away\":110,\"home\":128},\"awayFromActions\":32,\"homeFromActions\":28,\"expectedAway\":110,\"expectedHome\":128}"
+    },
+    {
+      "game": "GSW@LAL",
+      "date": "2026-10-21",
+      "source": "https://www.basketball-reference.com/boxscores/pbp/202610210LAL.html",
+      "reason": "FAIL_PERIOD_SCORE_OR_POINTS:2:{\"marker\":true,\"last\":{\"away\":52,\"home\":66},\"awayFromActions\":19,\"homeFromActions\":31,\"expectedAway\":52,\"expectedHome\":66}"
+    },
+    {
+      "game": "PHX@POR",
+      "date": "2026-10-21",
+      "source": "https://www.basketball-reference.com/boxscores/pbp/202610210POR.html",
+      "reason": "FAIL_PERIOD_SCORE_OR_POINTS:2:{\"marker\":true,\"last\":{\"away\":39,\"home\":72},\"awayFromActions\":27,\"homeFromActions\":28,\"expectedAway\":39,\"expectedHome\":72}"
+    }
+  ],
+  "results": [
+    {
+      "game": "BOS@DET",
+      "date": "2026-10-20",
+      "source": "https://www.basketball-reference.com/boxscores/pbp/202610200DET.html",
+      "retrieved_utc": "2026-10-23",
+      "parsed_event_rows": 488,
+      "unreadable_rows": 0,
+      "verified_quarter_end_scores": 4,
+      "verified_points_from_made_shots_and_fts": 8,
+      "quarter": {
+        "1": {
+          "away": {
+            "FGA": 21,
+            "FGM": 10,
+            "3PA": 9,
+            "3PM": 4,
+            "FTA": 5,
+            "FTM": 4,
+            "TO": 6,
+            "ORB": 3,
+            "DRB": 8,
+            "substitution_notices": 4,
+            "foul_notices": 6,
+            "blocked_attempts": 2,
+            "stolen_turnovers": 4
+          },
+          "home": {
+            "FGA": 22,
+            "FGM": 11,
+            "3PA": 8,
+            "3PM": 2,
+            "FTA": 4,
+            "FTM": 3,
+            "TO": 4,
+            "ORB": 4,
+            "DRB": 9,
+            "substitution_notices": 6,
+            "foul_notices": 6,
+            "blocked_attempts": 2,
+            "stolen_turnovers": 2
+          },
+          "last_score": {
+            "away": 28,
+            "home": 27
+          },
+          "end_marker": true
+        },
+        "2": {
+          "away": {
+            "FGA": 20,
+            "FGM": 10,
+            "3PA": 11,
+            "3PM": 4,
+            "FTA": 6,
+            "FTM": 6,
+            "TO": 3,
+            "ORB": 3,
+            "DRB": 10,
+            "substitution_notices": 8,
+            "foul_notices": 5,
+            "blocked_attempts": 0,
+            "stolen_turnovers": 2
+          },
+          "home": {
+            "FGA": 22,
+            "FGM": 6,
+            "3PA": 10,
+            "3PM": 2,
+            "FTA": 4,
+            "FTM": 4,
+            "TO": 5,
+            "ORB": 6,
+            "DRB": 7,
+            "substitution_notices": 8,
+            "foul_notices": 6,
+            "blocked_attempts": 2,
+            "stolen_turnovers": 3
+          },
+          "last_score": {
+            "away": 58,
+            "home": 45
+          },
+          "end_marker": true
+        },
+        "3": {
+          "away": {
+            "FGA": 21,
+            "FGM": 10,
+            "3PA": 11,
+            "3PM": 6,
+            "FTA": 5,
+            "FTM": 4,
+            "TO": 3,
+            "ORB": 3,
+            "DRB": 8,
+            "substitution_notices": 6,
+            "foul_notices": 5,
+            "blocked_attempts": 2,
+            "stolen_turnovers": 1
+          },
+          "home": {
+            "FGA": 23,
+            "FGM": 11,
+            "3PA": 13,
+            "3PM": 6,
+            "FTA": 10,
+            "FTM": 9,
+            "TO": 3,
+            "ORB": 5,
+            "DRB": 9,
+            "substitution_notices": 5,
+            "foul_notices": 5,
+            "blocked_attempts": 1,
+            "stolen_turnovers": 1
+          },
+          "last_score": {
+            "away": 88,
+            "home": 82
+          },
+          "end_marker": true
+        },
+        "4": {
+          "away": {
+            "FGA": 26,
+            "FGM": 10,
+            "3PA": 11,
+            "3PM": 3,
+            "FTA": 5,
+            "FTM": 2,
+            "TO": 2,
+            "ORB": 5,
+            "DRB": 5,
+            "substitution_notices": 8,
+            "foul_notices": 7,
+            "blocked_attempts": 1,
+            "stolen_turnovers": 0
+          },
+          "home": {
+            "FGA": 19,
+            "FGM": 11,
+            "3PA": 9,
+            "3PM": 5,
+            "FTA": 14,
+            "FTM": 12,
+            "TO": 5,
+            "ORB": 5,
+            "DRB": 14,
+            "substitution_notices": 9,
+            "foul_notices": 8,
+            "blocked_attempts": 0,
+            "stolen_turnovers": 4
+          },
+          "last_score": {
+            "away": 113,
+            "home": 121
+          },
+          "end_marker": true
+        }
+      },
+      "half": {
+        "away": {
+          "h1": {
+            "FGA": 41,
+            "FGM": 20,
+            "3PA": 20,
+            "3PM": 8,
+            "FTA": 11,
+            "FTM": 10,
+            "TO": 9,
+            "ORB": 6,
+            "DRB": 18,
+            "substitution_notices": 12,
+            "foul_notices": 11,
+            "blocked_attempts": 2,
+            "stolen_turnovers": 6
+          },
+          "h2": {
+            "FGA": 47,
+            "FGM": 20,
+            "3PA": 22,
+            "3PM": 9,
+            "FTA": 10,
+            "FTM": 6,
+            "TO": 5,
+            "ORB": 8,
+            "DRB": 13,
+            "substitution_notices": 14,
+            "foul_notices": 12,
+            "blocked_attempts": 3,
+            "stolen_turnovers": 1
+          }
+        },
+        "home": {
+          "h1": {
+            "FGA": 44,
+            "FGM": 17,
+            "3PA": 18,
+            "3PM": 4,
+            "FTA": 8,
+            "FTM": 7,
+            "TO": 9,
+            "ORB": 10,
+            "DRB": 16,
+            "substitution_notices": 14,
+            "foul_notices": 12,
+            "blocked_attempts": 4,
+            "stolen_turnovers": 5
+          },
+          "h2": {
+            "FGA": 42,
+            "FGM": 22,
+            "3PA": 22,
+            "3PM": 11,
+            "FTA": 24,
+            "FTM": 21,
+            "TO": 8,
+            "ORB": 10,
+            "DRB": 23,
+            "substitution_notices": 14,
+            "foul_notices": 13,
+            "blocked_attempts": 1,
+            "stolen_turnovers": 5
+          }
+        }
+      },
+      "source_bytes_sha256": null,
+      "official_nba_box_independent_parity": false,
+      "exact_possessions": false,
+      "guard_assignments": false
+    },
+    {
+      "game": "PHI@NYK",
+      "date": "2026-10-20",
+      "source": "https://www.basketball-reference.com/boxscores/pbp/202610200NYK.html",
+      "retrieved_utc": "2026-10-23",
+      "parsed_event_rows": 524,
+      "unreadable_rows": 0,
+      "verified_quarter_end_scores": 4,
+      "verified_points_from_made_shots_and_fts": 8,
+      "quarter": {
+        "1": {
+          "away": {
+            "FGA": 22,
+            "FGM": 9,
+            "3PA": 8,
+            "3PM": 2,
+            "FTA": 4,
+            "FTM": 3,
+            "TO": 3,
+            "ORB": 5,
+            "DRB": 11,
+            "substitution_notices": 6,
+            "foul_notices": 6,
+            "blocked_attempts": 4,
+            "stolen_turnovers": 3
+          },
+          "home": {
+            "FGA": 27,
+            "FGM": 10,
+            "3PA": 11,
+            "3PM": 2,
+            "FTA": 5,
+            "FTM": 3,
+            "TO": 3,
+            "ORB": 8,
+            "DRB": 10,
+            "substitution_notices": 8,
+            "foul_notices": 4,
+            "blocked_attempts": 2,
+            "stolen_turnovers": 1
+          },
+          "last_score": {
+            "away": 23,
+            "home": 25
+          },
+          "end_marker": true
+        },
+        "2": {
+          "away": {
+            "FGA": 19,
+            "FGM": 10,
+            "3PA": 5,
+            "3PM": 1,
+            "FTA": 12,
+            "FTM": 10,
+            "TO": 5,
+            "ORB": 2,
+            "DRB": 9,
+            "substitution_notices": 9,
+            "foul_notices": 8,
+            "blocked_attempts": 2,
+            "stolen_turnovers": 2
+          },
+          "home": {
+            "FGA": 21,
+            "FGM": 10,
+            "3PA": 4,
+            "3PM": 2,
+            "FTA": 16,
+            "FTM": 11,
+            "TO": 6,
+            "ORB": 7,
+            "DRB": 9,
+            "substitution_notices": 7,
+            "foul_notices": 11,
+            "blocked_attempts": 2,
+            "stolen_turnovers": 3
+          },
+          "last_score": {
+            "away": 54,
+            "home": 58
+          },
+          "end_marker": true
+        },
+        "3": {
+          "away": {
+            "FGA": 27,
+            "FGM": 12,
+            "3PA": 16,
+            "3PM": 5,
+            "FTA": 0,
+            "FTM": 0,
+            "TO": 1,
+            "ORB": 2,
+            "DRB": 14,
+            "substitution_notices": 6,
+            "foul_notices": 1,
+            "blocked_attempts": 0,
+            "stolen_turnovers": 0
+          },
+          "home": {
+            "FGA": 21,
+            "FGM": 5,
+            "3PA": 10,
+            "3PM": 3,
+            "FTA": 6,
+            "FTM": 5,
+            "TO": 5,
+            "ORB": 3,
+            "DRB": 13,
+            "substitution_notices": 6,
+            "foul_notices": 5,
+            "blocked_attempts": 1,
+            "stolen_turnovers": 3
+          },
+          "last_score": {
+            "away": 83,
+            "home": 76
+          },
+          "end_marker": true
+        },
+        "4": {
+          "away": {
+            "FGA": 21,
+            "FGM": 6,
+            "3PA": 11,
+            "3PM": 3,
+            "FTA": 11,
+            "FTM": 8,
+            "TO": 3,
+            "ORB": 9,
+            "DRB": 10,
+            "substitution_notices": 7,
+            "foul_notices": 7,
+            "blocked_attempts": 2,
+            "stolen_turnovers": 1
+          },
+          "home": {
+            "FGA": 25,
+            "FGM": 10,
+            "3PA": 8,
+            "3PM": 4,
+            "FTA": 0,
+            "FTM": 0,
+            "TO": 1,
+            "ORB": 5,
+            "DRB": 9,
+            "substitution_notices": 8,
+            "foul_notices": 4,
+            "blocked_attempts": 5,
+            "stolen_turnovers": 1
+          },
+          "last_score": {
+            "away": 106,
+            "home": 100
+          },
+          "end_marker": true
+        }
+      },
+      "half": {
+        "away": {
+          "h1": {
+            "FGA": 41,
+            "FGM": 19,
+            "3PA": 13,
+            "3PM": 3,
+            "FTA": 16,
+            "FTM": 13,
+            "TO": 8,
+            "ORB": 7,
+            "DRB": 20,
+            "substitution_notices": 15,
+            "foul_notices": 14,
+            "blocked_attempts": 6,
+            "stolen_turnovers": 5
+          },
+          "h2": {
+            "FGA": 48,
+            "FGM": 18,
+            "3PA": 27,
+            "3PM": 8,
+            "FTA": 11,
+            "FTM": 8,
+            "TO": 4,
+            "ORB": 11,
+            "DRB": 24,
+            "substitution_notices": 13,
+            "foul_notices": 8,
+            "blocked_attempts": 2,
+            "stolen_turnovers": 1
+          }
+        },
+        "home": {
+          "h1": {
+            "FGA": 48,
+            "FGM": 20,
+            "3PA": 15,
+            "3PM": 4,
+            "FTA": 21,
+            "FTM": 14,
+            "TO": 9,
+            "ORB": 15,
+            "DRB": 19,
+            "substitution_notices": 15,
+            "foul_notices": 15,
+            "blocked_attempts": 4,
+            "stolen_turnovers": 4
+          },
+          "h2": {
+            "FGA": 46,
+            "FGM": 15,
+            "3PA": 18,
+            "3PM": 7,
+            "FTA": 6,
+            "FTM": 5,
+            "TO": 6,
+            "ORB": 8,
+            "DRB": 22,
+            "substitution_notices": 14,
+            "foul_notices": 9,
+            "blocked_attempts": 6,
+            "stolen_turnovers": 4
+          }
+        }
+      },
+      "source_bytes_sha256": null,
+      "official_nba_box_independent_parity": false,
+      "exact_possessions": false,
+      "guard_assignments": false
+    },
+    {
+      "game": "ATL@ORL",
+      "date": "2026-10-21",
+      "source": "https://www.basketball-reference.com/boxscores/pbp/202610210ORL.html",
+      "retrieved_utc": "2026-10-23",
+      "parsed_event_rows": 532,
+      "unreadable_rows": 0,
+      "verified_quarter_end_scores": 4,
+      "verified_points_from_made_shots_and_fts": 8,
+      "quarter": {
+        "1": {
+          "away": {
+            "FGA": 24,
+            "FGM": 11,
+            "3PA": 9,
+            "3PM": 2,
+            "FTA": 7,
+            "FTM": 4,
+            "TO": 4,
+            "ORB": 6,
+            "DRB": 6,
+            "substitution_notices": 6,
+            "foul_notices": 6,
+            "blocked_attempts": 1,
+            "stolen_turnovers": 2
+          },
+          "home": {
+            "FGA": 21,
+            "FGM": 12,
+            "3PA": 9,
+            "3PM": 4,
+            "FTA": 7,
+            "FTM": 5,
+            "TO": 7,
+            "ORB": 6,
+            "DRB": 10,
+            "substitution_notices": 10,
+            "foul_notices": 6,
+            "blocked_attempts": 2,
+            "stolen_turnovers": 2
+          },
+          "last_score": {
+            "away": 28,
+            "home": 33
+          },
+          "end_marker": true
+        },
+        "2": {
+          "away": {
+            "FGA": 24,
+            "FGM": 14,
+            "3PA": 7,
+            "3PM": 4,
+            "FTA": 14,
+            "FTM": 12,
+            "TO": 4,
+            "ORB": 6,
+            "DRB": 11,
+            "substitution_notices": 5,
+            "foul_notices": 6,
+            "blocked_attempts": 1,
+            "stolen_turnovers": 3
+          },
+          "home": {
+            "FGA": 18,
+            "FGM": 8,
+            "3PA": 11,
+            "3PM": 5,
+            "FTA": 10,
+            "FTM": 8,
+            "TO": 6,
+            "ORB": 1,
+            "DRB": 6,
+            "substitution_notices": 6,
+            "foul_notices": 9,
+            "blocked_attempts": 1,
+            "stolen_turnovers": 4
+          },
+          "last_score": {
+            "away": 72,
+            "home": 62
+          },
+          "end_marker": true
+        },
+        "3": {
+          "away": {
+            "FGA": 20,
+            "FGM": 8,
+            "3PA": 10,
+            "3PM": 4,
+            "FTA": 7,
+            "FTM": 7,
+            "TO": 6,
+            "ORB": 3,
+            "DRB": 6,
+            "substitution_notices": 7,
+            "foul_notices": 10,
+            "blocked_attempts": 1,
+            "stolen_turnovers": 3
+          },
+          "home": {
+            "FGA": 20,
+            "FGM": 10,
+            "3PA": 8,
+            "3PM": 3,
+            "FTA": 20,
+            "FTM": 15,
+            "TO": 3,
+            "ORB": 9,
+            "DRB": 9,
+            "substitution_notices": 8,
+            "foul_notices": 11,
+            "blocked_attempts": 0,
+            "stolen_turnovers": 2
+          },
+          "last_score": {
+            "away": 99,
+            "home": 100
+          },
+          "end_marker": true
+        },
+        "4": {
+          "away": {
+            "FGA": 22,
+            "FGM": 11,
+            "3PA": 10,
+            "3PM": 4,
+            "FTA": 8,
+            "FTM": 7,
+            "TO": 3,
+            "ORB": 3,
+            "DRB": 11,
+            "substitution_notices": 5,
+            "foul_notices": 6,
+            "blocked_attempts": 0,
+            "stolen_turnovers": 2
+          },
+          "home": {
+            "FGA": 26,
+            "FGM": 11,
+            "3PA": 12,
+            "3PM": 1,
+            "FTA": 2,
+            "FTM": 2,
+            "TO": 4,
+            "ORB": 4,
+            "DRB": 9,
+            "substitution_notices": 6,
+            "foul_notices": 4,
+            "blocked_attempts": 0,
+            "stolen_turnovers": 1
+          },
+          "last_score": {
+            "away": 132,
+            "home": 125
+          },
+          "end_marker": true
+        }
+      },
+      "half": {
+        "away": {
+          "h1": {
+            "FGA": 48,
+            "FGM": 25,
+            "3PA": 16,
+            "3PM": 6,
+            "FTA": 21,
+            "FTM": 16,
+            "TO": 8,
+            "ORB": 12,
+            "DRB": 17,
+            "substitution_notices": 11,
+            "foul_notices": 12,
+            "blocked_attempts": 2,
+            "stolen_turnovers": 5
+          },
+          "h2": {
+            "FGA": 42,
+            "FGM": 19,
+            "3PA": 20,
+            "3PM": 8,
+            "FTA": 15,
+            "FTM": 14,
+            "TO": 9,
+            "ORB": 6,
+            "DRB": 17,
+            "substitution_notices": 12,
+            "foul_notices": 16,
+            "blocked_attempts": 1,
+            "stolen_turnovers": 5
+          }
+        },
+        "home": {
+          "h1": {
+            "FGA": 39,
+            "FGM": 20,
+            "3PA": 20,
+            "3PM": 9,
+            "FTA": 17,
+            "FTM": 13,
+            "TO": 13,
+            "ORB": 7,
+            "DRB": 16,
+            "substitution_notices": 16,
+            "foul_notices": 15,
+            "blocked_attempts": 3,
+            "stolen_turnovers": 6
+          },
+          "h2": {
+            "FGA": 46,
+            "FGM": 21,
+            "3PA": 20,
+            "3PM": 4,
+            "FTA": 22,
+            "FTM": 17,
+            "TO": 7,
+            "ORB": 13,
+            "DRB": 18,
+            "substitution_notices": 14,
+            "foul_notices": 15,
+            "blocked_attempts": 0,
+            "stolen_turnovers": 3
+          }
+        }
+      },
+      "source_bytes_sha256": null,
+      "official_nba_box_independent_parity": false,
+      "exact_possessions": false,
+      "guard_assignments": false
+    },
+    {
+      "game": "MIL@WAS",
+      "date": "2026-10-21",
+      "source": "https://www.basketball-reference.com/boxscores/pbp/202610210WAS.html",
+      "retrieved_utc": "2026-10-23",
+      "parsed_event_rows": 514,
+      "unreadable_rows": 0,
+      "verified_quarter_end_scores": 4,
+      "verified_points_from_made_shots_and_fts": 8,
+      "quarter": {
+        "1": {
+          "away": {
+            "FGA": 25,
+            "FGM": 10,
+            "3PA": 9,
+            "3PM": 2,
+            "FTA": 1,
+            "FTM": 1,
+            "TO": 4,
+            "ORB": 2,
+            "DRB": 12,
+            "substitution_notices": 7,
+            "foul_notices": 4,
+            "blocked_attempts": 0,
+            "stolen_turnovers": 3
+          },
+          "home": {
+            "FGA": 22,
+            "FGM": 9,
+            "3PA": 9,
+            "3PM": 1,
+            "FTA": 9,
+            "FTM": 6,
+            "TO": 4,
+            "ORB": 4,
+            "DRB": 13,
+            "substitution_notices": 6,
+            "foul_notices": 7,
+            "blocked_attempts": 2,
+            "stolen_turnovers": 2
+          },
+          "last_score": {
+            "away": 23,
+            "home": 25
+          },
+          "end_marker": true
+        },
+        "2": {
+          "away": {
+            "FGA": 23,
+            "FGM": 11,
+            "3PA": 8,
+            "3PM": 3,
+            "FTA": 9,
+            "FTM": 8,
+            "TO": 4,
+            "ORB": 7,
+            "DRB": 9,
+            "substitution_notices": 11,
+            "foul_notices": 8,
+            "blocked_attempts": 4,
+            "stolen_turnovers": 2
+          },
+          "home": {
+            "FGA": 21,
+            "FGM": 9,
+            "3PA": 8,
+            "3PM": 2,
+            "FTA": 7,
+            "FTM": 6,
+            "TO": 4,
+            "ORB": 4,
+            "DRB": 6,
+            "substitution_notices": 8,
+            "foul_notices": 7,
+            "blocked_attempts": 0,
+            "stolen_turnovers": 1
+          },
+          "last_score": {
+            "away": 56,
+            "home": 51
+          },
+          "end_marker": true
+        },
+        "3": {
+          "away": {
+            "FGA": 19,
+            "FGM": 12,
+            "3PA": 11,
+            "3PM": 6,
+            "FTA": 9,
+            "FTM": 7,
+            "TO": 5,
+            "ORB": 3,
+            "DRB": 6,
+            "substitution_notices": 9,
+            "foul_notices": 8,
+            "blocked_attempts": 0,
+            "stolen_turnovers": 4
+          },
+          "home": {
+            "FGA": 22,
+            "FGM": 12,
+            "3PA": 5,
+            "3PM": 1,
+            "FTA": 18,
+            "FTM": 14,
+            "TO": 3,
+            "ORB": 9,
+            "DRB": 6,
+            "substitution_notices": 7,
+            "foul_notices": 10,
+            "blocked_attempts": 0,
+            "stolen_turnovers": 2
+          },
+          "last_score": {
+            "away": 93,
+            "home": 90
+          },
+          "end_marker": true
+        },
+        "4": {
+          "away": {
+            "FGA": 24,
+            "FGM": 8,
+            "3PA": 13,
+            "3PM": 4,
+            "FTA": 4,
+            "FTM": 3,
+            "TO": 3,
+            "ORB": 5,
+            "DRB": 4,
+            "substitution_notices": 8,
+            "foul_notices": 5,
+            "blocked_attempts": 3,
+            "stolen_turnovers": 2
+          },
+          "home": {
+            "FGA": 21,
+            "FGM": 15,
+            "3PA": 6,
+            "3PM": 2,
+            "FTA": 7,
+            "FTM": 6,
+            "TO": 2,
+            "ORB": 3,
+            "DRB": 12,
+            "substitution_notices": 5,
+            "foul_notices": 6,
+            "blocked_attempts": 0,
+            "stolen_turnovers": 0
+          },
+          "last_score": {
+            "away": 116,
+            "home": 128
+          },
+          "end_marker": true
+        }
+      },
+      "half": {
+        "away": {
+          "h1": {
+            "FGA": 48,
+            "FGM": 21,
+            "3PA": 17,
+            "3PM": 5,
+            "FTA": 10,
+            "FTM": 9,
+            "TO": 8,
+            "ORB": 9,
+            "DRB": 21,
+            "substitution_notices": 18,
+            "foul_notices": 12,
+            "blocked_attempts": 4,
+            "stolen_turnovers": 5
+          },
+          "h2": {
+            "FGA": 43,
+            "FGM": 20,
+            "3PA": 24,
+            "3PM": 10,
+            "FTA": 13,
+            "FTM": 10,
+            "TO": 8,
+            "ORB": 8,
+            "DRB": 10,
+            "substitution_notices": 17,
+            "foul_notices": 13,
+            "blocked_attempts": 3,
+            "stolen_turnovers": 6
+          }
+        },
+        "home": {
+          "h1": {
+            "FGA": 43,
+            "FGM": 18,
+            "3PA": 17,
+            "3PM": 3,
+            "FTA": 16,
+            "FTM": 12,
+            "TO": 8,
+            "ORB": 8,
+            "DRB": 19,
+            "substitution_notices": 14,
+            "foul_notices": 14,
+            "blocked_attempts": 2,
+            "stolen_turnovers": 3
+          },
+          "h2": {
+            "FGA": 43,
+            "FGM": 27,
+            "3PA": 11,
+            "3PM": 3,
+            "FTA": 25,
+            "FTM": 20,
+            "TO": 5,
+            "ORB": 12,
+            "DRB": 18,
+            "substitution_notices": 12,
+            "foul_notices": 16,
+            "blocked_attempts": 0,
+            "stolen_turnovers": 2
+          }
+        }
+      },
+      "source_bytes_sha256": null,
+      "official_nba_box_independent_parity": false,
+      "exact_possessions": false,
+      "guard_assignments": false
+    },
+    {
+      "game": "CHA@BKN",
+      "date": "2026-10-21",
+      "source": "https://www.basketball-reference.com/boxscores/pbp/202610210BRK.html",
+      "retrieved_utc": "2026-10-23",
+      "parsed_event_rows": 495,
+      "unreadable_rows": 0,
+      "verified_quarter_end_scores": 4,
+      "verified_points_from_made_shots_and_fts": 8,
+      "quarter": {
+        "1": {
+          "away": {
+            "FGA": 22,
+            "FGM": 10,
+            "3PA": 11,
+            "3PM": 3,
+            "FTA": 4,
+            "FTM": 4,
+            "TO": 4,
+            "ORB": 7,
+            "DRB": 10,
+            "substitution_notices": 7,
+            "foul_notices": 5,
+            "blocked_attempts": 1,
+            "stolen_turnovers": 0
+          },
+          "home": {
+            "FGA": 22,
+            "FGM": 9,
+            "3PA": 8,
+            "3PM": 3,
+            "FTA": 4,
+            "FTM": 2,
+            "TO": 4,
+            "ORB": 5,
+            "DRB": 6,
+            "substitution_notices": 6,
+            "foul_notices": 8,
+            "blocked_attempts": 0,
+            "stolen_turnovers": 1
+          },
+          "last_score": {
+            "away": 27,
+            "home": 23
+          },
+          "end_marker": true
+        },
+        "2": {
+          "away": {
+            "FGA": 25,
+            "FGM": 11,
+            "3PA": 13,
+            "3PM": 3,
+            "FTA": 2,
+            "FTM": 2,
+            "TO": 4,
+            "ORB": 4,
+            "DRB": 8,
+            "substitution_notices": 10,
+            "foul_notices": 6,
+            "blocked_attempts": 1,
+            "stolen_turnovers": 1
+          },
+          "home": {
+            "FGA": 19,
+            "FGM": 9,
+            "3PA": 8,
+            "3PM": 4,
+            "FTA": 4,
+            "FTM": 3,
+            "TO": 6,
+            "ORB": 3,
+            "DRB": 10,
+            "substitution_notices": 8,
+            "foul_notices": 5,
+            "blocked_attempts": 2,
+            "stolen_turnovers": 2
+          },
+          "last_score": {
+            "away": 54,
+            "home": 48
+          },
+          "end_marker": true
+        },
+        "3": {
+          "away": {
+            "FGA": 26,
+            "FGM": 11,
+            "3PA": 13,
+            "3PM": 6,
+            "FTA": 4,
+            "FTM": 4,
+            "TO": 7,
+            "ORB": 8,
+            "DRB": 7,
+            "substitution_notices": 9,
+            "foul_notices": 2,
+            "blocked_attempts": 1,
+            "stolen_turnovers": 3
+          },
+          "home": {
+            "FGA": 17,
+            "FGM": 9,
+            "3PA": 5,
+            "3PM": 3,
+            "FTA": 14,
+            "FTM": 12,
+            "TO": 6,
+            "ORB": 3,
+            "DRB": 7,
+            "substitution_notices": 5,
+            "foul_notices": 14,
+            "blocked_attempts": 2,
+            "stolen_turnovers": 2
+          },
+          "last_score": {
+            "away": 86,
+            "home": 81
+          },
+          "end_marker": true
+        },
+        "4": {
+          "away": {
+            "FGA": 20,
+            "FGM": 9,
+            "3PA": 11,
+            "3PM": 3,
+            "FTA": 5,
+            "FTM": 3,
+            "TO": 6,
+            "ORB": 4,
+            "DRB": 10,
+            "substitution_notices": 7,
+            "foul_notices": 6,
+            "blocked_attempts": 2,
+            "stolen_turnovers": 3
+          },
+          "home": {
+            "FGA": 22,
+            "FGM": 9,
+            "3PA": 10,
+            "3PM": 2,
+            "FTA": 3,
+            "FTM": 2,
+            "TO": 6,
+            "ORB": 4,
+            "DRB": 9,
+            "substitution_notices": 5,
+            "foul_notices": 4,
+            "blocked_attempts": 0,
+            "stolen_turnovers": 4
+          },
+          "last_score": {
+            "away": 110,
+            "home": 103
+          },
+          "end_marker": true
+        }
+      },
+      "half": {
+        "away": {
+          "h1": {
+            "FGA": 47,
+            "FGM": 21,
+            "3PA": 24,
+            "3PM": 6,
+            "FTA": 6,
+            "FTM": 6,
+            "TO": 8,
+            "ORB": 11,
+            "DRB": 18,
+            "substitution_notices": 17,
+            "foul_notices": 11,
+            "blocked_attempts": 2,
+            "stolen_turnovers": 1
+          },
+          "h2": {
+            "FGA": 46,
+            "FGM": 20,
+            "3PA": 24,
+            "3PM": 9,
+            "FTA": 9,
+            "FTM": 7,
+            "TO": 13,
+            "ORB": 12,
+            "DRB": 17,
+            "substitution_notices": 16,
+            "foul_notices": 8,
+            "blocked_attempts": 3,
+            "stolen_turnovers": 6
+          }
+        },
+        "home": {
+          "h1": {
+            "FGA": 41,
+            "FGM": 18,
+            "3PA": 16,
+            "3PM": 7,
+            "FTA": 8,
+            "FTM": 5,
+            "TO": 10,
+            "ORB": 8,
+            "DRB": 16,
+            "substitution_notices": 14,
+            "foul_notices": 13,
+            "blocked_attempts": 2,
+            "stolen_turnovers": 3
+          },
+          "h2": {
+            "FGA": 39,
+            "FGM": 18,
+            "3PA": 15,
+            "3PM": 5,
+            "FTA": 17,
+            "FTM": 14,
+            "TO": 12,
+            "ORB": 7,
+            "DRB": 16,
+            "substitution_notices": 10,
+            "foul_notices": 18,
+            "blocked_attempts": 2,
+            "stolen_turnovers": 6
+          }
+        }
+      },
+      "source_bytes_sha256": null,
+      "official_nba_box_independent_parity": false,
+      "exact_possessions": false,
+      "guard_assignments": false
+    },
+    {
+      "game": "UTA@MEM",
+      "date": "2026-10-21",
+      "source": "https://www.basketball-reference.com/boxscores/pbp/202610210MEM.html",
+      "retrieved_utc": "2026-10-23",
+      "parsed_event_rows": 507,
+      "unreadable_rows": 0,
+      "verified_quarter_end_scores": 4,
+      "verified_points_from_made_shots_and_fts": 8,
+      "quarter": {
+        "1": {
+          "away": {
+            "FGA": 19,
+            "FGM": 10,
+            "3PA": 10,
+            "3PM": 4,
+            "FTA": 10,
+            "FTM": 7,
+            "TO": 5,
+            "ORB": 3,
+            "DRB": 11,
+            "substitution_notices": 5,
+            "foul_notices": 9,
+            "blocked_attempts": 1,
+            "stolen_turnovers": 1
+          },
+          "home": {
+            "FGA": 22,
+            "FGM": 10,
+            "3PA": 9,
+            "3PM": 3,
+            "FTA": 7,
+            "FTM": 6,
+            "TO": 5,
+            "ORB": 2,
+            "DRB": 9,
+            "substitution_notices": 8,
+            "foul_notices": 3,
+            "blocked_attempts": 5,
+            "stolen_turnovers": 5
+          },
+          "last_score": {
+            "away": 31,
+            "home": 29
+          },
+          "end_marker": true
+        },
+        "2": {
+          "away": {
+            "FGA": 22,
+            "FGM": 9,
+            "3PA": 9,
+            "3PM": 2,
+            "FTA": 3,
+            "FTM": 0,
+            "TO": 3,
+            "ORB": 1,
+            "DRB": 9,
+            "substitution_notices": 6,
+            "foul_notices": 5,
+            "blocked_attempts": 2,
+            "stolen_turnovers": 2
+          },
+          "home": {
+            "FGA": 26,
+            "FGM": 12,
+            "3PA": 8,
+            "3PM": 4,
+            "FTA": 9,
+            "FTM": 7,
+            "TO": 2,
+            "ORB": 7,
+            "DRB": 15,
+            "substitution_notices": 8,
+            "foul_notices": 7,
+            "blocked_attempts": 4,
+            "stolen_turnovers": 1
+          },
+          "last_score": {
+            "away": 51,
+            "home": 64
+          },
+          "end_marker": true
+        },
+        "3": {
+          "away": {
+            "FGA": 22,
+            "FGM": 10,
+            "3PA": 6,
+            "3PM": 2,
+            "FTA": 8,
+            "FTM": 6,
+            "TO": 6,
+            "ORB": 5,
+            "DRB": 5,
+            "substitution_notices": 7,
+            "foul_notices": 8,
+            "blocked_attempts": 4,
+            "stolen_turnovers": 3
+          },
+          "home": {
+            "FGA": 22,
+            "FGM": 13,
+            "3PA": 7,
+            "3PM": 3,
+            "FTA": 6,
+            "FTM": 5,
+            "TO": 6,
+            "ORB": 5,
+            "DRB": 10,
+            "substitution_notices": 9,
+            "foul_notices": 4,
+            "blocked_attempts": 2,
+            "stolen_turnovers": 3
+          },
+          "last_score": {
+            "away": 79,
+            "home": 98
+          },
+          "end_marker": true
+        },
+        "4": {
+          "away": {
+            "FGA": 12,
+            "FGM": 6,
+            "3PA": 7,
+            "3PM": 3,
+            "FTA": 12,
+            "FTM": 9,
+            "TO": 4,
+            "ORB": 2,
+            "DRB": 8,
+            "substitution_notices": 10,
+            "foul_notices": 8,
+            "blocked_attempts": 0,
+            "stolen_turnovers": 2
+          },
+          "home": {
+            "FGA": 23,
+            "FGM": 9,
+            "3PA": 10,
+            "3PM": 3,
+            "FTA": 6,
+            "FTM": 4,
+            "TO": 2,
+            "ORB": 8,
+            "DRB": 7,
+            "substitution_notices": 11,
+            "foul_notices": 5,
+            "blocked_attempts": 1,
+            "stolen_turnovers": 0
+          },
+          "last_score": {
+            "away": 103,
+            "home": 123
+          },
+          "end_marker": true
+        }
+      },
+      "half": {
+        "away": {
+          "h1": {
+            "FGA": 41,
+            "FGM": 19,
+            "3PA": 19,
+            "3PM": 6,
+            "FTA": 13,
+            "FTM": 7,
+            "TO": 8,
+            "ORB": 4,
+            "DRB": 20,
+            "substitution_notices": 11,
+            "foul_notices": 14,
+            "blocked_attempts": 3,
+            "stolen_turnovers": 3
+          },
+          "h2": {
+            "FGA": 34,
+            "FGM": 16,
+            "3PA": 13,
+            "3PM": 5,
+            "FTA": 20,
+            "FTM": 15,
+            "TO": 10,
+            "ORB": 7,
+            "DRB": 13,
+            "substitution_notices": 17,
+            "foul_notices": 16,
+            "blocked_attempts": 4,
+            "stolen_turnovers": 5
+          }
+        },
+        "home": {
+          "h1": {
+            "FGA": 48,
+            "FGM": 22,
+            "3PA": 17,
+            "3PM": 7,
+            "FTA": 16,
+            "FTM": 13,
+            "TO": 7,
+            "ORB": 9,
+            "DRB": 24,
+            "substitution_notices": 16,
+            "foul_notices": 10,
+            "blocked_attempts": 9,
+            "stolen_turnovers": 6
+          },
+          "h2": {
+            "FGA": 45,
+            "FGM": 22,
+            "3PA": 17,
+            "3PM": 6,
+            "FTA": 12,
+            "FTM": 9,
+            "TO": 8,
+            "ORB": 13,
+            "DRB": 17,
+            "substitution_notices": 20,
+            "foul_notices": 9,
+            "blocked_attempts": 3,
+            "stolen_turnovers": 3
+          }
+        }
+      },
+      "source_bytes_sha256": null,
+      "official_nba_box_independent_parity": false,
+      "exact_possessions": false,
+      "guard_assignments": false
+    },
+    {
+      "game": "SAC@LAC",
+      "date": "2026-10-21",
+      "source": "https://www.basketball-reference.com/boxscores/pbp/202610210LAC.html",
+      "retrieved_utc": "2026-10-23",
+      "parsed_event_rows": 487,
+      "unreadable_rows": 0,
+      "verified_quarter_end_scores": 4,
+      "verified_points_from_made_shots_and_fts": 8,
+      "quarter": {
+        "1": {
+          "away": {
+            "FGA": 22,
+            "FGM": 11,
+            "3PA": 8,
+            "3PM": 3,
+            "FTA": 8,
+            "FTM": 4,
+            "TO": 4,
+            "ORB": 5,
+            "DRB": 6,
+            "substitution_notices": 7,
+            "foul_notices": 7,
+            "blocked_attempts": 0,
+            "stolen_turnovers": 3
+          },
+          "home": {
+            "FGA": 21,
+            "FGM": 14,
+            "3PA": 10,
+            "3PM": 7,
+            "FTA": 9,
+            "FTM": 6,
+            "TO": 4,
+            "ORB": 4,
+            "DRB": 10,
+            "substitution_notices": 5,
+            "foul_notices": 7,
+            "blocked_attempts": 0,
+            "stolen_turnovers": 1
+          },
+          "last_score": {
+            "away": 29,
+            "home": 41
+          },
+          "end_marker": true
+        },
+        "2": {
+          "away": {
+            "FGA": 20,
+            "FGM": 8,
+            "3PA": 8,
+            "3PM": 3,
+            "FTA": 11,
+            "FTM": 6,
+            "TO": 4,
+            "ORB": 6,
+            "DRB": 11,
+            "substitution_notices": 5,
+            "foul_notices": 6,
+            "blocked_attempts": 2,
+            "stolen_turnovers": 3
+          },
+          "home": {
+            "FGA": 21,
+            "FGM": 8,
+            "3PA": 6,
+            "3PM": 0,
+            "FTA": 8,
+            "FTM": 4,
+            "TO": 5,
+            "ORB": 6,
+            "DRB": 11,
+            "substitution_notices": 7,
+            "foul_notices": 5,
+            "blocked_attempts": 0,
+            "stolen_turnovers": 4
+          },
+          "last_score": {
+            "away": 54,
+            "home": 61
+          },
+          "end_marker": true
+        },
+        "3": {
+          "away": {
+            "FGA": 22,
+            "FGM": 6,
+            "3PA": 8,
+            "3PM": 1,
+            "FTA": 3,
+            "FTM": 3,
+            "TO": 6,
+            "ORB": 4,
+            "DRB": 7,
+            "substitution_notices": 7,
+            "foul_notices": 5,
+            "blocked_attempts": 1,
+            "stolen_turnovers": 5
+          },
+          "home": {
+            "FGA": 17,
+            "FGM": 11,
+            "3PA": 5,
+            "3PM": 2,
+            "FTA": 10,
+            "FTM": 8,
+            "TO": 5,
+            "ORB": 1,
+            "DRB": 12,
+            "substitution_notices": 5,
+            "foul_notices": 7,
+            "blocked_attempts": 0,
+            "stolen_turnovers": 2
+          },
+          "last_score": {
+            "away": 70,
+            "home": 93
+          },
+          "end_marker": true
+        },
+        "4": {
+          "away": {
+            "FGA": 21,
+            "FGM": 11,
+            "3PA": 4,
+            "3PM": 1,
+            "FTA": 6,
+            "FTM": 3,
+            "TO": 3,
+            "ORB": 5,
+            "DRB": 8,
+            "substitution_notices": 5,
+            "foul_notices": 6,
+            "blocked_attempts": 2,
+            "stolen_turnovers": 3
+          },
+          "home": {
+            "FGA": 23,
+            "FGM": 10,
+            "3PA": 14,
+            "3PM": 5,
+            "FTA": 4,
+            "FTM": 3,
+            "TO": 4,
+            "ORB": 6,
+            "DRB": 8,
+            "substitution_notices": 9,
+            "foul_notices": 4,
+            "blocked_attempts": 0,
+            "stolen_turnovers": 3
+          },
+          "last_score": {
+            "away": 96,
+            "home": 121
+          },
+          "end_marker": true
+        }
+      },
+      "half": {
+        "away": {
+          "h1": {
+            "FGA": 42,
+            "FGM": 19,
+            "3PA": 16,
+            "3PM": 6,
+            "FTA": 19,
+            "FTM": 10,
+            "TO": 8,
+            "ORB": 11,
+            "DRB": 17,
+            "substitution_notices": 12,
+            "foul_notices": 13,
+            "blocked_attempts": 2,
+            "stolen_turnovers": 6
+          },
+          "h2": {
+            "FGA": 43,
+            "FGM": 17,
+            "3PA": 12,
+            "3PM": 2,
+            "FTA": 9,
+            "FTM": 6,
+            "TO": 9,
+            "ORB": 9,
+            "DRB": 15,
+            "substitution_notices": 12,
+            "foul_notices": 11,
+            "blocked_attempts": 3,
+            "stolen_turnovers": 8
+          }
+        },
+        "home": {
+          "h1": {
+            "FGA": 42,
+            "FGM": 22,
+            "3PA": 16,
+            "3PM": 7,
+            "FTA": 17,
+            "FTM": 10,
+            "TO": 9,
+            "ORB": 10,
+            "DRB": 21,
+            "substitution_notices": 12,
+            "foul_notices": 12,
+            "blocked_attempts": 0,
+            "stolen_turnovers": 5
+          },
+          "h2": {
+            "FGA": 40,
+            "FGM": 21,
+            "3PA": 19,
+            "3PM": 7,
+            "FTA": 14,
+            "FTM": 11,
+            "TO": 9,
+            "ORB": 7,
+            "DRB": 20,
+            "substitution_notices": 14,
+            "foul_notices": 11,
+            "blocked_attempts": 0,
+            "stolen_turnovers": 5
+          }
+        }
+      },
+      "source_bytes_sha256": null,
+      "official_nba_box_independent_parity": false,
+      "exact_possessions": false,
+      "guard_assignments": false
+    },
+    {
+      "game": "CLE@PHI",
+      "date": "2026-10-22",
+      "source": "https://www.basketball-reference.com/boxscores/pbp/202610220PHI.html",
+      "retrieved_utc": "2026-10-23",
+      "parsed_event_rows": 510,
+      "unreadable_rows": 0,
+      "verified_quarter_end_scores": 4,
+      "verified_points_from_made_shots_and_fts": 8,
+      "quarter": {
+        "1": {
+          "away": {
+            "FGA": 25,
+            "FGM": 13,
+            "3PA": 6,
+            "3PM": 3,
+            "FTA": 7,
+            "FTM": 6,
+            "TO": 2,
+            "ORB": 4,
+            "DRB": 9,
+            "substitution_notices": 5,
+            "foul_notices": 5,
+            "blocked_attempts": 1,
+            "stolen_turnovers": 0
+          },
+          "home": {
+            "FGA": 21,
+            "FGM": 8,
+            "3PA": 8,
+            "3PM": 2,
+            "FTA": 0,
+            "FTM": 0,
+            "TO": 9,
+            "ORB": 4,
+            "DRB": 9,
+            "substitution_notices": 5,
+            "foul_notices": 1,
+            "blocked_attempts": 3,
+            "stolen_turnovers": 7
+          },
+          "last_score": {
+            "away": 35,
+            "home": 18
+          },
+          "end_marker": true
+        },
+        "2": {
+          "away": {
+            "FGA": 24,
+            "FGM": 12,
+            "3PA": 9,
+            "3PM": 2,
+            "FTA": 10,
+            "FTM": 8,
+            "TO": 4,
+            "ORB": 6,
+            "DRB": 11,
+            "substitution_notices": 8,
+            "foul_notices": 6,
+            "blocked_attempts": 0,
+            "stolen_turnovers": 3
+          },
+          "home": {
+            "FGA": 23,
+            "FGM": 10,
+            "3PA": 7,
+            "3PM": 2,
+            "FTA": 8,
+            "FTM": 5,
+            "TO": 6,
+            "ORB": 5,
+            "DRB": 8,
+            "substitution_notices": 8,
+            "foul_notices": 6,
+            "blocked_attempts": 1,
+            "stolen_turnovers": 2
+          },
+          "last_score": {
+            "away": 69,
+            "home": 45
+          },
+          "end_marker": true
+        },
+        "3": {
+          "away": {
+            "FGA": 19,
+            "FGM": 9,
+            "3PA": 6,
+            "3PM": 0,
+            "FTA": 5,
+            "FTM": 3,
+            "TO": 8,
+            "ORB": 2,
+            "DRB": 9,
+            "substitution_notices": 5,
+            "foul_notices": 7,
+            "blocked_attempts": 1,
+            "stolen_turnovers": 4
+          },
+          "home": {
+            "FGA": 24,
+            "FGM": 11,
+            "3PA": 7,
+            "3PM": 2,
+            "FTA": 17,
+            "FTM": 13,
+            "TO": 2,
+            "ORB": 8,
+            "DRB": 10,
+            "substitution_notices": 5,
+            "foul_notices": 8,
+            "blocked_attempts": 3,
+            "stolen_turnovers": 1
+          },
+          "last_score": {
+            "away": 90,
+            "home": 82
+          },
+          "end_marker": true
+        },
+        "4": {
+          "away": {
+            "FGA": 19,
+            "FGM": 5,
+            "3PA": 8,
+            "3PM": 2,
+            "FTA": 6,
+            "FTM": 4,
+            "TO": 7,
+            "ORB": 5,
+            "DRB": 9,
+            "substitution_notices": 9,
+            "foul_notices": 9,
+            "blocked_attempts": 0,
+            "stolen_turnovers": 3
+          },
+          "home": {
+            "FGA": 24,
+            "FGM": 13,
+            "3PA": 6,
+            "3PM": 1,
+            "FTA": 5,
+            "FTM": 5,
+            "TO": 0,
+            "ORB": 2,
+            "DRB": 11,
+            "substitution_notices": 5,
+            "foul_notices": 4,
+            "blocked_attempts": 0,
+            "stolen_turnovers": 0
+          },
+          "last_score": {
+            "away": 106,
+            "home": 114
+          },
+          "end_marker": true
+        }
+      },
+      "half": {
+        "away": {
+          "h1": {
+            "FGA": 49,
+            "FGM": 25,
+            "3PA": 15,
+            "3PM": 5,
+            "FTA": 17,
+            "FTM": 14,
+            "TO": 6,
+            "ORB": 10,
+            "DRB": 20,
+            "substitution_notices": 13,
+            "foul_notices": 11,
+            "blocked_attempts": 1,
+            "stolen_turnovers": 3
+          },
+          "h2": {
+            "FGA": 38,
+            "FGM": 14,
+            "3PA": 14,
+            "3PM": 2,
+            "FTA": 11,
+            "FTM": 7,
+            "TO": 15,
+            "ORB": 7,
+            "DRB": 18,
+            "substitution_notices": 14,
+            "foul_notices": 16,
+            "blocked_attempts": 1,
+            "stolen_turnovers": 7
+          }
+        },
+        "home": {
+          "h1": {
+            "FGA": 44,
+            "FGM": 18,
+            "3PA": 15,
+            "3PM": 4,
+            "FTA": 8,
+            "FTM": 5,
+            "TO": 15,
+            "ORB": 9,
+            "DRB": 17,
+            "substitution_notices": 13,
+            "foul_notices": 7,
+            "blocked_attempts": 4,
+            "stolen_turnovers": 9
+          },
+          "h2": {
+            "FGA": 48,
+            "FGM": 24,
+            "3PA": 13,
+            "3PM": 3,
+            "FTA": 22,
+            "FTM": 18,
+            "TO": 2,
+            "ORB": 10,
+            "DRB": 21,
+            "substitution_notices": 10,
+            "foul_notices": 12,
+            "blocked_attempts": 3,
+            "stolen_turnovers": 1
+          }
+        }
+      },
+      "source_bytes_sha256": null,
+      "official_nba_box_independent_parity": false,
+      "exact_possessions": false,
+      "guard_assignments": false
+    },
+    {
+      "game": "DEN@OKC",
+      "date": "2026-10-22",
+      "source": "https://www.basketball-reference.com/boxscores/pbp/202610220OKC.html",
+      "retrieved_utc": "2026-10-23",
+      "parsed_event_rows": 501,
+      "unreadable_rows": 0,
+      "verified_quarter_end_scores": 4,
+      "verified_points_from_made_shots_and_fts": 8,
+      "quarter": {
+        "1": {
+          "away": {
+            "FGA": 28,
+            "FGM": 11,
+            "3PA": 9,
+            "3PM": 2,
+            "FTA": 4,
+            "FTM": 3,
+            "TO": 1,
+            "ORB": 10,
+            "DRB": 11,
+            "substitution_notices": 5,
+            "foul_notices": 4,
+            "blocked_attempts": 3,
+            "stolen_turnovers": 0
+          },
+          "home": {
+            "FGA": 23,
+            "FGM": 9,
+            "3PA": 14,
+            "3PM": 4,
+            "FTA": 2,
+            "FTM": 2,
+            "TO": 2,
+            "ORB": 3,
+            "DRB": 9,
+            "substitution_notices": 4,
+            "foul_notices": 3,
+            "blocked_attempts": 0,
+            "stolen_turnovers": 1
+          },
+          "last_score": {
+            "away": 27,
+            "home": 24
+          },
+          "end_marker": true
+        },
+        "2": {
+          "away": {
+            "FGA": 17,
+            "FGM": 6,
+            "3PA": 7,
+            "3PM": 2,
+            "FTA": 10,
+            "FTM": 7,
+            "TO": 8,
+            "ORB": 6,
+            "DRB": 11,
+            "substitution_notices": 8,
+            "foul_notices": 11,
+            "blocked_attempts": 3,
+            "stolen_turnovers": 3
+          },
+          "home": {
+            "FGA": 24,
+            "FGM": 7,
+            "3PA": 9,
+            "3PM": 0,
+            "FTA": 6,
+            "FTM": 6,
+            "TO": 4,
+            "ORB": 6,
+            "DRB": 8,
+            "substitution_notices": 11,
+            "foul_notices": 7,
+            "blocked_attempts": 1,
+            "stolen_turnovers": 2
+          },
+          "last_score": {
+            "away": 48,
+            "home": 44
+          },
+          "end_marker": true
+        },
+        "3": {
+          "away": {
+            "FGA": 22,
+            "FGM": 7,
+            "3PA": 9,
+            "3PM": 2,
+            "FTA": 0,
+            "FTM": 0,
+            "TO": 5,
+            "ORB": 5,
+            "DRB": 9,
+            "substitution_notices": 4,
+            "foul_notices": 5,
+            "blocked_attempts": 2,
+            "stolen_turnovers": 3
+          },
+          "home": {
+            "FGA": 22,
+            "FGM": 11,
+            "3PA": 7,
+            "3PM": 3,
+            "FTA": 2,
+            "FTM": 1,
+            "TO": 3,
+            "ORB": 3,
+            "DRB": 11,
+            "substitution_notices": 4,
+            "foul_notices": 3,
+            "blocked_attempts": 0,
+            "stolen_turnovers": 3
+          },
+          "last_score": {
+            "away": 64,
+            "home": 70
+          },
+          "end_marker": true
+        },
+        "4": {
+          "away": {
+            "FGA": 15,
+            "FGM": 7,
+            "3PA": 5,
+            "3PM": 2,
+            "FTA": 8,
+            "FTM": 4,
+            "TO": 8,
+            "ORB": 7,
+            "DRB": 7,
+            "substitution_notices": 9,
+            "foul_notices": 7,
+            "blocked_attempts": 1,
+            "stolen_turnovers": 6
+          },
+          "home": {
+            "FGA": 26,
+            "FGM": 9,
+            "3PA": 13,
+            "3PM": 4,
+            "FTA": 4,
+            "FTM": 4,
+            "TO": 3,
+            "ORB": 10,
+            "DRB": 5,
+            "substitution_notices": 11,
+            "foul_notices": 5,
+            "blocked_attempts": 1,
+            "stolen_turnovers": 1
+          },
+          "last_score": {
+            "away": 84,
+            "home": 96
+          },
+          "end_marker": true
+        }
+      },
+      "half": {
+        "away": {
+          "h1": {
+            "FGA": 45,
+            "FGM": 17,
+            "3PA": 16,
+            "3PM": 4,
+            "FTA": 14,
+            "FTM": 10,
+            "TO": 9,
+            "ORB": 16,
+            "DRB": 22,
+            "substitution_notices": 13,
+            "foul_notices": 15,
+            "blocked_attempts": 6,
+            "stolen_turnovers": 3
+          },
+          "h2": {
+            "FGA": 37,
+            "FGM": 14,
+            "3PA": 14,
+            "3PM": 4,
+            "FTA": 8,
+            "FTM": 4,
+            "TO": 13,
+            "ORB": 12,
+            "DRB": 16,
+            "substitution_notices": 13,
+            "foul_notices": 12,
+            "blocked_attempts": 3,
+            "stolen_turnovers": 9
+          }
+        },
+        "home": {
+          "h1": {
+            "FGA": 47,
+            "FGM": 16,
+            "3PA": 23,
+            "3PM": 4,
+            "FTA": 8,
+            "FTM": 8,
+            "TO": 6,
+            "ORB": 9,
+            "DRB": 17,
+            "substitution_notices": 15,
+            "foul_notices": 10,
+            "blocked_attempts": 1,
+            "stolen_turnovers": 3
+          },
+          "h2": {
+            "FGA": 48,
+            "FGM": 20,
+            "3PA": 20,
+            "3PM": 7,
+            "FTA": 6,
+            "FTM": 5,
+            "TO": 6,
+            "ORB": 13,
+            "DRB": 16,
+            "substitution_notices": 15,
+            "foul_notices": 8,
+            "blocked_attempts": 1,
+            "stolen_turnovers": 4
+          }
+        }
+      },
+      "source_bytes_sha256": null,
+      "official_nba_box_independent_parity": false,
+      "exact_possessions": false,
+      "guard_assignments": false
+    }
+  ],
+  "caveats": [
+    "PBP source is Basketball-Reference, not independently NBA CDN compared for all games",
+    "Raw HTML/source bytes not preserved; Git blob freezes transformed derived event counts only",
+    "Counts of rebound Team may not correspond to traditional possession estimate; FOUL flags not a verified foul count",
+    "Turnover by players/team and steals in text are side-relative, not verified causal defensive assignments",
+    "No actual lineup 5-man rotations or exact on-floor minute totals derived",
+    "No sportsbook market price or predicted probability / EV"
+  ],
+  "production_authority": false
+}
