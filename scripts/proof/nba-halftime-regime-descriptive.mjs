@@ -23,7 +23,7 @@ export function resolveCases(schedule){
   const found=games.filter(g=>g.gameCode===c.code&&g.awayTeam?.teamTricode===c.away&&g.homeTeam?.teamTricode===c.home);
   guard(found.length===1,'GAME_NOT_UNIQUE:'+c.code);
   const gameId=String(found[0].gameId);
-  guard(/^00\\d{8}$/.test(gameId),'BAD_GAME_ID');
+  guard(/^00\d{8}$/.test(gameId),'BAD_GAME_ID');
   return {...c,gameId};
  });
 }
@@ -98,7 +98,7 @@ export function summarizeCase(c,pbp,box){
   production_authority:false};
 }
 async function get(url,max){
- guard(url===SCHEDULE||/^https:\\/\\/cdn\\.nba\\.com\\/static\\/json\\/liveData\\/(playbyplay|boxscore)\\/(playbyplay|boxscore)_00\\d{8}\\.json$/.test(url),'SOURCE_DISALLOWED');
+ guard(url===SCHEDULE||/^https:\/\/cdn\.nba\.com\/static\/json\/liveData\/(playbyplay|boxscore)\/(playbyplay|boxscore)_00\d{8}\.json$/.test(url),'SOURCE_DISALLOWED');
  const r=await fetch(url,{redirect:'error',signal:AbortSignal.timeout(18000),
   headers:{Accept:'application/json',Referer:'https://www.nba.com/','User-Agent':'ATLAS-HALFTIME-REGIME-RESEARCH/1'}});
  guard(r.status===200&&r.url===url,'HTTP_'+r.status);
@@ -123,7 +123,7 @@ async function main(){
   schedule_sha256:schedule.sha256,results,model_trained:false,
   claims_scope:'SCORE_HALVES_FGA_AND_TURNOVER_EVENT_COUNTS_ONLY',
   matchup_and_defender_causal_attribution_proven:false,game_totals_ev_established:false};
- writeFileSync('atlas-nba-halftime-regime-descriptive.json',JSON.stringify(out,null,2)+'\\n');
+ writeFileSync('atlas-nba-halftime-regime-descriptive.json',JSON.stringify(out,null,2)+'\n');
  console.log('ATLAS_NBA_GAMESENSE_HALFTIME_REGIME '+JSON.stringify(out));
  if(rejections.length)throw Error('CASE_INTEGRITY_DENIAL:'+rejections.length);
 }
