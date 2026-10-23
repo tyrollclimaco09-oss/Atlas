@@ -1,0 +1,555 @@
+{
+  "schema": "atlas.oracle.gamesense.chronological_prior_vs_latest_rate.v1",
+  "research_date": "2026-10-23",
+  "tag": "RESEARCH_SHADOW_ONLY_CHRONOLOGICAL_BACKTEST_NOT_LIVE",
+  "training": {
+    "date": "2025-01-15",
+    "games": 11,
+    "source_path": "docs/research/ATLAS_NBA_20250115_FULL_DATE_11GAME_SCORE_CENSUS.json",
+    "source_sha": "a7ab4b3d5646899f91c23a1184ba09da3c464543",
+    "source_mode": "retrospective Basketball-Reference day index"
+  },
+  "evaluation": {
+    "dates": [
+      "2026-10-20",
+      "2026-10-21",
+      "2026-10-22"
+    ],
+    "games": 16,
+    "source_path": "docs/research/ATLAS_NBA_OPENING_16_GAME_SCORE_REGIME_20261023.json",
+    "source_sha": "c8e0d2ee1610e4c9f45d40464d85b6d511ccef5e",
+    "source_mode": "postgame score history, not live receipt"
+  },
+  "method": "Two simultaneous targets: halftime H2 combined points vs end-Q3 Q4 combined points. Compare naive repeat last equivalent period scoring to alpha * latest + (1-alpha)*earlier historic arithmetic mean of corresponding target. Select alpha on historical January 2025 only using leave-one-game-out MAE over five fixed alphas with first-min tie rule, then freeze alpha and prior before evaluating 2026. Audit by dates, per-game errors, exact signflips assuming rows independent, and day-cluster signflips with only 3 clusters. Training-only CV residual nearest-rank nominal 80% interval is exploratory and optimistic since hyperparam selection reused sample.",
+  "models": {
+    "halftime": {
+      "target": "h2",
+      "asof_X": "h1",
+      "alpha_candidates": [
+        0,
+        0.25,
+        0.5,
+        0.75,
+        1
+      ],
+      "train_loo_cv": [
+        {
+          "alpha": 0,
+          "mae": 9.672727
+        },
+        {
+          "alpha": 0.25,
+          "mae": 9.718182
+        },
+        {
+          "alpha": 0.5,
+          "mae": 9.963636
+        },
+        {
+          "alpha": 0.75,
+          "mae": 10.577273
+        },
+        {
+          "alpha": 1,
+          "mae": 11.727273
+        }
+      ],
+      "selected_alpha": 0,
+      "historical_mean_prior": 111.727273,
+      "train_cv_interval_quantile": {
+        "nominal": 0.8,
+        "method": "nearest rank ceil(p*n), train leave-one-out absolute residuals; selection performed on same training data (optimistic)",
+        "radius": 17.3
+      },
+      "holdout": {
+        "n": 16,
+        "base_mae": 11.8125,
+        "prior_mae": 10.340909,
+        "gain": 1.471591,
+        "prior_better_games": 11,
+        "inside_train_cv_80_interval": 11,
+        "exact_signflip_two_sided_p_row_independence_exploratory": 0.472931,
+        "exact_signflip_two_sided_p_day_cluster_exploratory": 0.75,
+        "observed_dates": 3
+      },
+      "by_date": [
+        {
+          "date": "2026-10-20",
+          "n": 3,
+          "base_mae": 16,
+          "prior_mae": 12.575758,
+          "mean_gain": 3.424242,
+          "wins": 3
+        },
+        {
+          "date": "2026-10-21",
+          "n": 11,
+          "base_mae": 11.727273,
+          "prior_mae": 8.933884,
+          "mean_gain": 2.793388,
+          "wins": 7
+        },
+        {
+          "date": "2026-10-22",
+          "n": 2,
+          "base_mae": 6,
+          "prior_mae": 14.727273,
+          "mean_gain": -8.727273,
+          "wins": 1
+        }
+      ],
+      "per_game": [
+        {
+          "game": "BOS@DET",
+          "date": "2026-10-20",
+          "latest_rate_base": 103,
+          "prior_estimate": 111.727273,
+          "actual_remaining": 131,
+          "base_abs_error": 28,
+          "prior_abs_error": 19.272727,
+          "prior_gain_points": 8.727273,
+          "inside_train_cv_80_interval": false
+        },
+        {
+          "game": "PHI@NYK",
+          "date": "2026-10-20",
+          "latest_rate_base": 112,
+          "prior_estimate": 111.727273,
+          "actual_remaining": 94,
+          "base_abs_error": 18,
+          "prior_abs_error": 17.727273,
+          "prior_gain_points": 0.272727,
+          "inside_train_cv_80_interval": false
+        },
+        {
+          "game": "OKC@SAS",
+          "date": "2026-10-20",
+          "latest_rate_base": 109,
+          "prior_estimate": 111.727273,
+          "actual_remaining": 111,
+          "base_abs_error": 2,
+          "prior_abs_error": 0.727273,
+          "prior_gain_points": 1.272727,
+          "inside_train_cv_80_interval": true
+        },
+        {
+          "game": "ATL@ORL",
+          "date": "2026-10-21",
+          "latest_rate_base": 134,
+          "prior_estimate": 111.727273,
+          "actual_remaining": 123,
+          "base_abs_error": 11,
+          "prior_abs_error": 11.272727,
+          "prior_gain_points": -0.272727,
+          "inside_train_cv_80_interval": true
+        },
+        {
+          "game": "MIL@WAS",
+          "date": "2026-10-21",
+          "latest_rate_base": 107,
+          "prior_estimate": 111.727273,
+          "actual_remaining": 137,
+          "base_abs_error": 30,
+          "prior_abs_error": 25.272727,
+          "prior_gain_points": 4.727273,
+          "inside_train_cv_80_interval": false
+        },
+        {
+          "game": "MIN@MIA",
+          "date": "2026-10-21",
+          "latest_rate_base": 128,
+          "prior_estimate": 111.727273,
+          "actual_remaining": 109,
+          "base_abs_error": 19,
+          "prior_abs_error": 2.727273,
+          "prior_gain_points": 16.272727,
+          "inside_train_cv_80_interval": true
+        },
+        {
+          "game": "CHA@BKN",
+          "date": "2026-10-21",
+          "latest_rate_base": 102,
+          "prior_estimate": 111.727273,
+          "actual_remaining": 111,
+          "base_abs_error": 9,
+          "prior_abs_error": 0.727273,
+          "prior_gain_points": 8.272727,
+          "inside_train_cv_80_interval": true
+        },
+        {
+          "game": "CHI@TOR",
+          "date": "2026-10-21",
+          "latest_rate_base": 113,
+          "prior_estimate": 111.727273,
+          "actual_remaining": 114,
+          "base_abs_error": 1,
+          "prior_abs_error": 2.272727,
+          "prior_gain_points": -1.272727,
+          "inside_train_cv_80_interval": true
+        },
+        {
+          "game": "UTA@MEM",
+          "date": "2026-10-21",
+          "latest_rate_base": 115,
+          "prior_estimate": 111.727273,
+          "actual_remaining": 111,
+          "base_abs_error": 4,
+          "prior_abs_error": 0.727273,
+          "prior_gain_points": 3.272727,
+          "inside_train_cv_80_interval": true
+        },
+        {
+          "game": "IND@NOP",
+          "date": "2026-10-21",
+          "latest_rate_base": 122,
+          "prior_estimate": 111.727273,
+          "actual_remaining": 121,
+          "base_abs_error": 1,
+          "prior_abs_error": 9.272727,
+          "prior_gain_points": -8.272727,
+          "inside_train_cv_80_interval": true
+        },
+        {
+          "game": "DAL@HOU",
+          "date": "2026-10-21",
+          "latest_rate_base": 108,
+          "prior_estimate": 111.727273,
+          "actual_remaining": 130,
+          "base_abs_error": 22,
+          "prior_abs_error": 18.272727,
+          "prior_gain_points": 3.727273,
+          "inside_train_cv_80_interval": false
+        },
+        {
+          "game": "GSW@LAL",
+          "date": "2026-10-21",
+          "latest_rate_base": 118,
+          "prior_estimate": 111.727273,
+          "actual_remaining": 114,
+          "base_abs_error": 4,
+          "prior_abs_error": 2.272727,
+          "prior_gain_points": 1.727273,
+          "inside_train_cv_80_interval": true
+        },
+        {
+          "game": "PHX@POR",
+          "date": "2026-10-21",
+          "latest_rate_base": 111,
+          "prior_estimate": 111.727273,
+          "actual_remaining": 96,
+          "base_abs_error": 15,
+          "prior_abs_error": 15.727273,
+          "prior_gain_points": -0.727273,
+          "inside_train_cv_80_interval": true
+        },
+        {
+          "game": "SAC@LAC",
+          "date": "2026-10-21",
+          "latest_rate_base": 115,
+          "prior_estimate": 111.727273,
+          "actual_remaining": 102,
+          "base_abs_error": 13,
+          "prior_abs_error": 9.727273,
+          "prior_gain_points": 3.272727,
+          "inside_train_cv_80_interval": true
+        },
+        {
+          "game": "CLE@PHI",
+          "date": "2026-10-22",
+          "latest_rate_base": 114,
+          "prior_estimate": 111.727273,
+          "actual_remaining": 106,
+          "base_abs_error": 8,
+          "prior_abs_error": 5.727273,
+          "prior_gain_points": 2.272727,
+          "inside_train_cv_80_interval": true
+        },
+        {
+          "game": "DEN@OKC",
+          "date": "2026-10-22",
+          "latest_rate_base": 92,
+          "prior_estimate": 111.727273,
+          "actual_remaining": 88,
+          "base_abs_error": 4,
+          "prior_abs_error": 23.727273,
+          "prior_gain_points": -19.727273,
+          "inside_train_cv_80_interval": false
+        }
+      ]
+    },
+    "end_q3": {
+      "target": "q4",
+      "asof_X": "q3",
+      "alpha_candidates": [
+        0,
+        0.25,
+        0.5,
+        0.75,
+        1
+      ],
+      "train_loo_cv": [
+        {
+          "alpha": 0,
+          "mae": 8.963636
+        },
+        {
+          "alpha": 0.25,
+          "mae": 8.981818
+        },
+        {
+          "alpha": 0.5,
+          "mae": 9.109091
+        },
+        {
+          "alpha": 0.75,
+          "mae": 9.722727
+        },
+        {
+          "alpha": 1,
+          "mae": 11.181818
+        }
+      ],
+      "selected_alpha": 0,
+      "historical_mean_prior": 52.454545,
+      "train_cv_interval_quantile": {
+        "nominal": 0.8,
+        "method": "nearest rank ceil(p*n), train leave-one-out absolute residuals; selection performed on same training data (optimistic)",
+        "radius": 13.7
+      },
+      "holdout": {
+        "n": 16,
+        "base_mae": 10,
+        "prior_mae": 7.130682,
+        "gain": 2.869318,
+        "prior_better_games": 11,
+        "inside_train_cv_80_interval": 15,
+        "exact_signflip_two_sided_p_row_independence_exploratory": 0.098389,
+        "exact_signflip_two_sided_p_day_cluster_exploratory": 0.5,
+        "observed_dates": 3
+      },
+      "by_date": [
+        {
+          "date": "2026-10-20",
+          "n": 3,
+          "base_mae": 6.666667,
+          "prior_mae": 7.484848,
+          "mean_gain": -0.818182,
+          "wins": 1
+        },
+        {
+          "date": "2026-10-21",
+          "n": 11,
+          "base_mae": 11.454545,
+          "prior_mae": 7.338843,
+          "mean_gain": 4.115702,
+          "wins": 9
+        },
+        {
+          "date": "2026-10-22",
+          "n": 2,
+          "base_mae": 7,
+          "prior_mae": 5.454545,
+          "mean_gain": 1.545455,
+          "wins": 1
+        }
+      ],
+      "per_game": [
+        {
+          "game": "BOS@DET",
+          "date": "2026-10-20",
+          "latest_rate_base": 67,
+          "prior_estimate": 52.454545,
+          "actual_remaining": 64,
+          "base_abs_error": 3,
+          "prior_abs_error": 11.545455,
+          "prior_gain_points": -8.545455,
+          "inside_train_cv_80_interval": true
+        },
+        {
+          "game": "PHI@NYK",
+          "date": "2026-10-20",
+          "latest_rate_base": 47,
+          "prior_estimate": 52.454545,
+          "actual_remaining": 47,
+          "base_abs_error": 0,
+          "prior_abs_error": 5.454545,
+          "prior_gain_points": -5.454545,
+          "inside_train_cv_80_interval": true
+        },
+        {
+          "game": "OKC@SAS",
+          "date": "2026-10-20",
+          "latest_rate_base": 64,
+          "prior_estimate": 52.454545,
+          "actual_remaining": 47,
+          "base_abs_error": 17,
+          "prior_abs_error": 5.454545,
+          "prior_gain_points": 11.545455,
+          "inside_train_cv_80_interval": true
+        },
+        {
+          "game": "ATL@ORL",
+          "date": "2026-10-21",
+          "latest_rate_base": 65,
+          "prior_estimate": 52.454545,
+          "actual_remaining": 58,
+          "base_abs_error": 7,
+          "prior_abs_error": 5.545455,
+          "prior_gain_points": 1.454545,
+          "inside_train_cv_80_interval": true
+        },
+        {
+          "game": "MIL@WAS",
+          "date": "2026-10-21",
+          "latest_rate_base": 76,
+          "prior_estimate": 52.454545,
+          "actual_remaining": 61,
+          "base_abs_error": 15,
+          "prior_abs_error": 8.545455,
+          "prior_gain_points": 6.454545,
+          "inside_train_cv_80_interval": true
+        },
+        {
+          "game": "MIN@MIA",
+          "date": "2026-10-21",
+          "latest_rate_base": 52,
+          "prior_estimate": 52.454545,
+          "actual_remaining": 57,
+          "base_abs_error": 5,
+          "prior_abs_error": 4.545455,
+          "prior_gain_points": 0.454545,
+          "inside_train_cv_80_interval": true
+        },
+        {
+          "game": "CHA@BKN",
+          "date": "2026-10-21",
+          "latest_rate_base": 65,
+          "prior_estimate": 52.454545,
+          "actual_remaining": 46,
+          "base_abs_error": 19,
+          "prior_abs_error": 6.454545,
+          "prior_gain_points": 12.545455,
+          "inside_train_cv_80_interval": true
+        },
+        {
+          "game": "CHI@TOR",
+          "date": "2026-10-21",
+          "latest_rate_base": 61,
+          "prior_estimate": 52.454545,
+          "actual_remaining": 53,
+          "base_abs_error": 8,
+          "prior_abs_error": 0.545455,
+          "prior_gain_points": 7.454545,
+          "inside_train_cv_80_interval": true
+        },
+        {
+          "game": "UTA@MEM",
+          "date": "2026-10-21",
+          "latest_rate_base": 62,
+          "prior_estimate": 52.454545,
+          "actual_remaining": 49,
+          "base_abs_error": 13,
+          "prior_abs_error": 3.454545,
+          "prior_gain_points": 9.545455,
+          "inside_train_cv_80_interval": true
+        },
+        {
+          "game": "IND@NOP",
+          "date": "2026-10-21",
+          "latest_rate_base": 56,
+          "prior_estimate": 52.454545,
+          "actual_remaining": 65,
+          "base_abs_error": 9,
+          "prior_abs_error": 12.545455,
+          "prior_gain_points": -3.545455,
+          "inside_train_cv_80_interval": true
+        },
+        {
+          "game": "DAL@HOU",
+          "date": "2026-10-21",
+          "latest_rate_base": 68,
+          "prior_estimate": 52.454545,
+          "actual_remaining": 62,
+          "base_abs_error": 6,
+          "prior_abs_error": 9.545455,
+          "prior_gain_points": -3.545455,
+          "inside_train_cv_80_interval": true
+        },
+        {
+          "game": "GSW@LAL",
+          "date": "2026-10-21",
+          "latest_rate_base": 52,
+          "prior_estimate": 52.454545,
+          "actual_remaining": 62,
+          "base_abs_error": 10,
+          "prior_abs_error": 9.545455,
+          "prior_gain_points": 0.454545,
+          "inside_train_cv_80_interval": true
+        },
+        {
+          "game": "PHX@POR",
+          "date": "2026-10-21",
+          "latest_rate_base": 62,
+          "prior_estimate": 52.454545,
+          "actual_remaining": 34,
+          "base_abs_error": 28,
+          "prior_abs_error": 18.454545,
+          "prior_gain_points": 9.545455,
+          "inside_train_cv_80_interval": false
+        },
+        {
+          "game": "SAC@LAC",
+          "date": "2026-10-21",
+          "latest_rate_base": 48,
+          "prior_estimate": 52.454545,
+          "actual_remaining": 54,
+          "base_abs_error": 6,
+          "prior_abs_error": 1.545455,
+          "prior_gain_points": 4.454545,
+          "inside_train_cv_80_interval": true
+        },
+        {
+          "game": "CLE@PHI",
+          "date": "2026-10-22",
+          "latest_rate_base": 58,
+          "prior_estimate": 52.454545,
+          "actual_remaining": 48,
+          "base_abs_error": 10,
+          "prior_abs_error": 4.454545,
+          "prior_gain_points": 5.545455,
+          "inside_train_cv_80_interval": true
+        },
+        {
+          "game": "DEN@OKC",
+          "date": "2026-10-22",
+          "latest_rate_base": 42,
+          "prior_estimate": 52.454545,
+          "actual_remaining": 46,
+          "base_abs_error": 4,
+          "prior_abs_error": 6.454545,
+          "prior_gain_points": -2.454545,
+          "inside_train_cv_80_interval": true
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "future_2026_labels_used_for_training": false,
+    "source_raw_bytes_independently_preserved": false,
+    "witnessed_prediction_before_2026_games": false,
+    "training_day_count": 1,
+    "evaluation_day_count": 3,
+    "game_level_independence_unproven": true,
+    "method_may_overfit_one_training_day": true,
+    "positive_evidence_for_model_promotion": false,
+    "live_market_quote": false,
+    "full_pbp_possessions": false
+  },
+  "governance": {
+    "candidate_promoted": false,
+    "game_sense_prior_wins_some_games": true,
+    "bookmaker_ev_authorized": false,
+    "human_final_gate_required": true
+  },
+  "next": "Expand full previous-season dates; capture true future prediction receipts at halftime/Q3; validate calibrated intervals on separately witnessed games. Diagnose DEN@OKC low-regime and Boston Detroit high-regime without selecting rules from future. P0 raw NBA CDN and five-player official source bridge remains inaccessible."
+}
