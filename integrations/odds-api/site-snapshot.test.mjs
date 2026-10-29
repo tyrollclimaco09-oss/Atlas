@@ -15,8 +15,9 @@ test("works for linked but pending canonical identity, zero approved bets",()=>{
  const o=makeSiteSnapshot({receipt,events,bindings});
  assert.equal(o.events[0].canonical_event_id,cid);assert.equal(o.events[0].identity_status,"LINKED_PENDING");
  assert.equal(o.execution_authority,false);assert.equal(o.approved_bet,null);assert.equal(o.expected_value,null);
- assert.equal(o.events[0].primary_quotes[0].odds,-118);
- assert.equal(o.events[0].primary_quotes[0].executable_price_verified,false);
+ assert.equal(o.events[0].primary_quotes[0].o,-118);
+ assert.equal(o.quote_fields.o,"american_odds");
+ assert.equal(o.executable_price_verified,false);
 });
 test("verified canonical status can be represented, but never executable",()=>{
  const o=makeSiteSnapshot({receipt,events:[{...events[0],reconciliation_status:"reconciled"}],bindings});
