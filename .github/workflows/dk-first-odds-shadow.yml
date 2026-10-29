@@ -22,7 +22,7 @@ jobs:
         with:
           node-version: '22'
       - name: Run offline safety and normalization tests
-        run: node --test integrations/odds-api/dk-first.test.mjs
+        run: node --test integrations/odds-api/*.test.mjs
       - name: Confirm dry-run does not consume provider credits
         run: |
           node integrations/odds-api/dk-first-live.mjs | grep '"live_requests":0'
