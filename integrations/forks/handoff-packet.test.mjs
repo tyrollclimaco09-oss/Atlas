@@ -126,7 +126,7 @@ test("identical timestamps/input yield identical digest and content",()=>{
  assert.equal(renderHandoff(a),renderHandoff(b));
 });
 test("bare source receipt and unknown fields are rejected",()=>{
- assert.throws(()=>inspectHandoff({contract:INPUT_CONTRACT},{now:NOW}),/SOURCE_REQUIRED/);
+ assert.throws(()=>inspectHandoff({contract:INPUT_CONTRACT,captured_at:base.captured_at},{now:NOW}),/SOURCE_REQUIRED/);
  const x=clone();x.tests[0].untrusted_agent_command="rm -rf /";
  assert.throws(()=>create(x),/UNEXPECTED_RECEIPT_FIELD/);
 });
