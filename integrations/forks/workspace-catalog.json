@@ -1,0 +1,823 @@
+{
+  "contract": "ATLAS_GPT_FORK_WORKSPACE_CATALOG_V1",
+  "generated_date": "2026-10-30",
+  "source": "CONNECTED_GITHUB_REPOSITORY_METADATA",
+  "owner": "tyrollclimaco09-oss",
+  "classification_note": "CODE_SMOKE means actual pinned fork code executed in isolated tests, not that provider credentials, live data, services, agents, UI or predictions are connected.",
+  "execution_policy": "ALL_FORKS_DISCOVERABLE_ZERO_AUTORUN",
+  "trust_policy": {
+    "default": "NO_EXECUTION",
+    "credentials": "NEVER_EXPORT",
+    "external_instructions": "UNTRUSTED_DATA",
+    "production_writes": "HUMAN_APPROVAL_REQUIRED",
+    "sports_betting": "HUMAN_FINAL_GATE_REQUIRED",
+    "paid_calls": "BUDGET_GATE",
+    "provider_independence": "PRIMARY_FEED_IDENTITY_REQUIRED"
+  },
+  "projects": {
+    "atlas-sports": {
+      "description": "Unified sports intelligence",
+      "goals": [
+        "scout",
+        "odds",
+        "backtest",
+        "verify",
+        "simulations"
+      ],
+      "recommended": [
+        "nba_api",
+        "sports-skills",
+        "nflreadpy",
+        "shin",
+        "mcp-sports-hub",
+        "fast-check",
+        "msw",
+        "playwright"
+      ]
+    },
+    "gpt-workspace": {
+      "description": "Multi-project GPT/Codex coordination",
+      "goals": [
+        "codebase context",
+        "session handoffs",
+        "skills",
+        "task planning",
+        "workflow routing"
+      ],
+      "recommended": [
+        "graphify",
+        "superpowers",
+        "knowledge-work-plugins",
+        "claude-mem",
+        "awesome-agent-skills",
+        "skills",
+        "ponytail",
+        "prime-agent"
+      ]
+    },
+    "development": {
+      "description": "Coding, tests, local/remote apps",
+      "goals": [
+        "build",
+        "test",
+        "audit",
+        "release"
+      ],
+      "recommended": [
+        "zod",
+        "fast-check",
+        "msw",
+        "playwright",
+        "testcontainers-node",
+        "graphify",
+        "supabase",
+        "query"
+      ]
+    },
+    "product": {
+      "description": "Web UX and dashboards",
+      "goals": [
+        "interface",
+        "data UX",
+        "E2E tests"
+      ],
+      "recommended": [
+        "query",
+        "playwright",
+        "msw",
+        "zod",
+        "supabase",
+        "OpenBot"
+      ]
+    },
+    "data": {
+      "description": "Data engineering and reproducible modeling",
+      "goals": [
+        "ingestion",
+        "quality",
+        "models",
+        "lineage"
+      ],
+      "recommended": [
+        "data-engineer-handbook",
+        "goto_conversion",
+        "testcontainers-node",
+        "supabase",
+        "fast-check",
+        "nba_api",
+        "nflreadpy"
+      ]
+    },
+    "research": {
+      "description": "Modeling, literature, simulations",
+      "goals": [
+        "hypotheses",
+        "baselines",
+        "evaluation"
+      ],
+      "recommended": [
+        "alphapy",
+        "goto_conversion",
+        "penaltyblog",
+        "MiroFish",
+        "nba-player-movements",
+        "sports-betting",
+        "shin"
+      ]
+    },
+    "operations": {
+      "description": "Skills, workflows and handoffs",
+      "goals": [
+        "planning",
+        "documentation",
+        "reconciliation"
+      ],
+      "recommended": [
+        "superpowers",
+        "knowledge-work-plugins",
+        "awesome-agent-skills",
+        "claude-mem",
+        "graphify"
+      ]
+    },
+    "security": {
+      "description": "Adversarial testing under isolation",
+      "goals": [
+        "prompt injection",
+        "API failure",
+        "auth boundaries"
+      ],
+      "recommended": [
+        "fast-check",
+        "msw",
+        "playwright",
+        "testcontainers-node",
+        "zod",
+        "jailbreaks"
+      ]
+    }
+  },
+  "forks": [
+    {
+      "name": "omniroute",
+      "repository": "tyrollclimaco09-oss/omniroute",
+      "upstream": "cheaper-inference/OmniRoute",
+      "category": "model-routing",
+      "projects": [
+        "gpt-workspace",
+        "development"
+      ],
+      "status": "LAB",
+      "license": "MIT",
+      "caveat": "Network/API-key and quota boundary; not an automatic alternate GPT subscription",
+      "automatic_install": false,
+      "automatic_execute": false,
+      "provider_verified_live": false
+    },
+    {
+      "name": "nba-player-movements",
+      "repository": "tyrollclimaco09-oss/nba-player-movements",
+      "upstream": "linouk23/NBA-Player-Movements",
+      "category": "historical-visualization",
+      "projects": [
+        "atlas-sports",
+        "research"
+      ],
+      "status": "REFERENCE",
+      "license": "UNVERIFIED",
+      "caveat": "Historical SportVU examples, not current tracking",
+      "automatic_install": false,
+      "automatic_execute": false,
+      "provider_verified_live": false
+    },
+    {
+      "name": "public-espn-api",
+      "repository": "tyrollclimaco09-oss/public-espn-api",
+      "upstream": "pseudo-r/Public-ESPN-API",
+      "category": "sports-data",
+      "projects": [
+        "atlas-sports",
+        "research"
+      ],
+      "status": "REVIEWED",
+      "license": "MIT",
+      "caveat": "Unofficial ESPN endpoint documentation, not hosted API",
+      "automatic_install": false,
+      "automatic_execute": false,
+      "provider_verified_live": false
+    },
+    {
+      "name": "prime-agent",
+      "repository": "tyrollclimaco09-oss/prime-agent",
+      "upstream": "PrimeIntellect-ai/prime-agent",
+      "category": "agent-orchestration",
+      "projects": [
+        "gpt-workspace",
+        "development"
+      ],
+      "status": "LAB",
+      "license": "NOASSERTION",
+      "caveat": "Autonomous execution and license review required",
+      "automatic_install": false,
+      "automatic_execute": false,
+      "provider_verified_live": false
+    },
+    {
+      "name": "nba-machine-learning-sports-betting",
+      "repository": "tyrollclimaco09-oss/nba-machine-learning-sports-betting",
+      "upstream": "kyleskom/NBA-Machine-Learning-Sports-Betting",
+      "category": "modeling",
+      "projects": [
+        "atlas-sports",
+        "research"
+      ],
+      "status": "REFERENCE",
+      "license": "UNVERIFIED",
+      "caveat": "Legacy modeling, odds fetching, leakage checks required",
+      "automatic_install": false,
+      "automatic_execute": false,
+      "provider_verified_live": false
+    },
+    {
+      "name": "chatgpt_sports_betting_bot",
+      "repository": "tyrollclimaco09-oss/chatgpt_sports_betting_bot",
+      "upstream": "llSourcell/ChatGPT_Sports_Betting_Bot",
+      "category": "historical-automation",
+      "projects": [
+        "atlas-sports",
+        "research"
+      ],
+      "status": "REFERENCE",
+      "license": "UNVERIFIED",
+      "caveat": "Unverified bot approach; no betting automation",
+      "automatic_install": false,
+      "automatic_execute": false,
+      "provider_verified_live": false
+    },
+    {
+      "name": "alphapy",
+      "repository": "tyrollclimaco09-oss/alphapy",
+      "upstream": "ScottfreeLLC/AlphaPy",
+      "category": "modeling",
+      "projects": [
+        "atlas-sports",
+        "research",
+        "data"
+      ],
+      "status": "REFERENCE",
+      "license": "Apache-2.0",
+      "caveat": "Reference AutoML; backtest point-in-time first",
+      "automatic_install": false,
+      "automatic_execute": false,
+      "provider_verified_live": false
+    },
+    {
+      "name": "tennis-crystal-ball",
+      "repository": "tyrollclimaco09-oss/tennis-crystal-ball",
+      "upstream": "mcekovic/tennis-crystal-ball",
+      "category": "sports-data",
+      "projects": [
+        "atlas-sports",
+        "research"
+      ],
+      "status": "REFERENCE",
+      "license": "Apache-2.0",
+      "caveat": "Legacy tennis historical evaluation, not active feeds",
+      "automatic_install": false,
+      "automatic_execute": false,
+      "provider_verified_live": false
+    },
+    {
+      "name": "sportbook",
+      "repository": "tyrollclimaco09-oss/sportbook",
+      "upstream": "openbookie/sportbook",
+      "category": "betting-app",
+      "projects": [
+        "atlas-sports",
+        "development"
+      ],
+      "status": "BLOCKED",
+      "license": "UNVERIFIED",
+      "caveat": "Do not launch gambling platform or migrate user wagers",
+      "automatic_install": false,
+      "automatic_execute": false,
+      "provider_verified_live": false
+    },
+    {
+      "name": "sports-skills",
+      "repository": "tyrollclimaco09-oss/sports-skills",
+      "upstream": "machina-sports/sports-skills",
+      "category": "sports-data",
+      "projects": [
+        "atlas-sports",
+        "research",
+        "gpt-workspace"
+      ],
+      "status": "CODE_SMOKE",
+      "license": "MIT",
+      "caveat": "Source-shaping code tested; live provider API unverified",
+      "automatic_install": false,
+      "automatic_execute": false,
+      "provider_verified_live": false
+    },
+    {
+      "name": "DKscraPy",
+      "repository": "tyrollclimaco09-oss/DKscraPy",
+      "upstream": "agad495/DKscraPy",
+      "category": "sportsbook-scraper",
+      "projects": [
+        "atlas-sports",
+        "research"
+      ],
+      "status": "BLOCKED",
+      "license": "UNVERIFIED",
+      "caveat": "Old scraping approach; use licensed DK-first Odds API instead",
+      "automatic_install": false,
+      "automatic_execute": false,
+      "provider_verified_live": false
+    },
+    {
+      "name": "zod",
+      "repository": "tyrollclimaco09-oss/zod",
+      "upstream": "colinhacks/zod",
+      "category": "schema-validation",
+      "projects": [
+        "development",
+        "atlas-sports",
+        "data"
+      ],
+      "status": "REVIEWED",
+      "license": "MIT",
+      "caveat": "Useful contract validation; install only after adapter tests",
+      "automatic_install": false,
+      "automatic_execute": false,
+      "provider_verified_live": false
+    },
+    {
+      "name": "playwright",
+      "repository": "tyrollclimaco09-oss/playwright",
+      "upstream": "microsoft/playwright",
+      "category": "browser-testing",
+      "projects": [
+        "development",
+        "product",
+        "gpt-workspace"
+      ],
+      "status": "REVIEWED",
+      "license": "Apache-2.0",
+      "caveat": "Isolated browser UI tests; no unapproved production actions",
+      "automatic_install": false,
+      "automatic_execute": false,
+      "provider_verified_live": false
+    },
+    {
+      "name": "testcontainers-node",
+      "repository": "tyrollclimaco09-oss/testcontainers-node",
+      "upstream": "testcontainers/testcontainers-node",
+      "category": "integration-testing",
+      "projects": [
+        "development",
+        "data",
+        "atlas-sports"
+      ],
+      "status": "REVIEWED",
+      "license": "MIT",
+      "caveat": "Ephemeral DB/health failure tests require Docker",
+      "automatic_install": false,
+      "automatic_execute": false,
+      "provider_verified_live": false
+    },
+    {
+      "name": "fast-check",
+      "repository": "tyrollclimaco09-oss/fast-check",
+      "upstream": "dubzzz/fast-check",
+      "category": "property-testing",
+      "projects": [
+        "development",
+        "atlas-sports",
+        "data"
+      ],
+      "status": "REVIEWED",
+      "license": "MIT",
+      "caveat": "Excellent for invariant and clock boundary testing",
+      "automatic_install": false,
+      "automatic_execute": false,
+      "provider_verified_live": false
+    },
+    {
+      "name": "msw",
+      "repository": "tyrollclimaco09-oss/msw",
+      "upstream": "mswjs/msw",
+      "category": "api-mocking",
+      "projects": [
+        "development",
+        "product",
+        "atlas-sports"
+      ],
+      "status": "REVIEWED",
+      "license": "MIT",
+      "caveat": "Mock never presented as current game or sportsbook data",
+      "automatic_install": false,
+      "automatic_execute": false,
+      "provider_verified_live": false
+    },
+    {
+      "name": "query",
+      "repository": "tyrollclimaco09-oss/query",
+      "upstream": "TanStack/query",
+      "category": "frontend-cache",
+      "projects": [
+        "product",
+        "development"
+      ],
+      "status": "REVIEWED",
+      "license": "MIT",
+      "caveat": "Fresh/stale client data and request dedup; not a backend provider",
+      "automatic_install": false,
+      "automatic_execute": false,
+      "provider_verified_live": false
+    },
+    {
+      "name": "ruflo",
+      "repository": "tyrollclimaco09-oss/ruflo",
+      "upstream": "ruvnet/ruflo",
+      "category": "agent-orchestration",
+      "projects": [
+        "gpt-workspace",
+        "research",
+        "development"
+      ],
+      "status": "LAB",
+      "license": "MIT",
+      "caveat": "Review tool permissions, token budgets, independent agent freezing",
+      "automatic_install": false,
+      "automatic_execute": false,
+      "provider_verified_live": false
+    },
+    {
+      "name": "MiroFish",
+      "repository": "tyrollclimaco09-oss/MiroFish",
+      "upstream": "666ghj/MiroFish",
+      "category": "multiagent-simulation",
+      "projects": [
+        "research",
+        "gpt-workspace"
+      ],
+      "status": "LAB",
+      "license": "AGPL-3.0",
+      "caveat": "Creative worlds; license and forecast-validity gates",
+      "automatic_install": false,
+      "automatic_execute": false,
+      "provider_verified_live": false
+    },
+    {
+      "name": "penaltyblog",
+      "repository": "tyrollclimaco09-oss/penaltyblog",
+      "upstream": "martineastwood/penaltyblog",
+      "category": "soccer-modeling",
+      "projects": [
+        "research",
+        "atlas-sports"
+      ],
+      "status": "REFERENCE",
+      "license": "MIT",
+      "caveat": "Soccer-first; validate when adapting to other sports",
+      "automatic_install": false,
+      "automatic_execute": false,
+      "provider_verified_live": false
+    },
+    {
+      "name": "nflreadpy",
+      "repository": "tyrollclimaco09-oss/nflreadpy",
+      "upstream": "nflverse/nflreadpy",
+      "category": "sports-data",
+      "projects": [
+        "atlas-sports",
+        "research",
+        "data"
+      ],
+      "status": "CODE_SMOKE",
+      "license": "MIT",
+      "caveat": "Real loader tested using synthetic PBP; real 2026 data not retrieved",
+      "automatic_install": false,
+      "automatic_execute": false,
+      "provider_verified_live": false
+    },
+    {
+      "name": "nba_api",
+      "repository": "tyrollclimaco09-oss/nba_api",
+      "upstream": "swar/nba_api",
+      "category": "sports-data",
+      "projects": [
+        "atlas-sports",
+        "research",
+        "data"
+      ],
+      "status": "CODE_SMOKE",
+      "license": "MIT",
+      "caveat": "Static NBA team identities executed; live stats not certified",
+      "automatic_install": false,
+      "automatic_execute": false,
+      "provider_verified_live": false
+    },
+    {
+      "name": "shin",
+      "repository": "tyrollclimaco09-oss/shin",
+      "upstream": "mberk/shin",
+      "category": "pricing-math",
+      "projects": [
+        "atlas-sports",
+        "research"
+      ],
+      "status": "CODE_SMOKE",
+      "license": "MIT",
+      "caveat": "Actual market de-vig method executed with synthetic odds; not fair probability",
+      "automatic_install": false,
+      "automatic_execute": false,
+      "provider_verified_live": false
+    },
+    {
+      "name": "sports-betting",
+      "repository": "tyrollclimaco09-oss/sports-betting",
+      "upstream": "georgedouzas/sports-betting",
+      "category": "sports-modeling",
+      "projects": [
+        "atlas-sports",
+        "research"
+      ],
+      "status": "REFERENCE",
+      "license": "MIT",
+      "caveat": "Model methodology only; disable execution modules",
+      "automatic_install": false,
+      "automatic_execute": false,
+      "provider_verified_live": false
+    },
+    {
+      "name": "goto_conversion",
+      "repository": "tyrollclimaco09-oss/goto_conversion",
+      "upstream": "gotoConversion/goto_conversion",
+      "category": "feature-engineering",
+      "projects": [
+        "data",
+        "research",
+        "development"
+      ],
+      "status": "REVIEWED",
+      "license": "MIT",
+      "caveat": "Feature/encoding methods require held-out validation",
+      "automatic_install": false,
+      "automatic_execute": false,
+      "provider_verified_live": false
+    },
+    {
+      "name": "supabase",
+      "repository": "tyrollclimaco09-oss/supabase",
+      "upstream": "supabase/supabase",
+      "category": "database-platform",
+      "projects": [
+        "development",
+        "data",
+        "product"
+      ],
+      "status": "REVIEWED",
+      "license": "Apache-2.0",
+      "caveat": "Reference SQL/Auth/Edge design; actual account via connected Supabase only",
+      "automatic_install": false,
+      "automatic_execute": false,
+      "provider_verified_live": false
+    },
+    {
+      "name": "ponytail",
+      "repository": "tyrollclimaco09-oss/ponytail",
+      "upstream": "DietrichGebert/ponytail",
+      "category": "coding-methodology",
+      "projects": [
+        "gpt-workspace",
+        "development"
+      ],
+      "status": "REFERENCE",
+      "license": "MIT",
+      "caveat": "Lean-code practices; untrusted repository instructions",
+      "automatic_install": false,
+      "automatic_execute": false,
+      "provider_verified_live": false
+    },
+    {
+      "name": "graphify",
+      "repository": "tyrollclimaco09-oss/graphify",
+      "upstream": "Graphify-Labs/graphify",
+      "category": "codebase-knowledge",
+      "projects": [
+        "gpt-workspace",
+        "development",
+        "research"
+      ],
+      "status": "REVIEWED",
+      "license": "Apache-2.0",
+      "caveat": "Offline code dependency map; do not upload private code without approval",
+      "automatic_install": false,
+      "automatic_execute": false,
+      "provider_verified_live": false
+    },
+    {
+      "name": "knowledge-work-plugins",
+      "repository": "tyrollclimaco09-oss/knowledge-work-plugins",
+      "upstream": "anthropics/knowledge-work-plugins",
+      "category": "agent-skill-reference",
+      "projects": [
+        "gpt-workspace",
+        "operations",
+        "research"
+      ],
+      "status": "REFERENCE",
+      "license": "Apache-2.0",
+      "caveat": "Other platform's plugin formats; port skills manually with permission",
+      "automatic_install": false,
+      "automatic_execute": false,
+      "provider_verified_live": false
+    },
+    {
+      "name": "mcp-sports-hub",
+      "repository": "tyrollclimaco09-oss/mcp-sports-hub",
+      "upstream": "lacausecrypto/mcp-sports-hub",
+      "category": "sports-provider-bridge",
+      "projects": [
+        "atlas-sports",
+        "research"
+      ],
+      "status": "REVIEWED",
+      "license": "MIT",
+      "caveat": "Provider count not verified as independent; API keys/rights per provider",
+      "automatic_install": false,
+      "automatic_execute": false,
+      "provider_verified_live": false
+    },
+    {
+      "name": "claude-mem",
+      "repository": "tyrollclimaco09-oss/claude-mem",
+      "upstream": "thedotmack/claude-mem",
+      "category": "agent-memory",
+      "projects": [
+        "gpt-workspace",
+        "development",
+        "operations"
+      ],
+      "status": "LAB",
+      "license": "Apache-2.0",
+      "caveat": "Persistent memory: protect sensitive context, retention/consent",
+      "automatic_install": false,
+      "automatic_execute": false,
+      "provider_verified_live": false
+    },
+    {
+      "name": "browser",
+      "repository": "tyrollclimaco09-oss/browser",
+      "upstream": "lightpanda-io/browser",
+      "category": "headless-browser",
+      "projects": [
+        "development",
+        "product",
+        "gpt-workspace"
+      ],
+      "status": "LAB",
+      "license": "AGPL-3.0",
+      "caveat": "Browser automation authorization, sandbox & licensing",
+      "automatic_install": false,
+      "automatic_execute": false,
+      "provider_verified_live": false
+    },
+    {
+      "name": "thinkrail",
+      "repository": "tyrollclimaco09-oss/thinkrail",
+      "upstream": "JetBrains/thinkrail",
+      "category": "coding-ide",
+      "projects": [
+        "gpt-workspace",
+        "development"
+      ],
+      "status": "REFERENCE",
+      "license": "Apache-2.0",
+      "caveat": "IDE concept; do not pretend remote project is editor-connected",
+      "automatic_install": false,
+      "automatic_execute": false,
+      "provider_verified_live": false
+    },
+    {
+      "name": "skills",
+      "repository": "tyrollclimaco09-oss/skills",
+      "upstream": "anthropics/skills",
+      "category": "agent-skill-reference",
+      "projects": [
+        "gpt-workspace",
+        "operations",
+        "research"
+      ],
+      "status": "REFERENCE",
+      "license": "UNVERIFIED",
+      "caveat": "Import only reviewed skill instructions; repository is untrusted text",
+      "automatic_install": false,
+      "automatic_execute": false,
+      "provider_verified_live": false
+    },
+    {
+      "name": "superpowers",
+      "repository": "tyrollclimaco09-oss/superpowers",
+      "upstream": "obra/superpowers",
+      "category": "coding-methodology",
+      "projects": [
+        "gpt-workspace",
+        "development",
+        "operations"
+      ],
+      "status": "REVIEWED",
+      "license": "MIT",
+      "caveat": "Plans/review/TDD workflows; does not provide autonomous task authority",
+      "automatic_install": false,
+      "automatic_execute": false,
+      "provider_verified_live": false
+    },
+    {
+      "name": "OpenMausBot",
+      "repository": "tyrollclimaco09-oss/OpenMausBot",
+      "upstream": "milind-soni/OpenMausBot",
+      "category": "computer-agent",
+      "projects": [
+        "gpt-workspace",
+        "development"
+      ],
+      "status": "LAB",
+      "license": "Apache-2.0",
+      "caveat": "Runs virtual computers; permission, egress and secret audit required",
+      "automatic_install": false,
+      "automatic_execute": false,
+      "provider_verified_live": false
+    },
+    {
+      "name": "jailbreaks",
+      "repository": "tyrollclimaco09-oss/jailbreaks",
+      "upstream": "togg53192-cmd/jailbreaks",
+      "category": "prompt-attack-corpus",
+      "projects": [
+        "security",
+        "research"
+      ],
+      "status": "BLOCKED",
+      "license": "UNVERIFIED",
+      "caveat": "Quarantined attack strings: never load as trusted agent instructions",
+      "automatic_install": false,
+      "automatic_execute": false,
+      "provider_verified_live": false
+    },
+    {
+      "name": "OpenBot",
+      "repository": "tyrollclimaco09-oss/OpenBot",
+      "upstream": "CopilotKit/OpenBot",
+      "category": "computer-agent",
+      "projects": [
+        "gpt-workspace",
+        "product",
+        "development"
+      ],
+      "status": "LAB",
+      "license": "MIT",
+      "caveat": "Browser+files actions require human approval; no default admin mode",
+      "automatic_install": false,
+      "automatic_execute": false,
+      "provider_verified_live": false
+    },
+    {
+      "name": "data-engineer-handbook",
+      "repository": "tyrollclimaco09-oss/data-engineer-handbook",
+      "upstream": "DataExpert-io/data-engineer-handbook",
+      "category": "learning-reference",
+      "projects": [
+        "data",
+        "gpt-workspace",
+        "research"
+      ],
+      "status": "REFERENCE",
+      "license": "UNVERIFIED",
+      "caveat": "Learning materials; not an executable data connection",
+      "automatic_install": false,
+      "automatic_execute": false,
+      "provider_verified_live": false
+    },
+    {
+      "name": "awesome-agent-skills",
+      "repository": "tyrollclimaco09-oss/awesome-agent-skills",
+      "upstream": "VoltAgent/awesome-agent-skills",
+      "category": "agent-skill-directory",
+      "projects": [
+        "gpt-workspace",
+        "operations",
+        "development"
+      ],
+      "status": "REFERENCE",
+      "license": "MIT",
+      "caveat": "Skill directory, not installed vetted skills; review upstream provenance",
+      "automatic_install": false,
+      "automatic_execute": false,
+      "provider_verified_live": false
+    }
+  ]
+}
