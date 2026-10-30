@@ -10,6 +10,7 @@ function mock({existingLock=false,lastRemaining=454,feed=[event],duplicate=false
  const calls=[],response=(status,data,h={})=>({status,ok:status>=200&&status<300,headers:{get:k=>h[k]??null},json:async()=>data});
  return {calls,fetchImpl:async(url,opts={})=>{
    const u=String(url);calls.push({url:u.split("?")[0],method:opts.method||"GET"});
+   if(u.includes("api.the-odds-api.com/v4/sports/?"))return response(200,[{key:"basketball_nba"}],{"x-requests-last":"0","x-requests-remaining":String(lastRemaining)});
    if(u.includes("api.the-odds-api.com"))return response(200,feed,{"x-requests-last":"3","x-requests-remaining":"451"});
    if(u.endsWith("/rest/v1/atlas_site_research_reports_v1")&&opts.method==="POST"){
      const row=JSON.parse(opts.body);
@@ -58,7 +59,8 @@ test("one successful refresh reserves day, charges three credits and freezes res
  const m=mock();const out=await refresh({env,fetchImpl:m.fetchImpl,now});
  assert.equal(out.status,"SUCCESS");assert.equal(out.credits_spent,3);assert.equal(out.credits_remaining,451);
  assert.equal(out.events,1);assert.equal(out.quotes,2);assert.equal(out.linked,1);
- assert.equal(m.calls.filter(x=>x.url.includes("api.the-odds-api.com")).length,1);
+ assert.equal(m.calls.filter(x=>x.url.includes("api.the-odds-api.com")).length,2);
+ assert.equal(m.calls.filter(x=>x.url.endsWith("/sports/")).length,1);
  assert.equal(m.calls.filter(x=>x.method==="PATCH").length,1);
 });
 test("second run within same day never contacts the paid provider",async()=>{
