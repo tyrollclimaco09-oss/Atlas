@@ -36,9 +36,16 @@ test('recovered original JavaScript and CSS retain their exact snapshot bytes', 
   }
 });
 
-test('recovered HTML differs from the original only by the three bounded bridge additions', () => {
+test('recovered HTML differs from original only by named source-read and canonical bridge additions', () => {
   let html = readFileSync(join(sourceDirectory, 'index.html'), 'utf8');
+  const readOnlyBlock = html.match(/        <section id="slate-sources" class="panel" aria-labelledby="slate-sources-title">[\s\S]*?        <\/section>\n/);
+  assert.ok(readOnlyBlock, 'a single read-only source panel must be recognizable');
+  assert.equal(html.split('id="slate-sources"').length - 1, 1, 'source panel must appear once');
+  assert.equal(readOnlyBlock[0].includes('id="slate-source-refresh"'), true);
+  assert.equal(readOnlyBlock[0].includes('src="'), false, 'no injected executable content in source panel');
+  html = html.replace(readOnlyBlock[0], '');
   const additions = [
+    '  <script src="slate-sources.js" defer></script>\n',
     '  <script src="canonical-read.js" defer></script>\n',
     '  <script src="canonical-resume.js" defer></script>\n',
     '        <div id="canonical-resume" class="draft-toolbar" role="status" aria-live="polite"></div>\n',
