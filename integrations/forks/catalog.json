@@ -156,9 +156,9 @@
       "upstream": "Graphify-Labs/graphify",
       "node": "ARCHIVIST",
       "capability": "CODEBASE_DEPENDENCY_MAP",
-      "status": "DOCS_REVIEWED_ONLY",
+      "status": "CODE_SMOKE",
       "license": "Apache-2.0",
-      "notes": "Offline code-map candidate for Command Center source and backend contract audit."
+      "notes": "Pinned Graphify source c588b72d936927790a87ad009955078ed40562a3 installed and ran code-only AST on ATLAS fork directory; 75 nodes, 126 edges, 10 communities; network denied and Graphify backend none."
     },
     {
       "repo": "tyrollclimaco09-oss/MiroFish",
