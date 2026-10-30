@@ -142,6 +142,125 @@ Deno.serve(async (req: Request) => {
     return json({ ok: true, mode, data });
   }
 
+  // ATLAS Unified Slate sources: a single authenticated READ of canonical events,
+  // established Slate 2.0 candidates, fresh DraftKings research and optional
+  // redacted Flaim SCOUT leads. No API polling, new canonical writes, or betting rights.
+  if (mode === "slate_sources") {
+    const slateDate = url.searchParams.get("slate_date") ?? "";
+    const league = (url.searchParams.get("league") ?? "NBA").toUpperCase();
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(slateDate) ||
+        Number.isNaN(Date.parse(slateDate + "T00:00:00Z")) ||
+        new Date(slateDate + "T00:00:00Z").toISOString().slice(0, 10) !== slateDate ||
+        !["NBA", "NFL"].includes(league)) {
+      return json({ ok: false, mode, status: "INVALID_SLATE_SCOPE", execution_authority: false }, 400);
+    }
+    const [eventRead, slateRead, oddsRead, flaimRead] = await Promise.all([
+      supabase.from("events")
+        .select("id,canonical_key,league,event_date,start_time,away_team,home_team,reconciliation_status,provider_event_id")
+        .eq("league", league).eq("event_date", slateDate).limit(100),
+      supabase.from("atlas_slate_run_v2_1_refined_surface")
+        .select("candidate_key,event_id,league,contract_status,blocker_codes,lifecycle_status,truth_label,source_claim_count")
+        .eq("league", league).limit(100),
+      supabase.from("atlas_site_research_reports_v1")
+        .select("delivery_key,truth_label,body,created_at,slate_date")
+        .like("delivery_key", "atlas-dk-odds-shadow-%").eq("slate_date", slateDate)
+        .order("created_at", { ascending: false }).limit(1),
+      supabase.from("atlas_site_research_reports_v1")
+        .select("delivery_key,truth_label,body,created_at,slate_date")
+        .like("delivery_key", "atlas-flaim-scout-shadow-%").eq("slate_date", slateDate)
+        .order("created_at", { ascending: false }).limit(1),
+    ]);
+    if (eventRead.error || slateRead.error || oddsRead.error || flaimRead.error) {
+      return json({ ok: false, mode, status: "SOURCE_READ_FAILED",
+        failed_source: eventRead.error ? "CANONICAL_EVENTS" :
+          slateRead.error ? "SLATE2" : oddsRead.error ? "DK_REPORT" : "FLAIM_REPORT",
+        execution_authority: false }, 503);
+    }
+    const currentMs = Date.now();
+    const validAge = (s: unknown, ttlMs: number) => {
+      if (typeof s !== "string") return false;
+      const t = Date.parse(s);
+      return Number.isFinite(t) && t >= currentMs - ttlMs && t <= currentMs + 60000;
+    };
+    const readFrozen = (report: any, ttl: number, expectedContract: string) => {
+      if (!report) return { state: "NO_SNAPSHOT", data: null };
+      if (report.truth_label !== "RESEARCH_ONLY" ||
+          typeof report.body !== "string" || report.body.length > 80000) {
+        return { state: "INVALID_SNAPSHOT", data: null };
+      }
+      let parsed: any;
+      try { parsed = JSON.parse(report.body); } catch {
+        return { state: "INVALID_SNAPSHOT", data: null };
+      }
+      if (!parsed || parsed.contract !== expectedContract ||
+          parsed.execution_authority !== false || parsed.approved_bet !== null ||
+          !Array.isArray(parsed.events ?? parsed.scout_leads)) {
+        return { state: "INVALID_SNAPSHOT", data: null };
+      }
+      if (!validAge(parsed.observed_at, ttl)) {
+        return { state: "STALE_REFERENCE", data: null, observed_at: parsed.observed_at ?? null };
+      }
+      return { state: "FRESH_RESEARCH", data: parsed, observed_at: parsed.observed_at };
+    };
+    const oddsFrozen = readFrozen(oddsRead.data?.[0], 900000, "ATLAS_DK_FIRST_SHADOW_V1");
+    const flaimFrozen = readFrozen(flaimRead.data?.[0], 86400000, "ATLAS_FLAIM_SCOUT_SHADOW_V1");
+    let oddsReport: any = null;
+    if (oddsFrozen.state === "FRESH_RESEARCH" &&
+        oddsFrozen.data?.primary_book === "draftkings" &&
+        oddsFrozen.data?.expected_value === null &&
+        Array.isArray(oddsFrozen.data.events)) {
+      // Whitelist fields to avoid accidentally returning provider raw payloads.
+      const safeEvents = oddsFrozen.data.events.slice(0, 80).map((e: any) => ({
+        provider_event_id: e.provider_event_id,
+        canonical_event_id: e.canonical_event_id ?? null,
+        away_team: e.away_team,
+        home_team: e.home_team,
+        commence_time: e.commence_time,
+        market_last_update: e.market_last_update ?? {},
+        primary_quotes: Array.isArray(e.primary_quotes)
+          ? e.primary_quotes.slice(0, 500).map((q: any) =>
+              Array.isArray(q) ? q.slice(0, 5) :
+              { m: q.m ?? q.market, s: q.s ?? q.selection, l: q.l ?? q.line ?? null,
+                o: q.o ?? q.american_odds, t: q.t ?? q.market_last_update })
+          : [],
+      }));
+      oddsReport = { contract: "ATLAS_DK_FIRST_SHADOW_V1",
+        primary_book: "draftkings", execution_authority: false,
+        approved_bet: null, expected_value: null,
+        observed_at: oddsFrozen.data.observed_at, events: safeEvents };
+    }
+    let flaimPacket: any = null;
+    if (flaimFrozen.state === "FRESH_RESEARCH" &&
+        flaimFrozen.data?.status === "FANTASY_LEADS_UNVERIFIED") {
+      // A research lead is NOT a professional injury confirmation.
+      const leads = Array.isArray(flaimFrozen.data.scout_leads)
+        ? flaimFrozen.data.scout_leads.slice(0, 100).map((s: any) => ({
+          contract: "ATLAS_FLAIM_SCOUT_SHADOW_V1",
+          status: "FANTASY_SIGNAL_ONLY", execution_authority: false,
+          player: s.player, professional_team: s.professional_team,
+          source: { system: "FLAIM_FANTASY", signal_kind: s.source?.signal_kind,
+            observed_at: s.source?.observed_at },
+          verification: { professional_fact_verified: false },
+        }))
+        : [];
+      flaimPacket = { contract: "ATLAS_FLAIM_SCOUT_SHADOW_V1",
+        status: "FANTASY_LEADS_UNVERIFIED", execution_authority: false,
+        approved_bet: null, observed_at: flaimFrozen.data.observed_at,
+        scout_leads: leads };
+    }
+    return json({ ok: true, mode, contract: "ATLAS_SLATE_SOURCES_READ_V1",
+      slate_date: slateDate, league,
+      source_states: { draftkings: oddsReport ? "FRESH_RESEARCH" : oddsFrozen.state,
+        flaim: flaimPacket ? "FRESH_RESEARCH" : flaimFrozen.state,
+        slate2: "CANONICAL_READ_ONLY" },
+      canonical_events: eventRead.data ?? [],
+      slate_candidates: slateRead.data ?? [],
+      odds_report: oddsReport, flaim_packet: flaimPacket,
+      human_final_gate_required: true, execution_authority: false,
+      executable_price_verified: false, approved_bet: null,
+      paid_api_requests: 0, production_writes: 0 });
+  }
+
   if (mode === "slate2") {
     const candidateKey = (url.searchParams.get("candidate_key") ?? "").trim();
     let query = supabase.from("atlas_slate_run_v2_1_refined_surface").select("*").limit(candidateKey ? 1 : 100);
@@ -227,5 +346,5 @@ Deno.serve(async (req: Request) => {
     });
   }
 
-  return json({ ok: false, error: "unsupported mode", allowed_modes: ["board", "candidate", "reassessment", "alerts", "slate2", "memory", "data", "capabilities", "health", "dk_odds"] }, 400);
+  return json({ ok: false, error: "unsupported mode", allowed_modes: ["board", "candidate", "reassessment", "alerts", "slate2", "memory", "data", "capabilities", "health", "dk_odds", "slate_sources"] }, 400);
 });
