@@ -1,6 +1,8 @@
 # ATLAS — The Odds API / DraftKings-first shadow integration
 
-**Status:** executable research adapter + offline tests in a review branch. NOT deployed to production, NOT wired to Command Center, and NOT authorized for betting.
+> **Deployment update (2026-10-29):** The existing `atlas-site-runtime` has now been extended to **v12** with authenticated `?mode=dk_odds`. A three-event/18-quote `RESEARCH_ONLY` snapshot is present in the existing research-report table; a real authorized HTTP 200 readback succeeded, the existing board route also returned HTTP 200, and an ephemeral site credential was revoked and rejected afterward. The original Command Center UI source is still missing, so this feature is **backend-live, UI-not-yet-wired**, with no automatic feed refresh or real-money authority. Full evidence: `docs/evidence/ATLAS_DK_LIVE_SITE_BACKEND_PROOF_20261029.md`.
+
+**Status:** DK-first research adapter in draft PR; existing authenticated site backend read mode **deployed v12**; frontend UI not yet wired; zero betting authority. See deployment update above.
 
 ## Reuses existing ATLAS infrastructure
 
