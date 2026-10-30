@@ -11,8 +11,16 @@ For task-scoped suggestions:
 node integrations/forks/workspace-cli.mjs doctor
 node integrations/forks/workspace-cli.mjs route --project development --goal "inspect this repo and fix failing tests"
 node integrations/forks/workspace-cli.mjs brief --project gpt-workspace --workspace "ATLAS Main" --goal "continue current project"
+# When there is a reviewed, explicit prior-session source receipt:
+node integrations/forks/workspace-cli.mjs resume --receipt ./integrations/forks/fixtures/handoff-synthetic.json
 ```
-For an explicitly approved, locally generated code-only Graphify AST map, add `--graph path/to/graphify-out/graph.json` to the `brief` command. The router itself never runs Graphify or copies raw source code.\n\nAvailable profiles: `atlas-sports`, `gpt-workspace`, `development`, `product`, `data`, `research`, `operations`, `security`.
+For an explicitly approved, locally generated code-only Graphify AST map, add `--graph path/to/graphify-out/graph.json` to the `brief` command. The router itself never runs Graphify or copies raw source code.
+
+Available profiles: `atlas-sports`, `gpt-workspace`, `development`, `product`, `data`, `research`, `operations`, `security`.
+
+## Handoff continuity (no duplicate memory system)
+
+Use the existing populated Create State ATLAS Codex world model and handoff packages when an authorized connector is available. FORGE can reference an existing handoff ID but **does not fetch or replace memory**, and its local `resume` command requires a small, explicitly supplied, scrubbed JSON receipt. The receipt's GitHub SHA, CI results, issues and deployment status are operator-reported and MUST be independently rechecked before action. For public tests use the marked synthetic fixture, not private conversation files.
 
 ## Reuse over reinvention
 

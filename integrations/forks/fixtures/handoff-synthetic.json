@@ -1,0 +1,61 @@
+{
+  "contract": "ATLAS_FORGE_HANDOFF_INPUT_V1",
+  "project": "gpt-workspace",
+  "workspace": "SYNTHETIC Project Handoff Demo",
+  "objective": "Improve resumable coding workflow while preserving evidence boundaries",
+  "captured_at": "2026-10-30T19:15:00.000Z",
+  "source": {
+    "repository": "tyrollclimaco09-oss/Atlas",
+    "branch": "review/atlas-gpt-fork-workspace-2026-10-30",
+    "commit": "322821cb573e127c2a6d74c584f4e0a020c68542",
+    "authority": "OPERATOR_REPORTED"
+  },
+  "evidence": [
+    {
+      "id": "PR24",
+      "kind": "PR",
+      "url": "https://github.com/tyrollclimaco09-oss/Atlas/pull/24",
+      "summary": "Example link to the real draft FORGE PR; status must be independently rechecked",
+      "observed_at": "2026-10-30T19:12:00.000Z"
+    },
+    {
+      "id": "CI64",
+      "kind": "CI",
+      "url": "https://github.com/tyrollclimaco09-oss/Atlas/actions/runs/41112893782",
+      "summary": "Example reference to previously inspected CI; not fresh test evidence for a later revision",
+      "observed_at": "2026-10-30T19:09:31.000Z"
+    }
+  ],
+  "tests": [
+    {
+      "id": "TESTS64",
+      "command": "node --test integrations/forks/*.test.mjs",
+      "passed": 64,
+      "failed": 0,
+      "observed_at": "2026-10-30T19:09:31.000Z",
+      "run_url": "https://github.com/tyrollclimaco09-oss/Atlas/actions/runs/41112893782"
+    }
+  ],
+  "blockers": [
+    {
+      "id": "SITE_ACCESS",
+      "detail": "Original published Command Center editor is not accessible through this local packet"
+    }
+  ],
+  "next_actions": [
+    {
+      "id": "REVERIFY_PR",
+      "goal": "Check current branch SHA, PR status and fresh CI before merging",
+      "authority": "READ_ONLY"
+    },
+    {
+      "id": "SHADOW_TEST",
+      "goal": "Run new resume-packet negative and regression tests in isolated sandbox",
+      "authority": "SANDBOX"
+    }
+  ],
+  "memory_reference": {
+    "provider": "CREATE_STATE",
+    "handoff_id": "adac9e65-752d-441c-8d5a-89a43d674b04"
+  }
+}
