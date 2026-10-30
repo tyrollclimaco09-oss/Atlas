@@ -4,6 +4,7 @@
  * accesses credentials, deploys, places bets or writes project data.
  */
 import {readFileSync} from "node:fs";
+import {readGraphSummary,graphBriefSection} from "./graph-context.mjs";
 const catalogPath=new URL("./workspace-catalog.json",import.meta.url);
 export const CONTRACT="ATLAS_FORGE_ROUTER_V1";
 export const loadCatalog=()=>JSON.parse(readFileSync(catalogPath,"utf8"));
@@ -111,9 +112,10 @@ export function plan({project="gpt-workspace",workspace="ATLAS",goal="",catalog=
  ]};
 }
 const safe=s=>String(s||"").replace(/[\u0000-\u001f<>]/g," ").replace(/[\x60\\]/g,"").slice(0,500).trim();
-export function brief({project="gpt-workspace",workspace="ATLAS",goal="",catalog=loadCatalog()}={}){
+export function brief({project="gpt-workspace",workspace="ATLAS",goal="",graph=null,catalog=loadCatalog()}={}){
  const x=route({project,goal,max:7,catalog});
  const stack=x.tools.map((f,i)=>String(i+1)+". "+safe(f.name)+" ["+f.status+"] — "+safe(f.source_boundary)).join("\n");
+ const graphSection=graph?graphBriefSection(readGraphSummary(graph)):"";
  return [
  "# ATLAS / GPT Project Launch Brief",
  "Project profile: "+safe(project),
@@ -123,6 +125,7 @@ export function brief({project="gpt-workspace",workspace="ATLAS",goal="",catalog
  "",
  "## Candidate tool stack (NOT installed or activated)",
  stack||"No safe candidate under the current project profile.",
+ graphSection,
  "",
  "## Operating procedure",
  "1. Inspect the actual current project and reuse existing implementation, connectors and checkpoint receipts.",
@@ -144,13 +147,14 @@ const help=()=>"ATLAS FORGE — local read-only multi-project capability router\
  "node integrations/forks/workspace-cli.mjs route --project atlas-sports --goal 'run the slate' [--json]\n"+
  "node integrations/forks/workspace-cli.mjs plan --project development --goal 'build website' [--json]\n"+
  "node integrations/forks/workspace-cli.mjs brief --project gpt-workspace --workspace 'My Project' --goal 'continue my app'\n"+
+ "Optional for brief: --graph /path/to/local/graphify-out/graph.json (AST-only summary).\n"+
  "No command automatically installs, connects, executes, deploys, wagers or calls an LLM.";
 function parse(argv){
  const command=argv[0]||"help",opts={};
  for(let i=1;i<argv.length;i++){
   const name=argv[i];
   if(name==="--json"||name==="--include-lab"){opts[name==="--json"?"json":"includeLab"]=true;continue}
-  if(!["--project","--workspace","--goal","--max","--status"].includes(name)||!argv[i+1])throw Error("INVALID_ARGUMENT: "+name);
+  if(!["--project","--workspace","--goal","--max","--status","--graph"].includes(name)||!argv[i+1])throw Error("INVALID_ARGUMENT: "+name);
   opts[name.slice(2)]=argv[++i];
  }
  if(opts.max!==undefined){opts.max=Number(opts.max);if(!Number.isInteger(opts.max))throw Error("INVALID_MAX")}
