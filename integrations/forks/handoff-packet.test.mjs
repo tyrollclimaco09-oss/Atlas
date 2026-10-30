@@ -144,3 +144,39 @@ test("no accidental autonomous memory writing or platform state creation",()=>{
  assert(txt.includes("No automated gambling"));
  assert(!txt.includes("MODEL_SET_CONTEXT_UPDATED"));
 });
+
+test("an evidence fact cannot be observed after the claimed snapshot was captured",()=>{
+ const x=clone();x.evidence[0].observed_at="2026-10-30T19:17:00.000Z";
+ assert.throws(()=>create(x),/RECEIPT_CAUSALITY_INVALID/);
+});
+test("a CI test result also cannot be observed after the captured snapshot",()=>{
+ const x=clone();x.tests[0].observed_at="2026-10-30T19:17:00.000Z";
+ assert.throws(()=>create(x),/RECEIPT_CAUSALITY_INVALID/);
+});
+test("invalid calendar timestamps are rejected rather than silently normalized",()=>{
+ const x=clone();x.captured_at="2026-02-30T19:15:00.000Z";
+ assert.throws(()=>create(x),/UTC_TIMESTAMP_REQUIRED/);
+});
+test("PR references cannot silently point to issues and vice versa",()=>{
+ const x=clone();x.evidence[0].url="https://github.com/tyrollclimaco09-oss/Atlas/issues/24";
+ assert.throws(()=>create(x),/EVIDENCE_URL_INVALID/);
+ const y=clone();y.evidence[0].kind="ISSUE";
+ assert.throws(()=>create(y),/EVIDENCE_URL_INVALID/);
+});
+test("a handoff with zero evidence links is rejected as an evidence-backed packet",()=>{
+ const x=clone();x.evidence=[];
+ assert.throws(()=>create(x),/EVIDENCE_REFERENCE_REQUIRED/);
+});
+test("a handoff without next actions fails to provide a usable continuation",()=>{
+ const x=clone();x.next_actions=[];
+ assert.throws(()=>create(x),/NEXT_ACTION_REQUIRED/);
+});
+test("a modified digest is detected before the packet is rendered for GPT",()=>{
+ const p=create();p.blockers[0].detail="silently changed after hash";
+ assert.throws(()=>renderHandoff(p),/PACKET_DIGEST_MISMATCH/);
+});
+test("a maliciously substituted hash cannot claim authenticity",()=>{
+ const p=create();p.integrity.digest="0".repeat(64);
+ assert.throws(()=>renderHandoff(p),/PACKET_DIGEST_MISMATCH/);
+ assert.equal(p.integrity.scheme,"SHA256_CONTENT_DIGEST_NOT_SIGNATURE");
+});
