@@ -1,0 +1,46 @@
+name: ATLAS Fork Arsenal offline smoke
+on:
+  push:
+    paths:
+      - 'integrations/forks/**'
+      - '.github/workflows/atlas-fork-arsenal.yml'
+      - 'docs/integrations/ATLAS_FORK_ARSENAL.md'
+  pull_request:
+    paths:
+      - 'integrations/forks/**'
+      - '.github/workflows/atlas-fork-arsenal.yml'
+      - 'docs/integrations/ATLAS_FORK_ARSENAL.md'
+permissions:
+  contents: read
+jobs:
+  fork-evidence-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@e797f83bcb11b83ae66e0230d6156d7c80228e7c
+        with:
+          python-version: '3.12'
+      - name: Freeze specific nba_api fork SHA
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          repository: tyrollclimaco09-oss/nba_api
+          ref: 0c55451abf707ff2e317058d9f417d48b15aebbe
+          path: third_party_forks/nba_api
+          persist-credentials: false
+      - name: Freeze specific sports-skills fork SHA
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          repository: tyrollclimaco09-oss/sports-skills
+          ref: 09eb7e8566f48c01d1ea7bf7b4ac62a477d37b19
+          path: third_party_forks/sports-skills
+          persist-credentials: false
+      - name: Exercise real fork source without installing dependencies
+        run: python3 integrations/forks/fork-source-smoke.py --nba-api-source third_party_forks/nba_api --sports-skills-source third_party_forks/sports-skills
+      - name: Run atlas source and pricing guardrails
+        run: node --test integrations/forks/*.test.mjs
