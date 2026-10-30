@@ -25,3 +25,9 @@ Date: 2026-10-30.
 5. Update original deployment only with owner permission and staged review; do not replace with another dashboard.
 
 References: draft PR #19 (runtime v13), draft PR #17 (DK pricing), draft PR #18 (Flaim optional SCOUT/VERIFY), GitHub issue #8 (original site parity).
+
+## Final follow-up evidence
+- `slate-sources.js` also renders optional, sanitized Flaim fantasy leads by exact professional team matchup. They remain explicitly *fantasy research*, with professional source verification required; forged official claims and private owner/credential data are filtered out.
+- **125/125 tests passed in GitHub Actions** (latest tested commit `d1a10990b3d8f66a1552b50278ebfe7f34d6fa94`), workflow `ATLAS recovered original Command Center slate source wiring`, run **41093001905**, job **124191447194**. Raw CI logs checked: 125 tests, 125 pass, 0 fail.
+- The frontend source was verified only in a **recovered snapshot** from the original site. Publishing to that original site has not occurred; the connected browser is unavailable, and project/team-scoped Vercel authorization for an unrelated existing project is not established. Do not infer Vercel deployment authority over the original ChatGPT Sites domain.
+- The Vercel daily DraftKings refresh remains disabled, so **zero scheduled paid API calls** have been enabled in this integration step. Supabase v13 read mode remains deployed independently.
