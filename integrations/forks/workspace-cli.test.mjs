@@ -108,3 +108,21 @@ test("routes do not fabricate savings or betting authority",()=>{
  assert.equal(r.evidence_state,"PROPOSED_STACK_NOT_CONNECTED_OR_EXECUTED");
  assert.equal(r.live_provider_calls,0);assert.equal(r.execution_authority,false);
 });
+
+test("named GPT workspaces get distinct handoff without fake data access",()=>{
+ const a=brief({project:"development",workspace:"ATLAS Main",goal:"Audit our app",catalog});
+ const b=brief({project:"development",workspace:"My Separate Study App",goal:"Audit our app",catalog});
+ assert(a.includes("Workspace: ATLAS Main"));
+ assert(b.includes("Workspace: My Separate Study App"));
+ assert(!b.includes("Workspace: ATLAS Main"));
+});
+test("CLI supports named workspace without reaching another project",()=>{
+ const out=[];main(["brief","--project","development","--workspace","My Private App","--goal","Help me code"],x=>out.push(x));
+ assert.equal(out.length,1);assert(out[0].includes("Workspace: My Private App"));
+ assert(out[0].includes("not a call to GPT"));
+});
+test("plan retains selected workspace and still needs review for operations",()=>{
+ const p=plan({project:"gpt-workspace",workspace:"Research Hub",goal:"Fix handoffs",catalog});
+ assert.equal(p.workspace,"Research Hub");
+ assert.equal(p.steps.at(-1).authority,"APPROVAL_REQUIRED");
+});
