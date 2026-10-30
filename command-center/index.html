@@ -14,6 +14,7 @@
   <script src="slate.js" defer></script>
   <script src="canonical-read.js" defer></script>
   <script src="canonical-resume.js" defer></script>
+  <script src="slate-sources.js" defer></script>
 </head>
 <body>
   <a class="skip" href="#content">Skip to content</a>
@@ -39,6 +40,15 @@
         <div class="slate-truth"><span class="tag blue">PLUS WORKFLOW</span><p>Two focused research batches, then your review. This site makes no AI or odds-feed calls.</p><details><summary>Limits &amp; draft storage</summary><p>ChatGPT performs research when you paste the prepared batch into your chat. Its normal plan limits still apply. <a class="text-link" href="https://help.openai.com/en/articles/6950777-what-is-chatgpt-plus" target="_blank" rel="noopener noreferrer">Plus does not include API usage ↗</a></p><p>This is a temporary workspace saved in this browser. Export before changing devices or clearing browser data. Drafts and review history are not synced to Supabase or the canonical Ledger, and can be edited outside the site. Screenshots stay with your draft; the site cannot read them. Final Gate supports pregame singles with a two-outcome settlement model and the current −150 favorite-price limit. SGPs, parlays, and other settlement models remain research.</p><p>Default review windows: market quotes 15 minutes (adjustable), availability 6 hours, balances 60 minutes. Material news always requires a new check.</p></details></div>
         <div class="draft-toolbar"><span id="draft-state" class="small muted">Start a slate or restore a draft file.</span><label class="text-button restore-label" for="restore-draft">Restore draft<input id="restore-draft" type="file" accept="application/json,.json" class="visually-hidden-input"></label></div>
         <div id="canonical-resume" class="draft-toolbar" role="status" aria-live="polite"></div>
+        <section id="slate-sources" class="panel" aria-labelledby="slate-sources-title">
+          <div class="section-heading">
+            <div><p class="eyebrow">SCOUT / FILTER VERIFY</p><h2 id="slate-sources-title">Live source intelligence</h2></div>
+            <button class="button secondary" type="button" id="slate-source-refresh">Read sources</button>
+          </div>
+          <p id="slate-source-status" class="small muted" role="status" aria-live="polite">Connecting to ATLAS evidence…</p>
+          <div id="slate-source-results" aria-label="Read-only research source results"></div>
+          <p class="field-help">DraftKings prices are timestamped research references. Flaim observations are fantasy leads, not verified professional injuries. Your existing draft, Final Gate and Ledger remain unchanged.</p>
+        </section>
         <p id="slate-status" class="small muted" role="status" aria-live="polite"></p>
         <div id="no-slate" class="panel slate-empty"><p class="eyebrow">YOUR NEXT RUN</p><h2>Start with a date and a sport.</h2><p>ATLAS prepares one research batch for your chat. Import the result, freeze the forecast, and request prices for the candidates that earned it.</p><button id="new-slate-empty" class="button primary" type="button">Start a slate →</button><div class="run-principles"><span>01 · Evidence first</span><span>02 · Price independently</span><span>03 · Confirm the book</span></div></div>
         <div id="active-slate" hidden>
