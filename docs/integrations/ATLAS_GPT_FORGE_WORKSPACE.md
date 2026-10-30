@@ -32,11 +32,20 @@ node integrations/forks/workspace-cli.mjs plan --project data --goal "build a re
 # Create a copy-ready handoff for GPT/Codex about ANY named project
 node integrations/forks/workspace-cli.mjs brief --project gpt-workspace --workspace "My Other App" --goal "resume coding and keep the relevant decisions"
 
+# Convert an explicitly reviewed, scrubbed project checkpoint into a resume prompt
+node integrations/forks/workspace-cli.mjs resume --receipt ./integrations/forks/fixtures/handoff-synthetic.json
+
 # For scripts and other tooling
 node integrations/forks/workspace-cli.mjs route --project development --goal "test frontend" --json
 ```
 
 **What the CLI does NOT do:** It makes no network requests, doesn't invoke an LLM, doesn't install packages, doesn't execute any fork's agent or arbitrary scripts, doesn't save a private memory, doesn't mutate a project, and doesn't move funds. It is a deterministic source-aware **discovery, triage, and GPT briefing tool**.
+
+## Resume without restarting project context
+
+The `resume` command reads a small, operator-reviewed `ATLAS_FORGE_HANDOFF_INPUT_V1` JSON receipt. Its source commit, PR and CI references, blockers, action authority and optional existing Create State handoff ID are included in a copy-ready continuation. The local generator does **not** read GitHub, retrieve conversations, re-run CI, or invent passed tests. It labels every claim `OPERATOR_REPORTED_NEEDS_RECHECK`, rejects missing/future-dated evidence and secret-shaped content, and includes a SHA-256 **change-detection** digest (not an authentication signature).
+
+The documented schema and fixture are in `docs/integrations/ATLAS_FORGE_HANDOFF.md` and `integrations/forks/fixtures/handoff-synthetic.json`. Reuse the user's **existing** Create State project memory/handoff package through an authorized connected tool; FORGE deliberately does **not** create a second memory database.
 
 ## Reusable GPT workflow profiles
 
@@ -86,7 +95,9 @@ node integrations/forks/workspace-cli.mjs plan --project atlas-sports --goal "Ru
 
 Keep SCOUT/FILTER verification separate from market-derived pricing, ORACLE held-out predictive proof, and the **Human Final Gate**. No fake injuries, no stale quote promotion, no unlicensed scraping and no autonomous sportsbook access.
 
-## Optional local Graphify context for GPT/Codex\n\nThe pinned `graphify` fork has actually been installed and executed **offline with network denied** against ten ATLAS integration files (75 AST nodes, 126 code edges and 10 communities). Source evidence: `docs/evidence/ATLAS_FORGE_GRAPHIFY_CODE_ONLY_PROOF_20261030.md`. No API or private code was uploaded.\n\nWhen you choose to use Graphify on your own repository, generate its code-only graph explicitly, then include a compact structural receipt in a GPT brief:\n\n```sh\nGRAPHIFY_BACKEND=none GRAPHIFY_QUERY_LOG_DISABLE=1 graphify extract ./integrations/forks --code-only --no-viz\nnode integrations/forks/workspace-cli.mjs brief --project development --workspace \"ATLAS Fork Lab\" --goal \"explain our code graph\" --graph integrations/forks/graphify-out/graph.json\n```\n\nThe brief includes **only AST symbols, file/line locations and graph counts**, not source bodies. Check symbol/file names before sharing them with any assistant. The workflow `.github/workflows/atlas-forge-codegraph.yml` is **manually triggered only** and produces a 7-day code-only graph artifact after branch approval; it does not run automatically on paid provider queries.\n\n## Real release gates for richer agent interaction
+## Optional local Graphify context for GPT/Codex
+
+The pinned `graphify` fork has actually been installed and executed **offline with network denied** against ten ATLAS integration files (75 AST nodes, 126 code edges and 10 communities). Source evidence: `docs/evidence/ATLAS_FORGE_GRAPHIFY_CODE_ONLY_PROOF_20261030.md`. No API or private code was uploaded.\n\nWhen you choose to use Graphify on your own repository, generate its code-only graph explicitly, then include a compact structural receipt in a GPT brief:\n\n```sh\nGRAPHIFY_BACKEND=none GRAPHIFY_QUERY_LOG_DISABLE=1 graphify extract ./integrations/forks --code-only --no-viz\nnode integrations/forks/workspace-cli.mjs brief --project development --workspace \"ATLAS Fork Lab\" --goal \"explain our code graph\" --graph integrations/forks/graphify-out/graph.json\n```\n\nThe brief includes **only AST symbols, file/line locations and graph counts**, not source bodies. Check symbol/file names before sharing them with any assistant. The workflow `.github/workflows/atlas-forge-codegraph.yml` is **manually triggered only** and produces a 7-day code-only graph artifact after branch approval; it does not run automatically on paid provider queries.\n\n## Real release gates for richer agent interaction
 
 1. Connect the actual project's source/permissions through the authorized GitHub or product app; avoid exposing personal data in prompts.
 2. In a bounded sandbox, reproduce one source/tool's actual outputs against point-in-time fixtures and negative cases.
