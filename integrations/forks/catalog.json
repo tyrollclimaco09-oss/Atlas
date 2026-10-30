@@ -1,0 +1,227 @@
+{
+  "contract": "ATLAS_FORK_CAPABILITY_CATALOG_V1",
+  "updated_at": "2026-10-30",
+  "authoritative_slate_source": "ATLAS_CANONICAL_EVENTS",
+  "default_mode": "SHADOW_READ_ONLY",
+  "production_promotions": 0,
+  "paid_calls_authorized": 0,
+  "remarks": "Fork means a copy of upstream source, NOT an installed/operating API or a model validated by ATLAS. Only code-smoke statuses represent code executed in isolation.",
+  "forks": [
+    {
+      "repo": "tyrollclimaco09-oss/nba_api",
+      "upstream": "swar/nba_api",
+      "node": "SCOUT",
+      "capability": "NBA_TEAM_IDENTITY_AND_GAME_LOGS",
+      "status": "SOURCE_CODE_SMOKE_PASSED",
+      "license": "MIT",
+      "notes": "Static NBA team identities from actual fork used offline; live stats endpoints not certified."
+    },
+    {
+      "repo": "tyrollclimaco09-oss/sports-skills",
+      "upstream": "machina-sports/sports-skills",
+      "node": "SCOUT",
+      "capability": "NBA_NFL_CANONICAL_SCOREBOARD_AND_ROW_SHAPING",
+      "status": "SOURCE_CODE_SMOKE_PASSED",
+      "license": "MIT",
+      "notes": "Real row-shaping logic executed; complete NBA/NFL connectors not yet end-to-end."
+    },
+    {
+      "repo": "tyrollclimaco09-oss/nflreadpy",
+      "upstream": "nflverse/nflreadpy",
+      "node": "SCOUT",
+      "capability": "NFL_HISTORICAL_PBP",
+      "status": "CLONED_REVIEWED_ONLY",
+      "license": "MIT",
+      "notes": "Requires data availability, polars and correct event history as-of freeze; not a live NFL injury feed."
+    },
+    {
+      "repo": "tyrollclimaco09-oss/public-espn-api",
+      "upstream": "pseudo-r/Public-ESPN-API",
+      "node": "SCOUT",
+      "capability": "ESPN_UNOFFICIAL_ENDPOINT_REFERENCE",
+      "status": "DOCS_REVIEWED_ONLY",
+      "license": "MIT",
+      "notes": "Documentation; respect usage rights; no assumption of authenticated hosted API."
+    },
+    {
+      "repo": "tyrollclimaco09-oss/mcp-sports-hub",
+      "upstream": "lacausecrypto/mcp-sports-hub",
+      "node": "SCOUT",
+      "capability": "MULTI_PROVIDER_DISCOVERY_CROSSCHECK",
+      "status": "DOCS_REVIEWED_ONLY",
+      "license": "MIT",
+      "notes": "Aggregator may reuse the same upstream feed as another adapter; avoid fake source independence."
+    },
+    {
+      "repo": "tyrollclimaco09-oss/shin",
+      "upstream": "mberk/shin",
+      "node": "PRICING",
+      "capability": "BOOKMAKER_OVERROUND_MODEL",
+      "status": "CLONED_REVIEWED_ONLY",
+      "license": "MIT",
+      "notes": "Shin method is market-based de-vig; never independent true/fair probability."
+    },
+    {
+      "repo": "tyrollclimaco09-oss/penaltyblog",
+      "upstream": "martineastwood/penaltyblog",
+      "node": "PRICING",
+      "capability": "DEVIG_AND_SOCCER_MODELS",
+      "status": "DOCS_REVIEWED_ONLY",
+      "license": "MIT",
+      "notes": "Soccer-focused advanced models; proof required before use on NBA/NFL."
+    },
+    {
+      "repo": "tyrollclimaco09-oss/sports-betting",
+      "upstream": "georgedouzas/sports-betting",
+      "node": "ORACLE",
+      "capability": "DATALOADER_AND_TIME_SERIES_BACKTEST_REFERENCE",
+      "status": "DOCS_REVIEWED_ONLY",
+      "license": "MIT",
+      "notes": "Execution automation is out of scope and must remain disabled."
+    },
+    {
+      "repo": "tyrollclimaco09-oss/nba-machine-learning-sports-betting",
+      "upstream": "kyleskom/NBA-Machine-Learning-Sports-Betting",
+      "node": "ORACLE",
+      "capability": "NBA_TEAM_BASELINE_MODEL_REPRODUCTION",
+      "status": "DOCS_REVIEWED_ONLY",
+      "license": "UNVERIFIED",
+      "notes": "Older pinned training deps/odds collection; leakage and held-out splits require testing."
+    },
+    {
+      "repo": "tyrollclimaco09-oss/alphapy",
+      "upstream": "ScottfreeLLC/AlphaPy",
+      "node": "ORACLE",
+      "capability": "AUTOML_BENCHMARKING_REFERENCE",
+      "status": "DOCS_REVIEWED_ONLY",
+      "license": "Apache-2.0",
+      "notes": "Legacy edition; methodology only until a fully frozen reproducible run."
+    },
+    {
+      "repo": "tyrollclimaco09-oss/nba-player-movements",
+      "upstream": "linouk23/NBA-Player-Movements",
+      "node": "CHAOS_LAB",
+      "capability": "2016_SPORTVU_SPATIAL_FIXTURES",
+      "status": "DOCS_REVIEWED_ONLY",
+      "license": "UNVERIFIED",
+      "notes": "2016-only movement examples, not current NBA tracking."
+    },
+    {
+      "repo": "tyrollclimaco09-oss/fast-check",
+      "upstream": "dubzzz/fast-check",
+      "node": "CALIBRATOR",
+      "capability": "PROPERTY_BASED_ADVERSARIAL_TESTING",
+      "status": "DOCS_REVIEWED_ONLY",
+      "license": "MIT",
+      "notes": "For time-boundary, identity and duplicate invariants; no production runtime dependency."
+    },
+    {
+      "repo": "tyrollclimaco09-oss/msw",
+      "upstream": "mswjs/msw",
+      "node": "CALIBRATOR",
+      "capability": "API_MOCK_AND_FAILURE_REPLAY",
+      "status": "DOCS_REVIEWED_ONLY",
+      "license": "MIT",
+      "notes": "Mocking only; simulated odds are never described as real sportsbook quotes."
+    },
+    {
+      "repo": "tyrollclimaco09-oss/playwright",
+      "upstream": "microsoft/playwright",
+      "node": "COMMAND_CENTER",
+      "capability": "E2E_UI_AND_AUTHENTICATION_TESTS",
+      "status": "DOCS_REVIEWED_ONLY",
+      "license": "Apache-2.0",
+      "notes": "Use for original Command Center once authorized site source is restored."
+    },
+    {
+      "repo": "tyrollclimaco09-oss/zod",
+      "upstream": "colinhacks/zod",
+      "node": "FILTER_VERIFY",
+      "capability": "RUNTIME_SCHEMA_VALIDATION",
+      "status": "DOCS_REVIEWED_ONLY",
+      "license": "MIT",
+      "notes": "Optional ingestion schema hardening; benchmark against existing contract first."
+    },
+    {
+      "repo": "tyrollclimaco09-oss/testcontainers-node",
+      "upstream": "testcontainers/testcontainers-node",
+      "node": "CALIBRATOR",
+      "capability": "ISOLATED_DATABASE_FAILURE_REPRODUCTION",
+      "status": "DOCS_REVIEWED_ONLY",
+      "license": "MIT",
+      "notes": "DB-read-failure and stale-health acceptance tests without touching production."
+    },
+    {
+      "repo": "tyrollclimaco09-oss/graphify",
+      "upstream": "Graphify-Labs/graphify",
+      "node": "ARCHIVIST",
+      "capability": "CODEBASE_DEPENDENCY_MAP",
+      "status": "DOCS_REVIEWED_ONLY",
+      "license": "Apache-2.0",
+      "notes": "Offline code-map candidate for Command Center source and backend contract audit."
+    },
+    {
+      "repo": "tyrollclimaco09-oss/MiroFish",
+      "upstream": "666ghj/MiroFish",
+      "node": "CHAOS_LAB",
+      "capability": "EXPLORATORY_AGENT_WORLDS",
+      "status": "LAB_ONLY_LICENSE_REVIEW",
+      "license": "AGPL-3.0",
+      "notes": "Can inspire experiment worlds; social-agent narrative is not sports forecast validation."
+    },
+    {
+      "repo": "tyrollclimaco09-oss/ruflo",
+      "upstream": "ruvnet/ruflo",
+      "node": "COUNCIL",
+      "capability": "AGENT_ORCHESTRATION_REFERENCE",
+      "status": "LAB_ONLY_SECURITY_REVIEW",
+      "license": "MIT",
+      "notes": "Agent autonomy and delegated tool rights require explicit permissions."
+    },
+    {
+      "repo": "tyrollclimaco09-oss/claude-mem",
+      "upstream": "thedotmack/claude-mem",
+      "node": "ARCHIVIST",
+      "capability": "SESSION_SUMMARIZATION_REFERENCE",
+      "status": "LAB_ONLY_PRIVACY_REVIEW",
+      "license": "Apache-2.0",
+      "notes": "Not a substitute for ATLAS frozen prediction receipts."
+    },
+    {
+      "repo": "tyrollclimaco09-oss/OpenBot",
+      "upstream": "CopilotKit/OpenBot",
+      "node": "COMMAND_CENTER",
+      "capability": "AGENT_COMPUTER_AUDIT_PATTERNS",
+      "status": "LAB_ONLY_SECURITY_REVIEW",
+      "license": "MIT",
+      "notes": "Sample single-user administrator mode not appropriate for public deployment."
+    },
+    {
+      "repo": "tyrollclimaco09-oss/omniroute",
+      "upstream": "cheaper-inference/OmniRoute",
+      "node": "COUNCIL",
+      "capability": "MODEL_ROUTING_AND_PROVIDER_FAILOVER",
+      "status": "LAB_ONLY_QUOTA_REVIEW",
+      "license": "MIT",
+      "notes": "Needs security and token budget analysis before any agent authority."
+    },
+    {
+      "repo": "tyrollclimaco09-oss/DKscraPy",
+      "upstream": "agad495/DKscraPy",
+      "node": "PRICING",
+      "capability": "HISTORICAL_DK_SCRAPER_REFERENCE",
+      "status": "NO_LIVE_INTEGRATION",
+      "license": "UNVERIFIED",
+      "notes": "2023 scraper; DK The Odds API is already primary, no unauthorized scraping."
+    },
+    {
+      "repo": "tyrollclimaco09-oss/jailbreaks",
+      "upstream": "togg53192-cmd/jailbreaks",
+      "node": "NONE",
+      "capability": "PROMPT_ATTACK_RED_TEAM_INPUTS",
+      "status": "DO_NOT_EXECUTE",
+      "license": "UNVERIFIED",
+      "notes": "Never install or execute bypass prompts; red-team fixtures must be isolated."
+    }
+  ]
+}
