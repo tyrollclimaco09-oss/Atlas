@@ -1,0 +1,9 @@
+{
+  "name": "atlas-research-backend",
+  "private": true,
+  "type": "module",
+  "version": "0.0.0",
+  "scripts": {
+    "test:odds": "node --test integrations/odds-api/*.test.mjs api/*.test.mjs"
+  }
+}
