@@ -66,3 +66,9 @@ test("disagreeing response date/league cannot contaminate slate",async()=>{
 test("no tokens in host URL",async()=>{
  await assert.rejects(()=>readUnifiedSlate({...base,runtimeUrl:"https://abc.supabase.co/foo?key=secret",fetchImpl:mock()}),/RUNTIME_URL_NOT_CANONICAL/);
 });
+
+test("genuinely empty slate is labeled EMPTY_SLATE, not ready with invented events",async()=>{
+ const x=await readUnifiedSlate({...base,fetchImpl:mock({...response,canonical_events:[],slate_candidates:[],odds_report:null,
+   source_states:{...response.source_states,draftkings:"NO_SNAPSHOT"}})});
+ assert.equal(x.status,"EMPTY_SLATE");assert.equal(x.events.length,0);assert.equal(x.totals.dk_reference_quotes,0);
+});
