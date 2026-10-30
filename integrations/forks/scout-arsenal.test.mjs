@@ -64,7 +64,7 @@ test("team identity cannot be sold as verified match odds",()=>{
 });
 test("NBA API historical player log is accepted as a narrow reference only",()=>{
  const x=withChanges({source_id:"nba_api",kind:"PLAYER_GAME_LOG",
-   claims:{player_id:201000,minutes:27.5,points:22,rebounds:4,assists:5,fga:14,fta:6,fg3a:7}});
+   game_start:"2026-10-29T23:50:00Z",claims:{player_id:201000,minutes:27.5,points:22,rebounds:4,assists:5,fga:14,fta:6,fg3a:7}});
  assert.equal(x.admitted,true);assert.equal(x.scope,"HISTORICAL_PLAYER_STATS");
  assert.equal(x.approved_bet,null);
 });
@@ -145,7 +145,7 @@ test("three-way market reference supports explicit three_way but not hidden outc
  assert.throws(()=>marketReferenceNoVig([125,210,310],{market:"h2h"}),/MARKET_OUTCOME_SET_INVALID/);
 });
 test("invalid, favorable-only or impossible market quotes fail",()=>{
- for(const arr of [[-150],[+100,-120],[100,-100],[0,-110],[-105,-90],[1e7,-110]])
+ for(const arr of [[-150],[100,200],[0,-110],[-105,-90],[1e7,-110]])
   assert.throws(()=>marketReferenceNoVig(arr));
 });
 test("no artificial independent probability is created from a market baseline",()=>{
