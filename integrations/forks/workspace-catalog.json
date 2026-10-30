@@ -612,9 +612,9 @@
         "development",
         "research"
       ],
-      "status": "REVIEWED",
+      "status": "CODE_SMOKE",
       "license": "Apache-2.0",
-      "caveat": "Offline code dependency map; do not upload private code without approval",
+      "caveat": "Actual pinned Graphify code-only AST extractor executed offline with network denied, 75 nodes / 126 edges across 10 files. No docs/LLM, data egress or live provider connected.",
       "automatic_install": false,
       "automatic_execute": false,
       "provider_verified_live": false
