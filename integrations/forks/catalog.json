@@ -57,9 +57,9 @@
       "upstream": "mberk/shin",
       "node": "PRICING",
       "capability": "BOOKMAKER_OVERROUND_MODEL",
-      "status": "CLONED_REVIEWED_ONLY",
+      "status": "SOURCE_CODE_SMOKE_PASSED",
       "license": "MIT",
-      "notes": "Shin method is market-based de-vig; never independent true/fair probability."
+      "notes": "Pinned Shin fork compiled in isolated GitHub Actions; its actual method was tested on synthetic 2- and 3-way prices against normalized baseline. Market-derived only; no verified current odds or fair probabilities."
     },
     {
       "repo": "tyrollclimaco09-oss/penaltyblog",
