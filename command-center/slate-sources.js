@@ -15,17 +15,47 @@
   const ENDPOINT='https://lhliqbbooproqtslmgqi.supabase.co/functions/v1/atlas-site-runtime';
   const CONTRACT='ATLAS_SLATE_SOURCES_READ_V1';
   const FRESH_MILLIS=15*60000;
+  const FLAIM_TTL_MS=24*60*60000;
   const clean=s=>typeof s==='string'?s.trim():'';
   const validDay=s=>typeof s==='string' && /^\d{4}-\d{2}-\d{2}$/.test(s) &&
      Number.isFinite(Date.parse(s+'T00:00:00Z'))&&new Date(s+'T00:00:00Z').toISOString().slice(0,10)===s;
-  const ageOk=(time,now)=>typeof time==='string' && Number.isFinite(Date.parse(time)) &&
-     Date.parse(time)<=now+60000 && Date.parse(time)>=now-FRESH_MILLIS;
+  const ageOk=(time,now,ttl=FRESH_MILLIS)=>typeof time==='string' && Number.isFinite(Date.parse(time)) &&
+     Date.parse(time)<=now+60000 && Date.parse(time)>=now-ttl;
   function safeHeaders(headers){
     if(!headers||typeof headers!=='object'||Array.isArray(headers))return null;
     const entries=Object.entries(headers);
     if(!entries.some(([k,v])=>['authorization','x-atlas-site-token'].includes(k.toLowerCase())&&typeof v==='string'&&v.length>0))return null;
     if(entries.some(([k,v])=>!['authorization','x-atlas-site-token','apikey','x-client-info'].includes(k.toLowerCase())||typeof v!=='string'))return null;
     return Object.fromEntries(entries);
+  }
+  function attachFlaim(base,body,now){
+    if(base.source_states.flaim!=='FRESH_RESEARCH')return base;
+    const p=body.flaim_packet;
+    if(!p||p.contract!=='ATLAS_FLAIM_SCOUT_SHADOW_V1'||
+      p.status!=='FANTASY_LEADS_UNVERIFIED'||p.execution_authority!==false||
+      p.approved_bet!==null||!Array.isArray(p.scout_leads)||
+      !ageOk(p.observed_at,now,FLAIM_TTL_MS)){
+      base.source_states.flaim='INVALID_OR_STALE_CLIENT';return base;
+    }
+    const seen=new Set();
+    for(const signal of p.scout_leads.slice(0,100)){
+      if(!signal||signal.contract!=='ATLAS_FLAIM_SCOUT_SHADOW_V1'||
+        signal.status!=='FANTASY_SIGNAL_ONLY'||signal.execution_authority!==false||
+        signal.verification?.professional_fact_verified!==false||
+        signal.source?.system!=='FLAIM_FANTASY'||typeof signal.player!=='string'||
+        signal.player.length>120||typeof signal.professional_team!=='string'||
+        !ageOk(signal.source.observed_at,now,FLAIM_TTL_MS))continue;
+      const matching=base.events.filter(e=>e.away_team===signal.professional_team||e.home_team===signal.professional_team);
+      if(matching.length!==1)continue;
+      const id=JSON.stringify([signal.player,signal.professional_team,signal.source.signal_kind,signal.source.observed_at]);
+      if(seen.has(id))continue;
+      seen.add(id);
+      matching[0].fantasy_leads.push({player:signal.player,professional_team:signal.professional_team,
+        kind:clean(signal.source.signal_kind),observed_at:signal.source.observed_at,
+        professional_status_verified:false,independent_official_source_required:true});
+    }
+    base.counts.fantasy_leads=base.events.reduce((n,e)=>n+e.fantasy_leads.length,0);
+    return base;
   }
   function normalize(body,{slateDate,league,now}){
     if(!body||body.ok!==true||body.contract!==CONTRACT||body.mode!=='slate_sources'||
@@ -47,7 +77,7 @@
       seen.add(e.id);
       base.events.push({id:clean(e.id),away_team:clean(e.away_team),home_team:clean(e.home_team),
         start_time:clean(e.start_time),identity_status:e.reconciliation_status==='reconciled'?'RECONCILED':'CANONICAL_PENDING',
-        dk_quotes:[],candidate_count:0,betting_authority:false});
+        dk_quotes:[],fantasy_leads:[],candidate_count:0,betting_authority:false});
     }
     const byId=new Map(base.events.map(e=>[e.id,e]));
     for(const c of body.slate_candidates.slice(0,150)){
@@ -63,9 +93,9 @@
       odds.primary_book!=='draftkings'||odds.approved_bet!==null||odds.expected_value!==null||
       !Array.isArray(odds.events))){
       base.source_states.draftkings='STALE_OR_INVALID_CLIENT';
-      return base;
+      return attachFlaim(base,body,now);
     }
-    if(!odds||base.source_states.draftkings!=='FRESH_RESEARCH')return base;
+    if(!odds||base.source_states.draftkings!=='FRESH_RESEARCH')return attachFlaim(base,body,now);
     for(const o of odds.events.slice(0,80)){
       const match=byId.get(o?.canonical_event_id);
       if(!match||match.away_team!==o.away_team||match.home_team!==o.home_team||
@@ -93,7 +123,7 @@
       }
     }
     base.counts.dk_quotes=base.events.reduce((n,e)=>n+e.dk_quotes.length,0);
-    return base;
+    return attachFlaim(base,body,now);
   }
   async function read({slateDate,league='NBA',getSessionHeaders,transport,now=Date.now()}={}){
     if(!validDay(slateDate)||!['NBA','NFL'].includes(league))return {status:'INVALID_SCOPE',events:[],execution_authority:false};
@@ -148,17 +178,18 @@
         }[snapshot.status]||'Read-only source unavailable');
       if(snapshot.status!=='RESEARCH_ONLY')return;
       line(results,snapshot.counts.canonical_events+' canonical events · '+snapshot.counts.native_candidates+
-        ' native candidates · '+snapshot.counts.dk_quotes+' current DK reference quotes');
+        ' native candidates · '+snapshot.counts.dk_quotes+' current DK reference quotes · '+snapshot.counts.fantasy_leads+' fantasy research leads');
       if(snapshot.events.length===0){line(results,'No registered games for this slate. No players or odds were invented.');return;}
       for(const e of snapshot.events){
         const card=doc.createElement('div');card.className='panel';
         const title=doc.createElement('strong');title.textContent=e.away_team+' @ '+e.home_team;
         card.appendChild(title);
-        line(card,e.identity_status+' · '+e.candidate_count+' native candidates · '+e.dk_quotes.length+' DK reference quotes');
+        line(card,e.identity_status+' · '+e.candidate_count+' native candidates · '+e.dk_quotes.length+' DK reference quotes · '+e.fantasy_leads.length+' fantasy leads');
         for(const quote of e.dk_quotes.slice(0,5)){
           line(card,quote.market+' · '+quote.selection+(quote.line===null?'':' '+quote.line)+
             ' · '+(quote.american_odds>0?'+':'')+quote.american_odds+' (research, not executable)');
         }
+        for(const lead of e.fantasy_leads.slice(0,5))line(card,'Fantasy lead: '+lead.player+' · '+lead.kind+' · official professional status NOT verified');
         results.appendChild(card);
       }
     }
