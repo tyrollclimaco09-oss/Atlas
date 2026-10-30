@@ -12,7 +12,7 @@ node integrations/forks/workspace-cli.mjs doctor
 node integrations/forks/workspace-cli.mjs route --project development --goal "inspect this repo and fix failing tests"
 node integrations/forks/workspace-cli.mjs brief --project gpt-workspace --workspace "ATLAS Main" --goal "continue current project"
 ```
-Available profiles: `atlas-sports`, `gpt-workspace`, `development`, `product`, `data`, `research`, `operations`, `security`.
+For an explicitly approved, locally generated code-only Graphify AST map, add `--graph path/to/graphify-out/graph.json` to the `brief` command. The router itself never runs Graphify or copies raw source code.\n\nAvailable profiles: `atlas-sports`, `gpt-workspace`, `development`, `product`, `data`, `research`, `operations`, `security`.
 
 ## Reuse over reinvention
 
