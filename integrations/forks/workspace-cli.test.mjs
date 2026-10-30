@@ -15,9 +15,9 @@ test("none of 40 forks is automatically connected or executed",()=>{
  assert(catalog.forks.every(x=>x.provider_verified_live===false&&x.automatic_install===false&&x.automatic_execute===false));
  assert.equal(doctor(catalog).live_provider_connections_certified,0);
 });
-test("four actually executed source-code smokes are labeled separately",()=>{
+test("five actually executed source-code smokes are labeled separately",()=>{
  assert.deepEqual(catalog.forks.filter(x=>x.status==="CODE_SMOKE").map(x=>x.name).sort(),
-  ["nba_api","nflreadpy","shin","sports-skills"].sort());
+  ["graphify","nba_api","nflreadpy","shin","sports-skills"].sort());
 });
 test("all eight project profiles have valid recommendations",()=>{
  assert.equal(projects(catalog).length,8);
