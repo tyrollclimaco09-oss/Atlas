@@ -30,9 +30,9 @@
       "upstream": "nflverse/nflreadpy",
       "node": "SCOUT",
       "capability": "NFL_HISTORICAL_PBP",
-      "status": "CLONED_REVIEWED_ONLY",
+      "status": "SOURCE_CODE_SMOKE_PASSED",
       "license": "MIT",
-      "notes": "Requires data availability, polars and correct event history as-of freeze; not a live NFL injury feed."
+      "notes": "Pinned fork compiled and its actual load_pbp function loaded a local synthetic 2024/2025 fixture (4 rows) and rejected pre-1999/future seasons. No actual NFL datasets or live API calls."
     },
     {
       "repo": "tyrollclimaco09-oss/public-espn-api",
