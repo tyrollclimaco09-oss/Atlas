@@ -129,3 +129,50 @@ test('original run slate button stays present and read-only UI panel has unique 
  assert.equal((html.match(/src="slate-sources.js"/g)||[]).length,1);
  assert(html.includes('id="canonical-resume"'));
 });
+
+const flaimLead={contract:'ATLAS_FLAIM_SCOUT_SHADOW_V1',status:'FANTASY_SIGNAL_ONLY',
+ execution_authority:false,player:'Example Player',professional_team:'Atlanta Hawks',
+ source:{system:'FLAIM_FANTASY',signal_kind:'fantasy_add',observed_at:'2026-10-29T23:40:00Z'},
+ verification:{professional_fact_verified:false}};
+const flaimPacket={contract:'ATLAS_FLAIM_SCOUT_SHADOW_V1',status:'FANTASY_LEADS_UNVERIFIED',
+ execution_authority:false,approved_bet:null,observed_at:'2026-10-29T23:50:00Z',scout_leads:[flaimLead]};
+const withFlaim=(packet=flaimPacket)=>({...envelope,
+ source_states:{...envelope.source_states,flaim:'FRESH_RESEARCH'},flaim_packet:packet});
+test('live Flaim fantasy signal joins exact team as lead only',()=>{
+ const x=bridge.normalize(withFlaim(),{slateDate:DAY,league:'NBA',now:NOW});
+ assert.equal(x.counts.fantasy_leads,1);
+ assert.equal(x.events[0].fantasy_leads[0].player,'Example Player');
+ assert.equal(x.events[0].fantasy_leads[0].professional_status_verified,false);
+ assert.equal(x.events[0].fantasy_leads[0].independent_official_source_required,true);
+ assert.equal(x.approved_bet,null);
+});
+test('a source-claimed verified pro injury cannot be laundered through Flaim',()=>{
+ const packet={...flaimPacket,scout_leads:[{...flaimLead,verification:{professional_fact_verified:true}}]};
+ const x=bridge.normalize(withFlaim(packet),{slateDate:DAY,league:'NBA',now:NOW});
+ assert.equal(x.counts.fantasy_leads,0);assert.equal(x.counts.dk_quotes,2);
+});
+test('mismatched pro team cannot join by a fantasy signal',()=>{
+ const packet={...flaimPacket,scout_leads:[{...flaimLead,professional_team:'Other Team'}]};
+ const x=bridge.normalize(withFlaim(packet),{slateDate:DAY,league:'NBA',now:NOW});
+ assert.equal(x.counts.fantasy_leads,0);
+});
+test('stale fantasy packet cannot block current DK prices',()=>{
+ const packet={...flaimPacket,observed_at:'2026-10-25T23:50:00Z'};
+ const x=bridge.normalize(withFlaim(packet),{slateDate:DAY,league:'NBA',now:NOW});
+ assert.equal(x.counts.fantasy_leads,0);
+ assert.equal(x.counts.dk_quotes,2);
+ assert.equal(x.source_states.flaim,'INVALID_OR_STALE_CLIENT');
+});
+test('sensitive private fantasy fields never leave normalized data',()=>{
+ const dirty={...flaimPacket,raw_owner_secret:'should_never_copy',scout_leads:[{...flaimLead,owner_name:'private_person',
+  credentials:'private_credential',private_note:'private_note'}]};
+ const x=bridge.normalize(withFlaim(dirty),{slateDate:DAY,league:'NBA',now:NOW});
+ const out=JSON.stringify(x);
+ assert.equal(x.counts.fantasy_leads,1);
+ assert(!out.includes('private_person'));assert(!out.includes('private_credential'));assert(!out.includes('should_never_copy'));
+});
+test('replayed duplicate fantasy lead is shown once only',()=>{
+ const packet={...flaimPacket,scout_leads:[flaimLead,flaimLead]};
+ const x=bridge.normalize(withFlaim(packet),{slateDate:DAY,league:'NBA',now:NOW});
+ assert.equal(x.counts.fantasy_leads,1);
+});
