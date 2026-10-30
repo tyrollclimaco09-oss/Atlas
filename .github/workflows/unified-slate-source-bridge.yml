@@ -1,0 +1,29 @@
+name: ATLAS Unified Slate source bridge
+on:
+  push:
+    paths:
+      - 'integrations/slate/**'
+      - 'integrations/odds-api/atlas-site-runtime/index.ts'
+      - 'docs/integrations/UNIFIED_SLATE_SOURCES.md'
+      - '.github/workflows/unified-slate-source-bridge.yml'
+  pull_request:
+    paths:
+      - 'integrations/slate/**'
+      - 'integrations/odds-api/atlas-site-runtime/index.ts'
+      - 'docs/integrations/UNIFIED_SLATE_SOURCES.md'
+      - '.github/workflows/unified-slate-source-bridge.yml'
+permissions:
+  contents: read
+jobs:
+  offline-integration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Run read-only slate and DK contract tests
+        run: node --test integrations/slate/*.test.mjs integrations/odds-api/*.test.mjs
