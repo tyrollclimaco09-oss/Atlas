@@ -1,0 +1,46 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "id": "demo_route",
+      "label": "route()",
+      "_origin": "ast",
+      "file_type": "code",
+      "source_file": "workspace-cli.mjs",
+      "source_location": "L84",
+      "community": 0
+    },
+    {
+      "id": "demo_brief",
+      "label": "brief()",
+      "_origin": "ast",
+      "file_type": "code",
+      "source_file": "workspace-cli.mjs",
+      "source_location": "L114",
+      "community": 0
+    },
+    {
+      "id": "demo_shell",
+      "label": "dummy_external",
+      "_origin": "third_party",
+      "file_type": "docs",
+      "source_file": "secret.txt",
+      "community": 1
+    }
+  ],
+  "links": [
+    {
+      "source": "demo_brief",
+      "target": "demo_route",
+      "relation": "calls"
+    },
+    {
+      "source": "demo_route",
+      "target": "demo_shell",
+      "relation": "mentions"
+    }
+  ],
+  "built_at_commit": "SYNTHETIC_TEST_REVISION"
+}
