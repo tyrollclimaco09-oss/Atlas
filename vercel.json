@@ -1,0 +1,14 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "crons": [
+    {
+      "path": "/api/dk-refresh",
+      "schedule": "0 23 * * *"
+    }
+  ],
+  "functions": {
+    "api/dk-refresh.js": {
+      "maxDuration": 30
+    }
+  }
+}

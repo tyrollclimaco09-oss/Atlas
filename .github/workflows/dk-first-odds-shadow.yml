@@ -1,0 +1,28 @@
+name: ATLAS DraftKings-first shadow integration
+on:
+  push:
+    paths:
+      - 'integrations/odds-api/**'
+      - 'docs/integrations/DK_FIRST_ODDS_API_SHADOW.md'
+      - '.github/workflows/dk-first-odds-shadow.yml'
+  pull_request:
+    paths:
+      - 'integrations/odds-api/**'
+      - 'docs/integrations/DK_FIRST_ODDS_API_SHADOW.md'
+      - '.github/workflows/dk-first-odds-shadow.yml'
+permissions:
+  contents: read
+jobs:
+  offline-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Run offline safety and normalization tests
+        run: node --test integrations/odds-api/*.test.mjs
+      - name: Confirm dry-run does not consume provider credits
+        run: |
+          node integrations/odds-api/dk-first-live.mjs | grep '"live_requests":0'

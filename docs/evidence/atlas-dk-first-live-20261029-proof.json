@@ -1,0 +1,66 @@
+{
+  "evidence_type": "ATLAS_DK_FIRST_PROVIDER_ONE_SHOT",
+  "source": "THE_ODDS_API_V4",
+  "contract": "ATLAS_DK_FIRST_SHADOW_V1",
+  "recorded_utc": "2026-10-29T23:33:28.996Z",
+  "request_window_utc": {
+    "started": "2026-10-29T23:33:28.791Z",
+    "completed": "2026-10-29T23:33:28.994Z"
+  },
+  "execution_context": "DISPOSABLE_PRIVATELY_AUTHORIZED_VERCEL_SANDBOX",
+  "origin": "EXISTING_SUPABASE_VAULT_SECRET_THE_ODDS_API_KEY_NOT_STORED_HERE",
+  "mode": "LIVE_PROVIDER_READ_ONLY",
+  "bookmaker_policy": {
+    "primary": "draftkings",
+    "secondary": "betmgm",
+    "reference_only": [
+      "fanduel"
+    ]
+  },
+  "quota": {
+    "requests": 2,
+    "credits_spent": 5,
+    "credits_remaining_at_completion": 462
+  },
+  "metrics": {
+    "nba_events_seen": 18,
+    "nba_events_with_draftkings": 18,
+    "dk_reference_quotes_accepted": 322,
+    "quarantined_quotes": 0,
+    "same_market_price_comparisons": 70
+  },
+  "draftkings_quotes_by_market": {
+    "h2h": 36,
+    "spreads": 36,
+    "totals": 36,
+    "player_points_alternate": 134,
+    "player_threes_alternate": 80
+  },
+  "provider_payload_sha256": "5fa36d466c1eebee5b7d35eead29ed812bd7b1e579575661246ab2eaa68d1989",
+  "security": {
+    "api_key_in_repository": false,
+    "raw_provider_payload_in_repository": false,
+    "production_db_writes": 0,
+    "bets_placed": 0,
+    "execution_authority": false,
+    "executable_prices_verified": 0,
+    "validated_model_edge": false
+  },
+  "hold": {
+    "mapped_canonical_events": 0,
+    "requires_event_id_reconciliation": true,
+    "production_ingestion_enabled": false,
+    "command_center_ui_modified": false
+  },
+  "limitations": [
+    "This sanitized proof is not the complete raw provider payload.",
+    "Provider price data changes; quotes are reference-only and may not be executable.",
+    "Point-in-time summary alone is insufficient for model calibration or CLV."
+  ],
+  "offline_ci": {
+    "tests": 16,
+    "passed": 16,
+    "github_actions_run_id": 40974028002,
+    "conclusion": "success"
+  }
+}
