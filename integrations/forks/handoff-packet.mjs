@@ -12,7 +12,8 @@ export const INPUT_CONTRACT="ATLAS_FORGE_HANDOFF_INPUT_V1";
 export const OUTPUT_CONTRACT="ATLAS_FORGE_RESUME_PACKET_V1";
 const REPO=/^[a-zA-Z0-9_.-]{1,60}\/[a-zA-Z0-9_.-]{1,100}$/;
 const SHA=/^[0-9a-f]{40}$/i;
-const PR=/^https:\/\/github\.com\/[a-zA-Z0-9_.-]+\/[a-zA-Z0-9_.-]+\/(?:pull|issues)\/[1-9][0-9]{0,8}(?:#.*)?$/;
+const PR=/^https:\/\/github\.com\/[a-zA-Z0-9_.-]+\/[a-zA-Z0-9_.-]+\/pull\/[1-9][0-9]{0,8}$/;
+const ISSUE=/^https:\/\/github\.com\/[a-zA-Z0-9_.-]+\/[a-zA-Z0-9_.-]+\/issues\/[1-9][0-9]{0,8}$/;
 const CI=/^https:\/\/github\.com\/[a-zA-Z0-9_.-]+\/[a-zA-Z0-9_.-]+\/actions\/runs\/[1-9][0-9]{0,15}$/;
 const UUID=/^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 const ID=/^[A-Z][A-Z0-9_-]{1,55}$/;
@@ -29,7 +30,8 @@ const plain=(s,max=240)=>{
  return s.replace(antiMarkup," ").replace(/[\x60]/g,"'").trim();
 };
 const time=(s,now)=>{
- if(typeof s!=="string"||!ISO.test(s)||!Number.isFinite(Date.parse(s)))throw Error("UTC_TIMESTAMP_REQUIRED");
+ if(typeof s!=="string"||!ISO.test(s)||!Number.isFinite(Date.parse(s))||
+     new Date(s).toISOString().slice(0,19)!==s.slice(0,19))throw Error("UTC_TIMESTAMP_REQUIRED");
  if(Date.parse(s)>Date.parse(now)+60000)throw Error("FUTURE_RECEIPT");
  return s;
 };
@@ -57,16 +59,21 @@ export function inspectHandoff(input,{now=new Date().toISOString(),catalog=loadC
     input.source.authority!=="OPERATOR_REPORTED")throw Error("REPO_REVISION_INVALID");
  const r=route({project:input.project,goal:input.objective,max:5,catalog});
  const workspace=plain(input.workspace,100),objective=plain(input.objective,300);
+ if(!Array.isArray(input.evidence)||input.evidence.length===0)throw Error("EVIDENCE_REFERENCE_REQUIRED");
+ if(!Array.isArray(input.next_actions)||input.next_actions.length===0)throw Error("NEXT_ACTION_REQUIRED");
  const seen=new Set(),evidence=[];
  for(const entry of limit(input.evidence,16,"EVIDENCE")){
   noExtra(entry,["id","kind","url","summary","observed_at"]);
   if(!ID.test(entry.id||"")||!kinds.has(entry.kind)||seen.has(entry.id))throw Error("EVIDENCE_ID_OR_KIND_INVALID");
   seen.add(entry.id);
   const url=entry.kind==="CI"?textURL(entry.url,CI):
-   ["PR","ISSUE"].includes(entry.kind)?textURL(entry.url,PR):
+   entry.kind==="PR"?textURL(entry.url,PR):
+   entry.kind==="ISSUE"?textURL(entry.url,ISSUE):
    (entry.url===null||entry.url===undefined)?null:textURL(entry.url,PR);
+  const observed=time(entry.observed_at,now);
+  if(Date.parse(observed)>Date.parse(captured)+60000)throw Error("RECEIPT_CAUSALITY_INVALID");
   evidence.push({id:entry.id,kind:entry.kind,url,summary:plain(entry.summary,240),
-    observed_at:time(entry.observed_at,now),verification_state:"OPERATOR_REPORTED_NEEDS_RECHECK"});
+    observed_at:observed,verification_state:"OPERATOR_REPORTED_NEEDS_RECHECK"});
  }
  const tests=[];
  for(const entry of limit(input.tests,12,"TESTS")){
@@ -75,8 +82,10 @@ export function inspectHandoff(input,{now=new Date().toISOString(),catalog=loadC
      !Number.isInteger(entry.failed)||entry.passed<0||entry.failed<0||
      entry.passed+entry.failed>200000)throw Error("TEST_RECEIPT_INVALID");
   seen.add(entry.id);
+  const testObserved=time(entry.observed_at,now);
+  if(Date.parse(testObserved)>Date.parse(captured)+60000)throw Error("RECEIPT_CAUSALITY_INVALID");
   tests.push({id:entry.id,command:plain(entry.command,180),passed:entry.passed,failed:entry.failed,
-    observed_at:time(entry.observed_at,now),run_url:textURL(entry.run_url,CI),
+    observed_at:testObserved,run_url:textURL(entry.run_url,CI),
     verification_state:"OPERATOR_REPORTED_NEEDS_RECHECK"});
  }
  const blockers=[];
@@ -119,6 +128,9 @@ const quote=(s)=>JSON.stringify(s);
 export function renderHandoff(p){
  if(p?.contract!==OUTPUT_CONTRACT||p.approval_authority!==false||
     p.integrity?.scheme!=="SHA256_CONTENT_DIGEST_NOT_SIGNATURE")throw Error("PACKET_AUTHORITY_INVALID");
+ const {integrity,...receipt}=p;
+ if(createHash("sha256").update(JSON.stringify(receipt)).digest("hex")!==integrity.digest)
+  throw Error("PACKET_DIGEST_MISMATCH");
  const lines=[
   "# ATLAS FORGE — Resume this GPT/Codex project",
   "Workspace: "+quote(p.workspace),
