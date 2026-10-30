@@ -15,10 +15,10 @@ In a disposable Vercel research sandbox, pinned source clones were created:
 | --- | --- | --- | --- |
 | `tyrollclimaco09-oss/nba_api` | `0c55451abf707ff2e317058d9f417d48b15aebbe` | Imported real `nba_api.stats.static.teams` via isolated Python package shim, without altering package data | 30 NBA static teams; ATL `1610612737`, CLE `1610612739`, BOS `1610612738`, LAL `1610612747` |
 | `tyrollclimaco09-oss/sports-skills` | `09eb7e8566f48c01d1ea7bf7b4ac62a477d37b19` | Executed `sports_skills/_shaping.py` against a **synthetic fixture** | Preserved player IDs; sorted minutes numerically, excluded missing minutes, kept top 2 rows and returned `total_rows:3, returned_rows:2` |
-| `tyrollclimaco09-oss/nflreadpy` | `e7e87b2ef626b8672279db25432b1554ee13348a` | Source cloned/read only | **Not executed**; requires package dependencies and legitimate NFL dataset |
-| `tyrollclimaco09-oss/shin` | `ae460853fabeca7d512bbf7de8aaa55dc17f3485` | Source cloned/read only | **Not executed**; Rust-backed optimization benchmark pending |
+| `tyrollclimaco09-oss/nflreadpy` | `e7e87b2ef626b8672279db25432b1554ee13348a` | Fork package installed and its actual `load_pbp` exercised with an injected local downloader | 4 synthetic PBP rows spanning 2024 and 2025; correct paths; pre-1999 and future season inputs rejected. No actual NFL records fetched. |
+| `tyrollclimaco09-oss/shin` | `ae460853fabeca7d512bbf7de8aaa55dc17f3485` | Actual fork package compiled and `shin.calculate_implied_probabilities` called on synthetic 2- and 3-way prices | Symmetric two-way: 0 difference from multiplicative baseline; asymmetric three-way: max difference 0.01373884. MARKET-DERIVED ONLY; not independent fair probability. |
 
-The dependency-free `fork-source-smoke.py` tests the first two *actual fork modules* from local pinned checkout paths and emits a compact source receipt. Score rows in that smoke test are deliberately **SYNTHETIC_FIXTURE**, never NBA live game evidence.
+The dependency-free `fork-source-smoke.py` tests the first two *actual fork modules* from local pinned checkout paths and emits a compact source receipt. The additional `shin-reference-smoke.py` and `nflreadpy-loader-smoke.py` run pinned fork implementations inside separate GitHub Actions jobs; neither uses a live sports-provider endpoint. Score rows in that smoke test are deliberately **SYNTHETIC_FIXTURE**, never NBA live game evidence.
 
 The attempted complete package install was blocked by isolated sandbox package-index networking; no claims of complete sports-skills live API operation or full `nba_api` stats connectivity.
 
@@ -62,6 +62,6 @@ python3 integrations/forks/fork-source-smoke.py \
 node --test integrations/forks/*.test.mjs
 ```
 
-The GitHub Action `ATLAS Fork Arsenal offline smoke` checks out two specific fork commits, executes the real Python source smoke, runs the JS slate integration tests and **does not spend odds API credits**.
+The GitHub Action `ATLAS Fork Arsenal offline smoke` checks out **four specific fork commits** across three jobs: real NBA identity/shaping modules, actual Shin reference pricing, and actual NFL local-fixture loader. It runs JS slate and registry tests and **does not spend odds API credits**.
 
 **Release hold:** this PR is a research branch only, stacked atop PR #19. The source bridge is NOT yet part of deployed runtime v13 or the original live Command Center UI; it cannot be described as live NBA/NFL feed integration or 24 installed provider integrations.
