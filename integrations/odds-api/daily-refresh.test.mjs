@@ -66,12 +66,12 @@ test("one successful refresh reserves day, charges three credits and freezes res
 test("second run within same day never contacts the paid provider",async()=>{
  const m=mock({existingLock:true});const out=await refresh({env,fetchImpl:m.fetchImpl,now});
  assert.equal(out.status,"ALREADY_ATTEMPTED_TODAY");assert.equal(out.charged,0);
- assert.equal(m.calls.some(x=>x.url.includes("api.the-odds-api.com")),false);
+ assert.equal(m.calls.some(x=>x.url.includes("/basketball_nba/odds/")),false);
 });
 test("last known budget below reserve prevents a paid request",async()=>{
  const m=mock({lastRemaining:102});const out=await refresh({env,fetchImpl:m.fetchImpl,now});
  assert.equal(out.status,"QUOTA_RESERVE_BLOCKED");
- assert.equal(m.calls.some(x=>x.url.includes("api.the-odds-api.com")),false);
+ assert.equal(m.calls.some(x=>x.url.includes("/basketball_nba/odds/")),false);
 });
 test("missing protected runtime keys fails before any provider call",async()=>{
  const m=mock();await assert.rejects(()=>refresh({env:{},fetchImpl:m.fetchImpl,now}),/INTERNAL_ENV_NOT_CONFIGURED/);
