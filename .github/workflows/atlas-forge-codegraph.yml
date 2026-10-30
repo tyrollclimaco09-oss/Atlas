@@ -1,0 +1,52 @@
+name: ATLAS FORGE on-demand codegraph
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-only-ast:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      GRAPHIFY_BACKEND: none
+      GRAPHIFY_QUERY_LOG_DISABLE: "1"
+      OPENAI_API_KEY: ""
+      ANTHROPIC_API_KEY: ""
+      GOOGLE_API_KEY: ""
+      GEMINI_API_KEY: ""
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@e797f83bcb11b83ae66e0230d6156d7c80228e7c
+        with:
+          python-version: "3.12"
+      - name: Fetch verified Graphify fork revision
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          repository: tyrollclimaco09-oss/graphify
+          ref: c588b72d936927790a87ad009955078ed40562a3
+          path: third_party_forks/graphify
+          persist-credentials: false
+      - name: Install pinned local Graphify package
+        run: python -m pip install --disable-pip-version-check ./third_party_forks/graphify
+      - name: Create code-only AST graph without LLM keys
+        run: graphify extract ./integrations/forks --code-only --no-viz
+      - name: Verify generated graph has code nodes, zero implied authority
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          path=Path("integrations/forks/graphify-out/graph.json")
+          x=json.loads(path.read_text())
+          assert x.get("built_at_commit")
+          assert len(x.get("nodes",[])) > 0 and len(x.get("links",[])) > 0
+          assert any(n.get("_origin") == "ast" for n in x["nodes"])
+          print(f"Graphify AST: {len(x['nodes'])} nodes, {len(x['links'])} edges, commit={x['built_at_commit']}")
+          PY
+      - name: Publish code-only project map as manually triggered CI artifact
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: atlas-forge-code-only-graph
+          path: integrations/forks/graphify-out/graph.json
+          retention-days: 7
