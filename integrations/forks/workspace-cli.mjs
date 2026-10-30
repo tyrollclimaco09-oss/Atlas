@@ -101,9 +101,9 @@ export function route({project="gpt-workspace",goal="",max=8,includeLab=false,ca
   live_provider_calls:0,installed_packages:0,production_writes:0,execution_authority:false,
   human_final_gate_required:true};
 }
-export function plan({project="gpt-workspace",goal="",catalog=loadCatalog()}={}){
+export function plan({project="gpt-workspace",workspace="ATLAS",goal="",catalog=loadCatalog()}={}){
  const match=route({project,goal,max:7,catalog});
- return {...match,steps:[
+ return {...match,workspace:safe(workspace),steps:[
   {name:"DISCOVER",proof:"Find actual project source, existing capabilities, fork revision, license and independent references",authority:"READ_ONLY"},
   {name:"PROVE",proof:"Run one pinned fork in isolated sandbox on explicit synthetic and negative fixtures",authority:"SANDBOX"},
   {name:"CONNECT",proof:"Authenticated real provider read, identity checks, primary source and timestamps; no writes",authority:"READ_ONLY"},
@@ -111,12 +111,13 @@ export function plan({project="gpt-workspace",goal="",catalog=loadCatalog()}={})
  ]};
 }
 const safe=s=>String(s||"").replace(/[\u0000-\u001f<>]/g," ").replace(/[\x60\\]/g,"").slice(0,500).trim();
-export function brief({project="gpt-workspace",goal="",catalog=loadCatalog()}={}){
+export function brief({project="gpt-workspace",workspace="ATLAS",goal="",catalog=loadCatalog()}={}){
  const x=route({project,goal,max:7,catalog});
  const stack=x.tools.map((f,i)=>String(i+1)+". "+safe(f.name)+" ["+f.status+"] — "+safe(f.source_boundary)).join("\n");
  return [
  "# ATLAS / GPT Project Launch Brief",
- "Project: "+safe(project),
+ "Project profile: "+safe(project),
+ "Workspace: "+safe(workspace),
  "Objective: "+safe(goal||"Investigate the smallest useful next step"),
  "Fork catalog: 40 discoverable, none auto-installed.",
  "",
@@ -142,14 +143,14 @@ const help=()=>"ATLAS FORGE — local read-only multi-project capability router\
  "node integrations/forks/workspace-cli.mjs list [--project gpt-workspace] [--status LAB] [--json]\n"+
  "node integrations/forks/workspace-cli.mjs route --project atlas-sports --goal 'run the slate' [--json]\n"+
  "node integrations/forks/workspace-cli.mjs plan --project development --goal 'build website' [--json]\n"+
- "node integrations/forks/workspace-cli.mjs brief --project gpt-workspace --goal 'continue my app'\n"+
+ "node integrations/forks/workspace-cli.mjs brief --project gpt-workspace --workspace 'My Project' --goal 'continue my app'\n"+
  "No command automatically installs, connects, executes, deploys, wagers or calls an LLM.";
 function parse(argv){
  const command=argv[0]||"help",opts={};
  for(let i=1;i<argv.length;i++){
   const name=argv[i];
   if(name==="--json"||name==="--include-lab"){opts[name==="--json"?"json":"includeLab"]=true;continue}
-  if(!["--project","--goal","--max","--status"].includes(name)||!argv[i+1])throw Error("INVALID_ARGUMENT: "+name);
+  if(!["--project","--workspace","--goal","--max","--status"].includes(name)||!argv[i+1])throw Error("INVALID_ARGUMENT: "+name);
   opts[name.slice(2)]=argv[++i];
  }
  if(opts.max!==undefined){opts.max=Number(opts.max);if(!Number.isInteger(opts.max))throw Error("INVALID_MAX")}
