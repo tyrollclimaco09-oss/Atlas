@@ -5,6 +5,7 @@
  */
 import {readFileSync} from "node:fs";
 import {readGraphSummary,graphBriefSection} from "./graph-context.mjs";
+import {readHandoff,renderHandoff} from "./handoff-packet.mjs";
 const catalogPath=new URL("./workspace-catalog.json",import.meta.url);
 export const CONTRACT="ATLAS_FORGE_ROUTER_V1";
 export const loadCatalog=()=>JSON.parse(readFileSync(catalogPath,"utf8"));
@@ -146,6 +147,7 @@ const help=()=>"ATLAS FORGE — local read-only multi-project capability router\
  "node integrations/forks/workspace-cli.mjs list [--project gpt-workspace] [--status LAB] [--json]\n"+
  "node integrations/forks/workspace-cli.mjs route --project atlas-sports --goal 'run the slate' [--json]\n"+
  "node integrations/forks/workspace-cli.mjs plan --project development --goal 'build website' [--json]\n"+
+ "node integrations/forks/workspace-cli.mjs resume --receipt ./handoff-receipt.json\n"+
  "node integrations/forks/workspace-cli.mjs brief --project gpt-workspace --workspace 'My Project' --goal 'continue my app'\n"+
  "Optional for brief: --graph /path/to/local/graphify-out/graph.json (AST-only summary).\n"+
  "No command automatically installs, connects, executes, deploys, wagers or calls an LLM.";
@@ -154,7 +156,7 @@ function parse(argv){
  for(let i=1;i<argv.length;i++){
   const name=argv[i];
   if(name==="--json"||name==="--include-lab"){opts[name==="--json"?"json":"includeLab"]=true;continue}
-  if(!["--project","--workspace","--goal","--max","--status","--graph"].includes(name)||!argv[i+1])throw Error("INVALID_ARGUMENT: "+name);
+  if(!["--project","--workspace","--goal","--max","--status","--graph","--receipt","--now"].includes(name)||!argv[i+1])throw Error("INVALID_ARGUMENT: "+name);
   opts[name.slice(2)]=argv[++i];
  }
  if(opts.max!==undefined){opts.max=Number(opts.max);if(!Number.isInteger(opts.max))throw Error("INVALID_MAX")}
@@ -171,6 +173,8 @@ export function main(argv=process.argv.slice(2),write=console.log){
   case "route":result=route(opts);break;
   case "plan":result=plan(opts);break;
   case "brief":result=brief(opts);break;
+  case "resume":if(!opts.receipt)throw Error("EXPLICIT_HANDOFF_RECEIPT_REQUIRED");
+   result=renderHandoff(readHandoff(opts.receipt,{now:opts.now||new Date().toISOString()}));break;
   default:throw Error("UNKNOWN_COMMAND: "+command);
  }
  if(typeof result==="string")write(result);
