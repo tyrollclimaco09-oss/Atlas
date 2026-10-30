@@ -39,6 +39,6 @@ export async function readUnifiedSlate({
    return {status:"CONTRACT_REJECTED",events:[],execution_authority:false};
  if(service.flaim!=="FRESH_RESEARCH"&&slate.totals.fantasy_leads>0)
    return {status:"CONTRACT_REJECTED",events:[],execution_authority:false};
- return {...slate,status:"RESEARCH_SLATE_READY",service_source_states:service,source_sync:"READ_ONLY",
+ return {...slate,status:slate.events.length ? "RESEARCH_SLATE_READY" : "EMPTY_SLATE",service_source_states:service,source_sync:"READ_ONLY",
    paid_api_requests:0,execution_authority:false};
 }
