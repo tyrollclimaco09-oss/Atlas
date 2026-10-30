@@ -4,7 +4,7 @@
 
 ## Why this exists
 
-The connected GitHub account owns **42 repositories: Atlas, Atlas-0.0, and 40 actual forks**. The earlier Fork Arsenal PR #23 executed four forked source codebases in isolated tests (`nba_api`, `sports-skills`, `nflreadpy`, and `shin`). This phase indexes **all 40** and makes them discoverable for ATLAS sports and unrelated coding, study, research, product and operations work.
+The connected GitHub account owns **42 repositories: Atlas, Atlas-0.0, and 40 actual forks**. The earlier Fork Arsenal PR #23 executed four sports/research forked source codebases in isolated tests, with Graphify later executed as a fifth code-only fork (`nba_api`, `sports-skills`, `nflreadpy`, and `shin`). This phase indexes **all 40** and makes them discoverable for ATLAS sports and unrelated coding, study, research, product and operations work.
 
 Instead of manually hunting GitHub repos, use the same local router to decide which projects need data, skills, codebase maps, testing, memory or an isolated AI-agent experiment.
 
@@ -55,8 +55,8 @@ The entire 40-fork roster, including all source names and licenses/rights flags,
 
 ## Status labels and what is REAL
 
-- `CODE_SMOKE` (**4**) — actual pinned fork source ran in CI with explicit fixture. It is **not** a full installed/live integration.
-- `REVIEWED` (**12**) — source manifest/README purpose inspected, not demonstrated as an active tool.
+- `CODE_SMOKE` (**5**) — actual pinned fork source ran in CI with explicit fixture. It is **not** a full installed/live integration.
+- `REVIEWED` (**11**) — source manifest/README purpose inspected, not demonstrated as an active tool.
 - `REFERENCE` (**13**) — method or documentation reference, not deployed.
 - `LAB` (**8**) — tool needs isolation, licensing, privacy or autonomy review.
 - `BLOCKED` (**3**) — not appropriate for general-purpose auto execution.
@@ -86,7 +86,7 @@ node integrations/forks/workspace-cli.mjs plan --project atlas-sports --goal "Ru
 
 Keep SCOUT/FILTER verification separate from market-derived pricing, ORACLE held-out predictive proof, and the **Human Final Gate**. No fake injuries, no stale quote promotion, no unlicensed scraping and no autonomous sportsbook access.
 
-## Real release gates for richer agent interaction
+## Optional local Graphify context for GPT/Codex\n\nThe pinned `graphify` fork has actually been installed and executed **offline with network denied** against ten ATLAS integration files (75 AST nodes, 126 code edges and 10 communities). Source evidence: `docs/evidence/ATLAS_FORGE_GRAPHIFY_CODE_ONLY_PROOF_20261030.md`. No API or private code was uploaded.\n\nWhen you choose to use Graphify on your own repository, generate its code-only graph explicitly, then include a compact structural receipt in a GPT brief:\n\n```sh\nGRAPHIFY_BACKEND=none GRAPHIFY_QUERY_LOG_DISABLE=1 graphify extract ./integrations/forks --code-only --no-viz\nnode integrations/forks/workspace-cli.mjs brief --project development --workspace \"ATLAS Fork Lab\" --goal \"explain our code graph\" --graph integrations/forks/graphify-out/graph.json\n```\n\nThe brief includes **only AST symbols, file/line locations and graph counts**, not source bodies. Check symbol/file names before sharing them with any assistant. The workflow `.github/workflows/atlas-forge-codegraph.yml` is **manually triggered only** and produces a 7-day code-only graph artifact after branch approval; it does not run automatically on paid provider queries.\n\n## Real release gates for richer agent interaction
 
 1. Connect the actual project's source/permissions through the authorized GitHub or product app; avoid exposing personal data in prompts.
 2. In a bounded sandbox, reproduce one source/tool's actual outputs against point-in-time fixtures and negative cases.
