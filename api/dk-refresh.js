@@ -80,15 +80,19 @@ export async function refresh({env=process.env,fetchImpl=fetch,now=new Date().to
    await db("atlas_site_research_reports_v1?delivery_key=eq."+encodeURIComponent(lockKey),{
      method:"PATCH",headers:{Prefer:"return=minimal"},body:{body:JSON.stringify(data)}});
  };
- // Probe last owned budget evidence before touching provider. Do not trust expired or absent quota anchors.
- const recent=await db("atlas_site_research_reports_v1?select=delivery_key,body,created_at&delivery_key=like.atlas-dk-refresh-lock-%25&order=created_at.desc&limit=5");
- const earlier=(recent||[]).filter(x=>x.delivery_key!==lockKey).find(x=>{
-   try{return Number.isInteger(JSON.parse(x.body).remaining)}catch{return false}
- });
- const prior=earlier?JSON.parse(earlier.body):{remaining:454,at:"2026-10-29T23:59:47.562Z"};
- if(!Number.isInteger(prior.remaining)||prior.remaining<MIN_REMAINING+DAILY_MAX_CREDITS||
-    Date.parse(now)-Date.parse(prior.at)>35*86400000){
-   await updateLock({phase:"BLOCKED_BUDGET",at:now});return {status:"QUOTA_RESERVE_BLOCKED",charged:0};
+ // Free /sports request confirms the actual current quota before ANY paid endpoint.
+ // The Odds API documents /sports as costing zero credits.
+ const quotaUrl=new URL("https://api.the-odds-api.com/v4/sports/");
+ quotaUrl.searchParams.set("apiKey",key);
+ let probe;
+ try{probe=await fetchImpl(quotaUrl,{signal:AbortSignal.timeout(10000)});}
+ catch{await updateLock({phase:"QUOTA_PREFLIGHT_NETWORK_FAILED",at:now});throw Error("QUOTA_PREFLIGHT_FAILED");}
+ const preflightCost=probe.headers.get("x-requests-last");
+ const preflightRemaining=probe.headers.get("x-requests-remaining");
+ const currentCredits=Number(preflightRemaining);
+ if(!probe.ok||preflightCost!=="0"||preflightRemaining===null||!Number.isInteger(currentCredits)||currentCredits<MIN_REMAINING+DAILY_MAX_CREDITS){
+   await updateLock({phase:"QUOTA_PREFLIGHT_BLOCKED",at:now,remaining:Number.isFinite(currentCredits)?currentCredits:null});
+   return {status:"QUOTA_RESERVE_BLOCKED",charged:0};
  }
  const provider=new URL("https://api.the-odds-api.com/v4/sports/basketball_nba/odds/");
  provider.searchParams.set("apiKey",key);provider.searchParams.set("bookmakers","draftkings");
@@ -96,8 +100,9 @@ export async function refresh({env=process.env,fetchImpl=fetch,now=new Date().to
  let rsp;
  try{rsp=await fetchImpl(provider,{signal:AbortSignal.timeout(14000)});}
  catch {await updateLock({phase:"PROVIDER_NETWORK_FAILED",at:now});throw Error("PROVIDER_NETWORK_FAILED");}
- const credits=Number(rsp.headers.get("x-requests-last")),remaining=Number(rsp.headers.get("x-requests-remaining"));
- if(!rsp.ok||credits>DAILY_MAX_CREDITS||credits<0||!Number.isFinite(remaining)){
+ const lastHeader=rsp.headers.get("x-requests-last"),remainingHeader=rsp.headers.get("x-requests-remaining");
+ const credits=Number(lastHeader),remaining=Number(remainingHeader);
+ if(!rsp.ok||lastHeader===null||remainingHeader===null||!Number.isInteger(credits)||credits>DAILY_MAX_CREDITS||credits<0||!Number.isFinite(remaining)){
    await updateLock({phase:"PROVIDER_QUOTA_OR_HTTP_FAILED",at:now,remaining:Number.isFinite(remaining)?remaining:null});
    throw Error("PROVIDER_FAILED_CLOSED");
  }
