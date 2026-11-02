@@ -1,0 +1,34 @@
+name: NBA 100 Worlds Shadow Proof
+on:
+  push:
+    branches:
+      - review/rill-live-intake-2026-10-21
+    paths:
+      - 'scripts/scout/nba-100-worlds-hybrid.shadow.cjs'
+      - 'scripts/scout/nba-100-worlds-hybrid.shadow.test.cjs'
+      - 'docs/evidence/luka-2025-26-game-log-reference.json'
+      - 'docs/evidence/nba-2025-26-team-ratings-reference.json'
+      - 'docs/evidence/nba-20261021-reference-market-snapshot.json'
+      - '.github/workflows/nba-100-worlds-shadow-proof.yml'
+  pull_request:
+    paths:
+      - 'scripts/scout/nba-100-worlds-hybrid.shadow.cjs'
+      - 'scripts/scout/nba-100-worlds-hybrid.shadow.test.cjs'
+      - 'docs/evidence/**'
+permissions:
+  contents: read
+jobs:
+  proof:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Data-integrity + 100-world tests
+        run: node --test scripts/scout/nba-100-worlds-hybrid.shadow.test.cjs
+      - name: Real source is research only
+        run: |
+          grep -q "SHADOW_ONLY" scripts/scout/nba-100-worlds-hybrid.shadow.cjs
+          grep -q "THIRD_PARTY_REFERENCE_ONLY" scripts/scout/nba-100-worlds-hybrid.shadow.cjs

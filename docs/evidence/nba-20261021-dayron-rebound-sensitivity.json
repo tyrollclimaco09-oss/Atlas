@@ -1,0 +1,119 @@
+{
+  "schema": "atlas.nba.dayron-rebounds.sensitivity.v1",
+  "date": "2026-10-21",
+  "derived_from": "2025-26 StatMuse validated 62 game log",
+  "selection": "Day'Ron Sharpe Rebounds OVER 8.5",
+  "reference_american_odds": 113,
+  "reference_quote_not_executable": true,
+  "created_as_of": "2026-10-21 daytime CDT",
+  "break_even": 0.4694835680751174,
+  "method": "Conditional empirical bootstrap 12000 outcomes/scenario with uncalibrated minutes/rebound share/foul mixture",
+  "scenarios": [
+    {
+      "case": "Conservative workload",
+      "p": 0.2978,
+      "median": 7,
+      "mean": 7,
+      "roi_at_plus113": -0.3656,
+      "minute_mix": [
+        20,
+        24,
+        28
+      ],
+      "reb_share": 0.88,
+      "min_foul": 0.1,
+      "high_minutes_rate": null
+    },
+    {
+      "case": "Default",
+      "p": 0.4358,
+      "median": 8,
+      "mean": 8.3,
+      "roi_at_plus113": -0.0719,
+      "minute_mix": [
+        22,
+        27,
+        31
+      ],
+      "reb_share": 0.91,
+      "min_foul": 0.1,
+      "high_minutes_rate": 0.65
+    },
+    {
+      "case": "Starter 27–33 minutes",
+      "p": 0.5627,
+      "median": 9,
+      "mean": 9.6,
+      "roi_at_plus113": 0.1987,
+      "minute_mix": [
+        27,
+        30,
+        33
+      ],
+      "reb_share": 0.95,
+      "min_foul": 0.1,
+      "high_minutes_rate": 0.6789
+    },
+    {
+      "case": "Starter but crowded glass",
+      "p": 0.497,
+      "median": 8,
+      "mean": 8.9,
+      "roi_at_plus113": 0.0586,
+      "minute_mix": [
+        27,
+        30,
+        33
+      ],
+      "reb_share": 0.87,
+      "min_foul": 0.1,
+      "high_minutes_rate": 0.6159
+    },
+    {
+      "case": "Starter high fouls",
+      "p": 0.5547,
+      "median": 9,
+      "mean": 9.5,
+      "roi_at_plus113": 0.1816,
+      "minute_mix": [
+        27,
+        30,
+        33
+      ],
+      "reb_share": 0.95,
+      "min_foul": 0.18,
+      "high_minutes_rate": 0.6846
+    },
+    {
+      "case": "Starter no rebound discount",
+      "p": 0.6136,
+      "median": 10,
+      "mean": 10.2,
+      "roi_at_plus113": 0.3069,
+      "minute_mix": [
+        27,
+        30,
+        33
+      ],
+      "reb_share": 1,
+      "min_foul": 0.1,
+      "high_minutes_rate": 0.7445
+    },
+    {
+      "case": "30 minutes near certain",
+      "p": 0.5663,
+      "median": 9,
+      "mean": 9.6,
+      "roi_at_plus113": 0.2063,
+      "minute_mix": [
+        29,
+        30,
+        31
+      ],
+      "reb_share": 0.95,
+      "min_foul": 0.1,
+      "high_minutes_rate": 0.6436
+    }
+  ],
+  "authority": "SHADOW_RESEARCH_ONLY"
+}

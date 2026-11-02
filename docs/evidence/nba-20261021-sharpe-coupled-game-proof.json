@@ -1,0 +1,5829 @@
+{
+  "schema": "atlas.nba.sharpe.conserved_worlds.v1",
+  "date": "2026-10-21",
+  "status": "PROSPECTIVE_SHADOW_NO_BET",
+  "freeze_provenance": {
+    "git_commit_shas": {
+      "game_engine": "6ad6c28cbddf84c194a3e73887335d76ddb681c5",
+      "coupled_engine": "9a997fa6165e187663144b7abe416f386c419106",
+      "team_ref": "e557aa4b29286142b35837c5a6223c72e6643d2d",
+      "player_log": "b0ee71e61f296fc110d3534b4681b9e13f56572e",
+      "market": "a6331494392ceebf2b4b4856a72b690d1a391003"
+    },
+    "market_reference": "2026-10-21T18:00:00Z third-party price no direct account verification",
+    "seed": 20261021,
+    "conservation_proof": "all 12k worlds checked per scenario"
+  },
+  "quoted_example": {
+    "threshold": "Sharpe 9+ rebounds",
+    "price": 113,
+    "price_executable": false,
+    "break_even_probability": 0.4695
+  },
+  "case_summaries": [
+    {
+      "scenario": "RESTRICTED",
+      "model_frequency": 0.353,
+      "model_mean_rebounds": 7.55,
+      "model_mean_minutes": 24.14,
+      "illustrative_net_roi_per_dollar": -0.2481,
+      "p10": 4,
+      "p50": 7,
+      "p90": 11,
+      "script_risks": {
+        "BLOWOUT": {
+          "n": 2659,
+          "hit_rate": 0.2779,
+          "mean_reb": 6.99
+        },
+        "CLOSE": {
+          "n": 2495,
+          "hit_rate": 0.376,
+          "mean_reb": 7.73
+        },
+        "COMEBACK": {
+          "n": 1592,
+          "hit_rate": 0.3964,
+          "mean_reb": 7.77
+        },
+        "SHOOTOUT": {
+          "n": 1493,
+          "hit_rate": 0.3858,
+          "mean_reb": 7.8
+        },
+        "BALANCED": {
+          "n": 2811,
+          "hit_rate": 0.3686,
+          "mean_reb": 7.7
+        },
+        "GRIND": {
+          "n": 950,
+          "hit_rate": 0.3326,
+          "mean_reb": 7.49
+        }
+      }
+    },
+    {
+      "scenario": "MIXED",
+      "model_frequency": 0.4377,
+      "model_mean_rebounds": 8.22,
+      "model_mean_minutes": 25.84,
+      "illustrative_net_roi_per_dollar": -0.0677,
+      "p10": 5,
+      "p50": 8,
+      "p90": 12,
+      "script_risks": {
+        "BLOWOUT": {
+          "n": 2659,
+          "hit_rate": 0.349,
+          "mean_reb": 7.56
+        },
+        "CLOSE": {
+          "n": 2495,
+          "hit_rate": 0.4681,
+          "mean_reb": 8.43
+        },
+        "COMEBACK": {
+          "n": 1592,
+          "hit_rate": 0.4673,
+          "mean_reb": 8.44
+        },
+        "SHOOTOUT": {
+          "n": 1493,
+          "hit_rate": 0.4575,
+          "mean_reb": 8.41
+        },
+        "BALANCED": {
+          "n": 2811,
+          "hit_rate": 0.4771,
+          "mean_reb": 8.47
+        },
+        "GRIND": {
+          "n": 950,
+          "hit_rate": 0.4084,
+          "mean_reb": 8.15
+        }
+      }
+    },
+    {
+      "scenario": "STARTER",
+      "model_frequency": 0.6538,
+      "model_mean_rebounds": 9.89,
+      "model_mean_minutes": 29.26,
+      "illustrative_net_roi_per_dollar": 0.3926,
+      "p10": 6,
+      "p50": 10,
+      "p90": 14,
+      "script_risks": {
+        "BLOWOUT": {
+          "n": 2659,
+          "hit_rate": 0.5724,
+          "mean_reb": 9.3
+        },
+        "CLOSE": {
+          "n": 2495,
+          "hit_rate": 0.6717,
+          "mean_reb": 10.04
+        },
+        "COMEBACK": {
+          "n": 1592,
+          "hit_rate": 0.6734,
+          "mean_reb": 10
+        },
+        "SHOOTOUT": {
+          "n": 1493,
+          "hit_rate": 0.6845,
+          "mean_reb": 10.19
+        },
+        "BALANCED": {
+          "n": 2811,
+          "hit_rate": 0.6791,
+          "mean_reb": 10.06
+        },
+        "GRIND": {
+          "n": 950,
+          "hit_rate": 0.6779,
+          "mean_reb": 10.05
+        }
+      }
+    },
+    {
+      "scenario": "COMPETITION",
+      "model_frequency": 0.5234,
+      "model_mean_rebounds": 8.84,
+      "model_mean_minutes": 29.26,
+      "illustrative_net_roi_per_dollar": 0.1148,
+      "p10": 5,
+      "p50": 9,
+      "p90": 13,
+      "script_risks": {
+        "BLOWOUT": {
+          "n": 2659,
+          "hit_rate": 0.4494,
+          "mean_reb": 8.32
+        },
+        "CLOSE": {
+          "n": 2495,
+          "hit_rate": 0.5367,
+          "mean_reb": 8.94
+        },
+        "COMEBACK": {
+          "n": 1592,
+          "hit_rate": 0.5408,
+          "mean_reb": 8.94
+        },
+        "SHOOTOUT": {
+          "n": 1493,
+          "hit_rate": 0.5613,
+          "mean_reb": 9.11
+        },
+        "BALANCED": {
+          "n": 2811,
+          "hit_rate": 0.5425,
+          "mean_reb": 9
+        },
+        "GRIND": {
+          "n": 950,
+          "hit_rate": 0.5505,
+          "mean_reb": 9
+        }
+      }
+    }
+  ],
+  "model_envelope": {
+    "min": 0.353,
+    "max": 0.6538,
+    "model_uncertainty_dominates_sample_error": true,
+    "point_probability_not_established": true
+  },
+  "default_alt_ladders": {
+    "rebounds": [
+      {
+        "threshold": 6,
+        "over_frequency": 0.8171,
+        "under_frequency": 0.1829,
+        "model_zero_margin_american_odds": -447,
+        "calibrated": false
+      },
+      {
+        "threshold": 7,
+        "over_frequency": 0.6997,
+        "under_frequency": 0.3003,
+        "model_zero_margin_american_odds": -233,
+        "calibrated": false
+      },
+      {
+        "threshold": 8,
+        "over_frequency": 0.5685,
+        "under_frequency": 0.4315,
+        "model_zero_margin_american_odds": -132,
+        "calibrated": false
+      },
+      {
+        "threshold": 9,
+        "over_frequency": 0.4377,
+        "under_frequency": 0.5623,
+        "model_zero_margin_american_odds": 128,
+        "calibrated": false
+      },
+      {
+        "threshold": 10,
+        "over_frequency": 0.3152,
+        "under_frequency": 0.6847,
+        "model_zero_margin_american_odds": 217,
+        "calibrated": false
+      },
+      {
+        "threshold": 11,
+        "over_frequency": 0.2146,
+        "under_frequency": 0.7854,
+        "model_zero_margin_american_odds": 366,
+        "calibrated": false
+      },
+      {
+        "threshold": 12,
+        "over_frequency": 0.139,
+        "under_frequency": 0.861,
+        "model_zero_margin_american_odds": 619,
+        "calibrated": false
+      },
+      {
+        "threshold": 13,
+        "over_frequency": 0.0872,
+        "under_frequency": 0.9127,
+        "model_zero_margin_american_odds": 1046,
+        "calibrated": false
+      },
+      {
+        "threshold": 14,
+        "over_frequency": 0.0501,
+        "under_frequency": 0.9499,
+        "model_zero_margin_american_odds": 1897,
+        "calibrated": false
+      }
+    ],
+    "points": [
+      {
+        "threshold": 8,
+        "over_frequency": 0.7944,
+        "under_frequency": 0.2056,
+        "model_zero_margin_american_odds": -386,
+        "calibrated": false
+      },
+      {
+        "threshold": 10,
+        "over_frequency": 0.6506,
+        "under_frequency": 0.3494,
+        "model_zero_margin_american_odds": -186,
+        "calibrated": false
+      },
+      {
+        "threshold": 12,
+        "over_frequency": 0.5021,
+        "under_frequency": 0.4979,
+        "model_zero_margin_american_odds": -101,
+        "calibrated": false
+      },
+      {
+        "threshold": 15,
+        "over_frequency": 0.3025,
+        "under_frequency": 0.6975,
+        "model_zero_margin_american_odds": 231,
+        "calibrated": false
+      },
+      {
+        "threshold": 18,
+        "over_frequency": 0.1581,
+        "under_frequency": 0.8419,
+        "model_zero_margin_american_odds": 533,
+        "calibrated": false
+      },
+      {
+        "threshold": 20,
+        "over_frequency": 0.0978,
+        "under_frequency": 0.9022,
+        "model_zero_margin_american_odds": 923,
+        "calibrated": false
+      },
+      {
+        "threshold": 25,
+        "over_frequency": 0.0206,
+        "under_frequency": 0.9794,
+        "model_zero_margin_american_odds": 4758,
+        "calibrated": false
+      }
+    ],
+    "assists": [
+      {
+        "threshold": 2,
+        "over_frequency": 0.627,
+        "under_frequency": 0.373,
+        "model_zero_margin_american_odds": -168,
+        "calibrated": false
+      },
+      {
+        "threshold": 3,
+        "over_frequency": 0.4785,
+        "under_frequency": 0.5215,
+        "model_zero_margin_american_odds": 109,
+        "calibrated": false
+      },
+      {
+        "threshold": 4,
+        "over_frequency": 0.3455,
+        "under_frequency": 0.6545,
+        "model_zero_margin_american_odds": 189,
+        "calibrated": false
+      },
+      {
+        "threshold": 5,
+        "over_frequency": 0.2383,
+        "under_frequency": 0.7617,
+        "model_zero_margin_american_odds": 320,
+        "calibrated": false
+      },
+      {
+        "threshold": 6,
+        "over_frequency": 0.1568,
+        "under_frequency": 0.8433,
+        "model_zero_margin_american_odds": 538,
+        "calibrated": false
+      }
+    ],
+    "pra": [
+      {
+        "threshold": 17,
+        "over_frequency": 0.8276,
+        "under_frequency": 0.1724,
+        "model_zero_margin_american_odds": -480,
+        "calibrated": false
+      },
+      {
+        "threshold": 20,
+        "over_frequency": 0.6805,
+        "under_frequency": 0.3195,
+        "model_zero_margin_american_odds": -213,
+        "calibrated": false
+      },
+      {
+        "threshold": 23,
+        "over_frequency": 0.5127,
+        "under_frequency": 0.4873,
+        "model_zero_margin_american_odds": -105,
+        "calibrated": false
+      },
+      {
+        "threshold": 26,
+        "over_frequency": 0.3462,
+        "under_frequency": 0.6538,
+        "model_zero_margin_american_odds": 189,
+        "calibrated": false
+      },
+      {
+        "threshold": 29,
+        "over_frequency": 0.2102,
+        "under_frequency": 0.7897,
+        "model_zero_margin_american_odds": 376,
+        "calibrated": false
+      },
+      {
+        "threshold": 32,
+        "over_frequency": 0.1172,
+        "under_frequency": 0.8828,
+        "model_zero_margin_american_odds": 753,
+        "calibrated": false
+      },
+      {
+        "threshold": 35,
+        "over_frequency": 0.0601,
+        "under_frequency": 0.9399,
+        "model_zero_margin_american_odds": 1564,
+        "calibrated": false
+      }
+    ]
+  },
+  "joint_result": {
+    "REB_AND_AST": 2611,
+    "REB_ONLY": 2641,
+    "AST_ONLY": 3131,
+    "NEITHER": 3617
+  },
+  "explanatory_worlds_100": [
+    {
+      "id": "world-8318",
+      "script": "COMEBACK",
+      "overtime": false,
+      "home_margin": 4,
+      "total": 174,
+      "bkn": {
+        "score": 89,
+        "fga": 79,
+        "fgm": 31,
+        "three_made": 11,
+        "ftm": 16,
+        "orb": 9,
+        "drb": 25,
+        "total_reb": 34,
+        "assists": 18
+      },
+      "cha": {
+        "score": 85,
+        "fga": 79,
+        "fgm": 30,
+        "orb": 18,
+        "drb": 36,
+        "total_reb": 54
+      },
+      "rebound_pool": {
+        "bkn_missed": 48,
+        "cha_missed": 49,
+        "dead_bkn": 3,
+        "dead_cha": 6
+      },
+      "sharpe": {
+        "minutes": 29,
+        "points": 29,
+        "orb": 0,
+        "drb": 3,
+        "reb": 3,
+        "assists": 1,
+        "potential_assists": 8,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 0,
+        "ftm": 1
+      },
+      "teammates": {
+        "minutes": 211,
+        "points": 60,
+        "rebounds": 31,
+        "assists": 17,
+        "fgm": 17,
+        "made3": 11,
+        "ftm": 15
+      }
+    },
+    {
+      "id": "world-2780",
+      "script": "GRIND",
+      "overtime": false,
+      "home_margin": 5,
+      "total": 197,
+      "bkn": {
+        "score": 101,
+        "fga": 87,
+        "fgm": 36,
+        "three_made": 12,
+        "ftm": 17,
+        "orb": 9,
+        "drb": 27,
+        "total_reb": 36,
+        "assists": 24
+      },
+      "cha": {
+        "score": 96,
+        "fga": 80,
+        "fgm": 34,
+        "orb": 14,
+        "drb": 40,
+        "total_reb": 54
+      },
+      "rebound_pool": {
+        "bkn_missed": 51,
+        "cha_missed": 46,
+        "dead_bkn": 2,
+        "dead_cha": 5
+      },
+      "sharpe": {
+        "minutes": 22,
+        "points": 15,
+        "orb": 2,
+        "drb": 3,
+        "reb": 5,
+        "assists": 2,
+        "potential_assists": 4,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 0,
+        "ftm": 1
+      },
+      "teammates": {
+        "minutes": 218,
+        "points": 86,
+        "rebounds": 31,
+        "assists": 22,
+        "fgm": 29,
+        "made3": 12,
+        "ftm": 16
+      }
+    },
+    {
+      "id": "world-2370",
+      "script": "COMEBACK",
+      "overtime": false,
+      "home_margin": 2,
+      "total": 186,
+      "bkn": {
+        "score": 94,
+        "fga": 80,
+        "fgm": 33,
+        "three_made": 11,
+        "ftm": 17,
+        "orb": 9,
+        "drb": 29,
+        "total_reb": 38,
+        "assists": 20
+      },
+      "cha": {
+        "score": 92,
+        "fga": 82,
+        "fgm": 32,
+        "orb": 11,
+        "drb": 36,
+        "total_reb": 47
+      },
+      "rebound_pool": {
+        "bkn_missed": 47,
+        "cha_missed": 50,
+        "dead_bkn": 2,
+        "dead_cha": 10
+      },
+      "sharpe": {
+        "minutes": 26,
+        "points": 13,
+        "orb": 2,
+        "drb": 4,
+        "reb": 6,
+        "assists": 1,
+        "potential_assists": 1,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 0,
+        "ftm": 3
+      },
+      "teammates": {
+        "minutes": 214,
+        "points": 81,
+        "rebounds": 32,
+        "assists": 19,
+        "fgm": 28,
+        "made3": 11,
+        "ftm": 14
+      }
+    },
+    {
+      "id": "world-11346",
+      "script": "GRIND",
+      "overtime": false,
+      "home_margin": 2,
+      "total": 192,
+      "bkn": {
+        "score": 97,
+        "fga": 83,
+        "fgm": 34,
+        "three_made": 12,
+        "ftm": 17,
+        "orb": 13,
+        "drb": 28,
+        "total_reb": 41,
+        "assists": 21
+      },
+      "cha": {
+        "score": 95,
+        "fga": 80,
+        "fgm": 33,
+        "orb": 12,
+        "drb": 31,
+        "total_reb": 43
+      },
+      "rebound_pool": {
+        "bkn_missed": 49,
+        "cha_missed": 47,
+        "dead_bkn": 5,
+        "dead_cha": 7
+      },
+      "sharpe": {
+        "minutes": 24,
+        "points": 3,
+        "orb": 3,
+        "drb": 4,
+        "reb": 7,
+        "assists": 1,
+        "potential_assists": 2,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 0,
+        "ftm": 1
+      },
+      "teammates": {
+        "minutes": 216,
+        "points": 94,
+        "rebounds": 34,
+        "assists": 20,
+        "fgm": 33,
+        "made3": 12,
+        "ftm": 16
+      }
+    },
+    {
+      "id": "world-8375",
+      "script": "GRIND",
+      "overtime": false,
+      "home_margin": -14,
+      "total": 188,
+      "bkn": {
+        "score": 87,
+        "fga": 84,
+        "fgm": 31,
+        "three_made": 10,
+        "ftm": 15,
+        "orb": 12,
+        "drb": 24,
+        "total_reb": 36,
+        "assists": 21
+      },
+      "cha": {
+        "score": 101,
+        "fga": 79,
+        "fgm": 35,
+        "orb": 17,
+        "drb": 35,
+        "total_reb": 52
+      },
+      "rebound_pool": {
+        "bkn_missed": 53,
+        "cha_missed": 44,
+        "dead_bkn": 6,
+        "dead_cha": 3
+      },
+      "sharpe": {
+        "minutes": 29,
+        "points": 17,
+        "orb": 5,
+        "drb": 2,
+        "reb": 7,
+        "assists": 0,
+        "potential_assists": 5,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 1,
+        "ftm": 2
+      },
+      "teammates": {
+        "minutes": 211,
+        "points": 70,
+        "rebounds": 29,
+        "assists": 21,
+        "fgm": 24,
+        "made3": 9,
+        "ftm": 13
+      }
+    },
+    {
+      "id": "world-5504",
+      "script": "GRIND",
+      "overtime": false,
+      "home_margin": -6,
+      "total": 192,
+      "bkn": {
+        "score": 93,
+        "fga": 77,
+        "fgm": 33,
+        "three_made": 11,
+        "ftm": 16,
+        "orb": 10,
+        "drb": 26,
+        "total_reb": 36,
+        "assists": 22
+      },
+      "cha": {
+        "score": 99,
+        "fga": 82,
+        "fgm": 35,
+        "orb": 17,
+        "drb": 31,
+        "total_reb": 48
+      },
+      "rebound_pool": {
+        "bkn_missed": 44,
+        "cha_missed": 47,
+        "dead_bkn": 3,
+        "dead_cha": 4
+      },
+      "sharpe": {
+        "minutes": 30,
+        "points": 4,
+        "orb": 3,
+        "drb": 5,
+        "reb": 8,
+        "assists": 0,
+        "potential_assists": 0,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 0,
+        "ftm": 2
+      },
+      "teammates": {
+        "minutes": 210,
+        "points": 89,
+        "rebounds": 28,
+        "assists": 22,
+        "fgm": 32,
+        "made3": 11,
+        "ftm": 14
+      }
+    },
+    {
+      "id": "world-3623",
+      "script": "GRIND",
+      "overtime": false,
+      "home_margin": 5,
+      "total": 197,
+      "bkn": {
+        "score": 101,
+        "fga": 86,
+        "fgm": 36,
+        "three_made": 12,
+        "ftm": 17,
+        "orb": 16,
+        "drb": 21,
+        "total_reb": 37,
+        "assists": 28
+      },
+      "cha": {
+        "score": 96,
+        "fga": 73,
+        "fgm": 34,
+        "orb": 12,
+        "drb": 33,
+        "total_reb": 45
+      },
+      "rebound_pool": {
+        "bkn_missed": 50,
+        "cha_missed": 39,
+        "dead_bkn": 1,
+        "dead_cha": 6
+      },
+      "sharpe": {
+        "minutes": 24,
+        "points": 13,
+        "orb": 4,
+        "drb": 5,
+        "reb": 9,
+        "assists": 3,
+        "potential_assists": 11,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 1,
+        "ftm": 0
+      },
+      "teammates": {
+        "minutes": 216,
+        "points": 88,
+        "rebounds": 28,
+        "assists": 25,
+        "fgm": 30,
+        "made3": 11,
+        "ftm": 17
+      }
+    },
+    {
+      "id": "world-2906",
+      "script": "BLOWOUT",
+      "overtime": false,
+      "home_margin": -17,
+      "total": 199,
+      "bkn": {
+        "score": 91,
+        "fga": 74,
+        "fgm": 32,
+        "three_made": 11,
+        "ftm": 16,
+        "orb": 6,
+        "drb": 29,
+        "total_reb": 35,
+        "assists": 19
+      },
+      "cha": {
+        "score": 108,
+        "fga": 86,
+        "fgm": 38,
+        "orb": 14,
+        "drb": 34,
+        "total_reb": 48
+      },
+      "rebound_pool": {
+        "bkn_missed": 42,
+        "cha_missed": 48,
+        "dead_bkn": 2,
+        "dead_cha": 5
+      },
+      "sharpe": {
+        "minutes": 26,
+        "points": 12,
+        "orb": 3,
+        "drb": 7,
+        "reb": 10,
+        "assists": 2,
+        "potential_assists": 5,
+        "foul_shock": false,
+        "blowout": true,
+        "three_made": 0,
+        "ftm": 2
+      },
+      "teammates": {
+        "minutes": 214,
+        "points": 79,
+        "rebounds": 25,
+        "assists": 17,
+        "fgm": 27,
+        "made3": 11,
+        "ftm": 14
+      }
+    },
+    {
+      "id": "world-6416",
+      "script": "GRIND",
+      "overtime": false,
+      "home_margin": -2,
+      "total": 180,
+      "bkn": {
+        "score": 89,
+        "fga": 67,
+        "fgm": 31,
+        "three_made": 11,
+        "ftm": 16,
+        "orb": 12,
+        "drb": 36,
+        "total_reb": 48,
+        "assists": 19
+      },
+      "cha": {
+        "score": 91,
+        "fga": 80,
+        "fgm": 32,
+        "orb": 9,
+        "drb": 20,
+        "total_reb": 29
+      },
+      "rebound_pool": {
+        "bkn_missed": 36,
+        "cha_missed": 48,
+        "dead_bkn": 4,
+        "dead_cha": 3
+      },
+      "sharpe": {
+        "minutes": 27,
+        "points": 20,
+        "orb": 2,
+        "drb": 9,
+        "reb": 11,
+        "assists": 3,
+        "potential_assists": 9,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 0,
+        "ftm": 2
+      },
+      "teammates": {
+        "minutes": 213,
+        "points": 69,
+        "rebounds": 37,
+        "assists": 16,
+        "fgm": 22,
+        "made3": 11,
+        "ftm": 14
+      }
+    },
+    {
+      "id": "world-11955",
+      "script": "GRIND",
+      "overtime": false,
+      "home_margin": -10,
+      "total": 184,
+      "bkn": {
+        "score": 87,
+        "fga": 74,
+        "fgm": 31,
+        "three_made": 10,
+        "ftm": 15,
+        "orb": 12,
+        "drb": 25,
+        "total_reb": 37,
+        "assists": 19
+      },
+      "cha": {
+        "score": 97,
+        "fga": 78,
+        "fgm": 34,
+        "orb": 11,
+        "drb": 28,
+        "total_reb": 39
+      },
+      "rebound_pool": {
+        "bkn_missed": 43,
+        "cha_missed": 44,
+        "dead_bkn": 3,
+        "dead_cha": 8
+      },
+      "sharpe": {
+        "minutes": 24,
+        "points": 11,
+        "orb": 4,
+        "drb": 10,
+        "reb": 14,
+        "assists": 2,
+        "potential_assists": 6,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 0,
+        "ftm": 5
+      },
+      "teammates": {
+        "minutes": 216,
+        "points": 76,
+        "rebounds": 23,
+        "assists": 17,
+        "fgm": 28,
+        "made3": 10,
+        "ftm": 10
+      }
+    },
+    {
+      "id": "world-11919",
+      "script": "GRIND",
+      "overtime": false,
+      "home_margin": 8,
+      "total": 200,
+      "bkn": {
+        "score": 104,
+        "fga": 74,
+        "fgm": 37,
+        "three_made": 13,
+        "ftm": 17,
+        "orb": 1,
+        "drb": 29,
+        "total_reb": 30,
+        "assists": 26
+      },
+      "cha": {
+        "score": 96,
+        "fga": 79,
+        "fgm": 34,
+        "orb": 10,
+        "drb": 35,
+        "total_reb": 45
+      },
+      "rebound_pool": {
+        "bkn_missed": 37,
+        "cha_missed": 45,
+        "dead_bkn": 1,
+        "dead_cha": 6
+      },
+      "sharpe": {
+        "minutes": 22,
+        "points": 8,
+        "orb": 0,
+        "drb": 4,
+        "reb": 4,
+        "assists": 10,
+        "potential_assists": 18,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 0,
+        "ftm": 0
+      },
+      "teammates": {
+        "minutes": 218,
+        "points": 96,
+        "rebounds": 26,
+        "assists": 16,
+        "fgm": 33,
+        "made3": 13,
+        "ftm": 17
+      }
+    },
+    {
+      "id": "world-6814",
+      "script": "BLOWOUT",
+      "overtime": false,
+      "home_margin": -18,
+      "total": 204,
+      "bkn": {
+        "score": 93,
+        "fga": 80,
+        "fgm": 33,
+        "three_made": 11,
+        "ftm": 16,
+        "orb": 10,
+        "drb": 26,
+        "total_reb": 36,
+        "assists": 22
+      },
+      "cha": {
+        "score": 111,
+        "fga": 81,
+        "fgm": 39,
+        "orb": 8,
+        "drb": 34,
+        "total_reb": 42
+      },
+      "rebound_pool": {
+        "bkn_missed": 47,
+        "cha_missed": 42,
+        "dead_bkn": 3,
+        "dead_cha": 8
+      },
+      "sharpe": {
+        "minutes": 24,
+        "points": 10,
+        "orb": 2,
+        "drb": 3,
+        "reb": 5,
+        "assists": 5,
+        "potential_assists": 6,
+        "foul_shock": false,
+        "blowout": true,
+        "three_made": 0,
+        "ftm": 0
+      },
+      "teammates": {
+        "minutes": 216,
+        "points": 83,
+        "rebounds": 31,
+        "assists": 17,
+        "fgm": 28,
+        "made3": 11,
+        "ftm": 16
+      }
+    },
+    {
+      "id": "world-5212",
+      "script": "CLOSE",
+      "overtime": false,
+      "home_margin": -6,
+      "total": 206,
+      "bkn": {
+        "score": 100,
+        "fga": 75,
+        "fgm": 35,
+        "three_made": 12,
+        "ftm": 18,
+        "orb": 6,
+        "drb": 30,
+        "total_reb": 36,
+        "assists": 22
+      },
+      "cha": {
+        "score": 106,
+        "fga": 85,
+        "fgm": 37,
+        "orb": 12,
+        "drb": 29,
+        "total_reb": 41
+      },
+      "rebound_pool": {
+        "bkn_missed": 40,
+        "cha_missed": 48,
+        "dead_bkn": 5,
+        "dead_cha": 6
+      },
+      "sharpe": {
+        "minutes": 30,
+        "points": 18,
+        "orb": 3,
+        "drb": 3,
+        "reb": 6,
+        "assists": 0,
+        "potential_assists": 2,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 0,
+        "ftm": 8
+      },
+      "teammates": {
+        "minutes": 210,
+        "points": 82,
+        "rebounds": 30,
+        "assists": 22,
+        "fgm": 30,
+        "made3": 12,
+        "ftm": 10
+      }
+    },
+    {
+      "id": "world-3025",
+      "script": "CLOSE",
+      "overtime": false,
+      "home_margin": -6,
+      "total": 204,
+      "bkn": {
+        "score": 99,
+        "fga": 81,
+        "fgm": 35,
+        "three_made": 12,
+        "ftm": 17,
+        "orb": 12,
+        "drb": 33,
+        "total_reb": 45,
+        "assists": 25
+      },
+      "cha": {
+        "score": 105,
+        "fga": 92,
+        "fgm": 37,
+        "orb": 12,
+        "drb": 32,
+        "total_reb": 44
+      },
+      "rebound_pool": {
+        "bkn_missed": 46,
+        "cha_missed": 55,
+        "dead_bkn": 2,
+        "dead_cha": 10
+      },
+      "sharpe": {
+        "minutes": 27,
+        "points": 20,
+        "orb": 3,
+        "drb": 4,
+        "reb": 7,
+        "assists": 7,
+        "potential_assists": 13,
+        "foul_shock": true,
+        "blowout": false,
+        "three_made": 0,
+        "ftm": 0
+      },
+      "teammates": {
+        "minutes": 213,
+        "points": 79,
+        "rebounds": 38,
+        "assists": 18,
+        "fgm": 25,
+        "made3": 12,
+        "ftm": 17
+      }
+    },
+    {
+      "id": "world-11846",
+      "script": "BALANCED",
+      "overtime": false,
+      "home_margin": 7,
+      "total": 203,
+      "bkn": {
+        "score": 105,
+        "fga": 82,
+        "fgm": 39,
+        "three_made": 13,
+        "ftm": 14,
+        "orb": 10,
+        "drb": 29,
+        "total_reb": 39,
+        "assists": 23
+      },
+      "cha": {
+        "score": 98,
+        "fga": 77,
+        "fgm": 34,
+        "orb": 11,
+        "drb": 31,
+        "total_reb": 42
+      },
+      "rebound_pool": {
+        "bkn_missed": 43,
+        "cha_missed": 43,
+        "dead_bkn": 2,
+        "dead_cha": 3
+      },
+      "sharpe": {
+        "minutes": 32,
+        "points": 20,
+        "orb": 3,
+        "drb": 5,
+        "reb": 8,
+        "assists": 4,
+        "potential_assists": 6,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 0,
+        "ftm": 4
+      },
+      "teammates": {
+        "minutes": 208,
+        "points": 85,
+        "rebounds": 31,
+        "assists": 19,
+        "fgm": 31,
+        "made3": 13,
+        "ftm": 10
+      }
+    },
+    {
+      "id": "world-9426",
+      "script": "BALANCED",
+      "overtime": false,
+      "home_margin": 12,
+      "total": 206,
+      "bkn": {
+        "score": 109,
+        "fga": 88,
+        "fgm": 39,
+        "three_made": 13,
+        "ftm": 18,
+        "orb": 11,
+        "drb": 34,
+        "total_reb": 45,
+        "assists": 24
+      },
+      "cha": {
+        "score": 97,
+        "fga": 86,
+        "fgm": 34,
+        "orb": 12,
+        "drb": 35,
+        "total_reb": 47
+      },
+      "rebound_pool": {
+        "bkn_missed": 49,
+        "cha_missed": 52,
+        "dead_bkn": 3,
+        "dead_cha": 6
+      },
+      "sharpe": {
+        "minutes": 28,
+        "points": 15,
+        "orb": 3,
+        "drb": 5,
+        "reb": 8,
+        "assists": 0,
+        "potential_assists": 0,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 0,
+        "ftm": 5
+      },
+      "teammates": {
+        "minutes": 212,
+        "points": 94,
+        "rebounds": 37,
+        "assists": 24,
+        "fgm": 34,
+        "made3": 13,
+        "ftm": 13
+      }
+    },
+    {
+      "id": "world-7721",
+      "script": "BLOWOUT",
+      "overtime": false,
+      "home_margin": -20,
+      "total": 202,
+      "bkn": {
+        "score": 91,
+        "fga": 76,
+        "fgm": 32,
+        "three_made": 11,
+        "ftm": 16,
+        "orb": 9,
+        "drb": 24,
+        "total_reb": 33,
+        "assists": 20
+      },
+      "cha": {
+        "score": 111,
+        "fga": 87,
+        "fgm": 39,
+        "orb": 14,
+        "drb": 35,
+        "total_reb": 49
+      },
+      "rebound_pool": {
+        "bkn_missed": 44,
+        "cha_missed": 48,
+        "dead_bkn": 0,
+        "dead_cha": 10
+      },
+      "sharpe": {
+        "minutes": 28,
+        "points": 14,
+        "orb": 6,
+        "drb": 3,
+        "reb": 9,
+        "assists": 0,
+        "potential_assists": 0,
+        "foul_shock": false,
+        "blowout": true,
+        "three_made": 0,
+        "ftm": 6
+      },
+      "teammates": {
+        "minutes": 212,
+        "points": 77,
+        "rebounds": 24,
+        "assists": 20,
+        "fgm": 28,
+        "made3": 11,
+        "ftm": 10
+      }
+    },
+    {
+      "id": "world-5056",
+      "script": "GRIND",
+      "overtime": false,
+      "home_margin": 9,
+      "total": 199,
+      "bkn": {
+        "score": 104,
+        "fga": 76,
+        "fgm": 37,
+        "three_made": 13,
+        "ftm": 17,
+        "orb": 6,
+        "drb": 31,
+        "total_reb": 37,
+        "assists": 23
+      },
+      "cha": {
+        "score": 95,
+        "fga": 80,
+        "fgm": 33,
+        "orb": 9,
+        "drb": 30,
+        "total_reb": 39
+      },
+      "rebound_pool": {
+        "bkn_missed": 39,
+        "cha_missed": 47,
+        "dead_bkn": 3,
+        "dead_cha": 7
+      },
+      "sharpe": {
+        "minutes": 27,
+        "points": 12,
+        "orb": 2,
+        "drb": 8,
+        "reb": 10,
+        "assists": 3,
+        "potential_assists": 8,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 0,
+        "ftm": 0
+      },
+      "teammates": {
+        "minutes": 213,
+        "points": 92,
+        "rebounds": 27,
+        "assists": 20,
+        "fgm": 31,
+        "made3": 13,
+        "ftm": 17
+      }
+    },
+    {
+      "id": "world-8460",
+      "script": "GRIND",
+      "overtime": false,
+      "home_margin": -7,
+      "total": 199,
+      "bkn": {
+        "score": 96,
+        "fga": 83,
+        "fgm": 34,
+        "three_made": 12,
+        "ftm": 16,
+        "orb": 16,
+        "drb": 41,
+        "total_reb": 57,
+        "assists": 24
+      },
+      "cha": {
+        "score": 103,
+        "fga": 94,
+        "fgm": 36,
+        "orb": 9,
+        "drb": 29,
+        "total_reb": 38
+      },
+      "rebound_pool": {
+        "bkn_missed": 49,
+        "cha_missed": 58,
+        "dead_bkn": 4,
+        "dead_cha": 8
+      },
+      "sharpe": {
+        "minutes": 27,
+        "points": 17,
+        "orb": 5,
+        "drb": 6,
+        "reb": 11,
+        "assists": 7,
+        "potential_assists": 15,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 0,
+        "ftm": 7
+      },
+      "teammates": {
+        "minutes": 213,
+        "points": 79,
+        "rebounds": 46,
+        "assists": 17,
+        "fgm": 29,
+        "made3": 12,
+        "ftm": 9
+      }
+    },
+    {
+      "id": "world-113",
+      "script": "BLOWOUT",
+      "overtime": false,
+      "home_margin": 19,
+      "total": 203,
+      "bkn": {
+        "score": 111,
+        "fga": 93,
+        "fgm": 39,
+        "three_made": 14,
+        "ftm": 19,
+        "orb": 14,
+        "drb": 34,
+        "total_reb": 48,
+        "assists": 17
+      },
+      "cha": {
+        "score": 92,
+        "fga": 77,
+        "fgm": 32,
+        "orb": 5,
+        "drb": 34,
+        "total_reb": 39
+      },
+      "rebound_pool": {
+        "bkn_missed": 54,
+        "cha_missed": 45,
+        "dead_bkn": 6,
+        "dead_cha": 6
+      },
+      "sharpe": {
+        "minutes": 28,
+        "points": 15,
+        "orb": 5,
+        "drb": 9,
+        "reb": 14,
+        "assists": 2,
+        "potential_assists": 3,
+        "foul_shock": false,
+        "blowout": true,
+        "three_made": 0,
+        "ftm": 1
+      },
+      "teammates": {
+        "minutes": 212,
+        "points": 96,
+        "rebounds": 34,
+        "assists": 15,
+        "fgm": 32,
+        "made3": 14,
+        "ftm": 18
+      }
+    },
+    {
+      "id": "world-10396",
+      "script": "BALANCED",
+      "overtime": false,
+      "home_margin": -14,
+      "total": 208,
+      "bkn": {
+        "score": 97,
+        "fga": 78,
+        "fgm": 34,
+        "three_made": 12,
+        "ftm": 17,
+        "orb": 14,
+        "drb": 28,
+        "total_reb": 42,
+        "assists": 23
+      },
+      "cha": {
+        "score": 111,
+        "fga": 91,
+        "fgm": 39,
+        "orb": 17,
+        "drb": 27,
+        "total_reb": 44
+      },
+      "rebound_pool": {
+        "bkn_missed": 44,
+        "cha_missed": 52,
+        "dead_bkn": 3,
+        "dead_cha": 7
+      },
+      "sharpe": {
+        "minutes": 24,
+        "points": 3,
+        "orb": 1,
+        "drb": 3,
+        "reb": 4,
+        "assists": 0,
+        "potential_assists": 0,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 0,
+        "ftm": 1
+      },
+      "teammates": {
+        "minutes": 216,
+        "points": 94,
+        "rebounds": 38,
+        "assists": 23,
+        "fgm": 33,
+        "made3": 12,
+        "ftm": 16
+      }
+    },
+    {
+      "id": "world-5189",
+      "script": "BLOWOUT",
+      "overtime": false,
+      "home_margin": -17,
+      "total": 207,
+      "bkn": {
+        "score": 95,
+        "fga": 81,
+        "fgm": 33,
+        "three_made": 12,
+        "ftm": 17,
+        "orb": 8,
+        "drb": 28,
+        "total_reb": 36,
+        "assists": 20
+      },
+      "cha": {
+        "score": 112,
+        "fga": 88,
+        "fgm": 39,
+        "orb": 17,
+        "drb": 38,
+        "total_reb": 55
+      },
+      "rebound_pool": {
+        "bkn_missed": 48,
+        "cha_missed": 49,
+        "dead_bkn": 2,
+        "dead_cha": 4
+      },
+      "sharpe": {
+        "minutes": 19,
+        "points": 8,
+        "orb": 3,
+        "drb": 2,
+        "reb": 5,
+        "assists": 3,
+        "potential_assists": 5,
+        "foul_shock": true,
+        "blowout": true,
+        "three_made": 0,
+        "ftm": 4
+      },
+      "teammates": {
+        "minutes": 221,
+        "points": 87,
+        "rebounds": 31,
+        "assists": 17,
+        "fgm": 31,
+        "made3": 12,
+        "ftm": 13
+      }
+    },
+    {
+      "id": "world-4009",
+      "script": "BALANCED",
+      "overtime": false,
+      "home_margin": 10,
+      "total": 210,
+      "bkn": {
+        "score": 110,
+        "fga": 86,
+        "fgm": 39,
+        "three_made": 14,
+        "ftm": 18,
+        "orb": 11,
+        "drb": 27,
+        "total_reb": 38,
+        "assists": 22
+      },
+      "cha": {
+        "score": 100,
+        "fga": 82,
+        "fgm": 35,
+        "orb": 15,
+        "drb": 33,
+        "total_reb": 48
+      },
+      "rebound_pool": {
+        "bkn_missed": 47,
+        "cha_missed": 47,
+        "dead_bkn": 3,
+        "dead_cha": 5
+      },
+      "sharpe": {
+        "minutes": 26,
+        "points": 12,
+        "orb": 3,
+        "drb": 3,
+        "reb": 6,
+        "assists": 11,
+        "potential_assists": 16,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 0,
+        "ftm": 0
+      },
+      "teammates": {
+        "minutes": 214,
+        "points": 98,
+        "rebounds": 32,
+        "assists": 11,
+        "fgm": 33,
+        "made3": 14,
+        "ftm": 18
+      }
+    },
+    {
+      "id": "world-2959",
+      "script": "COMEBACK",
+      "overtime": false,
+      "home_margin": -3,
+      "total": 209,
+      "bkn": {
+        "score": 103,
+        "fga": 81,
+        "fgm": 36,
+        "three_made": 13,
+        "ftm": 18,
+        "orb": 7,
+        "drb": 30,
+        "total_reb": 37,
+        "assists": 23
+      },
+      "cha": {
+        "score": 106,
+        "fga": 86,
+        "fgm": 38,
+        "orb": 15,
+        "drb": 34,
+        "total_reb": 49
+      },
+      "rebound_pool": {
+        "bkn_missed": 45,
+        "cha_missed": 48,
+        "dead_bkn": 4,
+        "dead_cha": 3
+      },
+      "sharpe": {
+        "minutes": 29,
+        "points": 7,
+        "orb": 4,
+        "drb": 3,
+        "reb": 7,
+        "assists": 5,
+        "potential_assists": 16,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 0,
+        "ftm": 1
+      },
+      "teammates": {
+        "minutes": 211,
+        "points": 96,
+        "rebounds": 30,
+        "assists": 18,
+        "fgm": 33,
+        "made3": 13,
+        "ftm": 17
+      }
+    },
+    {
+      "id": "world-10341",
+      "script": "BALANCED",
+      "overtime": false,
+      "home_margin": 8,
+      "total": 210,
+      "bkn": {
+        "score": 109,
+        "fga": 86,
+        "fgm": 39,
+        "three_made": 13,
+        "ftm": 18,
+        "orb": 15,
+        "drb": 28,
+        "total_reb": 43,
+        "assists": 25
+      },
+      "cha": {
+        "score": 101,
+        "fga": 83,
+        "fgm": 35,
+        "orb": 9,
+        "drb": 28,
+        "total_reb": 37
+      },
+      "rebound_pool": {
+        "bkn_missed": 47,
+        "cha_missed": 48,
+        "dead_bkn": 4,
+        "dead_cha": 11
+      },
+      "sharpe": {
+        "minutes": 30,
+        "points": 26,
+        "orb": 2,
+        "drb": 6,
+        "reb": 8,
+        "assists": 6,
+        "potential_assists": 7,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 1,
+        "ftm": 3
+      },
+      "teammates": {
+        "minutes": 210,
+        "points": 83,
+        "rebounds": 35,
+        "assists": 19,
+        "fgm": 28,
+        "made3": 12,
+        "ftm": 15
+      }
+    },
+    {
+      "id": "world-7505",
+      "script": "BLOWOUT",
+      "overtime": false,
+      "home_margin": -27,
+      "total": 209,
+      "bkn": {
+        "score": 91,
+        "fga": 75,
+        "fgm": 32,
+        "three_made": 11,
+        "ftm": 16,
+        "orb": 5,
+        "drb": 29,
+        "total_reb": 34,
+        "assists": 22
+      },
+      "cha": {
+        "score": 118,
+        "fga": 89,
+        "fgm": 42,
+        "orb": 11,
+        "drb": 35,
+        "total_reb": 46
+      },
+      "rebound_pool": {
+        "bkn_missed": 43,
+        "cha_missed": 47,
+        "dead_bkn": 3,
+        "dead_cha": 7
+      },
+      "sharpe": {
+        "minutes": 28,
+        "points": 22,
+        "orb": 2,
+        "drb": 6,
+        "reb": 8,
+        "assists": 0,
+        "potential_assists": 0,
+        "foul_shock": false,
+        "blowout": true,
+        "three_made": 0,
+        "ftm": 4
+      },
+      "teammates": {
+        "minutes": 212,
+        "points": 69,
+        "rebounds": 26,
+        "assists": 22,
+        "fgm": 23,
+        "made3": 11,
+        "ftm": 12
+      }
+    },
+    {
+      "id": "world-5216",
+      "script": "BLOWOUT",
+      "overtime": false,
+      "home_margin": -24,
+      "total": 210,
+      "bkn": {
+        "score": 93,
+        "fga": 88,
+        "fgm": 33,
+        "three_made": 11,
+        "ftm": 16,
+        "orb": 10,
+        "drb": 35,
+        "total_reb": 45,
+        "assists": 21
+      },
+      "cha": {
+        "score": 117,
+        "fga": 89,
+        "fgm": 41,
+        "orb": 9,
+        "drb": 42,
+        "total_reb": 51
+      },
+      "rebound_pool": {
+        "bkn_missed": 55,
+        "cha_missed": 48,
+        "dead_bkn": 3,
+        "dead_cha": 4
+      },
+      "sharpe": {
+        "minutes": 25,
+        "points": 14,
+        "orb": 3,
+        "drb": 6,
+        "reb": 9,
+        "assists": 1,
+        "potential_assists": 6,
+        "foul_shock": false,
+        "blowout": true,
+        "three_made": 0,
+        "ftm": 4
+      },
+      "teammates": {
+        "minutes": 215,
+        "points": 79,
+        "rebounds": 36,
+        "assists": 20,
+        "fgm": 28,
+        "made3": 11,
+        "ftm": 12
+      }
+    },
+    {
+      "id": "world-5892",
+      "script": "CLOSE",
+      "overtime": false,
+      "home_margin": 1,
+      "total": 211,
+      "bkn": {
+        "score": 106,
+        "fga": 87,
+        "fgm": 38,
+        "three_made": 13,
+        "ftm": 17,
+        "orb": 7,
+        "drb": 34,
+        "total_reb": 41,
+        "assists": 24
+      },
+      "cha": {
+        "score": 105,
+        "fga": 87,
+        "fgm": 37,
+        "orb": 11,
+        "drb": 40,
+        "total_reb": 51
+      },
+      "rebound_pool": {
+        "bkn_missed": 49,
+        "cha_missed": 50,
+        "dead_bkn": 2,
+        "dead_cha": 5
+      },
+      "sharpe": {
+        "minutes": 27,
+        "points": 18,
+        "orb": 4,
+        "drb": 6,
+        "reb": 10,
+        "assists": 8,
+        "potential_assists": 15,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 0,
+        "ftm": 2
+      },
+      "teammates": {
+        "minutes": 213,
+        "points": 88,
+        "rebounds": 31,
+        "assists": 16,
+        "fgm": 30,
+        "made3": 13,
+        "ftm": 15
+      }
+    },
+    {
+      "id": "world-6172",
+      "script": "CLOSE",
+      "overtime": false,
+      "home_margin": 1,
+      "total": 209,
+      "bkn": {
+        "score": 105,
+        "fga": 82,
+        "fgm": 37,
+        "three_made": 13,
+        "ftm": 18,
+        "orb": 8,
+        "drb": 23,
+        "total_reb": 31,
+        "assists": 26
+      },
+      "cha": {
+        "score": 104,
+        "fga": 82,
+        "fgm": 37,
+        "orb": 10,
+        "drb": 32,
+        "total_reb": 42
+      },
+      "rebound_pool": {
+        "bkn_missed": 45,
+        "cha_missed": 45,
+        "dead_bkn": 5,
+        "dead_cha": 12
+      },
+      "sharpe": {
+        "minutes": 29,
+        "points": 15,
+        "orb": 6,
+        "drb": 5,
+        "reb": 11,
+        "assists": 2,
+        "potential_assists": 7,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 0,
+        "ftm": 3
+      },
+      "teammates": {
+        "minutes": 211,
+        "points": 90,
+        "rebounds": 20,
+        "assists": 24,
+        "fgm": 31,
+        "made3": 13,
+        "ftm": 15
+      }
+    },
+    {
+      "id": "world-7512",
+      "script": "CLOSE",
+      "overtime": false,
+      "home_margin": 6,
+      "total": 208,
+      "bkn": {
+        "score": 107,
+        "fga": 80,
+        "fgm": 38,
+        "three_made": 13,
+        "ftm": 18,
+        "orb": 5,
+        "drb": 32,
+        "total_reb": 37,
+        "assists": 22
+      },
+      "cha": {
+        "score": 101,
+        "fga": 88,
+        "fgm": 36,
+        "orb": 12,
+        "drb": 35,
+        "total_reb": 47
+      },
+      "rebound_pool": {
+        "bkn_missed": 42,
+        "cha_missed": 52,
+        "dead_bkn": 2,
+        "dead_cha": 8
+      },
+      "sharpe": {
+        "minutes": 26,
+        "points": 10,
+        "orb": 0,
+        "drb": 13,
+        "reb": 13,
+        "assists": 7,
+        "potential_assists": 9,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 0,
+        "ftm": 6
+      },
+      "teammates": {
+        "minutes": 214,
+        "points": 97,
+        "rebounds": 24,
+        "assists": 15,
+        "fgm": 36,
+        "made3": 13,
+        "ftm": 12
+      }
+    },
+    {
+      "id": "world-11672",
+      "script": "COMEBACK",
+      "overtime": false,
+      "home_margin": -4,
+      "total": 214,
+      "bkn": {
+        "score": 105,
+        "fga": 86,
+        "fgm": 37,
+        "three_made": 13,
+        "ftm": 18,
+        "orb": 9,
+        "drb": 26,
+        "total_reb": 35,
+        "assists": 25
+      },
+      "cha": {
+        "score": 109,
+        "fga": 82,
+        "fgm": 38,
+        "orb": 15,
+        "drb": 37,
+        "total_reb": 52
+      },
+      "rebound_pool": {
+        "bkn_missed": 49,
+        "cha_missed": 44,
+        "dead_bkn": 3,
+        "dead_cha": 3
+      },
+      "sharpe": {
+        "minutes": 24,
+        "points": 14,
+        "orb": 2,
+        "drb": 2,
+        "reb": 4,
+        "assists": 0,
+        "potential_assists": 0,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 2,
+        "ftm": 0
+      },
+      "teammates": {
+        "minutes": 216,
+        "points": 91,
+        "rebounds": 31,
+        "assists": 25,
+        "fgm": 31,
+        "made3": 11,
+        "ftm": 18
+      }
+    },
+    {
+      "id": "world-6642",
+      "script": "BALANCED",
+      "overtime": false,
+      "home_margin": -8,
+      "total": 212,
+      "bkn": {
+        "score": 102,
+        "fga": 82,
+        "fgm": 36,
+        "three_made": 13,
+        "ftm": 17,
+        "orb": 13,
+        "drb": 18,
+        "total_reb": 31,
+        "assists": 27
+      },
+      "cha": {
+        "score": 110,
+        "fga": 79,
+        "fgm": 39,
+        "orb": 12,
+        "drb": 31,
+        "total_reb": 43
+      },
+      "rebound_pool": {
+        "bkn_missed": 46,
+        "cha_missed": 40,
+        "dead_bkn": 2,
+        "dead_cha": 10
+      },
+      "sharpe": {
+        "minutes": 31,
+        "points": 21,
+        "orb": 3,
+        "drb": 2,
+        "reb": 5,
+        "assists": 1,
+        "potential_assists": 3,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 1,
+        "ftm": 6
+      },
+      "teammates": {
+        "minutes": 209,
+        "points": 81,
+        "rebounds": 26,
+        "assists": 26,
+        "fgm": 29,
+        "made3": 12,
+        "ftm": 11
+      }
+    },
+    {
+      "id": "world-5651",
+      "script": "COMEBACK",
+      "overtime": false,
+      "home_margin": -14,
+      "total": 212,
+      "bkn": {
+        "score": 99,
+        "fga": 84,
+        "fgm": 35,
+        "three_made": 12,
+        "ftm": 17,
+        "orb": 5,
+        "drb": 21,
+        "total_reb": 26,
+        "assists": 22
+      },
+      "cha": {
+        "score": 113,
+        "fga": 87,
+        "fgm": 40,
+        "orb": 19,
+        "drb": 42,
+        "total_reb": 61
+      },
+      "rebound_pool": {
+        "bkn_missed": 49,
+        "cha_missed": 47,
+        "dead_bkn": 2,
+        "dead_cha": 7
+      },
+      "sharpe": {
+        "minutes": 19,
+        "points": 4,
+        "orb": 3,
+        "drb": 3,
+        "reb": 6,
+        "assists": 5,
+        "potential_assists": 13,
+        "foul_shock": true,
+        "blowout": false,
+        "three_made": 0,
+        "ftm": 0
+      },
+      "teammates": {
+        "minutes": 221,
+        "points": 95,
+        "rebounds": 20,
+        "assists": 17,
+        "fgm": 33,
+        "made3": 12,
+        "ftm": 17
+      }
+    },
+    {
+      "id": "world-3183",
+      "script": "BLOWOUT",
+      "overtime": false,
+      "home_margin": -28,
+      "total": 212,
+      "bkn": {
+        "score": 92,
+        "fga": 80,
+        "fgm": 32,
+        "three_made": 11,
+        "ftm": 17,
+        "orb": 8,
+        "drb": 35,
+        "total_reb": 43,
+        "assists": 28
+      },
+      "cha": {
+        "score": 120,
+        "fga": 93,
+        "fgm": 44,
+        "orb": 11,
+        "drb": 37,
+        "total_reb": 48
+      },
+      "rebound_pool": {
+        "bkn_missed": 48,
+        "cha_missed": 49,
+        "dead_bkn": 3,
+        "dead_cha": 3
+      },
+      "sharpe": {
+        "minutes": 25,
+        "points": 14,
+        "orb": 2,
+        "drb": 5,
+        "reb": 7,
+        "assists": 2,
+        "potential_assists": 5,
+        "foul_shock": false,
+        "blowout": true,
+        "three_made": 0,
+        "ftm": 2
+      },
+      "teammates": {
+        "minutes": 215,
+        "points": 78,
+        "rebounds": 36,
+        "assists": 26,
+        "fgm": 26,
+        "made3": 11,
+        "ftm": 15
+      }
+    },
+    {
+      "id": "world-9828",
+      "script": "CLOSE",
+      "overtime": false,
+      "home_margin": -2,
+      "total": 212,
+      "bkn": {
+        "score": 105,
+        "fga": 77,
+        "fgm": 37,
+        "three_made": 13,
+        "ftm": 18,
+        "orb": 5,
+        "drb": 30,
+        "total_reb": 35,
+        "assists": 25
+      },
+      "cha": {
+        "score": 107,
+        "fga": 86,
+        "fgm": 38,
+        "orb": 12,
+        "drb": 33,
+        "total_reb": 45
+      },
+      "rebound_pool": {
+        "bkn_missed": 40,
+        "cha_missed": 48,
+        "dead_bkn": 2,
+        "dead_cha": 6
+      },
+      "sharpe": {
+        "minutes": 27,
+        "points": 8,
+        "orb": 3,
+        "drb": 4,
+        "reb": 7,
+        "assists": 7,
+        "potential_assists": 17,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 0,
+        "ftm": 0
+      },
+      "teammates": {
+        "minutes": 213,
+        "points": 97,
+        "rebounds": 28,
+        "assists": 18,
+        "fgm": 33,
+        "made3": 13,
+        "ftm": 18
+      }
+    },
+    {
+      "id": "world-7692",
+      "script": "BALANCED",
+      "overtime": false,
+      "home_margin": -9,
+      "total": 215,
+      "bkn": {
+        "score": 103,
+        "fga": 85,
+        "fgm": 36,
+        "three_made": 13,
+        "ftm": 18,
+        "orb": 7,
+        "drb": 32,
+        "total_reb": 39,
+        "assists": 22
+      },
+      "cha": {
+        "score": 112,
+        "fga": 88,
+        "fgm": 39,
+        "orb": 9,
+        "drb": 38,
+        "total_reb": 47
+      },
+      "rebound_pool": {
+        "bkn_missed": 49,
+        "cha_missed": 49,
+        "dead_bkn": 4,
+        "dead_cha": 8
+      },
+      "sharpe": {
+        "minutes": 23,
+        "points": 19,
+        "orb": 2,
+        "drb": 6,
+        "reb": 8,
+        "assists": 2,
+        "potential_assists": 6,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 0,
+        "ftm": 3
+      },
+      "teammates": {
+        "minutes": 217,
+        "points": 84,
+        "rebounds": 31,
+        "assists": 20,
+        "fgm": 28,
+        "made3": 13,
+        "ftm": 15
+      }
+    },
+    {
+      "id": "world-6106",
+      "script": "CLOSE",
+      "overtime": false,
+      "home_margin": 6,
+      "total": 216,
+      "bkn": {
+        "score": 111,
+        "fga": 80,
+        "fgm": 39,
+        "three_made": 14,
+        "ftm": 19,
+        "orb": 3,
+        "drb": 34,
+        "total_reb": 37,
+        "assists": 22
+      },
+      "cha": {
+        "score": 105,
+        "fga": 81,
+        "fgm": 37,
+        "orb": 8,
+        "drb": 34,
+        "total_reb": 42
+      },
+      "rebound_pool": {
+        "bkn_missed": 41,
+        "cha_missed": 44,
+        "dead_bkn": 4,
+        "dead_cha": 2
+      },
+      "sharpe": {
+        "minutes": 24,
+        "points": 13,
+        "orb": 1,
+        "drb": 8,
+        "reb": 9,
+        "assists": 0,
+        "potential_assists": 2,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 0,
+        "ftm": 3
+      },
+      "teammates": {
+        "minutes": 216,
+        "points": 98,
+        "rebounds": 28,
+        "assists": 22,
+        "fgm": 34,
+        "made3": 14,
+        "ftm": 16
+      }
+    },
+    {
+      "id": "world-5239",
+      "script": "BALANCED",
+      "overtime": false,
+      "home_margin": 14,
+      "total": 216,
+      "bkn": {
+        "score": 115,
+        "fga": 87,
+        "fgm": 41,
+        "three_made": 14,
+        "ftm": 19,
+        "orb": 13,
+        "drb": 22,
+        "total_reb": 35,
+        "assists": 30
+      },
+      "cha": {
+        "score": 101,
+        "fga": 81,
+        "fgm": 35,
+        "orb": 17,
+        "drb": 31,
+        "total_reb": 48
+      },
+      "rebound_pool": {
+        "bkn_missed": 46,
+        "cha_missed": 46,
+        "dead_bkn": 2,
+        "dead_cha": 7
+      },
+      "sharpe": {
+        "minutes": 26,
+        "points": 6,
+        "orb": 5,
+        "drb": 5,
+        "reb": 10,
+        "assists": 3,
+        "potential_assists": 8,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 0,
+        "ftm": 2
+      },
+      "teammates": {
+        "minutes": 214,
+        "points": 109,
+        "rebounds": 25,
+        "assists": 27,
+        "fgm": 39,
+        "made3": 14,
+        "ftm": 17
+      }
+    },
+    {
+      "id": "world-6046",
+      "script": "BLOWOUT",
+      "overtime": false,
+      "home_margin": -37,
+      "total": 213,
+      "bkn": {
+        "score": 88,
+        "fga": 76,
+        "fgm": 31,
+        "three_made": 10,
+        "ftm": 16,
+        "orb": 11,
+        "drb": 25,
+        "total_reb": 36,
+        "assists": 13
+      },
+      "cha": {
+        "score": 125,
+        "fga": 89,
+        "fgm": 44,
+        "orb": 19,
+        "drb": 30,
+        "total_reb": 49
+      },
+      "rebound_pool": {
+        "bkn_missed": 45,
+        "cha_missed": 45,
+        "dead_bkn": 4,
+        "dead_cha": 1
+      },
+      "sharpe": {
+        "minutes": 23,
+        "points": 19,
+        "orb": 4,
+        "drb": 7,
+        "reb": 11,
+        "assists": 1,
+        "potential_assists": 10,
+        "foul_shock": false,
+        "blowout": true,
+        "three_made": 1,
+        "ftm": 2
+      },
+      "teammates": {
+        "minutes": 217,
+        "points": 69,
+        "rebounds": 25,
+        "assists": 12,
+        "fgm": 23,
+        "made3": 9,
+        "ftm": 14
+      }
+    },
+    {
+      "id": "world-6809",
+      "script": "BLOWOUT",
+      "overtime": false,
+      "home_margin": -42,
+      "total": 216,
+      "bkn": {
+        "score": 87,
+        "fga": 80,
+        "fgm": 31,
+        "three_made": 10,
+        "ftm": 15,
+        "orb": 9,
+        "drb": 31,
+        "total_reb": 40,
+        "assists": 20
+      },
+      "cha": {
+        "score": 129,
+        "fga": 97,
+        "fgm": 46,
+        "orb": 17,
+        "drb": 38,
+        "total_reb": 55
+      },
+      "rebound_pool": {
+        "bkn_missed": 49,
+        "cha_missed": 51,
+        "dead_bkn": 2,
+        "dead_cha": 3
+      },
+      "sharpe": {
+        "minutes": 27,
+        "points": 10,
+        "orb": 6,
+        "drb": 7,
+        "reb": 13,
+        "assists": 0,
+        "potential_assists": 0,
+        "foul_shock": false,
+        "blowout": true,
+        "three_made": 0,
+        "ftm": 0
+      },
+      "teammates": {
+        "minutes": 213,
+        "points": 77,
+        "rebounds": 27,
+        "assists": 20,
+        "fgm": 26,
+        "made3": 10,
+        "ftm": 15
+      }
+    },
+    {
+      "id": "world-10635",
+      "script": "BLOWOUT",
+      "overtime": false,
+      "home_margin": -26,
+      "total": 218,
+      "bkn": {
+        "score": 96,
+        "fga": 78,
+        "fgm": 34,
+        "three_made": 12,
+        "ftm": 16,
+        "orb": 8,
+        "drb": 19,
+        "total_reb": 27,
+        "assists": 22
+      },
+      "cha": {
+        "score": 122,
+        "fga": 86,
+        "fgm": 43,
+        "orb": 15,
+        "drb": 33,
+        "total_reb": 48
+      },
+      "rebound_pool": {
+        "bkn_missed": 44,
+        "cha_missed": 43,
+        "dead_bkn": 3,
+        "dead_cha": 9
+      },
+      "sharpe": {
+        "minutes": 26,
+        "points": 22,
+        "orb": 1,
+        "drb": 3,
+        "reb": 4,
+        "assists": 2,
+        "potential_assists": 7,
+        "foul_shock": false,
+        "blowout": true,
+        "three_made": 0,
+        "ftm": 2
+      },
+      "teammates": {
+        "minutes": 214,
+        "points": 74,
+        "rebounds": 23,
+        "assists": 20,
+        "fgm": 24,
+        "made3": 12,
+        "ftm": 14
+      }
+    },
+    {
+      "id": "world-577",
+      "script": "CLOSE",
+      "overtime": false,
+      "home_margin": -3,
+      "total": 221,
+      "bkn": {
+        "score": 109,
+        "fga": 82,
+        "fgm": 39,
+        "three_made": 13,
+        "ftm": 18,
+        "orb": 7,
+        "drb": 26,
+        "total_reb": 33,
+        "assists": 26
+      },
+      "cha": {
+        "score": 112,
+        "fga": 85,
+        "fgm": 39,
+        "orb": 12,
+        "drb": 32,
+        "total_reb": 44
+      },
+      "rebound_pool": {
+        "bkn_missed": 43,
+        "cha_missed": 46,
+        "dead_bkn": 4,
+        "dead_cha": 8
+      },
+      "sharpe": {
+        "minutes": 28,
+        "points": 8,
+        "orb": 1,
+        "drb": 4,
+        "reb": 5,
+        "assists": 1,
+        "potential_assists": 8,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 0,
+        "ftm": 0
+      },
+      "teammates": {
+        "minutes": 212,
+        "points": 101,
+        "rebounds": 28,
+        "assists": 25,
+        "fgm": 35,
+        "made3": 13,
+        "ftm": 18
+      }
+    },
+    {
+      "id": "world-469",
+      "script": "CLOSE",
+      "overtime": false,
+      "home_margin": -5,
+      "total": 217,
+      "bkn": {
+        "score": 106,
+        "fga": 81,
+        "fgm": 38,
+        "three_made": 13,
+        "ftm": 17,
+        "orb": 8,
+        "drb": 26,
+        "total_reb": 34,
+        "assists": 32
+      },
+      "cha": {
+        "score": 111,
+        "fga": 89,
+        "fgm": 39,
+        "orb": 17,
+        "drb": 31,
+        "total_reb": 48
+      },
+      "rebound_pool": {
+        "bkn_missed": 43,
+        "cha_missed": 50,
+        "dead_bkn": 4,
+        "dead_cha": 7
+      },
+      "sharpe": {
+        "minutes": 24,
+        "points": 12,
+        "orb": 1,
+        "drb": 5,
+        "reb": 6,
+        "assists": 5,
+        "potential_assists": 8,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 0,
+        "ftm": 2
+      },
+      "teammates": {
+        "minutes": 216,
+        "points": 94,
+        "rebounds": 28,
+        "assists": 27,
+        "fgm": 33,
+        "made3": 13,
+        "ftm": 15
+      }
+    },
+    {
+      "id": "world-2716",
+      "script": "CLOSE",
+      "overtime": false,
+      "home_margin": 3,
+      "total": 219,
+      "bkn": {
+        "score": 111,
+        "fga": 88,
+        "fgm": 39,
+        "three_made": 14,
+        "ftm": 19,
+        "orb": 15,
+        "drb": 29,
+        "total_reb": 44,
+        "assists": 23
+      },
+      "cha": {
+        "score": 108,
+        "fga": 88,
+        "fgm": 38,
+        "orb": 11,
+        "drb": 32,
+        "total_reb": 43
+      },
+      "rebound_pool": {
+        "bkn_missed": 49,
+        "cha_missed": 50,
+        "dead_bkn": 2,
+        "dead_cha": 10
+      },
+      "sharpe": {
+        "minutes": 21,
+        "points": 4,
+        "orb": 5,
+        "drb": 2,
+        "reb": 7,
+        "assists": 3,
+        "potential_assists": 4,
+        "foul_shock": true,
+        "blowout": false,
+        "three_made": 0,
+        "ftm": 0
+      },
+      "teammates": {
+        "minutes": 219,
+        "points": 107,
+        "rebounds": 37,
+        "assists": 20,
+        "fgm": 37,
+        "made3": 14,
+        "ftm": 19
+      }
+    },
+    {
+      "id": "world-1510",
+      "script": "BALANCED",
+      "overtime": false,
+      "home_margin": 8,
+      "total": 218,
+      "bkn": {
+        "score": 113,
+        "fga": 85,
+        "fgm": 40,
+        "three_made": 14,
+        "ftm": 19,
+        "orb": 9,
+        "drb": 30,
+        "total_reb": 39,
+        "assists": 27
+      },
+      "cha": {
+        "score": 105,
+        "fga": 87,
+        "fgm": 38,
+        "orb": 13,
+        "drb": 33,
+        "total_reb": 46
+      },
+      "rebound_pool": {
+        "bkn_missed": 45,
+        "cha_missed": 49,
+        "dead_bkn": 3,
+        "dead_cha": 6
+      },
+      "sharpe": {
+        "minutes": 25,
+        "points": 21,
+        "orb": 4,
+        "drb": 4,
+        "reb": 8,
+        "assists": 2,
+        "potential_assists": 3,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 1,
+        "ftm": 12
+      },
+      "teammates": {
+        "minutes": 215,
+        "points": 92,
+        "rebounds": 31,
+        "assists": 25,
+        "fgm": 36,
+        "made3": 13,
+        "ftm": 7
+      }
+    },
+    {
+      "id": "world-10135",
+      "script": "BALANCED",
+      "overtime": false,
+      "home_margin": -10,
+      "total": 220,
+      "bkn": {
+        "score": 105,
+        "fga": 80,
+        "fgm": 37,
+        "three_made": 13,
+        "ftm": 18,
+        "orb": 10,
+        "drb": 27,
+        "total_reb": 37,
+        "assists": 24
+      },
+      "cha": {
+        "score": 115,
+        "fga": 91,
+        "fgm": 41,
+        "orb": 16,
+        "drb": 31,
+        "total_reb": 47
+      },
+      "rebound_pool": {
+        "bkn_missed": 43,
+        "cha_missed": 50,
+        "dead_bkn": 2,
+        "dead_cha": 7
+      },
+      "sharpe": {
+        "minutes": 26,
+        "points": 10,
+        "orb": 4,
+        "drb": 5,
+        "reb": 9,
+        "assists": 1,
+        "potential_assists": 5,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 0,
+        "ftm": 0
+      },
+      "teammates": {
+        "minutes": 214,
+        "points": 95,
+        "rebounds": 28,
+        "assists": 23,
+        "fgm": 32,
+        "made3": 13,
+        "ftm": 18
+      }
+    },
+    {
+      "id": "world-7425",
+      "script": "BALANCED",
+      "overtime": false,
+      "home_margin": -7,
+      "total": 219,
+      "bkn": {
+        "score": 106,
+        "fga": 75,
+        "fgm": 38,
+        "three_made": 13,
+        "ftm": 17,
+        "orb": 9,
+        "drb": 29,
+        "total_reb": 38,
+        "assists": 23
+      },
+      "cha": {
+        "score": 113,
+        "fga": 88,
+        "fgm": 40,
+        "orb": 12,
+        "drb": 25,
+        "total_reb": 37
+      },
+      "rebound_pool": {
+        "bkn_missed": 37,
+        "cha_missed": 48,
+        "dead_bkn": 3,
+        "dead_cha": 7
+      },
+      "sharpe": {
+        "minutes": 26,
+        "points": 10,
+        "orb": 2,
+        "drb": 7,
+        "reb": 9,
+        "assists": 11,
+        "potential_assists": 15,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 0,
+        "ftm": 2
+      },
+      "teammates": {
+        "minutes": 214,
+        "points": 96,
+        "rebounds": 29,
+        "assists": 12,
+        "fgm": 34,
+        "made3": 13,
+        "ftm": 15
+      }
+    },
+    {
+      "id": "world-6915",
+      "script": "CLOSE",
+      "overtime": false,
+      "home_margin": 2,
+      "total": 220,
+      "bkn": {
+        "score": 111,
+        "fga": 94,
+        "fgm": 39,
+        "three_made": 14,
+        "ftm": 19,
+        "orb": 5,
+        "drb": 28,
+        "total_reb": 33,
+        "assists": 26
+      },
+      "cha": {
+        "score": 109,
+        "fga": 81,
+        "fgm": 38,
+        "orb": 10,
+        "drb": 43,
+        "total_reb": 53
+      },
+      "rebound_pool": {
+        "bkn_missed": 55,
+        "cha_missed": 43,
+        "dead_bkn": 7,
+        "dead_cha": 5
+      },
+      "sharpe": {
+        "minutes": 28,
+        "points": 7,
+        "orb": 3,
+        "drb": 7,
+        "reb": 10,
+        "assists": 1,
+        "potential_assists": 8,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 0,
+        "ftm": 1
+      },
+      "teammates": {
+        "minutes": 212,
+        "points": 104,
+        "rebounds": 23,
+        "assists": 25,
+        "fgm": 36,
+        "made3": 14,
+        "ftm": 18
+      }
+    },
+    {
+      "id": "world-9404",
+      "script": "CLOSE",
+      "overtime": false,
+      "home_margin": -5,
+      "total": 221,
+      "bkn": {
+        "score": 108,
+        "fga": 82,
+        "fgm": 38,
+        "three_made": 13,
+        "ftm": 19,
+        "orb": 10,
+        "drb": 32,
+        "total_reb": 42,
+        "assists": 29
+      },
+      "cha": {
+        "score": 113,
+        "fga": 93,
+        "fgm": 40,
+        "orb": 16,
+        "drb": 29,
+        "total_reb": 45
+      },
+      "rebound_pool": {
+        "bkn_missed": 44,
+        "cha_missed": 53,
+        "dead_bkn": 5,
+        "dead_cha": 5
+      },
+      "sharpe": {
+        "minutes": 31,
+        "points": 15,
+        "orb": 6,
+        "drb": 5,
+        "reb": 11,
+        "assists": 0,
+        "potential_assists": 0,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 0,
+        "ftm": 5
+      },
+      "teammates": {
+        "minutes": 209,
+        "points": 93,
+        "rebounds": 31,
+        "assists": 29,
+        "fgm": 33,
+        "made3": 13,
+        "ftm": 14
+      }
+    },
+    {
+      "id": "world-9149",
+      "script": "BLOWOUT",
+      "overtime": false,
+      "home_margin": -20,
+      "total": 220,
+      "bkn": {
+        "score": 100,
+        "fga": 79,
+        "fgm": 35,
+        "three_made": 12,
+        "ftm": 18,
+        "orb": 11,
+        "drb": 38,
+        "total_reb": 49,
+        "assists": 24
+      },
+      "cha": {
+        "score": 120,
+        "fga": 97,
+        "fgm": 42,
+        "orb": 10,
+        "drb": 32,
+        "total_reb": 42
+      },
+      "rebound_pool": {
+        "bkn_missed": 44,
+        "cha_missed": 55,
+        "dead_bkn": 1,
+        "dead_cha": 7
+      },
+      "sharpe": {
+        "minutes": 26,
+        "points": 11,
+        "orb": 5,
+        "drb": 8,
+        "reb": 13,
+        "assists": 1,
+        "potential_assists": 2,
+        "foul_shock": false,
+        "blowout": true,
+        "three_made": 0,
+        "ftm": 5
+      },
+      "teammates": {
+        "minutes": 214,
+        "points": 89,
+        "rebounds": 36,
+        "assists": 23,
+        "fgm": 32,
+        "made3": 12,
+        "ftm": 13
+      }
+    },
+    {
+      "id": "world-11983",
+      "script": "BLOWOUT",
+      "overtime": false,
+      "home_margin": 19,
+      "total": 225,
+      "bkn": {
+        "score": 122,
+        "fga": 94,
+        "fgm": 43,
+        "three_made": 16,
+        "ftm": 20,
+        "orb": 8,
+        "drb": 23,
+        "total_reb": 31,
+        "assists": 22
+      },
+      "cha": {
+        "score": 103,
+        "fga": 85,
+        "fgm": 36,
+        "orb": 20,
+        "drb": 37,
+        "total_reb": 57
+      },
+      "rebound_pool": {
+        "bkn_missed": 51,
+        "cha_missed": 49,
+        "dead_bkn": 6,
+        "dead_cha": 6
+      },
+      "sharpe": {
+        "minutes": 20,
+        "points": 6,
+        "orb": 3,
+        "drb": 1,
+        "reb": 4,
+        "assists": 8,
+        "potential_assists": 10,
+        "foul_shock": false,
+        "blowout": true,
+        "three_made": 0,
+        "ftm": 2
+      },
+      "teammates": {
+        "minutes": 220,
+        "points": 116,
+        "rebounds": 27,
+        "assists": 14,
+        "fgm": 41,
+        "made3": 16,
+        "ftm": 18
+      }
+    },
+    {
+      "id": "world-9291",
+      "script": "CLOSE",
+      "overtime": false,
+      "home_margin": 1,
+      "total": 225,
+      "bkn": {
+        "score": 113,
+        "fga": 91,
+        "fgm": 40,
+        "three_made": 14,
+        "ftm": 19,
+        "orb": 10,
+        "drb": 31,
+        "total_reb": 41,
+        "assists": 26
+      },
+      "cha": {
+        "score": 112,
+        "fga": 84,
+        "fgm": 39,
+        "orb": 9,
+        "drb": 38,
+        "total_reb": 47
+      },
+      "rebound_pool": {
+        "bkn_missed": 51,
+        "cha_missed": 45,
+        "dead_bkn": 3,
+        "dead_cha": 5
+      },
+      "sharpe": {
+        "minutes": 30,
+        "points": 24,
+        "orb": 1,
+        "drb": 4,
+        "reb": 5,
+        "assists": 2,
+        "potential_assists": 9,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 0,
+        "ftm": 4
+      },
+      "teammates": {
+        "minutes": 210,
+        "points": 89,
+        "rebounds": 36,
+        "assists": 24,
+        "fgm": 30,
+        "made3": 14,
+        "ftm": 15
+      }
+    },
+    {
+      "id": "world-7657",
+      "script": "CLOSE",
+      "overtime": false,
+      "home_margin": -3,
+      "total": 223,
+      "bkn": {
+        "score": 110,
+        "fga": 91,
+        "fgm": 39,
+        "three_made": 14,
+        "ftm": 18,
+        "orb": 12,
+        "drb": 31,
+        "total_reb": 43,
+        "assists": 27
+      },
+      "cha": {
+        "score": 113,
+        "fga": 89,
+        "fgm": 40,
+        "orb": 12,
+        "drb": 37,
+        "total_reb": 49
+      },
+      "rebound_pool": {
+        "bkn_missed": 52,
+        "cha_missed": 49,
+        "dead_bkn": 3,
+        "dead_cha": 6
+      },
+      "sharpe": {
+        "minutes": 26,
+        "points": 11,
+        "orb": 4,
+        "drb": 2,
+        "reb": 6,
+        "assists": 2,
+        "potential_assists": 7,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 0,
+        "ftm": 7
+      },
+      "teammates": {
+        "minutes": 214,
+        "points": 99,
+        "rebounds": 37,
+        "assists": 25,
+        "fgm": 37,
+        "made3": 14,
+        "ftm": 11
+      }
+    },
+    {
+      "id": "world-5107",
+      "script": "CLOSE",
+      "overtime": false,
+      "home_margin": 4,
+      "total": 224,
+      "bkn": {
+        "score": 114,
+        "fga": 86,
+        "fgm": 41,
+        "three_made": 14,
+        "ftm": 18,
+        "orb": 10,
+        "drb": 26,
+        "total_reb": 36,
+        "assists": 22
+      },
+      "cha": {
+        "score": 110,
+        "fga": 83,
+        "fgm": 39,
+        "orb": 12,
+        "drb": 32,
+        "total_reb": 44
+      },
+      "rebound_pool": {
+        "bkn_missed": 45,
+        "cha_missed": 44,
+        "dead_bkn": 3,
+        "dead_cha": 6
+      },
+      "sharpe": {
+        "minutes": 27,
+        "points": 6,
+        "orb": 3,
+        "drb": 4,
+        "reb": 7,
+        "assists": 6,
+        "potential_assists": 15,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 0,
+        "ftm": 2
+      },
+      "teammates": {
+        "minutes": 213,
+        "points": 108,
+        "rebounds": 29,
+        "assists": 16,
+        "fgm": 39,
+        "made3": 14,
+        "ftm": 16
+      }
+    },
+    {
+      "id": "world-2904",
+      "script": "BALANCED",
+      "overtime": false,
+      "home_margin": -8,
+      "total": 226,
+      "bkn": {
+        "score": 109,
+        "fga": 81,
+        "fgm": 39,
+        "three_made": 13,
+        "ftm": 18,
+        "orb": 6,
+        "drb": 33,
+        "total_reb": 39,
+        "assists": 32
+      },
+      "cha": {
+        "score": 117,
+        "fga": 89,
+        "fgm": 41,
+        "orb": 7,
+        "drb": 34,
+        "total_reb": 41
+      },
+      "rebound_pool": {
+        "bkn_missed": 42,
+        "cha_missed": 48,
+        "dead_bkn": 2,
+        "dead_cha": 8
+      },
+      "sharpe": {
+        "minutes": 27,
+        "points": 6,
+        "orb": 3,
+        "drb": 5,
+        "reb": 8,
+        "assists": 3,
+        "potential_assists": 8,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 0,
+        "ftm": 4
+      },
+      "teammates": {
+        "minutes": 213,
+        "points": 103,
+        "rebounds": 31,
+        "assists": 29,
+        "fgm": 38,
+        "made3": 13,
+        "ftm": 14
+      }
+    },
+    {
+      "id": "world-11795",
+      "script": "BALANCED",
+      "overtime": false,
+      "home_margin": 12,
+      "total": 224,
+      "bkn": {
+        "score": 118,
+        "fga": 89,
+        "fgm": 42,
+        "three_made": 15,
+        "ftm": 19,
+        "orb": 13,
+        "drb": 30,
+        "total_reb": 43,
+        "assists": 27
+      },
+      "cha": {
+        "score": 106,
+        "fga": 85,
+        "fgm": 37,
+        "orb": 14,
+        "drb": 32,
+        "total_reb": 46
+      },
+      "rebound_pool": {
+        "bkn_missed": 47,
+        "cha_missed": 48,
+        "dead_bkn": 2,
+        "dead_cha": 4
+      },
+      "sharpe": {
+        "minutes": 31,
+        "points": 24,
+        "orb": 4,
+        "drb": 5,
+        "reb": 9,
+        "assists": 2,
+        "potential_assists": 13,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 1,
+        "ftm": 9
+      },
+      "teammates": {
+        "minutes": 209,
+        "points": 94,
+        "rebounds": 34,
+        "assists": 25,
+        "fgm": 35,
+        "made3": 14,
+        "ftm": 10
+      }
+    },
+    {
+      "id": "world-9053",
+      "script": "BALANCED",
+      "overtime": false,
+      "home_margin": 11,
+      "total": 223,
+      "bkn": {
+        "score": 117,
+        "fga": 84,
+        "fgm": 41,
+        "three_made": 15,
+        "ftm": 20,
+        "orb": 13,
+        "drb": 24,
+        "total_reb": 37,
+        "assists": 22
+      },
+      "cha": {
+        "score": 106,
+        "fga": 82,
+        "fgm": 37,
+        "orb": 13,
+        "drb": 27,
+        "total_reb": 40
+      },
+      "rebound_pool": {
+        "bkn_missed": 43,
+        "cha_missed": 45,
+        "dead_bkn": 3,
+        "dead_cha": 8
+      },
+      "sharpe": {
+        "minutes": 27,
+        "points": 11,
+        "orb": 6,
+        "drb": 3,
+        "reb": 9,
+        "assists": 0,
+        "potential_assists": 0,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 1,
+        "ftm": 6
+      },
+      "teammates": {
+        "minutes": 213,
+        "points": 106,
+        "rebounds": 28,
+        "assists": 22,
+        "fgm": 39,
+        "made3": 14,
+        "ftm": 14
+      }
+    },
+    {
+      "id": "world-5760",
+      "script": "COMEBACK",
+      "overtime": false,
+      "home_margin": 1,
+      "total": 225,
+      "bkn": {
+        "score": 113,
+        "fga": 87,
+        "fgm": 41,
+        "three_made": 14,
+        "ftm": 17,
+        "orb": 13,
+        "drb": 31,
+        "total_reb": 44,
+        "assists": 31
+      },
+      "cha": {
+        "score": 112,
+        "fga": 91,
+        "fgm": 39,
+        "orb": 14,
+        "drb": 32,
+        "total_reb": 46
+      },
+      "rebound_pool": {
+        "bkn_missed": 46,
+        "cha_missed": 52,
+        "dead_bkn": 1,
+        "dead_cha": 7
+      },
+      "sharpe": {
+        "minutes": 28,
+        "points": 23,
+        "orb": 4,
+        "drb": 6,
+        "reb": 10,
+        "assists": 1,
+        "potential_assists": 4,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 1,
+        "ftm": 10
+      },
+      "teammates": {
+        "minutes": 212,
+        "points": 90,
+        "rebounds": 34,
+        "assists": 30,
+        "fgm": 35,
+        "made3": 13,
+        "ftm": 7
+      }
+    },
+    {
+      "id": "world-7523",
+      "script": "BALANCED",
+      "overtime": false,
+      "home_margin": 12,
+      "total": 222,
+      "bkn": {
+        "score": 117,
+        "fga": 87,
+        "fgm": 41,
+        "three_made": 15,
+        "ftm": 20,
+        "orb": 10,
+        "drb": 32,
+        "total_reb": 42,
+        "assists": 29
+      },
+      "cha": {
+        "score": 105,
+        "fga": 94,
+        "fgm": 39,
+        "orb": 19,
+        "drb": 32,
+        "total_reb": 51
+      },
+      "rebound_pool": {
+        "bkn_missed": 46,
+        "cha_missed": 55,
+        "dead_bkn": 4,
+        "dead_cha": 4
+      },
+      "sharpe": {
+        "minutes": 27,
+        "points": 8,
+        "orb": 3,
+        "drb": 8,
+        "reb": 11,
+        "assists": 2,
+        "potential_assists": 4,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 0,
+        "ftm": 2
+      },
+      "teammates": {
+        "minutes": 213,
+        "points": 109,
+        "rebounds": 31,
+        "assists": 27,
+        "fgm": 38,
+        "made3": 15,
+        "ftm": 18
+      }
+    },
+    {
+      "id": "world-924",
+      "script": "BALANCED",
+      "overtime": false,
+      "home_margin": 12,
+      "total": 222,
+      "bkn": {
+        "score": 117,
+        "fga": 96,
+        "fgm": 41,
+        "three_made": 15,
+        "ftm": 20,
+        "orb": 12,
+        "drb": 30,
+        "total_reb": 42,
+        "assists": 27
+      },
+      "cha": {
+        "score": 105,
+        "fga": 84,
+        "fgm": 37,
+        "orb": 14,
+        "drb": 37,
+        "total_reb": 51
+      },
+      "rebound_pool": {
+        "bkn_missed": 55,
+        "cha_missed": 47,
+        "dead_bkn": 6,
+        "dead_cha": 3
+      },
+      "sharpe": {
+        "minutes": 26,
+        "points": 5,
+        "orb": 6,
+        "drb": 7,
+        "reb": 13,
+        "assists": 0,
+        "potential_assists": 0,
+        "foul_shock": true,
+        "blowout": false,
+        "three_made": 0,
+        "ftm": 3
+      },
+      "teammates": {
+        "minutes": 214,
+        "points": 112,
+        "rebounds": 29,
+        "assists": 27,
+        "fgm": 40,
+        "made3": 15,
+        "ftm": 17
+      }
+    },
+    {
+      "id": "world-2833",
+      "script": "COMEBACK",
+      "overtime": false,
+      "home_margin": 8,
+      "total": 228,
+      "bkn": {
+        "score": 118,
+        "fga": 84,
+        "fgm": 42,
+        "three_made": 15,
+        "ftm": 19,
+        "orb": 8,
+        "drb": 25,
+        "total_reb": 33,
+        "assists": 32
+      },
+      "cha": {
+        "score": 110,
+        "fga": 82,
+        "fgm": 39,
+        "orb": 15,
+        "drb": 32,
+        "total_reb": 47
+      },
+      "rebound_pool": {
+        "bkn_missed": 42,
+        "cha_missed": 43,
+        "dead_bkn": 2,
+        "dead_cha": 3
+      },
+      "sharpe": {
+        "minutes": 25,
+        "points": 6,
+        "orb": 1,
+        "drb": 3,
+        "reb": 4,
+        "assists": 6,
+        "potential_assists": 13,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 0,
+        "ftm": 0
+      },
+      "teammates": {
+        "minutes": 215,
+        "points": 112,
+        "rebounds": 29,
+        "assists": 26,
+        "fgm": 39,
+        "made3": 15,
+        "ftm": 19
+      }
+    },
+    {
+      "id": "world-6912",
+      "script": "BLOWOUT",
+      "overtime": false,
+      "home_margin": -17,
+      "total": 229,
+      "bkn": {
+        "score": 106,
+        "fga": 83,
+        "fgm": 38,
+        "three_made": 13,
+        "ftm": 17,
+        "orb": 10,
+        "drb": 27,
+        "total_reb": 37,
+        "assists": 24
+      },
+      "cha": {
+        "score": 123,
+        "fga": 86,
+        "fgm": 43,
+        "orb": 11,
+        "drb": 32,
+        "total_reb": 43
+      },
+      "rebound_pool": {
+        "bkn_missed": 45,
+        "cha_missed": 43,
+        "dead_bkn": 3,
+        "dead_cha": 5
+      },
+      "sharpe": {
+        "minutes": 21,
+        "points": 11,
+        "orb": 1,
+        "drb": 4,
+        "reb": 5,
+        "assists": 2,
+        "potential_assists": 2,
+        "foul_shock": true,
+        "blowout": true,
+        "three_made": 0,
+        "ftm": 5
+      },
+      "teammates": {
+        "minutes": 219,
+        "points": 95,
+        "rebounds": 32,
+        "assists": 22,
+        "fgm": 35,
+        "made3": 13,
+        "ftm": 12
+      }
+    },
+    {
+      "id": "world-565",
+      "script": "CLOSE",
+      "overtime": false,
+      "home_margin": -2,
+      "total": 226,
+      "bkn": {
+        "score": 112,
+        "fga": 90,
+        "fgm": 40,
+        "three_made": 14,
+        "ftm": 18,
+        "orb": 11,
+        "drb": 31,
+        "total_reb": 42,
+        "assists": 31
+      },
+      "cha": {
+        "score": 114,
+        "fga": 96,
+        "fgm": 40,
+        "orb": 18,
+        "drb": 34,
+        "total_reb": 52
+      },
+      "rebound_pool": {
+        "bkn_missed": 50,
+        "cha_missed": 56,
+        "dead_bkn": 5,
+        "dead_cha": 7
+      },
+      "sharpe": {
+        "minutes": 27,
+        "points": 9,
+        "orb": 1,
+        "drb": 5,
+        "reb": 6,
+        "assists": 3,
+        "potential_assists": 4,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 0,
+        "ftm": 7
+      },
+      "teammates": {
+        "minutes": 213,
+        "points": 103,
+        "rebounds": 36,
+        "assists": 28,
+        "fgm": 39,
+        "made3": 14,
+        "ftm": 11
+      }
+    },
+    {
+      "id": "world-3866",
+      "script": "BALANCED",
+      "overtime": false,
+      "home_margin": -15,
+      "total": 231,
+      "bkn": {
+        "score": 108,
+        "fga": 85,
+        "fgm": 38,
+        "three_made": 13,
+        "ftm": 19,
+        "orb": 6,
+        "drb": 29,
+        "total_reb": 35,
+        "assists": 25
+      },
+      "cha": {
+        "score": 123,
+        "fga": 90,
+        "fgm": 43,
+        "orb": 13,
+        "drb": 40,
+        "total_reb": 53
+      },
+      "rebound_pool": {
+        "bkn_missed": 47,
+        "cha_missed": 47,
+        "dead_bkn": 1,
+        "dead_cha": 5
+      },
+      "sharpe": {
+        "minutes": 31,
+        "points": 7,
+        "orb": 3,
+        "drb": 4,
+        "reb": 7,
+        "assists": 1,
+        "potential_assists": 10,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 0,
+        "ftm": 3
+      },
+      "teammates": {
+        "minutes": 209,
+        "points": 101,
+        "rebounds": 28,
+        "assists": 24,
+        "fgm": 36,
+        "made3": 13,
+        "ftm": 16
+      }
+    },
+    {
+      "id": "world-11465",
+      "script": "CLOSE",
+      "overtime": false,
+      "home_margin": 1,
+      "total": 227,
+      "bkn": {
+        "score": 114,
+        "fga": 81,
+        "fgm": 41,
+        "three_made": 14,
+        "ftm": 18,
+        "orb": 7,
+        "drb": 35,
+        "total_reb": 42,
+        "assists": 24
+      },
+      "cha": {
+        "score": 113,
+        "fga": 88,
+        "fgm": 40,
+        "orb": 6,
+        "drb": 31,
+        "total_reb": 37
+      },
+      "rebound_pool": {
+        "bkn_missed": 40,
+        "cha_missed": 48,
+        "dead_bkn": 2,
+        "dead_cha": 7
+      },
+      "sharpe": {
+        "minutes": 22,
+        "points": 8,
+        "orb": 1,
+        "drb": 7,
+        "reb": 8,
+        "assists": 6,
+        "potential_assists": 6,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 0,
+        "ftm": 4
+      },
+      "teammates": {
+        "minutes": 218,
+        "points": 106,
+        "rebounds": 34,
+        "assists": 18,
+        "fgm": 39,
+        "made3": 14,
+        "ftm": 14
+      }
+    },
+    {
+      "id": "world-8870",
+      "script": "CLOSE",
+      "overtime": false,
+      "home_margin": -6,
+      "total": 228,
+      "bkn": {
+        "score": 111,
+        "fga": 80,
+        "fgm": 39,
+        "three_made": 14,
+        "ftm": 19,
+        "orb": 9,
+        "drb": 33,
+        "total_reb": 42,
+        "assists": 28
+      },
+      "cha": {
+        "score": 117,
+        "fga": 91,
+        "fgm": 41,
+        "orb": 10,
+        "drb": 30,
+        "total_reb": 40
+      },
+      "rebound_pool": {
+        "bkn_missed": 41,
+        "cha_missed": 50,
+        "dead_bkn": 2,
+        "dead_cha": 7
+      },
+      "sharpe": {
+        "minutes": 23,
+        "points": 7,
+        "orb": 3,
+        "drb": 5,
+        "reb": 8,
+        "assists": 8,
+        "potential_assists": 12,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 0,
+        "ftm": 3
+      },
+      "teammates": {
+        "minutes": 217,
+        "points": 104,
+        "rebounds": 34,
+        "assists": 20,
+        "fgm": 37,
+        "made3": 14,
+        "ftm": 16
+      }
+    },
+    {
+      "id": "world-6883",
+      "script": "BALANCED",
+      "overtime": false,
+      "home_margin": 10,
+      "total": 230,
+      "bkn": {
+        "score": 120,
+        "fga": 88,
+        "fgm": 43,
+        "three_made": 15,
+        "ftm": 19,
+        "orb": 12,
+        "drb": 31,
+        "total_reb": 43,
+        "assists": 32
+      },
+      "cha": {
+        "score": 110,
+        "fga": 91,
+        "fgm": 39,
+        "orb": 15,
+        "drb": 31,
+        "total_reb": 46
+      },
+      "rebound_pool": {
+        "bkn_missed": 45,
+        "cha_missed": 52,
+        "dead_bkn": 2,
+        "dead_cha": 6
+      },
+      "sharpe": {
+        "minutes": 31,
+        "points": 7,
+        "orb": 4,
+        "drb": 5,
+        "reb": 9,
+        "assists": 1,
+        "potential_assists": 4,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 0,
+        "ftm": 3
+      },
+      "teammates": {
+        "minutes": 209,
+        "points": 113,
+        "rebounds": 34,
+        "assists": 31,
+        "fgm": 41,
+        "made3": 15,
+        "ftm": 16
+      }
+    },
+    {
+      "id": "world-581",
+      "script": "BALANCED",
+      "overtime": false,
+      "home_margin": 8,
+      "total": 228,
+      "bkn": {
+        "score": 118,
+        "fga": 94,
+        "fgm": 42,
+        "three_made": 15,
+        "ftm": 19,
+        "orb": 18,
+        "drb": 31,
+        "total_reb": 49,
+        "assists": 31
+      },
+      "cha": {
+        "score": 110,
+        "fga": 87,
+        "fgm": 39,
+        "orb": 11,
+        "drb": 31,
+        "total_reb": 42
+      },
+      "rebound_pool": {
+        "bkn_missed": 52,
+        "cha_missed": 48,
+        "dead_bkn": 3,
+        "dead_cha": 6
+      },
+      "sharpe": {
+        "minutes": 24,
+        "points": 7,
+        "orb": 5,
+        "drb": 5,
+        "reb": 10,
+        "assists": 0,
+        "potential_assists": 0,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 1,
+        "ftm": 2
+      },
+      "teammates": {
+        "minutes": 216,
+        "points": 111,
+        "rebounds": 39,
+        "assists": 31,
+        "fgm": 40,
+        "made3": 14,
+        "ftm": 17
+      }
+    },
+    {
+      "id": "world-8619",
+      "script": "BALANCED",
+      "overtime": false,
+      "home_margin": -8,
+      "total": 228,
+      "bkn": {
+        "score": 110,
+        "fga": 90,
+        "fgm": 39,
+        "three_made": 14,
+        "ftm": 18,
+        "orb": 13,
+        "drb": 31,
+        "total_reb": 44,
+        "assists": 28
+      },
+      "cha": {
+        "score": 118,
+        "fga": 89,
+        "fgm": 42,
+        "orb": 10,
+        "drb": 35,
+        "total_reb": 45
+      },
+      "rebound_pool": {
+        "bkn_missed": 51,
+        "cha_missed": 47,
+        "dead_bkn": 3,
+        "dead_cha": 6
+      },
+      "sharpe": {
+        "minutes": 26,
+        "points": 6,
+        "orb": 3,
+        "drb": 8,
+        "reb": 11,
+        "assists": 4,
+        "potential_assists": 11,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 0,
+        "ftm": 4
+      },
+      "teammates": {
+        "minutes": 214,
+        "points": 104,
+        "rebounds": 33,
+        "assists": 24,
+        "fgm": 38,
+        "made3": 14,
+        "ftm": 14
+      }
+    },
+    {
+      "id": "world-8457",
+      "script": "CLOSE",
+      "overtime": false,
+      "home_margin": -3,
+      "total": 229,
+      "bkn": {
+        "score": 113,
+        "fga": 92,
+        "fgm": 40,
+        "three_made": 14,
+        "ftm": 19,
+        "orb": 9,
+        "drb": 38,
+        "total_reb": 47,
+        "assists": 31
+      },
+      "cha": {
+        "score": 116,
+        "fga": 94,
+        "fgm": 41,
+        "orb": 9,
+        "drb": 37,
+        "total_reb": 46
+      },
+      "rebound_pool": {
+        "bkn_missed": 52,
+        "cha_missed": 53,
+        "dead_bkn": 6,
+        "dead_cha": 6
+      },
+      "sharpe": {
+        "minutes": 32,
+        "points": 9,
+        "orb": 4,
+        "drb": 9,
+        "reb": 13,
+        "assists": 5,
+        "potential_assists": 13,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 0,
+        "ftm": 1
+      },
+      "teammates": {
+        "minutes": 208,
+        "points": 104,
+        "rebounds": 34,
+        "assists": 26,
+        "fgm": 36,
+        "made3": 14,
+        "ftm": 18
+      }
+    },
+    {
+      "id": "world-1205",
+      "script": "BLOWOUT",
+      "overtime": false,
+      "home_margin": 16,
+      "total": 232,
+      "bkn": {
+        "score": 124,
+        "fga": 92,
+        "fgm": 44,
+        "three_made": 16,
+        "ftm": 20,
+        "orb": 7,
+        "drb": 29,
+        "total_reb": 36,
+        "assists": 29
+      },
+      "cha": {
+        "score": 108,
+        "fga": 77,
+        "fgm": 38,
+        "orb": 8,
+        "drb": 39,
+        "total_reb": 47
+      },
+      "rebound_pool": {
+        "bkn_missed": 48,
+        "cha_missed": 39,
+        "dead_bkn": 2,
+        "dead_cha": 2
+      },
+      "sharpe": {
+        "minutes": 21,
+        "points": 12,
+        "orb": 1,
+        "drb": 3,
+        "reb": 4,
+        "assists": 1,
+        "potential_assists": 1,
+        "foul_shock": false,
+        "blowout": true,
+        "three_made": 0,
+        "ftm": 0
+      },
+      "teammates": {
+        "minutes": 219,
+        "points": 112,
+        "rebounds": 32,
+        "assists": 28,
+        "fgm": 38,
+        "made3": 16,
+        "ftm": 20
+      }
+    },
+    {
+      "id": "world-6468",
+      "script": "BALANCED",
+      "overtime": false,
+      "home_margin": 8,
+      "total": 234,
+      "bkn": {
+        "score": 121,
+        "fga": 83,
+        "fgm": 43,
+        "three_made": 15,
+        "ftm": 20,
+        "orb": 7,
+        "drb": 27,
+        "total_reb": 34,
+        "assists": 26
+      },
+      "cha": {
+        "score": 113,
+        "fga": 90,
+        "fgm": 40,
+        "orb": 12,
+        "drb": 30,
+        "total_reb": 42
+      },
+      "rebound_pool": {
+        "bkn_missed": 40,
+        "cha_missed": 50,
+        "dead_bkn": 3,
+        "dead_cha": 11
+      },
+      "sharpe": {
+        "minutes": 22,
+        "points": 12,
+        "orb": 1,
+        "drb": 4,
+        "reb": 5,
+        "assists": 2,
+        "potential_assists": 3,
+        "foul_shock": true,
+        "blowout": false,
+        "three_made": 0,
+        "ftm": 4
+      },
+      "teammates": {
+        "minutes": 218,
+        "points": 109,
+        "rebounds": 29,
+        "assists": 24,
+        "fgm": 39,
+        "made3": 15,
+        "ftm": 16
+      }
+    },
+    {
+      "id": "world-758",
+      "script": "CLOSE",
+      "overtime": false,
+      "home_margin": 3,
+      "total": 231,
+      "bkn": {
+        "score": 117,
+        "fga": 86,
+        "fgm": 41,
+        "three_made": 15,
+        "ftm": 20,
+        "orb": 13,
+        "drb": 25,
+        "total_reb": 38,
+        "assists": 28
+      },
+      "cha": {
+        "score": 114,
+        "fga": 88,
+        "fgm": 40,
+        "orb": 16,
+        "drb": 30,
+        "total_reb": 46
+      },
+      "rebound_pool": {
+        "bkn_missed": 45,
+        "cha_missed": 48,
+        "dead_bkn": 2,
+        "dead_cha": 7
+      },
+      "sharpe": {
+        "minutes": 24,
+        "points": 12,
+        "orb": 2,
+        "drb": 4,
+        "reb": 6,
+        "assists": 10,
+        "potential_assists": 23,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 0,
+        "ftm": 0
+      },
+      "teammates": {
+        "minutes": 216,
+        "points": 105,
+        "rebounds": 32,
+        "assists": 18,
+        "fgm": 35,
+        "made3": 15,
+        "ftm": 20
+      }
+    },
+    {
+      "id": "world-616",
+      "script": "CLOSE",
+      "overtime": false,
+      "home_margin": 3,
+      "total": 235,
+      "bkn": {
+        "score": 119,
+        "fga": 90,
+        "fgm": 42,
+        "three_made": 15,
+        "ftm": 20,
+        "orb": 12,
+        "drb": 31,
+        "total_reb": 43,
+        "assists": 24
+      },
+      "cha": {
+        "score": 116,
+        "fga": 86,
+        "fgm": 41,
+        "orb": 10,
+        "drb": 34,
+        "total_reb": 44
+      },
+      "rebound_pool": {
+        "bkn_missed": 48,
+        "cha_missed": 45,
+        "dead_bkn": 2,
+        "dead_cha": 4
+      },
+      "sharpe": {
+        "minutes": 24,
+        "points": 6,
+        "orb": 3,
+        "drb": 4,
+        "reb": 7,
+        "assists": 9,
+        "potential_assists": 18,
+        "foul_shock": true,
+        "blowout": false,
+        "three_made": 0,
+        "ftm": 2
+      },
+      "teammates": {
+        "minutes": 216,
+        "points": 113,
+        "rebounds": 36,
+        "assists": 15,
+        "fgm": 40,
+        "made3": 15,
+        "ftm": 18
+      }
+    },
+    {
+      "id": "world-4594",
+      "script": "BALANCED",
+      "overtime": false,
+      "home_margin": -15,
+      "total": 235,
+      "bkn": {
+        "score": 110,
+        "fga": 86,
+        "fgm": 39,
+        "three_made": 14,
+        "ftm": 18,
+        "orb": 9,
+        "drb": 32,
+        "total_reb": 41,
+        "assists": 26
+      },
+      "cha": {
+        "score": 125,
+        "fga": 93,
+        "fgm": 44,
+        "orb": 9,
+        "drb": 35,
+        "total_reb": 44
+      },
+      "rebound_pool": {
+        "bkn_missed": 47,
+        "cha_missed": 49,
+        "dead_bkn": 3,
+        "dead_cha": 8
+      },
+      "sharpe": {
+        "minutes": 29,
+        "points": 13,
+        "orb": 2,
+        "drb": 6,
+        "reb": 8,
+        "assists": 4,
+        "potential_assists": 8,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 0,
+        "ftm": 3
+      },
+      "teammates": {
+        "minutes": 211,
+        "points": 97,
+        "rebounds": 33,
+        "assists": 22,
+        "fgm": 34,
+        "made3": 14,
+        "ftm": 15
+      }
+    },
+    {
+      "id": "world-11779",
+      "script": "BLOWOUT",
+      "overtime": false,
+      "home_margin": -18,
+      "total": 234,
+      "bkn": {
+        "score": 108,
+        "fga": 84,
+        "fgm": 38,
+        "three_made": 13,
+        "ftm": 19,
+        "orb": 11,
+        "drb": 23,
+        "total_reb": 34,
+        "assists": 24
+      },
+      "cha": {
+        "score": 126,
+        "fga": 88,
+        "fgm": 45,
+        "orb": 12,
+        "drb": 32,
+        "total_reb": 44
+      },
+      "rebound_pool": {
+        "bkn_missed": 46,
+        "cha_missed": 43,
+        "dead_bkn": 3,
+        "dead_cha": 8
+      },
+      "sharpe": {
+        "minutes": 24,
+        "points": 4,
+        "orb": 5,
+        "drb": 4,
+        "reb": 9,
+        "assists": 11,
+        "potential_assists": 18,
+        "foul_shock": false,
+        "blowout": true,
+        "three_made": 0,
+        "ftm": 2
+      },
+      "teammates": {
+        "minutes": 216,
+        "points": 104,
+        "rebounds": 25,
+        "assists": 13,
+        "fgm": 37,
+        "made3": 13,
+        "ftm": 17
+      }
+    },
+    {
+      "id": "world-10028",
+      "script": "BLOWOUT",
+      "overtime": false,
+      "home_margin": -19,
+      "total": 237,
+      "bkn": {
+        "score": 109,
+        "fga": 88,
+        "fgm": 39,
+        "three_made": 13,
+        "ftm": 18,
+        "orb": 9,
+        "drb": 28,
+        "total_reb": 37,
+        "assists": 29
+      },
+      "cha": {
+        "score": 128,
+        "fga": 94,
+        "fgm": 45,
+        "orb": 15,
+        "drb": 36,
+        "total_reb": 51
+      },
+      "rebound_pool": {
+        "bkn_missed": 49,
+        "cha_missed": 49,
+        "dead_bkn": 4,
+        "dead_cha": 6
+      },
+      "sharpe": {
+        "minutes": 29,
+        "points": 22,
+        "orb": 4,
+        "drb": 6,
+        "reb": 10,
+        "assists": 3,
+        "potential_assists": 6,
+        "foul_shock": false,
+        "blowout": true,
+        "three_made": 0,
+        "ftm": 2
+      },
+      "teammates": {
+        "minutes": 211,
+        "points": 87,
+        "rebounds": 27,
+        "assists": 26,
+        "fgm": 29,
+        "made3": 13,
+        "ftm": 16
+      }
+    },
+    {
+      "id": "world-9657",
+      "script": "BALANCED",
+      "overtime": false,
+      "home_margin": -7,
+      "total": 233,
+      "bkn": {
+        "score": 113,
+        "fga": 86,
+        "fgm": 40,
+        "three_made": 14,
+        "ftm": 19,
+        "orb": 12,
+        "drb": 30,
+        "total_reb": 42,
+        "assists": 27
+      },
+      "cha": {
+        "score": 120,
+        "fga": 88,
+        "fgm": 42,
+        "orb": 12,
+        "drb": 26,
+        "total_reb": 38
+      },
+      "rebound_pool": {
+        "bkn_missed": 46,
+        "cha_missed": 46,
+        "dead_bkn": 8,
+        "dead_cha": 4
+      },
+      "sharpe": {
+        "minutes": 26,
+        "points": 16,
+        "orb": 1,
+        "drb": 9,
+        "reb": 10,
+        "assists": 5,
+        "potential_assists": 9,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 0,
+        "ftm": 2
+      },
+      "teammates": {
+        "minutes": 214,
+        "points": 97,
+        "rebounds": 32,
+        "assists": 22,
+        "fgm": 33,
+        "made3": 14,
+        "ftm": 17
+      }
+    },
+    {
+      "id": "world-11072",
+      "script": "COMEBACK",
+      "overtime": false,
+      "home_margin": -1,
+      "total": 235,
+      "bkn": {
+        "score": 117,
+        "fga": 85,
+        "fgm": 41,
+        "three_made": 15,
+        "ftm": 20,
+        "orb": 10,
+        "drb": 27,
+        "total_reb": 37,
+        "assists": 30
+      },
+      "cha": {
+        "score": 118,
+        "fga": 90,
+        "fgm": 42,
+        "orb": 18,
+        "drb": 30,
+        "total_reb": 48
+      },
+      "rebound_pool": {
+        "bkn_missed": 44,
+        "cha_missed": 48,
+        "dead_bkn": 4,
+        "dead_cha": 3
+      },
+      "sharpe": {
+        "minutes": 27,
+        "points": 9,
+        "orb": 5,
+        "drb": 7,
+        "reb": 12,
+        "assists": 6,
+        "potential_assists": 14,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 1,
+        "ftm": 0
+      },
+      "teammates": {
+        "minutes": 213,
+        "points": 108,
+        "rebounds": 25,
+        "assists": 24,
+        "fgm": 37,
+        "made3": 14,
+        "ftm": 20
+      }
+    },
+    {
+      "id": "world-2533",
+      "script": "BALANCED",
+      "overtime": false,
+      "home_margin": -10,
+      "total": 234,
+      "bkn": {
+        "score": 112,
+        "fga": 82,
+        "fgm": 40,
+        "three_made": 14,
+        "ftm": 18,
+        "orb": 8,
+        "drb": 32,
+        "total_reb": 40,
+        "assists": 27
+      },
+      "cha": {
+        "score": 122,
+        "fga": 101,
+        "fgm": 43,
+        "orb": 17,
+        "drb": 33,
+        "total_reb": 50
+      },
+      "rebound_pool": {
+        "bkn_missed": 42,
+        "cha_missed": 58,
+        "dead_bkn": 1,
+        "dead_cha": 9
+      },
+      "sharpe": {
+        "minutes": 28,
+        "points": 11,
+        "orb": 5,
+        "drb": 9,
+        "reb": 14,
+        "assists": 6,
+        "potential_assists": 8,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 0,
+        "ftm": 3
+      },
+      "teammates": {
+        "minutes": 212,
+        "points": 101,
+        "rebounds": 26,
+        "assists": 21,
+        "fgm": 36,
+        "made3": 14,
+        "ftm": 15
+      }
+    },
+    {
+      "id": "world-11685",
+      "script": "SHOOTOUT",
+      "overtime": true,
+      "home_margin": -2,
+      "total": 240,
+      "bkn": {
+        "score": 119,
+        "fga": 95,
+        "fgm": 42,
+        "three_made": 15,
+        "ftm": 20,
+        "orb": 4,
+        "drb": 32,
+        "total_reb": 36,
+        "assists": 29
+      },
+      "cha": {
+        "score": 121,
+        "fga": 90,
+        "fgm": 43,
+        "orb": 8,
+        "drb": 46,
+        "total_reb": 54
+      },
+      "rebound_pool": {
+        "bkn_missed": 53,
+        "cha_missed": 47,
+        "dead_bkn": 3,
+        "dead_cha": 7
+      },
+      "sharpe": {
+        "minutes": 29,
+        "points": 7,
+        "orb": 2,
+        "drb": 2,
+        "reb": 4,
+        "assists": 3,
+        "potential_assists": 7,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 0,
+        "ftm": 3
+      },
+      "teammates": {
+        "minutes": 236,
+        "points": 112,
+        "rebounds": 32,
+        "assists": 26,
+        "fgm": 40,
+        "made3": 15,
+        "ftm": 17
+      }
+    },
+    {
+      "id": "world-6950",
+      "script": "SHOOTOUT",
+      "overtime": false,
+      "home_margin": -4,
+      "total": 240,
+      "bkn": {
+        "score": 118,
+        "fga": 91,
+        "fgm": 42,
+        "three_made": 15,
+        "ftm": 19,
+        "orb": 10,
+        "drb": 24,
+        "total_reb": 34,
+        "assists": 26
+      },
+      "cha": {
+        "score": 122,
+        "fga": 83,
+        "fgm": 43,
+        "orb": 13,
+        "drb": 38,
+        "total_reb": 51
+      },
+      "rebound_pool": {
+        "bkn_missed": 49,
+        "cha_missed": 40,
+        "dead_bkn": 1,
+        "dead_cha": 3
+      },
+      "sharpe": {
+        "minutes": 27,
+        "points": 9,
+        "orb": 3,
+        "drb": 2,
+        "reb": 5,
+        "assists": 2,
+        "potential_assists": 2,
+        "foul_shock": true,
+        "blowout": false,
+        "three_made": 0,
+        "ftm": 5
+      },
+      "teammates": {
+        "minutes": 213,
+        "points": 109,
+        "rebounds": 29,
+        "assists": 24,
+        "fgm": 40,
+        "made3": 15,
+        "ftm": 14
+      }
+    },
+    {
+      "id": "world-5603",
+      "script": "SHOOTOUT",
+      "overtime": false,
+      "home_margin": 3,
+      "total": 239,
+      "bkn": {
+        "score": 121,
+        "fga": 88,
+        "fgm": 43,
+        "three_made": 15,
+        "ftm": 20,
+        "orb": 9,
+        "drb": 21,
+        "total_reb": 30,
+        "assists": 30
+      },
+      "cha": {
+        "score": 118,
+        "fga": 82,
+        "fgm": 42,
+        "orb": 15,
+        "drb": 31,
+        "total_reb": 46
+      },
+      "rebound_pool": {
+        "bkn_missed": 45,
+        "cha_missed": 40,
+        "dead_bkn": 5,
+        "dead_cha": 4
+      },
+      "sharpe": {
+        "minutes": 27,
+        "points": 12,
+        "orb": 3,
+        "drb": 3,
+        "reb": 6,
+        "assists": 4,
+        "potential_assists": 9,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 0,
+        "ftm": 2
+      },
+      "teammates": {
+        "minutes": 213,
+        "points": 109,
+        "rebounds": 24,
+        "assists": 26,
+        "fgm": 38,
+        "made3": 15,
+        "ftm": 18
+      }
+    },
+    {
+      "id": "world-3006",
+      "script": "SHOOTOUT",
+      "overtime": false,
+      "home_margin": 10,
+      "total": 244,
+      "bkn": {
+        "score": 127,
+        "fga": 95,
+        "fgm": 45,
+        "three_made": 16,
+        "ftm": 21,
+        "orb": 9,
+        "drb": 29,
+        "total_reb": 38,
+        "assists": 32
+      },
+      "cha": {
+        "score": 117,
+        "fga": 89,
+        "fgm": 43,
+        "orb": 10,
+        "drb": 37,
+        "total_reb": 47
+      },
+      "rebound_pool": {
+        "bkn_missed": 50,
+        "cha_missed": 46,
+        "dead_bkn": 4,
+        "dead_cha": 7
+      },
+      "sharpe": {
+        "minutes": 24,
+        "points": 5,
+        "orb": 3,
+        "drb": 4,
+        "reb": 7,
+        "assists": 1,
+        "potential_assists": 3,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 0,
+        "ftm": 1
+      },
+      "teammates": {
+        "minutes": 216,
+        "points": 122,
+        "rebounds": 31,
+        "assists": 31,
+        "fgm": 43,
+        "made3": 16,
+        "ftm": 20
+      }
+    },
+    {
+      "id": "world-1077",
+      "script": "SHOOTOUT",
+      "overtime": false,
+      "home_margin": 10,
+      "total": 238,
+      "bkn": {
+        "score": 124,
+        "fga": 91,
+        "fgm": 44,
+        "three_made": 16,
+        "ftm": 20,
+        "orb": 9,
+        "drb": 24,
+        "total_reb": 33,
+        "assists": 25
+      },
+      "cha": {
+        "score": 114,
+        "fga": 90,
+        "fgm": 40,
+        "orb": 22,
+        "drb": 31,
+        "total_reb": 53
+      },
+      "rebound_pool": {
+        "bkn_missed": 47,
+        "cha_missed": 50,
+        "dead_bkn": 7,
+        "dead_cha": 4
+      },
+      "sharpe": {
+        "minutes": 30,
+        "points": 13,
+        "orb": 3,
+        "drb": 5,
+        "reb": 8,
+        "assists": 4,
+        "potential_assists": 7,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 0,
+        "ftm": 3
+      },
+      "teammates": {
+        "minutes": 210,
+        "points": 111,
+        "rebounds": 25,
+        "assists": 21,
+        "fgm": 39,
+        "made3": 16,
+        "ftm": 17
+      }
+    },
+    {
+      "id": "world-8450",
+      "script": "BLOWOUT",
+      "overtime": false,
+      "home_margin": 19,
+      "total": 237,
+      "bkn": {
+        "score": 128,
+        "fga": 92,
+        "fgm": 46,
+        "three_made": 16,
+        "ftm": 20,
+        "orb": 8,
+        "drb": 31,
+        "total_reb": 39,
+        "assists": 26
+      },
+      "cha": {
+        "score": 109,
+        "fga": 91,
+        "fgm": 38,
+        "orb": 13,
+        "drb": 35,
+        "total_reb": 48
+      },
+      "rebound_pool": {
+        "bkn_missed": 46,
+        "cha_missed": 53,
+        "dead_bkn": 3,
+        "dead_cha": 9
+      },
+      "sharpe": {
+        "minutes": 27,
+        "points": 13,
+        "orb": 1,
+        "drb": 7,
+        "reb": 8,
+        "assists": 4,
+        "potential_assists": 7,
+        "foul_shock": false,
+        "blowout": true,
+        "three_made": 0,
+        "ftm": 3
+      },
+      "teammates": {
+        "minutes": 213,
+        "points": 115,
+        "rebounds": 31,
+        "assists": 22,
+        "fgm": 41,
+        "made3": 16,
+        "ftm": 17
+      }
+    },
+    {
+      "id": "world-6670",
+      "script": "BLOWOUT",
+      "overtime": false,
+      "home_margin": 24,
+      "total": 238,
+      "bkn": {
+        "score": 131,
+        "fga": 94,
+        "fgm": 47,
+        "three_made": 17,
+        "ftm": 20,
+        "orb": 12,
+        "drb": 36,
+        "total_reb": 48,
+        "assists": 36
+      },
+      "cha": {
+        "score": 107,
+        "fga": 88,
+        "fgm": 38,
+        "orb": 9,
+        "drb": 33,
+        "total_reb": 42
+      },
+      "rebound_pool": {
+        "bkn_missed": 47,
+        "cha_missed": 50,
+        "dead_bkn": 2,
+        "dead_cha": 5
+      },
+      "sharpe": {
+        "minutes": 21,
+        "points": 7,
+        "orb": 2,
+        "drb": 7,
+        "reb": 9,
+        "assists": 6,
+        "potential_assists": 10,
+        "foul_shock": false,
+        "blowout": true,
+        "three_made": 0,
+        "ftm": 1
+      },
+      "teammates": {
+        "minutes": 219,
+        "points": 124,
+        "rebounds": 39,
+        "assists": 30,
+        "fgm": 44,
+        "made3": 17,
+        "ftm": 19
+      }
+    },
+    {
+      "id": "world-7065",
+      "script": "SHOOTOUT",
+      "overtime": false,
+      "home_margin": -2,
+      "total": 238,
+      "bkn": {
+        "score": 118,
+        "fga": 82,
+        "fgm": 42,
+        "three_made": 15,
+        "ftm": 19,
+        "orb": 7,
+        "drb": 25,
+        "total_reb": 32,
+        "assists": 27
+      },
+      "cha": {
+        "score": 120,
+        "fga": 89,
+        "fgm": 43,
+        "orb": 16,
+        "drb": 32,
+        "total_reb": 48
+      },
+      "rebound_pool": {
+        "bkn_missed": 40,
+        "cha_missed": 46,
+        "dead_bkn": 1,
+        "dead_cha": 5
+      },
+      "sharpe": {
+        "minutes": 28,
+        "points": 10,
+        "orb": 4,
+        "drb": 6,
+        "reb": 10,
+        "assists": 0,
+        "potential_assists": 0,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 1,
+        "ftm": 3
+      },
+      "teammates": {
+        "minutes": 212,
+        "points": 108,
+        "rebounds": 22,
+        "assists": 27,
+        "fgm": 39,
+        "made3": 14,
+        "ftm": 16
+      }
+    },
+    {
+      "id": "world-7818",
+      "script": "CLOSE",
+      "overtime": false,
+      "home_margin": 5,
+      "total": 237,
+      "bkn": {
+        "score": 121,
+        "fga": 92,
+        "fgm": 43,
+        "three_made": 15,
+        "ftm": 20,
+        "orb": 14,
+        "drb": 33,
+        "total_reb": 47,
+        "assists": 25
+      },
+      "cha": {
+        "score": 116,
+        "fga": 98,
+        "fgm": 41,
+        "orb": 16,
+        "drb": 33,
+        "total_reb": 49
+      },
+      "rebound_pool": {
+        "bkn_missed": 49,
+        "cha_missed": 57,
+        "dead_bkn": 2,
+        "dead_cha": 8
+      },
+      "sharpe": {
+        "minutes": 27,
+        "points": 4,
+        "orb": 8,
+        "drb": 3,
+        "reb": 11,
+        "assists": 9,
+        "potential_assists": 17,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 0,
+        "ftm": 0
+      },
+      "teammates": {
+        "minutes": 213,
+        "points": 117,
+        "rebounds": 36,
+        "assists": 16,
+        "fgm": 41,
+        "made3": 15,
+        "ftm": 20
+      }
+    },
+    {
+      "id": "world-196",
+      "script": "BLOWOUT",
+      "overtime": false,
+      "home_margin": 17,
+      "total": 243,
+      "bkn": {
+        "score": 130,
+        "fga": 97,
+        "fgm": 46,
+        "three_made": 17,
+        "ftm": 21,
+        "orb": 15,
+        "drb": 25,
+        "total_reb": 40,
+        "assists": 30
+      },
+      "cha": {
+        "score": 113,
+        "fga": 85,
+        "fgm": 40,
+        "orb": 15,
+        "drb": 34,
+        "total_reb": 49
+      },
+      "rebound_pool": {
+        "bkn_missed": 51,
+        "cha_missed": 45,
+        "dead_bkn": 2,
+        "dead_cha": 5
+      },
+      "sharpe": {
+        "minutes": 27,
+        "points": 4,
+        "orb": 6,
+        "drb": 8,
+        "reb": 14,
+        "assists": 2,
+        "potential_assists": 10,
+        "foul_shock": false,
+        "blowout": true,
+        "three_made": 0,
+        "ftm": 0
+      },
+      "teammates": {
+        "minutes": 213,
+        "points": 126,
+        "rebounds": 26,
+        "assists": 28,
+        "fgm": 44,
+        "made3": 17,
+        "ftm": 21
+      }
+    },
+    {
+      "id": "world-1056",
+      "script": "BLOWOUT",
+      "overtime": false,
+      "home_margin": 36,
+      "total": 254,
+      "bkn": {
+        "score": 145,
+        "fga": 98,
+        "fgm": 52,
+        "three_made": 19,
+        "ftm": 22,
+        "orb": 10,
+        "drb": 26,
+        "total_reb": 36,
+        "assists": 34
+      },
+      "cha": {
+        "score": 109,
+        "fga": 86,
+        "fgm": 38,
+        "orb": 12,
+        "drb": 32,
+        "total_reb": 44
+      },
+      "rebound_pool": {
+        "bkn_missed": 46,
+        "cha_missed": 48,
+        "dead_bkn": 4,
+        "dead_cha": 10
+      },
+      "sharpe": {
+        "minutes": 25,
+        "points": 26,
+        "orb": 2,
+        "drb": 2,
+        "reb": 4,
+        "assists": 1,
+        "potential_assists": 2,
+        "foul_shock": false,
+        "blowout": true,
+        "three_made": 0,
+        "ftm": 2
+      },
+      "teammates": {
+        "minutes": 215,
+        "points": 119,
+        "rebounds": 32,
+        "assists": 33,
+        "fgm": 40,
+        "made3": 19,
+        "ftm": 20
+      }
+    },
+    {
+      "id": "world-5596",
+      "script": "SHOOTOUT",
+      "overtime": true,
+      "home_margin": -2,
+      "total": 248,
+      "bkn": {
+        "score": 123,
+        "fga": 88,
+        "fgm": 44,
+        "three_made": 15,
+        "ftm": 20,
+        "orb": 6,
+        "drb": 28,
+        "total_reb": 34,
+        "assists": 37
+      },
+      "cha": {
+        "score": 125,
+        "fga": 92,
+        "fgm": 44,
+        "orb": 12,
+        "drb": 31,
+        "total_reb": 43
+      },
+      "rebound_pool": {
+        "bkn_missed": 44,
+        "cha_missed": 48,
+        "dead_bkn": 7,
+        "dead_cha": 8
+      },
+      "sharpe": {
+        "minutes": 30,
+        "points": 14,
+        "orb": 0,
+        "drb": 5,
+        "reb": 5,
+        "assists": 0,
+        "potential_assists": 0,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 0,
+        "ftm": 2
+      },
+      "teammates": {
+        "minutes": 235,
+        "points": 109,
+        "rebounds": 29,
+        "assists": 37,
+        "fgm": 38,
+        "made3": 15,
+        "ftm": 18
+      }
+    },
+    {
+      "id": "world-6158",
+      "script": "COMEBACK",
+      "overtime": false,
+      "home_margin": -3,
+      "total": 245,
+      "bkn": {
+        "score": 121,
+        "fga": 94,
+        "fgm": 43,
+        "three_made": 15,
+        "ftm": 20,
+        "orb": 18,
+        "drb": 26,
+        "total_reb": 44,
+        "assists": 30
+      },
+      "cha": {
+        "score": 124,
+        "fga": 88,
+        "fgm": 44,
+        "orb": 12,
+        "drb": 31,
+        "total_reb": 43
+      },
+      "rebound_pool": {
+        "bkn_missed": 51,
+        "cha_missed": 44,
+        "dead_bkn": 2,
+        "dead_cha": 6
+      },
+      "sharpe": {
+        "minutes": 23,
+        "points": 10,
+        "orb": 4,
+        "drb": 2,
+        "reb": 6,
+        "assists": 3,
+        "potential_assists": 5,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 0,
+        "ftm": 0
+      },
+      "teammates": {
+        "minutes": 217,
+        "points": 111,
+        "rebounds": 38,
+        "assists": 27,
+        "fgm": 38,
+        "made3": 15,
+        "ftm": 20
+      }
+    },
+    {
+      "id": "world-2840",
+      "script": "SHOOTOUT",
+      "overtime": false,
+      "home_margin": 7,
+      "total": 249,
+      "bkn": {
+        "score": 128,
+        "fga": 94,
+        "fgm": 46,
+        "three_made": 16,
+        "ftm": 20,
+        "orb": 13,
+        "drb": 29,
+        "total_reb": 42,
+        "assists": 31
+      },
+      "cha": {
+        "score": 121,
+        "fga": 92,
+        "fgm": 43,
+        "orb": 15,
+        "drb": 34,
+        "total_reb": 49
+      },
+      "rebound_pool": {
+        "bkn_missed": 48,
+        "cha_missed": 49,
+        "dead_bkn": 1,
+        "dead_cha": 5
+      },
+      "sharpe": {
+        "minutes": 25,
+        "points": 10,
+        "orb": 2,
+        "drb": 5,
+        "reb": 7,
+        "assists": 2,
+        "potential_assists": 5,
+        "foul_shock": true,
+        "blowout": false,
+        "three_made": 0,
+        "ftm": 2
+      },
+      "teammates": {
+        "minutes": 215,
+        "points": 118,
+        "rebounds": 35,
+        "assists": 29,
+        "fgm": 42,
+        "made3": 16,
+        "ftm": 18
+      }
+    },
+    {
+      "id": "world-11024",
+      "script": "BLOWOUT",
+      "overtime": false,
+      "home_margin": 19,
+      "total": 249,
+      "bkn": {
+        "score": 134,
+        "fga": 90,
+        "fgm": 48,
+        "three_made": 17,
+        "ftm": 21,
+        "orb": 5,
+        "drb": 31,
+        "total_reb": 36,
+        "assists": 34
+      },
+      "cha": {
+        "score": 115,
+        "fga": 87,
+        "fgm": 41,
+        "orb": 10,
+        "drb": 33,
+        "total_reb": 43
+      },
+      "rebound_pool": {
+        "bkn_missed": 42,
+        "cha_missed": 46,
+        "dead_bkn": 4,
+        "dead_cha": 5
+      },
+      "sharpe": {
+        "minutes": 25,
+        "points": 13,
+        "orb": 1,
+        "drb": 7,
+        "reb": 8,
+        "assists": 3,
+        "potential_assists": 6,
+        "foul_shock": false,
+        "blowout": true,
+        "three_made": 0,
+        "ftm": 5
+      },
+      "teammates": {
+        "minutes": 215,
+        "points": 121,
+        "rebounds": 28,
+        "assists": 31,
+        "fgm": 44,
+        "made3": 17,
+        "ftm": 16
+      }
+    },
+    {
+      "id": "world-8280",
+      "script": "SHOOTOUT",
+      "overtime": false,
+      "home_margin": 6,
+      "total": 250,
+      "bkn": {
+        "score": 128,
+        "fga": 100,
+        "fgm": 46,
+        "three_made": 16,
+        "ftm": 20,
+        "orb": 13,
+        "drb": 29,
+        "total_reb": 42,
+        "assists": 26
+      },
+      "cha": {
+        "score": 122,
+        "fga": 91,
+        "fgm": 43,
+        "orb": 12,
+        "drb": 37,
+        "total_reb": 49
+      },
+      "rebound_pool": {
+        "bkn_missed": 54,
+        "cha_missed": 48,
+        "dead_bkn": 4,
+        "dead_cha": 7
+      },
+      "sharpe": {
+        "minutes": 24,
+        "points": 17,
+        "orb": 4,
+        "drb": 4,
+        "reb": 8,
+        "assists": 7,
+        "potential_assists": 12,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 0,
+        "ftm": 3
+      },
+      "teammates": {
+        "minutes": 216,
+        "points": 111,
+        "rebounds": 34,
+        "assists": 19,
+        "fgm": 39,
+        "made3": 16,
+        "ftm": 17
+      }
+    },
+    {
+      "id": "world-7271",
+      "script": "SHOOTOUT",
+      "overtime": false,
+      "home_margin": 7,
+      "total": 249,
+      "bkn": {
+        "score": 128,
+        "fga": 97,
+        "fgm": 46,
+        "three_made": 16,
+        "ftm": 20,
+        "orb": 9,
+        "drb": 30,
+        "total_reb": 39,
+        "assists": 36
+      },
+      "cha": {
+        "score": 121,
+        "fga": 89,
+        "fgm": 43,
+        "orb": 12,
+        "drb": 40,
+        "total_reb": 52
+      },
+      "rebound_pool": {
+        "bkn_missed": 51,
+        "cha_missed": 46,
+        "dead_bkn": 2,
+        "dead_cha": 4
+      },
+      "sharpe": {
+        "minutes": 27,
+        "points": 18,
+        "orb": 2,
+        "drb": 7,
+        "reb": 9,
+        "assists": 2,
+        "potential_assists": 5,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 0,
+        "ftm": 4
+      },
+      "teammates": {
+        "minutes": 213,
+        "points": 110,
+        "rebounds": 30,
+        "assists": 34,
+        "fgm": 39,
+        "made3": 16,
+        "ftm": 16
+      }
+    },
+    {
+      "id": "world-5911",
+      "script": "BLOWOUT",
+      "overtime": false,
+      "home_margin": -23,
+      "total": 255,
+      "bkn": {
+        "score": 116,
+        "fga": 86,
+        "fgm": 41,
+        "three_made": 15,
+        "ftm": 19,
+        "orb": 10,
+        "drb": 32,
+        "total_reb": 42,
+        "assists": 28
+      },
+      "cha": {
+        "score": 139,
+        "fga": 102,
+        "fgm": 49,
+        "orb": 16,
+        "drb": 31,
+        "total_reb": 47
+      },
+      "rebound_pool": {
+        "bkn_missed": 45,
+        "cha_missed": 53,
+        "dead_bkn": 4,
+        "dead_cha": 5
+      },
+      "sharpe": {
+        "minutes": 29,
+        "points": 14,
+        "orb": 4,
+        "drb": 6,
+        "reb": 10,
+        "assists": 0,
+        "potential_assists": 0,
+        "foul_shock": false,
+        "blowout": true,
+        "three_made": 0,
+        "ftm": 0
+      },
+      "teammates": {
+        "minutes": 211,
+        "points": 102,
+        "rebounds": 32,
+        "assists": 28,
+        "fgm": 34,
+        "made3": 15,
+        "ftm": 19
+      }
+    },
+    {
+      "id": "world-9255",
+      "script": "SHOOTOUT",
+      "overtime": false,
+      "home_margin": -14,
+      "total": 252,
+      "bkn": {
+        "score": 119,
+        "fga": 90,
+        "fgm": 42,
+        "three_made": 15,
+        "ftm": 20,
+        "orb": 10,
+        "drb": 30,
+        "total_reb": 40,
+        "assists": 32
+      },
+      "cha": {
+        "score": 133,
+        "fga": 99,
+        "fgm": 47,
+        "orb": 15,
+        "drb": 32,
+        "total_reb": 47
+      },
+      "rebound_pool": {
+        "bkn_missed": 48,
+        "cha_missed": 52,
+        "dead_bkn": 6,
+        "dead_cha": 7
+      },
+      "sharpe": {
+        "minutes": 27,
+        "points": 3,
+        "orb": 6,
+        "drb": 5,
+        "reb": 11,
+        "assists": 6,
+        "potential_assists": 8,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 0,
+        "ftm": 1
+      },
+      "teammates": {
+        "minutes": 213,
+        "points": 116,
+        "rebounds": 29,
+        "assists": 26,
+        "fgm": 41,
+        "made3": 15,
+        "ftm": 19
+      }
+    },
+    {
+      "id": "world-3326",
+      "script": "COMEBACK",
+      "overtime": true,
+      "home_margin": -3,
+      "total": 255,
+      "bkn": {
+        "score": 126,
+        "fga": 96,
+        "fgm": 46,
+        "three_made": 16,
+        "ftm": 18,
+        "orb": 8,
+        "drb": 29,
+        "total_reb": 37,
+        "assists": 31
+      },
+      "cha": {
+        "score": 129,
+        "fga": 102,
+        "fgm": 46,
+        "orb": 19,
+        "drb": 40,
+        "total_reb": 59
+      },
+      "rebound_pool": {
+        "bkn_missed": 50,
+        "cha_missed": 56,
+        "dead_bkn": 2,
+        "dead_cha": 8
+      },
+      "sharpe": {
+        "minutes": 32,
+        "points": 28,
+        "orb": 1,
+        "drb": 13,
+        "reb": 14,
+        "assists": 8,
+        "potential_assists": 12,
+        "foul_shock": false,
+        "blowout": false,
+        "three_made": 2,
+        "ftm": 0
+      },
+      "teammates": {
+        "minutes": 233,
+        "points": 98,
+        "rebounds": 23,
+        "assists": 23,
+        "fgm": 33,
+        "made3": 14,
+        "ftm": 18
+      }
+    }
+  ],
+  "limitations": [
+    "2025-26 team season averages not updated current Charlotte/Brooklyn rosters",
+    "Team field goals conditioned on game score not play-by-play replay",
+    "Player other teammates aggregated not explicit five-man rotation",
+    "Underived current sharpe minutes and rebound retention",
+    "No empirically calibrated new-player-role transitions",
+    "No current account sportsbook odds",
+    "No prospective EV established"
+  ],
+  "authority": {
+    "bet": false,
+    "automatic_execution": false,
+    "pricing_verified": false,
+    "source_weight_from_social": 0,
+    "human_final_gate": true
+  }
+}

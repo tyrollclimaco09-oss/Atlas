@@ -1,0 +1,257 @@
+{
+  "schema": "atlas.nba.team_ratings.v1",
+  "season": "2025-26",
+  "observed": "2026-10-21",
+  "sources": [
+    "https://www.statmuse.com/nba/ask/nba-team-offensive-rating-defensive-rating-and-pace-in-2025-26",
+    "https://www.statmuse.com/nba/ask/grizzlies-offensive-rating-defensive-rating-and-pace-in-2025-26",
+    "https://www.statmuse.com/nba/ask/raptors-offensive-rating-defensive-rating-and-pace-in-2025-26",
+    "https://www.statmuse.com/nba/ask/hornets-offensive-rating-defensive-rating-and-pace-in-2025-26",
+    "https://www.statmuse.com/nba/ask/timberwolves-offensive-rating-defensive-rating-and-pace-in-2025-26",
+    "https://www.statmuse.com/nba/ask/magic-offensive-rating-defensive-rating-and-pace-in-2025-26"
+  ],
+  "reference_only": true,
+  "description": "Unadjusted 2025-26 regular-season team ratings and pace; roster context may differ materially for 2026-27",
+  "teams": {
+    "BOS": {
+      "name": "Celtics",
+      "drtg": 112.7,
+      "ortg": 120.8,
+      "pace": 94.84,
+      "ppg": 114.9,
+      "source_url": "https://www.statmuse.com/nba/ask/nba-team-offensive-rating-defensive-rating-and-pace-in-2025-26"
+    },
+    "NYK": {
+      "name": "Knicks",
+      "drtg": 113.3,
+      "ortg": 119.8,
+      "pace": 96.8,
+      "ppg": 116.5,
+      "source_url": "https://www.statmuse.com/nba/ask/nba-team-offensive-rating-defensive-rating-and-pace-in-2025-26"
+    },
+    "GSW": {
+      "name": "Warriors",
+      "drtg": 115.6,
+      "ortg": 115,
+      "pace": 99.02,
+      "ppg": 114.6,
+      "source_url": "https://www.statmuse.com/nba/ask/nba-team-offensive-rating-defensive-rating-and-pace-in-2025-26"
+    },
+    "DET": {
+      "name": "Pistons",
+      "drtg": 109.7,
+      "ortg": 117.9,
+      "pace": 99.25,
+      "ppg": 117.8,
+      "source_url": "https://www.statmuse.com/nba/ask/nba-team-offensive-rating-defensive-rating-and-pace-in-2025-26"
+    },
+    "LAL": {
+      "name": "Lakers",
+      "drtg": 116.4,
+      "ortg": 118.2,
+      "pace": 98.31,
+      "ppg": 116.3,
+      "source_url": "https://www.statmuse.com/nba/ask/nba-team-offensive-rating-defensive-rating-and-pace-in-2025-26"
+    },
+    "SAC": {
+      "name": "Kings",
+      "drtg": 121.5,
+      "ortg": 111.4,
+      "pace": 99.23,
+      "ppg": 111,
+      "source_url": "https://www.statmuse.com/nba/ask/nba-team-offensive-rating-defensive-rating-and-pace-in-2025-26"
+    },
+    "PHI": {
+      "name": "76ers",
+      "drtg": 115.5,
+      "ortg": 115.4,
+      "pace": 99.44,
+      "ppg": 115.9,
+      "source_url": "https://www.statmuse.com/nba/ask/nba-team-offensive-rating-defensive-rating-and-pace-in-2025-26"
+    },
+    "ATL": {
+      "name": "Hawks",
+      "drtg": 113.7,
+      "ortg": 116.1,
+      "pace": 101.65,
+      "ppg": 118.5,
+      "source_url": "https://www.statmuse.com/nba/ask/nba-team-offensive-rating-defensive-rating-and-pace-in-2025-26"
+    },
+    "WAS": {
+      "name": "Wizards",
+      "drtg": 122.7,
+      "ortg": 111,
+      "pace": 101.36,
+      "ppg": 112.9,
+      "source_url": "https://www.statmuse.com/nba/ask/nba-team-offensive-rating-defensive-rating-and-pace-in-2025-26"
+    },
+    "CHI": {
+      "name": "Bulls",
+      "drtg": 118.1,
+      "ortg": 113,
+      "pace": 102.53,
+      "ppg": 116.3,
+      "source_url": "https://www.statmuse.com/nba/ask/nba-team-offensive-rating-defensive-rating-and-pace-in-2025-26"
+    },
+    "SAS": {
+      "name": "Spurs",
+      "drtg": 111.3,
+      "ortg": 119.6,
+      "pace": 99.95,
+      "ppg": 119.8,
+      "source_url": "https://www.statmuse.com/nba/ask/nba-team-offensive-rating-defensive-rating-and-pace-in-2025-26"
+    },
+    "DEN": {
+      "name": "Nuggets",
+      "drtg": 117.4,
+      "ortg": 122.6,
+      "pace": 98.36,
+      "ppg": 122.1,
+      "source_url": "https://www.statmuse.com/nba/ask/nba-team-offensive-rating-defensive-rating-and-pace-in-2025-26"
+    },
+    "IND": {
+      "name": "Pacers",
+      "drtg": 118.8,
+      "ortg": 110.9,
+      "pace": 101,
+      "ppg": 112.4,
+      "source_url": "https://www.statmuse.com/nba/ask/nba-team-offensive-rating-defensive-rating-and-pace-in-2025-26"
+    },
+    "BKN": {
+      "name": "Nets",
+      "drtg": 119,
+      "ortg": 108.7,
+      "pace": 97.06,
+      "ppg": 105.9,
+      "source_url": "https://www.statmuse.com/nba/ask/nba-team-offensive-rating-defensive-rating-and-pace-in-2025-26"
+    },
+    "HOU": {
+      "name": "Rockets",
+      "drtg": 113.2,
+      "ortg": 118.6,
+      "pace": 96.09,
+      "ppg": 115.2,
+      "source_url": "https://www.statmuse.com/nba/ask/nba-team-offensive-rating-defensive-rating-and-pace-in-2025-26"
+    },
+    "OKC": {
+      "name": "Thunder",
+      "drtg": 107.7,
+      "ortg": 118.9,
+      "pace": 99.26,
+      "ppg": 119,
+      "source_url": "https://www.statmuse.com/nba/ask/nba-team-offensive-rating-defensive-rating-and-pace-in-2025-26"
+    },
+    "MIL": {
+      "name": "Bucks",
+      "drtg": 119.3,
+      "ortg": 112.9,
+      "pace": 97.6,
+      "ppg": 110.6,
+      "source_url": "https://www.statmuse.com/nba/ask/nba-team-offensive-rating-defensive-rating-and-pace-in-2025-26"
+    },
+    "PHX": {
+      "name": "Suns",
+      "drtg": 113.9,
+      "ortg": 115.4,
+      "pace": 97.17,
+      "ppg": 112.6,
+      "source_url": "https://www.statmuse.com/nba/ask/nba-team-offensive-rating-defensive-rating-and-pace-in-2025-26"
+    },
+    "LAC": {
+      "name": "Clippers",
+      "drtg": 116.1,
+      "ortg": 117.3,
+      "pace": 96.5,
+      "ppg": 113.8,
+      "source_url": "https://www.statmuse.com/nba/ask/nba-team-offensive-rating-defensive-rating-and-pace-in-2025-26"
+    },
+    "CLE": {
+      "name": "Cavaliers",
+      "drtg": 115.1,
+      "ortg": 119.2,
+      "pace": 99.88,
+      "ppg": 119.5,
+      "source_url": "https://www.statmuse.com/nba/ask/nba-team-offensive-rating-defensive-rating-and-pace-in-2025-26"
+    },
+    "POR": {
+      "name": "Trail Blazers",
+      "drtg": 114.7,
+      "ortg": 114.4,
+      "pace": 100.52,
+      "ppg": 115.5,
+      "source_url": "https://www.statmuse.com/nba/ask/nba-team-offensive-rating-defensive-rating-and-pace-in-2025-26"
+    },
+    "UTA": {
+      "name": "Jazz",
+      "drtg": 122.3,
+      "ortg": 114.1,
+      "pace": 102.29,
+      "ppg": 117.6,
+      "source_url": "https://www.statmuse.com/nba/ask/nba-team-offensive-rating-defensive-rating-and-pace-in-2025-26"
+    },
+    "DAL": {
+      "name": "Mavericks",
+      "drtg": 116.5,
+      "ortg": 111.2,
+      "pace": 101.75,
+      "ppg": 114.1,
+      "source_url": "https://www.statmuse.com/nba/ask/nba-team-offensive-rating-defensive-rating-and-pace-in-2025-26"
+    },
+    "NOP": {
+      "name": "Pelicans",
+      "drtg": 118.9,
+      "ortg": 114.4,
+      "pace": 100.34,
+      "ppg": 115.5,
+      "source_url": "https://www.statmuse.com/nba/ask/nba-team-offensive-rating-defensive-rating-and-pace-in-2025-26"
+    },
+    "MIA": {
+      "name": "Heat",
+      "drtg": 114.5,
+      "ortg": 116.7,
+      "pace": 103.42,
+      "ppg": 120.9,
+      "source_url": "https://www.statmuse.com/nba/ask/nba-team-offensive-rating-defensive-rating-and-pace-in-2025-26"
+    },
+    "MEM": {
+      "name": "Grizzlies",
+      "drtg": 118.8,
+      "ortg": 112.9,
+      "pace": 101.32,
+      "ppg": 114.7,
+      "source_url": "https://www.statmuse.com/nba/ask/grizzlies-offensive-rating-defensive-rating-and-pace-in-2025-26"
+    },
+    "TOR": {
+      "name": "Raptors",
+      "drtg": 113,
+      "ortg": 115.9,
+      "pace": 98.42,
+      "ppg": 114.6,
+      "source_url": "https://www.statmuse.com/nba/ask/raptors-offensive-rating-defensive-rating-and-pace-in-2025-26"
+    },
+    "CHA": {
+      "name": "Hornets",
+      "drtg": 114.4,
+      "ortg": 119.4,
+      "pace": 96.8,
+      "ppg": 116,
+      "source_url": "https://www.statmuse.com/nba/ask/hornets-offensive-rating-defensive-rating-and-pace-in-2025-26"
+    },
+    "MIN": {
+      "name": "Timberwolves",
+      "drtg": 113.5,
+      "ortg": 116.8,
+      "pace": 100.53,
+      "ppg": 118,
+      "source_url": "https://www.statmuse.com/nba/ask/timberwolves-offensive-rating-defensive-rating-and-pace-in-2025-26"
+    },
+    "ORL": {
+      "name": "Magic",
+      "drtg": 114.3,
+      "ortg": 114.9,
+      "pace": 99.95,
+      "ppg": 115.7,
+      "source_url": "https://www.statmuse.com/nba/ask/magic-offensive-rating-defensive-rating-and-pace-in-2025-26"
+    }
+  }
+}
