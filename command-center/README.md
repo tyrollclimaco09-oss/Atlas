@@ -1,3 +1,12 @@
+# Current source custody — review update
+
+The latest saved original Sites source is recovered at version 9, commit
+`1c2c03229a9f073c42f090229d818fa73556d7f0`. This branch preserves its copy/import,
+resume and empty-research fixes and ports the existing read-only source panel
+onto it. See [source reconciliation](SOURCE_RECONCILIATION_2026-11-04.md).
+Current-source checks and historical snapshot receipts are separate. This is
+a review branch; publication and real-origin session acceptance remain open.
+
 # Existing ATLAS Command Center — recovered source and Gate02 read bridge
 
 This directory preserves the six frontend files previously served by the existing [ChatGPT Sites Command Center](https://atlas-command-center-operator-t.tyrollclimaco09.chatgpt.site). It is not a replacement dashboard, deployed site or new canonical state owner. Source custody/hashes are in `SOURCE_PROVENANCE.json`; original editable Sites project and current deployment parity remain unverified. Five original JavaScript/CSS files are byte-identical. `index.html` adds only two deferred scripts and one status container beside the original resume toolbar.

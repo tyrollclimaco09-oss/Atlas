@@ -1,9 +1,12 @@
 # Command Center development ownership — Gate 04
 
-The recovered **existing** Command Center is complete for independent static
-development. This establishes custody of this snapshot in Git, not control of
-the original ChatGPT Sites deployment or parity with its current revision.
-The original editable Sites project remains **SOURCE ACCESS BLOCKED**.
+Owner-authorized source custody was recovered for the existing Sites project.
+This review uses saved version 9, commit `1c2c03229a9f073c42f090229d818fa73556d7f0`,
+with the existing read-only source panel ported onto its exact asset bytes.
+`CURRENT_SITE_SOURCE.json` records that baseline; `SOURCE_PROVENANCE.json` remains
+the unchanged historical served-snapshot receipt. The actual serving revision,
+operator-origin authentication and CORS remain unverified. No Site publication
+is included. See `SOURCE_RECONCILIATION_2026-11-04.md` before release.
 
 ## Required files and tools
 
@@ -105,12 +108,13 @@ screenshots. Keep them private and outside Git/public deployment. Changing
 origin does not transfer drafts. Use existing explicit export/restore, verify
 identity/content, and re-review; never auto-import or overwrite.
 
-## Recover original Sites authoring control
+## Historical recovery limitation — superseded by current source custody
 
 The published URL is
 `https://atlas-command-center-operator-t.tyrollclimaco09.chatgpt.site`.
-No supported authoring tool or editable artifact is available in this session.
-Do not treat the served snapshot as the current deployable Sites project.
+The following procedure records the earlier Gate 04 limitation. Owner source
+access is now recovered as documented above. Its saved revision still must not
+be equated with the bytes currently served by the published URL.
 
 The owner can use the original ChatGPT account to locate the creation
 conversation/project by title or URL, reopen its Sites artifact, and verify the

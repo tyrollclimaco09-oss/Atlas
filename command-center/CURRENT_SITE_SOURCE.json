@@ -1,0 +1,41 @@
+{
+  "schema": "ATLAS_SITES_SOURCE_RECONCILIATION_V1",
+  "project_id": "appgprj_6aa794eb41fc8191b9ba25adfa1be5ff",
+  "source_commit": "1c2c03229a9f073c42f090229d818fa73556d7f0",
+  "saved_version": 9,
+  "published_revision_verified": false,
+  "custody": "Owner-authorized Sites source checkout, clean at the recorded commit; latest saved source, serving assets not attested.",
+  "historical_provenance": "SOURCE_PROVENANCE.json",
+  "files": [
+    {
+      "source_path": "dist/index.html",
+      "review_path": "index.html",
+      "sha256": "190e32384336ceebdd185747889cc62158609cf38c9ddc4ea911ca5197b12254"
+    },
+    {
+      "source_path": "dist/app.js",
+      "review_path": "app.js",
+      "sha256": "707c5e8c2ad98bddf35e9c6af85f39294ec38cead330842895afbd5bc2b549f1"
+    },
+    {
+      "source_path": "dist/slate.js",
+      "review_path": "slate.js",
+      "sha256": "f10b6f202c9bf062504f1560da99ba9ebc49f3488484d3ac2d5af70f12e9fd48"
+    },
+    {
+      "source_path": "dist/slate-engine.js",
+      "review_path": "slate-engine.js",
+      "sha256": "19241ae35d79584f3b0bb8955853629871b9b95112511d6b682eadf70de08696"
+    },
+    {
+      "source_path": "dist/pricing.js",
+      "review_path": "pricing.js",
+      "sha256": "504377e34fe1f3a22d2677f77d0df3f13b65da39eab3c6a044c2a4aec6f22f63"
+    },
+    {
+      "source_path": "dist/styles.css",
+      "review_path": "styles.css",
+      "sha256": "40ef74c10d43ecd214b15a96b8f8a7a2f62df8cb6c162822e3cfa3da99f8d6c1"
+    }
+  ]
+}
