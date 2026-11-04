@@ -1,7 +1,7 @@
 /* A guided, device-local draft workspace. No network calls or automatic inference. */
 (function () {
   'use strict';
-  const E=AtlasSlate, STORAGE='atlas.slate.draft.v1';
+  const E=AtlasSlate, STORAGE='atlas.slate.draft.v1', VIEW='atlas.slate.view.v1';
   const esc=value=>String(value??'').replace(/[&<>"']/g,x=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[x]));
   const $=id=>document.getElementById(id);
   let run=null,selected=null,stage=0,pendingImport=null,storageOK=true;
@@ -36,6 +36,18 @@
     $('draft-state').textContent=storageOK?'Temporary draft · this browser only':'Draft could not be saved · export before leaving';
     $('draft-state').className=storageOK?'small muted':'error';
   }
+  function saveView(){
+    if(!run)return;
+    try{localStorage.setItem(VIEW,JSON.stringify({runId:run.id,selected,stage}));}catch{}
+  }
+  function restoreView(){
+    if(!run)return;
+    try{const view=JSON.parse(localStorage.getItem(VIEW));
+      if(view?.runId===run.id&&run.candidates.some(c=>c.id===view.selected)){
+        selected=view.selected;stage=Number.isInteger(view.stage)&&view.stage>=0&&view.stage<E.STAGES.length?view.stage:0;
+      }
+    }catch{}
+  }
   function toLocal(value){if(!value||!Number.isFinite(Date.parse(value)))return '';const d=new Date(value);return new Date(d.getTime()-d.getTimezoneOffset()*60000).toISOString().slice(0,16);}
   function inputDate(value){if(!value)return '';const d=new Date(value);return Number.isFinite(d.getTime())?d.toISOString():value;}
   function field(group,def,value,disabled=false){
@@ -47,7 +59,7 @@
   }
   function selectOptions(values,selectedValue){return values.map(value=>`<option value="${esc(value)}" ${value===selectedValue?'selected':''}>${esc(value)}</option>`).join('');}
   function updateContinue(){
-    const action=E.nextAction(run);$('continue-slate').textContent=action.label;$('continue-hint').textContent=action.hint;$('quick-run-options').hidden=!!run;
+    const action=E.nextAction(run);$('copy-confirmed').disabled=!E.confirmedShortlist(run);$('continue-slate').textContent=action.label;$('continue-hint').textContent=action.hint;$('quick-run-options').hidden=!!run;
   }
   $('quick-run-date').value=E.newRun().date;
   $('continue-slate').addEventListener('click',()=>{
@@ -59,7 +71,7 @@
     }
     if(action.action==='research'||action.action==='pricing'){
       const phase=action.action==='research'?'research':'pricing';
-      showPrompt(phase);copyPrompt(true);return;
+      if(showPrompt(phase))copyPrompt();return;
     }
     if(action.action==='import'){$('import-research').click();return;}
     if(action.action==='done'){exportDraft();return;}
@@ -86,10 +98,13 @@
     $('add-candidate').disabled=run.candidates.length>=run.limit;
     $('pricing-handoff').disabled=!run.candidates.some(c=>c.sealed&&!c.disposition);
     $('empty-candidates').hidden=run.candidates.length>0;
+    $('empty-research-title').textContent=run.emptyResearchAt?'Research complete · no candidates qualified':'Ready for the first research batch.';
+    $('empty-research-hint').textContent=run.emptyResearchAt?'Your result is saved. You can leave this slate here or research again when there is new information.':'Copy the research batch to ChatGPT, then add its response here.';
     $('candidate-workspace').hidden=!current();
     renderStage();renderHistory();persist();
   }
   function renderStage(){
+    saveView();
     const c=current();if(!c)return;
     const ev=E.evaluate(run,c),key=E.KEYS[stage],closed=!!c.disposition,locked=closed||(stage<3&&!!c.sealed)||!!c.approval;
     $('stage-nav').innerHTML=ev.stages.map((s,i)=>`<button type="button" data-stage="${i}" class="stage-tab ${i===stage?'active':''} ${s.status==='complete'?'done':''}" aria-current="${i===stage?'step':'false'}"><span>${String(i+1).padStart(2,'0')}</span><strong>${esc(s.name)}</strong><small>${s.status==='complete'?'Evidence recorded':s.status==='waiting'?'Waiting':'Needs input'}</small></button>`).join('');
@@ -169,10 +184,15 @@
     $('handoff-title').textContent=phase==='research'?'1 · Research the slate':'2 · Research current prices';
     $('handoff-text').value=E.prompt(run,phase);
     run.pendingPhase=phase;persist();updateContinue();
-    $('copy-result').textContent='Copy & open ChatGPT, paste the prompt there, then send it. Return to this tab to add the response.';
+    $('handoff-context').textContent=slateContext(phase);
+    $('copy-result').textContent='Copy the request, return to your ChatGPT conversation, then paste and send. Reopen this slate to add the response.';
     $('chat-url').value=run.chatUrl||preferredChat;
+    syncChatLink();
     $('handoff-dialog').showModal();
     return true;
+  }
+  function slateContext(phase){
+    return `${run.date} · ${run.timezone} · ${phase==='pricing'?'Phase 2: pricing':'Phase 1: research'} · Slate ${run.id.slice(0,8)}`;
   }
   function chatDestination(){
     const value=$('chat-url').value.trim();
@@ -185,26 +205,31 @@
     preferredChat=$('chat-url').value.trim();run.chatUrl=preferredChat;persist();
     try{localStorage.setItem('atlas.chat.url.v1',preferredChat);}catch{}
   }
-  async function copyPrompt(openChat=false){
-    let destination;
-    try{destination=chatDestination();}catch(e){$('copy-result').textContent=e.message;$('chat-destination').open=true;$('chat-url').focus();return;}
-    rememberChat();
-    $('open-chatgpt').href=destination;
+  function syncChatLink(){
+    const link=$('open-chatgpt'),feedback=$('chat-link-feedback');
+    link.hidden=true;
+    if(!storageOK){feedback.textContent='Export your draft before leaving; this browser could not save it.';return false;}
+    try{link.href=chatDestination();link.hidden=false;feedback.textContent='';return true;}
+    catch(e){link.removeAttribute('href');feedback.textContent=e.message+' Copying still works; you can close the site viewer to return to ChatGPT.';return false;}
+  }
+  async function copyPrompt(){
+    if($('copy-open-handoff').disabled)return;
+    // A broken optional chat link must never block copying the request.
+    try{chatDestination();rememberChat();}catch{persist();}
+    syncChatLink();
     const text=$('handoff-text').value;
-    $('copy-open-handoff').disabled=true;$('copy-handoff').disabled=true;$('continue-slate').disabled=true;
+    $('copy-open-handoff').disabled=true;$('continue-slate').disabled=true;$('research-handoff').disabled=true;$('pricing-handoff').disabled=true;
     $('copy-result').textContent='Copying your prompt…';
     try{
       await navigator.clipboard.writeText(text);
-      if(openChat&&storageOK){
-        $('copy-result').textContent='Copied. Opening ChatGPT. If this screen stays open, tap Open ChatGPT below. Paste and send there, then return to this saved slate.';
-        try{window.location.assign(destination);}catch{$('copy-result').textContent='Prompt copied. Tap Open ChatGPT below. If this viewer blocks leaving, close the site with × and paste in your ChatGPT conversation.';}
-      }else{
-        $('copy-result').textContent=storageOK?'Copied. Open ChatGPT, paste and send.':'Prompt copied, but your slate could not be saved. Export your draft before leaving.';
-      }
+      $('copy-result').textContent=storageOK?'Copied. In the ChatGPT site viewer, tap × at the top to return to your conversation. Paste and send, then reopen this slate and choose “Paste GPT response”. You can also use the separate Open ChatGPT link.':'Prompt copied, but your slate could not be saved. Export your draft before leaving.';
     }catch{
       $('prompt-details').open=true;$('handoff-text').focus();$('handoff-text').select();
-      $('copy-result').textContent='Your browser blocked copying. Touch and hold the selected prompt and choose Copy. Then tap Open ChatGPT, or close the site with × to return to your conversation.';
-    }finally{$('copy-open-handoff').disabled=false;$('copy-handoff').disabled=false;$('continue-slate').disabled=false;}
+      $('copy-result').textContent=storageOK?'Your browser blocked copying. Touch and hold the selected request and choose Copy. Close the site viewer with × to return to your conversation, or use the Open ChatGPT link.':'Your browser blocked copying. Touch and hold the selected request and choose Copy. Export your draft before leaving; this browser could not save it.';
+    }finally{
+      $('copy-open-handoff').disabled=false;$('continue-slate').disabled=false;$('research-handoff').disabled=false;
+      $('pricing-handoff').disabled=!run.candidates.some(c=>c.sealed&&!c.disposition);syncChatLink();
+    }
   }
 
   function download(content,name){
@@ -260,11 +285,17 @@
     c.pricing=E.newCandidate().pricing;c.kairos=E.newCandidate().kairos;c.final=E.newCandidate().final;c.verify.reviewed=false;c.oracle.reviewed=false;c.sentinel.reviewed=false;
     $('revision-dialog').close();stage=1;render();toast('Earlier snapshot preserved. Recheck the evidence and document independence before freezing again.');
   });
-  $('research-handoff').addEventListener('click',()=>{if(showPrompt('research'))copyPrompt(true);});
-  $('pricing-handoff').addEventListener('click',()=>{if(showPrompt('pricing'))copyPrompt(true);});
-  $('copy-handoff').addEventListener('click',()=>copyPrompt());
-  $('copy-open-handoff').addEventListener('click',()=>copyPrompt(true));
-  $('open-chatgpt').addEventListener('click',event=>{try{event.currentTarget.href=chatDestination();rememberChat();}catch(e){event.preventDefault();$('copy-result').textContent=e.message;}});
+  $('research-handoff').addEventListener('click',()=>{if(showPrompt('research'))copyPrompt();});
+  $('pricing-handoff').addEventListener('click',()=>{if(showPrompt('pricing'))copyPrompt();});
+  $('copy-open-handoff').addEventListener('click',()=>copyPrompt());
+  $('chat-url').addEventListener('input',syncChatLink);
+  $('open-chatgpt').addEventListener('click',event=>{
+    try{
+      event.currentTarget.href=chatDestination();rememberChat();
+      if(!storageOK){event.preventDefault();$('copy-result').textContent='Export your draft before leaving; this browser could not save it.';}
+    }catch(e){event.preventDefault();$('chat-link-feedback').textContent=e.message;}
+    syncChatLink();
+  });
   $('return-with-research').addEventListener('click',()=>{$('handoff-dialog').close();$('import-research').click();});
   let importTimer;
   function showReuseOption(){
@@ -283,7 +314,7 @@
     let parsed=false;
     try{
       const data=E.parse($('import-text').value);parsed=true;pendingImport=E.importResearch(run,$('import-text').value,Date.now(),$('reuse-research').checked===true);
-      $('import-feedback').textContent=`${data.phase==='research'?'Add':'Update'} ${data.candidates.length} candidate(s). No review checks or confirmations are imported.`;
+      $('import-feedback').textContent=data.candidates.length===0?'No candidates qualified. Apply to save this completed batch.':data.phase==='research'&&pendingImport.candidates.length===run.candidates.length?'Already saved. Applying this response will keep your existing reviews.':`${data.phase==='research'?'Add':'Update'} ${data.phase==='research'?pendingImport.candidates.length-run.candidates.length:data.candidates.length} candidate(s). No review checks or confirmations are imported.`;
       $('import-candidates').innerHTML=data.candidates.map(c=>`<li><strong>${esc(c.scout?.selection||c.selection)}</strong>${c.scout?.event?' · '+esc(c.scout.event):''}</li>`).join('');
       $('apply-import').disabled=false;
     }catch(e){$('import-feedback').textContent=e.message+(parsed?' Your response is kept here. Resolve this issue before applying.':' Your response is kept here. Use “Fix response format” to reformat it without repeating the research.');$('repair-format').hidden=parsed;}
@@ -292,16 +323,15 @@
     try{target.value=await navigator.clipboard.readText();$('reuse-research').checked=false;after?.();}
     catch{target.focus();feedback.textContent='Clipboard access is unavailable. Touch and hold in the box, then choose Paste.';}
   }
-  $('import-research').addEventListener('click',()=>{if(!run){toast('Start a slate first.',true);return;}clearTimeout(importTimer);pendingImport=null;$('reuse-research').checked=false;$('import-text').value=run.handoffDrafts?.[run.pendingPhase||'research']||'';checkImport();$('import-dialog').showModal();});
+  $('import-research').addEventListener('click',()=>{if(!run){toast('Start a slate first.',true);return;}clearTimeout(importTimer);pendingImport=null;$('reuse-research').checked=false;$('import-context').textContent=slateContext(run.pendingPhase||'research');$('import-text').value=run.handoffDrafts?.[run.pendingPhase||'research']||'';checkImport();$('import-dialog').showModal();});
   $('import-text').addEventListener('input',()=>{$('reuse-research').checked=false;pendingImport=null;$('apply-import').disabled=false;clearTimeout(importTimer);if(run&&$('import-text').value.length<=1000000){run.handoffDrafts=run.handoffDrafts||{};run.handoffDrafts[run.pendingPhase||'research']=$('import-text').value;persist();}importTimer=setTimeout(checkImport,350);});
   $('repair-format').addEventListener('click',()=>{
     if(!run||!$('import-text').value.trim())return;
     const phase=run.pendingPhase||'research';
-    try{const prompt=E.formatPrompt(run,phase,$('import-text').value);$('import-dialog').close();showPrompt(phase);$('handoff-title').textContent='Fix the response format';$('handoff-text').value=prompt;copyPrompt(true);}
+    try{const prompt=E.formatPrompt(run,phase,$('import-text').value);$('import-dialog').close();if(!showPrompt(phase)){$('import-dialog').showModal();return;}$('handoff-title').textContent='Fix the response format';$('handoff-text').value=prompt;copyPrompt();}
     catch(e){$('import-feedback').textContent=e.message;}
   });
   $('reuse-research').addEventListener('change',checkImport);
-  $('preview-import').addEventListener('click',checkImport);
   $('paste-research-clipboard').addEventListener('click',()=>pasteText($('import-text'),$('import-feedback'),checkImport));
   $('research-file').addEventListener('change',async event=>{const file=event.target.files[0];if(!file)return;try{if(file.size>1000000)throw Error('Choose a research file under 1 MB.');$('reuse-research').checked=false;$('import-text').value=await file.text();checkImport();}catch(e){$('import-feedback').textContent=e.message;}event.target.value='';});
   $('apply-import').addEventListener('click',()=>{
@@ -309,14 +339,17 @@
     try{
       if(!run)throw Error('Start a slate before importing research.');
       if(!$('import-text').value.trim())throw Error('Paste the ChatGPT research response in the box above first.');
-      // Validate the current text on every click; the optional delayed preview is never a prerequisite.
+      // Validate the current text on every click; the delayed preview is never a prerequisite.
+      const data=E.parse($('import-text').value),beforeCount=run.candidates.length;
       const next=E.importResearch(run,$('import-text').value,Date.now(),$('reuse-research').checked===true);
       if(next.handoffDrafts)delete next.handoffDrafts[E.parse($('import-text').value).phase];
       const candidate=next.candidates.find(c=>c.id===selected)||next.candidates[0];
       const nextStage=candidate?Math.max(0,E.evaluate(next,candidate).next):0;
       run=next;run.pendingPhase=null;selected=candidate?.id||null;stage=nextStage;pendingImport=null;
-      persist();$('import-dialog').close();render();
-      toast('Research applied. Your candidates are below—review their sources before continuing.');
+      persist();render();
+      if(!storageOK){$('import-feedback').textContent='Research loaded in this session, but this browser could not save it. Close this window and export your draft before leaving.';$('import-feedback').className='error';return;}
+      $('import-dialog').close();
+      toast(data.candidates.length===0?'Research complete. No candidates qualified; your result is saved.':data.phase==='research'&&next.candidates.length===beforeCount?'Already saved. Your existing research and reviews were kept.':data.phase==='pricing'?'Pricing saved. Continue to review timing, exposure, and Final Gate.':'Research saved. Continue to review the sources and missing forecast evidence.');
       $('candidate-list').scrollIntoView({block:'start',behavior:'instant'});
     }catch(e){
       showReuseOption();
@@ -326,6 +359,13 @@
     }
   });
   $('export-slate').addEventListener('click',exportDraft);
+  $('copy-confirmed').addEventListener('click',async()=>{
+    const text=E.confirmedShortlist(run);
+    if(!text){toast('No currently valid Final Gate confirmations to copy. Recheck any expired prices first.',true);return;}
+    $('shortlist-text').value=text;$('shortlist-feedback').textContent='Copying your confirmed shortlist…';$('shortlist-dialog').showModal();
+    try{await navigator.clipboard.writeText(text);$('shortlist-feedback').textContent='Copied. Only your currently confirmed selections are included.';}
+    catch{$('shortlist-feedback').textContent='Touch and hold the selected text, then choose Copy.';$('shortlist-text').focus();$('shortlist-text').select();}
+  });
   $('restore-draft').addEventListener('change',async event=>{const file=event.target.files[0];if(!file)return;try{const next=restore(await file.text());if(run)exportDraft();run=next;selected=run.candidates[0]?.id||null;stage=0;render();toast('Draft restored. Research and approvals require fresh review.');}catch(e){toast(e.message,true);}event.target.value='';});
   $('close-candidate').addEventListener('click',()=>{$('disposition-form').reset();$('disposition-error').textContent='';$('disposition-dialog').showModal();});
   $('disposition-form').addEventListener('submit',event=>{event.preventDefault();const c=current(),status=$('disposition-status').value,reason=$('disposition-reason').value.trim(),trigger=$('disposition-trigger').value.trim(),expires=inputDate($('disposition-expiry').value);if(!reason)return;if(status==='WATCH'&&(!trigger||!Number.isFinite(Date.parse(expires))||Date.parse(expires)<=Date.now())){$('disposition-error').textContent='WATCH needs a trigger and a future review deadline.';return;}c.disposition={status,reason,trigger,expires,at:new Date().toISOString()};E.invalidate(run,c,reason);E.log(run,'Candidate closed as '+status,c,E.copy(c));$('disposition-dialog').close();render();});
@@ -390,5 +430,6 @@
   setInterval(()=>{if(run&&!$('slate').hidden)updateReadout();},30000);
   // Resume only a device-local working draft. It is never a canonical or tamper-proof record.
   try{const raw=localStorage.getItem(STORAGE);if(raw){const d=JSON.parse(raw);if(d?.schema==='atlas.slate.v1'&&Array.isArray(d.candidates)&&d.candidates.length<=8&&Array.isArray(d.history)&&d.candidates.every(c=>c&&E.KEYS.every(k=>c[k]&&typeof c[k]==='object'))){run=d;selected=run.candidates[0]?.id||null;run.candidates.forEach(c=>{c.final.confirmed=false;c.final.infoReviewed=false;c.final.imageReviewed=false;});}}}catch{storageOK=false;toast('The prior local draft could not be loaded. Restore an export or start a new slate.',true);}
+  restoreView();
   render();
 })();

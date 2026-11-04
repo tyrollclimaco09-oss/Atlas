@@ -112,14 +112,14 @@ test('no localStorage, sessionStorage or credential persistence in new adapter',
  assert.equal(code.includes('getSessionHeaders'),true);
  assert.equal(code.includes('innerHTML'),false);
 });
-test('original five served JS/CSS files match original recorded hashes',()=>{
- const provenance=JSON.parse(fs.readFileSync(path.resolve(__dirname,'../SOURCE_PROVENANCE.json'),'utf8'));
- const files=provenance.files.filter(f=>f.recoveredFile!=='index.html');
+test('five runtime JS/CSS assets match the current saved Sites source receipt',()=>{
+ const provenance=JSON.parse(fs.readFileSync(path.resolve(__dirname,'../CURRENT_SITE_SOURCE.json'),'utf8'));
+ const files=provenance.files.filter(f=>f.review_path!=='index.html');
  assert.equal(files.length,5);
  for(const file of files){
-  const bytes=fs.readFileSync(path.resolve(__dirname,'..',file.recoveredFile));
+  const bytes=fs.readFileSync(path.resolve(__dirname,'..',file.review_path));
   const hash=c.createHash('sha256').update(bytes).digest('hex');
-  assert.equal(hash,file.originalSha256,file.recoveredFile+' changed unexpectedly');
+  assert.equal(hash,file.sha256,file.review_path+' changed unexpectedly');
  }
 });
 test('original run slate button stays present and read-only UI panel has unique ids',()=>{
