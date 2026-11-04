@@ -4,6 +4,14 @@
 
 ## Why
 
+Source-test receipt URLs must identify the same owner/repository as `source.repository`.
+Comparison is case-insensitive; the original URL is preserved. A test receipt for
+another repository rejects the whole input with `TEST_REPOSITORY_MISMATCH`.
+Explicit supporting dependency references under `evidence` may still point to
+other repositories and retain their unverified labels. Neither URL matching nor
+the content digest verifies a run's commit, test count, outcome or authenticity;
+the receiving session must independently check those facts.
+
 The existing PR #24 FORGE `brief` selects 40 indexed fork references for a GPT project but doesn't carry a trustworthy summary of the *actual repository revision*, earlier test receipts and open blockers. ATLAS already has a populated Create State model and active saved handoff packages. It should not create another memory database or silently manufacture prior-session evidence.
 
 This change adds a small, **operator-provided evidence receipt** and a deterministic, portable command that can be pasted into a new GPT/Codex conversation.

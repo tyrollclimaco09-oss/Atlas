@@ -180,3 +180,32 @@ test("a maliciously substituted hash cannot claim authenticity",()=>{
  assert.throws(()=>renderHandoff(p),/PACKET_DIGEST_MISMATCH/);
  assert.equal(p.integrity.scheme,"SHA256_CONTENT_DIGEST_NOT_SIGNATURE");
 });
+
+test("a claimed source test run cannot point to another repository of the same owner",()=>{
+ const x=clone();x.tests[0].run_url="https://github.com/tyrollclimaco09-oss/another-project/actions/runs/123456";
+ assert.throws(()=>create(x),/TEST_REPOSITORY_MISMATCH/);
+});
+test("a claimed source test run cannot borrow a different owner's same-named repository",()=>{
+ const x=clone();x.tests[0].run_url="https://github.com/another-owner/Atlas/actions/runs/123456";
+ assert.throws(()=>create(x),/TEST_REPOSITORY_MISMATCH/);
+});
+test("one foreign test receipt rejects the whole handoff without modifying its input",()=>{
+ const x=clone();x.tests.push({...x.tests[0],id:"FOREIGN_TESTS",run_url:"https://github.com/another-owner/another-project/actions/runs/123456"});
+ const before=JSON.stringify(x);
+ assert.throws(()=>create(x),/TEST_REPOSITORY_MISMATCH/);
+ assert.equal(JSON.stringify(x),before);
+});
+test("source repository matching follows GitHub case-insensitive identity without rewriting the URL",()=>{
+ const x=clone();x.tests[0].run_url="https://github.com/TyrollClimaco09-oss/ATLAS/actions/runs/123456";
+ const p=create(x);
+ assert.equal(p.tests[0].run_url,x.tests[0].run_url);
+ assert.equal(p.tests[0].verification_state,"OPERATOR_REPORTED_NEEDS_RECHECK");
+ assert.equal(p.network_requests,0);
+});
+test("explicit dependency references can remain cross-repository without becoming source test receipts",()=>{
+ const x=clone();x.evidence.push({id:"DEPENDENCY_PR",kind:"PR",url:"https://github.com/another-owner/dependency/pull/123",summary:"Explicit dependency reference requiring independent review",observed_at:x.captured_at});
+ const p=create(x);
+ assert.equal(p.evidence.at(-1).url,x.evidence.at(-1).url);
+ assert.equal(p.evidence.at(-1).verification_state,"OPERATOR_REPORTED_NEEDS_RECHECK");
+ assert.equal(p.approval_authority,false);
+});

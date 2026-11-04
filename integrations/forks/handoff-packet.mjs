@@ -39,6 +39,12 @@ const textURL=(value,pattern)=>{
  if(typeof value!=="string"||!pattern.test(value))throw Error("EVIDENCE_URL_INVALID");
  return value;
 };
+const testRunURL=(value,repository)=>{
+ const url=textURL(value,CI);
+ const identity=new URL(url).pathname.split("/").slice(1,3).join("/");
+ if(identity.toLowerCase()!==repository.toLowerCase())throw Error("TEST_REPOSITORY_MISMATCH");
+ return url;
+};
 const limit=(a,max,what)=>{
  if(!Array.isArray(a)||a.length>max)throw Error("INVALID_"+what+"_COUNT");
  return a;
@@ -85,7 +91,7 @@ export function inspectHandoff(input,{now=new Date().toISOString(),catalog=loadC
   const testObserved=time(entry.observed_at,now);
   if(Date.parse(testObserved)>Date.parse(captured)+60000)throw Error("RECEIPT_CAUSALITY_INVALID");
   tests.push({id:entry.id,command:plain(entry.command,180),passed:entry.passed,failed:entry.failed,
-    observed_at:testObserved,run_url:textURL(entry.run_url,CI),
+    observed_at:testObserved,run_url:testRunURL(entry.run_url,input.source.repository),
     verification_state:"OPERATOR_REPORTED_NEEDS_RECHECK"});
  }
  const blockers=[];
