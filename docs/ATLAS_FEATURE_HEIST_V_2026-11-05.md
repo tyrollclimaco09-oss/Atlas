@@ -1,0 +1,44 @@
+# ATLAS 🦾 — Feature Heist V: Original Product-Feature Inventions
+
+**Research date:** 2026-11-05. **Mode:** SHADOW / LAB. **NBA + NFL first.** These are product-pattern inspirations, not copies of proprietary source, provider data, prices, screenshots, trademarks, or model forecasts. User Final Gate remains mandatory. No real wagers or API paid credits.
+
+## Competitive research: observed features and original adaptation
+
+| Feature | Public product reference | What ATLAS should actually build | Crucial anti-hallucination acceptance test | Priority |
+|---|---|---|---|---|
+| **Alt-Line Scrubber** | Slateline interactive distribution / player-prop slider: https://slateline.co/ | Exact discrete distribution explorer; draggable threshold; probability, 10th/50th/90th percentiles, break-even comparison, time-stamped exact account-book lines; separate synthetic/demo vs validated forecast | Probability monotonically decreases as over-line increases; no invented market quotes; no sportsbook auto-bet | P0 |
+| **Injury Shock Replay** | PropSims injury-triggered re-simulations with visible deltas: https://propsims.com/about/ | Side-by-side `frozen_original` vs `what_if_2026...` opportunity and outcome scenarios; explicit source/observed/effective times and roster identity | Original freeze immutable; chronology checked; hypothetical adjustment cannot be labeled proven injury effect | P0 |
+| **BetSlip Progress / Lock-screen** | BetSlip Live multi-screenshot leg tracking and Live Activities: https://betsliplive.app/ | Manual-receipt or future licensed sportsbook feed; screenshot → parsed draft → operator confirms → ticket/leg progress with live stats and DNP-status awareness | Never auto-save, accept, or execute a screenshot; preserve raw receipt and corrected extraction; no fabricated prices or voids | P1 |
+| **Ask the Ledger** | Pikkit Performance Center filtered chart + AI query: https://pikkit.com/performance-center | Query the same verified records behind per-book ROI, market ROI, CLV, paper results, duplicate root failures; show coverage/timeframe | All numeric claims deterministic from retrieved settled records; missing coverage returns unavailable; paper and real never mixed | P0 |
+| **Projection Blender** | StatWarrior editable model projections and weights: https://statwarrior.com/ | Comparison of ORACLE frozen, market-assisted, Council, game-script, and strength baseline with weight controls and independent evidence freezes | Unfrozen/incompatible probabilities cannot enter actionable pricing; no hidden postgame update to original frozen predictions | P1 |
+| **Reversible History Import** | WagerTrace CSV field mapping, preview, undo: https://wagertrace.com/ | Receipt import with source IDs/digests, human correction history, separate book ledgers and undo-by-superseding-event rather than destructive record deletion | Duplicate detection; invalid total direction stays unresolved; rollback is append-only and auditable | P1 |
+| **Small-sample rate interval** | FantasyFire Wilson interval explanation: https://www.fantasyfire.app/about | Hit numerators and denominators with Wilson intervals beside trend charts, clearly marked retrospective not predicted probability | 5/6 = 83.3% history but broad uncertainty; cannot become 83% next-game prediction | P0 |
+| **Fair alternate ladder** | KrashBoard alt-line fair-prices: https://www.krashboard.app/ | Show fair odds across many alternate stat thresholds using *one* coherent discrete distribution; only show executable quotes if actually captured | Cross-threshold probabilities monotone; no internally contradictory ladders; accepted book price exact market+threshold match | P1 |
+| **Saved research scenes** | StatsNext saved scanner views, move filters, personal watchlists: https://statsnext.com/features | One-tap views: NBA role changes, NFL target share, late-game news, +EV verified, WATCH near threshold, HYDRA duplicate risk | Saved view retains timestamped filters and source coverage; does not imply fresh data if stale | P1 |
+| **Opportunity and price labels** | Gridline measured/derived field provenance: https://getgridlinehq.com/ | Every number on player and matchup page tagged OFFICIAL / PUBLIC_REFERENCE / MODEL_ESTIMATE / OPERATOR_RECEIPT / MISSING | Missing != zero, public odds != account executable | P0 |
+| **Line-bump detector** | Optimize.Bet line differences / alternative views: https://www.optimize.bet/ | Alert when line moves across a *specific threshold*, with before/after same-book and same-market comparison | Do not alert on mismatched events or stale board refreshes; measure alert latency | P1 |
+| **Published failure log** | PropSims public forecasts; Probetrics locked winner calls: https://propsims.com/about/ ; https://www.probetrics.com/ | Visible scorecard of wins/losses/voids/abstentions, with model version, quote status and outcome from pre-tip freeze | Results cannot be overwritten by retrospective model changes; 100% sample coverage including misses | P0 |
+| **Role-change research views** | BET IQ Role Change Radar, minutes shift: https://www.joinbetiq.com/ | Injury/rotation delta watch that prioritizes opportunity redistribution over last-five hit rate | Same data exposure times and team identity checks before story generation | P1 |
+| **Multi-book price context** | Probetrics exact price and source books: https://www.probetrics.com/ | Matching player/game/line/side odds across DK and BetMGM; market-derived fair probability separately from independent model | No-vig apples-to-apples; authoritative price timestamp and bookmaker specificity | P0 |
+| **Privacy-aware bankroll** | SeedStake screenshot import and review: https://www.seedstake.app/ | Source-backed real-money activity, separate paper from real, per-book amounts and user-controlled exports | No implicit wallet balance from partial transactions; never infer user bank deposits | P1 |
+| **Model caveat panel** | Slateline public model calibration/version history: https://slateline.co/ | Show model identifier, training cutoff, calibration group, recent drift, decision threshold and data gaps adjacent to every probability | Never promote odds-derived consensus as independent forecast; confidence labels require held-out validation | P0 |
+
+## Feature bundle: what to build now
+
+**Phase A (one reviewable PR):** Implement pure research-only `feature-lab` functions: exact alt-line scrubber using supplied outcome weights, side-by-side what-if world comparison, Wilson intervals for descriptive rate charts, parsed receipt draft validator, deterministic settled-ledger slicer. Run standalone tests; no network or book calls. Build a small human-facing prototype later (not included).
+
+**Phase B (separate acceptance gate):** Attach to real price, injury, and ledger readers only after source identity, record freshness, and operator visibility are verified. This requires genuine API capability and provider terms, not assumptions. No auto-placement.
+
+**Phase C:** Prospective validation on NBA/NFL with premarket freezes, game/rotation versioning, baseline comparisons, and tracking of the entire eligible universe including misses and abstentions. Evaluate Brier/log loss, proper scoring for props where distribution supplied, fair-price error where objective, effective alert latency, manual data-entry reduction and user trust outcomes. A tool being convenient does not imply positive EV.
+
+## Two practical ATLAS workflows
+
+**Operator researches alternate lines:** Player/market selection → confirm active roster → inspect frozen discrete forecast → drag line → see modeled p and uncertainty → compare same-threshold DK/MGM reference data only if truly received → EDGE THIEF evaluates → HYDRA paper or human-approved Final Gate. Public demo shows synthetic examples, no made-up book numbers.
+
+**Operator shares DK receipt:** Attach screenshot → extract proposed fields (future adapter) → review player, matchup, bet type, stake, accepted odds and timestamp → detect duplicates and DNP flags → manually confirm import → grade with authoritative outcome source → show CLV only if time- and market-matched close exists → reconcile actual per-book balance from real readback or explicit user confirmation.
+
+## Original code and evidence level
+
+`feature-lab.cjs` + `feature-lab.test.cjs` are original, pure functions, no browser API/network and no execution authority. 35/35 local synthetic checks passed November 5. The functions do not crawl apps, ingest screenshot pixels, connect to bookmakers, calculate genuinely independent fair probabilities, or make tickets executable. They are **building blocks**, not live features.
+
+New feature findings remain LAB until reviewed. Existing PR #29 remains untouched by this separate initiative. Avoid recurring paid subscriptions with a $13.50 last confirmed DraftKings balance. Truth > presentation. Human Final Gate required.
