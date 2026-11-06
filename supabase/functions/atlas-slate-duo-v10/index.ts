@@ -57,12 +57,15 @@ Deno.serve(async req=>{
    if(s.production_authority!==false||s.real_betting_authority!==false)return fail("NODE_AUTHORITY_INVALID",mode);
    if(!latest.has(s.node_key))latest.set(s.node_key,s);
   }
+  const {data:modules,error:moduleError}=await db.from("atlas_cortex_feature_bindings_v1")
+   .select("feature_key,owner_node,state,source_pr,production_authority").order("feature_key").limit(30);
+  if(moduleError||!Array.isArray(modules)||modules.some(x=>x.production_authority!==false))return fail("RESEARCH_MODULE_REGISTRY_UNAVAILABLE",mode);
   const missing=expectedNodes.filter(n=>!latest.has(n));
   if(missing.length)return fail("NODE_COVERAGE_INCOMPLETE",mode);
   const nodes=expectedNodes.map(n=>latest.get(n));
   const duo=nodes.filter((n:any)=>n.node_key==="ORACLE"||n.node_key==="EDGE_THIEF");
   return respond({ok:true,...common,status:"WATCH_RESEARCH_ONLY",run,nodes,duo_status:duo.every((n:any)=>n.state==="RESEARCH_ONLY")?"RESEARCH_REQUIRES_NATIVE_PROOF":"MISSING_FROZEN_DUO_EVIDENCE",
-   final_gate_status:"BLOCKED_UNTIL_NATIVE_GATE_AND_OPERATOR",required_nodes:expectedNodes});
+   final_gate_status:"BLOCKED_UNTIL_NATIVE_GATE_AND_OPERATOR",research_modules:modules,required_nodes:expectedNodes});
  }
  if(mode==="candidate"){
   const candidate=parsed.searchParams.get("candidate_key")??"";
@@ -78,18 +81,26 @@ Deno.serve(async req=>{
    db.from("atlas_kairos_arbitrations").select("id,actionability,decision_cutoff,execution_price_binding_id,created_at").eq("candidate_key",candidate).order("created_at",{ascending:false}).limit(1),
    db.from("atlas_sentinel_validity_proofs").select("id,proof_status,decision_cutoff,created_at").eq("candidate_key",candidate).order("created_at",{ascending:false}).limit(1),
    db.from("atlas_tactician_risk_proofs").select("id,proof_status,cluster_coverage_status,decision_cutoff,created_at").eq("candidate_key",candidate).order("created_at",{ascending:false}).limit(1),
-   db.from("final_gate_checks").select("id,gate_status,executable_price_verified,operator_approved_at,execution_receipt_id,decision_cutoff,invariant_status,invariant_failures")
+   db.from("final_gate_checks").select("id,gate_status,checked_at,executable_price_verified,operator_approved_at,execution_receipt_id,decision_cutoff,invariant_status,invariant_failures")
      .eq("id",spine.final_gate_id??"00000000-0000-0000-0000-000000000000").limit(1)
   ]);
   if([oracle,edge,kairos,sentinel,risk,gate].some(x=>x.error))return fail("NATIVE_PROOF_DB_READ_FAILED",mode);
   const oracleRow=oracle.data?.[0]??null;
   const edgeRows=edge.data??[];
   const gateRow=gate.data?.[0]??null;
-  const duoReady=spine.oracle_independent===true&&
+  const now=Date.now(),cutoff=Date.parse(spine.decision_cutoff??"");
+  const freshDeadline=Number.isFinite(cutoff)&&cutoff>=now &&
+   (!spine.expires_at||Date.parse(spine.expires_at)>now);
+  const duoReady=freshDeadline&&spine.oracle_independent===true&&
    oracleRow?.proof_status==="PASS"&&oracleRow?.independent_evidence_groups>=2&&
+   Date.parse(oracleRow?.decision_cutoff??"")===cutoff&&
    edgeRows.length>0&&edgeRows.every(x=>x.state_version===spine.state_version)&&
-   edgeRows.every(x=>x.evidence_cutoff<=spine.decision_cutoff);
-  const gateNative=!!gateRow&&gateRow.executable_price_verified===true&&gateRow.gate_status==="READY_FOR_OPERATOR";
+   edgeRows.every(x=>Number.isFinite(Date.parse(x.evidence_cutoff))&&Date.parse(x.evidence_cutoff)<=cutoff)&&
+   edgeRows.every(x=>["CLEARED","RESOLVED","NO_OBJECTION"].includes(x.challenge_status));
+  const checkedAt=Date.parse(gateRow?.checked_at??"");
+  const gateNative=freshDeadline&&!!gateRow&&gateRow.executable_price_verified===true&&
+   gateRow.gate_status==="READY_FOR_OPERATOR"&&gateRow.invariant_status==="PASS"&&
+   Number.isFinite(checkedAt)&&checkedAt<=now&&now-checkedAt<=300000;
   return respond({ok:true,...common,status:gateNative&&duoReady?"NATIVE_READY_FOR_HUMAN_REVIEW":"WATCH_OR_BLOCKED",
    candidate_key:candidate,
    canonical:{state_version:spine.state_version,decision_cutoff:spine.decision_cutoff,truth_label:spine.truth_label,lifecycle_status:spine.lifecycle_status,provenance_valid:spine.provenance_valid,state_valid:spine.state_valid,expires_at:spine.expires_at},
