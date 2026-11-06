@@ -98,7 +98,7 @@ Deno.serve(async req=>{
    edgeRows.every(x=>Number.isFinite(Date.parse(x.evidence_cutoff))&&Date.parse(x.evidence_cutoff)<=cutoff)&&
    edgeRows.every(x=>["CLEARED","RESOLVED","NO_OBJECTION"].includes(x.challenge_status));
   const checkedAt=Date.parse(gateRow?.checked_at??"");
-  const gateNative=freshDeadline&&!!gateRow&&gateRow.executable_price_verified===true&&
+  const gateNative=freshDeadline&&spine.state_valid===true&&spine.provenance_valid===true&&spine.sentinel_valid===true&&!!gateRow&&gateRow.executable_price_verified===true&&
    gateRow.gate_status==="READY_FOR_OPERATOR"&&gateRow.invariant_status==="PASS"&&
    Number.isFinite(checkedAt)&&checkedAt<=now&&now-checkedAt<=300000;
   return respond({ok:true,...common,status:gateNative&&duoReady?"NATIVE_READY_FOR_HUMAN_REVIEW":"WATCH_OR_BLOCKED",
