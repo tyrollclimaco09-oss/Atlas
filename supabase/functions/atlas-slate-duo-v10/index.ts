@@ -105,7 +105,8 @@ Deno.serve(async req=>{
   for(const stage of stageRows)if(!nodeMap.has(stage.node_key))nodeMap.set(stage.node_key,stage.state);
   const missingNodes=expectedNodes.filter(n=>!nodeMap.has(n));
   const duplicatedEvents=new Set(games.map(x=>x.source_event_id)).size!==games.length;
-  if(missingNodes.length||duplicatedEvents||games.length!==run.event_count)
+  if(missingNodes.length||duplicatedEvents||games.length!==run.event_count||
+     games.some(g=>!g.canonical_event_id)||modules.length===0)
     return fail("INTEGRATION_COVERAGE_INCOMPLETE",mode);
   const totals={scheduled_games:run.event_count,
     canonical_events:games.filter(x=>x.canonical_event_id).length,
