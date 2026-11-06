@@ -1,0 +1,18 @@
+import {test} from "node:test";
+import assert from "node:assert/strict";
+import {fetchCortexRead,validateCortexResponse} from "../src/cortex-read-client.mjs";
+const endpoint="https://example.supabase.co/functions/v1/atlas-cortex-read-v9";
+const manifest={ok:true,execution_authority:false,production_authority:false,human_final_gate_required:true,scope:"ATLAS_CORTEX_V9_LAB",mode:"manifest",modules:[{feature_key:"value_cortex",owner_node:"EDGE_THIEF",production_authority:false}]};
+test("valid manifest read",async()=>{let used=false;const v=await fetchCortexRead({endpoint,operatorJwt:"synthetic-only",fetchImpl:async(url,opts)=>{used=true;assert.match(url,/mode=manifest/);assert.equal(opts.method,"GET");assert.equal(opts.cache,"no-store");return {ok:true,json:async()=>manifest}}});assert(used);assert.equal(v.modules.length,1)});
+test("requires operator session",async()=>assert.rejects(fetchCortexRead({endpoint}),/ATLAS_OPERATOR_SESSION_REQUIRED/));
+test("rejects insecure URL",async()=>assert.rejects(fetchCortexRead({endpoint:"http://example.com/functions/v1/atlas-cortex-read-v9",operatorJwt:"x"}),/ATLAS_SECURE_ENDPOINT_REQUIRED/));
+test("rejects invalid function path",async()=>assert.rejects(fetchCortexRead({endpoint:"https://example.com/functions/v1/bets",operatorJwt:"x"}),/ATLAS_ENDPOINT_MISMATCH/));
+test("disallows betting mode",async()=>assert.rejects(fetchCortexRead({endpoint,mode:"bet",operatorJwt:"x"}),/ATLAS_MODE_INVALID/));
+test("rejects execution",()=>assert.throws(()=>validateCortexResponse({...manifest,execution_authority:true},"manifest"),/ATLAS_CONTRACT_MISMATCH/));
+test("rejects production",()=>assert.throws(()=>validateCortexResponse({...manifest,production_authority:true},"manifest"),/ATLAS_CONTRACT_MISMATCH/));
+test("rejects invalid modules",()=>assert.throws(()=>validateCortexResponse({...manifest,modules:[{}]},"manifest"),/ATLAS_MANIFEST_INVALID/));
+test("rejects invalid scope",()=>assert.throws(()=>validateCortexResponse({...manifest,scope:"EXTERNAL"},"manifest"),/ATLAS_CONTRACT_MISMATCH/));
+test("accepts non-executable receipt",()=>assert.equal(validateCortexResponse({...manifest,mode:"receipts",receipts:[{production_authority:false}]},"receipts").receipts.length,1));
+test("rejects executable receipt",()=>assert.throws(()=>validateCortexResponse({...manifest,mode:"receipts",receipts:[{production_authority:true}]},"receipts"),/ATLAS_RECEIPTS_INVALID/));
+test("health rejects fabricated live proof",()=>{const r={...manifest,mode:"health",registered_module_count:7,live_origin_verified:false,book_account_price_verified:false};assert.equal(validateCortexResponse(r,"health").registered_module_count,7);assert.throws(()=>validateCortexResponse({...r,live_origin_verified:true},"health"),/ATLAS_HEALTH_INVALID/)});
+test("propagates HTTP 401",async()=>assert.rejects(fetchCortexRead({endpoint,operatorJwt:"x",fetchImpl:async()=>({ok:false,status:401})}),/ATLAS_BRIDGE_HTTP_401/));
