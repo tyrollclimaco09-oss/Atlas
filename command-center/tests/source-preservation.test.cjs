@@ -46,6 +46,7 @@ test('recovered HTML differs from original only by named source-read and canonic
   html = html.replace(readOnlyBlock[0], '');
   const additions = [
     '  <script src="slate-sources.js" defer></script>\n',
+    '  <script src="cortex-bridge.js" defer></script>\n',
     '  <script src="canonical-read.js" defer></script>\n',
     '  <script src="canonical-resume.js" defer></script>\n',
     '        <div id="canonical-resume" class="draft-toolbar" role="status" aria-live="polite"></div>\n',
