@@ -32,6 +32,10 @@ jobs:
         run: |
           node --test tests/invite-operator-v14.test.mjs
           node --test tests/test-operator-http-v14.test.mjs
+      - name: V14 anonymous HTTP gate (no credentials)
+        run: |
+          node --test tests/verify-anonymous-edge-v14.test.mjs
+          node scripts/research/verify-anonymous-edge-v14.mjs
       - name: V9 source/client contract
         run: node --test tests/cortex-read-client.test.mjs
       - name: Regression on prior original research modules
