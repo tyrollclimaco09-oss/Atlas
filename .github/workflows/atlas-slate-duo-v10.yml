@@ -28,6 +28,10 @@ jobs:
           node --test tests/enroll-operator-v13.test.mjs
           node --test scripts/research/reference-intake-v13.test.cjs
           node --test scripts/research/integration-smoke-v13.test.cjs
+      - name: V14 secure operator invitation and HTTP proof guards
+        run: |
+          node --test tests/invite-operator-v14.test.mjs
+          node --test tests/test-operator-http-v14.test.mjs
       - name: V9 source/client contract
         run: node --test tests/cortex-read-client.test.mjs
       - name: Regression on prior original research modules
