@@ -65,6 +65,7 @@ test('integrated API reads actual canonical status and evidence tables',()=>{
  for(const name of ['atlas_slate_research_runs_v10','atlas_slate_node_receipts_v10','atlas_slate_candidate_coherence_v12','atlas_cortex_feature_bindings_v1','atlas_cortex_release_receipts_v1'])
   assert(edge.includes(name));
 });
+test('API rejects incomplete canonical event or empty module registry',()=>{assert.match(edge,/games\.some\(g=>!g\.canonical_event_id\)/);assert.match(edge,/modules\.length===0/)});
 test('API fails shut for missing or inconsistent stages',()=>{
  assert.match(edge,/INTEGRATION_COVERAGE_INCOMPLETE/);assert.match(edge,/UNAUTHORIZED_INTEGRATION_AUTHORITY_CLAIM/);
 });
