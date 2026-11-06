@@ -16,6 +16,7 @@ export async function enroll({env=process.env,fetcher=fetch,apply=false}={}){
  ATLAS_OPERATOR_CONFIRMED_EMAIL_SHA256:emailSha256,ATLAS_OPERATOR_ADMIN_APPROVAL:approval,
  ATLAS_OPERATOR_ADMIN_WRITE_CONFIRM:confirmation}=env;
  if(!url?.startsWith('https://')||!key)throw Error('SERVER_SECRETS_REQUIRED');
+ if(key.startsWith('sb_secret_'))throw Error('USE_SDK_OPERATOR_BOOTSTRAP_V15_FOR_NEW_API_KEYS');
  if(!uuid.test(id??''))throw Error('VERIFIED_USER_ID_REQUIRED');
  const endpoint=url.replace(/\/$/,'')+'/auth/v1/admin/users/'+id;
  const headers={apikey:key,Authorization:'Bearer '+key,'content-type':'application/json'};
