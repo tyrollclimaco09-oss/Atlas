@@ -23,6 +23,11 @@ jobs:
         run: node --test scripts/research/postgame-v11.test.cjs
       - name: V12 cross-node real DB fixture, coherent evidence and auth regression
         run: node --test scripts/research/integration-smoke-v12.test.cjs
+      - name: V13 verified-operator enrollment and public-reference native intake
+        run: |
+          node --test tests/enroll-operator-v13.test.mjs
+          node --test scripts/research/reference-intake-v13.test.cjs
+          node --test scripts/research/integration-smoke-v13.test.cjs
       - name: V9 source/client contract
         run: node --test tests/cortex-read-client.test.mjs
       - name: Regression on prior original research modules
