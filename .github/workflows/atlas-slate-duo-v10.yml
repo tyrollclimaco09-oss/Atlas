@@ -19,6 +19,8 @@ jobs:
         run: node --test scripts/research/slate-duo-v10.test.cjs
       - name: V11 native schedule and handoff identity checks
         run: node --test scripts/research/native-handoff-v11.test.cjs
+      - name: V11 official postgame grading and temporal validation
+        run: node --test scripts/research/postgame-v11.test.cjs
       - name: V9 source/client contract
         run: node --test tests/cortex-read-client.test.mjs
       - name: Regression on prior original research modules
