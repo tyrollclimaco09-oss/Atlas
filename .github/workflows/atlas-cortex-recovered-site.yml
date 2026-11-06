@@ -1,0 +1,22 @@
+name: ATLAS Cortex recovered UI read-only acceptance
+on:
+  push:
+    branches: [review/atlas-cortex-v9-site-bridge]
+  pull_request:
+    branches: [review/command-center-slate-reader-2026-10-30]
+permissions:
+  contents: read
+jobs:
+  source-ui:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --test command-center/tests/cortex-bridge.test.cjs
+      - run: node --test command-center/tests/slate-sources.test.cjs
+      - run: node --test command-center/tests/source-preservation.test.cjs
+      - run: |
+          grep -F 'cortex-bridge.js' command-center/index.html
+          grep -F 'READ_ONLY' command-center/cortex-bridge.js
