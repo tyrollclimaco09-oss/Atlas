@@ -67,6 +67,22 @@ Deno.serve(async req=>{
   return respond({ok:true,...common,status:"WATCH_RESEARCH_ONLY",run,nodes,duo_status:duo.every((n:any)=>n.state==="RESEARCH_ONLY")?"RESEARCH_REQUIRES_NATIVE_PROOF":"MISSING_FROZEN_DUO_EVIDENCE",
    final_gate_status:"BLOCKED_UNTIL_NATIVE_GATE_AND_OPERATOR",research_modules:modules,required_nodes:expectedNodes});
  }
+ if(mode==="handoff"){
+  const key=parsed.searchParams.get("run_key")??"ATLAS-NBA-20261106-V10-RESEARCH-R1";
+  if(!/^ATLAS-[A-Z0-9-]{12,110}$/.test(key))return fail("INVALID_RUN_KEY",mode,400);
+  const {data,error}=await db.from("atlas_slate_native_handoff_v11")
+   .select("run_key,slate_date,league,source_event_id,away_team,home_team,start_at,canonical_event_id,native_candidate_count,independent_oracle_proof_count,resolved_edge_thief_count,fresh_execution_grade_quote_count,native_ready_gate_count,handoff_status,evidence_gaps,execution_authority,model_production_authority,human_final_gate_required")
+   .eq("run_key",key).order("start_at",{ascending:true}).limit(30);
+  if(error||!Array.isArray(data))return fail("NATIVE_HANDOFF_AUDIT_UNAVAILABLE",mode);
+  if(data.some(x=>x.execution_authority!==false||x.model_production_authority!==false||x.human_final_gate_required!==true))
+   return fail("HANDOFF_AUTHORITY_CONTRACT_INVALID",mode);
+  const counts={schedule_games:data.length,canonical_events:data.filter(x=>x.canonical_event_id).length,
+   native_market_candidates:data.reduce((n,x)=>n+x.native_candidate_count,0),
+   independent_oracle_proofs:data.reduce((n,x)=>n+x.independent_oracle_proof_count,0),
+   fresh_execution_quotes:data.reduce((n,x)=>n+x.fresh_execution_grade_quote_count,0)};
+  return respond({ok:true,...common,status:"RESEARCH_HANDOFF_AUDIT_ONLY",run_key:key,counts,games:data,
+   outcome:"NO_BET_AUTHORITY_FROM_HANDOFF",prospective_training_eligible:false});
+ }
  if(mode==="candidate"){
   const candidate=parsed.searchParams.get("candidate_key")??"";
   if(!/^[a-zA-Z0-9_.:-]{8,140}$/.test(candidate))return fail("INVALID_CANDIDATE_KEY",mode,400);
