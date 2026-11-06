@@ -1,0 +1,32 @@
+name: ATLAS Cortex V9 research integration acceptance
+on:
+  push:
+    branches: [research/atlas-cortex-supabase-v9]
+  pull_request:
+    branches: [research/atlas-integration-arena-v8]
+permissions:
+  contents: read
+jobs:
+  research-integrity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify research and bridge contracts
+        run: |
+          node --test tests/cortex-read-client.test.mjs
+          node scripts/research/pivot-gate.test.cjs
+          node scripts/research/market-intelligence.test.cjs
+          node scripts/research/discovery-guard.test.cjs
+          node scripts/research/feature-lab.test.cjs
+          node scripts/research/value-cortex.test.cjs
+          node scripts/research/edge-dna.test.cjs
+          node scripts/research/integration-v8-public.test.cjs
+      - name: Require read-only bridge
+        run: |
+          grep -F 'READ_ONLY_GET_REQUIRED' supabase/functions/atlas-cortex-read-v9/index.ts
+          grep -F 'human_final_gate_required:true' supabase/functions/atlas-cortex-read-v9/index.ts
+          grep -F 'production_authority = false' supabase/migrations/20261106033701_atlas_cortex_v9_read_only_integration.sql
