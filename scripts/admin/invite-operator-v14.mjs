@@ -25,6 +25,7 @@ export async function inviteOperator({env=process.env,send=false,fetcher=fetch}=
   throw Error('SECOND_INVITATION_CONFIRMATION_REQUIRED');
  const secret=env.SUPABASE_SERVICE_ROLE_KEY??env.SUPABASE_SECRET_KEY;
  if(typeof secret!=='string'||secret.length<20)throw Error('TRUSTED_ADMIN_SECRET_REQUIRED');
+ if(secret.startsWith('sb_secret_'))throw Error('USE_SDK_OPERATOR_BOOTSTRAP_V15_FOR_NEW_API_KEYS');
  const response=await fetcher(EXPECTED_URL+'/auth/v1/invite',{
   method:'POST',
   headers:{'Content-Type':'application/json',apikey:secret,Authorization:'Bearer '+secret},
