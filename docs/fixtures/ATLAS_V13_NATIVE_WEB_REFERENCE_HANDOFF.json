@@ -1,0 +1,47 @@
+{
+  "contract": "ATLAS_V13_NATIVE_WEB_REFERENCE_HANDOFF",
+  "observed_at_utc": "2026-11-06 15:49:45.768351+00",
+  "slate_run_key": "ATLAS-NBA-20261106-V10-RESEARCH-R1",
+  "public_reference": {
+    "event": "WAS@ATL",
+    "source_url": "https://agentbets.ai/odds/draftkings/nba/",
+    "underlying_feed": "The Odds API reported by third-party aggregator",
+    "book_displayed": "DraftKings",
+    "selection": "Washington Wizards",
+    "market": "moneyline",
+    "odds_american": 231,
+    "asof_utc": "2026-11-06T15:00:00Z",
+    "account_executable": false
+  },
+  "native_record": {
+    "canonical_event_key": "NBA:2026-11-06:WAS@ATL",
+    "native_candidate_key": "RUNTIME:9145fa1f-b29e-4c5d-ba0e-bb101a381bd1:S1:692329fd-481a-4d43-83bc-992eba55cbb7",
+    "lifecycle": "SCOUTED",
+    "truth_label": "EXPLORATORY_ONLY",
+    "oracle_independence_weight": 0
+  },
+  "db_counts": {
+    "intake_attempts": 2,
+    "failed_intakes": 1,
+    "completed_intakes": 1,
+    "candidate_node_receipts": 12,
+    "native_candidates": 1,
+    "coherent_duo_candidates": 0,
+    "ready_final_gates": 0,
+    "execution_quotes": 0,
+    "actual_final_gate_rows_for_candidate": 0
+  },
+  "auth": {
+    "auth_users": 0,
+    "site_credentials": 0
+  },
+  "decision": {
+    "final_gate": "BLOCKED",
+    "independent_fair_probability": null,
+    "expected_value": null,
+    "approved_bet": null,
+    "actual_wager": false,
+    "paid_API_credit_calls": 0
+  },
+  "failed_first_attempt": "evidence_lineage_correlation_status_check rejected DEPENDENT; preserved as FAILED, successor CORRELATED accepted under distinct idempotency key"
+}

@@ -1,0 +1,72 @@
+{
+  "contract": "ATLAS_V8_NOV05_POSTGAME_FORENSICS_V11",
+  "reviewedAtSourceUtc": "2026-11-06T08:18:43.2255274Z",
+  "originalForecastSource": "scripts/research/fixtures/v8/ATLAS_INTEGRATION_V8_PRETIP_PUBLIC.json",
+  "originalForecastBlobSha": "a755229b5522aaf36586585e7e1dfb843320cdcd",
+  "originalForecastFrozenAtUtc": "2026-11-06T01:29:19.272Z",
+  "forecastStatus": "SHADOW_ONLY_UNCALIBRATED",
+  "resultSource": "DraftKings connected sports results: ScoresOfficial",
+  "games": [
+    {
+      "eventId": 1025923,
+      "game": "ORL@PHX",
+      "frozenForecastAtUtc": "2026-11-06T01:29:19.272Z",
+      "scheduledTipUtc": "2026-11-06T02:00:00Z",
+      "predictedHome": 115.3,
+      "predictedAway": 114.4,
+      "actualHome": 117,
+      "actualAway": 104,
+      "predictedWinner": "PHX",
+      "actualWinner": "PHX",
+      "homeTeam": "PHX",
+      "actualMargin": 13,
+      "predictedMargin": 0.9,
+      "marginAbsError": 12.1,
+      "predictedTotal": 229.7,
+      "actualTotal": 221,
+      "totalAbsError": 8.7,
+      "homePointsAbsError": 1.7,
+      "awayPointsAbsError": 10.4
+    },
+    {
+      "eventId": 1025924,
+      "game": "MIA@GSW",
+      "frozenForecastAtUtc": "2026-11-06T01:29:19.272Z",
+      "scheduledTipUtc": "2026-11-06T03:00:00Z",
+      "predictedHome": 121.4,
+      "predictedAway": 116.5,
+      "actualHome": 120,
+      "actualAway": 100,
+      "predictedWinner": "GSW",
+      "actualWinner": "GSW",
+      "homeTeam": "GSW",
+      "actualMargin": 20,
+      "predictedMargin": 4.9,
+      "marginAbsError": 15.1,
+      "predictedTotal": 237.9,
+      "actualTotal": 220,
+      "totalAbsError": 17.9,
+      "homePointsAbsError": 1.4,
+      "awayPointsAbsError": 16.5
+    }
+  ],
+  "metrics": {
+    "samples": 2,
+    "winnerCorrect": 2,
+    "naiveHomeBaselineWinnerCorrect": 2,
+    "marginMAE": 13.6,
+    "totalMAE": 13.3,
+    "perTeamScoreMAE": 7.5,
+    "brier": null,
+    "logLoss": null,
+    "closingLineValue": null,
+    "actualBetROI": null
+  },
+  "warnings": [
+    "Two games insufficient to establish probability calibration or predictive advantage",
+    "Home-team baseline also hit both winners",
+    "Score-margin underestimation was substantial",
+    "No book-executable prices and no real wagers were used",
+    "The original pretip forecasts remain unchanged"
+  ]
+}

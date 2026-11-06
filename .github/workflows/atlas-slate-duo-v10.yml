@@ -1,0 +1,58 @@
+name: ATLAS V10 Slate Duo Final Gate regression
+on:
+  push:
+    branches: [research/atlas-slate-duo-finalgate-v10]
+  pull_request:
+    branches: [research/atlas-cortex-supabase-v9]
+permissions:
+  contents: read
+jobs:
+  v10-slate-final-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: V10 node chain and Final Gate invariant tests
+        run: node --test scripts/research/slate-duo-v10.test.cjs
+      - name: V11 native schedule and handoff identity checks
+        run: node --test scripts/research/native-handoff-v11.test.cjs
+      - name: V11 official postgame grading and temporal validation
+        run: node --test scripts/research/postgame-v11.test.cjs
+      - name: V12 cross-node real DB fixture, coherent evidence and auth regression
+        run: node --test scripts/research/integration-smoke-v12.test.cjs
+      - name: V13 verified-operator enrollment and public-reference native intake
+        run: |
+          node --test tests/enroll-operator-v13.test.mjs
+          node --test scripts/research/reference-intake-v13.test.cjs
+          node --test scripts/research/integration-smoke-v13.test.cjs
+      - name: V14 secure operator invitation and HTTP proof guards
+        run: |
+          node --test tests/invite-operator-v14.test.mjs
+          node --test tests/test-operator-http-v14.test.mjs
+      - name: V14 anonymous HTTP gate (no credentials)
+        run: |
+          node --test tests/verify-anonymous-edge-v14.test.mjs
+          node scripts/research/verify-anonymous-edge-v14.mjs
+      - name: V15 Auth Admin SDK safety and source quota preflight
+        run: |
+          node --test tests/operator-bootstrap-v15.test.mjs
+          node --test scripts/research/market-intake-v15.test.cjs
+      - name: V9 source/client contract
+        run: node --test tests/cortex-read-client.test.mjs
+      - name: Regression on prior original research modules
+        run: |
+          node scripts/research/pivot-gate.test.cjs
+          node scripts/research/market-intelligence.test.cjs
+          node scripts/research/discovery-guard.test.cjs
+          node scripts/research/feature-lab.test.cjs
+          node scripts/research/value-cortex.test.cjs
+          node scripts/research/edge-dna.test.cjs
+          node scripts/research/integration-v8-public.test.cjs
+      - name: Gate code must not turn VERIFY into executable
+        run: |
+          grep -F 'FINAL_GATE_V10_EXECUTION_PRICE_PROOF_REQUIRED' supabase/migrations/20261106040320_atlas_final_gate_execution_price_fail_closed_v10.sql
+          grep -F 'v_market_valid:=public.atlas_final_gate_quote_is_verified_v10' supabase/migrations/20261106040320_atlas_final_gate_execution_price_fail_closed_v10.sql
+          grep -F 'READ_ONLY_GET_REQUIRED' supabase/functions/atlas-slate-duo-v10/index.ts

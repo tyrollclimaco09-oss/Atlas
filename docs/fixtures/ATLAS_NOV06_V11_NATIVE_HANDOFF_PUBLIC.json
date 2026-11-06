@@ -1,0 +1,200 @@
+{
+  "contract": "ATLAS_V11_NATIVE_HANDOFF_PUBLIC_SNAPSHOT",
+  "run_key": "ATLAS-NBA-20261106-V10-RESEARCH-R1",
+  "captured_local_date": "2026-11-06",
+  "source": "Read-only native Supabase handoff view, no operator account data",
+  "canonical_event_registered": 9,
+  "slots": 9,
+  "assertion": "RESEARCH_ONLY_NOT_EXECUTABLE",
+  "games": [
+    {
+      "source_event_id": "1025925",
+      "away_team": "WAS",
+      "home_team": "ATL",
+      "start_at": "2026-11-07 00:00:00+00",
+      "native_event_registered": true,
+      "native_candidate_count": 0,
+      "independent_oracle_proof_count": 0,
+      "resolved_edge_thief_count": 0,
+      "fresh_execution_grade_quote_count": 0,
+      "native_ready_gate_count": 0,
+      "handoff_status": "NO_NATIVE_CANDIDATE",
+      "evidence_gaps": [
+        "NATIVE_MARKET_CANDIDATE_MISSING",
+        "INDEPENDENT_ORACLE_PROOF_MISSING",
+        "RESOLVED_EDGE_THIEF_CHALLENGE_MISSING",
+        "FRESH_EXECUTION_GRADE_QUOTE_MISSING",
+        "NATIVE_FINAL_GATE_NOT_READY",
+        "OFFICIAL_ROSTER_AVAILABILITY_NOT_CERTIFIED"
+      ]
+    },
+    {
+      "source_event_id": "1025926",
+      "away_team": "BOS",
+      "home_team": "CHA",
+      "start_at": "2026-11-07 00:00:00+00",
+      "native_event_registered": true,
+      "native_candidate_count": 0,
+      "independent_oracle_proof_count": 0,
+      "resolved_edge_thief_count": 0,
+      "fresh_execution_grade_quote_count": 0,
+      "native_ready_gate_count": 0,
+      "handoff_status": "NO_NATIVE_CANDIDATE",
+      "evidence_gaps": [
+        "NATIVE_MARKET_CANDIDATE_MISSING",
+        "INDEPENDENT_ORACLE_PROOF_MISSING",
+        "RESOLVED_EDGE_THIEF_CHALLENGE_MISSING",
+        "FRESH_EXECUTION_GRADE_QUOTE_MISSING",
+        "NATIVE_FINAL_GATE_NOT_READY",
+        "OFFICIAL_ROSTER_AVAILABILITY_NOT_CERTIFIED"
+      ]
+    },
+    {
+      "source_event_id": "1025927",
+      "away_team": "PHI",
+      "home_team": "CLE",
+      "start_at": "2026-11-07 00:30:00+00",
+      "native_event_registered": true,
+      "native_candidate_count": 0,
+      "independent_oracle_proof_count": 0,
+      "resolved_edge_thief_count": 0,
+      "fresh_execution_grade_quote_count": 0,
+      "native_ready_gate_count": 0,
+      "handoff_status": "NO_NATIVE_CANDIDATE",
+      "evidence_gaps": [
+        "NATIVE_MARKET_CANDIDATE_MISSING",
+        "INDEPENDENT_ORACLE_PROOF_MISSING",
+        "RESOLVED_EDGE_THIEF_CHALLENGE_MISSING",
+        "FRESH_EXECUTION_GRADE_QUOTE_MISSING",
+        "NATIVE_FINAL_GATE_NOT_READY",
+        "OFFICIAL_ROSTER_AVAILABILITY_NOT_CERTIFIED"
+      ]
+    },
+    {
+      "source_event_id": "1025928",
+      "away_team": "UTA",
+      "home_team": "DAL",
+      "start_at": "2026-11-07 01:00:00+00",
+      "native_event_registered": true,
+      "native_candidate_count": 0,
+      "independent_oracle_proof_count": 0,
+      "resolved_edge_thief_count": 0,
+      "fresh_execution_grade_quote_count": 0,
+      "native_ready_gate_count": 0,
+      "handoff_status": "NO_NATIVE_CANDIDATE",
+      "evidence_gaps": [
+        "NATIVE_MARKET_CANDIDATE_MISSING",
+        "INDEPENDENT_ORACLE_PROOF_MISSING",
+        "RESOLVED_EDGE_THIEF_CHALLENGE_MISSING",
+        "FRESH_EXECUTION_GRADE_QUOTE_MISSING",
+        "NATIVE_FINAL_GATE_NOT_READY",
+        "OFFICIAL_ROSTER_AVAILABILITY_NOT_CERTIFIED"
+      ]
+    },
+    {
+      "source_event_id": "1025929",
+      "away_team": "OKC",
+      "home_team": "MEM",
+      "start_at": "2026-11-07 01:00:00+00",
+      "native_event_registered": true,
+      "native_candidate_count": 0,
+      "independent_oracle_proof_count": 0,
+      "resolved_edge_thief_count": 0,
+      "fresh_execution_grade_quote_count": 0,
+      "native_ready_gate_count": 0,
+      "handoff_status": "NO_NATIVE_CANDIDATE",
+      "evidence_gaps": [
+        "NATIVE_MARKET_CANDIDATE_MISSING",
+        "INDEPENDENT_ORACLE_PROOF_MISSING",
+        "RESOLVED_EDGE_THIEF_CHALLENGE_MISSING",
+        "FRESH_EXECUTION_GRADE_QUOTE_MISSING",
+        "NATIVE_FINAL_GATE_NOT_READY",
+        "OFFICIAL_ROSTER_AVAILABILITY_NOT_CERTIFIED"
+      ]
+    },
+    {
+      "source_event_id": "1025930",
+      "away_team": "TOR",
+      "home_team": "MIL",
+      "start_at": "2026-11-07 01:00:00+00",
+      "native_event_registered": true,
+      "native_candidate_count": 0,
+      "independent_oracle_proof_count": 0,
+      "resolved_edge_thief_count": 0,
+      "fresh_execution_grade_quote_count": 0,
+      "native_ready_gate_count": 0,
+      "handoff_status": "NO_NATIVE_CANDIDATE",
+      "evidence_gaps": [
+        "NATIVE_MARKET_CANDIDATE_MISSING",
+        "INDEPENDENT_ORACLE_PROOF_MISSING",
+        "RESOLVED_EDGE_THIEF_CHALLENGE_MISSING",
+        "FRESH_EXECUTION_GRADE_QUOTE_MISSING",
+        "NATIVE_FINAL_GATE_NOT_READY",
+        "OFFICIAL_ROSTER_AVAILABILITY_NOT_CERTIFIED"
+      ]
+    },
+    {
+      "source_event_id": "1025931",
+      "away_team": "MIN",
+      "home_team": "NOP",
+      "start_at": "2026-11-07 01:00:00+00",
+      "native_event_registered": true,
+      "native_candidate_count": 0,
+      "independent_oracle_proof_count": 0,
+      "resolved_edge_thief_count": 0,
+      "fresh_execution_grade_quote_count": 0,
+      "native_ready_gate_count": 0,
+      "handoff_status": "NO_NATIVE_CANDIDATE",
+      "evidence_gaps": [
+        "NATIVE_MARKET_CANDIDATE_MISSING",
+        "INDEPENDENT_ORACLE_PROOF_MISSING",
+        "RESOLVED_EDGE_THIEF_CHALLENGE_MISSING",
+        "FRESH_EXECUTION_GRADE_QUOTE_MISSING",
+        "NATIVE_FINAL_GATE_NOT_READY",
+        "OFFICIAL_ROSTER_AVAILABILITY_NOT_CERTIFIED"
+      ]
+    },
+    {
+      "source_event_id": "1025932",
+      "away_team": "POR",
+      "home_team": "LAL",
+      "start_at": "2026-11-07 03:00:00+00",
+      "native_event_registered": true,
+      "native_candidate_count": 0,
+      "independent_oracle_proof_count": 0,
+      "resolved_edge_thief_count": 0,
+      "fresh_execution_grade_quote_count": 0,
+      "native_ready_gate_count": 0,
+      "handoff_status": "NO_NATIVE_CANDIDATE",
+      "evidence_gaps": [
+        "NATIVE_MARKET_CANDIDATE_MISSING",
+        "INDEPENDENT_ORACLE_PROOF_MISSING",
+        "RESOLVED_EDGE_THIEF_CHALLENGE_MISSING",
+        "FRESH_EXECUTION_GRADE_QUOTE_MISSING",
+        "NATIVE_FINAL_GATE_NOT_READY",
+        "OFFICIAL_ROSTER_AVAILABILITY_NOT_CERTIFIED"
+      ]
+    },
+    {
+      "source_event_id": "1025933",
+      "away_team": "SAS",
+      "home_team": "SAC",
+      "start_at": "2026-11-07 03:00:00+00",
+      "native_event_registered": true,
+      "native_candidate_count": 0,
+      "independent_oracle_proof_count": 0,
+      "resolved_edge_thief_count": 0,
+      "fresh_execution_grade_quote_count": 0,
+      "native_ready_gate_count": 0,
+      "handoff_status": "NO_NATIVE_CANDIDATE",
+      "evidence_gaps": [
+        "NATIVE_MARKET_CANDIDATE_MISSING",
+        "INDEPENDENT_ORACLE_PROOF_MISSING",
+        "RESOLVED_EDGE_THIEF_CHALLENGE_MISSING",
+        "FRESH_EXECUTION_GRADE_QUOTE_MISSING",
+        "NATIVE_FINAL_GATE_NOT_READY",
+        "OFFICIAL_ROSTER_AVAILABILITY_NOT_CERTIFIED"
+      ]
+    }
+  ]
+}
