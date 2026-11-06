@@ -83,6 +83,52 @@ Deno.serve(async req=>{
   return respond({ok:true,...common,status:"RESEARCH_HANDOFF_AUDIT_ONLY",run_key:key,counts,games:data,
    outcome:"NO_BET_AUTHORITY_FROM_HANDOFF",prospective_training_eligible:false});
  }
+ if(mode==="integration"){
+  const key=parsed.searchParams.get("run_key")??"ATLAS-NBA-20261106-V10-RESEARCH-R1";
+  if(!/^ATLAS-[A-Z0-9-]{12,110}$/.test(key))return fail("INVALID_RUN_KEY",mode,400);
+  const [a,b,c,d,postgame]=await Promise.all([
+    db.from("atlas_slate_research_runs_v10").select("run_key,slate_date,league,event_count,source_system,source_observed_at,outcome_status,production_authority,real_betting_authority").eq("run_key",key).maybeSingle(),
+    db.from("atlas_slate_node_receipts_v10").select("receipt_key,node_key,state,created_at,production_authority,real_betting_authority").eq("run_key",key).order("created_at",{ascending:false}).limit(250),
+    db.from("atlas_slate_candidate_coherence_v12").select("source_event_id,away_team,home_team,start_at,canonical_event_id,native_candidate_count,coherent_duo_candidate_count,fully_proven_operator_review_count,coherent_handoff_status,evidence_gaps,coherent_handoff_execution_authority").eq("run_key",key).order("start_at",{ascending:true}).limit(30),
+    db.from("atlas_cortex_feature_bindings_v1").select("feature_key,owner_node,state,production_authority").order("feature_key").limit(30),
+    db.from("atlas_cortex_release_receipts_v1").select("receipt_key,evidence_status,evidence_type,source_reference,observed_at").eq("receipt_key","V11-20261105-OFFICIAL-FORENSICS").limit(1)
+  ]);
+  if(a.error||b.error||c.error||d.error||postgame.error)return fail("INTEGRATION_DB_QUERY_FAILED",mode);
+  const run=a.data,stageRows=b.data??[],games=c.data??[],modules=d.data??[];
+  if(!run)return fail("INTEGRATION_SLATE_NOT_FOUND",mode,404);
+  const badFlags=run.production_authority!==false||run.real_betting_authority!==false||
+    stageRows.some(x=>x.production_authority!==false||x.real_betting_authority!==false)||
+    games.some(x=>x.coherent_handoff_execution_authority!==false)||
+    modules.some(x=>x.production_authority!==false);
+  if(badFlags)return fail("UNAUTHORIZED_INTEGRATION_AUTHORITY_CLAIM",mode);
+  const nodeMap=new Map<string,string>();
+  for(const stage of stageRows)if(!nodeMap.has(stage.node_key))nodeMap.set(stage.node_key,stage.state);
+  const missingNodes=expectedNodes.filter(n=>!nodeMap.has(n));
+  const duplicatedEvents=new Set(games.map(x=>x.source_event_id)).size!==games.length;
+  if(missingNodes.length||duplicatedEvents||games.length!==run.event_count)
+    return fail("INTEGRATION_COVERAGE_INCOMPLETE",mode);
+  const totals={scheduled_games:run.event_count,
+    canonical_events:games.filter(x=>x.canonical_event_id).length,
+    canonical_nodes:nodeMap.size,
+    registered_lab_modules:modules.length,
+    native_market_candidates:games.reduce((n,x)=>n+x.native_candidate_count,0),
+    coherent_native_duo_candidates:games.reduce((n,x)=>n+x.coherent_duo_candidate_count,0),
+    fully_proven_operator_review_candidates:games.reduce((n,x)=>n+x.fully_proven_operator_review_count,0),
+    previously_official_postgame_receipts:postgame.data?.length??0};
+  const nodes=expectedNodes.map(node_key=>({node_key,state:nodeMap.get(node_key)}));
+  return respond({ok:true,...common,status:"RESEARCH_BACKBONE_LINKED_NOT_EXECUTABLE",
+    run_key:key,slate_date:run.slate_date,source_observed_at:run.source_observed_at,
+    totals,nodes,modules,
+    games:games.map(g=>({source_event_id:g.source_event_id,away:g.away_team,home:g.home_team,
+      start_at:g.start_at,canonical_event_registered:!!g.canonical_event_id,
+      native_candidates:g.native_candidate_count,coherent_duo_candidates:g.coherent_duo_candidate_count,
+      ready_for_operator_review:g.fully_proven_operator_review_count,
+      status:g.coherent_handoff_status,remaining_evidence_gaps:g.evidence_gaps})),
+    postgame_evidence:postgame.data??[],final_gate:"HUMAN_ONLY_PRICE_PROOF_REQUIRED",
+    actual_authenticated_site_request_verified_by_this_offline_audit:false,
+    quote_provider_live:false,calibrated_model_edge_proven:false,
+    real_bet_placed:false});
+ }
  if(mode==="candidate"){
   const candidate=parsed.searchParams.get("candidate_key")??"";
   if(!/^[a-zA-Z0-9_.:-]{8,140}$/.test(candidate))return fail("INVALID_CANDIDATE_KEY",mode,400);
