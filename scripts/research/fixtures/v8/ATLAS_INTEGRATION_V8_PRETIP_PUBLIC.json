@@ -1,0 +1,209 @@
+{
+  "schema": "ATLAS_INTEGRATION_ARENA_V8_PRETIP_FREEZE",
+  "frozenAtUtc": "2026-11-06T01:29:19.272Z",
+  "status": "LAB_SHADOW_ONLY_NO_REAL_BETTING",
+  "sources": {
+    "priorFreezeSHA256": "43fb8d3126f175817ac91d3b54c6585d7207c275cf3709e53d5b98c56b64c1b2",
+    "historicalDKGeneratedAtUtc": "2026-11-06T01:26:12.198893Z",
+    "historySHA256": "28944509b4565ef3c5a57ea560eedf60a242ad18316b583e878199b52ef8aac4",
+    "gameSource": "Connected DraftKings SportsMCP, live status Nov5 19:24 CT; NFL game JAX@BAL already live; no pregame NFL freeze"
+  },
+  "preTipPredictions": [
+    {
+      "eventId": 1025923,
+      "game": "ORL@PHX",
+      "startUtc": "2026-11-06T02:00:00Z",
+      "status": "SHADOW_BASELINE_UNCALIBRATED",
+      "forecastFrozenAtUtc": "2026-11-06T01:29:19.272Z",
+      "sourceGeneratedAtUtc": "2026-11-06T01:26:12.198893Z",
+      "model": "LAST_5_OFFENSE_DEFENSE_EQUAL_WEIGHT_NO_HOME_ADVANTAGE",
+      "historicalTeamGames": {
+        "home": 5,
+        "away": 5
+      },
+      "predictedHome": 115.3,
+      "predictedAway": 114.4,
+      "projectedHomeMargin": 0.9,
+      "projectedTotal": 229.7,
+      "calibratedHomeWinProbability": null,
+      "oddsInput": null,
+      "injuryAdjusted": false,
+      "sourceMarketAlreadyVisibleInConversation": true,
+      "executable": false,
+      "approved": false
+    },
+    {
+      "eventId": 1025924,
+      "game": "MIA@GSW",
+      "startUtc": "2026-11-06T03:00:00Z",
+      "status": "SHADOW_BASELINE_UNCALIBRATED",
+      "forecastFrozenAtUtc": "2026-11-06T01:29:19.272Z",
+      "sourceGeneratedAtUtc": "2026-11-06T01:26:12.198893Z",
+      "model": "LAST_5_OFFENSE_DEFENSE_EQUAL_WEIGHT_NO_HOME_ADVANTAGE",
+      "historicalTeamGames": {
+        "home": 5,
+        "away": 5
+      },
+      "predictedHome": 121.4,
+      "predictedAway": 116.5,
+      "projectedHomeMargin": 4.9,
+      "projectedTotal": 237.9,
+      "calibratedHomeWinProbability": null,
+      "oddsInput": null,
+      "injuryAdjusted": false,
+      "sourceMarketAlreadyVisibleInConversation": true,
+      "executable": false,
+      "approved": false
+    }
+  ],
+  "gateDecisions": [
+    {
+      "eventId": 1025923,
+      "game": "ORL@PHX",
+      "conditionalHypothesisOnly": "PHX",
+      "gateStatus": "WATCH",
+      "gateReasons": [
+        "ROSTER_UNCONFIRMED",
+        "NO_MATCHING_EXECUTABLE_BOOK_QUOTE",
+        "NO_VALIDATED_INDEPENDENT_FAIR_PROBABILITY",
+        "FORECAST_NOT_FROZEN_BEFORE_PRICE"
+      ],
+      "accountPrices": 0,
+      "consensusStatus": "INSUFFICIENT_INDEPENDENT_QUOTES",
+      "executable": false,
+      "approved": false,
+      "finalGate": "CLOSED"
+    },
+    {
+      "eventId": 1025924,
+      "game": "MIA@GSW",
+      "conditionalHypothesisOnly": "GSW",
+      "gateStatus": "WATCH",
+      "gateReasons": [
+        "ROSTER_UNCONFIRMED",
+        "NO_MATCHING_EXECUTABLE_BOOK_QUOTE",
+        "NO_VALIDATED_INDEPENDENT_FAIR_PROBABILITY",
+        "FORECAST_NOT_FROZEN_BEFORE_PRICE"
+      ],
+      "accountPrices": 0,
+      "consensusStatus": "INSUFFICIENT_INDEPENDENT_QUOTES",
+      "executable": false,
+      "approved": false,
+      "finalGate": "CLOSED"
+    }
+  ],
+  "regression": {
+    "games": 14,
+    "forecastCorrect": 7,
+    "brier": 0.229708,
+    "marginMae": 9.393,
+    "totalMae": 9.25,
+    "paperCards": 22,
+    "paperFullHits": 4,
+    "marketCardGrades": [
+      {
+        "id": "ATLAS-NOV04-PAPER-08",
+        "hits": 6,
+        "result": "MISS",
+        "legs": 8
+      },
+      {
+        "id": "ATLAS-NOV04-PAPER-12",
+        "hits": 7,
+        "result": "MISS",
+        "legs": 12
+      },
+      {
+        "id": "ATLAS-NOV04-PAPER-20",
+        "hits": 13,
+        "result": "MISS",
+        "legs": 20
+      }
+    ],
+    "failedRoots": [
+      {
+        "rootId": "IND@MEM|MEM ML",
+        "appearances": 3,
+        "failedCards": 3,
+        "invalidCards": 0,
+        "cardIds": [
+          "ATLAS-NOV04-PAPER-08",
+          "ATLAS-NOV04-PAPER-12",
+          "ATLAS-NOV04-PAPER-20"
+        ]
+      },
+      {
+        "rootId": "PHI@DET|DET ML",
+        "appearances": 3,
+        "failedCards": 3,
+        "invalidCards": 0,
+        "cardIds": [
+          "ATLAS-NOV04-PAPER-08",
+          "ATLAS-NOV04-PAPER-12",
+          "ATLAS-NOV04-PAPER-20"
+        ]
+      },
+      {
+        "rootId": "MIN@HOU|HOU ML",
+        "appearances": 2,
+        "failedCards": 2,
+        "invalidCards": 0,
+        "cardIds": [
+          "ATLAS-NOV04-PAPER-12",
+          "ATLAS-NOV04-PAPER-20"
+        ]
+      },
+      {
+        "rootId": "MIA@LAC|LAC ML",
+        "appearances": 2,
+        "failedCards": 2,
+        "invalidCards": 0,
+        "cardIds": [
+          "ATLAS-NOV04-PAPER-12",
+          "ATLAS-NOV04-PAPER-20"
+        ]
+      },
+      {
+        "rootId": "ATL@WAS|WAS ML",
+        "appearances": 2,
+        "failedCards": 2,
+        "invalidCards": 0,
+        "cardIds": [
+          "ATLAS-NOV04-PAPER-12",
+          "ATLAS-NOV04-PAPER-20"
+        ]
+      },
+      {
+        "rootId": "CLE@OKC|CLE ML",
+        "appearances": 1,
+        "failedCards": 1,
+        "invalidCards": 0,
+        "cardIds": [
+          "ATLAS-NOV04-PAPER-20"
+        ]
+      },
+      {
+        "rootId": "TOR@DEN|TOR ML",
+        "appearances": 1,
+        "failedCards": 1,
+        "invalidCards": 0,
+        "cardIds": [
+          "ATLAS-NOV04-PAPER-20"
+        ]
+      }
+    ],
+    "sourceFreezeSHA256": "43fb8d3126f175817ac91d3b54c6585d7207c275cf3709e53d5b98c56b64c1b2",
+    "retrospectiveFixtureNotNewHoldout": true
+  },
+  "caveats": [
+    "Only a 27-game observed subset involving 4 teams, not a full league backtest",
+    "Simple deterministic last-5 scores baseline, uncalibrated and not a fair probability",
+    "Formula does not use odds, but outside market numbers appeared earlier in conversation; not a blinded experiment",
+    "Injury/roster statuses are not encoded or certified for either NBA game",
+    "No user-account DraftKings quote; no current market consensus; all real-money Final Gates closed",
+    "Historical Nov4 already completed; regression only, not an independent validation sample",
+    "Does not write production, GitHub, sportsbook or Supabase; result is local artifact"
+  ],
+  "publicArtifact": true,
+  "privacy": "Operator bankroll and real receipt details omitted; those remain in a private local artifact."
+}
