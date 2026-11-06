@@ -1,0 +1,281 @@
+{
+  "contract": "ATLAS_V10_NOV06_PRICE_INDEPENDENT_SCORE_BASELINE",
+  "run_key": "ATLAS-NBA-20261106-V10-RESEARCH-R1",
+  "slate_date": "2026-11-06",
+  "timezone": "America/Chicago",
+  "observed_at": "2026-11-06T04:12:20.0453635Z",
+  "source": "DraftKings connected sports results scores only (not sportsbook odds)",
+  "history_completed_games": 105,
+  "method": "last five completed scored/allowed averages, projected team points = 0.5*(team scored mean + opponent allowed mean), no sportsbook odds",
+  "forecast_status": "UNCALIBRATED_RESEARCH_ONLY",
+  "scenarios": [
+    {
+      "event_id": "1025925",
+      "away": "WAS",
+      "home": "ATL",
+      "start": "2026-11-07T00:00:00Z",
+      "status": "UNCALIBRATED_PAPER_HYPOTHESIS",
+      "projected_away_points": 108.7,
+      "projected_home_points": 108.2,
+      "projected_home_margin": -0.5,
+      "away_history_ids": [
+        "1025910",
+        "1025898",
+        "1025873",
+        "1025859",
+        "1025845"
+      ],
+      "home_history_ids": [
+        "1025910",
+        "1025896",
+        "1025885",
+        "1025870",
+        "1025858"
+      ],
+      "probability": null,
+      "confidence": null,
+      "fair_price": null,
+      "expected_value": null,
+      "price": null
+    },
+    {
+      "event_id": "1025926",
+      "away": "BOS",
+      "home": "CHA",
+      "start": "2026-11-07T00:00:00Z",
+      "status": "UNCALIBRATED_PAPER_HYPOTHESIS",
+      "projected_away_points": 109.9,
+      "projected_home_points": 101,
+      "projected_home_margin": -8.9,
+      "away_history_ids": [
+        "1025911",
+        "1025903",
+        "1025890",
+        "1025875",
+        "1025854"
+      ],
+      "home_history_ids": [
+        "1025912",
+        "1025895",
+        "1025884",
+        "1025873",
+        "1025860"
+      ],
+      "probability": null,
+      "confidence": null,
+      "fair_price": null,
+      "expected_value": null,
+      "price": null
+    },
+    {
+      "event_id": "1025927",
+      "away": "PHI",
+      "home": "CLE",
+      "start": "2026-11-07T00:30:00Z",
+      "status": "UNCALIBRATED_PAPER_HYPOTHESIS",
+      "projected_away_points": 113.6,
+      "projected_home_points": 111.5,
+      "projected_home_margin": -2.1,
+      "away_history_ids": [
+        "1025909",
+        "1025899",
+        "1025884",
+        "1025874",
+        "1025861"
+      ],
+      "home_history_ids": [
+        "1025916",
+        "1025894",
+        "1025887",
+        "1025870",
+        "1025859"
+      ],
+      "probability": null,
+      "confidence": null,
+      "fair_price": null,
+      "expected_value": null,
+      "price": null
+    },
+    {
+      "event_id": "1025931",
+      "away": "MIN",
+      "home": "NOP",
+      "start": "2026-11-07T01:00:00Z",
+      "status": "UNCALIBRATED_PAPER_HYPOTHESIS",
+      "projected_away_points": 115.1,
+      "projected_home_points": 114.7,
+      "projected_home_margin": -0.4,
+      "away_history_ids": [
+        "1025917",
+        "1025902",
+        "1025888",
+        "1025879",
+        "1025865"
+      ],
+      "home_history_ids": [
+        "1025915",
+        "1025901",
+        "1025885",
+        "1025871",
+        "1025866"
+      ],
+      "probability": null,
+      "confidence": null,
+      "fair_price": null,
+      "expected_value": null,
+      "price": null
+    },
+    {
+      "event_id": "1025928",
+      "away": "UTA",
+      "home": "DAL",
+      "start": "2026-11-07T01:00:00Z",
+      "status": "UNCALIBRATED_PAPER_HYPOTHESIS",
+      "projected_away_points": 105.9,
+      "projected_home_points": 113.8,
+      "projected_home_margin": 7.9,
+      "away_history_ids": [
+        "1025915",
+        "1025904",
+        "1025883",
+        "1025867",
+        "1025852"
+      ],
+      "home_history_ids": [
+        "1025920",
+        "1025900",
+        "1025880",
+        "1025868",
+        "1025848"
+      ],
+      "probability": null,
+      "confidence": null,
+      "fair_price": null,
+      "expected_value": null,
+      "price": null
+    },
+    {
+      "event_id": "1025930",
+      "away": "TOR",
+      "home": "MIL",
+      "start": "2026-11-07T01:00:00Z",
+      "status": "UNCALIBRATED_PAPER_HYPOTHESIS",
+      "projected_away_points": 119.3,
+      "projected_home_points": 112,
+      "projected_home_margin": -7.3,
+      "away_history_ids": [
+        "1025918",
+        "1025907",
+        "1025893",
+        "1025877",
+        "1025862"
+      ],
+      "home_history_ids": [
+        "1025911",
+        "1025902",
+        "1025887",
+        "1025864",
+        "1025849"
+      ],
+      "probability": null,
+      "confidence": null,
+      "fair_price": null,
+      "expected_value": null,
+      "price": null
+    },
+    {
+      "event_id": "1025929",
+      "away": "OKC",
+      "home": "MEM",
+      "start": "2026-11-07T01:00:00Z",
+      "status": "UNCALIBRATED_PAPER_HYPOTHESIS",
+      "projected_away_points": 111.5,
+      "projected_home_points": 118.8,
+      "projected_home_margin": 7.3,
+      "away_history_ids": [
+        "1025916",
+        "1025894",
+        "1025889",
+        "1025868",
+        "1025850"
+      ],
+      "home_history_ids": [
+        "1025914",
+        "1025901",
+        "1025886",
+        "1025872",
+        "1025852"
+      ],
+      "probability": null,
+      "confidence": null,
+      "fair_price": null,
+      "expected_value": null,
+      "price": null
+    },
+    {
+      "event_id": "1025932",
+      "away": "POR",
+      "home": "LAL",
+      "start": "2026-11-07T03:00:00Z",
+      "status": "UNCALIBRATED_PAPER_HYPOTHESIS",
+      "projected_away_points": 114.5,
+      "projected_home_points": 115.5,
+      "projected_home_margin": 1,
+      "away_history_ids": [
+        "1025919",
+        "1025905",
+        "1025883",
+        "1025872",
+        "1025857"
+      ],
+      "home_history_ids": [
+        "1025921",
+        "1025908",
+        "1025893",
+        "1025881",
+        "1025869"
+      ],
+      "probability": null,
+      "confidence": null,
+      "fair_price": null,
+      "expected_value": null,
+      "price": null
+    },
+    {
+      "event_id": "1025933",
+      "away": "SAS",
+      "home": "SAC",
+      "start": "2026-11-07T03:00:00Z",
+      "status": "UNCALIBRATED_PAPER_HYPOTHESIS",
+      "projected_away_points": 121.3,
+      "projected_home_points": 107.9,
+      "projected_home_margin": -13.4,
+      "away_history_ids": [
+        "1025920",
+        "1025904",
+        "1025888",
+        "1025867",
+        "1025856"
+      ],
+      "home_history_ids": [
+        "1025921",
+        "1025900",
+        "1025886",
+        "1025871",
+        "1025856"
+      ],
+      "probability": null,
+      "confidence": null,
+      "fair_price": null,
+      "expected_value": null,
+      "price": null
+    }
+  ],
+  "limits": [
+    "No official lineup and injury source yet",
+    "No calibrated probabilities or EV",
+    "No executable sportsbook quotes",
+    "No autonomous bet approval",
+    "This method was developed after prior market exposure: not blinded"
+  ]
+}
