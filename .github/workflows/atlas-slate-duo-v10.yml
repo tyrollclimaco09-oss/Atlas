@@ -17,6 +17,8 @@ jobs:
           node-version: '22'
       - name: V10 node chain and Final Gate invariant tests
         run: node --test scripts/research/slate-duo-v10.test.cjs
+      - name: V11 native schedule and handoff identity checks
+        run: node --test scripts/research/native-handoff-v11.test.cjs
       - name: V9 source/client contract
         run: node --test tests/cortex-read-client.test.mjs
       - name: Regression on prior original research modules
