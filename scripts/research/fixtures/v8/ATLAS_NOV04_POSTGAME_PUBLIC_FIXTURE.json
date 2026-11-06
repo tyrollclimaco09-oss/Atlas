@@ -1,0 +1,572 @@
+{
+  "schema": "ATLAS_NOV04_POSTGAME_CALIBRATION_APPEND_ONLY_V1",
+  "date_ct": "2026-11-04",
+  "source_snapshot_utc": "2026-11-05T08:29:42.5811287Z",
+  "original_freeze": {
+    "forecast_utc": "2026-11-03T06:31:02Z",
+    "forecast_sha256": "43fb8d3126f175817ac91d3b54c6585d7207c275cf3709e53d5b98c56b64c1b2"
+  },
+  "forecast_metrics": {
+    "games": 14,
+    "frozen_winners_correct": 7,
+    "shadow_winners_correct": 8,
+    "home_only_winners_correct": 7,
+    "frozen_moneyline_brier": 0.229708,
+    "fair_coin_brier": 0.25,
+    "frozen_moneyline_logloss": 0.651852,
+    "frozen_margin_mae": 9.393,
+    "shadow_margin_mae": 9.736,
+    "home_plus_2_5_margin_mae": 10.5,
+    "frozen_total_mae": 9.25,
+    "frozen_total_bias_actual_minus_predicted": -0.979,
+    "frozen_margin_bias_actual_minus_predicted": -0.521
+  },
+  "games": [
+    {
+      "game": "PHI@DET",
+      "home": "DET",
+      "home_score": 106,
+      "away": "PHI",
+      "away_score": 112,
+      "home_win_prob_frozen": 0.569,
+      "home_margin_frozen": 2.8,
+      "total_frozen": 220.2,
+      "home_margin_shadow_v2": 4.3,
+      "actual_home_margin": -6,
+      "actual_total": 218,
+      "winner_frozen_correct": false,
+      "winner_shadow_correct": false
+    },
+    {
+      "game": "ATL@WAS",
+      "home": "WAS",
+      "home_score": 105,
+      "away": "ATL",
+      "away_score": 120,
+      "home_win_prob_frozen": 0.53,
+      "home_margin_frozen": 1.4,
+      "total_frozen": 227.6,
+      "home_margin_shadow_v2": 2.7,
+      "actual_home_margin": -15,
+      "actual_total": 225,
+      "winner_frozen_correct": false,
+      "winner_shadow_correct": false
+    },
+    {
+      "game": "MIL@BOS",
+      "home": "BOS",
+      "home_score": 109,
+      "away": "MIL",
+      "away_score": 102,
+      "home_win_prob_frozen": 0.675,
+      "home_margin_frozen": 7.6,
+      "total_frozen": 231.5,
+      "home_margin_shadow_v2": 9.1,
+      "actual_home_margin": 7,
+      "actual_total": 211,
+      "winner_frozen_correct": true,
+      "winner_shadow_correct": true
+    },
+    {
+      "game": "CHA@BKN",
+      "home": "BKN",
+      "home_score": 114,
+      "away": "CHA",
+      "away_score": 104,
+      "home_win_prob_frozen": 0.559,
+      "home_margin_frozen": 2.6,
+      "total_frozen": 220.3,
+      "home_margin_shadow_v2": 3.5,
+      "actual_home_margin": 10,
+      "actual_total": 218,
+      "winner_frozen_correct": true,
+      "winner_shadow_correct": true
+    },
+    {
+      "game": "CHI@NYK",
+      "home": "NYK",
+      "home_score": 135,
+      "away": "CHI",
+      "away_score": 105,
+      "home_win_prob_frozen": 0.621,
+      "home_margin_frozen": 5.1,
+      "total_frozen": 228.5,
+      "home_margin_shadow_v2": 8.4,
+      "actual_home_margin": 30,
+      "actual_total": 240,
+      "winner_frozen_correct": true,
+      "winner_shadow_correct": true
+    },
+    {
+      "game": "UTA@NOP",
+      "home": "NOP",
+      "home_score": 120,
+      "away": "UTA",
+      "away_score": 113,
+      "home_win_prob_frozen": 0.626,
+      "home_margin_frozen": 5.3,
+      "total_frozen": 230.8,
+      "home_margin_shadow_v2": 6.8,
+      "actual_home_margin": 7,
+      "actual_total": 233,
+      "winner_frozen_correct": true,
+      "winner_shadow_correct": true
+    },
+    {
+      "game": "CLE@OKC",
+      "home": "OKC",
+      "home_score": 124,
+      "away": "CLE",
+      "away_score": 116,
+      "home_win_prob_frozen": 0.486,
+      "home_margin_frozen": -0.4,
+      "total_frozen": 227.2,
+      "home_margin_shadow_v2": 0.9,
+      "actual_home_margin": 8,
+      "actual_total": 240,
+      "winner_frozen_correct": false,
+      "winner_shadow_correct": true
+    },
+    {
+      "game": "IND@MEM",
+      "home": "MEM",
+      "home_score": 103,
+      "away": "IND",
+      "away_score": 107,
+      "home_win_prob_frozen": 0.661,
+      "home_margin_frozen": 6.9,
+      "total_frozen": 229.1,
+      "home_margin_shadow_v2": 7.9,
+      "actual_home_margin": -4,
+      "actual_total": 210,
+      "winner_frozen_correct": false,
+      "winner_shadow_correct": false
+    },
+    {
+      "game": "MIN@HOU",
+      "home": "HOU",
+      "home_score": 107,
+      "away": "MIN",
+      "away_score": 117,
+      "home_win_prob_frozen": 0.55,
+      "home_margin_frozen": 2.1,
+      "total_frozen": 229.7,
+      "home_margin_shadow_v2": 3.0,
+      "actual_home_margin": -10,
+      "actual_total": 224,
+      "winner_frozen_correct": false,
+      "winner_shadow_correct": false
+    },
+    {
+      "game": "TOR@DEN",
+      "home": "DEN",
+      "home_score": 128,
+      "away": "TOR",
+      "away_score": 109,
+      "home_win_prob_frozen": 0.482,
+      "home_margin_frozen": -0.7,
+      "total_frozen": 229.2,
+      "home_margin_shadow_v2": -0.7,
+      "actual_home_margin": 19,
+      "actual_total": 237,
+      "winner_frozen_correct": false,
+      "winner_shadow_correct": false
+    },
+    {
+      "game": "POR@PHX",
+      "home": "PHX",
+      "home_score": 119,
+      "away": "POR",
+      "away_score": 132,
+      "home_win_prob_frozen": 0.416,
+      "home_margin_frozen": -3.7,
+      "total_frozen": 231.0,
+      "home_margin_shadow_v2": -3.7,
+      "actual_home_margin": -13,
+      "actual_total": 251,
+      "winner_frozen_correct": true,
+      "winner_shadow_correct": true
+    },
+    {
+      "game": "DAL@SAS",
+      "home": "SAS",
+      "home_score": 112,
+      "away": "DAL",
+      "away_score": 111,
+      "home_win_prob_frozen": 0.575,
+      "home_margin_frozen": 3.1,
+      "total_frozen": 228.2,
+      "home_margin_shadow_v2": 6.3,
+      "actual_home_margin": 1,
+      "actual_total": 223,
+      "winner_frozen_correct": true,
+      "winner_shadow_correct": true
+    },
+    {
+      "game": "LAL@SAC",
+      "home": "SAC",
+      "home_score": 103,
+      "away": "LAL",
+      "away_score": 116,
+      "home_win_prob_frozen": 0.386,
+      "home_margin_frozen": -4.9,
+      "total_frozen": 233.0,
+      "home_margin_shadow_v2": -4.4,
+      "actual_home_margin": -13,
+      "actual_total": 219,
+      "winner_frozen_correct": true,
+      "winner_shadow_correct": true
+    },
+    {
+      "game": "MIA@LAC",
+      "home": "LAC",
+      "home_score": 116,
+      "away": "MIA",
+      "away_score": 117,
+      "home_win_prob_frozen": 0.503,
+      "home_margin_frozen": 0.1,
+      "total_frozen": 229.4,
+      "home_margin_shadow_v2": 2.0,
+      "actual_home_margin": -1,
+      "actual_total": 233,
+      "winner_frozen_correct": false,
+      "winner_shadow_correct": false
+    }
+  ],
+  "paper_batches": [
+    {
+      "label": "HYDRA II",
+      "cards": [
+        {
+          "id": "P01",
+          "result": "MISS",
+          "legs": 2
+        },
+        {
+          "id": "P02",
+          "result": "HIT",
+          "legs": 2
+        },
+        {
+          "id": "P03",
+          "result": "HIT",
+          "legs": 2
+        },
+        {
+          "id": "P04",
+          "result": "MISS",
+          "legs": 2
+        },
+        {
+          "id": "P05",
+          "result": "MISS",
+          "legs": 2
+        },
+        {
+          "id": "P06",
+          "result": "MISS",
+          "legs": 4
+        },
+        {
+          "id": "P07",
+          "result": "HIT",
+          "legs": 4
+        },
+        {
+          "id": "P08",
+          "result": "MISS",
+          "legs": 8
+        },
+        {
+          "id": "P09",
+          "result": "MISS",
+          "legs": 8
+        },
+        {
+          "id": "P10",
+          "result": "MISS",
+          "legs": 8
+        },
+        {
+          "id": "P11",
+          "result": "MISS",
+          "legs": 12
+        },
+        {
+          "id": "P12",
+          "result": "MISS",
+          "legs": 20
+        }
+      ]
+    },
+    {
+      "label": "HYDRA V1",
+      "cards": [
+        {
+          "id": "D01_FOUNDATION_DOUBLE",
+          "result": "MISS"
+        },
+        {
+          "id": "D02_INDEPENDENT_DOUBLE",
+          "result": "HIT"
+        },
+        {
+          "id": "C04_SCORING_CONTROL",
+          "result": "MISS"
+        },
+        {
+          "id": "H08_BALANCED",
+          "result": "MISS"
+        },
+        {
+          "id": "H12_POWER",
+          "result": "MISS"
+        },
+        {
+          "id": "O20_CONSTELLATION",
+          "result": "MISS"
+        },
+        {
+          "id": "G08_GAME_MARKETS",
+          "result": "MISS"
+        }
+      ]
+    },
+    {
+      "label": "Game-market SHADOW",
+      "cards": [
+        {
+          "id": "ATLAS-NOV04-PAPER-08",
+          "full_card_result": "MISS",
+          "hits": 6,
+          "legs_n": 8,
+          "legs": [
+            {
+              "game": "MIL@BOS",
+              "selection": "BOS ML",
+              "result": "HIT"
+            },
+            {
+              "game": "CHI@NYK",
+              "selection": "NYK ML",
+              "result": "HIT"
+            },
+            {
+              "game": "IND@MEM",
+              "selection": "MEM ML",
+              "result": "MISS"
+            },
+            {
+              "game": "UTA@NOP",
+              "selection": "NOP ML",
+              "result": "HIT"
+            },
+            {
+              "game": "DAL@SAS",
+              "selection": "SAS ML",
+              "result": "HIT"
+            },
+            {
+              "game": "PHI@DET",
+              "selection": "DET ML",
+              "result": "MISS"
+            },
+            {
+              "game": "LAL@SAC",
+              "selection": "LAL ML",
+              "result": "HIT"
+            },
+            {
+              "game": "POR@PHX",
+              "selection": "POR ML",
+              "result": "HIT"
+            }
+          ]
+        },
+        {
+          "id": "ATLAS-NOV04-PAPER-12",
+          "full_card_result": "MISS",
+          "hits": 7,
+          "legs_n": 12,
+          "legs": [
+            {
+              "game": "MIL@BOS",
+              "selection": "BOS ML",
+              "result": "HIT"
+            },
+            {
+              "game": "CHI@NYK",
+              "selection": "NYK ML",
+              "result": "HIT"
+            },
+            {
+              "game": "IND@MEM",
+              "selection": "MEM ML",
+              "result": "MISS"
+            },
+            {
+              "game": "UTA@NOP",
+              "selection": "NOP ML",
+              "result": "HIT"
+            },
+            {
+              "game": "DAL@SAS",
+              "selection": "SAS ML",
+              "result": "HIT"
+            },
+            {
+              "game": "PHI@DET",
+              "selection": "DET ML",
+              "result": "MISS"
+            },
+            {
+              "game": "LAL@SAC",
+              "selection": "LAL ML",
+              "result": "HIT"
+            },
+            {
+              "game": "POR@PHX",
+              "selection": "POR ML",
+              "result": "HIT"
+            },
+            {
+              "game": "MIN@HOU",
+              "selection": "HOU ML",
+              "result": "MISS"
+            },
+            {
+              "game": "CHA@BKN",
+              "selection": "BKN ML",
+              "result": "HIT"
+            },
+            {
+              "game": "MIA@LAC",
+              "selection": "LAC ML",
+              "result": "MISS"
+            },
+            {
+              "game": "ATL@WAS",
+              "selection": "WAS ML",
+              "result": "MISS"
+            }
+          ]
+        },
+        {
+          "id": "ATLAS-NOV04-PAPER-20",
+          "full_card_result": "MISS",
+          "hits": 13,
+          "legs_n": 20,
+          "legs": [
+            {
+              "game": "MIL@BOS",
+              "selection": "BOS ML",
+              "result": "HIT"
+            },
+            {
+              "game": "CHI@NYK",
+              "selection": "NYK ML",
+              "result": "HIT"
+            },
+            {
+              "game": "IND@MEM",
+              "selection": "MEM ML",
+              "result": "MISS"
+            },
+            {
+              "game": "UTA@NOP",
+              "selection": "NOP ML",
+              "result": "HIT"
+            },
+            {
+              "game": "DAL@SAS",
+              "selection": "SAS ML",
+              "result": "HIT"
+            },
+            {
+              "game": "PHI@DET",
+              "selection": "DET ML",
+              "result": "MISS"
+            },
+            {
+              "game": "LAL@SAC",
+              "selection": "LAL ML",
+              "result": "HIT"
+            },
+            {
+              "game": "POR@PHX",
+              "selection": "POR ML",
+              "result": "HIT"
+            },
+            {
+              "game": "MIN@HOU",
+              "selection": "HOU ML",
+              "result": "MISS"
+            },
+            {
+              "game": "CHA@BKN",
+              "selection": "BKN ML",
+              "result": "HIT"
+            },
+            {
+              "game": "MIA@LAC",
+              "selection": "LAC ML",
+              "result": "MISS"
+            },
+            {
+              "game": "ATL@WAS",
+              "selection": "WAS ML",
+              "result": "MISS"
+            },
+            {
+              "game": "CLE@OKC",
+              "selection": "CLE ML",
+              "result": "MISS"
+            },
+            {
+              "game": "TOR@DEN",
+              "selection": "TOR ML",
+              "result": "MISS"
+            },
+            {
+              "game": "MIL@BOS",
+              "selection": "BOS 100+ points (research proxy)",
+              "result": "HIT",
+              "actual_points": 109
+            },
+            {
+              "game": "CHI@NYK",
+              "selection": "NYK 100+ points (research proxy)",
+              "result": "HIT",
+              "actual_points": 135
+            },
+            {
+              "game": "IND@MEM",
+              "selection": "MEM 100+ points (research proxy)",
+              "result": "HIT",
+              "actual_points": 103
+            },
+            {
+              "game": "UTA@NOP",
+              "selection": "NOP 100+ points (research proxy)",
+              "result": "HIT",
+              "actual_points": 120
+            },
+            {
+              "game": "DAL@SAS",
+              "selection": "SAS 100+ points (research proxy)",
+              "result": "HIT",
+              "actual_points": 112
+            },
+            {
+              "game": "MIN@HOU",
+              "selection": "HOU 100+ points (research proxy)",
+              "result": "HIT",
+              "actual_points": 107
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "privacy": "No real account balances, stakes, sportsbook screenshot identifiers or receipt IDs."
+}
