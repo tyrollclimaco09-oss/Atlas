@@ -1,0 +1,43 @@
+{
+  "schema": "ATLAS_V12_INTEGRATION_DB_SNAPSHOT",
+  "read_at_utc": "2026-11-06 08:43:20.340593+00",
+  "run_key": "ATLAS-NBA-20261106-V10-RESEARCH-R1",
+  "counts": {
+    "schedule_games": 9,
+    "canonical_events": 9,
+    "canonical_nodes": 12,
+    "registered_subnodes": 8,
+    "coherent_duo_games": 0,
+    "ready_for_operator": 0,
+    "execution_grade_quotes": 0,
+    "postgame_proof": 1
+  },
+  "node_states": {
+    "CALIBRATOR": "POSTGAME_PENDING",
+    "EDGE_THIEF": "RESEARCH_ONLY",
+    "FILTER_VERIFY": "WATCH",
+    "FORENSICS": "POSTGAME_PENDING",
+    "HUMAN_FINAL_GATE": "BLOCKED",
+    "KAIROS": "WATCH",
+    "LEDGER": "POSTGAME_PENDING",
+    "ORACLE": "RESEARCH_ONLY",
+    "PRICING": "WATCH",
+    "SCOUT": "RESEARCH_ONLY",
+    "SENTINEL": "WATCH",
+    "TACTICIAN": "WATCH"
+  },
+  "auth_configuration": {
+    "operator_eligible_users": 0,
+    "site_reader_credentials": 0,
+    "operator_request_verified": false
+  },
+  "proof_boundary": {
+    "db_research_wired": true,
+    "real_sportsbook_quote_wired": false,
+    "live_authenticated_operator_path": false,
+    "independent_fair_probability_validated": false,
+    "production_authority": false,
+    "betting_authority": false
+  },
+  "source": "Supabase direct read-only query, aggregate public-safe evidence only"
+}
