@@ -1,33 +1,38 @@
-# ATLAS Experiment → Knowledge Gate (SHADOW V1)
+# ATLAS forecasting learning bridge — SHADOW
 
-ATLAS's long-term problem is not a lack of research ideas; it is that hypotheses and results are not consistently joining into **reusable, trustworthy forecast learning**. This module creates an **offline, fail-closed experimental-graduation gate** without touching production.
+**Purpose:** turn independently verified NBA/NFL experiment observations into evidence-backed, reusable forecasting lessons. This is a deliberately read-only integration; no sportsbook access, database writes, model retraining, deployments, credential handling, or automatic production promotions.
 
-## Run
+## Commands
 
-\`\`\`sh
-node --test integrations/learning/experiment-evidence-gate.test.mjs
-\`\`\`
+```sh
+node --test integrations/learning/*.test.mjs
+# Authenticated operator exports are passed as one JSON object on standard input:
+node integrations/learning/reconcile-canonical-learning-cli.mjs < authorized-readonly-export.json
+```
 
-The exported pure function \`evaluateExperimentEvidence(packet)\` takes one preregistered, previously frozen NBA/NFL cohort. The input must include:
+## Data contracts
 
-- Immutable hypothesis/cohort ID and case count, model version, independent frozen baseline, training cutoff and out-of-time holdout.
-- One record for EVERY selected, rejected, voided and settled case, even if it lost. A case is not silently removed to inflate hit rate.
-- Official event/team/market identity, verified settlement status, timestamped pre-price features and model forecast, official final outcome observed after the event, and a stable underlying causal-root key.
-- For financial evaluation, exact verified pregame bookmaker/market identity, offered decimal price, timestamp after the independent forecast freeze, documented hypothetical stake, and non-synthetic quote type.
+1. `canonical-learning-adapter.mjs` consumes one JSON bundle with `experiment`, `frozen_cohort`, `observations`, `predictions`, `identities`, `official_outcomes`, and `quotes`. The existing ATLAS registry and views are input *sources*, **not** proof that these fields are already complete. An explicit source-authenticated player/team/event/market identity input, independent model probability, preregistered numeric baseline, official binary outcome and exact verified book quote are required.
+2. It joins observations, forecast, official result, roster/market identity, and quote using **both candidate key and canonical event ID**. Ambiguous duplicates, timestamps after freeze, historical narrative-only baselines, synthetic SGP quotes, a market mismatch, unresolved voids and a missing causal root produce explicit HOLD blockers. It never derives IDs or probabilities from a player name or a story.
+3. A fully reconciled cohort can be evaluated by `experiment-evidence-gate.mjs`, which compares out-of-time Brier/log loss against the original baseline and *separately* measures price-adjusted hypothetical ROI. A statistical threshold is not proof of profit or a substitute for ongoing out-of-sample testing.
+4. `reconcile-canonical-learning-cli.mjs` accepts a **locally authorized** read-only JSON export from STDIN. No key or Supabase URL is stored in the repo. The CLI prints a sanitized audit summary and never writes to the ATLAS ledger.
 
-## What gets scored
+## Exact current live data gap — November 9, 2026
 
-1. **Forecast quality**: paired Brier/log-loss vs a predeclared baseline, with root-cluster bootstrap uncertainty. Distinct parlay slips sharing one root cannot be counted as independent wins.
-2. **Financial quality**: price-adjusted *paper* net ROI and bootstrap uncertainty only on eligible exact book-quoted prices (not invented SGP multiplications).
-3. **Integrity**: no wrong player-game join, no future information, no after-start freeze, no source-less outcome, no duplicate cases, no unreconciled frozen cohort.
+Connected Supabase reads confirm 18 experiments, **3 source-recorded experimental observations**, **0 of those with official outcomes**, **1 historical UNSCORED probability-less frozen prediction**, **0 completed forensics-to-learning joins** and **0 registered models**. The three old experiment observations have missing canonical event IDs and narrative baselines. None may be converted into a scored record by guessing. The Nov 8 `FULLSEND_R2` paper account is a different synthetic accounting system ($50 initial, $20.63 final cash, -$29.37 net), not canonical independent model-training credit.
 
-If it fails, return **HOLD + exact blockers**. If sufficient evidence appears, return **HUMAN_REVIEW_ELIGIBLE_SHADOW_ONLY**, never automatically change a forecasting model or place a wager. The 120 independent roots / 21 UTC-day default is an exploratory minimum, **not** a guarantee of significance or profitability. Multiple-testing and regime-robustness reviews remain necessary.
+Existing DB objects observed: `public.atlas_shadow_experiment_registry_v2`, `public.atlas_shadow_experiment_observations_v2`, `public.atlas_prediction_registry_v1` (read model), `public.atlas_forensics_learning_bridge_v1`, `public.atlas_decision_outcome_attribution`, `public.atlas_market_identity_audit_v1`. These structures do NOT currently establish source-authenticated exact player-market eligibility or a complete outcome join. The read-only adapter expects additional independently verified external records when they become available.
 
-## Intended integration (NOT DONE by this PR)
+## Promotion boundary
 
-- Use current Supabase shadow experiment registry and observations rather than creating another database architecture.
-- SCOUT/VERIFY authenticates official source identities; ORACLE freezes the pre-price cohort; PRICING attaches exact market quotes after the independent forecast; FORENSICS appends independently verified official outcomes; CALIBRATOR runs this pure gate and writes an append-only SHADOW evaluation receipt with source IDs and a result hash.
-- On acceptance, test a versioned candidate against the frozen baseline on a **new** chronological holdout, with regression fixtures for prior errors (Nov 8 fake Herro/Miami player market, DNP/void, repeated parlay roots, synthetic combined prices, ledger replay).
-- Human Final Gate for real money stays mandatory. No deployment, cron, paid feed, provider calls, DB schema modification, model training, or automatic promotion in this PR.
+**DRAFT / SHADOW** means useful code, not working live ingest. GitHub Actions runs `node --test integrations/learning/*.test.mjs` on changes. Synthetic positive-case tests prove only logic, not that the sports model wins. The next proof is an authorized read-only source-to-packet replay with a real prospectively frozen model probability, current roster/event/market ID, independently frozen baseline, authentic quote and official outcome. That would still produce only a human-review candidate. No user money moves without the human Final Gate.
 
-**Reality check, Nov 9 2026:** ATLAS learning read models showed 18 experiments, three observations without outcomes, one unscored prediction without a joined outcome and no model registry rows. This source change does **not** populate those missing data automatically. The next implementation step is a separately reviewed, source-authenticated, read-only **experiment observations → official outcomes → evaluation packet** bridge.
+## Existing historical regression examples
+
+- November 8 Tyler Herro falsely attached to Miami–Sacramento: market identity HOLD, not ordinary forecast LOSS or sportsbook void.
+- Domantas Sabonis DNP: void/adjustment separately accounted for, not a forecast error.
+- Raiders moneyline repeated across parlays: a single underlying game/script root must not inflate independent-case counts.
+- Multiplication of separate public prices is **not** a verified sportsbook SGP quote.
+- A favorite-looking strategy with worse price-adjusted outcomes must not be promoted based only on a good hit rate.
+
+**Operator status:** read-only adapter and gate are code-level integration. Provider/authenticated live ingest, automatic canonical observation/outcome joins, public site deployment and production parameter promotion remain **NOT VERIFIED / NOT DONE**.
