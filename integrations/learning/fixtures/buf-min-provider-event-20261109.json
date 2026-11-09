@@ -47,5 +47,6 @@
   "provider_id": null,
   "provider_event_record_id": null,
   "provider_binding_count": 0,
-  "provenance": "Exact connected source data captured before game. No native provider_events record. Do not pass off as independently authenticated official event or market."
+  "provenance": "Exact connected source data captured before game. No native provider_events record. Do not pass off as independently authenticated official event or market. Connected source refresh 18:41Z was AFTER the model freeze 17:58Z; it cannot retroactively support the original probability.",
+  "prediction_frozen_at": "2026-11-09T17:58:11.719081Z"
 }
