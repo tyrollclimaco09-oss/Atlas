@@ -11,6 +11,8 @@ test('actual provider event and canonical schedule match but are not an authenti
   assert.equal(v.stage,'MATCHED_SHADOW_CROSSWALK_NOT_REGISTERED');
   assert.equal(v.source_match,true);
   assert.equal(v.source_clock_delta_seconds,0);
+  assert.equal(v.eligible_for_original_pregame_forecast_evidence,false);
+  assert.equal(v.source_observed_after_original_forecast,true);
   assert.equal(v.provider_event_id,'974116');
   assert.equal(v.record_provider_event_authorized,false);
   assert.equal(v.model_promotion,false);
@@ -98,4 +100,20 @@ test('schema with missing teams cannot be trusted',()=>{
 });
 test('bad input fails rather than silently matching',()=>{
   assert.throws(()=>run({contract:'BAD'}),/PACKET_INVALID/);
+});
+
+test('source captured after a prediction must never retroactively validate that frozen model',()=>{
+ const p=fx();
+ const z=run(p);
+ assert.equal(z.source_match,true);
+ assert.equal(z.source_observed_after_original_forecast,true);
+ assert.equal(z.eligible_for_original_pregame_forecast_evidence,false);
+ assert.equal(z.model_promotion,false);
+});
+test('source observed before a separately frozen later prediction can support only that later decision',()=>{
+ const p=fx();p.prediction_frozen_at='2026-11-09T19:00:00Z';
+ const z=run(p);assert.equal(z.source_match,true);
+ assert.equal(z.eligible_for_original_pregame_forecast_evidence,true);
+ assert.equal(z.source_observed_after_original_forecast,false);
+ assert.equal(z.record_provider_event_authorized,false);
 });
