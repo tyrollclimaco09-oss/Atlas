@@ -207,3 +207,30 @@ test('negative spread whole line has separate push mass',()=>{
  assert(Math.abs(r.lines[0].model_probability+r.lines[1].model_probability+
   r.lines[0].model_push_probability-1)<1e-7);
 });
+
+test('real frozen BUF-MIN probability is reproduced without odds or official result claims',()=>{
+ const p=f();p.sport='NFL';p.case_key='ATLAS-NFL-BUFMIN-20261109-ML-BUF-HEUR-V01';
+ p.event_id='bec54821-7bb8-4834-9ba1-1fbfcaf5e6a8';
+ p.selection_id='BUF_WIN_RESEARCH_BINARY';p.market_family='moneyline';
+ p.market_period='FULL';p.settlement_rule='RESEARCH_BUF_WIN_BOOLEAN_TIE_FALSE';
+ p.features_observed_at='2026-11-09T17:57:38.523447Z';
+ p.frozen_at='2026-11-09T17:58:11.719081Z';
+ p.event_start_at='2026-11-10T01:15:00Z';
+ p.source_receipts=[{receipt_id:'ATLAS-NFL-BUFMIN-20261109-INDEPENDENT-INPUTS-V1',
+  observed_at:'2026-11-09T17:57:38.523447Z'}];
+ p.model={model_key:'NFL_POINT_MIDPOINT_LOGIT8_V0',version:'0.1.0',family:'binary',
+  uses_bookmaker_odds:false,scenarios:[{id:'PREGAME_FROZEN_V0',weight:1,
+  params:{p:0.4968750406894683}}]};
+ p.baseline={model_key:'NO_INFO_NEUTRAL_50_50_V1',version:'1',family:'binary',
+  uses_bookmaker_odds:false,scenarios:[{id:'PREGAME_FROZEN_BASELINE',weight:1,params:{p:.5}}]};
+ p.lines=[{line_id:'BUF_WIN_RESEARCH_ONLY',side:'yes',threshold:null,
+   market_period:'FULL',settlement_rule:p.settlement_rule}];
+ const r=compile(p);
+ assert.equal(r.stage,'SHADOW_UNVALIDATED_RESEARCH');
+ assert.equal(r.lines[0].model_probability,.49687504);
+ assert.equal(r.lines[0].baseline_probability,.5);
+ assert.equal(r.probability_calibrated,false);
+ assert.equal(r.exact_bookmaker_price_used,false);
+ assert.equal(r.expected_profit_calculated,false);
+ assert.equal(r.real_money_authority,false);
+});
