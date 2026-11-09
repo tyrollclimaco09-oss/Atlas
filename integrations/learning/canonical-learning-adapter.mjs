@@ -111,7 +111,7 @@ export function reconcileCanonicalLearning(inputs, policy = {}) {
     // Forecast scoring and bookmaker pricing are separate evidence lanes.
     // An unquoted, genuinely pregame forecast may still be scored after an
     // authenticated final result, without inventing any paper return or EV.
-    const forecastReady = errors.every(x => x !== 'EXACT_VALID_POST_FORECAST_PRICE_NOT_PROVEN');
+    const forecastReady = errors.every(x => x === 'EXACT_VALID_POST_FORECAST_PRICE_NOT_PROVEN');
     const eligible = forecastReady && exactQuote;
     audits.push({case_key:key || null,event_id:event || null,
       status:eligible?'EVIDENCE_READY':forecastReady?'FORECAST_READY_PRICE_HOLD':'HOLD',
