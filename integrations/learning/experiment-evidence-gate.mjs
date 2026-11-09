@@ -125,18 +125,27 @@ export function evaluateExperimentEvidence(packet, { minCases = 120, minDays = 2
       net_paper_pnl: round(pnl(validPrices), 2), net_roi: round(roi(validPrices)),
       net_roi_95: confidence, excludes_synthetic_products: true };
   }
-  if (validPrices.length !== valid.length) blockers.push('PRICING_INCOMPLETE_OR_SYNTHETIC');
+  // Forecast calibration never depends on whether a sportsbook quote exists.
+  // Profit evidence always requires verified price and a separate return test.
+  const forecastReviewEligible = blockers.length === 0;
+  const pricingBlockers = [];
+  if (validPrices.length !== valid.length) pricingBlockers.push('PRICING_INCOMPLETE_OR_SYNTHETIC');
   if (!pricing || !pricing.net_roi_95 || pricing.net_roi_95.lower_95 <= 0)
-    blockers.push('NO_ROBUST_POSITIVE_PRICE_ADJUSTED_RETURN');
-  const review_eligible = blockers.length === 0;
+    pricingBlockers.push('NO_ROBUST_POSITIVE_PRICE_ADJUSTED_RETURN');
+  const profitReviewEligible = forecastReviewEligible && pricingBlockers.length === 0;
   return {
     contract: CONTRACT, experiment_key: packet.experiment_key,
-    disposition: review_eligible ? 'HUMAN_REVIEW_ELIGIBLE_SHADOW_ONLY' : 'HOLD_COLLECT_OR_REPAIR_EVIDENCE',
-    blockers: [...new Set(blockers)], rejected_cases: rejected,
+    disposition: profitReviewEligible ? 'HUMAN_REVIEW_ELIGIBLE_SHADOW_ONLY' :
+      forecastReviewEligible ? 'FORECAST_HUMAN_REVIEW_ELIGIBLE_PRICE_HOLD' : 'HOLD_COLLECT_OR_REPAIR_EVIDENCE',
+    forecast_disposition:forecastReviewEligible?'HUMAN_REVIEW_ELIGIBLE_FORECAST_SHADOW_ONLY':'HOLD_FORECAST_EVIDENCE',
+    pricing_disposition:profitReviewEligible?'HUMAN_REVIEW_ELIGIBLE_PRICE_SHADOW_ONLY':'HOLD_PRICE_OR_RETURN_EVIDENCE',
+    blockers: [...new Set([...blockers,...pricingBlockers])],
+    forecast_blockers: [...new Set(blockers)], pricing_blockers: pricingBlockers,
+    rejected_cases: rejected,
     cohort: { frozen: packet.frozen_case_count, submitted: packet.cases.length, valid: valid.length,
       rejected: rejected.length, independent_roots, observed_days },
     forecast, pricing,
     uses_real_money: false, model_weights_changed: false, production_authority: false,
-    note: 'Eligibility is not a profit guarantee and never authorizes bets or automatic model promotion.',
+    note: 'Forecast evidence and financial evidence are independent. Human review never authorizes bets or automatic model promotion.',
   };
 }
