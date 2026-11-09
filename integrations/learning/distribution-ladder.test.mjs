@@ -168,7 +168,7 @@ test('invalid count negative mean is rejected, not silently clipped',()=>{
 });
 test('absurd count and threshold values fail rather than overflow loops',()=>{
  const p=f();p.lines[0].threshold=5000.5;
- assert(compile(p).lines[0].blockers.includes('LINE_MUST_BE_NONNEGATIVE_INTEGER_OR_HALF'));
+ assert(compile(p).lines[0].blockers.includes('LINE_OUTSIDE_FAMILY_DOMAIN_OR_NOT_INTEGER_HALF'));
 });
 test('a missing canonical event ID halts the whole bundle',()=>{
  assert.throws(()=>g({event_id:''}),/DISTRIBUTION_PACKET_INVALID/);
@@ -180,4 +180,30 @@ test('market family without a scalar model is rejected',()=>{
 test('per-market pregame snapshots cannot change baseline source identity',()=>{
  const a=g();assert.equal(a.model_key,'DEMO-MODEL');
  assert.equal(a.baseline_key,'DEMO-BASELINE');assert.equal(a.source_cutoff,'2026-11-09T14:00:00Z');
+});
+
+test('negative point-spread margins are valid in normal integer distribution',()=>{
+ const p=f();p.market_family='spread';p.selection_id='DEMO:HOME_MARGIN';
+ p.model.scenarios[0].params={mean:-3,sd:7};p.baseline.scenarios[0].params={mean:-5,sd:7};
+ p.lines=[{...p.lines[0],line_id:'COVER_NEG_6.5',threshold:-6.5,side:'over'}];
+ const r=compile(p);
+ assert.equal(r.stage,'SHADOW_UNVALIDATED_RESEARCH');
+ assert(r.lines[0].model_probability>.6);
+ assert.equal(r.lines[0].model_push_probability,0);
+});
+test('count distributions reject negative thresholds, even when margin models accept them',()=>{
+ const p=f();p.market_family='three_pointers';
+ p.model={...p.model,family:'negative_binomial',scenarios:[{id:'base',weight:1,params:{mean:3,dispersion:5}}]};
+ p.baseline={...p.baseline,family:'negative_binomial',scenarios:[{id:'base',weight:1,params:{mean:2,dispersion:5}}]};
+ p.lines=[{...p.lines[0],threshold:-.5}];
+ assert(compile(p).lines[0].blockers.includes('LINE_OUTSIDE_FAMILY_DOMAIN_OR_NOT_INTEGER_HALF'));
+});
+test('negative spread whole line has separate push mass',()=>{
+ const p=f();p.market_family='spread';
+ p.model.scenarios[0].params={mean:-3,sd:7};p.baseline.scenarios[0].params={mean:-3,sd:7};
+ p.lines=[{...p.lines[0],line_id:'O',threshold:-3,side:'over'},
+  {...p.lines[0],line_id:'U',threshold:-3,side:'under'}];
+ const r=compile(p);
+ assert(Math.abs(r.lines[0].model_probability+r.lines[1].model_probability+
+  r.lines[0].model_push_probability-1)<1e-7);
 });
