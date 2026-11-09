@@ -108,10 +108,16 @@ export function reconcileCanonicalLearning(inputs, policy = {}) {
         price.virtual_stake > 0);
     }
     if (!exactQuote) reason(errors, 'EXACT_VALID_POST_FORECAST_PRICE_NOT_PROVEN');
-    const eligible = errors.length === 0;
-    audits.push({case_key:key || null,event_id:event || null,status:eligible?'EVIDENCE_READY':'HOLD',reasons:errors,
+    // Forecast scoring and bookmaker pricing are separate evidence lanes.
+    // An unquoted, genuinely pregame forecast may still be scored after an
+    // authenticated final result, without inventing any paper return or EV.
+    const forecastReady = errors.every(x => x !== 'EXACT_VALID_POST_FORECAST_PRICE_NOT_PROVEN');
+    const eligible = forecastReady && exactQuote;
+    audits.push({case_key:key || null,event_id:event || null,
+      status:eligible?'EVIDENCE_READY':forecastReady?'FORECAST_READY_PRICE_HOLD':'HOLD',
+      forecast_ready:forecastReady, price_ready:exactQuote, reasons:errors,
       matched_predictions:preds.length,matched_outcomes:outs.length,matched_identities:ids.length,matched_quotes:quoteRows.length});
-    if (eligible) {
+    if (forecastReady) {
       prepared.push({
         case_key:key,sport:p.sport,event_id:event,market_id:identity.market_id,root_key:root,
         current_team_verified:true,event_teams_verified:true,settlement_rules_verified:true,
@@ -119,15 +125,18 @@ export function reconcileCanonicalLearning(inputs, policy = {}) {
         model_probability:p.predicted_probability,baseline_probability:base.predicted_probability,
         outcome:o.binary_outcome,official_outcome_verified:true,outcome_observed_at:o.observed_at,
         invalid_market:false,void_or_push:false,
-        exact_book_quote_verified:true,book:price.book,book_market_id:price.provider_market_id,
-        price_observed_at:price.observed_at,odds_decimal:price.odds_decimal,virtual_stake:price.virtual_stake,
-        synthetic_multi_leg_quote:false,
+        exact_book_quote_verified:exactQuote,book:exactQuote?price.book:null,
+        book_market_id:exactQuote?price.provider_market_id:null,
+        price_observed_at:exactQuote?price.observed_at:null,
+        odds_decimal:exactQuote?price.odds_decimal:null,
+        virtual_stake:exactQuote?price.virtual_stake:null,
+        synthetic_multi_leg_quote:!!price?.synthetic_combination,
       });
     }
   }
   if (observations.length === 0) notes.push('NO_CANONICAL_OBSERVATIONS');
   if (!meta || meta.frozen_case_count !== observations.length) notes.push('FROZEN_CASE_COUNT_MISMATCH');
-  if (audits.some(x => x.status !== 'EVIDENCE_READY')) notes.push('INCOMPLETE_CASE_EVIDENCE');
+  if (audits.some(x => !x.forecast_ready)) notes.push('INCOMPLETE_FORECAST_CASE_EVIDENCE');
   // We never silently discard losses, null probabilities, invalid markets or unmatched cases.
   const canCreatePacket = notes.length === 0 && prepared.length === observations.length && prepared.length > 0;
   const packet = canCreatePacket ? {
@@ -139,13 +148,17 @@ export function reconcileCanonicalLearning(inputs, policy = {}) {
     frozen_case_count:meta.frozen_case_count,cases:prepared,
   } : null;
   return {contract:ADAPTER_CONTRACT,
-    disposition:canCreatePacket?'PACKET_READY_FOR_SHADOW_EVALUATION':'HOLD_NO_MODEL_CALIBRATION',
+    disposition:!canCreatePacket?'HOLD_NO_MODEL_CALIBRATION':
+      audits.some(a=>!a.price_ready)?'FORECAST_PACKET_READY_PRICING_HOLD':'PACKET_READY_FOR_SHADOW_EVALUATION',
     experiment_key:experiment.experiment_key||null,
     counts:{raw_observations:observations.length,matched_to_experiment:observations.length,
       with_official_outcome:audits.filter(a=>a.matched_outcomes===1).length,
-      with_numeric_eligible_forecast:prepared.length,complete_case_evidence:prepared.length,
+      with_numeric_eligible_forecast:prepared.length,
+      complete_case_evidence:audits.filter(a=>a.status==='EVIDENCE_READY').length,
       held_cases:audits.filter(a=>a.status==='HOLD').length},
-    blockers:[...new Set(notes)],case_audit:audits,packet,
+    blockers:[...new Set(notes)],
+    pricing_blockers:audits.some(a=>a.forecast_ready && !a.price_ready)?['EXACT_BOOK_QUOTE_NOT_PROVEN_FOR_ROI']:[],
+    case_audit:audits,packet,
     source_mode:'RECONCILED_READ_ONLY_INPUT',production_authority:false,model_weights_changed:false,
     real_betting_authority:false,virtual_bankroll_affected:false};
 }
