@@ -67,6 +67,9 @@ export function assessEventCrosswalk(packet,{maxClockSkewSeconds=120}={}){
   // Explicitly detect the existing missing provider binding: never silently infer a DB write.
   const passed=bad(errors).length===0;
   const linked=passed&&packet.provider_id_registered===true&&packet.provider_binding_count>0;
+  const originalFreeze=time(packet.prediction_frozen_at);
+  const originalEvidenceUsable=passed&&Number.isFinite(originalFreeze)&&
+    Number.isFinite(time(sc.capture_observed_at))&&time(sc.capture_observed_at)<=originalFreeze;
   const stage=!passed?'HOLD_SOURCE_OR_MATCHUP':
     !linked?'MATCHED_SHADOW_CROSSWALK_NOT_REGISTERED':
       'MATCHED_REGISTERED_SOURCE_NEEDS_OFFICIAL_ATTESTATION';
@@ -74,6 +77,11 @@ export function assessEventCrosswalk(packet,{maxClockSkewSeconds=120}={}){
     contract:CROSSWALK_CONTRACT,canonical_event_id:c.event_id,
     provider_event_id:isPositiveInt(p.competitionId)?String(p.competitionId):null,
     stage, source_match:passed,
+    original_prediction_frozen_at:isText(packet.prediction_frozen_at)?packet.prediction_frozen_at:null,
+    eligible_for_original_pregame_forecast_evidence:originalEvidenceUsable,
+    source_observed_after_original_forecast:
+      Number.isFinite(originalFreeze)&&Number.isFinite(time(sc.capture_observed_at))
+        ?time(sc.capture_observed_at)>originalFreeze:null,
     source_capture_observed_at:isText(sc.capture_observed_at)?sc.capture_observed_at:null,
     source_clock_delta_seconds:Number.isFinite(actualTime)&&Number.isFinite(canonicalTime)
        ?Math.abs(actualTime-canonicalTime)/1000:null,
