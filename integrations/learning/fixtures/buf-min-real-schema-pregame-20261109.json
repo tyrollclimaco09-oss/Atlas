@@ -1,0 +1,90 @@
+{
+  "policy": {
+    "minDays": 21,
+    "minCases": 120
+  },
+  "quotes": [],
+  "experiment": {
+    "experiment_id": "84d64938-8fbc-4f23-9c0b-cc6ed67da784",
+    "experiment_key": "ATLAS-20261109-FEATURE-ORACLE-CALIBRATION-FREEZE-V1"
+  },
+  "identities": [],
+  "predictions": [
+    {
+      "sport": "NFL",
+      "event_id": "bec54821-7bb8-4834-9ba1-1fbfcaf5e6a8",
+      "frozen_at": "2026-11-09T17:58:11.719081+00:00",
+      "model_key": "NFL_POINT_MIDPOINT_LOGIT8_V0",
+      "root_tags": {
+        "root_key": "NFL:2026-11-09:BUF@MIN:GAME_OUTCOME",
+        "event_key": "NFL:2026-11-09:BUF@MIN",
+        "source_receipt": "ATLAS-NFL-BUFMIN-20261109-INDEPENDENT-INPUTS-V1",
+        "source_conflict": "MIN_DEFENSE_PPG_DK_12_4_OFFICIAL_NFL_13_3",
+        "forecast_version": "NFL_POINT_MIDPOINT_LOGIT8_V0/0.1.0",
+        "market_selection": "BUF_ML"
+      },
+      "candidate_key": "ATLAS-NFL-BUFMIN-20261109-ML-BUF-HEUR-V01",
+      "event_start_at": "2026-11-10T01:15:00+00:00",
+      "features_observed_at": "2026-11-09T17:57:38.523447+00:00",
+      "predicted_probability": 0.4968750406894683,
+      "independent_inputs_verified": true
+    }
+  ],
+  "export_audit": {
+    "no_auto_promotion": true,
+    "native_quote_count": 0,
+    "export_is_read_only": true,
+    "no_real_bet_execution": true,
+    "canonical_frozen_cases": 1,
+    "official_outcome_count": 0,
+    "source_receipt_matched": 1,
+    "attested_identity_count": 0
+  },
+  "observations": [
+    {
+      "event_id": "bec54821-7bb8-4834-9ba1-1fbfcaf5e6a8",
+      "observed_at": "2026-11-09T17:58:11.719081+00:00",
+      "candidate_key": "ATLAS-NFL-BUFMIN-20261109-ML-BUF-HEUR-V01",
+      "experiment_id": "84d64938-8fbc-4f23-9c0b-cc6ed67da784",
+      "baseline_output": {
+        "sport": "NFL",
+        "method": "Neutral binary baseline; equal prior",
+        "frozen_at": "2026-11-09T17:58:11.719081+00:00",
+        "selection": "BUF",
+        "market_family": "moneyline",
+        "model_version": "NO_INFO_NEUTRAL_50_50_V1",
+        "predicted_probability": 0.5
+      },
+      "experimental_output": {
+        "method": "Offense/defense season scoring midpoint + sigmoid margin/8",
+        "frozen_at": "2026-11-09T17:58:11.719081+00:00",
+        "model_key": "NFL_POINT_MIDPOINT_LOGIT8_V0",
+        "selection": "BUF_ML",
+        "book_quote": null,
+        "paper_stake": 0,
+        "model_version": "0.1.0",
+        "prediction_id": "c1057ac4-97ce-4b1b-b0d5-ebd9dbaaab88",
+        "outcome_status": "PENDING_EVENT",
+        "source_conflict": "MIN defensive PPG DK 12.4 vs official NFL capsule 13.3; version1 retains DK snapshot",
+        "excluded_factors": "MIN QB out; Bills receiver out; venue and strength of schedule; pregame market odds not model inputs",
+        "model_data_receipt": "ATLAS-NFL-BUFMIN-20261109-INDEPENDENT-INPUTS-V1",
+        "included_in_features": "BUF offense 33.3, defense 25.9, MIN offense 20.0, DK MIN defense 12.4",
+        "predicted_probability": 0.4968750406894683,
+        "is_approved_real_wager": false,
+        "is_live_forecast_research": true
+      }
+    }
+  ],
+  "frozen_cohort": {
+    "hypothesis": "Point-midpoint logistic heuristic differs from neutral 50/50 baseline; score only after authenticated official winner and source identity review",
+    "baseline_id": "NO_INFO_NEUTRAL_50_50_V1",
+    "holdout_start": "2026-11-09T18:20:52.839205+00:00",
+    "model_version": "0.1.0",
+    "training_cutoff": "2026-11-09T17:47:35.8987596Z",
+    "frozen_cohort_id": "NFL-BUFMIN-20261109-PRESTART-ONECASE",
+    "frozen_case_count": 1,
+    "out_of_time_holdout": true,
+    "independent_model_inputs_verified": true
+  },
+  "official_outcomes": []
+}
