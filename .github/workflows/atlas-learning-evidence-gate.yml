@@ -19,4 +19,4 @@ jobs:
         with:
           node-version: '22'
       - name: Verify experiment admission regression fixtures
-        run: node --test integrations/learning/experiment-evidence-gate.test.mjs
+        run: node --test integrations/learning/*.test.mjs
