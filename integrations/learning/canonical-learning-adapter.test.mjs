@@ -149,3 +149,35 @@ test('all outputs remain paper only regardless of evidence',()=>{
  const r=call(fixture());assert.equal(r.production_authority,false);
  assert.equal(r.real_betting_authority,false);assert.equal(r.virtual_bankroll_affected,false);
 });
+
+
+test('a priced-market absence cannot block legitimate future forecast scoring',()=>{
+ const f=fixture(12);f.quotes=[];
+ const a=call(f);
+ assert.equal(a.disposition,'FORECAST_PACKET_READY_PRICING_HOLD');
+ assert.equal(a.packet.cases.length,12);
+ assert.equal(a.counts.complete_case_evidence,0);
+ assert(a.pricing_blockers.includes('EXACT_BOOK_QUOTE_NOT_PROVEN_FOR_ROI'));
+ const scored=evaluateExperimentEvidence(a.packet,{minCases:10,minDays:10});
+ assert.equal(scored.forecast_disposition,'HUMAN_REVIEW_ELIGIBLE_FORECAST_SHADOW_ONLY');
+ assert.equal(scored.pricing_disposition,'HOLD_PRICE_OR_RETURN_EVIDENCE');
+ assert.equal(scored.disposition,'FORECAST_HUMAN_REVIEW_ELIGIBLE_PRICE_HOLD');
+ assert.equal(scored.pricing,null);
+ assert(scored.forecast.brier_improvement>0);
+ assert.equal(scored.production_authority,false);
+});
+test('an unverified synthetic parlay quote may never certify returns but forecast can score',()=>{
+ const f=fixture(12);f.quotes.forEach(q=>q.synthetic_combination=true);
+ const a=call(f);assert.equal(a.disposition,'FORECAST_PACKET_READY_PRICING_HOLD');
+ assert.equal(a.packet.cases.every(c=>c.exact_book_quote_verified===false),true);
+ const scored=evaluateExperimentEvidence(a.packet,{minCases:10,minDays:10});
+ assert.equal(scored.forecast_disposition,'HUMAN_REVIEW_ELIGIBLE_FORECAST_SHADOW_ONLY');
+ assert.equal(scored.pricing,null);
+});
+test('source/team failure remains a forecast HOLD even if an independent model number exists',()=>{
+ const f=fixture(12);f.quotes=[];f.identities[0].verified_event_teams=false;
+ const a=call(f);
+ assert.equal(a.disposition,'HOLD_NO_MODEL_CALIBRATION');
+ assert.equal(a.packet,null);
+ assert(a.case_audit[0].reasons.includes('OFFICIAL_IDENTITY_AND_MARKET_PROOF_MISSING'));
+});
