@@ -39,7 +39,8 @@ function distValue(family,params,line){
  }
  if(line.side!=='over'&&line.side!=='under')throw Error('NUMERIC_SIDE_UNSUPPORTED');
  const h=line.threshold;
- if(!finite(h)||h<0||h>2000||!Number.isInteger(h*2))throw Error('LINE_MUST_BE_NONNEGATIVE_INTEGER_OR_HALF');
+ if(!finite(h)||Math.abs(h)>2000||!Number.isInteger(h*2)||
+    (family==='negative_binomial'&&h<0))throw Error('LINE_OUTSIDE_FAMILY_DOMAIN_OR_NOT_INTEGER_HALF');
  const isWhole=Number.isInteger(h);
  let lessThan=NaN,equal=0,greaterThan=NaN;
  if(family==='normal_integer'){
