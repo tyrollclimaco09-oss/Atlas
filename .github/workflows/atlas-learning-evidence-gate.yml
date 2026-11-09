@@ -1,0 +1,22 @@
+name: ATLAS learning evidence gate (offline)
+on:
+  pull_request:
+    paths:
+      - 'integrations/learning/**'
+      - '.github/workflows/atlas-learning-evidence-gate.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout source only
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - name: Prepare pinned Node runtime
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Verify experiment admission regression fixtures
+        run: node --test integrations/learning/*.test.mjs
