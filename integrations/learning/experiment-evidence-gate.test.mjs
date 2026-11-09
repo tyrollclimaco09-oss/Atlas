@@ -121,3 +121,29 @@ test('quote without unique bookmaker market ID is not valid financial evidence',
   const p=fx();p.cases[0].book_market_id=null;
   assert(run(p).blockers.includes('PRICING_INCOMPLETE_OR_SYNTHETIC'));
 });
+
+
+test('unpriced verified sports predictions can qualify for shadow forecast review but NEVER profit review',()=>{
+ const p=fx();p.cases.forEach(c=>{
+   c.exact_book_quote_verified=false;c.book=null;c.book_market_id=null;
+   c.price_observed_at=null;c.odds_decimal=null;c.virtual_stake=null;
+ });
+ const a=run(p);assert.equal(a.disposition,'FORECAST_HUMAN_REVIEW_ELIGIBLE_PRICE_HOLD');
+ assert.equal(a.forecast_disposition,'HUMAN_REVIEW_ELIGIBLE_FORECAST_SHADOW_ONLY');
+ assert.equal(a.pricing_disposition,'HOLD_PRICE_OR_RETURN_EVIDENCE');
+ assert.equal(a.pricing,null);assert.equal(a.model_weights_changed,false);
+});
+test('unpriced predictions with invalid baseline cannot qualify for forecast or profit review',()=>{
+ const p=fx();p.cases.forEach(c=>{c.exact_book_quote_verified=false;c.baseline_probability=c.model_probability;});
+ const r=run(p);
+ assert.equal(r.forecast_disposition,'HOLD_FORECAST_EVIDENCE');
+ assert.equal(r.pricing_disposition,'HOLD_PRICE_OR_RETURN_EVIDENCE');
+ assert(r.forecast_blockers.includes('NO_RELIABLE_HELDOUT_FORECAST_LIFT'));
+});
+test('strong price result does not excuse missing independent prospective outcome evidence',()=>{
+ const p=fx();p.independent_model_inputs_verified=false;
+ const r=run(p);
+ assert.equal(r.forecast_disposition,'HOLD_FORECAST_EVIDENCE');
+ assert.equal(r.pricing_disposition,'HOLD_PRICE_OR_RETURN_EVIDENCE');
+ assert(r.forecast_blockers.includes('NO_VERIFIED_PRICE_INDEPENDENCE'));
+});
