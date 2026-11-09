@@ -37,8 +37,12 @@
     "no_real_bet_execution": true,
     "canonical_frozen_cases": 1,
     "official_outcome_count": 0,
+    "source_claims_for_case": 0,
     "source_receipt_matched": 1,
-    "attested_identity_count": 0
+    "attested_identity_count": 0,
+    "native_event_provider_linked": false,
+    "canonical_event_identity_status": "VALID",
+    "canonical_event_provider_bindings": 0
   },
   "observations": [
     {
