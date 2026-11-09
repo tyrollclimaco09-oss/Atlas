@@ -1,0 +1,51 @@
+{
+  "contract": "ATLAS_EVENT_CROSSWALK_V1",
+  "canonical": {
+    "event_id": "bec54821-7bb8-4834-9ba1-1fbfcaf5e6a8",
+    "canonical_key": "NFL:2026-11-09:BUF@MIN",
+    "league": "NFL",
+    "start_time": "2026-11-10T01:15:00Z",
+    "home_team_abbr": "MIN",
+    "away_team_abbr": "BUF",
+    "reconciliation_status": "pending"
+  },
+  "provider_event": {
+    "competitionId": 974116,
+    "league": "NFL",
+    "startDateTimeUtc": "2026-11-10T01:15:00Z",
+    "competitionStatus": "Upcoming",
+    "teams": [
+      {
+        "teamId": 18409,
+        "teamAbbreviation": "MIN",
+        "isHomeTeam": true
+      },
+      {
+        "teamId": 18302,
+        "teamAbbreviation": "BUF",
+        "isHomeTeam": false
+      }
+    ]
+  },
+  "team_configurations": [
+    {
+      "teamAbbreviation": "MIN",
+      "teamId": 18409
+    },
+    {
+      "teamAbbreviation": "BUF",
+      "teamId": 18302
+    }
+  ],
+  "source_capture": {
+    "kind": "CONNECTED_TOOL_RESULT",
+    "tool": "DraftKings.search_games_v1",
+    "capture_observed_at": "2026-11-09T18:41:32.3917234Z",
+    "source_reference": "Connected DraftKings results, 2026-11-09T18:41:32Z; matching team configuration tool"
+  },
+  "provider_id_registered": false,
+  "provider_id": null,
+  "provider_event_record_id": null,
+  "provider_binding_count": 0,
+  "provenance": "Exact connected source data captured before game. No native provider_events record. Do not pass off as independently authenticated official event or market."
+}
