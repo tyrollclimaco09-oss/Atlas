@@ -36,3 +36,19 @@ Existing DB objects observed: `public.atlas_shadow_experiment_registry_v2`, `pub
 - A favorite-looking strategy with worse price-adjusted outcomes must not be promoted based only on a good hit rate.
 
 **Operator status:** read-only adapter and gate are code-level integration. Provider/authenticated live ingest, automatic canonical observation/outcome joins, public site deployment and production parameter promotion remain **NOT VERIFIED / NOT DONE**.
+
+
+## Live forecasting and market research are separate from bankroll settlement
+
+This bridge serves **all ATLAS sports-prediction work**, not only simulated wagering. A source-verified forecast with an independent pregame probability and a verified outcome can enter **forecast-quality scoring** even if no book offers the market. A **financial-return claim** additionally requires the exact eligible bookmaker market, accepted price, source timestamp, settlement rule, and recorded stake. `forecast_disposition` and `pricing_disposition` are distinct; neither ever directly places a bet or modifies real-money authority. NBA and NFL moneyline, spread, total, player and period markets can use the shared source/time/outcome contract, but each requires its own statistically justified probability model rather than applying a football model to all lines.
+
+### First actual future canonical forecast freeze (Nov 9)
+
+A new **unvalidated** NFL example was frozen *before* Bills–Vikings kickoff:
+
+- Canonical event: `NFL:2026-11-09:BUF@MIN`, source game competition 974116, actual canonical event UUID in ATLAS events. Official kickoff: Nov 9, 7:15 PM CT.
+- Forecast key: `ATLAS-NFL-BUFMIN-20261109-ML-BUF-HEUR-V01`, frozen 2026-11-09 **17:58:11.719081 UTC** in `public.atlas_prospective_prediction_freeze_v1`, model `NFL_POINT_MIDPOINT_LOGIT8_V0/0.1.0` in `atlas_model_registry_v1`, status UNVALIDATED / DESIGN.
+- Experimental Buffalo moneyline p = `0.4968750406894683` from simple offensive/defensive scoring midpoints and arbitrary logistic scale 8. Neutral frozen baseline p = 0.50 in source-linked `atlas_shadow_experiment_observations_v2`. Data receipt `ATLAS-NFL-BUFMIN-20261109-INDEPENDENT-INPUTS-V1` predates freeze. **This is NOT a calibrated wagerable probability.**
+- Preserve the source conflict: connected DraftKings team stats has Minnesota scoring defense 12.4 PPG; NFL official capsules show 13.3 PPG. Version0 holds its original 12.4 input; an official-source sensitivity remains separately logged.
+- A later price reference was attached **after** the model freeze in `ATLAS-NFL-BUFMIN-20261109-POSTFREEZE-PUBLIC-PRICE-V1`. NFL.com reported BUF -186/MIN +156; these are public article prices, **not native book checkout quotes**. Approximate two-way devig Buffalo probability is 0.62475. Price-model disagreement is a research warning, not a profitable Minnesota pick.
+- Official result unavailable at freeze. Postgame proof: obtain source-verified final, append immutable outcome receipt, join only outcome/close columns on frozen prediction and source-linked observation, then calculate Brier/log loss versus the frozen 50% baseline. Missing result, authentic quote or held-out sample stays HOLD. Retain real-vs-paper separation and operator Final Gate for actual wagers.
