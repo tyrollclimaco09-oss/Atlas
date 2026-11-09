@@ -114,3 +114,25 @@ test('price independence does not excuse leaked feature timestamps',()=>{
   f.features_observed_at='2026-11-10T02:00:00Z';
   assert(audit(p).case_audit[0].reasons.includes('INDEPENDENT_PRESTART_FORECAST_NOT_PROVEN'));
 });
+
+test('a valid canonical event audit does not imply sportsbook identity or provider authentication',()=>{
+ const p=snapshot(),a=p.export_audit;
+ assert.equal(a.canonical_event_identity_status,'VALID');
+ assert.equal(a.canonical_event_provider_bindings,0);
+ assert.equal(a.native_event_provider_linked,false);
+ assert.equal(a.source_claims_for_case,0);
+ assert.equal(p.identities.length,0);
+ assert.equal(audit(p).disposition,'HOLD_NO_MODEL_CALIBRATION');
+});
+test('replaying a date-matched source article never creates an accepted native price',()=>{
+ const p=snapshot();
+ const candidate=p.predictions[0].candidate_key, event=p.predictions[0].event_id;
+ p.quotes=[{candidate_key:candidate,event_id:event,market_id:'UNATTESTED',
+ verified_exact_book_quote:false,book:'UNVERIFIED',provider_market_id:null,
+ source_uri:'public-article-only',observed_at:'2026-11-09T18:04:43Z',
+ odds_decimal:1.5,virtual_stake:1,synthetic_combination:false}];
+ const r=audit(p);
+ assert.equal(r.packet,null);
+ assert.equal(r.case_audit[0].matched_quotes,1);
+ assert(r.case_audit[0].reasons.includes('EXACT_VALID_POST_FORECAST_PRICE_NOT_PROVEN'));
+});
