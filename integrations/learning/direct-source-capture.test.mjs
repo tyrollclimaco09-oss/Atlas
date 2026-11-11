@@ -51,7 +51,8 @@ test('two distinct valid archived HTTPS-source JSON bytes can provisionally scor
  assert.equal(r.results[0].status,'TWO_HTTPS_ORIGINS_AGREE_PROVISIONAL');
  assert.equal(r.results[0].final.home_won,1);
  assert.equal(r.metrics.neutral.brier,0.25);
- assert.equal(r.source_captures.length,2);
+ assert.equal(r.source_captures.length,3); // CDN, official-web fallback, ESPN: explicit absent source remains visible
+ assert.equal(r.source_captures.filter(x=>x.status==='TRANSPORT_OBSERVED_BYTES_VERIFIED').length,2);
  assert.equal(r.official_authenticated_production_cases,0);
  assert.equal(r.provider_digital_signatures_present,false);
  assert.equal(r.original_feed_dependency_independent,false);
