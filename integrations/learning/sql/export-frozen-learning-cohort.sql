@@ -16,7 +16,7 @@ experiment AS (
 ),
 frozen AS (
  SELECT o.id AS observation_id,o.experiment_id,o.candidate_key,o.event_id,
- o.observed_at,o.baseline_output,o.experimental_output,
+ o.observed_at,o.baseline_output,o.experimental_output,o.outcome_value AS recorded_outcome_value,
  p.prediction_id,p.sport,p.model_key,p.predicted_probability,p.frozen_at,
  p.event_start_at,p.market_family,p.market_price,p.root_tags,
  s.receipt_key AS source_receipt,s.evidence_observed_at AS source_observed_at,
@@ -31,6 +31,20 @@ frozen AS (
  LEFT JOIN public.atlas_slate_node_receipts_v10 s
    ON s.receipt_key=p.root_tags->>'source_receipt'
  WHERE NOT p.production_authority AND NOT o.production_influence
+),
+recorded_results AS (
+ -- Preserve source-linked recorded results separately from authenticated outcomes.
+ -- This path does not set official/source/market verification flags.
+ SELECT jsonb_build_object(
+ 'contract','ATLAS_RECORDED_OUTCOME_V1',
+ 'receipt_key',r.receipt_key,'candidate_key',r.candidate_key,
+ 'event_id',f.event_id::text,'prediction_id',f.prediction_id::text,
+ 'evidence_source',r.evidence_source,'evidence_observed_at',r.evidence_observed_at,
+ 'provenance_label',r.provenance_label,'payload',r.payload) AS item
+ FROM frozen f JOIN public.atlas_slate_node_receipts_v10 r
+ ON r.receipt_key=f.recorded_outcome_value->>'source_receipt'
+ AND r.candidate_key=f.candidate_key
+ WHERE NOT r.production_authority AND NOT r.real_betting_authority
 ),
 attested_identities AS (
  SELECT jsonb_build_object(
@@ -82,6 +96,7 @@ attested_quotes AS (
  AND NOT r.production_authority
 )
 SELECT jsonb_build_object(
+ 'export_contract_version','ATLAS_LEARNING_EXPORT_V2',
  'experiment',(SELECT jsonb_build_object('experiment_id',e.experiment_id::text,
  'experiment_key',e.experiment_key) FROM experiment e LIMIT 1),
  'frozen_cohort',(SELECT jsonb_build_object(
@@ -102,13 +117,14 @@ SELECT jsonb_build_object(
   'baseline_output',f.baseline_output,'experimental_output',f.experimental_output)
   ORDER BY f.candidate_key) FROM frozen f),'[]'::jsonb),
  'predictions',coalesce((SELECT jsonb_agg(jsonb_build_object(
-  'candidate_key',f.candidate_key,'event_id',f.event_id::text,'sport',f.sport,
+  'candidate_key',f.candidate_key,'event_id',f.event_id::text,'prediction_id',f.prediction_id::text,'sport',f.sport,
   'model_key',f.model_key,'predicted_probability',f.predicted_probability,
   'frozen_at',f.frozen_at,'features_observed_at',f.source_observed_at,
   'event_start_at',f.event_start_at,'independent_inputs_verified',f.independent_inputs_verified,
   'root_tags',f.root_tags) ORDER BY f.candidate_key) FROM frozen f),'[]'::jsonb),
  'identities',coalesce((SELECT jsonb_agg(item) FROM attested_identities),'[]'::jsonb),
  'official_outcomes',coalesce((SELECT jsonb_agg(item) FROM attested_results),'[]'::jsonb),
+ 'recorded_outcomes',coalesce((SELECT jsonb_agg(item) FROM recorded_results),'[]'::jsonb),
  'quotes',coalesce((SELECT jsonb_agg(item) FROM attested_quotes),'[]'::jsonb),
  'policy',jsonb_build_object('minCases',120,'minDays',21),
  'export_audit',jsonb_build_object(
@@ -120,6 +136,7 @@ SELECT jsonb_build_object(
     'native_event_provider_linked',(SELECT bool_and(ev.provider_id IS NOT NULL AND ev.provider_event_id IS NOT NULL) FROM public.events ev JOIN frozen f ON f.event_id=ev.id),
     'source_claims_for_case',(SELECT count(*) FROM public.atlas_source_claim_events_v1 c JOIN frozen f ON f.candidate_key=c.candidate_key),
     'official_outcome_count',(SELECT count(*) FROM attested_results),
+    'recorded_outcome_count',(SELECT count(*) FROM recorded_results),
     'attested_identity_count',(SELECT count(*) FROM attested_identities),
     'native_quote_count',(SELECT count(*) FROM attested_quotes),
     'no_auto_promotion',true,

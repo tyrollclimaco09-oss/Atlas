@@ -22,6 +22,7 @@ try {
     adapter_disposition:reconciled.disposition,
     experiment_key:reconciled.experiment_key,
     counts:reconciled.counts,
+    recorded_outcome_audit:reconciled.recorded_outcome_audit,
     blockers:reconciled.blockers,
     case_audit:reconciled.case_audit,
     evidence_gate_disposition:evaluation?.disposition || 'NOT_EVALUATED',
@@ -40,6 +41,8 @@ try {
   };
   process.stdout.write(JSON.stringify(summary,null,2)+'\n');
 } catch(e){
-  process.stderr.write('ATLAS_READ_ONLY_RECONCILE_ERROR: '+e.message+'\n');
+  const code=e instanceof SyntaxError?'CANONICAL_EXPORT_JSON_INVALID':
+    /^[A-Z_]+$/.test(e.message)?e.message:'CANONICAL_RECONCILE_FAILED';
+  process.stderr.write('ATLAS_READ_ONLY_RECONCILE_ERROR: '+code+'\n');
   process.exitCode=2;
 }
