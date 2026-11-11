@@ -1,0 +1,302 @@
+{
+  "contract": "ATLAS_CONNECTED_NBA_PRESTART_SOURCE_V1",
+  "mode": "RESEARCH_ONLY_PRESTART_NOT_EXECUTABLE",
+  "source_system": "CONNECTED_DRAFTKINGS_SEARCH_GAMES_V1",
+  "provider_request_id": "7d75fda7-d227-4719-9aec-6bb0dd7e6edb",
+  "source_generated_at_utc": "2026-11-11T15:23:11.766798Z",
+  "collector_context": "Connected DraftKings sports scores/stats tool; tool-delivered metadata; no vendor signature or raw HTTP response archived",
+  "query": {
+    "leagueAbbreviation": "NBA",
+    "startLocalDateTime": "2026-11-11T09:15:00-06:00",
+    "endLocalDateTime": "2026-11-12T00:00:00-06:00",
+    "limit": 40,
+    "takeFrom": "Start"
+  },
+  "source_data_origin": "scores_schedule_and_team_ppg_not_market_prices",
+  "provider_executable_quote": false,
+  "official_outcome_authenticated": false,
+  "provider_schedule_independently_crosschecked_in_docs": true,
+  "game_count": 10,
+  "games": [
+    {
+      "provider_competition_id": 1025962,
+      "league": "NBA",
+      "start_utc": "2026-11-12T00:00:00Z",
+      "status": "Upcoming",
+      "teams": [
+        {
+          "provider_team_id": 32922,
+          "abbreviation": "IND",
+          "name": "Pacers",
+          "home": true,
+          "record": "3-8",
+          "reported_score": 0
+        },
+        {
+          "provider_team_id": 32962,
+          "abbreviation": "WAS",
+          "name": "Wizards",
+          "home": false,
+          "record": "4-7",
+          "reported_score": 0
+        }
+      ],
+      "points_per_game": {
+        "home": 111.4,
+        "away": 108.1
+      }
+    },
+    {
+      "provider_competition_id": 1025963,
+      "league": "NBA",
+      "start_utc": "2026-11-12T00:00:00Z",
+      "status": "Upcoming",
+      "teams": [
+        {
+          "provider_team_id": 32940,
+          "abbreviation": "NYK",
+          "name": "Knicks",
+          "home": true,
+          "record": "6-4",
+          "reported_score": 0
+        },
+        {
+          "provider_team_id": 32908,
+          "abbreviation": "CLE",
+          "name": "Cavaliers",
+          "home": false,
+          "record": "5-6",
+          "reported_score": 0
+        }
+      ],
+      "points_per_game": {
+        "home": 110.6,
+        "away": 116.5
+      }
+    },
+    {
+      "provider_competition_id": 1025964,
+      "league": "NBA",
+      "start_utc": "2026-11-12T00:00:00Z",
+      "status": "Upcoming",
+      "teams": [
+        {
+          "provider_team_id": 32957,
+          "abbreviation": "TOR",
+          "name": "Raptors",
+          "home": true,
+          "record": "5-5",
+          "reported_score": 0
+        },
+        {
+          "provider_team_id": 32898,
+          "abbreviation": "BOS",
+          "name": "Celtics",
+          "home": false,
+          "record": "9-2",
+          "reported_score": 0
+        }
+      ],
+      "points_per_game": {
+        "home": 116.6,
+        "away": 115.7
+      }
+    },
+    {
+      "provider_competition_id": 1025968,
+      "league": "NBA",
+      "start_utc": "2026-11-12T01:00:00Z",
+      "status": "Upcoming",
+      "teams": [
+        {
+          "provider_team_id": 32938,
+          "abbreviation": "NOP",
+          "name": "Pelicans",
+          "home": true,
+          "record": "4-7",
+          "reported_score": 0
+        },
+        {
+          "provider_team_id": 32902,
+          "abbreviation": "BKN",
+          "name": "Nets",
+          "home": false,
+          "record": "2-8",
+          "reported_score": 0
+        }
+      ],
+      "points_per_game": {
+        "home": 117.5,
+        "away": 106.7
+      }
+    },
+    {
+      "provider_competition_id": 1025965,
+      "league": "NBA",
+      "start_utc": "2026-11-12T01:00:00Z",
+      "status": "Upcoming",
+      "teams": [
+        {
+          "provider_team_id": 32906,
+          "abbreviation": "CHI",
+          "name": "Bulls",
+          "home": true,
+          "record": "1-8",
+          "reported_score": 0
+        },
+        {
+          "provider_team_id": 32955,
+          "abbreviation": "SAS",
+          "name": "Spurs",
+          "home": false,
+          "record": "9-2",
+          "reported_score": 0
+        }
+      ],
+      "points_per_game": {
+        "home": 112.7,
+        "away": 118.7
+      }
+    },
+    {
+      "provider_competition_id": 1025967,
+      "league": "NBA",
+      "start_utc": "2026-11-12T01:00:00Z",
+      "status": "Upcoming",
+      "teams": [
+        {
+          "provider_team_id": 32933,
+          "abbreviation": "MIL",
+          "name": "Bucks",
+          "home": true,
+          "record": "1-10",
+          "reported_score": 0
+        },
+        {
+          "provider_team_id": 32927,
+          "abbreviation": "LAL",
+          "name": "Lakers",
+          "home": false,
+          "record": "10-2",
+          "reported_score": 0
+        }
+      ],
+      "points_per_game": {
+        "home": 106.3,
+        "away": 122.1
+      }
+    },
+    {
+      "provider_competition_id": 1025966,
+      "league": "NBA",
+      "start_utc": "2026-11-12T01:00:00Z",
+      "status": "Upcoming",
+      "teams": [
+        {
+          "provider_team_id": 32929,
+          "abbreviation": "MEM",
+          "name": "Grizzlies",
+          "home": true,
+          "record": "7-3",
+          "reported_score": 0
+        },
+        {
+          "provider_team_id": 32913,
+          "abbreviation": "DEN",
+          "name": "Nuggets",
+          "home": false,
+          "record": "5-4",
+          "reported_score": 0
+        }
+      ],
+      "points_per_game": {
+        "home": 117.9,
+        "away": 113.6
+      }
+    },
+    {
+      "provider_competition_id": 1025969,
+      "league": "NBA",
+      "start_utc": "2026-11-12T02:00:00Z",
+      "status": "Upcoming",
+      "teams": [
+        {
+          "provider_team_id": 32959,
+          "abbreviation": "UTA",
+          "name": "Jazz",
+          "home": true,
+          "record": "1-10",
+          "reported_score": 0
+        },
+        {
+          "provider_team_id": 32945,
+          "abbreviation": "ORL",
+          "name": "Magic",
+          "home": false,
+          "record": "3-7",
+          "reported_score": 0
+        }
+      ],
+      "points_per_game": {
+        "home": 106.5,
+        "away": 107
+      }
+    },
+    {
+      "provider_competition_id": 1025970,
+      "league": "NBA",
+      "start_utc": "2026-11-12T02:30:00Z",
+      "status": "Upcoming",
+      "teams": [
+        {
+          "provider_team_id": 32919,
+          "abbreviation": "HOU",
+          "name": "Rockets",
+          "home": true,
+          "record": "8-3",
+          "reported_score": 0
+        },
+        {
+          "provider_team_id": 32917,
+          "abbreviation": "GSW",
+          "name": "Warriors",
+          "home": false,
+          "record": "8-3",
+          "reported_score": 0
+        }
+      ],
+      "points_per_game": {
+        "home": 115.5,
+        "away": 120.4
+      }
+    },
+    {
+      "provider_competition_id": 1025971,
+      "league": "NBA",
+      "start_utc": "2026-11-12T03:00:00Z",
+      "status": "Upcoming",
+      "teams": [
+        {
+          "provider_team_id": 32952,
+          "abbreviation": "POR",
+          "name": "Trail Blazers",
+          "home": true,
+          "record": "7-3",
+          "reported_score": 0
+        },
+        {
+          "provider_team_id": 32942,
+          "abbreviation": "OKC",
+          "name": "Thunder",
+          "home": false,
+          "record": "8-3",
+          "reported_score": 0
+        }
+      ],
+      "points_per_game": {
+        "home": 119.7,
+        "away": 111.4
+      }
+    }
+  ]
+}
