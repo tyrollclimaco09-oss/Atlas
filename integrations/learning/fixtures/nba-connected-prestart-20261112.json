@@ -1,0 +1,134 @@
+{
+  "contract": "ATLAS_CONNECTED_NBA_PRESTART_SOURCE_V1",
+  "mode": "RESEARCH_ONLY_PRESTART_NOT_EXECUTABLE",
+  "source_system": "CONNECTED_DRAFTKINGS_SEARCH_GAMES_V1",
+  "provider_request_id": "32cae295-6d1e-4b4a-be2d-08c20a40b4a5",
+  "source_generated_at_utc": "2026-11-11T16:29:21.8194909Z",
+  "collector_context": "Connected DraftKings sports scores/stats tool; tool-delivered metadata; no vendor signature or raw HTTP response archived",
+  "query": {
+    "leagueAbbreviation": "NBA",
+    "startLocalDateTime": "2026-11-12T00:00:00-06:00",
+    "endLocalDateTime": "2026-11-13T00:00:00-06:00",
+    "limit": 40,
+    "takeFrom": "Start"
+  },
+  "source_data_origin": "scores_schedule_and_team_ppg_not_market_prices",
+  "provider_executable_quote": false,
+  "official_outcome_authenticated": false,
+  "provider_schedule_independently_crosschecked_in_docs": false,
+  "game_count": 4,
+  "games": [
+    {
+      "provider_competition_id": 1025973,
+      "league": "NBA",
+      "start_utc": "2026-11-13T00:00:00Z",
+      "status": "Upcoming",
+      "teams": [
+        {
+          "provider_team_id": 32947,
+          "abbreviation": "PHI",
+          "name": "76ers",
+          "home": true,
+          "record": "9-3",
+          "reported_score": 0
+        },
+        {
+          "provider_team_id": 32957,
+          "abbreviation": "TOR",
+          "name": "Raptors",
+          "home": false,
+          "record": "5-5",
+          "reported_score": 0
+        }
+      ],
+      "points_per_game": {
+        "home": 110.2,
+        "away": 116.6
+      }
+    },
+    {
+      "provider_competition_id": 1025972,
+      "league": "NBA",
+      "start_utc": "2026-11-13T00:00:00Z",
+      "status": "Upcoming",
+      "teams": [
+        {
+          "provider_team_id": 32962,
+          "abbreviation": "WAS",
+          "name": "Wizards",
+          "home": true,
+          "record": "4-7",
+          "reported_score": 0
+        },
+        {
+          "provider_team_id": 32915,
+          "abbreviation": "DET",
+          "name": "Pistons",
+          "home": false,
+          "record": "7-3",
+          "reported_score": 0
+        }
+      ],
+      "points_per_game": {
+        "home": 108.1,
+        "away": 112.7
+      }
+    },
+    {
+      "provider_competition_id": 1025974,
+      "league": "NBA",
+      "start_utc": "2026-11-13T01:00:00Z",
+      "status": "Upcoming",
+      "teams": [
+        {
+          "provider_team_id": 32935,
+          "abbreviation": "MIN",
+          "name": "Timberwolves",
+          "home": true,
+          "record": "8-3",
+          "reported_score": 0
+        },
+        {
+          "provider_team_id": 32911,
+          "abbreviation": "DAL",
+          "name": "Mavericks",
+          "home": false,
+          "record": "7-4",
+          "reported_score": 0
+        }
+      ],
+      "points_per_game": {
+        "home": 118.1,
+        "away": 114.9
+      }
+    },
+    {
+      "provider_competition_id": 1025975,
+      "league": "NBA",
+      "start_utc": "2026-11-13T02:00:00Z",
+      "status": "Upcoming",
+      "teams": [
+        {
+          "provider_team_id": 32949,
+          "abbreviation": "PHX",
+          "name": "Suns",
+          "home": true,
+          "record": "4-6",
+          "reported_score": 0
+        },
+        {
+          "provider_team_id": 32904,
+          "abbreviation": "CHA",
+          "name": "Hornets",
+          "home": false,
+          "record": "4-7",
+          "reported_score": 0
+        }
+      ],
+      "points_per_game": {
+        "home": 112.8,
+        "away": 98.8
+      }
+    }
+  ]
+}
