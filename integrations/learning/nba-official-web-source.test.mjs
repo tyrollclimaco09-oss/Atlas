@@ -108,3 +108,26 @@ test('only a real exact-date NBA homepage is fetchable by this provider role, no
  assert.equal(called.o.redirect,'error');
  assert.equal(called.o.headers.Accept,'text/html');
 });
+
+test('prestart official+ESPN event IDs are corroborated separately from outcomes and strictly after original model freeze',()=>{
+ const p=cohort.predictions[0],frozen=cohort.prepared_at_utc;
+ const page=data('2026-11-11',[card('0022600301',p.away_team,p.home_team,0,0,p.event_start_utc,1)]);
+ const n=capture(page,'2026-11-11','2026-11-11T16:48:38Z');
+ const e={events:[{id:'4012613301',date:p.event_start_utc,status:{type:{completed:false,state:'pre'}},
+  competitions:[{competitors:[
+   {homeAway:'home',team:{abbreviation:p.home_team},score:'0'},
+   {homeAway:'away',team:{abbreviation:p.away_team},score:'0'}]}]}]};
+ const ec=createSourceCapture({provider:'ESPN_SCOREBOARD',date:'2026-11-11',
+  bytes:Buffer.from(JSON.stringify(e)),observedAt:'2026-11-11T16:48:39Z',contentType:'application/json'});
+ const r=evaluateCapturedNBACohort({source,sourceSha,cohort,challenger,requestedDate:'2026-11-11',nbaWebCapture:n,espnCapture:ec});
+ assert(Date.parse(frozen)<Date.parse(n.metadata.observed_at));
+ assert.equal(r.pregame_event_identity_crosschecked_count,1);
+ assert.equal(r.postforecast_pregame_identity_count,1);
+ assert.equal(r.preforecast_source_identity_verified_count,0);
+ assert.equal(r.provisional_scored_count,0);
+ assert.equal(r.held_count,10);
+ assert.equal(r.results[0].prestart_three_provider_event_identity_status,'BOTH_HTTPS_IDS_VERIFIED_AFTER_FORECAST_BEFORE_GAME');
+ assert.equal(r.results[0].nba_game_id,'0022600301');
+ assert.equal(r.results[0].espn_event_id,'4012613301');
+ assert.equal(r.training_promoted,false);
+});
