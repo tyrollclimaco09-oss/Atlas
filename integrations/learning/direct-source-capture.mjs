@@ -15,6 +15,7 @@ const MAX_BYTES=8_000_000;
 const allowed=(provider,date)=>{
  if(!DATE_RE.test(date||''))throw Error('SOURCE_DATE_INVALID');
  if(provider==='NBA_OFFICIAL_CDN')return NBA_URL;
+ if(provider==='NBA_OFFICIAL_WEB')return 'https://www.nba.com/games?date='+date;
  if(provider==='ESPN_SCOREBOARD')return ESPN_BASE+'?dates='+date.replace(/-/g,'');
  throw Error('SOURCE_PROVIDER_NOT_ALLOWLISTED');
 };
@@ -26,13 +27,28 @@ function bytesFrom(input) {
  if(!Buffer.isBuffer(input)&&!(input instanceof Uint8Array))throw Error('CAPTURE_BYTES_INVALID');
  return Buffer.from(input);
 }
+export function parseNBAWebHTML(bytes,date){
+ const html=bytesFrom(bytes).toString('utf8');
+ const matches=[...html.matchAll(/<script\s+id="__NEXT_DATA__"\s+type="application\/json">([\s\S]*?)<\/script>/g)];
+ if(matches.length!==1||matches[0][1].length>5_000_000)throw Error('NBA_WEB_NEXT_DATA_MISSING_OR_AMBIGUOUS');
+ let data;try{data=JSON.parse(matches[0][1]);}catch{throw Error('NBA_WEB_NEXT_DATA_INVALID');}
+ if(data?.query?.date!==date||data?.props?.pageProps?.hasError===true||
+    !Array.isArray(data?.props?.pageProps?.gameCardFeed?.modules))
+    throw Error('NBA_WEB_DATE_OR_GAME_FEED_INVALID');
+ return data;
+}
 export function createSourceCapture({provider,date,bytes,observedAt,contentType,httpStatus=200}={}){
  const url=allowed(provider,date);
  const raw=bytesFrom(bytes);
+ const validMime=provider==='NBA_OFFICIAL_WEB'?
+   /^text\/html(?:\s*;.*)?$/i.test(contentType||''):
+   /^(application\/(?:[\w.+-]*json)|text\/plain)(?:\s*;.*)?$/i.test(contentType||'');
  if(raw.length<25||raw.length>MAX_BYTES||httpStatus!==200||
-    !/^(application\/(?:[\w.+-]*json)|text\/plain)(?:\s*;.*)?$/i.test(contentType||'')||
-    !Number.isFinite(Date.parse(observedAt||'')))throw Error('CAPTURE_RESPONSE_INVALID');
- let data;try{data=JSON.parse(raw.toString('utf8'));}catch{throw Error('CAPTURE_JSON_INVALID');}
+    !validMime||!Number.isFinite(Date.parse(observedAt||'')))
+    throw Error('CAPTURE_RESPONSE_INVALID');
+ let data;
+ if(provider==='NBA_OFFICIAL_WEB')data=parseNBAWebHTML(raw,date);
+ else {try{data=JSON.parse(raw.toString('utf8'));}catch{throw Error('CAPTURE_JSON_INVALID');}}
  if(!data||typeof data!=='object'||Array.isArray(data))throw Error('CAPTURE_JSON_INVALID');
  return {raw,metadata:{
   contract:CAPTURE_CONTRACT,provider,requested_date:date,request_url:url,
@@ -59,13 +75,13 @@ export function verifySourceCapture(metadata,bytes) {
     bytes:raw,observedAt:metadata.observed_at,contentType:metadata.content_type,
     httpStatus:metadata.response_status});
  if(check.metadata.sha256!==metadata.sha256)throw Error('CAPTURE_PROVENANCE_OR_BYTES_MISMATCH');
- return JSON.parse(raw.toString('utf8'));
+ return metadata.provider==='NBA_OFFICIAL_WEB'?parseNBAWebHTML(raw,metadata.requested_date):JSON.parse(raw.toString('utf8'));
 }
 export async function fetchAllowedSource(provider,date,{fetchImpl=fetch,now=()=>new Date().toISOString()}={}){
  const url=allowed(provider,date);
  const response=await fetchImpl(url,{
   method:'GET',redirect:'error',cache:'no-store',
-  headers:{Accept:'application/json','User-Agent':'ATLAS-Research-Source-Evidence/1.0'},
+  headers:{Accept:provider==='NBA_OFFICIAL_WEB'?'text/html':'application/json','User-Agent':'ATLAS-Research-Source-Evidence/1.0'},
   signal:AbortSignal.timeout(12000)
  });
  if(!response||response.status!==200)throw Error('SOURCE_HTTP_'+(response?.status||'UNAVAILABLE'));
