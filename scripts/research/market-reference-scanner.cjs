@@ -1,5 +1,6 @@
 'use strict';
 // Reads supplied offline snapshots only. No provider, database or account calls.
+const {probabilityStress,groupedExposure}=require('./reference-diagnostics.cjs');
 const {devigTwoWay,valueAt,quoteKey}=require('./market-intelligence.cjs');
 const {utc,hash,createMoneylineRecordGate}=require('./source-record-gate.cjs');
 const filled=v=>typeof v==='string'&&v.trim().length>0;
@@ -113,6 +114,9 @@ function scanOfflineReferencePacket(p){
     reference_books:refs.map(x=>x.q.book).sort(),reference_observation_ids:refs.map(x=>x.q.observationId),
     target_observation_id:target.q.observationId,margin_removal:'proportional_two_way_then_median',
     valuation_kind:'market-reference EV',market_reference_ev:ev,independent_model_probability:null,
+    probability_stress:probabilityStress(reference,selection.americanOdds),
+    reference_source_ids:[...new Set(refs.map(x=>x.q.sourceId))].sort(),
+    upstream_independence_verified:false,
     venue_verified:false,synthetic_fixture:[target,...refs].some(x=>x.synthetic),
     empirical_performance_eligible:false,paper_entry_created:false,paper_stake:null,
     status:'CANDIDATE_UNVERIFIED',production_authority:false};
@@ -122,6 +126,7 @@ function scanOfflineReferencePacket(p){
    else{out.signals.push(s);prior.add(decisionId);}
   }
  }
+ out.grouped_exposure=groupedExposure([...out.signals,...out.duplicate_decisions]);
  out.counts={valid_observations:valid.length,target_markets:targetCount,complete_reference_markets:complete,
   rejected_observations:out.rejected_observations.length,review_observations:out.review_observations.length};
  const partial=out.snapshot_errors.length+out.rejected_observations.length+out.review_observations.length+out.reference_holds.length>0;

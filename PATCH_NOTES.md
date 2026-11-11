@@ -1,5 +1,15 @@
 # ATLAS patch notes
 
+## 2026-11-11 — Real-source priority audit and sensitivity diagnostics
+
+**Status:** SHADOW, draft review only.
+
+- Fresh SELECT-only Supabase checks confirm 532 old snapshots with no period/rules/canonical-market metadata; intake disabled and zero paid budget. Re-exported the real frozen cohort: one recorded result, missing qualified identity/outcome/native quote evidence unchanged.
+- Retrieved the official recap and corroborated the stored score. Did not invent pregame identity attestations or rewrite frozen records.
+- Added scanner probability cushions and +/-1/3/6 pp EV sensitivity, explicitly uncalibrated. Added reference source IDs, unverified-upstream status and event-grouped unique candidate counts; monetary exposure and joint probability remain null.
+- Local verification: **277 tests passed, zero failed/skipped; full eight-condition simulation and all 3,000 fault checks passed**. GitHub CI is verified separately in the PR record. Commands: `node --test integrations/learning/*.test.mjs scripts/research/*.test.cjs`; `node scripts/research/scanner-simulation.cjs`.
+- Remaining blockers and source-check scope: [priority report](docs/research/2026-11-11-priority-pass.md). No collection controls, database data, paid credits, schedules, deployments, stakes or wagers changed.
+
 ## 2026-11-11 — Scanner simulation and batch-performance follow-up
 
 **Status:** SHADOW follow-up to draft PR #38. No merge, deployment, live collection or wager.

@@ -158,3 +158,10 @@ test('reference alignment is independent of locale punctuation collation',()=>{
  const s=scan(p).signals[0];
  assert.deepEqual(s.reference_observation_ids,s.reference_books.map(book=>q.find(row=>row.book===book).observationId));
 });
+test('scanner exposes assumption stress and grouped candidate counts without changing decisions',()=>{
+ const r=scan(packet()),s=r.signals[0];
+ assert.equal(r.signals.length,1);assert.equal(s.probability_stress.calibrated,false);
+ assert.equal(s.probability_stress.checks[2].positive_under_downward_error,false);
+ assert.deepEqual(s.reference_source_ids,['synthetic_fixture']);assert.equal(s.upstream_independence_verified,false);
+ assert.equal(r.grouped_exposure.candidate_count,1);assert.equal(r.grouped_exposure.event_groups[0].cash_exposure,null);
+});
