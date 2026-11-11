@@ -110,6 +110,23 @@ export function evaluateCapturedNBACohort({source,sourceSha,cohort,challenger,
    if(nm.length!==1)issues.push('NBA_OFFICIAL_EVENT_MISSING_OR_DUPLICATE');
    if(em.length!==1)issues.push('ESPN_EVENT_MISSING_OR_DUPLICATE');
    const n=nm.length===1?nm[0]:null,e=em.length===1?em[0]:null;
+   // Actual native DK competition ID remains from the immutable first-party connected
+   // source. NBA/ESPN IDs are separately discovered from direct HTTPS source bytes.
+   // A late pregame cross-check cannot be backdated to the forecast freeze.
+   const officialCapture=nbaWebCapture||nbaCapture;
+   const identityMatched=!!(n&&e&&
+     validTime(n.event_start)&&validTime(e.event_start)&&
+     Math.abs(Date.parse(n.event_start)-Date.parse(p.event_start_utc))<=15*60000&&
+     Math.abs(Date.parse(e.event_start)-Date.parse(p.event_start_utc))<=15*60000);
+   const prestartObserved=!!(identityMatched&&officialCapture&&espnCapture&&
+     Date.parse(officialCapture.metadata.observed_at)<Date.parse(p.event_start_utc)&&
+     Date.parse(espnCapture.metadata.observed_at)<Date.parse(p.event_start_utc));
+   const sourceTimeClass=prestartObserved?
+     (Date.parse(officialCapture.metadata.observed_at)<=Date.parse(p.forecast_prepared_at)&&
+      Date.parse(espnCapture.metadata.observed_at)<=Date.parse(p.forecast_prepared_at)?
+       'BOTH_HTTPS_IDS_VERIFIED_BEFORE_FORECAST':'BOTH_HTTPS_IDS_VERIFIED_AFTER_FORECAST_BEFORE_GAME'):
+     'NO_COMPLETE_PRESTART_IDENTITY_CORROBORATION';
+
    if(nbaCapture&&nbaWebCapture&&cm.length!==1)issues.push('NBA_OFFICIAL_CDN_WEB_IDENTITY_DISAGREEMENT');
    if(nbaCapture&&nbaWebCapture&&cm.length===1&&n&&
      (cm[0].home_score!==n.home_score||cm[0].away_score!==n.away_score||cm[0].status!==n.status))
@@ -123,9 +140,9 @@ export function evaluateCapturedNBACohort({source,sourceSha,cohort,challenger,
    if(n&&e&&(n.home_score!==e.home_score||n.away_score!==e.away_score))
     issues.push('INDEPENDENT_DOMAIN_FINAL_SCORE_DISAGREEMENT');
    // Provider IDs are distinct namespaces; do not infer DK ID from NBA or ESPN.
-   if(n&&(!validTime(n.event_start)||Math.abs(Date.parse(n.event_start)-Date.parse(p.event_start_utc))>3*3600000))
+   if(n&&(!validTime(n.event_start)||Math.abs(Date.parse(n.event_start)-Date.parse(p.event_start_utc))>15*60000))
     issues.push('NBA_EVENT_START_CONFLICT');
-   if(e&&(!validTime(e.event_start)||Math.abs(Date.parse(e.event_start)-Date.parse(p.event_start_utc))>3*3600000))
+   if(e&&(!validTime(e.event_start)||Math.abs(Date.parse(e.event_start)-Date.parse(p.event_start_utc))>15*60000))
     issues.push('ESPN_EVENT_START_CONFLICT');
    const match=challenger.cases.filter(c=>c.canonical_source_event_key===p.canonical_source_event_key);
    if(match.length!==1)issues.push('RIVAL_IDENTITY_MISMATCH');
@@ -139,6 +156,12 @@ export function evaluateCapturedNBACohort({source,sourceSha,cohort,challenger,
    return {
      case_key:p.canonical_source_event_key,dk_original_competition_id:p.source_provider_competition_id,
      nba_game_id:n?.id??null,espn_event_id:e?.id??null,
+     prestart_three_provider_event_identity_status:sourceTimeClass,
+     prestart_three_provider_ids_corroborated:prestartObserved,
+     source_provider_id_reported_at_forecast:p.source_provider_competition_id,
+     source_identity_corroboration_observed_at:prestartObserved?
+       {nba:officialCapture.metadata.observed_at,espn:espnCapture.metadata.observed_at}:null,
+     original_forecast_prepared_at:p.forecast_prepared_at,
      status:eligible?'TWO_HTTPS_ORIGINS_AGREE_PROVISIONAL':'HOLD_SOURCE_OR_IDENTITY',
      reasons:issues,final:eligible?{home_score:n.home_score,away_score:n.away_score,home_won:y}:null,
      metrics:eligible?{
@@ -151,6 +174,7 @@ export function evaluateCapturedNBACohort({source,sourceSha,cohort,challenger,
    };
  });
  const scored=results.filter(x=>x.status==='TWO_HTTPS_ORIGINS_AGREE_PROVISIONAL');
+ const idCrosschecked=results.filter(x=>x.prestart_three_provider_ids_corroborated);
  const m=key=>({
   brier:avg(scored.map(x=>x.metrics[key]),'brier'),
   logloss:avg(scored.map(x=>x.metrics[key]),'logloss')
@@ -162,7 +186,10 @@ export function evaluateCapturedNBACohort({source,sourceSha,cohort,challenger,
       'SINGLE_DAY_UNCALIBRATED_COHORT':'PARTIAL_CASE_SELECTION_BIAS'}:null;
  return {contract:DIRECT_OUTCOME_CONTRACT,status:scored.length?'PROVISIONAL_TWO_DOMAIN_RESEARCH':'HOLD_NO_CONFIRMED_RESULTS',
    requested_date:requestedDate,source_captures:sourceStatus,
-   frozen_case_count:cohort.count,provisional_scored_count:scored.length,
+   frozen_case_count:cohort.count,pregame_event_identity_crosschecked_count:idCrosschecked.length,
+   postforecast_pregame_identity_count:idCrosschecked.filter(x=>x.prestart_three_provider_event_identity_status==='BOTH_HTTPS_IDS_VERIFIED_AFTER_FORECAST_BEFORE_GAME').length,
+   preforecast_source_identity_verified_count:idCrosschecked.filter(x=>x.prestart_three_provider_event_identity_status==='BOTH_HTTPS_IDS_VERIFIED_BEFORE_FORECAST').length,
+   provisional_scored_count:scored.length,
    held_count:results.length-scored.length,full_cohort:scored.length===cohort.count,
    results,metrics,official_authenticated_production_cases:0,
    provider_digital_signatures_present:false,
