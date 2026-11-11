@@ -106,6 +106,12 @@ export function freezePregameSource(snapshot,{preparedAt,sourceBlobSha}={}){
     no_bets:true,automatic_model_promotion:false,production_authority:false
   };
 }
+function ordered(value){
+  if(Array.isArray(value))return value.map(ordered);
+  if(value && typeof value==='object')
+    return Object.fromEntries(Object.keys(value).sort().map(key=>[key,ordered(value[key])]));
+  return value;
+}
 export function validateProspectiveFreeze(snapshot,cohort,actualSourceBlobSha){
   if(!cohort||cohort.contract!==COHORT_CONTRACT||
      cohort.source_git_blob_sha!==actualSourceBlobSha||
@@ -113,7 +119,7 @@ export function validateProspectiveFreeze(snapshot,cohort,actualSourceBlobSha){
     fail('PROSPECTIVE_FREEZE_INTEGRITY_INVALID');
   const expected=freezePregameSource(snapshot,{preparedAt:cohort.prepared_at_utc,
     sourceBlobSha:actualSourceBlobSha});
-  if(JSON.stringify(expected)!==JSON.stringify(cohort))
+  if(JSON.stringify(ordered(expected))!==JSON.stringify(ordered(cohort)))
     fail('PROSPECTIVE_FREEZE_DRIFT_OR_REWRITE');
   return {status:'FROZEN_SOURCE_ARITHMETIC_MATCH',
     source_git_blob_sha:actualSourceBlobSha,cases:cohort.count,
