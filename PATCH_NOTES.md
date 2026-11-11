@@ -2,6 +2,18 @@
 
 
 
+
+## 2026-11-11 — P1 postgame evaluation + independently defined record challenger
+
+**Status: SHADOW, draft review only. Games are not yet final; no actual game outcome/edge claims.**
+
+- Froze a **second, distinct-method challenger before tipoff at 15:44:35 UTC** using only the same original NBA pregame connected-source snapshot. The challenger is a fixed Laplace-smoothed season win-loss log-odds formula with a 0.5 shrink factor; it is not source-independent, tuned, calibrated or executable. Saved new immutable `nba-record-challenger-freeze-20261111.json` without changing original PPG model, original baseline, source, timestamps or ten forecasts.
+- Added `prospective-postgame-evaluator.mjs`, a **read-only** ten-case result reconciliation and paired Brier/log-loss evaluator across original PPG18, record challenger and neutral 0.5. Strict native event/team IDs, two distinct source snapshots, final-only timestamps, score agreement, duplication/unknown-event detection, conflicts and HOLD semantics. No source-claimed `verified` flag or official-looking URL grants authenticated model performance; all outputs remain provisional with zero admitted calibration samples and zero ROI authority.
+- Added offline postgame stdin CLI; with no source results it returns ten HOLD and null metric summary. The actual November 11 NBA games have not finished at authoring. Postgame evidence and reported results will be separate, not rewritten into original freeze.
+- Added exact `2^10 = 1024`-world *combinatorial stress* on frozen probabilities, counting outcomes where PPG/record formulas would outperform the neutral baseline. These patterns **are not empirical games or modeled probabilities**. Added a CLI, regression tests and dedicated GitHub Actions checks for both empty-outcome fail-closed status and zero empirical authority.
+- Evidence report: [Three-arm postgame proof and limits](docs/research/2026-11-11-three-arm-postgame-proof.md). Updated the existing enabled Postgame Forensics task to consider the extra frozen challenger and explicit CLI reproducibility (next scheduled November 12, 6:30 AM CT); this is **not** proof that a future run executed code or delivered a notification. No new automation, provider calls beyond the existing connected prestart source already logged, Supabase migration/write, deployment, paper debit, promotion or wager.
+- **Verification:** GitHub Actions [run 43052264010](https://github.com/tyrollclimaco09-oss/Atlas/actions/runs/43052264010) on PR #41 head `0c6f33581dbae7867e7838f7f8eba4f8569f4fba` passed **324/324 offline tests, zero failed/skipped** (25 new since PR #40), all **3,000 prior synthetic fault checks**, and the new postgame-empty/stress workflow check. It explicitly confirmed **10/10 games HOLD** until valid finals. The 1,024 hypothetical outcome patterns: PPG beats neutral in 397 and loses in 627; record-only beats neutral in 320 and loses in 704; PPG beats record in 654. This enumeration **has no outcome likelihood weighting**, and is not evidence of predictive skill. Pending operational verification: actual official game finals, independently sourced score receipts and later multi-day chronological model quality. P1 is NOT production-ready.
+
 ## 2026-11-11 — Prospective NBA source → independent forecast cohort (P1 SHADOW)
 
 **Status:** source and freeze committed before tipoff; review only; no deployment.
