@@ -7,6 +7,7 @@
 import { readFileSync } from 'node:fs';
 import {reconcileCanonicalLearning} from './canonical-learning-adapter.mjs';
 import {evaluateExperimentEvidence} from './experiment-evidence-gate.mjs';
+import {diagnoseRecordedResultResearch} from './recorded-result-research.mjs';
 
 try {
   const raw=readFileSync(0, 'utf8');
@@ -23,6 +24,7 @@ try {
     experiment_key:reconciled.experiment_key,
     counts:reconciled.counts,
     recorded_outcome_audit:reconciled.recorded_outcome_audit,
+    recorded_result_research_diagnostics:diagnoseRecordedResultResearch(input,reconciled.recorded_outcome_audit),
     blockers:reconciled.blockers,
     case_audit:reconciled.case_audit,
     evidence_gate_disposition:evaluation?.disposition || 'NOT_EVALUATED',
