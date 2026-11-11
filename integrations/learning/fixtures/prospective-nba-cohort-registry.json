@@ -1,0 +1,22 @@
+{
+  "contract": "ATLAS_SHADOW_NBA_CAPTURE_COHORT_REGISTRY_V1",
+  "semantics": "source and frozen cohort file links only; registration does not authenticate results, source independence, or executable market identity",
+  "cohorts": [
+    {
+      "date": "2026-11-11",
+      "source_file": "nba-connected-prestart-20261111.json",
+      "forecast_file": "nba-prospective-forecast-freeze-20261111.json",
+      "challenger_file": "nba-record-challenger-freeze-20261111.json",
+      "source_git_blob_sha": "9605d80d49d327f3acd4020d34ae49757f801e82",
+      "expected_cases": 10
+    },
+    {
+      "date": "2026-11-12",
+      "source_file": "nba-connected-prestart-20261112.json",
+      "forecast_file": "nba-prospective-forecast-freeze-20261112.json",
+      "challenger_file": "nba-record-challenger-freeze-20261112.json",
+      "source_git_blob_sha": "c8c2daf834b58f2870eec18bb82595a5332afa64",
+      "expected_cases": 4
+    }
+  ]
+}
