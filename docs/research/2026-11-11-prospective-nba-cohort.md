@@ -21,10 +21,14 @@
 - New deterministic Node helper: `integrations/learning/prospective-source-freeze.mjs`. It reads source bytes, computes the Git blob fingerprint, freezes the full cohort from a declared formula, and checks the preserved manifest against both the exact original byte-backed source and analytic results.
 - New regression tests: `integrations/learning/prospective-source-freeze.test.mjs`. They include source tampering, duplicate games, home/away identity corruption, after-tip data, odds or outcomes incorrectly attached, change of model/baseline, and result leakage.
 - Source snapshot, formula and manifest are committed in SHADOW draft and have **zero** financial authority, data-ingest enablement, Supabase writes or bets.
-- GitHub Actions result: **pending** at initial authoring. Do not claim success until the actual review head is tested.
+- GitHub Actions [run 43048853741](https://github.com/tyrollclimaco09-oss/Atlas/actions/runs/43048853741) passed **299/299 offline tests, zero failures/skips** and **3,000/3,000 synthetic fault/invariance checks** on original PR #40 head `405a7f057813c30aa1b8aa37cbef7bda9b3af37f`. The source artifact and frozen formula are in the tested tree. This is code/source consistency proof, **not prospective model accuracy**.
 
 ## Remaining blockers
 
 - Verified future official result ingestion, canonical event and market identity attestation, source-origin authentication and settlement rules.
 - Long-run (at least 120 cases over 21 days as the existing gate specifies) chronological holdout, variance and calibration versus frozen baseline, and thereafter authenticated exact native prices for separate price-edge/ROI research.
 - No new Supabase migration, deployment, scheduled job or site publish. P1 source-to-forecast proof now has one real 10-case prospective cohort; outcome and external authority remain on HOLD.
+
+## Postgame handoff
+
+Updated the EXISTING enabled ATLAS NBA/NFL Postgame Forensics task (not a new scheduled job), retaining its 06:30 America/Chicago daily cadence. The November 12 pass is instructed to check each of the ten games against connected DraftKings SCORES and actual official NBA.com finals, preserve all discrepancies and source observation timestamps, and compute a provisional Brier comparison only for well-matched confirmed results. Future run status and delivery remain unverified. No Supabase forecast or result records were backfilled; the current historical source-authentication HOLD remains.
