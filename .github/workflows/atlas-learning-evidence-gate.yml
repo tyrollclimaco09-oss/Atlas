@@ -46,6 +46,28 @@ jobs:
           package-manager-cache: false
       - name: Verify learning and market-reference regressions
         run: node --test integrations/learning/*.test.mjs scripts/research/*.test.cjs
+      - name: Verify frozen postgame holds and exhaustive outcome stress
+        run: |
+          printf '{"observations":[]}' | node integrations/learning/score-prospective-nba-cli.mjs > "$RUNNER_TEMP/atlas-postgame-empty.json"
+          node integrations/learning/outcome-pattern-check.mjs > "$RUNNER_TEMP/atlas-1024-pattern-stress.json"
+          python3 - <<'PY'
+          import json,os,pathlib
+          root=pathlib.Path(os.environ['RUNNER_TEMP'])
+          e=json.loads((root/'atlas-postgame-empty.json').read_text())
+          s=json.loads((root/'atlas-1024-pattern-stress.json').read_text())
+          assert e['contract']=='ATLAS_NBA_PROSPECTIVE_POSTGAME_EVALUATION_V1'
+          assert e['held_count']==10 and e['provisional_scored_count']==0
+          assert e['paired_metrics'] is None and e['official_calibration_sample_count']==0
+          assert not e['production_authority'] and not e['real_betting_authority']
+          assert s['contract']=='ATLAS_NBA_OUTCOME_PATTERN_STRESS_V1'
+          assert s['patterns_considered']==1024 and s['empirical_sample_count']==0
+          assert s['interpreted_probability'] is None
+          assert not s['production_authority'] and not s['model_calibration_authority']
+          print('Prospective scorer: 10/10 outcomes held until final source evidence')
+          print('Exhaustive stress: 1024 hypothetical binary patterns, no observed results or probabilities')
+          for key in ('ppg_better_neutral','ppg_worse_neutral','record_better_neutral','record_worse_neutral','ppg_better_record'):
+              print(key,s[key])
+          PY
       - name: Run seeded scanner simulation and fault sweep
         run: |
           node scripts/research/scanner-simulation.cjs > "$RUNNER_TEMP/atlas-scanner-simulation.json"
