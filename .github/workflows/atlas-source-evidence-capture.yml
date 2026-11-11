@@ -6,6 +6,7 @@ on:
       - 'integrations/learning/direct-source-capture.mjs'
       - 'integrations/learning/direct-outcome-join.mjs'
       - 'integrations/learning/collect-source-evidence.mjs'
+      - 'integrations/learning/probe-official-origin.mjs'
       - 'integrations/learning/fixtures/prospective-nba-cohort-registry.json'
       - 'integrations/learning/fixtures/nba-connected-prestart-*.json'
       - 'integrations/learning/fixtures/nba-prospective-forecast-freeze-*.json'
@@ -65,9 +66,15 @@ jobs:
           for s in r['slates']:
               print('SOURCE_CAPTURE',json.dumps(s))
           PY
+      - name: Probe alternate official NBA endpoints without outcome admission
+        env:
+          REQUESTED_DATE: ${{ inputs.slate_date }}
+        run: |
+          PROBE_DATE="${REQUESTED_DATE:-$(TZ=America/Chicago date -d 'yesterday' +%F)}"
+          node integrations/learning/probe-official-origin.mjs             --date="$PROBE_DATE" --out="$RUNNER_TEMP/atlas-source-capture/official-probe"
       - name: Retain raw source bytes and hash-bound report for audit
         if: always()
-        uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f
         with:
           name: atlas-nba-source-proof-${{ github.run_id }}
           path: ${{ runner.temp }}/atlas-source-capture/
