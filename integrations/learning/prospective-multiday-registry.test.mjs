@@ -7,10 +7,11 @@ import {createRecordControl,verifyRecordControl} from './record-control-challeng
 const dir=new URL('./fixtures/',import.meta.url);
 const registry=JSON.parse(readFileSync(new URL('prospective-nba-cohort-registry.json',dir),'utf8'));
 const get=date=>{
- const path=fileURLToPath(new URL('nba-connected-prestart-'+date+'.json',dir));
+ const compact=date.replaceAll('-','');
+ const path=fileURLToPath(new URL('nba-connected-prestart-'+compact+'.json',dir));
  const {snapshot,source_git_blob_sha}=readSourceWithBlob(path);
- const cohort=JSON.parse(readFileSync(new URL('nba-prospective-forecast-freeze-'+date+'.json',dir),'utf8'));
- const challenger=JSON.parse(readFileSync(new URL('nba-record-challenger-freeze-'+date+'.json',dir),'utf8'));
+ const cohort=JSON.parse(readFileSync(new URL('nba-prospective-forecast-freeze-'+compact+'.json',dir),'utf8'));
+ const challenger=JSON.parse(readFileSync(new URL('nba-record-challenger-freeze-'+compact+'.json',dir),'utf8'));
  return {snapshot,sha:source_git_blob_sha,cohort,challenger};
 };
 test('source registry contains two distinct real prospective dates, no forged official claims',()=>{
