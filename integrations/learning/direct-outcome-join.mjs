@@ -37,7 +37,27 @@ function nbaScheduleGames(json,date) {
  }
  return out;
 }
-function espnScoreboardGames(json,date){
+export function nbaWebGames(json,date){
+ if(json?.query?.date!==date)throw Error('NBA_WEB_DATE_CONFLICT');
+ const modules=json?.props?.pageProps?.gameCardFeed?.modules;
+ if(!Array.isArray(modules))throw Error('NBA_WEB_FEED_INVALID');
+ const out=[];
+ for(const module of modules){
+  if(!Array.isArray(module?.cards))continue;
+  for(const card of module.cards){
+   const g=card?.cardData;
+   if(!g||g.gameId===undefined)continue;
+   const home=team(g.homeTeam?.teamTricode),away=team(g.awayTeam?.teamTricode);
+   if(!/^\d{10}$/.test(String(g.gameId))||!home||!away||!validTime(g.gameTimeUtc))
+    throw Error('NBA_WEB_GAME_IDENTITY_INVALID');
+   out.push({id:String(g.gameId),home,away,event_start:g.gameTimeUtc,
+     status:Number(g.gameStatus),home_score:score(g.homeTeam?.score),
+     away_score:score(g.awayTeam?.score),status_text:g.gameStatusText||null});
+  }
+ }
+ return out;
+}
+export function espnScoreboardGames(json,date){
  if(!Array.isArray(json?.events))throw Error('ESPN_SOURCE_SCHEMA_INVALID');
  const out=[];
  for(const e of json.events){
@@ -61,32 +81,39 @@ function espnScoreboardGames(json,date){
 function calc(p,y){return {brier:(p-y)**2,logloss:-(y*Math.log(p)+(1-y)*Math.log(1-p))};}
 function avg(a,k){return a.length?a.reduce((s,x)=>s+x[k],0)/a.length:null;}
 export function evaluateCapturedNBACohort({source,sourceSha,cohort,challenger,
- nbaCapture=null,espnCapture=null,requestedDate}={}){
+ nbaCapture=null,nbaWebCapture=null,espnCapture=null,requestedDate}={}){
  validateProspectiveFreeze(source,cohort,sourceSha);
  verifyRecordControl(source,cohort,sourceSha,challenger);
  if(requestedDate!==cohort.slate_date_ct)throw Error('CAPTURE_DATE_NOT_COHORT');
  const sourceStatus=[];
- let nba=[],espn=[];
- for(const [label,c] of [['NBA_OFFICIAL_CDN',nbaCapture],['ESPN_SCOREBOARD',espnCapture]]){
+ let nba=[],nbaWeb=[],espn=[];
+ for(const [label,c] of [['NBA_OFFICIAL_CDN',nbaCapture],['NBA_OFFICIAL_WEB',nbaWebCapture],['ESPN_SCOREBOARD',espnCapture]]){
    if(c===null){sourceStatus.push({provider:label,status:'MISSING_FETCH_NOT_AUTHENTICATED'});continue;}
    if(c.metadata?.provider!==label||c.metadata?.requested_date!==requestedDate)
     throw Error('CAPTURE_PROVIDER_DATE_MISMATCH');
    const parsed=verifySourceCapture(c.metadata,c.raw);
    if(label==='NBA_OFFICIAL_CDN')nba=nbaScheduleGames(parsed,requestedDate);
+   else if(label==='NBA_OFFICIAL_WEB')nbaWeb=nbaWebGames(parsed,requestedDate);
    else espn=espnScoreboardGames(parsed,requestedDate);
    sourceStatus.push({provider:label,status:'TRANSPORT_OBSERVED_BYTES_VERIFIED',
      sha256:c.metadata.sha256,raw_byte_length:c.metadata.raw_byte_length,
      observed_at:c.metadata.observed_at,url:c.metadata.request_url,
-     provider_signature_verified:false,parsed_events:label==='NBA_OFFICIAL_CDN'?nba.length:espn.length});
+     provider_signature_verified:false,parsed_events:label==='NBA_OFFICIAL_CDN'?nba.length:label==='NBA_OFFICIAL_WEB'?nbaWeb.length:espn.length});
  }
  const results=cohort.predictions.map(p=>{
    const issues=[];
    const key=p.away_team+'@'+p.home_team;
-   const nm=nba.filter(g=>g.away+'@'+g.home===key);
+   const effectiveOfficial=nbaWebCapture?nbaWeb:nba;
+   const nm=effectiveOfficial.filter(g=>g.away+'@'+g.home===key);
+   const cm=nba.filter(g=>g.away+'@'+g.home===key);
    const em=espn.filter(g=>g.away+'@'+g.home===key);
    if(nm.length!==1)issues.push('NBA_OFFICIAL_EVENT_MISSING_OR_DUPLICATE');
    if(em.length!==1)issues.push('ESPN_EVENT_MISSING_OR_DUPLICATE');
    const n=nm.length===1?nm[0]:null,e=em.length===1?em[0]:null;
+   if(nbaCapture&&nbaWebCapture&&cm.length!==1)issues.push('NBA_OFFICIAL_CDN_WEB_IDENTITY_DISAGREEMENT');
+   if(nbaCapture&&nbaWebCapture&&cm.length===1&&n&&
+     (cm[0].home_score!==n.home_score||cm[0].away_score!==n.away_score||cm[0].status!==n.status))
+     issues.push('NBA_OFFICIAL_CDN_WEB_SCORE_CONFLICT');
    if(n&&n.status!==3)issues.push('NBA_FINAL_STATUS_NOT_CONFIRMED');
    if(e&&!e.completed)issues.push('ESPN_FINAL_STATUS_NOT_CONFIRMED');
    if(n&&(!nat(n.home_score)||!nat(n.away_score)||n.home_score===n.away_score))
@@ -103,7 +130,7 @@ export function evaluateCapturedNBACohort({source,sourceSha,cohort,challenger,
    const match=challenger.cases.filter(c=>c.canonical_source_event_key===p.canonical_source_event_key);
    if(match.length!==1)issues.push('RIVAL_IDENTITY_MISMATCH');
    // Require feed captures to be clearly after original tipoff and long enough after for a final.
-   if(nbaCapture&&Date.parse(nbaCapture.metadata.observed_at)<=Date.parse(p.event_start_utc)+45*60000)
+   if((nbaWebCapture||nbaCapture)&&Date.parse((nbaWebCapture||nbaCapture).metadata.observed_at)<=Date.parse(p.event_start_utc)+45*60000)
     issues.push('NBA_FETCH_TOO_EARLY_FOR_FINAL');
    if(espnCapture&&Date.parse(espnCapture.metadata.observed_at)<=Date.parse(p.event_start_utc)+45*60000)
     issues.push('ESPN_FETCH_TOO_EARLY_FOR_FINAL');
