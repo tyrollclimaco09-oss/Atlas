@@ -1,0 +1,455 @@
+{
+  "contract": "ATLAS_SCANNER_SIMULATION_V1",
+  "seed": 20261111,
+  "events_per_scenario": 500,
+  "worlds_per_scenario": 250,
+  "classification": "SYNTHETIC_CONDITIONAL_EXPERIMENT",
+  "empirical_performance_eligible": false,
+  "network_requests": 0,
+  "paid_credits_consumed": 0,
+  "paper_ledger_mutated": false,
+  "assumptions": {
+    "true_probability_range": [
+      0.2,
+      0.8
+    ],
+    "reference_overround": 0.04,
+    "reference_noise_range": [
+      -0.006,
+      0.006
+    ],
+    "target_overround": 0.04,
+    "target_A_edge_cycle": [
+      -0.04,
+      -0.015,
+      0,
+      0.025,
+      0.05,
+      0.08
+    ],
+    "rounding": "nearest integer American odds",
+    "reference_method": "three book proportional no-vig median",
+    "selection_policy": "unchanged 3% market-reference EV cutoff",
+    "follow_up_controls": "two no-edge controls added after the initial six-scenario run; not confirmatory",
+    "outcome_dependence": "independent except the explicitly correlated scenario; paired uniforms reused across scenarios",
+    "intervals": "5th/95th percentiles across simulated outcome paths, not confidence intervals on a real strategy",
+    "drawdown": "unit-stake event-level cumulative net P/L; no stake sizing or bankroll depletion rule"
+  },
+  "scenarios": [
+    {
+      "id": "accurate_references",
+      "assumptions": {
+        "id": "accurate_references",
+        "sharedBias": 0,
+        "outlierBias": 0
+      },
+      "events": 500,
+      "observations": 2000,
+      "scan_ms": 147.09973100000002,
+      "scan_status": "SIGNALS_FOUND",
+      "run_quality": "COMPLETE",
+      "complete_reference_markets": 500,
+      "signals": 183,
+      "mean_estimated_ev": 0.061999888532394,
+      "oracle_expected_roi": 0.061391031443783085,
+      "nonpositive_oracle_ev_count": 0,
+      "nonpositive_oracle_ev_fraction": 0,
+      "forecast_events": 500,
+      "oracle_expected_brier": 0.22164457700231097,
+      "oracle_expected_log_loss": 0.6342811423231007,
+      "rejected_observations": 0,
+      "reference_holds": 0,
+      "outcome_paths": {
+        "worlds": 250,
+        "stake_unit": 1,
+        "starting_bankroll_assumed": false,
+        "losing_path_fraction": 0.236,
+        "roi_p05": -0.09074257274480295,
+        "roi_median": 0.07526153196344927,
+        "roi_p95": 0.22460737254690205,
+        "drawdown_units_median": 12.562539252252925,
+        "drawdown_units_p95": 26.649359748736536
+      },
+      "synthetic_only": true,
+      "empirical_performance_eligible": false
+    },
+    {
+      "id": "one_outlier_reference",
+      "assumptions": {
+        "id": "one_outlier_reference",
+        "sharedBias": 0,
+        "outlierBias": 0.12
+      },
+      "events": 500,
+      "observations": 2000,
+      "scan_ms": 90.427233,
+      "scan_status": "SIGNALS_FOUND",
+      "run_quality": "COMPLETE",
+      "complete_reference_markets": 500,
+      "signals": 207,
+      "mean_estimated_ev": 0.0631044399590532,
+      "oracle_expected_roi": 0.057124135459572865,
+      "nonpositive_oracle_ev_count": 0,
+      "nonpositive_oracle_ev_fraction": 0,
+      "forecast_events": 500,
+      "oracle_expected_brier": 0.2216489311511742,
+      "oracle_expected_log_loss": 0.6342911851148024,
+      "rejected_observations": 0,
+      "reference_holds": 0,
+      "outcome_paths": {
+        "worlds": 250,
+        "stake_unit": 1,
+        "starting_bankroll_assumed": false,
+        "losing_path_fraction": 0.208,
+        "roi_p05": -0.08564515380721306,
+        "roi_median": 0.06727616195416974,
+        "roi_p95": 0.1900979947379141,
+        "drawdown_units_median": 13.689563717648598,
+        "drawdown_units_p95": 29.940891358258582
+      },
+      "synthetic_only": true,
+      "empirical_performance_eligible": false
+    },
+    {
+      "id": "shared_reference_bias_6pp",
+      "assumptions": {
+        "id": "shared_reference_bias_6pp",
+        "sharedBias": 0.06,
+        "outlierBias": 0
+      },
+      "events": 500,
+      "observations": 2000,
+      "scan_ms": 58.139666000000034,
+      "scan_status": "SIGNALS_FOUND",
+      "run_quality": "COMPLETE",
+      "complete_reference_markets": 500,
+      "signals": 500,
+      "mean_estimated_ev": 0.15999797089762938,
+      "oracle_expected_roi": 0.01648298209291802,
+      "nonpositive_oracle_ev_count": 212,
+      "nonpositive_oracle_ev_fraction": 0.424,
+      "forecast_events": 500,
+      "oracle_expected_brier": 0.22521926453052715,
+      "oracle_expected_log_loss": 0.6425230689119409,
+      "rejected_observations": 0,
+      "reference_holds": 0,
+      "outcome_paths": {
+        "worlds": 250,
+        "stake_unit": 1,
+        "starting_bankroll_assumed": false,
+        "losing_path_fraction": 0.352,
+        "roi_p05": -0.07485017545975961,
+        "roi_median": 0.020956243027965893,
+        "roi_p95": 0.10982741773515048,
+        "drawdown_units_median": 24.914505922378872,
+        "drawdown_units_p95": 53.63777515041481
+      },
+      "synthetic_only": true,
+      "empirical_performance_eligible": false
+    },
+    {
+      "id": "stale_target_20pct",
+      "assumptions": {
+        "id": "stale_target_20pct",
+        "sharedBias": 0,
+        "outlierBias": 0,
+        "staleEvery": 5
+      },
+      "events": 500,
+      "observations": 2000,
+      "scan_ms": 91.31112900000005,
+      "scan_status": "SIGNALS_FOUND",
+      "run_quality": "PARTIAL",
+      "complete_reference_markets": 400,
+      "signals": 145,
+      "mean_estimated_ev": 0.06249979151260913,
+      "oracle_expected_roi": 0.06158994462607187,
+      "nonpositive_oracle_ev_count": 0,
+      "nonpositive_oracle_ev_fraction": 0,
+      "forecast_events": 400,
+      "oracle_expected_brier": 0.22198186742069329,
+      "oracle_expected_log_loss": 0.6350009186422253,
+      "rejected_observations": 100,
+      "reference_holds": 0,
+      "outcome_paths": {
+        "worlds": 250,
+        "stake_unit": 1,
+        "starting_bankroll_assumed": false,
+        "losing_path_fraction": 0.24,
+        "roi_p05": -0.12165981204582342,
+        "roi_median": 0.07116817206131668,
+        "roi_p95": 0.2324609214158341,
+        "drawdown_units_median": 11.372771674752165,
+        "drawdown_units_p95": 24.352015593630117
+      },
+      "synthetic_only": true,
+      "empirical_performance_eligible": false
+    },
+    {
+      "id": "missing_reference_20pct",
+      "assumptions": {
+        "id": "missing_reference_20pct",
+        "sharedBias": 0,
+        "outlierBias": 0,
+        "missingEvery": 5
+      },
+      "events": 500,
+      "observations": 1900,
+      "scan_ms": 40.509636,
+      "scan_status": "SIGNALS_FOUND",
+      "run_quality": "PARTIAL",
+      "complete_reference_markets": 400,
+      "signals": 145,
+      "mean_estimated_ev": 0.06249979151260913,
+      "oracle_expected_roi": 0.06158994462607187,
+      "nonpositive_oracle_ev_count": 0,
+      "nonpositive_oracle_ev_fraction": 0,
+      "forecast_events": 400,
+      "oracle_expected_brier": 0.22198186742069329,
+      "oracle_expected_log_loss": 0.6350009186422253,
+      "rejected_observations": 0,
+      "reference_holds": 100,
+      "outcome_paths": {
+        "worlds": 250,
+        "stake_unit": 1,
+        "starting_bankroll_assumed": false,
+        "losing_path_fraction": 0.24,
+        "roi_p05": -0.12165981204582342,
+        "roi_median": 0.07116817206131668,
+        "roi_p95": 0.2324609214158341,
+        "drawdown_units_median": 11.372771674752165,
+        "drawdown_units_p95": 24.352015593630117
+      },
+      "synthetic_only": true,
+      "empirical_performance_eligible": false
+    },
+    {
+      "id": "shared_bias_correlated_outcomes",
+      "assumptions": {
+        "id": "shared_bias_correlated_outcomes",
+        "sharedBias": 0.06,
+        "outlierBias": 0,
+        "correlated": true
+      },
+      "events": 500,
+      "observations": 2000,
+      "scan_ms": 50.01050500000008,
+      "scan_status": "SIGNALS_FOUND",
+      "run_quality": "COMPLETE",
+      "complete_reference_markets": 500,
+      "signals": 500,
+      "mean_estimated_ev": 0.15999797089762938,
+      "oracle_expected_roi": 0.01648298209291802,
+      "nonpositive_oracle_ev_count": 212,
+      "nonpositive_oracle_ev_fraction": 0.424,
+      "forecast_events": 500,
+      "oracle_expected_brier": 0.22521926453052715,
+      "oracle_expected_log_loss": 0.6425230689119409,
+      "rejected_observations": 0,
+      "reference_holds": 0,
+      "outcome_paths": {
+        "worlds": 250,
+        "stake_unit": 1,
+        "starting_bankroll_assumed": false,
+        "losing_path_fraction": 0.456,
+        "roi_p05": -0.12574468365623123,
+        "roi_median": 0.011445574200583838,
+        "roi_p95": 0.17403398166036643,
+        "drawdown_units_median": 41.693638569981275,
+        "drawdown_units_p95": 88.48028501024633
+      },
+      "synthetic_only": true,
+      "empirical_performance_eligible": false
+    },
+    {
+      "id": "no_edge_control",
+      "assumptions": {
+        "id": "no_edge_control",
+        "sharedBias": 0,
+        "outlierBias": 0,
+        "targetEdge": -0.02,
+        "phase": "follow_up_negative_control"
+      },
+      "events": 500,
+      "observations": 2000,
+      "scan_ms": 53.58529999999996,
+      "scan_status": "COMPLETE_ZERO_SIGNALS",
+      "run_quality": "COMPLETE",
+      "complete_reference_markets": 500,
+      "signals": 0,
+      "mean_estimated_ev": null,
+      "oracle_expected_roi": null,
+      "nonpositive_oracle_ev_count": 0,
+      "nonpositive_oracle_ev_fraction": null,
+      "forecast_events": 500,
+      "oracle_expected_brier": 0.22164457700231097,
+      "oracle_expected_log_loss": 0.6342811423231007,
+      "rejected_observations": 0,
+      "reference_holds": 0,
+      "outcome_paths": {
+        "worlds": 250,
+        "stake_unit": 1,
+        "starting_bankroll_assumed": false,
+        "losing_path_fraction": null,
+        "roi_p05": null,
+        "roi_median": null,
+        "roi_p95": null,
+        "drawdown_units_median": 0,
+        "drawdown_units_p95": 0
+      },
+      "synthetic_only": true,
+      "empirical_performance_eligible": false
+    },
+    {
+      "id": "shared_bias_no_edge_control",
+      "assumptions": {
+        "id": "shared_bias_no_edge_control",
+        "sharedBias": 0.06,
+        "outlierBias": 0,
+        "targetEdge": -0.02,
+        "phase": "follow_up_negative_control"
+      },
+      "events": 500,
+      "observations": 2000,
+      "scan_ms": 55.69154500000002,
+      "scan_status": "SIGNALS_FOUND",
+      "run_quality": "COMPLETE",
+      "complete_reference_markets": 500,
+      "signals": 500,
+      "mean_estimated_ev": 0.11841474146226497,
+      "oracle_expected_roi": -0.019984030173052194,
+      "nonpositive_oracle_ev_count": 500,
+      "nonpositive_oracle_ev_fraction": 1,
+      "forecast_events": 500,
+      "oracle_expected_brier": 0.22521926453052715,
+      "oracle_expected_log_loss": 0.6425230689119409,
+      "rejected_observations": 0,
+      "reference_holds": 0,
+      "outcome_paths": {
+        "worlds": 250,
+        "stake_unit": 1,
+        "starting_bankroll_assumed": false,
+        "losing_path_fraction": 0.62,
+        "roi_p05": -0.10713389776739131,
+        "roi_median": -0.015991699674183374,
+        "roi_p95": 0.06895513321656373,
+        "drawdown_units_median": 32.76909126865089,
+        "drawdown_units_p95": 65.14228953220928
+      },
+      "synthetic_only": true,
+      "empirical_performance_eligible": false
+    }
+  ],
+  "fault_sweep": {
+    "cases": [
+      {
+        "id": "stale",
+        "checks": 200,
+        "failures": 0
+      },
+      {
+        "id": "future",
+        "checks": 200,
+        "failures": 0
+      },
+      {
+        "id": "missing_reference",
+        "checks": 200,
+        "failures": 0
+      },
+      {
+        "id": "duplicate_book",
+        "checks": 200,
+        "failures": 0
+      },
+      {
+        "id": "wrong_period",
+        "checks": 200,
+        "failures": 0
+      },
+      {
+        "id": "wrong_rules",
+        "checks": 200,
+        "failures": 0
+      },
+      {
+        "id": "wrong_product",
+        "checks": 200,
+        "failures": 0
+      },
+      {
+        "id": "missing_side",
+        "checks": 200,
+        "failures": 0
+      },
+      {
+        "id": "source_permission",
+        "checks": 200,
+        "failures": 0
+      },
+      {
+        "id": "closed_target",
+        "checks": 200,
+        "failures": 0
+      },
+      {
+        "id": "tampered_hash",
+        "checks": 200,
+        "failures": 0
+      },
+      {
+        "id": "duplicate_snapshot",
+        "checks": 200,
+        "failures": 0
+      },
+      {
+        "id": "reordered_reference_replay",
+        "checks": 200,
+        "failures": 0
+      },
+      {
+        "id": "equivalent_outcome_order",
+        "checks": 200,
+        "failures": 0
+      },
+      {
+        "id": "aligned_reference_evidence",
+        "checks": 200,
+        "failures": 0
+      }
+    ],
+    "checks": 3000,
+    "failures": 0
+  },
+  "benchmark": {
+    "events": 250,
+    "observations": 1000,
+    "samples_ms": [
+      33.92113900000004,
+      21.29337600000008,
+      22.22475499999996
+    ],
+    "median_ms": 22.22475499999996,
+    "signals": 250
+  },
+  "engineering_baseline": {
+    "baseline_commit": "cd9ce5bc9d2a0478df896a92afe2673f48f36305",
+    "node": "v24.22.1",
+    "events": 250,
+    "observations": 1000,
+    "samples_ms": [
+      2905.817439,
+      3042.876915,
+      3034.260905
+    ],
+    "median_ms": 3034.260905,
+    "signals": 250
+  },
+  "engineering_speedup_vs_baseline": 136.52618015361725,
+  "runtime": "v24.22.1",
+  "implementation_sha256": {
+    "scripts/research/market-reference-scanner.cjs": "aea31e486a9ce702b71b343b6c2832a5bf7433730de4ad4a3700943f7e5901a7",
+    "scripts/research/source-record-gate.cjs": "5da1d19b63990a4ea5460dc474edcac68cefcf0d8eb707fd80ede3fe8971fd93",
+    "scripts/research/scanner-simulation.cjs": "c895d3a8f30bb07f007bf23f068e58e5971c57f82fb5e403456e1b818885597d"
+  }
+}

@@ -130,3 +130,31 @@ test('a complete zero-signal run is distinct from a partial scan with rejected d
  const r=scan(p);assert.equal(r.signals.length,0);assert.equal(r.status,'PARTIAL_ZERO_SIGNALS');
  assert.equal(r.run_quality,'PARTIAL');assert.equal(r.rejected_observations.length,1);
 });
+test('reordering the same reference-book set cannot create a second decision',()=>{
+ const p=packet();p.priorDecisionIds=scan(p).signals.map(s=>s.decision_id);
+ p.policy.referenceBooks.reverse();const r=scan(p);
+ assert.equal(r.signals.length,0);assert.equal(r.duplicate_decisions.length,1);
+});
+test('equivalent same-time prices with reversed outcomes do not become ambiguous',()=>{
+ const p=altered(q=>q.push({...structuredClone(q[0]),observationId:'same_prices_reversed',outcomes:[...q[0].outcomes].reverse()}));
+ const r=scan(p);assert.equal(r.signals.length,1);
+ assert(!r.reference_holds.some(x=>x.reason==='AMBIGUOUS_BOOK_QUOTE'));
+});
+test('reference book and observation identifiers stay aligned after input reordering',()=>{
+ const p=packet(),q=quotes(p);replaceQuotes(p,[q[0],q[3],q[1],q[2]]);
+ const s=scan(p).signals[0];
+ assert.deepEqual(s.reference_books,['reference_a','reference_b','reference_c']);
+ assert.deepEqual(s.reference_observation_ids,['synthetic-1','synthetic-2','synthetic-3']);
+});
+test('snapshot validation never reuses a previous scan after retained bytes change',()=>{
+ const p=packet();assert.equal(scan(p).signals.length,1);
+ p.snapshots[0].rawBody+=' ';const r=scan(p);
+ assert.equal(r.signals.length,0);assert(r.snapshot_errors.some(x=>x.errors.includes('RAW_HASH_MISMATCH')));
+});
+test('reference alignment is independent of locale punctuation collation',()=>{
+ const p=packet(),q=quotes(p),books=['_reference','1reference','areference'];
+ q.slice(1).forEach((row,i)=>row.book=books[i]);p.policy.referenceBooks=books;
+ p.sourceRegistry[0].bookIds=['draftkings',...books];replaceQuotes(p,q);
+ const s=scan(p).signals[0];
+ assert.deepEqual(s.reference_observation_ids,s.reference_books.map(book=>q.find(row=>row.book===book).observationId));
+});

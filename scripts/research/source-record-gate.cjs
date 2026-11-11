@@ -27,7 +27,21 @@ function validateSnapshot(snapshot){
  }
  return {passed:errors.length===0,errors,payload:errors.length?null:payload};
 }
-function validateMoneylineObservation(q,{snapshot,sourceRegistry,rulesRegistry,asOfUtc,policy}){
+// Keep parsed evidence local to one scan, never in a global or caller-supplied
+// validation cache. The standalone gate retains the same evidence checks.
+function createMoneylineRecordGate(context){
+ const snapshot={...context.snapshot},evidence=validateSnapshot(snapshot),index=new Map();
+ if(evidence.passed)for(const row of evidence.payload.observations){
+  const id=row?.observationId,old=index.get(id);
+  index.set(id,{count:(old?.count??0)+1,serialized:JSON.stringify(row)});
+ }
+ return {snapshotValidation:evidence,
+  validate:q=>checkMoneylineObservation(q,{...context,snapshot},evidence,index)};
+}
+function validateMoneylineObservation(q,context){
+ return createMoneylineRecordGate(context).validate(q);
+}
+function checkMoneylineObservation(q,{snapshot,sourceRegistry,rulesRegistry,asOfUtc,policy},evidence,index){
  const errors=[],warnings=[];
  const add=s=>errors.push(s);
  const source=sourceRegistry.filter(s=>s?.sourceId===q?.sourceId);
@@ -40,14 +54,13 @@ function validateMoneylineObservation(q,{snapshot,sourceRegistry,rulesRegistry,a
  if(!Array.isArray(s?.bookIds)||!s.bookIds.includes(q?.book)||
   typeof q?.book!=='string'||!/^[a-z0-9_]+$/.test(q.book))add('BOOK_NOT_APPROVED');
  if(s?.timestampSemantics!=='market_last_seen')add('TIMESTAMP_SEMANTICS_UNSUPPORTED');
- const evidence=validateSnapshot(snapshot);
  if(!evidence.passed)errors.push(...evidence.errors);
  if(q?.rawSnapshotId!==snapshot?.snapshotId||q?.sourceId!==snapshot?.sourceId||
   q?.fetchedAtUtc!==snapshot?.fetchedAtUtc)add('RAW_EVIDENCE_LINK_MISMATCH');
  if(evidence.passed){
-  const raw=evidence.payload.observations.filter(x=>filled(q?.observationId)&&x?.observationId===q.observationId);
+  const raw=filled(q?.observationId)?index.get(q.observationId):null;
   const normalized={...q};delete normalized.rawSnapshotId;
-  if(raw.length!==1||JSON.stringify(raw[0])!==JSON.stringify(normalized))add('RAW_RECORD_MISMATCH');
+  if(raw?.count!==1||raw.serialized!==JSON.stringify(normalized))add('RAW_RECORD_MISMATCH');
  }
  for(const field of ['observationId','sourceId','book','eventId','homeTeamId','awayTeamId','settlementRuleId'])
   if(!filled(q?.[field]))add('MISSING_'+field.toUpperCase());
@@ -89,4 +102,4 @@ function validateMoneylineObservation(q,{snapshot,sourceRegistry,rulesRegistry,a
   venue_verified:false,source_authenticated:false,
   synthetic_fixture:snapshot?.syntheticFixture===true||s?.sourceClass==='FIXTURE'};
 }
-module.exports={utc,hash,validateSnapshot,validateMoneylineObservation};
+module.exports={utc,hash,validateSnapshot,validateMoneylineObservation,createMoneylineRecordGate};

@@ -62,3 +62,13 @@ Fixtures test real-schema replay, unchanged holds, source/record validity, marke
 GitHub review is separate from deployment. Keep the branch unmerged until reviewed; do not enable provider credits or promote a model as a side effect. Every completed change gets a dated entry in `PATCH_NOTES.md` under the repository's `AGENTS.md` instructions.
 
 The GitHub workflow requires a patch-note change whenever a PR changes implementation or workflow files. It checks presence, while review checks accuracy. No recurring job is scheduled.
+
+## Simulation and stress follow-up
+
+Run `node scripts/research/scanner-simulation.cjs` for a seeded synthetic comparison: 500 events, 250 outcome paths per scenario, eight conditions, 3,000 varied fault/invariance checks and a local benchmark. JSON goes to stdout; the command has no provider or ledger side effects. The checked-in [report](research/2026-11-11-scanner-simulation.md) records assumptions, results, the measured engineering baseline and the next R&D priorities. The two no-edge controls were added after the initial six conditions and are explicitly exploratory.
+
+The performance change parses/hashes each retained snapshot once per scan and indexes original observation IDs. Standalone validation retains the same checks. No evidence verdict supplied by the caller can replace those checks, and no global evidence cache survives into a later scan.
+
+Reference-book sets are sorted before policy hashing, so set order cannot create another decision. This canonicalization changes policy hashes for previously unsorted lists. Already persisted IDs from those older noncanonical policies require an explicit compatibility review; do not silently rewrite historical IDs. The sorted original demo policy is unchanged. Changing an actual policy parameter still deliberately changes the decision identity.
+
+Reference book names and observation IDs now have the same order. Same-time pairs that differ only in outcome order are equivalent; actual price or status disagreements continue to hold.

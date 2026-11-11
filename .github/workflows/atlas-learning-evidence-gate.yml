@@ -7,6 +7,7 @@ on:
       - 'AGENTS.md'
       - 'PATCH_NOTES.md'
       - 'docs/ATLAS_OFFLINE_REFERENCE_RESEARCH.md'
+      - 'docs/research/**'
       - '.github/workflows/atlas-learning-evidence-gate.yml'
   workflow_dispatch:
 permissions:
@@ -43,3 +44,17 @@ jobs:
           node-version: '22'
       - name: Verify learning and market-reference regressions
         run: node --test integrations/learning/*.test.mjs scripts/research/*.test.cjs
+      - name: Run seeded scanner simulation and fault sweep
+        run: |
+          node scripts/research/scanner-simulation.cjs > "$RUNNER_TEMP/atlas-scanner-simulation.json"
+          python3 - <<'PY'
+          import json,os,pathlib
+          r=json.loads((pathlib.Path(os.environ['RUNNER_TEMP'])/'atlas-scanner-simulation.json').read_text())
+          assert r['classification']=='SYNTHETIC_CONDITIONAL_EXPERIMENT'
+          assert r['empirical_performance_eligible'] is False
+          assert r['network_requests']==0 and r['paper_ledger_mutated'] is False
+          assert r['fault_sweep']['checks']==3000 and r['fault_sweep']['failures']==0
+          print('Synthetic experiment: 500 events x 250 paths x 8 conditions; 3000 fault/invariance checks passed')
+          for s in r['scenarios']:
+              print(json.dumps({k:s[k] for k in ('id','signals','mean_estimated_ev','oracle_expected_roi')}))
+          PY

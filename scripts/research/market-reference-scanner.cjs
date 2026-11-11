@@ -1,9 +1,13 @@
 'use strict';
 // Reads supplied offline snapshots only. No provider, database or account calls.
 const {devigTwoWay,valueAt,quoteKey}=require('./market-intelligence.cjs');
-const {utc,hash,validateSnapshot,validateMoneylineObservation}=require('./source-record-gate.cjs');
+const {utc,hash,createMoneylineRecordGate}=require('./source-record-gate.cjs');
 const filled=v=>typeof v==='string'&&v.trim().length>0;
+const compareId=(a,b)=>a<b?-1:a>b?1:0;
 const median=xs=>{const a=[...xs].sort((x,y)=>x-y),n=a.length;return n%2?a[(n-1)/2]:(a[n/2-1]+a[n/2])/2;};
+const quoteState=q=>JSON.stringify([q.marketStatus,Array.isArray(q.outcomes)?[...q.outcomes]
+ .sort((a,b)=>compareId(String(a?.participantId),String(b?.participantId)))
+ .map(x=>[x?.participantId,x?.side,x?.line,x?.americanOdds]):q.outcomes]);
 function policyOf(p={}){
  const r={version:p.version??'nba_moneyline_reference_v1',minReferences:p.minReferences??3,minEV:p.minEV??.03,
   maxSourceAgeSeconds:p.maxSourceAgeSeconds??300,maxFetchAgeSeconds:p.maxFetchAgeSeconds??60,
@@ -13,6 +17,7 @@ function policyOf(p={}){
   ['maxSourceAgeSeconds','maxFetchAgeSeconds','maxCrossBookSeconds'].some(k=>!Number.isFinite(r[k])||r[k]<=0)||
   r.referenceBooks!==null&&(!Array.isArray(r.referenceBooks)||r.referenceBooks.some(x=>!filled(x))||new Set(r.referenceBooks).size!==r.referenceBooks.length))
   throw Error('REFERENCE_POLICY_INVALID');
+ if(r.referenceBooks!==null)r.referenceBooks=[...r.referenceBooks].sort();
  return r;
 }
 function scanOfflineReferencePacket(p){
@@ -45,13 +50,14 @@ function scanOfflineReferencePacket(p){
  const valid=[],lifecycle=[],snapshotIds=new Map();
  for(const snapshot of p.snapshots)snapshotIds.set(snapshot?.snapshotId,(snapshotIds.get(snapshot?.snapshotId)||0)+1);
  for(const snapshot of p.snapshots){
-  const checked=validateSnapshot(snapshot);
+  const gate=createMoneylineRecordGate({snapshot,sourceRegistry:p.sourceRegistry,rulesRegistry:p.rulesRegistry,asOfUtc:p.asOfUtc,policy});
+  const checked=gate.snapshotValidation;
   if(snapshotIds.get(snapshot?.snapshotId)!==1)checked.errors.push('DUPLICATE_SNAPSHOT_ID');
   receipt('snapshot',snapshot,null,checked.errors);
   if(checked.errors.length){out.snapshot_errors.push({snapshot_id:snapshot?.snapshotId??null,errors:checked.errors});continue;}
   for(const raw of checked.payload.observations){
    const q={...raw,rawSnapshotId:snapshot.snapshotId};
-   const v=validateMoneylineObservation(q,{snapshot,sourceRegistry:p.sourceRegistry,rulesRegistry:p.rulesRegistry,asOfUtc:p.asOfUtc,policy});
+   const v=gate.validate(q);
    receipt('record',snapshot,q,v.errors,v.warnings);
    const audit={observation_id:q.observationId??null,snapshot_id:snapshot.snapshotId,book:q.book??null,
     errors:v.errors,warnings:v.warnings};
@@ -77,8 +83,7 @@ function scanOfflineReferencePacket(p){
   for(const item of items){
    const old=byBook.get(item.q.book),a=utc(item.q.sourceObservedAtUtc),b=old?utc(old.q.sourceObservedAtUtc):-Infinity;
    if(a>b){byBook.set(item.q.book,item);ambiguous.delete(item.q.book);}
-   else if(a===b&&JSON.stringify([item.q.marketStatus,item.q.outcomes])!==
-    JSON.stringify([old.q.marketStatus,old.q.outcomes]))ambiguous.add(item.q.book);
+   else if(a===b&&quoteState(item.q)!==quoteState(old.q))ambiguous.add(item.q.book);
   }
   for(const book of ambiguous){byBook.delete(book);out.reference_holds.push({book,reason:'AMBIGUOUS_BOOK_QUOTE'});}
   for(const [book,item]of byBook)if(!item.usable){
@@ -86,7 +91,7 @@ function scanOfflineReferencePacket(p){
   }
   const target=byBook.get(p.targetBook);if(!target)continue;targetCount++;
   const refs=[...byBook.values()].filter(x=>x.q.book!==p.targetBook&&
-   (policy.referenceBooks===null||policy.referenceBooks.includes(x.q.book)));
+   (policy.referenceBooks===null||policy.referenceBooks.includes(x.q.book))).sort((a,b)=>compareId(a.q.book,b.q.book));
   if(refs.length<policy.minReferences){insufficient++;out.reference_holds.push({event_id:target.q.eventId,
    reason:'INSUFFICIENT_DISTINCT_REFERENCES',references:refs.map(x=>x.q.book)});continue;}
   const times=[target,...refs].map(x=>utc(x.q.sourceObservedAtUtc));

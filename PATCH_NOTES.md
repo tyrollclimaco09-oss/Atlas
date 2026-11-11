@@ -1,5 +1,31 @@
 # ATLAS patch notes
 
+## 2026-11-11 — Scanner simulation and batch-performance follow-up
+
+**Status:** SHADOW follow-up to draft PR #38. No merge, deployment, live collection or wager.
+
+### What changed and why
+
+- Reproduced three order-dependent defects: reference-list reordering bypassed decision deduplication; reversed but equivalent outcome pairs were falsely held; reference observation IDs were misaligned with sorted book names. Added failing regressions, then fixed set hashing, quote equivalence and evidence ordering. A follow-up regression also enforces locale-independent identifier order.
+- Replaced per-record full-snapshot parsing/hashing with a scan-local prepared gate and observation index. Actual retained-byte, original-record, duplicate-ID and source checks remain; there is no global or caller-trusted evidence cache.
+- Added a deterministic simulation runner, assumptions/results report, numeric artifact and full GitHub CI simulation step. The R&D priorities are recorded in [the simulation report](docs/research/2026-11-11-scanner-simulation.md).
+
+### Verification actually performed
+
+- The original 255 tests passed before edits. Updated suite: **270 passed, zero failed/skipped**, using `node --test integrations/learning/*.test.mjs scripts/research/*.test.cjs` on Node v24.22.1.
+- `node scripts/research/scanner-simulation.cjs`: **500 synthetic events x 250 paths x eight conditions**, plus **3,000 varied fault/invariance checks with zero failures**. Paired draws are reused across conditions; these are not independent real-game observations.
+- The first six conditions were followed by two exploratory no-edge controls. With shared reference bias, one control shows **+11.84% estimated EV versus -2.00% expected return under the simulation's known probabilities**. This demonstrates a failure mode, not ATLAS performance on actual odds.
+- In the accurate-reference condition, expected return is +6.14% by construction, yet 23.6% of paths lose. The specified correlation stress increases drawdown while preserving expected return. No threshold was optimized against these returns.
+- Same 250-event / 1,000-record workload, three timing samples: median **3.034 s → 0.0222 s**, about 137x locally, with the same 250 signals. Hardware/JIT/GC affect timing; raw samples are retained.
+- Retained real export replay remains one recorded outcome, zero admitted official outcomes/identities/native quotes and `HOLD_NO_MODEL_CALIBRATION`, with null forecast/pricing metrics. This was a fixture replay, not a fresh live-service audit.
+
+### Limits and next action
+
+- Simulated truth, prices, source declarations and dependence are imposed assumptions. The results do not establish sports forecasting skill, real source accuracy, executable prices or profitability.
+- Reference-list canonicalization preserves existing already-sorted policy IDs. Previously persisted IDs from unsorted policies need an explicit compatibility review; historical records are not rewritten.
+- The scanner still has no vendor-native feed, source authenticator or persistent paper/settlement writer. Pick6 entry EV remains unsupported. No dependencies, paid API calls, database writes, schedules, bankroll changes or real-money actions were added.
+- Next priorities: source/reference accuracy on a prospective paired sample; genuine missing evidence for the frozen learning case; probability sensitivity and grouped-exposure evaluation. Review this patch and its separately verified GitHub CI before any deployment or collection.
+
 ## 2026-11-11 — Learning replay and offline DraftKings reference scanner
 
 **Status:** SHADOW implementation for review. Not merged, deployed, or connected to live ingestion. No wagers or entries submitted.
