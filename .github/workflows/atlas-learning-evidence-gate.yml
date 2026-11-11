@@ -18,9 +18,10 @@ jobs:
     timeout-minutes: 5
     steps:
       - name: Checkout source only
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6 Node24 runtime
         with:
           fetch-depth: 0
+          persist-credentials: false
       - name: Require patch notes for implementation changes
         if: github.event_name == 'pull_request'
         env:
@@ -39,9 +40,10 @@ jobs:
           print('Patch-note requirement satisfied')
           PY
       - name: Prepare pinned Node runtime
-        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6 Node24 runtime
         with:
           node-version: '22'
+          package-manager-cache: false
       - name: Verify learning and market-reference regressions
         run: node --test integrations/learning/*.test.mjs scripts/research/*.test.cjs
       - name: Run seeded scanner simulation and fault sweep
