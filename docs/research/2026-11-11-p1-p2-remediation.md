@@ -41,7 +41,7 @@ Both use a Node 24 action runtime, avoiding the old Node20-action deprecation pa
 ## Verification ledger
 
 - Completed: direct GitHub branch edits; read-only Supabase project/table/grant/statistics queries; automation update/readback; upstream SHA verification.
-- Pending until the new PR run: all added Node test cases under GitHub Actions, action runtime compatibility, exact no-deprecation log check.
+- CI verified on PR #39 at head `ead21e2d62a1663135abab69c51074f8b2a476a8`: [GitHub Actions run 43039665614](https://github.com/tyrollclimaco09-oss/Atlas/actions/runs/43039665614) passed 284/284 tests, 0 failures/skips and 3,000/3,000 synthetic fault checks; patch-note step green, with no earlier Node20 runtime deprecation warning in the job log. Recheck the next doc-only head to confirm status remains green.
 - Still unverified: any authenticated end-to-end real operator-site request, official quote availability, prospective calibration, automated nightly source-to-result ingestion, delivery notifications.
 - Writes to Supabase: **none**. Paid odds calls: **none**. Real or paper wager transactions: **none**. Website deployment: **none**.
 
