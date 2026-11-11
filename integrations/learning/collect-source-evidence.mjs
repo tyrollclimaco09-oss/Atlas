@@ -53,12 +53,12 @@ for(const date of dates){
   throw Error('COLLECTOR_REGISTERED_FREEZE_DRIFT');
  const dayDir=join(outputDir,date);mkdirSync(dayDir,{recursive:true});
  const captures={};const errors=[];
- for(const provider of ['NBA_OFFICIAL_CDN','ESPN_SCOREBOARD']){
+ for(const provider of ['NBA_OFFICIAL_CDN','NBA_OFFICIAL_WEB','ESPN_SCOREBOARD']){
   try{
    const capture=await fetchAllowedSource(provider,date);
    captures[provider]=capture;
-   const name=provider==='NBA_OFFICIAL_CDN'?'nba-official':'espn-scoreboard';
-   writeFileSync(join(dayDir,name+'.raw.json'),capture.raw,{flag:'wx'});
+   const name=provider==='NBA_OFFICIAL_CDN'?'nba-official':provider==='NBA_OFFICIAL_WEB'?'nba-official-web':'espn-scoreboard';
+   writeFileSync(join(dayDir,name+(provider==='NBA_OFFICIAL_WEB'?'.raw.html':'.raw.json')),capture.raw,{flag:'wx'});
    writeFileSync(join(dayDir,name+'.capture.json'),JSON.stringify(capture.metadata,null,2)+'\n',{flag:'wx'});
   }catch(e){
    const msg=(e instanceof Error?e.message:'UNKNOWN_FETCH_ERROR');
@@ -70,6 +70,7 @@ for(const date of dates){
  try{
   evalResult=evaluateCapturedNBACohort({source,sourceSha,cohort:forecast,
     challenger,requestedDate:date,nbaCapture:captures.NBA_OFFICIAL_CDN??null,
+    nbaWebCapture:captures.NBA_OFFICIAL_WEB??null,
     espnCapture:captures.ESPN_SCOREBOARD??null});
  }catch(e){
   errors.push({provider:'ATLAS_EVALUATOR',error_code:/^[A-Z0-9_]+$/.test(e.message)?e.message:'EVALUATION_SCHEMA_OR_SOURCE_ERROR'});
