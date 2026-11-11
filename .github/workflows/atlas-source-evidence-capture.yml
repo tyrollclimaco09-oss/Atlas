@@ -7,6 +7,7 @@ on:
       - 'integrations/learning/direct-outcome-join.mjs'
       - 'integrations/learning/collect-source-evidence.mjs'
       - 'integrations/learning/probe-official-origin.mjs'
+      - 'integrations/learning/probe-real-nov10-finals.mjs'
       - 'integrations/learning/fixtures/prospective-nba-cohort-registry.json'
       - 'integrations/learning/fixtures/nba-connected-prestart-*.json'
       - 'integrations/learning/fixtures/nba-prospective-forecast-freeze-*.json'
@@ -72,6 +73,10 @@ jobs:
         run: |
           PROBE_DATE="${REQUESTED_DATE:-$(TZ=America/Chicago date -d 'yesterday' +%F)}"
           node integrations/learning/probe-official-origin.mjs             --date="$PROBE_DATE" --out="$RUNNER_TEMP/atlas-source-capture/official-probe"
+      - name: One-time actual completed NBA-versus-ESPN source agreement control
+        if: github.event_name == 'pull_request'
+        run: |
+          node integrations/learning/probe-real-nov10-finals.mjs --out="$RUNNER_TEMP/atlas-source-capture/nov10-real-control"
       - name: Retain raw source bytes and hash-bound report for audit
         if: always()
         uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f
