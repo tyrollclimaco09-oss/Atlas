@@ -87,8 +87,35 @@ for(const date of dates){
   note:'Raw source evidence and SHA256 manifests are preserved in the same job artifact; HTTP origin is not a provider digital signature.'
  };
  writeFileSync(join(dayDir,'report.json'),JSON.stringify(report,null,2)+'\n',{flag:'wx'});
+
+ const pregame=evalResult?.results?.filter(r=>r.prestart_three_provider_ids_corroborated)??[];
+ const identityReport={
+   contract:'ATLAS_NBA_PRESTART_PROVIDER_IDENTITY_PROVENANCE_V1',date,
+   recorded_at:new Date().toISOString(),snapshot_model_frozen_at:forecast.prepared_at_utc,
+   original_connected_provider_request_id:source.provider_request_id,
+   original_connected_source_git_blob_sha:sourceSha,
+   nba_raw_capture_sha256:captures.NBA_OFFICIAL_WEB?.metadata.sha256??captures.NBA_OFFICIAL_CDN?.metadata.sha256??null,
+   espn_raw_capture_sha256:captures.ESPN_SCOREBOARD?.metadata.sha256??null,
+   confirmed_id_count:pregame.length,entire_cohort_checked:pregame.length===forecast.count,
+   records:pregame.map(x=>({
+     event_key:x.case_key,
+     connected_dk_competition_id:x.dk_original_competition_id,
+     nba_official_game_id:x.nba_game_id,espn_event_id:x.espn_event_id,
+     observed_identity_timing:x.prestart_three_provider_event_identity_status,
+     observed_at:x.source_identity_corroboration_observed_at,
+     original_forecast_prepared_at:x.original_forecast_prepared_at
+   })),
+   vendor_signed:false,original_market_identity_and_settlement_rule_attested:false,
+   model_calibration_authority:false,bookmaker_execution_authority:false,
+   warning:'This checks actual independently named event IDs before tipoff but after the original freeze when so timestamped; cannot backdate identity to that freeze or prove betting-period settlement.'
+ };
+ writeFileSync(join(dayDir,'pregame-identity-report.json'),JSON.stringify(identityReport,null,2)+'\n',{flag:'wx'});
+
  summaries.push({date,status:report.result_evidence_state,provisional:evalResult?.provisional_scored_count??0,
-  held:evalResult?.held_count??forecast.count,origins:report.detected_http_origins,errors});
+  held:evalResult?.held_count??forecast.count,
+  identity_before_tip_count:identityReport.confirmed_id_count,
+  identity_before_original_forecast_count:evalResult?.preforecast_source_identity_verified_count??0,
+  origins:report.detected_http_origins,errors});
 }
 writeFileSync(join(outputDir,'index.json'),JSON.stringify({contract:'ATLAS_NBA_CAPTURE_RUN_INDEX_V1',
   run_observed_at:new Date().toISOString(),slates:summaries,
