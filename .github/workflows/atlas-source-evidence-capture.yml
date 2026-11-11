@@ -1,0 +1,76 @@
+name: ATLAS archived source evidence (SHADOW read-only)
+
+on:
+  pull_request:
+    paths:
+      - 'integrations/learning/direct-source-capture.mjs'
+      - 'integrations/learning/direct-outcome-join.mjs'
+      - 'integrations/learning/collect-source-evidence.mjs'
+      - 'integrations/learning/fixtures/prospective-nba-cohort-registry.json'
+      - 'integrations/learning/fixtures/nba-connected-prestart-*.json'
+      - 'integrations/learning/fixtures/nba-prospective-forecast-freeze-*.json'
+      - 'integrations/learning/fixtures/nba-record-challenger-freeze-*.json'
+      - '.github/workflows/atlas-source-evidence-capture.yml'
+  workflow_dispatch:
+    inputs:
+      slate_date:
+        description: 'Exact pregame date YYYY-MM-DD; blank defaults to 2026-11-11 for manual replay'
+        required: false
+        type: string
+  schedule:
+    # Daily UTC run. On main after merge only: approx 8:15 AM CST / 9:15 AM CDT.
+    - cron: '15 14 * * *'
+
+permissions:
+  contents: read
+
+jobs:
+  source-archive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Checkout frozen research artifacts
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          persist-credentials: false
+          fetch-depth: 1
+      - name: Prepare Node 22
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
+        with:
+          node-version: '22'
+          package-manager-cache: false
+      - name: Retest source provenance and score join offline
+        run: node --test integrations/learning/direct-source-capture.test.mjs
+      - name: Capture direct official and ESPN HTTPS source bytes, hold incomplete results
+        env:
+          REQUESTED_DATE: ${{ inputs.slate_date }}
+        run: |
+          mkdir -p "$RUNNER_TEMP/atlas-source-capture"
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            node integrations/learning/collect-source-evidence.mjs \
+              --all-recent --out="$RUNNER_TEMP/atlas-source-capture"
+          else
+            node integrations/learning/collect-source-evidence.mjs \
+              --date="${REQUESTED_DATE:-2026-11-11}" \
+              --out="$RUNNER_TEMP/atlas-source-capture"
+          fi
+          python3 - <<'PY'
+          import json, os, pathlib
+          p=pathlib.Path(os.environ['RUNNER_TEMP'])/'atlas-source-capture'/'index.json'
+          r=json.loads(p.read_text())
+          assert r['contract']=='ATLAS_NBA_CAPTURE_RUN_INDEX_V1'
+          assert r['results_authenticated_for_training'] is False
+          assert r['automated_provider_signatures_verified'] is False
+          assert r['writes_to_supabase']==0 and r['bet_execution_count']==0
+          for s in r['slates']:
+              print('SOURCE_CAPTURE',json.dumps(s))
+          PY
+      - name: Retain raw source bytes and hash-bound report for audit
+        if: always()
+        uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4
+        with:
+          name: atlas-nba-source-proof-${{ github.run_id }}
+          path: ${{ runner.temp }}/atlas-source-capture/
+          if-no-files-found: warn
+          retention-days: 30
+          compression-level: 6
