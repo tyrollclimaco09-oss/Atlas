@@ -23,7 +23,7 @@ export function readSourceWithBlob(path){
   const bytes=readFileSync(path);
   return {snapshot:JSON.parse(bytes.toString('utf8')),source_git_blob_sha:gitBlobSha(bytes)};
 }
-export function freezePregameSource(snapshot,{preparedAt,sourceBlobSha}={}){
+export function freezePregameSource(snapshot,{preparedAt,sourceBlobSha,sourceArtifact}={}){
   if(!snapshot||snapshot.contract!==SOURCE_CONTRACT||
      snapshot.mode!=='RESEARCH_ONLY_PRESTART_NOT_EXECUTABLE'||
      snapshot.source_system!=='CONNECTED_DRAFTKINGS_SEARCH_GAMES_V1'||
@@ -38,6 +38,11 @@ export function freezePregameSource(snapshot,{preparedAt,sourceBlobSha}={}){
      !/^\d{4}-\d{2}-\d{2}$/.test(snapshot.query?.startLocalDateTime?.slice(0,10)||''))
      fail('PROSPECTIVE_SOURCE_CONTRACT_INVALID');
   const gameDateCT=snapshot.query.startLocalDateTime.slice(0,10);
+  // Preserve exact original Nov11 artifact bytes; opt-in path must match source date.
+  const artifact=sourceArtifact??'integrations/learning/fixtures/nba-connected-prestart-20261111.json';
+  if(artifact!=='integrations/learning/fixtures/nba-connected-prestart-'+gameDateCT+'.json')
+    fail('PROSPECTIVE_SOURCE_ARTIFACT_DATE_MISMATCH');
+
   const usedEvents=new Set(),usedMatchups=new Set();
   const predictions=snapshot.games.map(g=>{
     if(!isInt(g.provider_competition_id)||usedEvents.has(g.provider_competition_id)||
@@ -89,7 +94,7 @@ export function freezePregameSource(snapshot,{preparedAt,sourceBlobSha}={}){
     prepared_at_utc:preparedAt,source_generated_at_utc:snapshot.source_generated_at_utc,
     source_provider_request_id:snapshot.provider_request_id,
     source_git_blob_sha:sourceBlobSha,
-    source_artifact:'integrations/learning/fixtures/nba-connected-prestart-20261111.json',
+    source_artifact:artifact,
     source_authentication:'CONNECTED_TOOL_OBSERVED_NO_VENDOR_SIGNED_PAYLOAD',
     independently_checked_nba_schedule_url:'https://www.nba.com/games?date=2026-11-11',
     independent_schedule_check:'PUBLIC_PAGE_REVIEW_NOT_MACHINE_AUTHENTICATED',
@@ -118,7 +123,7 @@ export function validateProspectiveFreeze(snapshot,cohort,actualSourceBlobSha){
      !date(cohort.prepared_at_utc))
     fail('PROSPECTIVE_FREEZE_INTEGRITY_INVALID');
   const expected=freezePregameSource(snapshot,{preparedAt:cohort.prepared_at_utc,
-    sourceBlobSha:actualSourceBlobSha});
+    sourceBlobSha:actualSourceBlobSha,sourceArtifact:cohort.source_artifact});
   if(JSON.stringify(ordered(expected))!==JSON.stringify(ordered(cohort)))
     fail('PROSPECTIVE_FREEZE_DRIFT_OR_REWRITE');
   return {status:'FROZEN_SOURCE_ARITHMETIC_MATCH',
