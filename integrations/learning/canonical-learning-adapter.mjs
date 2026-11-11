@@ -6,6 +6,7 @@
  * Inputs: already-authorized read-only Supabase result objects. No network,
  * database writes, credentials, bookmaker calls, execution or auto promotion.
  */
+import {auditRecordedOutcomes} from './outcome-compatibility.mjs';
 export const ADAPTER_CONTRACT = 'ATLAS_CANONICAL_LEARNING_ADAPTER_V1';
 
 const filled = v => typeof v === 'string' && v.trim().length > 0;
@@ -30,6 +31,7 @@ export function reconcileCanonicalLearning(inputs, policy = {}) {
     !Array.isArray(inputs.observations) || !Array.isArray(inputs.predictions) ||
     !Array.isArray(inputs.official_outcomes) || !Array.isArray(inputs.identities) ||
     !Array.isArray(inputs.quotes)) throw Error('CANONICAL_RECONCILE_INPUT_INVALID');
+  const recordedAudit=auditRecordedOutcomes(inputs.recorded_outcomes??[],inputs.predictions);
   const experiment = inputs.experiment;
   const meta = inputs.frozen_cohort || null;
   const notes = [];
@@ -59,6 +61,7 @@ export function reconcileCanonicalLearning(inputs, policy = {}) {
     const outs = byPair(inputs.official_outcomes, key, event);
     const ids = byPair(inputs.identities, key, event);
     const quoteRows = byPair(inputs.quotes, key, event);
+    const recorded=recordedAudit.filter(a=>a.mapped?.candidate_key===key&&a.mapped.event_id===event);
     if (preds.length !== 1) reason(errors, 'MISSING_OR_AMBIGUOUS_FROZEN_PREDICTION');
     if (outs.length !== 1) reason(errors, 'MISSING_OR_AMBIGUOUS_OFFICIAL_OUTCOME');
     if (ids.length !== 1) reason(errors, 'MISSING_OR_AMBIGUOUS_VERIFIED_IDENTITY');
@@ -67,6 +70,9 @@ export function reconcileCanonicalLearning(inputs, policy = {}) {
     const o = outs.length === 1 ? outs[0] : null;
     const identity = ids.length === 1 ? ids[0] : null;
     const price = quoteRows.length === 1 ? quoteRows[0] : null;
+    if(recorded.length&&outs.length===0)reason(errors,'RECORDED_OUTCOME_REQUIRES_SOURCE_ATTESTATION');
+    if(recorded.some(a=>o&&a.mapped.binary_outcome!==o.binary_outcome))
+      reason(errors,'RECORDED_AND_ATTESTED_OUTCOME_CONFLICT');
     // Require a separately recorded source-authenticated team, event and market join.
     if (!identity?.verified_current_team || !identity?.verified_event_teams ||
         !identity?.verified_market_identity || !identity?.verified_settlement_rules ||
@@ -116,7 +122,8 @@ export function reconcileCanonicalLearning(inputs, policy = {}) {
     audits.push({case_key:key || null,event_id:event || null,
       status:eligible?'EVIDENCE_READY':forecastReady?'FORECAST_READY_PRICE_HOLD':'HOLD',
       forecast_ready:forecastReady, price_ready:exactQuote, reasons:errors,
-      matched_predictions:preds.length,matched_outcomes:outs.length,matched_identities:ids.length,matched_quotes:quoteRows.length});
+      matched_predictions:preds.length,matched_outcomes:outs.length,matched_identities:ids.length,matched_quotes:quoteRows.length,
+      matched_recorded_outcomes:recorded.length});
     if (forecastReady) {
       prepared.push({
         case_key:key,sport:p.sport,event_id:event,market_id:identity.market_id,root_key:root,
@@ -151,7 +158,10 @@ export function reconcileCanonicalLearning(inputs, policy = {}) {
     disposition:!canCreatePacket?'HOLD_NO_MODEL_CALIBRATION':
       audits.some(a=>!a.price_ready)?'FORECAST_PACKET_READY_PRICING_HOLD':'PACKET_READY_FOR_SHADOW_EVALUATION',
     experiment_key:experiment.experiment_key||null,
+    recorded_outcome_audit:recordedAudit,
     counts:{raw_observations:observations.length,matched_to_experiment:observations.length,
+      with_recorded_outcome:audits.filter(a=>a.matched_recorded_outcomes>0).length,
+      recorded_outcome_records:recordedAudit.filter(a=>a.mapped!==null).length,
       with_official_outcome:audits.filter(a=>a.matched_outcomes===1).length,
       with_numeric_eligible_forecast:prepared.length,
       complete_case_evidence:audits.filter(a=>a.status==='EVIDENCE_READY').length,

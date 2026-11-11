@@ -1,8 +1,12 @@
-name: ATLAS learning evidence gate (offline)
+name: ATLAS learning and reference research (offline)
 on:
   pull_request:
     paths:
       - 'integrations/learning/**'
+      - 'scripts/research/**'
+      - 'AGENTS.md'
+      - 'PATCH_NOTES.md'
+      - 'docs/ATLAS_OFFLINE_REFERENCE_RESEARCH.md'
       - '.github/workflows/atlas-learning-evidence-gate.yml'
   workflow_dispatch:
 permissions:
@@ -14,9 +18,28 @@ jobs:
     steps:
       - name: Checkout source only
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          fetch-depth: 0
+      - name: Require patch notes for implementation changes
+        if: github.event_name == 'pull_request'
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          python3 - <<'PY'
+          import os,re,subprocess
+          base,head=os.environ['BASE_SHA'],os.environ['HEAD_SHA']
+          if not all(re.fullmatch(r'[0-9a-f]{40}',s) for s in (base,head)):
+              raise SystemExit('Invalid comparison commit')
+          paths=subprocess.check_output(['git','diff','--name-only',base,head],text=True).splitlines()
+          implementation=any(p.startswith(('integrations/learning/','scripts/research/','.github/workflows/')) for p in paths)
+          if implementation and 'PATCH_NOTES.md' not in paths:
+              raise SystemExit('Implementation changes require a dated PATCH_NOTES.md entry')
+          print('Patch-note requirement satisfied')
+          PY
       - name: Prepare pinned Node runtime
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: '22'
-      - name: Verify experiment admission regression fixtures
-        run: node --test integrations/learning/*.test.mjs
+      - name: Verify learning and market-reference regressions
+        run: node --test integrations/learning/*.test.mjs scripts/research/*.test.cjs
