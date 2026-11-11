@@ -26,7 +26,8 @@ const args=process.argv.slice(2);
 const dateArg=args.find(x=>x.startsWith('--date='));
 const outArg=args.find(x=>x.startsWith('--out='));
 const all=args.includes('--all-recent');
-if((dateArg&&all)||(!dateArg&&!all))throw Error('COLLECTOR_REQUIRES_DATE_OR_ALL_RECENT');
+const allRegistered=args.includes('--all-registered');
+if(Number(Boolean(dateArg))+Number(all)+Number(allRegistered)!==1)throw Error('COLLECTOR_REQUIRES_EXACTLY_ONE_DATE_SCOPE');
 const nowCT=()=>{
  const parts=new Intl.DateTimeFormat('en-US',{timeZone:'America/Chicago',
   year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());
@@ -34,7 +35,7 @@ const nowCT=()=>{
  return d.year+'-'+d.month+'-'+d.day;
 };
 const today=nowCT();
-const dates=all?
+const dates=allRegistered?registry.cohorts.map(c=>c.date):all?
  registry.cohorts.filter(c=>c.date<today&&(Date.parse(today+'T12:00:00Z')-Date.parse(c.date+'T12:00:00Z'))/(24*3600000)<=7).map(c=>c.date):
  [dateArg.split('=')[1]];
 if(dates.some(d=>!/^\d{4}-\d{2}-\d{2}$/.test(d)))throw Error('COLLECTOR_DATE_INVALID');
