@@ -113,7 +113,7 @@ test('fetched final records cannot be backdated to tipoff or fake future team id
 });
 test('JSON with missing provider-native expected schema fails, not silently no-match',()=>{
  const {espn}=fixtures();
- assert.throws(()=>report(captured('NBA_OFFICIAL_CDN',{games:[{}]}),captured('ESPN_SCOREBOARD',espn)),/NBA_SOURCE_SCHEMA_INVALID/);
+ assert.throws(()=>report(captured('NBA_OFFICIAL_CDN',{games:[{}],metadata:{message:'Long enough valid JSON with wrong schema'}}),captured('ESPN_SCOREBOARD',espn)),/NBA_SOURCE_SCHEMA_INVALID/);
 });
 test('frozen model, rival and source registry cannot be silently changed at outcome time',()=>{
  const {nba,espn}=fixtures(),changed=structuredClone(cohort);
