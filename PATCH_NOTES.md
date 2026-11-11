@@ -1,6 +1,18 @@
 # ATLAS patch notes
 
 
+
+## 2026-11-11 — Prospective NBA source → independent forecast cohort (P1 SHADOW)
+
+**Status:** source and freeze committed before tipoff; review only; no deployment.
+
+- Connected DraftKings `search_games_v1` returned ten scheduled NBA games at 15:23:11 UTC with native competition/team IDs and PPG. Saved a compact original-field source snapshot and pinned its Git blob SHA; independently reviewed the ten-game matching slate on NBA.com. No raw vendor signature or machine-verified NBA schedule response is claimed.
+- At 15:26:47 UTC prepared and committed ten **future** game-winner probability forecasts using fixed, unvalidated `sigmoid((home_ppg-away_ppg)/18)`, neutral 50/50 baseline, no odds or market prices. Created immutable `nba-prospective-forecast-freeze-20261111.json`; game results remain null.
+- Added an exact source-blob/forecast formula reconciliation helper and real-source regression tests that reject after-tip data, duplicated matchups, swapped identity, source edits and invented outcomes/odds. Forecast scoring waits for separate trustworthy official postgame joins; no implied model quality or pricing.
+- Verification status at initial edit: GitHub CI **pending**. Capture the run log on this exact branch head before claiming a pass.
+- No Supabase table/endpoint changes, paid API calls, PULSE modification, paper debit, deployment, wagering authority or wager. Historical Buffalo identity remains HOLD.
+- Full evidence and next gate: [November 11 prospective cohort report](docs/research/2026-11-11-prospective-nba-cohort.md).
+
 ## 2026-11-11 — P1/P2 operational fixes: recorded-result safety, PULSE timing, CI runtime
 
 **Status:** SHADOW review branch stacked on PR #38. NOT merged, model-promoted, or deployed.
