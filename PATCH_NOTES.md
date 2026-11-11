@@ -1,5 +1,18 @@
 # ATLAS patch notes
 
+
+## 2026-11-11 — P1/P2 operational fixes: recorded-result safety, PULSE timing, CI runtime
+
+**Status:** SHADOW review branch stacked on PR #38. NOT merged, model-promoted, or deployed.
+
+- P1 learning: Add a separate recorded-result research diagnostic. It computes *provisional* Brier arithmetic for the source-linked Buffalo result using the genuinely frozen model and baseline, but reports zero calibration-eligible samples. It never upgrades a recorded result into an authenticated official outcome, changes the canonical evidence-gate disposition, invents exact market identity, or reports return/ROI. Add seven source-shape/fault regressions and expose the read-only result in the existing CLI.
+- P1 automation: Via connected task controls, changed Opening and Closing PULSE from flexible to exact schedule without changing their daily 08:00/19:00 America/Chicago cadence or prompts. Opening's November 11 run completed at 08:27 local before the change; future punctuality and notification delivery remain to be observed.
+- P2 CI: Replace SHA-pinned Node20-runtime checkout/setup-node actions with current independently resolved SHA pins for v6 Node24-runtime actions. Retain application Node 22, disable checkout credential persistence and automatic package cache.
+- P2 DB: Read-only advisor/statistics review indicates the reported unindexed FK candidates on the inspected tables have zero stored rows; adding 20 speculative indexes would create write/maintenance overhead without measured speedup. Existing RLS-without-policy findings may be deliberately service-only. No index, RLS policy, permission, schema, or ingestion-control change.
+- Source evidence: 532 historical market snapshots still have no canonical-market/overtime/venue execution hashes, so original-order pregame identity is not repairable with later replay. Source-linked outcome remains not source-authenticated for scoring.
+- Verification: GitHub Actions [run 43039665614](https://github.com/tyrollclimaco09-oss/Atlas/actions/runs/43039665614) on PR #39 head `ead21e2d62a1663135abab69c51074f8b2a476a8` completed successfully: **284 tests passed, zero failed/skipped**, all **3,000 synthetic fault checks passed**, and the patch-note check succeeded. Its log has no former Node20-runtime deprecation warning. This is an offline CI proof, not live forecasting accuracy. Supabase inspection was read-only. No paid provider calls, wager, paper debit, service deployment, or model training occurred.
+- Remaining: independent event/market identity and official outcome attestation, ongoing chronological cohorts, actual source-linked native quotes, live authenticated operator frontend parity, scheduler delivery proof. See [P1/P2 remediation report](docs/research/2026-11-11-p1-p2-remediation.md).
+
 ## 2026-11-11 — Real-source priority audit and sensitivity diagnostics
 
 **Status:** SHADOW, draft review only.
