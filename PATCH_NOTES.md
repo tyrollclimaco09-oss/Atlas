@@ -3,6 +3,19 @@
 
 
 
+
+## 2026-11-11 — Source-origin capture, safe result joins, and next multi-day NBA cohort (P1 SHADOW)
+
+**Scope:** Draft research patch only. No active deployment, production merge, signed-vendor certification, paid odds intake, model promotion, bankroll mutation or wager.
+
+- Reproduced current gap: Supabase still has zero Nov 11 native forecast freezes, while GitHub review contains 10 genuinely frozen November 11 NBA games. Direct NBA CDN endpoint yielded 403 through a separate web client; hosted GitHub network reachability still requires its own probe.
+- Implemented `direct-source-capture.mjs`: two exact allowlisted NBA CDN/ESPN HTTPS endpoints, bounded response, redirection disallowed, raw bytes archived with SHA256 and capture metadata. Preserve distinction between TLS origin proof and **nonexistent provider digital signatures**.
+- Implemented `direct-outcome-join.mjs`: parse directly captured NBA/ESPN scores, require unique exact opponent identity, date, start time and both final statuses, reject source disagreement and incomplete/duplicate games. Never equate NBA/ESPN game IDs with native DraftKings competition IDs. Scores are provisional research only.
+- Implemented `collect-source-evidence.mjs` plus a PR/dispatch/daily GitHub Actions workflow. It captures raw public sports JSON and SHA metadata in a retained artifact, then produces HOLD or provisional Brier reports. Scheduled operation is **defined but not activated** until the workflow reaches the default branch through review. No API keys, Supabase writes or execution permissions.
+- Captured a **second, actual pregame 4-game NBA source** for Nov 12, observed Nov 11 16:29 UTC (source git SHA `c8c2daf834b58f2870eec18bb82595a5332afa64`), and separately froze the pregame PPG model at 16:29:58 UTC and record challenger at 16:30:01 UTC. That makes 14 source-ID-linked forecasts over two NBA dates. All probabilities remain exploratory, uncalibrated and price-independent. Added immutable multiday registry and source-provenance regression tests.
+- Fixed reusable prestart freeze identity to honor the dated source artifact `YYYYMMDD` filenames without changing the original November 11 freeze. The first cohort and formulas must still replay exactly under offline CI.
+- **Initial verification:** GitHub CI and on-runner source reachability PENDING until exact-head logs are read. Historical backfill/market rules cannot be fabricated. See [Source Capture & Multiday Evidence Report](docs/research/2026-11-11-source-capture-and-multiday.md).
+
 ## 2026-11-11 — P1 postgame evaluation + independently defined record challenger
 
 **Status: SHADOW, draft review only. Games are not yet final; no actual game outcome/edge claims.**
