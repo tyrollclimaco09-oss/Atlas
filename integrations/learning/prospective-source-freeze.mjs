@@ -96,7 +96,7 @@ export function freezePregameSource(snapshot,{preparedAt,sourceBlobSha,sourceArt
     source_git_blob_sha:sourceBlobSha,
     source_artifact:artifact,
     source_authentication:'CONNECTED_TOOL_OBSERVED_NO_VENDOR_SIGNED_PAYLOAD',
-    independently_checked_nba_schedule_url:'https://www.nba.com/games?date=2026-11-11',
+    independently_checked_nba_schedule_url:'https://www.nba.com/games?date='+gameDateCT,
     independent_schedule_check:'PUBLIC_PAGE_REVIEW_NOT_MACHINE_AUTHENTICATED',
     model:{key:MODEL_KEY,formula:'sigmoid((home_ppg-away_ppg)/18)',scale_ppg:18,
       preregistered:true,trained_on_holdout:false,calibrated:false,
