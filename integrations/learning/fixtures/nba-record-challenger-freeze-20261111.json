@@ -1,0 +1,94 @@
+{
+  "contract": "ATLAS_NBA_RECORD_ODDS_CHALLENGER_V1",
+  "status": "FROZEN_EXPLORATORY_RIVAL_RESEARCH_ONLY",
+  "original_forecast_prepared_at": "2026-11-11T15:26:47.6906831Z",
+  "challenger_frozen_at": "2026-11-11T15:44:35.4663222Z",
+  "source_git_blob_sha": "9605d80d49d327f3acd4020d34ae49757f801e82",
+  "source_provider_request_id": "7d75fda7-d227-4719-9aec-6bb0dd7e6edb",
+  "model": {
+    "key": "NBA_LAPLACE_RECORD_LOGODDS_HALF_V0",
+    "formula": "sigmoid(0.5*(ln((homeW+1)/(homeL+1))-ln((awayW+1)/(awayL+1))))",
+    "weight": 0.5,
+    "pseudocount": 1,
+    "calibrated": false,
+    "trained_on_holdout": false,
+    "odds_or_market_prices_used": false
+  },
+  "cases": [
+    {
+      "canonical_source_event_key": "NBA:2026-11-11:WAS@IND",
+      "source_provider_competition_id": 1025962,
+      "source_home_record": "3-8",
+      "source_away_record": "4-7",
+      "probability_home": 0.457487071
+    },
+    {
+      "canonical_source_event_key": "NBA:2026-11-11:CLE@NYK",
+      "source_provider_competition_id": 1025963,
+      "source_home_record": "6-4",
+      "source_away_record": "5-6",
+      "probability_home": 0.561022157
+    },
+    {
+      "canonical_source_event_key": "NBA:2026-11-11:BOS@TOR",
+      "source_provider_competition_id": 1025964,
+      "source_home_record": "5-5",
+      "source_away_record": "9-2",
+      "probability_home": 0.353889368
+    },
+    {
+      "canonical_source_event_key": "NBA:2026-11-11:BKN@NOP",
+      "source_provider_competition_id": 1025968,
+      "source_home_record": "4-7",
+      "source_away_record": "2-8",
+      "probability_home": 0.57793555
+    },
+    {
+      "canonical_source_event_key": "NBA:2026-11-11:SAS@CHI",
+      "source_provider_competition_id": 1025965,
+      "source_home_record": "1-8",
+      "source_away_record": "9-2",
+      "probability_home": 0.205213096
+    },
+    {
+      "canonical_source_event_key": "NBA:2026-11-11:LAL@MIL",
+      "source_provider_competition_id": 1025967,
+      "source_home_record": "1-10",
+      "source_away_record": "10-2",
+      "probability_home": 0.182125106
+    },
+    {
+      "canonical_source_event_key": "NBA:2026-11-11:DEN@MEM",
+      "source_provider_competition_id": 1025966,
+      "source_home_record": "7-3",
+      "source_away_record": "5-4",
+      "probability_home": 0.563508327
+    },
+    {
+      "canonical_source_event_key": "NBA:2026-11-11:ORL@UTA",
+      "source_provider_competition_id": 1025969,
+      "source_home_record": "1-10",
+      "source_away_record": "3-7",
+      "probability_home": 0.376178512
+    },
+    {
+      "canonical_source_event_key": "NBA:2026-11-11:GSW@HOU",
+      "source_provider_competition_id": 1025970,
+      "source_home_record": "8-3",
+      "source_away_record": "8-3",
+      "probability_home": 0.5
+    },
+    {
+      "canonical_source_event_key": "NBA:2026-11-11:OKC@POR",
+      "source_provider_competition_id": 1025971,
+      "source_home_record": "7-3",
+      "source_away_record": "8-3",
+      "probability_home": 0.485281374
+    }
+  ],
+  "results": null,
+  "forecast_skill_eligible": false,
+  "paper_stakes": 0,
+  "production_authority": false,
+  "real_betting_authority": false
+}
