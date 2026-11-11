@@ -40,7 +40,7 @@ export function freezePregameSource(snapshot,{preparedAt,sourceBlobSha,sourceArt
   const gameDateCT=snapshot.query.startLocalDateTime.slice(0,10);
   // Preserve exact original Nov11 artifact bytes; opt-in path must match source date.
   const artifact=sourceArtifact??'integrations/learning/fixtures/nba-connected-prestart-20261111.json';
-  if(artifact!=='integrations/learning/fixtures/nba-connected-prestart-'+gameDateCT+'.json')
+  if(artifact!=='integrations/learning/fixtures/nba-connected-prestart-'+gameDateCT.replaceAll('-','')+'.json')
     fail('PROSPECTIVE_SOURCE_ARTIFACT_DATE_MISMATCH');
 
   const usedEvents=new Set(),usedMatchups=new Set();
