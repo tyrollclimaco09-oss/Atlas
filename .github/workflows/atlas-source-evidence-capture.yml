@@ -49,12 +49,11 @@ jobs:
         run: |
           mkdir -p "$RUNNER_TEMP/atlas-source-capture"
           if [ "${{ github.event_name }}" = "schedule" ]; then
-            node integrations/learning/collect-source-evidence.mjs \
-              --all-recent --out="$RUNNER_TEMP/atlas-source-capture"
+            node integrations/learning/collect-source-evidence.mjs --all-recent --out="$RUNNER_TEMP/atlas-source-capture"
+          elif [ "${{ github.event_name }}" = "pull_request" ]; then
+            node integrations/learning/collect-source-evidence.mjs --all-registered --out="$RUNNER_TEMP/atlas-source-capture"
           else
-            node integrations/learning/collect-source-evidence.mjs \
-              --date="${REQUESTED_DATE:-2026-11-11}" \
-              --out="$RUNNER_TEMP/atlas-source-capture"
+            node integrations/learning/collect-source-evidence.mjs --date="${REQUESTED_DATE:-2026-11-11}" --out="$RUNNER_TEMP/atlas-source-capture"
           fi
           python3 - <<'PY'
           import json, os, pathlib
