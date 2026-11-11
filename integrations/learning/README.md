@@ -66,3 +66,12 @@ The first *actual* pregame canonical experiment now has a frozen, append-only co
 - The plain SQL query itself does not contact external providers, connect RLS sessions, update forecast records or score games. A copy/paste operator export is **read-only integration at source-data shape**, not proof that the Command Center is auto-running this after every match.
 
 GitHub CI exercises the actual saved canonical export fixture against both adapter and CLI. Failure in the first source-to-scores case should become another regression fixture, not a silent model change.
+
+
+## November 11 P1 closure diagnostic (SHADOW)
+
+`recorded-result-research.mjs` adds **provisional** score arithmetic for a uniquely source-linked, frozen pregame forecast when its postgame receipt is still not an independently authenticated official outcome. The CLI prints these under `recorded_result_research_diagnostics`; no such result becomes an eligible sample for the evidence gate, model calibration, ROI, CLV, training, or automatic authority. The real Buffalo example remains `HOLD_NO_MODEL_CALIBRATION` with `forecast_metrics: null`.
+
+This is a retrospective diagnostic, **not** completion of the source-to-outcome bridge. Completion needs a separately authenticated event/market identity receipt that existed before the forecast, an independently verified official outcome, and prospective held-out evaluation. A later recap cannot repair missing pregame provider/rules evidence. No book quote or stake is implied.
+
+See [P1–P2 remediation](../../docs/research/2026-11-11-p1-p2-remediation.md) for automation and CI changes.
