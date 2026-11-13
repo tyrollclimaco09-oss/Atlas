@@ -1,0 +1,30 @@
+{
+  "contract": "ATLAS_SCOUT_PROSPECTIVE_SOURCE_GAP_V1",
+  "classification": "PREGAME_DISCOVERY_FAILURE_PRE_EXISTING_OFFICIAL_NEWS",
+  "observed_at": "2026-11-12T20:13:35-06:00",
+  "prior_numeric_forecast_frozen_at": "2026-11-12T20:09:08-06:00",
+  "case_key": "NBA_20261113_GSW_AT_SAS_CURRY_ASSISTS_6PLUS",
+  "source": {
+    "organization": "Golden State Warriors",
+    "url": "https://www.nba.com/warriors/news/stephen-curry-injury-update-11-12-26",
+    "official_team_publication": "2026-11-12T08:56:00-08:00",
+    "meaning": "Official team reports MRI-confirmed oblique abdominal tear and reevaluation in two weeks."
+  },
+  "source_available_before_freeze": true,
+  "issue": "The official injury update predates all attempted November 12 prospective math freezes; SCOUT failed to retrieve it in time. This is a source-discovery/invalidation failure, not new information arriving after freeze.",
+  "baseline_and_model_probabilities_preserved": {
+    "conditional_model_p_6plus": 0.241815,
+    "conditional_baseline_p_6plus": 0.1994421
+  },
+  "evaluation_disposition": "HOLD_PREEXISTING_INJURY_SOURCE; CANDIDATE_INELIGIBLE_FOR_NORMAL_PARTICIPATION_PROOF",
+  "bookmaker_status": "NOT_CHECKED",
+  "official_game_specific_out_designation": "NOT_CHECKED",
+  "impact_on_cohort": "Do not count player absence as zero assists; if he does not play, record DNP/HOLD and leave full-game prop outcome unscored; separately track SCOUT missed-source incidence.",
+  "manual_source_attestation_limit": "We retrieved an official team article via public web search; source integrity is not cryptographically vendor-signed in this research file.",
+  "authority": {
+    "production": false,
+    "wager": false,
+    "model_promotion": false
+  },
+  "immutable_ledger_policy": "Append this receipt; do not rewrite v3 pregame forecasts or earlier failed versions."
+}
