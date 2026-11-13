@@ -1,0 +1,100 @@
+{
+  "contract": "ATLAS_SCOUT_AVAILABILITY_PUBLICATION_CHECKPOINT_V0",
+  "classification": "OFFICIAL_PUBLICATION_REVIEW_NOT_RAW_BYTES_ATTESTATION",
+  "capture_observed_at_utc": "2026-11-13T08:42:58Z",
+  "source_urls": [
+    "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-13_03_15AM.pdf",
+    "https://www.nba.com/warriors/news/stephen-curry-injury-update-11-12-26",
+    "https://www.nba.com/player/1628973/jalen-brunson"
+  ],
+  "source_grade": "OFFICIAL_PUBLISHED_MATERIAL_STRUCTURALLY_REVIEWED_NOT_VENDOR_SIGNATURE_AUTHENTICATED",
+  "original_pr45_frozen_forecasts_unchanged": true,
+  "source_bytes_collected_with_authenticated_provider_client": false,
+  "statuses_not_inferred_from_missing_names": true,
+  "checkpoint_scope": "Nov 13 2026 GSW@SAS and NYK@IND, 6+ assists conditional PR45 cases",
+  "expected_stages": {
+    "curry": "HOLD_PLAYER_OUT",
+    "brunson": "HOLD_EVIDENCE_OR_PARTICIPATION_UNQUALIFIED"
+  },
+  "cases": [
+    {
+      "case_name": "Curry official injury gate",
+      "conditional_original_probability": 0.241815,
+      "conditional_baseline_probability": 0.1994421,
+      "packet": {
+        "contract": "ATLAS_SCOUT_AVAILABILITY_RESEARCH_GATE_V0",
+        "case_key": "S3-20261113-CURRY-6AST",
+        "canonical_event_key": "NBA:2026-11-13:GSW@SAS",
+        "player_id": "201939",
+        "team_id": "GSW",
+        "player_name": "Stephen Curry",
+        "event_start_at": "2026-11-14T02:30:00Z",
+        "original_forecast_frozen_at": "2026-11-13T02:09:08Z",
+        "as_of": "2026-11-13T08:42:58Z",
+        "receipts": [
+          {
+            "receipt_id": "NBA-PDF-2026-11-13-0315-CURRY",
+            "source_family": "NBA_INJURY_PDF",
+            "source_url": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-13_03_15AM.pdf",
+            "published_at": "2026-11-13T08:15:00Z",
+            "observed_at": "2026-11-13T08:42:58Z",
+            "excerpt": "Curry, Stephen | Out | Injury/Illness - Right Oblique Tear",
+            "excerpt_sha256": "109dcdae7f3f36910d39f7aba4e4e730d5b2abaed91f6c6f772fae7d843b64e4",
+            "finding": "OUT",
+            "case_key": "S3-20261113-CURRY-6AST",
+            "player_id": "201939",
+            "team_id": "GSW",
+            "event_key": "NBA:2026-11-13:GSW@SAS"
+          },
+          {
+            "receipt_id": "WARRIORS-BULLETIN-2026-11-12-CURRY",
+            "source_family": "NBA_TEAM_BULLETIN",
+            "source_url": "https://www.nba.com/warriors/news/stephen-curry-injury-update-11-12-26",
+            "published_at": "2026-11-12T16:56:00Z",
+            "observed_at": "2026-11-13T02:13:35Z",
+            "excerpt": "Warriors injury update: MRI confirmed an oblique abdominal tear; re-evaluation in two weeks",
+            "excerpt_sha256": "d1f36c8237bc617b718b72c16469b0bed2e11706baf438215f3da55c8193bd99",
+            "finding": "INJURY_REEVALUATION",
+            "case_key": "S3-20261113-CURRY-6AST",
+            "player_id": "201939",
+            "team_id": "GSW",
+            "event_key": "NBA:2026-11-13:GSW@SAS"
+          }
+        ]
+      }
+    },
+    {
+      "case_name": "Brunson not-listed safety gate",
+      "conditional_original_probability": 0.42074255,
+      "conditional_baseline_probability": 0.41590801,
+      "packet": {
+        "contract": "ATLAS_SCOUT_AVAILABILITY_RESEARCH_GATE_V0",
+        "case_key": "S3-20261113-BRUNSON-6AST",
+        "canonical_event_key": "NBA:2026-11-13:NYK@IND",
+        "player_id": "1628973",
+        "team_id": "NYK",
+        "player_name": "Jalen Brunson",
+        "event_start_at": "2026-11-14T00:00:00Z",
+        "original_forecast_frozen_at": "2026-11-13T02:09:08Z",
+        "as_of": "2026-11-13T08:42:58Z",
+        "receipts": [
+          {
+            "receipt_id": "NBA-PDF-2026-11-13-0315-NYK_SECTION",
+            "source_family": "NBA_INJURY_PDF",
+            "source_url": "https://ak-static.cms.nba.com/referee/injury/Injury-Report_2026-11-13_03_15AM.pdf",
+            "published_at": "2026-11-13T08:15:00Z",
+            "observed_at": "2026-11-13T08:42:58Z",
+            "excerpt": "NYK@IND: Pacers injury rows shown; no New York Knicks team section displayed",
+            "excerpt_sha256": "c7f005f2b03960ce08bc6970dfea4bb139bf58cf1d07c4b281ff914b7022e67f",
+            "finding": "TEAM_SECTION_MISSING",
+            "case_key": "S3-20261113-BRUNSON-6AST",
+            "player_id": "1628973",
+            "team_id": "NYK",
+            "event_key": "NBA:2026-11-13:NYK@IND"
+          }
+        ]
+      }
+    }
+  ],
+  "caution": "PDF manually read with page image, excerpts/hashes are self-contained integrity checks only; neither SHA authenticates NBA hosting nor maps arbitrary source content into a verifiable signed player-specific record. Freeze was earlier than this PDF; cannot backfill."
+}
